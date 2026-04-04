@@ -1,0 +1,251 @@
+---
+import PreviewLayout from '../layouts/PreviewLayout.astro';
+import PreviewNavSidebar from '../components/PreviewNavSidebar.astro';
+import { templateCategory, ALL_TOOLS } from '../index';
+import { Icon } from 'astro-icon/components';
+import type { KnownLocale, ToolLocaleContent } from '../types';
+
+export async function getStaticPaths() {
+  const locales = ['en', 'es', 'fr'] as KnownLocale[];
+  return locales.map(locale => ({ params: { locale } }));
+}
+
+const { locale: currentLocale } = Astro.params as { locale: KnownLocale };
+
+const categoryContent = await templateCategory.i18n[currentLocale]!();
+
+const tools = ALL_TOOLS || [];
+
+const toolsWithContent = tools.length > 0
+  ? await Promise.all(
+      tools.map(async ({ entry, Component }) => {
+        const languages = Object.keys(entry.i18n);
+        const localeEntries = await Promise.all(
+          languages.map(async (l) => {
+            const content = await entry.i18n[l as KnownLocale]!();
+            return [l, content];
+          })
+        );
+
+        const localeContents = Object.fromEntries(localeEntries) as Record<string, ToolLocaleContent<Record<string, string>>>;
+
+        const currentLocaleContent = localeContents[currentLocale] || localeContents['en'] || localeContents['es'];
+        const availableLocales: Record<string, string> = {};
+
+        for (const l of languages) {
+          const lCont = localeContents[l];
+          if (lCont) {
+            availableLocales[l] = `/${l}/${lCont.slug}`;
+          }
+        }
+
+        return { entry, Component, locale: currentLocaleContent, availableLocales };
+      })
+    )
+  : [];
+---
+
+<PreviewLayout
+  title={categoryContent.title}
+  currentLocale={currentLocale}
+  hasSidebar={true}
+>
+  <PreviewNavSidebar
+    slot="sidebar"
+    categoryTitle={categoryContent.title}
+    tools={toolsWithContent.map(({ entry, locale, availableLocales }) => {
+      const href = availableLocales[currentLocale] || (locale ? `/${currentLocale}/${locale.slug}` : '#');
+      return {
+        id: entry.id,
+        title: locale?.title || entry.id,
+        href: href,
+      };
+    })}
+  />
+  <div class="dashboard">
+    <header class="preview-header">
+      <span class="badge">preview · @jjlmoya/utils-template</span>
+      <h1>{categoryContent.title}</h1>
+      <p>{categoryContent.description}</p>
+    </header>
+
+    <div class="tool-list">
+      {toolsWithContent?.map(({ entry, locale, availableLocales }) => (
+        <article class="tool-card">
+          <a href={availableLocales?.[currentLocale] || (locale ? `/${currentLocale}/${locale.slug}` : '#')} class="tool-card-link">
+            <div class="tool-icons">
+               <div class="icon-wrapper bg">
+                  <Icon name={entry.icons.bg} />
+               </div>
+               <div class="icon-wrapper fg">
+                  <Icon name={entry.icons.fg} />
+               </div>
+            </div>
+            <div class="tool-card-content">
+              <h2 class="tool-title">{locale?.title}</h2>
+              <p class="tool-description">{locale?.description}</p>
+            </div>
+            <div class="tool-card-meta">
+              <span class="tool-id">{entry.id}</span>
+            </div>
+          </a>
+
+          {availableLocales && Object.keys(availableLocales).length > 1 && (
+            <div class="tool-locales">
+              {Object.entries(availableLocales).map(([l, url]) => (
+                <a href={url} class="locale-badge" title={`Ver en ${l.toUpperCase()}`} class:list={{ active: l === currentLocale }}>
+                  {l.toUpperCase()}
+                </a>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</PreviewLayout>
+
+<style>
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+  .preview-header {
+    text-align: center;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--accent);
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--text-base);
+    letter-spacing: 0.05em;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 900;
+    margin: 0 0 1rem;
+    background: linear-gradient(to bottom, var(--text-base), var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .preview-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .tool-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  .tool-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .tool-card-link {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .tool-card-link:hover {
+    border-color: var(--accent);
+    background: rgba(244, 63, 94, 0.05);
+    transform: translateY(-2px);
+  }
+  .tool-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+  }
+  .icon-wrapper.bg {
+    background: var(--accent);
+    color: var(--text-base);
+  }
+  .icon-wrapper.fg {
+    background: var(--bg-page);
+    border: 1px solid var(--border-color);
+    color: var(--accent);
+  }
+  .tool-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .tool-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: var(--text-base);
+  }
+  .tool-description {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .tool-card-meta {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 1.5rem;
+  }
+  .tool-id {
+    display: inline-block;
+    font-size: 0.7rem;
+    background: var(--bg-page);
+    border: 1px solid var(--border-color);
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.4rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .tool-locales {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .locale-badge {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    background: var(--bg-page);
+    border: 1px solid var(--border-color);
+    border-radius: 0.4rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.15s ease;
+  }
+  .locale-badge:hover,
+  .locale-badge.active {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(244, 63, 94, 0.1);
+  }
+</style>

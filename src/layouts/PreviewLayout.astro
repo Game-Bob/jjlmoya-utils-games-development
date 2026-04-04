@@ -1,0 +1,117 @@
+---
+import "@jjlmoya/utils-shared/theme.css";
+import PreviewToolbar from "../components/PreviewToolbar.astro";
+import type { KnownLocale } from "../types";
+
+interface Props {
+  title: string;
+  currentLocale?: KnownLocale;
+  localeUrls?: Partial<Record<KnownLocale, string>>;
+  hasSidebar?: boolean;
+}
+
+const { title, currentLocale = "es", localeUrls = {}, hasSidebar = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang={currentLocale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} · preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script is:inline>
+      (function () {
+        const saved = localStorage.getItem("theme") || "theme-dark";
+        document.documentElement.classList.add(saved);
+      })();
+    </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <PreviewToolbar currentLocale={currentLocale} localeUrls={localeUrls} />
+    <div class:list={["page-wrapper", { "with-sidebar": hasSidebar }]}>
+      {
+        hasSidebar && (
+          <aside class="sidebar-area">
+            <slot name="sidebar" />
+          </aside>
+        )
+      }
+      <main>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --accent: #f43f5e;
+    --primary-base: #9f1239;
+    --cyan: #06b6d4;
+  }
+
+  .theme-dark,
+  .theme-light {
+    --text-main: var(--text-base);
+    --border-color: var(--border-base);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-base);
+    margin: 0;
+    min-height: 100vh;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  main {
+    padding: 0 2rem;
+  }
+
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-wrapper.with-sidebar {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  .sidebar-area {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+    background: var(--bg-page);
+  }
+
+  @media (max-width: 768px) {
+    .page-wrapper.with-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar-area {
+      display: none;
+    }
+  }
+</style>
+

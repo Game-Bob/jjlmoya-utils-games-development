@@ -1,0 +1,146 @@
+---
+import PreviewLayout from "../../layouts/PreviewLayout.astro";
+import PreviewNavSidebar from "../../components/PreviewNavSidebar.astro";
+import { ALL_TOOLS } from "../../index";
+import {
+  UtilityHeader,
+  FAQSection,
+  Bibliography,
+  SEORenderer,
+} from "@jjlmoya/utils-shared";
+import type { KnownLocale, ToolLocaleContent } from "../../types";
+import type { UtilitySEOContent } from "@jjlmoya/utils-shared";
+
+export async function getStaticPaths() {
+  const paths = [];
+
+  for (const { entry, Component } of ALL_TOOLS) {
+    const localeEntries = Object.entries(entry.i18n) as [
+      KnownLocale,
+      () => Promise<ToolLocaleContent>,
+    ][];
+    const localeContents = await Promise.all(
+      localeEntries.map(async ([locale, loader]) => ({
+        locale,
+        content: await loader(),
+      })),
+    );
+
+    const localeUrls = Object.fromEntries(
+      localeContents.map(({ locale, content }) => [
+        locale,
+        `/${locale}/${content.slug}`,
+      ]),
+    ) as Partial<Record<KnownLocale, string>>;
+
+    for (const { locale, content } of localeContents) {
+      const allToolsNav = await Promise.all(
+        ALL_TOOLS.map(async ({ entry: navEntry }) => ({
+          id: navEntry.id,
+          title: (await navEntry.i18n[locale]!()).title,
+          href: `/${locale}/${(await navEntry.i18n[locale]!()).slug}`,
+          isActive: navEntry.id === entry.id,
+        })),
+      );
+      paths.push({
+        params: { locale, slug: content.slug },
+        props: { Component, locale, content, localeUrls, allToolsNav },
+      });
+    }
+  }
+
+  return paths;
+}
+
+type ToolComponent = (props: { ui: Record<string, string> }) => unknown;
+
+interface NavItem {
+  id: string;
+  title: string;
+  href: string;
+  isActive?: boolean;
+}
+
+interface Props {
+  Component: ToolComponent;
+  locale: KnownLocale;
+  content: ToolLocaleContent;
+  localeUrls: Partial<Record<KnownLocale, string>>;
+  allToolsNav: NavItem[];
+}
+
+const { Component, locale, content, localeUrls, allToolsNav } = Astro.props;
+
+const seoContent: UtilitySEOContent = { locale, sections: content.seo };
+
+const words = content.title.split(" ");
+const titleHighlight = words[0] || "";
+const titleBase = words.slice(1).join(" ") || "";
+---
+
+<PreviewLayout
+  title={content.title}
+  currentLocale={locale}
+  localeUrls={localeUrls}
+  hasSidebar={true}
+>
+  <PreviewNavSidebar
+    slot="sidebar"
+    categoryTitle="Tools"
+    tools={allToolsNav}
+  />
+  <Fragment slot="head">
+    {
+      content.schemas.map((schema: unknown) => (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(schema)}
+        />
+      ))
+    }
+  </Fragment>
+
+  <div class="tool-page">
+    <UtilityHeader
+      titleHighlight={titleHighlight}
+      titleBase={titleBase}
+      description={content.description}
+    />
+
+    <section class="section-tool">
+      <Component ui={content.ui} />
+    </section>
+
+    <section class="section-seo">
+      <SEORenderer content={seoContent} />
+    </section>
+
+    <section class="section-faq">
+      <FAQSection items={content.faq} title={content.ui.faqTitle} inLanguage={locale} />
+    </section>
+
+    <section class="section-bibliography">
+      <Bibliography links={content.bibliography} title={content.ui.bibliographyTitle} />
+    </section>
+  </div>
+</PreviewLayout>
+
+<style>
+  .tool-page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .section-tool {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .section-seo,
+  .section-faq,
+  .section-bibliography {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+  }
+</style>

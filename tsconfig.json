@@ -1,0 +1,15 @@
+{
+    "extends": "astro/tsconfigs/strictest",
+    "include": ["src/**/*", ".astro/types.d.ts"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "strict": true,
+        "types": ["astro/client", "astro/jsx-runtime"],
+        "jsx": "preserve",
+        "jsxImportSource": "astro"
+    },
+    "exclude": ["node_modules", "dist"]
+}
+

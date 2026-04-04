@@ -1,0 +1,50 @@
+{
+    "extends": ["stylelint-config-standard"],
+    "overrides": [
+        {
+            "files": ["**/*.astro"],
+            "customSyntax": "postcss-html"
+        },
+        {
+            "files": ["src/tool/**/*.css", "src/tool/**/*.astro", "src/pages/**/*.astro"],
+            "rules": {
+                "scale-unlimited/declaration-strict-value": null,
+                "color-named": null,
+                "property-no-vendor-prefix": null,
+                "selector-pseudo-element-colon-notation": null,
+                "declaration-block-no-redundant-longhand-properties": null,
+                "rule-empty-line-before": null,
+                "import-notation": null,
+                "block-no-empty": null
+            }
+        }
+    ],
+    "plugins": ["stylelint-declaration-strict-value"],
+    "rules": {
+        "scale-unlimited/declaration-strict-value": [
+            ["color", "fill", "stroke"],
+            {
+                "ignoreValues": ["transparent", "none", "inherit", "currentColor", "initial"]
+            }
+        ],
+        "color-no-invalid-hex": true,
+        "shorthand-property-no-redundant-values": true,
+        "declaration-block-no-duplicate-properties": true,
+        "no-duplicate-selectors": true,
+        "color-named": "never",
+        "unit-allowed-list": ["px", "rem", "em", "%", "vw", "vh", "svh", "svw", "fr", "deg", "s", "ms", "ch"],
+        "declaration-no-important": true,
+        "alpha-value-notation": "number",
+        "comment-empty-line-before": null,
+        "no-descending-specificity": null,
+        "selector-pseudo-class-no-unknown": [true, {
+            "ignorePseudoClasses": ["global", "local"]
+        }],
+        "media-feature-range-notation": null,
+        "color-function-notation": "legacy",
+        "color-function-alias-notation": null,
+        "custom-property-pattern": null,
+        "property-disallowed-list": ["font-family"]
+    }
+}
+

@@ -1,0 +1,15 @@
+---
+import { SEORenderer } from '@jjlmoya/utils-shared';
+import { sportsCategory } from './index';
+import type { KnownLocale } from '../types';
+
+interface Props {
+  locale?: KnownLocale;
+}
+
+const { locale = 'es' } = Astro.props;
+const content = await sportsCategory.i18n[locale]?.();
+---
+
+{content && <SEORenderer content={{ locale, sections: content.seo }} />}
+

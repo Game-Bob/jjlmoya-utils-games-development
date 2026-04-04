@@ -1,0 +1,116 @@
+---
+interface NavItem {
+  id: string;
+  title: string;
+  href: string;
+  isActive?: boolean;
+}
+
+interface Props {
+  categoryTitle: string;
+  tools?: NavItem[];
+}
+
+const { categoryTitle, tools = [] } = Astro.props;
+---
+
+<nav class="preview-nav-sidebar">
+  <div class="sidebar-header">
+    <h3>{categoryTitle}</h3>
+  </div>
+
+  <ul class="tools-list">
+    {tools.map((tool) => (
+      <li>
+        <a
+          href={tool.href}
+          class:list={['tool-link', { active: tool.isActive }]}
+        >
+          <span class="tool-title">{tool.title}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .preview-nav-sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--bg-surface, #0f172a);
+  }
+
+  .sidebar-header {
+    padding: 2rem 1.5rem 1.5rem;
+    border-bottom: 1px solid var(--border-color, #1e293b);
+  }
+
+  .sidebar-header h3 {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .tools-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .tools-list li {
+    margin: 0;
+  }
+
+  .tool-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-muted, #94a3b8);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 3px solid transparent;
+    position: relative;
+  }
+
+  .tool-link:hover {
+    color: var(--text-base, #f1f5f9);
+    background: rgba(255, 255, 255, 0.08);
+    padding-left: 1.75rem;
+  }
+
+  .tool-link.active {
+    color: var(--accent, #f43f5e);
+    background: rgba(244, 63, 94, 0.15);
+    border-left-color: var(--accent, #f43f5e);
+    font-weight: 600;
+  }
+
+  .tool-link.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 24px;
+    background: var(--accent, #f43f5e);
+    border-radius: 0 2px 2px 0;
+  }
+
+  .tool-title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
+
