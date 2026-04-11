@@ -3,7 +3,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
 
 const slug = 'test-reflejos';
-const title = 'Test de Velocidad de Reacción (Reflejos) - Benchmark Online';
+const title = 'Test de Velocidad de Reacción (Reflejos): Benchmark Online';
 const description = 'Mide tus reflejos en milisegundos con nuestro test de reacción profesional. Compite por rangos desde \'Tortuga\' hasta \'Ciberatleta\' y analiza tu rendimiento.';
 
 const ui: ReactionTesterUI = {

@@ -3,7 +3,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
 
 const slug = 'reaction-test';
-const title = 'Reaction Speed Test (Reflexes) - Online Benchmark';
+const title = 'Reaction Speed Test (Reflexes): Online Benchmark';
 const description = 'Measure your reflexes in milliseconds with our professional reaction test. Compete for ranks from \'Turtle\' to \'Cyberathlete\' and analyze your performance.';
 
 const ui: ReactionTesterUI = {
