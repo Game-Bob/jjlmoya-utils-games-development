@@ -1,0 +1,14 @@
+---
+import { Bibliography } from '@jjlmoya/utils-shared';
+import { scoreKeeper } from './index';
+import type { KnownLocale } from '../../types';
+
+interface Props {
+  locale?: KnownLocale;
+}
+
+const { locale = 'es' } = Astro.props;
+const content = await scoreKeeper.i18n[locale]?.();
+---
+
+{content && <Bibliography links={content.bibliography} />}

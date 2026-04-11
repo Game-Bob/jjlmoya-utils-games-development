@@ -1,7 +1,7 @@
 ---
 import PreviewLayout from '../layouts/PreviewLayout.astro';
 import PreviewNavSidebar from '../components/PreviewNavSidebar.astro';
-import { templateCategory, ALL_TOOLS } from '../index';
+import { sportsCategory, ALL_TOOLS } from '../index';
 import { Icon } from 'astro-icon/components';
 import type { KnownLocale, ToolLocaleContent } from '../types';
 
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
 const { locale: currentLocale } = Astro.params as { locale: KnownLocale };
 
-const categoryContent = await templateCategory.i18n[currentLocale]!();
+const categoryContent = await sportsCategory.i18n[currentLocale]!();
 
 const tools = ALL_TOOLS || [];
 

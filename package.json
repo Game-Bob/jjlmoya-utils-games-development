@@ -1,55 +1,60 @@
 {
-  "name": "@jjlmoya/utils-sports",
-  "version": "1.0.0",
-  "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
-  "exports": {
-    ".": "./src/index.ts",
-    "./data": "./src/data.ts"
-  },
-  "files": ["src"],
-  "publishConfig": { "access": "public" },
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "lint": "eslint src/ --max-warnings 0 && stylelint \"src/**/*.{css,astro}\"",
-    "check": "astro check",
-    "type-check": "astro check",
-    "test": "vitest run",
-    "preversion": "npm run lint && npm run test",
-    "postversion": "git push && git push --tags",
-    "patch": "npm version patch",
-    "minor": "npm version minor",
-    "major": "npm version major"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,astro}": ["eslint --fix"]
-  },
-  "dependencies": {
-    "@iconify-json/mdi": "^1.2.3",
-    "@jjlmoya/utils-shared": "1.0.2",
-    "astro": "^6.1.2",
-    "astro-icon": "^1.1.0"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.8",
-    "eslint": "^9.39.4",
-    "eslint-plugin-astro": "^1.6.0",
-    "eslint-plugin-no-comments": "^1.1.10",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
-    "postcss-html": "^1.8.1",
-    "schema-dts": "^1.1.2",
-    "stylelint": "^17.6.0",
-    "stylelint-config-standard": "^40.0.0",
-    "stylelint-declaration-strict-value": "^1.11.1",
-    "typescript": "^5.4.0",
-    "typescript-eslint": "^8.58.0",
-    "vitest": "^4.1.2"
-  }
+    "name": "@jjlmoya/utils-sports",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "./src/index.ts",
+    "types": "./src/index.ts",
+    "exports": {
+        ".": "./src/index.ts",
+        "./data": "./src/data.ts"
+    },
+    "files": [
+        "src"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "lint": "eslint src/ --max-warnings 0 && stylelint \"src/**/*.{css,astro}\"",
+        "check": "astro check",
+        "type-check": "astro check",
+        "test": "vitest run",
+        "preversion": "npm run lint && npm run test",
+        "postversion": "git push && git push --tags",
+        "patch": "npm version patch",
+        "minor": "npm version minor",
+        "major": "npm version major"
+    },
+    "lint-staged": {
+        "*.{ts,tsx,astro}": [
+            "eslint --fix"
+        ]
+    },
+    "dependencies": {
+        "@iconify-json/mdi": "^1.2.3",
+        "@jjlmoya/utils-shared": "1.2.0",
+        "astro": "^6.1.2",
+        "astro-icon": "^1.1.0"
+    },
+    "devDependencies": {
+        "@astrojs/check": "^0.9.8",
+        "eslint": "^9.39.4",
+        "eslint-plugin-astro": "^1.6.0",
+        "eslint-plugin-no-comments": "^1.1.10",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.4.0",
+        "postcss-html": "^1.8.1",
+        "schema-dts": "^1.1.2",
+        "stylelint": "^17.6.0",
+        "stylelint-config-standard": "^40.0.0",
+        "stylelint-declaration-strict-value": "^1.11.1",
+        "typescript": "^5.4.0",
+        "typescript-eslint": "^8.58.0",
+        "vitest": "^4.1.2"
+    }
 }
-

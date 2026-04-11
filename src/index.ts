@@ -17,3 +17,11 @@ export type {
 
 export { ALL_TOOLS } from './tools';
 
+export {
+  ScoreKeeperComponent,
+  ScoreKeeperSEO,
+  ScoreKeeperBibliography,
+  SCORE_KEEPER_TOOL,
+} from './tool/scoreKeeper/index';
+export type { ScoreKeeperUI, ScoreKeeperLocaleContent } from './tool/scoreKeeper/index';
+
