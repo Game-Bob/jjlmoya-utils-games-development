@@ -59,7 +59,7 @@ export interface SportsToolEntry<TUI extends Record<string, string> = Record<str
 
 export interface SportsCategoryEntry {
   icon: string;
-  tools: SportsToolEntry[];
+  tools: SportsToolEntry<Record<string, string>>[];
   i18n: LocaleMap<CategoryLocaleContent>;
 }
 

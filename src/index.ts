@@ -22,6 +22,7 @@ export {
   ScoreKeeperSEO,
   ScoreKeeperBibliography,
   SCORE_KEEPER_TOOL,
+  scoreKeeper,
 } from './tool/scoreKeeper/index';
 export type { ScoreKeeperUI, ScoreKeeperLocaleContent } from './tool/scoreKeeper/index';
 

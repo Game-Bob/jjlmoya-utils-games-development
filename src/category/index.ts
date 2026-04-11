@@ -1,10 +1,17 @@
-import type { SportsCategoryEntry } from '../types';
+import type { SportsCategoryEntry, SportsToolEntry } from '../types';
 import { scoreKeeper } from '../tool/scoreKeeper/index';
 import { tournamentBracket } from '../tool/tournamentBracket/index';
+import { gymTracker } from '../tool/gymTracker/index';
+import { reactionTester } from '../tool/reactionTester/index';
 
 export const sportsCategory: SportsCategoryEntry = {
   icon: 'mdi:basketball',
-  tools: [scoreKeeper, tournamentBracket],
+  tools: [
+    scoreKeeper,
+    tournamentBracket,
+    gymTracker,
+    reactionTester,
+  ] as unknown as SportsToolEntry<Record<string, string>>[],
   i18n: {
     es: () => import('./i18n/es').then((m) => m.content),
     en: () => import('./i18n/en').then((m) => m.content),
