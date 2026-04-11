@@ -53,7 +53,7 @@ const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
         <div class="gt-custom-row">
             <input type="text" id="customExerciseInput" placeholder={t.exercisePlaceholder} maxlength="40" class="gt-input-text" />
             <button id="addCustomExerciseBtn" class="gt-btn-secondary">{t.addBtn}</button>
-            <button id="closeCustomExerciseBtn" class="gt-btn-icon">✕</button>
+            <button id="closeCustomExerciseBtn" class="gt-btn-icon">x</button>
         </div>
       </div>
     </div>
@@ -170,7 +170,6 @@ const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
     max-width: 520px;
     margin: 0 auto;
     padding: 0.5rem;
-    font-family: inherit;
     box-sizing: border-box;
   }
 
@@ -239,7 +238,7 @@ const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
   }
 
   :global(.gt-select-box::after) {
-    content: "▼";
+    content: "\25BC";
     position: absolute;
     right: 0.75rem;
     top: 50%;
@@ -658,10 +657,10 @@ const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
     border-radius: 8px;
     font-size: 0.8rem;
     font-weight: 600;
-    animation: gt-slideIn 0.3s ease-out;
+    animation: gt-slide-in 0.3s ease-out;
   }
 
-  @keyframes gt-slideIn {
+  @keyframes gt-slide-in {
     from {
       opacity: 0;
       transform: translateY(4px);
@@ -722,7 +721,7 @@ const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
   }
 
   :global(.gt-modal-box h4) {
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.75rem;
     font-size: 1.1rem;
     font-weight: 900;
     color: var(--text-base);
@@ -731,7 +730,7 @@ const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
   :global(.gt-modal-box p) {
     font-size: 0.85rem;
     color: var(--text-muted);
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1.5rem;
     line-height: 1.5;
   }
 
@@ -767,21 +766,23 @@ const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
     width: 14px;
     height: 14px;
   }
+
   :global(.gt-icon-sm) {
     width: 18px;
     height: 18px;
   }
+
   :global(.gt-icon-md) {
     width: 22px;
     height: 22px;
   }
 
   :global(.gt-hidden) {
-    display: none !important;
+    display: none;
   }
   :global(.gt-option-highlight) {
-    color: var(--primary) !important;
-    font-weight: 800 !important;
+    color: var(--primary);
+    font-weight: 800;
   }
 
   @media (min-width: 400px) {
@@ -800,10 +801,10 @@ const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
   }
 
   :global(.gt-animate-in) {
-    animation: gt-fadeUp 0.5s ease-out;
+    animation: gt-fade-up 0.5s ease-out;
   }
 
-  @keyframes gt-fadeUp {
+  @keyframes gt-fade-up {
     from {
       opacity: 0;
       transform: translateY(10px);

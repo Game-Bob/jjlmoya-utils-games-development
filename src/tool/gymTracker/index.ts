@@ -18,9 +18,9 @@ export const gymTracker: SportsToolEntry<GymTrackerUI> = {
     fg: 'mdi:chart-line',
   },
   i18n: {
-    es: async () => es as any,
-    en: async () => en as any,
-    fr: async () => fr as any,
+    es: async () => es as ToolLocaleContent<GymTrackerUI>,
+    en: async () => en as ToolLocaleContent<GymTrackerUI>,
+    fr: async () => fr as ToolLocaleContent<GymTrackerUI>,
   },
 };
 

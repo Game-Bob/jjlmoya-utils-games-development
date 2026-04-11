@@ -255,11 +255,22 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   function handleInteraction(e: Event) {
     if (e.type === 'keydown' && (e as KeyboardEvent).code === 'Space') e.preventDefault();
     if (e.type === 'mousedown' && (e as MouseEvent).button !== 0) return;
-    if (state === 'idle') { attempts = []; startAttempt(); return; }
-    if (state === 'waiting') { clearTimeout(timerId); state = 'early'; showLayer('early'); return; }
-    if (state === 'early') { startAttempt(); return; }
-    if (state === 'ready') { handleResult(); return; }
-    if (state === 'result') { attempts.length >= TOTAL ? showScore() : startAttempt(); return; }
+    
+    const handlers: Record<string, () => void> = {
+      idle: () => { attempts = []; startAttempt(); },
+      waiting: () => { clearTimeout(timerId); state = 'early'; showLayer('early'); },
+      early: startAttempt,
+      ready: handleResult,
+      result: () => {
+        if (attempts.length >= TOTAL) {
+          showScore();
+        } else {
+          startAttempt();
+        }
+      }
+    };
+
+    handlers[state]?.();
   }
 
   function renderItem(item: ScoreEntry, type: string): string {
@@ -367,7 +378,6 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     margin: 0 auto;
     padding: 1rem;
     user-select: none;
-    font-family: inherit;
   }
 
   :global(.rt-area) {
@@ -428,10 +438,10 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     background: #f43f5e;
   }
 
-  :global(.rt-go) {
+  :global(.rt-layer.rt-go.rt-active) {
     background: #10b981;
-    transition: none !important;
-    transform: scale(1) !important;
+    transition: none;
+    transform: scale(1);
   }
 
   :global(.rt-early) {
@@ -517,8 +527,15 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   }
 
   @keyframes rt-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(0.96); }
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(0.96);
+    }
   }
 
   :global(.rt-wait-sub) {
@@ -543,8 +560,14 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   }
 
   @keyframes rt-pop {
-    from { transform: scale(0.5); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 
   :global(.rt-go-sub) {
@@ -620,7 +643,6 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   :global(.rt-time) {
     font-size: clamp(4rem, 18vw, 9rem);
     font-weight: 950;
-    font-family: inherit;
     letter-spacing: -0.05em;
     line-height: 0.9;
     margin-bottom: 1.5rem;
@@ -698,11 +720,25 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     border: 2px solid rgba(255, 255, 255, 0.2);
   }
 
-  :global(.rt-rank-ciberatleta) { background: linear-gradient(135deg, #00d2ff, #3a7bd5); }
-  :global(.rt-rank-tigre) { background: linear-gradient(135deg, #fcead2, #f8d49a); color: #854d0e; border-color: #854d0e; }
-  :global(.rt-rank-humano) { background: linear-gradient(135deg, #43e97b, #38f9d7); color: #065f46; border-color: #065f46; }
-  :global(.rt-rank-tortuga) { background: linear-gradient(135deg, #bdc3c7, #2c3e50); }
-  :global(.rt-rank-dormido) { background: linear-gradient(135deg, #304352, #d7d2cc); }
+  :global(.rt-rank-ciberatleta) {
+    background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+  }
+  :global(.rt-rank-tigre) {
+    background: linear-gradient(135deg, #fcead2, #f8d49a);
+    color: #854d0e;
+    border-color: #854d0e;
+  }
+  :global(.rt-rank-humano) {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    color: #065f46;
+    border-color: #065f46;
+  }
+  :global(.rt-rank-tortuga) {
+    background: linear-gradient(135deg, #bdc3c7, #2c3e50);
+  }
+  :global(.rt-rank-dormido) {
+    background: linear-gradient(135deg, #304352, #d7d2cc);
+  }
 
   :global(.rt-final-wrap) {
     margin: 0 0 1rem;
@@ -874,7 +910,6 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: inherit;
     font-size: 0.8rem;
     color: var(--text-base);
     box-shadow: 0 2px 5px var(--shadow-base);
@@ -940,8 +975,12 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     gap: 0.6rem;
   }
 
-  :global(.rt-best-label) { color: #10b981; }
-  :global(.rt-worst-label) { color: #f43f5e; }
+  :global(.rt-best-label) {
+    color: #10b981;
+  }
+  :global(.rt-worst-label) {
+    color: #f43f5e;
+  }
 
   :global(.rt-list) {
     list-style: none;
@@ -983,13 +1022,16 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   }
 
   :global(.rt-entry-score) {
-    font-family: inherit;
     font-weight: 900;
     font-size: 1.25rem;
   }
 
-  :global(.rt-score-best) { color: #10b981; }
-  :global(.rt-score-worst) { color: #64748b; }
+  :global(.rt-score-best) {
+    color: #10b981;
+  }
+  :global(.rt-score-worst) {
+    color: #64748b;
+  }
 
   :global(.rt-entry-rank) {
     font-size: 0.7rem;
@@ -1009,10 +1051,22 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     opacity: 0.7;
   }
 
-  :global(.rt-icon-xs) { width: 1.25rem; height: 1.25rem; }
-  :global(.rt-icon-sm) { width: 1.75rem; height: 1.75rem; }
-  :global(.rt-icon-md) { width: 2.25rem; height: 2.25rem; }
-  :global(.rt-icon-xl) { width: 4.5rem; height: 4.5rem; }
+  :global(.rt-icon-xs) {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  :global(.rt-icon-sm) {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  :global(.rt-icon-md) {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  :global(.rt-icon-xl) {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
 
   :global(.theme-dark .rt-history-card) {
     background: rgba(255, 255, 255, 0.02);
