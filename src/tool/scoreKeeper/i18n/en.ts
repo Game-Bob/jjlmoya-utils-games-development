@@ -144,22 +144,29 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
       level: 2,
     },
     {
-      type: 'grid',
-      columns: [
+      type: 'comparative',
+      columns: 3,
+      items: [
         {
-          type: 'card',
           title: 'Tennis / Padel Mode',
-          html: '<p>Adapted interface with <strong>Sets</strong> and <strong>Games</strong> counters. The system automatically handles the 15-30-40-AD sequence and keeps track of games won according to the official rules.</p>',
+          description:
+            'Adapted interface with Sets and Games counters. The system automatically handles the 15-30-40-AD sequence.',
+          icon: 'mdi:tennis',
+          points: ['Official rules', 'Advantage management', 'Sets counter'],
         },
         {
-          type: 'card',
           title: 'Basketball Mode',
-          html: '<p>The scoreboard detects the sport and changes its interface. In basketball mode, you\'ll have dedicated <strong>+1, +2 and +3</strong> buttons to quickly score any play without extra taps.</p>',
+          description:
+            'The scoreboard detects the sport and changes its interface. Dedicated +1, +2 and +3 buttons.',
+          icon: 'mdi:basketball',
+          points: ['Quick triples', 'Free throws', 'No extra taps'],
         },
         {
-          type: 'card',
           title: 'Ping Pong Mode',
-          html: '<p>Forget about memorizing whose turn it is to serve. The visual indicator rotates automatically every 2 points (or every point in deuce), following the official ITTF rules.</p>',
+          description:
+            'Forget about memorizing whose turn it is to serve. The visual indicator rotates automatically every 2 points.',
+          icon: 'mdi:table-tennis',
+          points: ['ITTF rules', 'Serve rotation', 'Deuce mode (11 pts)'],
         },
       ],
     },

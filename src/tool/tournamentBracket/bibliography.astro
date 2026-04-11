@@ -1,0 +1,10 @@
+---
+import { tournamentBracket } from './index';
+import type { KnownLocale } from '../../types';
+
+interface Props { locale: KnownLocale }
+const { locale } = Astro.props;
+const content = await tournamentBracket.i18n[locale]?.();
+---
+
+{content && content.bibliography.length > 0 && null}

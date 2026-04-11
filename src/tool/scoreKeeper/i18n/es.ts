@@ -2,7 +2,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
-const slug = 'marcador-deportivo';
+const slug = 'marcador';
 const title = 'Marcador Deportivo Online: Contador de Puntos Gratis (2026)';
 const description =
   'Marcador digital con botones gigantes para móvil. Ideal para pádel, ping-pong y fútbol. Sin anuncios que molesten en mitad del partido. Simple y rápido.';
@@ -144,22 +144,29 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
       level: 2,
     },
     {
-      type: 'grid',
-      columns: [
+      type: 'comparative',
+      columns: 3,
+      items: [
         {
-          type: 'card',
           title: 'Modo Tenis / Pádel',
-          html: '<p>Interfaz adaptada con contadores de <strong>Sets</strong> y <strong>Juegos</strong>. El sistema gestiona automáticamente la secuencia 15-30-40-AD y lleva la cuenta de los juegos ganados según el reglamento oficial.</p>',
+          description:
+            'Interfaz adaptada con contadores de Sets y Juegos. El sistema gestiona automáticamente la secuencia 15-30-40-AD.',
+          icon: 'mdi:tennis',
+          points: ['Reglamento oficial', 'Gestión de Advantage', 'Contador de Sets'],
         },
         {
-          type: 'card',
           title: 'Modo Baloncesto',
-          html: '<p>El marcador detecta el deporte y cambia su interfaz. En modo baloncesto, tendrás botones dedicados de <strong>+1, +2 y +3</strong> para anotar rápidamente cualquier jugada sin pulsaciones extra.</p>',
+          description:
+            'El marcador detecta el deporte y cambia su interfaz. Tendrás botones dedicados de +1, +2 y +3.',
+          icon: 'mdi:basketball',
+          points: ['Triples rápidos', 'Tiros libres', 'Sin pulsaciones extra'],
         },
         {
-          type: 'card',
           title: 'Modo Ping Pong',
-          html: '<p>Olvídate de memorizar a quién le toca sacar. El indicador visual rota automáticamente cada 2 puntos (o cada punto en deuce), siguiendo las reglas oficiales de la ITTF.</p>',
+          description:
+            'Olvídate de memorizar a quién le toca sacar. El indicador visual rota automáticamente cada 2 puntos.',
+          icon: 'mdi:table-tennis',
+          points: ['Reglas ITTF', 'Rotación de saque', 'Modo Deuce (11 pts)'],
         },
       ],
     },

@@ -1,0 +1,834 @@
+---
+import type { KnownLocale } from '../../types';
+import type { GymTrackerUI } from './ui';
+import { defaultExercises } from './exercises';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
+---
+
+<div class="gt-root" id="gym-tracker-app" data-gt-ui={JSON.stringify(t)}>
+  <div class="gt-card gt-animate-in">
+    <div class="gt-header">
+      <div class="gt-header-row">
+        <div class="gt-field">
+          <label for="exerciseSelect">
+            <svg viewBox="0 0 24 24" class="gt-icon-label"><path fill="currentColor" d="M21 12c.56 0 1.08.15 1.53.42c.3-.44.47-.96.47-1.53c0-1.63-1.33-2.95-2.95-2.95c-.64 0-1.24.21-1.7.55c-.31-.56-.91-.94-1.6-.94c-.58 0-1.1.27-1.44.7c-.36-.43-.9-.7-1.51-.7a2.38 2.38 0 0 0-2.38 2.38c0 .28.05.54.14.79c-.4.29-.66.77-.66 1.3c0 .18.03.36.09.53c-.32.41-.5.93-.5 1.5c0 1.34.89 2.47 2.11 2.83c.33 1.14 1.38 1.97 2.62 1.97a2.73 2.73 0 0 0 2.72-2.37c.45.24.96.37 1.5.37c1.38 0 2.54-.92 2.89-2.18c.2-.07.4-.16.58-.28c.11.45.28.87.52 1.25V12z"/></svg>
+            {t.exerciseLabel}
+          </label>
+          <div class="gt-select-box">
+             <select id="exerciseSelect" class="gt-select">
+                <optgroup label={t.pushCategory}>
+                    {defaultExercises.filter(ex => ex.categoryKey === 'push').map(ex => (
+                        <option value={ex.id}>{t[ex.nameKey]}</option>
+                    ))}
+                </optgroup>
+                <optgroup label={t.pullCategory}>
+                    {defaultExercises.filter(ex => ex.categoryKey === 'pull').map(ex => (
+                        <option value={ex.id}>{t[ex.nameKey]}</option>
+                    ))}
+                </optgroup>
+                <optgroup label={t.gluteCategory}>
+                    {defaultExercises.filter(ex => ex.categoryKey === 'glute').map(ex => (
+                        <option value={ex.id}>{t[ex.nameKey]}</option>
+                    ))}
+                </optgroup>
+            </select>
+          </div>
+        </div>
+        <button id="toggleCustomExerciseBtn" class="gt-btn-toggle" title={t.addCustomExerciseTitle}>
+            <svg viewBox="0 0 24 24" class="gt-icon-md"><path fill="currentColor" d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m2-7H5c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg>
+        </button>
+      </div>
+
+      <div id="customExerciseForm" class="gt-custom-form gt-hidden">
+        <label for="customExerciseInput" class="gt-label-small">
+            {t.newExerciseLabel}
+        </label>
+        <div class="gt-custom-row">
+            <input type="text" id="customExerciseInput" placeholder={t.exercisePlaceholder} maxlength="40" class="gt-input-text" />
+            <button id="addCustomExerciseBtn" class="gt-btn-secondary">{t.addBtn}</button>
+            <button id="closeCustomExerciseBtn" class="gt-btn-icon">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="gt-log-section">
+        <label for="weightInput" class="gt-label-main">
+            <svg viewBox="0 0 24 24" class="gt-icon-sm"><path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            {t.registerWeightLabel}
+        </label>
+        <div class="gt-log-row">
+            <input type="number" id="weightInput" placeholder={t.weightPlaceholder} step="0.5" min="0" inputmode="decimal" class="gt-input-number" />
+            <button id="addLogBtn" class="gt-btn-primary">{t.addBtn}</button>
+        </div>
+    </div>
+
+    <div class="gt-timer-section">
+        <div class="gt-timer-container">
+            <div class="gt-timer-main">
+                <span id="timerDisplay" class="gt-timer-text">00:00</span>
+                <div class="gt-timer-actions">
+                    <button id="startTimerBtn" class="gt-btn-round" title={t.startBtn}>
+                        <svg viewBox="0 0 24 24" class="gt-icon-sm"><path fill="currentColor" d="M8 5.14v14l11-7L8 5.14z"/></svg>
+                    </button>
+                    <button id="resetTimerBtn" class="gt-btn-round" title={t.resetBtn}>
+                        <svg viewBox="0 0 24 24" class="gt-icon-sm"><path fill="currentColor" d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="gt-timer-presets">
+                <div class="gt-presets-grid">
+                    <button class="gt-preset-btn preset-btn" data-seconds="60">60s</button>
+                    <button class="gt-preset-btn preset-btn" data-seconds="90">90s</button>
+                    <button class="gt-preset-btn preset-btn" data-seconds="120">120s</button>
+                </div>
+                <div class="gt-custom-timer">
+                    <input type="number" id="customTimerInput" placeholder="s" min="1" max="999" class="gt-input-timer" />
+                    <button id="setCustomTimerBtn" class="gt-btn-ok">{t.okBtn}</button>
+                </div>
+            </div>
+        </div>
+        <div class="gt-progress-bg">
+            <div id="timerProgress" class="gt-progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="gt-dashboard">
+        <div class="gt-chart-wrapper">
+            <div class="gt-chart-box">
+                <svg id="progressChart" viewBox="0 0 400 200" preserveAspectRatio="none" class="gt-svg-chart">
+                    <path id="chartPath" d="" fill="none" stroke="currentColor" stroke-width="4" class="gt-path"></path>
+                    <g id="chartPoints"></g>
+                </svg>
+            </div>
+            <div id="emptyState" class="gt-empty-state">
+                {t.noData}
+            </div>
+        </div>
+        <div class="gt-stats">
+            <div class="gt-stat-item">
+                <span class="gt-stat-label">{t.recordLabel}</span>
+                <span id="maxWeight" class="gt-stat-val">0 {t.units}</span>
+            </div>
+            <div class="gt-stat-item">
+                <span class="gt-stat-label">{t.lastLabel}</span>
+                <span id="lastWeight" class="gt-stat-val">0 {t.units}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="gt-history">
+        <div class="gt-history-header">
+            <h3 class="gt-history-title">
+                <svg viewBox="0 0 24 24" class="gt-icon-xs"><path fill="currentColor" d="M13.5 8H12v5l4.28 2.54l.72-1.21l-3.5-2.08V8M13 3a9 9 0 0 0-9 9H1l3.96 4.07l.04.03L9 12H6a7 7 0 0 1 7-7a7 7 0 0 1 7 7a7 7 0 0 1-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 9-9a9 9 0 0 0-9-9z"/></svg>
+                {t.historyTitle}
+            </h3>
+            <div class="gt-history-actions">
+                <button id="exportDataBtn" class="gt-btn-text">
+                    <svg viewBox="0 0 24 24" class="gt-icon-xs"><path fill="currentColor" d="M5 20h14v-2H5v2m0-10h4v6h6v-6h4l-7-7l-7 7z"/></svg>
+                    {t.exportBtn}
+                </button>
+                <button id="clearHistoryBtn" class="gt-btn-text">Reset</button>
+            </div>
+        </div>
+
+        <div id="exportMenu" class="gt-export-menu gt-hidden">
+            <button id="exportJsonBtn" class="gt-export-item">JSON</button>
+            <button id="exportCsvBtn" class="gt-export-item">CSV</button>
+        </div>
+
+        <div id="historyList" class="gt-history-list"></div>
+    </div>
+  </div>
+
+  <div id="confirmModal" class="gt-modal gt-hidden">
+    <div class="gt-modal-box">
+        <h4>{t.confirmDeleteTitle}</h4>
+        <p>{t.confirmDeleteText}</p>
+        <div class="gt-modal-btns">
+            <button id="confirmDeleteBtn" class="gt-btn-danger">{t.deleteBtn}</button>
+            <button id="cancelDeleteBtn" class="gt-btn-cancel">{t.cancelBtn}</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initGymTracker } from './logic';
+  initGymTracker();
+</script>
+
+<style>
+  :global(.gt-root) {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0.5rem;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  :global(.gt-card) {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-base);
+    border-radius: 20px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: 0 4px 6px -1px var(--shadow-base);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  :global(.gt-header-row) {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-end;
+  }
+
+  :global(.gt-field) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  :global(.gt-field label) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  :global(.gt-icon-label) {
+    width: 16px;
+    height: 16px;
+    color: var(--primary);
+  }
+
+  :global(.gt-select) {
+    width: 100%;
+    padding: 0.6rem 2rem 0.6rem 0.75rem;
+    background: var(--bg-page);
+    border: 1px solid var(--border-base);
+    border-radius: 10px;
+    color: var(--text-base);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    text-overflow: ellipsis;
+  }
+
+  :global(.gt-select-box) {
+    position: relative;
+    width: 100%;
+  }
+
+  :global(.gt-select-box::after) {
+    content: "▼";
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  :global(.gt-btn-toggle) {
+    background: var(--bg-page);
+    border: 1px solid var(--border-base);
+    border-radius: 10px;
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  :global(.gt-btn-toggle:hover) {
+    background: var(--primary-bg);
+    transform: scale(1.05);
+  }
+
+  :global(.gt-custom-form) {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--bg-page);
+    border-radius: 12px;
+    border: 1px dashed var(--border-base);
+  }
+
+  :global(.gt-label-small) {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  :global(.gt-custom-row) {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  :global(.gt-input-text) {
+    flex: 1;
+    min-width: 0;
+    padding: 0.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-base);
+    border-radius: 8px;
+    color: var(--text-base);
+    font-size: 0.9rem;
+  }
+
+  :global(.gt-btn-secondary) {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-base);
+    color: var(--text-base);
+    padding: 0 0.75rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+
+  :global(.gt-btn-icon) {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+  }
+
+  :global(.gt-log-section) {
+    background: var(--primary-bg);
+    padding: 1rem;
+    border-radius: 14px;
+    border: 1px solid var(--primary-soft);
+  }
+
+  :global(.gt-label-main) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  :global(.gt-log-row) {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  :global(.gt-input-number) {
+    flex: 1;
+    min-width: 0;
+    padding: 0.75rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-base);
+    border-radius: 10px;
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: 900;
+    text-align: center;
+    outline: none;
+  }
+
+  :global(.gt-btn-primary) {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 1.5rem;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--primary-soft);
+  }
+
+  :global(.gt-timer-section) {
+    background: var(--bg-page);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-base);
+  }
+
+  :global(.gt-timer-container) {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  :global(.gt-timer-main) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+  }
+
+  :global(.gt-timer-text) {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  :global(.gt-timer-text.gt-timer-active) {
+    color: var(--primary);
+    text-shadow: 0 0 15px var(--primary-soft);
+  }
+
+  :global(.gt-timer-actions) {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  :global(.gt-btn-round) {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-base);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  :global(.gt-btn-round:hover) {
+    background: var(--bg-page);
+    transform: scale(1.1);
+  }
+
+  :global(.gt-timer-presets) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  :global(.gt-presets-grid) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  :global(.gt-preset-btn) {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-base);
+    color: var(--text-base);
+    border-radius: 6px;
+    padding: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  :global(.gt-custom-timer) {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  :global(.gt-input-timer) {
+    flex: 1;
+    padding: 0.3rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-base);
+    background: var(--bg-surface);
+    color: var(--text-base);
+    font-size: 0.8rem;
+    text-align: center;
+    min-width: 0;
+  }
+
+  :global(.gt-btn-ok) {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  :global(.gt-progress-bg) {
+    height: 4px;
+    background: var(--border-base);
+    width: 100%;
+  }
+
+  :global(.gt-progress-bar) {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    transition: width 1s linear;
+  }
+
+  :global(.gt-dashboard) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  :global(.gt-chart-wrapper) {
+    background: var(--bg-page);
+    border-radius: 12px;
+    padding: 0.75rem;
+    height: 120px;
+    position: relative;
+    border: 1px solid var(--border-base);
+    min-width: 0;
+  }
+
+  :global(.gt-chart-box) {
+    width: 100%;
+    height: 100%;
+  }
+
+  :global(.gt-svg-chart) {
+    width: 100%;
+    height: 100%;
+    color: var(--primary);
+    overflow: visible;
+  }
+
+  :global(.gt-path) {
+    filter: drop-shadow(0 0 4px var(--primary-soft));
+  }
+
+  :global(.gt-chart-dot) {
+    fill: var(--primary);
+    stroke: var(--bg-page);
+    stroke-width: 2;
+  }
+
+  :global(.gt-empty-state) {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  :global(.gt-stats) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  :global(.gt-stat-item) {
+    background: var(--bg-page);
+    border: 1px solid var(--border-base);
+    padding: 0.75rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 0;
+  }
+
+  :global(.gt-stat-label) {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  :global(.gt-stat-val) {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--text-base);
+  }
+
+  :global(.gt-history) {
+    border-top: 1px solid var(--border-base);
+    padding-top: 1rem;
+    min-width: 0;
+  }
+
+  :global(.gt-history-header) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  :global(.gt-history-title) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-base);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  :global(.gt-history-actions) {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  :global(.gt-btn-text) {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  :global(.gt-btn-text:hover) {
+    color: var(--primary);
+  }
+
+  :global(.gt-export-menu) {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  :global(.gt-export-item) {
+    background: var(--bg-page);
+    border: 1px solid var(--border-base);
+    color: var(--text-base);
+    border-radius: 6px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  :global(.gt-history-list) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  :global(.gt-history-item) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.75rem;
+    background: var(--bg-page);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    animation: gt-slideIn 0.3s ease-out;
+  }
+
+  @keyframes gt-slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  :global(.gt-history-row) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  :global(.gt-history-weight) {
+    color: var(--primary);
+    font-weight: 800;
+  }
+
+  :global(.gt-btn-delete-log) {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.gt-btn-delete-log:hover) {
+    color: #ef4444;
+  }
+
+  :global(.gt-modal) {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  :global(.gt-modal-box) {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-base);
+    border-radius: 20px;
+    padding: 1.5rem;
+    max-width: 320px;
+    width: 100%;
+    text-align: center;
+  }
+
+  :global(.gt-modal-box h4) {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--text-base);
+  }
+
+  :global(.gt-modal-box p) {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+  }
+
+  :global(.gt-modal-btns) {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  :global(.gt-btn-danger) {
+    flex: 1;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem;
+    font-weight: 800;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  :global(.gt-btn-cancel) {
+    flex: 1;
+    background: var(--bg-page);
+    border: 1px solid var(--border-base);
+    color: var(--text-base);
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  :global(.gt-icon-xs) {
+    width: 14px;
+    height: 14px;
+  }
+  :global(.gt-icon-sm) {
+    width: 18px;
+    height: 18px;
+  }
+  :global(.gt-icon-md) {
+    width: 22px;
+    height: 22px;
+  }
+
+  :global(.gt-hidden) {
+    display: none !important;
+  }
+  :global(.gt-option-highlight) {
+    color: var(--primary) !important;
+    font-weight: 800 !important;
+  }
+
+  @media (min-width: 400px) {
+    :global(.gt-dashboard) {
+      flex-direction: column;
+    }
+    :global(.gt-chart-wrapper) {
+      height: 160px;
+    }
+    :global(.gt-stats) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      gap: 0.75rem;
+    }
+  }
+
+  :global(.gt-animate-in) {
+    animation: gt-fadeUp 0.5s ease-out;
+  }
+
+  @keyframes gt-fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  :global(.theme-dark .gt-card) {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  }
+
+  :global(.theme-dark .gt-select),
+  :global(.theme-dark .gt-input-text),
+  :global(.theme-dark .gt-input-number),
+  :global(.theme-dark .gt-input-timer),
+  :global(.theme-dark .gt-btn-toggle),
+  :global(.theme-dark .gt-btn-round),
+  :global(.theme-dark .gt-preset-btn),
+  :global(.theme-dark .gt-export-item),
+  :global(.theme-dark .gt-stat-item),
+  :global(.theme-dark .gt-history-item) {
+    background-color: var(--bg-page);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+</style>

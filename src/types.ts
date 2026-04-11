@@ -64,7 +64,7 @@ export interface SportsCategoryEntry {
 }
 
 export interface ToolDefinition {
-  entry: SportsToolEntry;
+  entry: SportsToolEntry<any>;
   Component: unknown;
   SEOComponent: unknown;
   BibliographyComponent: unknown;

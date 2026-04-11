@@ -1,0 +1,15 @@
+---
+import { Bibliography } from '@jjlmoya/utils-shared';
+import { gymTracker } from './index';
+import type { KnownLocale } from '../../types';
+
+interface Props {
+  locale?: KnownLocale;
+}
+
+const { locale = 'es' } = Astro.props;
+const content = await gymTracker.i18n[locale]?.();
+if (!content) return;
+---
+
+<Bibliography links={content.bibliography} title={content.bibliographyTitle} />

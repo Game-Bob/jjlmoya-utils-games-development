@@ -144,22 +144,29 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
       level: 2,
     },
     {
-      type: 'grid',
-      columns: [
+      type: 'comparative',
+      columns: 3,
+      items: [
         {
-          type: 'card',
           title: 'Mode Tennis / Padel',
-          html: '<p>Interface adaptée avec compteurs de <strong>Sets</strong> et <strong>Jeux</strong>. Le système gère automatiquement la séquence 15-30-40-AD et comptabilise les jeux gagnés selon le règlement officiel.</p>',
+          description:
+            'Interface adaptée avec compteurs de Sets et Jeux. Le système gère automatiquement la séquence 15-30-40-AD.',
+          icon: 'mdi:tennis',
+          points: ['Règlement officiel', 'Gestion des avantages', 'Compteur de sets'],
         },
         {
-          type: 'card',
           title: 'Mode Basketball',
-          html: '<p>Le tableau de score détecte le sport et change son interface. En mode basketball, vous aurez des boutons dédiés <strong>+1, +2 et +3</strong> pour marquer rapidement n\'importe quelle action sans appuis supplémentaires.</p>',
+          description:
+            'Le tableau de score détecte le sport et change son interface. Boutons dédiés +1, +2 et +3.',
+          icon: 'mdi:basketball',
+          points: ['Paniers à 3 pts', 'Lancers francs', 'Sans appuis superflus'],
         },
         {
-          type: 'card',
           title: 'Mode Ping Pong',
-          html: '<p>Oubliez de mémoriser à qui c\'est le tour de servir. L\'indicateur visuel tourne automatiquement tous les 2 points (ou à chaque point en deuce), suivant les règles officielles de l\'ITTF.</p>',
+          description:
+            'Oubliez de mémoriser à qui le tour de servir. L\'indicateur visuel tourne automatiquement tous les 2 points.',
+          icon: 'mdi:table-tennis',
+          points: ['Règles ITTF', 'Rotation du service', 'Mode Deuce (11 pts)'],
         },
       ],
     },

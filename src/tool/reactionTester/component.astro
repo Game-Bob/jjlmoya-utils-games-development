@@ -1,0 +1,1020 @@
+---
+import type { ReactionTesterUI } from './ui';
+interface Props { ui: ReactionTesterUI }
+const { ui: t } = Astro.props;
+
+const LIGHTNING = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-xl" viewBox="0 0 24 24" fill="currentColor"><path d="M11,15H6L13,1V9H18L11,23V15Z"/></svg>`;
+const PLAY_ICON = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-md" viewBox="0 0 24 24" fill="currentColor"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"/></svg>`;
+const ALERT = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-xl" viewBox="0 0 24 24" fill="currentColor"><path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/></svg>`;
+const COPY_ICON = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg>`;
+const TWITTER = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.5H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>`;
+const HISTORY = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5,8H12V13L16.28,15.54L17,14.33L13.5,12.25V8M13,3A9,9 0 0,0 4,12H1L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,19.99 10.51,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3"/></svg>`;
+const TROPHY = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M5,16L3,5L8.5,10L12,4L15.5,10L21,5L19,16H5M19,19C19,19.6 18.6,20 18,20H6C5.4,20 5,19.6 5,19V18H19V19Z"/></svg>`;
+const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M10.76,8.69A0.76,0.76 0 0,0 10,9.45V15.05L8.17,13.22C7.8,12.85 7.21,12.89 6.88,13.29C6.57,13.67 6.61,14.23 6.97,14.59L10.96,18.58C11.35,18.97 11.85,19.19 12.38,19.19H16.31A2.31,2.31 0 0,0 18.62,17.0L19.5,12.06C19.61,11.5 19.2,11 18.64,11H15.27L15.73,8.67C15.83,8.15 15.47,7.64 14.95,7.54L14.86,7.53C14.4,7.44 13.94,7.7 13.78,8.14L12.78,10.5H11.5L11.5,8.93A0.76,0.76 0 0,0 10.76,8.69Z"/></svg>`;
+---
+
+<div id="rt-app" class="rt-app" data-rt-ui={JSON.stringify(t)}>
+  <div id="rt-area" class="rt-area">
+    <div id="rt-idle" class="rt-layer rt-idle rt-active">
+      <div class="rt-idle-content">
+        <div class="rt-idle-icon-wrap">
+          <Fragment set:html={LIGHTNING} />
+        </div>
+        <h1 class="rt-idle-title">{t.title}</h1>
+        <p class="rt-idle-sub">{t.subtitle}</p>
+        <div class="rt-start-btn">
+          <Fragment set:html={PLAY_ICON} />
+          {t.startBtn}
+        </div>
+      </div>
+    </div>
+
+    <div id="rt-wait" class="rt-layer rt-wait">
+      <div class="rt-wait-content">
+        <h2 id="rt-wait-title" class="rt-wait-title">{t.wp0t}</h2>
+        <p id="rt-wait-sub" class="rt-wait-sub">{t.wp0s}</p>
+      </div>
+    </div>
+
+    <div id="rt-go" class="rt-layer rt-go">
+      <div class="rt-go-content">
+        <h2 class="rt-go-title">{t.goTitle}</h2>
+        <p class="rt-go-sub">{t.goSubtitle}</p>
+      </div>
+    </div>
+
+    <div id="rt-early" class="rt-layer rt-early">
+      <div class="rt-early-content">
+        <div class="rt-early-icon">
+          <Fragment set:html={ALERT} />
+        </div>
+        <h2 class="rt-early-title">{t.earlyTitle}</h2>
+        <p class="rt-early-sub">{t.earlySubtitle}</p>
+        <div class="rt-early-retry">{t.earlyRetry}</div>
+      </div>
+    </div>
+
+    <div id="rt-result" class="rt-layer rt-result">
+      <div class="rt-result-content">
+        <div id="rt-time" class="rt-time">245 ms</div>
+        <p id="rt-feedback" class="rt-feedback">...</p>
+        <div class="rt-progress-track">
+          <div id="rt-bar" class="rt-progress-bar"></div>
+        </div>
+        <div id="rt-action" class="rt-action">
+          <Fragment set:html={CLICK} />
+          {t.promptNext} (1/5)
+        </div>
+      </div>
+    </div>
+
+    <div id="rt-score" class="rt-layer rt-score">
+      <div class="rt-score-content">
+        <div id="rt-rank" class="rt-rank-badge rt-rank-tigre">{t.rankTigre}</div>
+        <h2 class="rt-final-wrap">
+          <span id="rt-avg" class="rt-final-avg">232</span>
+          <span class="rt-final-unit">ms</span>
+        </h2>
+        <p class="rt-avg-label">{t.avgLabel}</p>
+        <div id="rt-bars" class="rt-bars"></div>
+        <div class="rt-share-grid">
+          <button id="rt-copy" class="rt-btn-copy">
+            <Fragment set:html={COPY_ICON} />
+            <span>{t.copyBtn}</span>
+          </button>
+          <button id="rt-tweet" class="rt-btn-tweet">
+            <Fragment set:html={TWITTER} />
+            <span>{t.tweetBtn}</span>
+          </button>
+        </div>
+        <button id="rt-retry" class="rt-btn-retry">{t.retryBtn}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rt-hints">
+    <span class="rt-hint">
+      <span class="rt-hint-key">
+        <svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-xs" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3H11C8.24 3 6 5.24 6 8V16C6 18.76 8.24 21 11 21H13C15.76 21 18 18.76 18 16V8C18 5.24 15.76 3 13 3M16 16C16 17.65 14.65 19 13 19H11C9.35 19 8 17.65 8 16V8C8 6.35 9.35 5 11 5H13C14.65 5 16 6.35 16 8V16M13 6V10H11V6H13Z"/></svg>
+      </span>
+      {t.inputMouse}
+    </span>
+    <span class="rt-hint">
+      <span class="rt-hint-key">
+        <svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-xs" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 12A1.5 1.5 0 0 1 19 13.5V19A5 5 0 0 1 14 24H12A8 8 0 0 1 4 16V13.5A1.5 1.5 0 0 1 5.5 12A1.5 1.5 0 0 1 7 13.5V16H8V5.5A1.5 1.5 0 0 1 9.5 4A1.5 1.5 0 0 1 11 5.5V12H12V3.5A1.5 1.5 0 0 1 13.5 2A1.5 1.5 0 0 1 15 3.5V12H16V6.5A1.5 1.5 0 0 1 17.5 5A1.5 1.5 0 0 1 19 6.5V12H17.5Z"/></svg>
+      </span>
+      {t.inputTouch}
+    </span>
+    <span class="rt-hint">
+      <span class="rt-hint-key rt-hint-key-text">SPC</span>
+      {t.inputSpace}
+    </span>
+  </div>
+
+  <div class="rt-history">
+    <h2 class="rt-history-title">
+      <Fragment set:html={HISTORY} />
+      {t.historyTitle}
+    </h2>
+    <div class="rt-history-grid">
+      <div class="rt-history-card">
+        <h3 class="rt-history-card-title rt-best-label">
+          <Fragment set:html={TROPHY} />
+          {t.historyBest}
+        </h3>
+        <ul id="rt-list-best" class="rt-list">
+          <li class="rt-list-empty">{t.historyEmpty}</li>
+        </ul>
+      </div>
+      <div class="rt-history-card">
+        <h3 class="rt-history-card-title rt-worst-label">
+          <Fragment set:html={ALERT} />
+          {t.historyWorst}
+        </h3>
+        <ul id="rt-list-worst" class="rt-list">
+          <li class="rt-list-empty">{t.historyEmpty}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  interface RTUI {
+    promptNext: string; promptFinal: string; avgLabel: string;
+    copyBtn: string; tweetBtn: string; retryBtn: string;
+    historyEmpty: string; copySuccess: string; shareText: string;
+    rankCiberatleta: string; rankTigre: string; rankHumano: string;
+    rankTortuga: string; rankDormido: string;
+    f150: string; f180: string; f210: string; f250: string;
+    f300: string; f400: string; f600: string; fSlow: string;
+    wp0t: string; wp0s: string; wp1t: string; wp1s: string;
+    wp2t: string; wp2s: string; wp3t: string; wp3s: string;
+    wp4t: string; wp4s: string;
+  }
+
+  interface Rank { max: number; title: string; cls: string; }
+  interface ScoreEntry { score: number; rank: string; date: string; }
+
+  const app = document.getElementById('rt-app') as HTMLElement;
+  const ui = JSON.parse(app?.dataset.rtUi ?? '{}') as RTUI;
+
+  const WAIT_PHRASES = [
+    { t: ui.wp0t, s: ui.wp0s }, { t: ui.wp1t, s: ui.wp1s },
+    { t: ui.wp2t, s: ui.wp2s }, { t: ui.wp3t, s: ui.wp3s },
+    { t: ui.wp4t, s: ui.wp4s },
+  ];
+
+  const RANKS: Rank[] = [
+    { max: 180, title: ui.rankCiberatleta, cls: 'rt-rank-ciberatleta' },
+    { max: 230, title: ui.rankTigre, cls: 'rt-rank-tigre' },
+    { max: 280, title: ui.rankHumano, cls: 'rt-rank-humano' },
+    { max: 350, title: ui.rankTortuga, cls: 'rt-rank-tortuga' },
+    { max: 9999, title: ui.rankDormido, cls: 'rt-rank-dormido' },
+  ];
+
+  const layers = {
+    idle: document.getElementById('rt-idle'),
+    wait: document.getElementById('rt-wait'),
+    go: document.getElementById('rt-go'),
+    early: document.getElementById('rt-early'),
+    result: document.getElementById('rt-result'),
+    score: document.getElementById('rt-score'),
+  };
+
+  const els = {
+    app,
+    time: document.getElementById('rt-time'),
+    action: document.getElementById('rt-action'),
+    bar: document.getElementById('rt-bar'),
+    final: document.getElementById('rt-avg'),
+    rank: document.getElementById('rt-rank'),
+    bars: document.getElementById('rt-bars'),
+    feedback: document.getElementById('rt-feedback'),
+    waitTitle: document.getElementById('rt-wait-title'),
+    waitSub: document.getElementById('rt-wait-sub'),
+    listBest: document.getElementById('rt-list-best'),
+    listWorst: document.getElementById('rt-list-worst'),
+  };
+
+  const TOTAL = 5;
+  let attempts: number[] = [];
+  let state = 'idle';
+  let startTime = 0;
+  let timerId: ReturnType<typeof setTimeout> | number = 0;
+
+  function getFeedback(ms: number): string {
+    if (ms < 150) return ui.f150;
+    if (ms < 180) return ui.f180;
+    if (ms < 210) return ui.f210;
+    if (ms < 250) return ui.f250;
+    if (ms < 300) return ui.f300;
+    if (ms < 400) return ui.f400;
+    if (ms < 600) return ui.f600;
+    return ui.fSlow;
+  }
+
+  function showLayer(name: keyof typeof layers) {
+    Object.keys(layers).forEach((k) => {
+      layers[k as keyof typeof layers]?.classList.toggle('rt-active', k === name);
+    });
+  }
+
+  function startAttempt() {
+    state = 'waiting';
+    const index = Math.floor(Math.random() * WAIT_PHRASES.length);
+    const phrase = WAIT_PHRASES[index] || WAIT_PHRASES[0];
+    if (!phrase) return;
+    if (els.waitTitle) els.waitTitle.textContent = phrase.t;
+    if (els.waitSub) els.waitSub.textContent = phrase.s;
+    showLayer('wait');
+    const delay = Math.floor(Math.random() * 3000) + 1500;
+    timerId = setTimeout(() => {
+      if (state === 'waiting') {
+        state = 'ready';
+        showLayer('go');
+        startTime = performance.now();
+      }
+    }, delay);
+  }
+
+  function handleResult() {
+    const reaction = performance.now() - startTime;
+    state = 'result';
+    attempts.push(reaction);
+    if (els.time) els.time.textContent = `${Math.round(reaction)} ms`;
+    if (els.feedback) els.feedback.textContent = getFeedback(reaction);
+    const isLast = attempts.length >= TOTAL;
+    if (els.action) {
+      els.action.textContent = isLast ? ui.promptFinal : `${ui.promptNext} (${attempts.length + 1}/${TOTAL})`;
+    }
+    if (els.bar) els.bar.style.width = `${(attempts.length / TOTAL) * 100}%`;
+    showLayer('result');
+  }
+
+  function handleInteraction(e: Event) {
+    if (e.type === 'keydown' && (e as KeyboardEvent).code === 'Space') e.preventDefault();
+    if (e.type === 'mousedown' && (e as MouseEvent).button !== 0) return;
+    if (state === 'idle') { attempts = []; startAttempt(); return; }
+    if (state === 'waiting') { clearTimeout(timerId); state = 'early'; showLayer('early'); return; }
+    if (state === 'early') { startAttempt(); return; }
+    if (state === 'ready') { handleResult(); return; }
+    if (state === 'result') { attempts.length >= TOTAL ? showScore() : startAttempt(); return; }
+  }
+
+  function renderItem(item: ScoreEntry, type: string): string {
+    const scoreClass = type === 'best' ? 'rt-score-best' : 'rt-score-worst';
+    return `<li class="rt-history-entry"><div class="rt-entry-left"><span class="rt-entry-score ${scoreClass}">${item.score}ms</span><span class="rt-entry-rank">${item.rank}</span></div><span class="rt-entry-date">${item.date}</span></li>`;
+  }
+
+  function renderHistory() {
+    const history: ScoreEntry[] = JSON.parse(localStorage.getItem('reaction_scores') ?? '[]');
+    const empty = `<li class="rt-list-empty">${ui.historyEmpty}</li>`;
+    const best = [...history].sort((a, b) => a.score - b.score).slice(0, 5);
+    const worst = [...history].sort((a, b) => b.score - a.score).slice(0, 5);
+    if (els.listBest) els.listBest.innerHTML = best.length ? best.map((i) => renderItem(i, 'best')).join('') : empty;
+    if (els.listWorst) els.listWorst.innerHTML = worst.length ? worst.map((i) => renderItem(i, 'worst')).join('') : empty;
+  }
+
+  function saveScore(score: number, rankTitle: string) {
+    const history: ScoreEntry[] = JSON.parse(localStorage.getItem('reaction_scores') ?? '[]');
+    history.push({ score, rank: rankTitle, date: new Date().toLocaleDateString() });
+    localStorage.setItem('reaction_scores', JSON.stringify(history));
+    renderHistory();
+  }
+
+  function buildBars(maxVal: number) {
+    if (!els.bars) return;
+    els.bars.innerHTML = '';
+    attempts.forEach((val) => {
+      const bar = document.createElement('div');
+      bar.className = 'rt-bar-item';
+      bar.style.height = `${Math.min((val / maxVal) * 100, 100)}%`;
+      const tip = document.createElement('div');
+      tip.className = 'rt-bar-tip';
+      tip.textContent = String(Math.round(val));
+      bar.appendChild(tip);
+      els.bars!.appendChild(bar);
+    });
+  }
+
+  function setupShare(avg: number, rankTitle: string) {
+    const shareText = ui.shareText
+      .replace('{ms}', String(avg))
+      .replace('{rank}', rankTitle)
+      .replace('{url}', window.location.href);
+    const btnCopy = document.getElementById('rt-copy');
+    const btnTweet = document.getElementById('rt-tweet');
+    if (btnCopy) {
+      btnCopy.onclick = (e) => {
+        e.stopPropagation();
+        void navigator.clipboard.writeText(shareText);
+        const orig = btnCopy.innerHTML;
+        btnCopy.innerHTML = `<span>${ui.copySuccess}</span>`;
+        setTimeout(() => { btnCopy.innerHTML = orig; }, 2000);
+      };
+    }
+    if (btnTweet) {
+      btnTweet.onclick = (e) => {
+        e.stopPropagation();
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank');
+      };
+    }
+  }
+
+  function showScore() {
+    state = 'finished';
+    if (els.app) els.app.classList.add('rt-state-finished');
+    const avg = Math.round(attempts.reduce((a, b) => a + b, 0) / attempts.length);
+    if (els.final) els.final.textContent = String(avg);
+    const rank = RANKS.find((r) => avg <= r.max) || RANKS[RANKS.length - 1];
+    if (rank && els.rank) {
+        els.rank.className = `rt-rank-badge ${rank.cls}`;
+        els.rank.textContent = rank.title;
+    }
+    if (rank) {
+      saveScore(avg, rank.title);
+      setupShare(avg, rank.title);
+    }
+    buildBars(Math.max(...attempts, 400));
+    showLayer('score');
+  }
+
+  function reset() {
+    state = 'idle';
+    if (els.app) els.app.classList.remove('rt-state-finished');
+    attempts = [];
+    showLayer('idle');
+  }
+
+  const area = document.getElementById('rt-area');
+  if (area) {
+    area.addEventListener('mousedown', handleInteraction);
+    area.addEventListener('touchstart', (e) => { e.preventDefault(); handleInteraction(e); }, { passive: false });
+  }
+  document.addEventListener('keydown', (e) => { if (e.code === 'Space') handleInteraction(e); });
+  document.getElementById('rt-retry')?.addEventListener('click', (e) => { e.stopPropagation(); reset(); });
+  renderHistory();
+</script>
+
+<style>
+  :global(.rt-app) {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 1rem;
+    user-select: none;
+    font-family: inherit;
+  }
+
+  :global(.rt-area) {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+    border-radius: 2rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+    touch-action: manipulation;
+    background: var(--bg-surface);
+    display: flex;
+    flex-direction: column;
+    transition: min-height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-radius 0.4s ease;
+  }
+
+  :global(.rt-app.rt-state-finished .rt-area) {
+    min-height: 620px;
+  }
+
+  @media (min-width: 768px) {
+    :global(.rt-area) {
+      min-height: 520px;
+      border-radius: 3.5rem;
+    }
+    :global(.rt-app.rt-state-finished .rt-area) {
+      min-height: 720px;
+    }
+  }
+
+  :global(.rt-layer) {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: scale(1.05);
+    padding: 2rem;
+  }
+
+  :global(.rt-layer.rt-active) {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    z-index: 5;
+  }
+
+  :global(.rt-idle) {
+    background: var(--bg-surface);
+  }
+
+  :global(.rt-wait) {
+    background: #f43f5e;
+  }
+
+  :global(.rt-go) {
+    background: #10b981;
+    transition: none !important;
+    transform: scale(1) !important;
+  }
+
+  :global(.rt-early) {
+    background: #fb923c;
+  }
+
+  :global(.rt-result) {
+    background: #6366f1;
+  }
+
+  :global(.rt-score) {
+    background: #0f172a;
+    z-index: 10;
+    justify-content: center;
+  }
+
+  :global(.rt-idle-content) {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  :global(.rt-idle-icon-wrap) {
+    display: inline-flex;
+    padding: 1.75rem;
+    border-radius: 2rem;
+    background: var(--bg-page);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    color: var(--primary);
+  }
+
+  :global(.rt-idle-title) {
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 950;
+    color: var(--text-base);
+    margin: 0 0 1rem;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+  }
+
+  :global(.rt-idle-sub) {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 25rem;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+  }
+
+  :global(.rt-start-btn) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.1rem 2.2rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 1.25rem;
+    font-weight: 800;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 10px 30px var(--primary-soft);
+    transition: all 0.3s ease;
+  }
+
+  :global(.rt-start-btn:hover) {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px var(--primary-soft);
+  }
+
+  :global(.rt-wait-content) {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+  }
+
+  :global(.rt-wait-title) {
+    font-size: clamp(3rem, 12vw, 6.5rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    margin: 0 0 1rem;
+    opacity: 0.95;
+    animation: rt-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes rt-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(0.96); }
+  }
+
+  :global(.rt-wait-sub) {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-weight: 700;
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  :global(.rt-go-content) {
+    text-align: center;
+    color: white;
+  }
+
+  :global(.rt-go-title) {
+    font-size: clamp(5rem, 20vw, 11rem);
+    font-weight: 950;
+    letter-spacing: -0.06em;
+    margin: 0;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: rt-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes rt-pop {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  :global(.rt-go-sub) {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: 800;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  :global(.rt-early-content) {
+    text-align: center;
+    color: white;
+    padding: 2.5rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.rt-early-icon) {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    animation: rt-shake 0.5s ease-in-out;
+  }
+
+  @keyframes rt-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+
+  :global(.rt-early-title) {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-weight: 900;
+    margin: 0 0 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  :global(.rt-early-sub) {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin: 0 0 2.5rem;
+    font-weight: 600;
+  }
+
+  :global(.rt-early-retry) {
+    display: inline-block;
+    padding: 1.15rem 2.25rem;
+    background: white;
+    color: #fb923c;
+    border-radius: 1.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+  }
+
+  :global(.rt-early-retry:hover) {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  :global(.rt-result-content) {
+    text-align: center;
+    color: white;
+    width: 100%;
+    max-width: 32rem;
+    padding: 2rem;
+  }
+
+  :global(.rt-time) {
+    font-size: clamp(4rem, 18vw, 9rem);
+    font-weight: 950;
+    font-family: inherit;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  :global(.rt-feedback) {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1.5rem;
+    border-radius: 99px;
+    display: inline-block;
+  }
+
+  :global(.rt-progress-track) {
+    width: 100%;
+    height: 0.6rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  :global(.rt-progress-bar) {
+    height: 100%;
+    width: 0%;
+    background: #34d399;
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.6);
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  :global(.rt-action) {
+    font-size: 1.15rem;
+    font-weight: 700;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    animation: rt-bounce 0.8s ease-in-out infinite alternate;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @keyframes rt-bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-12px); }
+  }
+
+  :global(.rt-score-content) {
+    text-align: center;
+    width: 100%;
+    max-width: 42rem;
+    padding: 3rem 2rem;
+    margin: auto;
+  }
+
+  :global(.rt-rank-badge) {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 1.25rem;
+    color: white;
+    font-weight: 950;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transform: rotate(-3deg);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  :global(.rt-rank-ciberatleta) { background: linear-gradient(135deg, #00d2ff, #3a7bd5); }
+  :global(.rt-rank-tigre) { background: linear-gradient(135deg, #fcead2, #f8d49a); color: #854d0e; border-color: #854d0e; }
+  :global(.rt-rank-humano) { background: linear-gradient(135deg, #43e97b, #38f9d7); color: #065f46; border-color: #065f46; }
+  :global(.rt-rank-tortuga) { background: linear-gradient(135deg, #bdc3c7, #2c3e50); }
+  :global(.rt-rank-dormido) { background: linear-gradient(135deg, #304352, #d7d2cc); }
+
+  :global(.rt-final-wrap) {
+    margin: 0 0 1rem;
+  }
+
+  :global(.rt-final-avg) {
+    font-size: clamp(4rem, 18vw, 10rem);
+    font-weight: 950;
+    color: transparent;
+    background: linear-gradient(to bottom, #fff, #64748b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    letter-spacing: -0.06em;
+    line-height: 0.8;
+  }
+
+  :global(.rt-final-unit) {
+    font-size: clamp(1.5rem, 4vw, 2.75rem);
+    color: #475569;
+    font-weight: 600;
+    margin-left: 0.35rem;
+  }
+
+  :global(.rt-avg-label) {
+    color: #64748b;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0 0 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  :global(.rt-bars) {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0.6rem;
+    height: 120px;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+
+  :global(.rt-bar-item) {
+    flex: 1;
+    max-width: 3.5rem;
+    background: var(--primary);
+    border-radius: 0.75rem 0.75rem 0 0;
+    position: relative;
+    box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.2);
+    min-width: 20px;
+  }
+
+  :global(.rt-bar-tip) {
+    position: absolute;
+    top: -2.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 850;
+    padding: 0.35rem 0.65rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+
+  :global(.rt-bar-item:hover .rt-bar-tip) {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+  }
+
+  :global(.rt-share-grid) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  :global(.rt-btn-copy), :global(.rt-btn-tweet) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: white;
+    font-weight: 850;
+    padding: 1rem;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  :global(.rt-btn-copy) {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.rt-btn-copy:hover) {
+    background: #334155;
+    transform: translateY(-3px);
+  }
+
+  :global(.rt-btn-tweet) {
+    background: #1da1f2;
+    border: none;
+  }
+
+  :global(.rt-btn-tweet:hover) {
+    background: #0ea5e9;
+    transform: translateY(-3px);
+  }
+
+  :global(.rt-btn-retry) {
+    width: 100%;
+    max-width: 28rem;
+    background: white;
+    color: #0f172a;
+    font-weight: 900;
+    font-size: 1.25rem;
+    padding: 1.15rem;
+    border-radius: 1.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  :global(.rt-btn-retry:hover) {
+    background: #f8fafc;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  }
+
+  :global(.rt-hints) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  :global(.rt-hint) {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  :global(.rt-hint-key) {
+    padding: 0.3rem 0.6rem;
+    border: 2px solid var(--border-base);
+    border-radius: 0.6rem;
+    background: var(--bg-surface);
+    min-width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: var(--text-base);
+    box-shadow: 0 2px 5px var(--shadow-base);
+  }
+
+  :global(.rt-history) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  :global(.rt-history-title) {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--text-base);
+    margin: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  :global(.rt-history-grid) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    :global(.rt-history-grid) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  :global(.rt-history-card) {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-base);
+    border-radius: 2rem;
+    padding: 1.75rem;
+    box-shadow: 0 10px 25px var(--shadow-base);
+    transition: transform 0.3s ease;
+  }
+
+  :global(.rt-history-card:hover) {
+    transform: translateY(-5px);
+  }
+
+  :global(.rt-history-card-title) {
+    font-size: 0.85rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-base);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  :global(.rt-best-label) { color: #10b981; }
+  :global(.rt-worst-label) { color: #f43f5e; }
+
+  :global(.rt-list) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  :global(.rt-list-empty) {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  :global(.rt-history-entry) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-page);
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-base);
+    transition: all 0.2s ease;
+  }
+
+  :global(.rt-history-entry:hover) {
+    transform: translateX(8px);
+    border-color: var(--primary-soft);
+  }
+
+  :global(.rt-entry-left) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  :global(.rt-entry-score) {
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 1.25rem;
+  }
+
+  :global(.rt-score-best) { color: #10b981; }
+  :global(.rt-score-worst) { color: #64748b; }
+
+  :global(.rt-entry-rank) {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 0.6rem;
+    background: var(--bg-surface);
+    color: var(--text-muted);
+    border: 1px solid var(--border-base);
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  :global(.rt-entry-date) {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  :global(.rt-icon-xs) { width: 1.25rem; height: 1.25rem; }
+  :global(.rt-icon-sm) { width: 1.75rem; height: 1.75rem; }
+  :global(.rt-icon-md) { width: 2.25rem; height: 2.25rem; }
+  :global(.rt-icon-xl) { width: 4.5rem; height: 4.5rem; }
+
+  :global(.theme-dark .rt-history-card) {
+    background: rgba(255, 255, 255, 0.02);
+  }
+</style>

@@ -1,0 +1,12 @@
+---
+import { SEORenderer } from '@jjlmoya/utils-shared';
+import { reactionTester } from './index';
+import type { KnownLocale, ToolLocaleContent } from '../../types';
+import type { ReactionTesterUI } from './ui';
+
+interface Props { locale: KnownLocale }
+const { locale } = Astro.props;
+const content = await reactionTester.i18n[locale]?.() as ToolLocaleContent<ReactionTesterUI> | undefined;
+---
+
+{content && <SEORenderer content={{ locale: locale as string, sections: content.seo }} />}

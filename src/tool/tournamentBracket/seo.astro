@@ -1,0 +1,12 @@
+---
+import { SEORenderer } from '@jjlmoya/utils-shared';
+import { tournamentBracket } from './index';
+import type { KnownLocale, ToolLocaleContent } from '../../types';
+import type { TournamentBracketUI } from './ui';
+
+interface Props { locale: KnownLocale }
+const { locale } = Astro.props;
+const content = await tournamentBracket.i18n[locale]?.() as ToolLocaleContent<TournamentBracketUI> | undefined;
+---
+
+{content && <SEORenderer content={{ locale: locale as string, sections: content.seo }} />}
