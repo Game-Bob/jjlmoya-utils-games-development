@@ -370,6 +370,15 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
 
 <style>
   :global(.rt-app) {
+    --rt-primary: #6366f1;
+    --rt-primary-soft: rgba(99, 102, 241, 0.25);
+    --rt-bg-surface: #f1f5f9;
+    --rt-bg-page: #ffffff;
+    --rt-text-base: #0f172a;
+    --rt-text-muted: #64748b;
+    --rt-border-base: #e2e8f0;
+    --rt-shadow-base: rgba(0, 0, 0, 0.06);
+
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
@@ -378,6 +387,17 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     margin: 0 auto;
     padding: 1rem;
     user-select: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(.rt-app) {
+      --rt-bg-surface: #1e293b;
+      --rt-bg-page: #0f172a;
+      --rt-text-base: #f1f5f9;
+      --rt-text-muted: #94a3b8;
+      --rt-border-base: #334155;
+      --rt-shadow-base: rgba(0, 0, 0, 0.3);
+    }
   }
 
   :global(.rt-area) {
@@ -389,7 +409,7 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     overflow: hidden;
     cursor: pointer;
     touch-action: manipulation;
-    background: var(--bg-surface);
+    background: var(--rt-bg-surface);
     display: flex;
     flex-direction: column;
     transition: min-height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-radius 0.4s ease;
@@ -431,7 +451,7 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   }
 
   :global(.rt-idle) {
-    background: var(--bg-surface);
+    background: var(--rt-bg-surface);
   }
 
   :global(.rt-wait) {
@@ -467,16 +487,16 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     display: inline-flex;
     padding: 1.75rem;
     border-radius: 2rem;
-    background: var(--bg-page);
+    background: var(--rt-bg-page);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
-    color: var(--primary);
+    color: var(--rt-primary);
   }
 
   :global(.rt-idle-title) {
     font-size: clamp(2rem, 8vw, 4rem);
     font-weight: 950;
-    color: var(--text-base);
+    color: var(--rt-text-base);
     margin: 0 0 1rem;
     letter-spacing: -0.04em;
     line-height: 1.1;
@@ -484,7 +504,7 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
 
   :global(.rt-idle-sub) {
     font-size: 1.15rem;
-    color: var(--text-muted);
+    color: var(--rt-text-muted);
     max-width: 25rem;
     margin: 0 auto 2.5rem;
     line-height: 1.6;
@@ -495,20 +515,20 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     align-items: center;
     gap: 0.75rem;
     padding: 1.1rem 2.2rem;
-    background: var(--primary);
+    background: var(--rt-primary);
     color: white;
     border-radius: 1.25rem;
     font-weight: 800;
     font-size: 1.15rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    box-shadow: 0 10px 30px var(--primary-soft);
+    box-shadow: 0 10px 30px var(--rt-primary-soft);
     transition: all 0.3s ease;
   }
 
   :global(.rt-start-btn:hover) {
     transform: translateY(-4px);
-    box-shadow: 0 15px 40px var(--primary-soft);
+    box-shadow: 0 15px 40px var(--rt-primary-soft);
   }
 
   :global(.rt-wait-content) {
@@ -784,7 +804,7 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   :global(.rt-bar-item) {
     flex: 1;
     max-width: 3.5rem;
-    background: var(--primary);
+    background: var(--rt-primary);
     border-radius: 0.75rem 0.75rem 0 0;
     position: relative;
     box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.2);
@@ -887,7 +907,7 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
-    color: var(--text-muted);
+    color: var(--rt-text-muted);
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -902,17 +922,17 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
 
   :global(.rt-hint-key) {
     padding: 0.3rem 0.6rem;
-    border: 2px solid var(--border-base);
+    border: 2px solid var(--rt-border-base);
     border-radius: 0.6rem;
-    background: var(--bg-surface);
+    background: var(--rt-bg-surface);
     min-width: 2rem;
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.8rem;
-    color: var(--text-base);
-    box-shadow: 0 2px 5px var(--shadow-base);
+    color: var(--rt-text-base);
+    box-shadow: 0 2px 5px var(--rt-shadow-base);
   }
 
   :global(.rt-history) {
@@ -926,7 +946,7 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   :global(.rt-history-title) {
     font-size: 1.5rem;
     font-weight: 900;
-    color: var(--text-base);
+    color: var(--rt-text-base);
     margin: 0;
     text-align: center;
     display: flex;
@@ -950,11 +970,11 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   }
 
   :global(.rt-history-card) {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-base);
+    background: var(--rt-bg-surface);
+    border: 1px solid var(--rt-border-base);
     border-radius: 2rem;
     padding: 1.75rem;
-    box-shadow: 0 10px 25px var(--shadow-base);
+    box-shadow: 0 10px 25px var(--rt-shadow-base);
     transition: transform 0.3s ease;
   }
 
@@ -969,7 +989,7 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     letter-spacing: 0.1em;
     margin: 0 0 1.25rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-base);
+    border-bottom: 1px solid var(--rt-border-base);
     display: flex;
     align-items: center;
     gap: 0.6rem;
@@ -992,7 +1012,7 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   }
 
   :global(.rt-list-empty) {
-    color: var(--text-muted);
+    color: var(--rt-text-muted);
     font-size: 0.9rem;
     font-style: italic;
     text-align: center;
@@ -1003,16 +1023,16 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--bg-page);
+    background: var(--rt-bg-page);
     border-radius: 1rem;
     padding: 0.75rem 1rem;
-    border: 1px solid var(--border-base);
+    border: 1px solid var(--rt-border-base);
     transition: all 0.2s ease;
   }
 
   :global(.rt-history-entry:hover) {
     transform: translateX(8px);
-    border-color: var(--primary-soft);
+    border-color: var(--rt-primary-soft);
   }
 
   :global(.rt-entry-left) {
@@ -1037,9 +1057,9 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
     font-size: 0.7rem;
     padding: 0.25rem 0.6rem;
     border-radius: 0.6rem;
-    background: var(--bg-surface);
-    color: var(--text-muted);
-    border: 1px solid var(--border-base);
+    background: var(--rt-bg-surface);
+    color: var(--rt-text-muted);
+    border: 1px solid var(--rt-border-base);
     font-weight: 800;
     text-transform: uppercase;
   }
@@ -1047,7 +1067,7 @@ const CLICK = `<svg xmlns="http://www.w3.org/2000/svg" class="rt-icon-sm" viewBo
   :global(.rt-entry-date) {
     font-size: 0.7rem;
     font-weight: 700;
-    color: var(--text-muted);
+    color: var(--rt-text-muted);
     opacity: 0.7;
   }
 
