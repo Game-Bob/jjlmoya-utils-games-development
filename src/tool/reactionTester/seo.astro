@@ -4,8 +4,8 @@ import { reactionTester } from './index';
 import type { KnownLocale, ToolLocaleContent } from '../../types';
 import type { ReactionTesterUI } from './ui';
 
-interface Props { locale: KnownLocale }
-const { locale } = Astro.props;
+interface Props { locale?: KnownLocale }
+const { locale = 'es' } = Astro.props;
 const content = await reactionTester.i18n[locale]?.() as ToolLocaleContent<ReactionTesterUI> | undefined;
 ---
 
