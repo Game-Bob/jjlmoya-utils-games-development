@@ -2,7 +2,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { ToolLocaleContent } from '../../../types';
 import type { GymTrackerUI } from '../ui';
 
-const slug = 'gym-workout-tracker-ru';
+const slug = 'tracker-trenirovok';
 const title = 'Трекер тренировок: Графики прогресса и дневник силы';
 const description =
   'Записывайте свои веса, выбирайте упражнения и визуализируйте свой прогресс с помощью графиков силы. Оптимизируйте прогрессивную перегрузку в тренажерном зале.';

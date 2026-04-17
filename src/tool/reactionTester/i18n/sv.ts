@@ -2,7 +2,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
 
-const slug = 'reaktionstest-sv';
+const slug = 'reflextest-snabbhet';
 const title = 'Reaktionstidtest (Reflexer): Online Benchmark';
 const description = 'Mät dina reflexer i millisekunder med vårt professionella reaktionstest. Konkurrera om rankningar från \"Sköldpadda\" till \"Cyberatlet\" och analysera din prestation.';
 
