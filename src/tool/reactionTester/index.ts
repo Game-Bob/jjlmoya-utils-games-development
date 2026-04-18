@@ -1,3 +1,4 @@
+import { reactionTester } from './entry';
 export * from './entry';
 export const REACTION_TESTER_TOOL: ToolDefinition = {
   entry: reactionTester,

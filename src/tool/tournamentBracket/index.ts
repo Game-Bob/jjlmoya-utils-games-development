@@ -1,3 +1,4 @@
+import { tournamentBracket } from './entry';
 export * from './entry';
 export const TOURNAMENT_BRACKET_TOOL: ToolDefinition = {
   entry: tournamentBracket,
