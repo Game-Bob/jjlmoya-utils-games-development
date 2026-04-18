@@ -1,7 +1,4 @@
 import type { SportsToolEntry, ToolLocaleContent, ToolDefinition } from '../../types';
-import TournamentBracketComponent from './component.astro';
-import TournamentBracketSEO from './seo.astro';
-import TournamentBracketBibliography from './bibliography.astro';
 import type { TournamentBracketUI } from './ui';
 
 export type { TournamentBracketUI };
@@ -32,11 +29,10 @@ export const tournamentBracket: SportsToolEntry<TournamentBracketUI> = {
   },
 };
 
-export { TournamentBracketComponent, TournamentBracketSEO, TournamentBracketBibliography };
 
 export const TOURNAMENT_BRACKET_TOOL: ToolDefinition = {
   entry: tournamentBracket,
-  Component: TournamentBracketComponent,
-  SEOComponent: TournamentBracketSEO,
-  BibliographyComponent: TournamentBracketBibliography,
+  Component: () => import('./component.astro'),
+  SEOComponent: () => import('./seo.astro'),
+  BibliographyComponent: () => import('./bibliography.astro'),
 };

@@ -1,7 +1,4 @@
 import type { SportsToolEntry, ToolLocaleContent, ToolDefinition } from '../../types';
-import ScoreKeeperComponent from './component.astro';
-import ScoreKeeperSEO from './seo.astro';
-import ScoreKeeperBibliography from './bibliography.astro';
 
 import type { ScoreKeeperUI } from './ui';
 
@@ -33,11 +30,10 @@ export const scoreKeeper: SportsToolEntry<ScoreKeeperUI> = {
   },
 };
 
-export { ScoreKeeperComponent, ScoreKeeperSEO, ScoreKeeperBibliography };
 
 export const SCORE_KEEPER_TOOL: ToolDefinition = {
   entry: scoreKeeper,
-  Component: ScoreKeeperComponent,
-  SEOComponent: ScoreKeeperSEO,
-  BibliographyComponent: ScoreKeeperBibliography,
+  Component: () => import('./component.astro'),
+  SEOComponent: () => import('./seo.astro'),
+  BibliographyComponent: () => import('./bibliography.astro'),
 };

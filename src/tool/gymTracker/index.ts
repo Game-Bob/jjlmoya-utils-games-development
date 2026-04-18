@@ -1,7 +1,4 @@
 import type { SportsToolEntry, ToolLocaleContent, ToolDefinition } from '../../types';
-import GymTrackerComponent from './component.astro';
-import GymTrackerSEO from './seo.astro';
-import GymTrackerBibliography from './bibliography.astro';
 import type { GymTrackerUI } from './ui';
 
 export type { GymTrackerUI };
@@ -32,11 +29,10 @@ export const gymTracker: SportsToolEntry<GymTrackerUI> = {
   },
 };
 
-export { GymTrackerComponent, GymTrackerSEO, GymTrackerBibliography };
 
 export const GYM_TRACKER_TOOL: ToolDefinition = {
   entry: gymTracker,
-  Component: GymTrackerComponent,
-  SEOComponent: GymTrackerSEO,
-  BibliographyComponent: GymTrackerBibliography,
+  Component: () => import('./component.astro'),
+  SEOComponent: () => import('./seo.astro'),
+  BibliographyComponent: () => import('./bibliography.astro'),
 };

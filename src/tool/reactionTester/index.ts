@@ -1,7 +1,4 @@
 import type { SportsToolEntry, ToolLocaleContent, ToolDefinition } from '../../types';
-import ReactionTesterComponent from './component.astro';
-import ReactionTesterSEO from './seo.astro';
-import ReactionTesterBibliography from './bibliography.astro';
 import type { ReactionTesterUI } from './ui';
 
 export type { ReactionTesterUI };
@@ -32,11 +29,10 @@ export const reactionTester: SportsToolEntry<ReactionTesterUI> = {
   },
 };
 
-export { ReactionTesterComponent, ReactionTesterSEO, ReactionTesterBibliography };
 
 export const REACTION_TESTER_TOOL: ToolDefinition = {
   entry: reactionTester,
-  Component: ReactionTesterComponent,
-  SEOComponent: ReactionTesterSEO,
-  BibliographyComponent: ReactionTesterBibliography,
+  Component: () => import('./component.astro'),
+  SEOComponent: () => import('./seo.astro'),
+  BibliographyComponent: () => import('./bibliography.astro'),
 };
