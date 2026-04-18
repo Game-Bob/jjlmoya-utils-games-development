@@ -14,7 +14,8 @@ import type { UtilitySEOContent } from "@jjlmoya/utils-shared";
 export async function getStaticPaths() {
   const paths = [];
 
-  for (const { entry, Component } of ALL_TOOLS) {
+  for (const { entry, Component: lazyComp } of ALL_TOOLS) {
+    const { default: Component } = await lazyComp();
     const localeEntries = Object.entries(entry.i18n) as [
       KnownLocale,
       () => Promise<ToolLocaleContent>,
@@ -60,7 +61,7 @@ interface NavItem {
 }
 
 interface Props {
-  Component: ToolComponent;
+  Component: unknown;
   locale: KnownLocale;
   content: ToolLocaleContent;
   localeUrls: Partial<Record<KnownLocale, string>>;
