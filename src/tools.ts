@@ -1,3 +1,4 @@
+export { ALL_ENTRIES } from './entries';
 import type { ToolDefinition } from './types';
 import { SCORE_KEEPER_TOOL } from './tool/scoreKeeper/index';
 import { TOURNAMENT_BRACKET_TOOL } from './tool/tournamentBracket/index';
@@ -12,4 +13,3 @@ export const ALL_TOOLS: ToolDefinition[] = [
 ];
 
 
-export const ALL_ENTRIES = ALL_TOOLS.map(t => t.entry);
