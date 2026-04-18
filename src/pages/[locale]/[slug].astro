@@ -52,8 +52,6 @@ export async function getStaticPaths() {
   return paths;
 }
 
-type ToolComponent = (props: { ui: Record<string, string> }) => unknown;
-
 interface NavItem {
   id: string;
   title: string;
