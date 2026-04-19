@@ -1,4 +1,4 @@
-:global(.gt-root) {
+.gt-root {
     width: 100%;
     max-width: 520px;
     margin: 0 auto;
@@ -6,7 +6,7 @@
     box-sizing: border-box;
   }
 
-  :global(.gt-card) {
+  .gt-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-base);
     border-radius: 20px;
@@ -19,13 +19,13 @@
     box-sizing: border-box;
   }
 
-  :global(.gt-header-row) {
+  .gt-header-row {
     display: flex;
     gap: 0.75rem;
     align-items: flex-end;
   }
 
-  :global(.gt-field) {
+  .gt-field {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@
     min-width: 0;
   }
 
-  :global(.gt-field label) {
+  .gt-field label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -44,13 +44,13 @@
     letter-spacing: 0.05em;
   }
 
-  :global(.gt-icon-label) {
+  .gt-icon-label {
     width: 16px;
     height: 16px;
     color: var(--primary);
   }
 
-  :global(.gt-select) {
+  .gt-select {
     width: 100%;
     padding: 0.6rem 2rem 0.6rem 0.75rem;
     background: var(--bg-page);
@@ -65,12 +65,12 @@
     text-overflow: ellipsis;
   }
 
-  :global(.gt-select-box) {
+  .gt-select-box {
     position: relative;
     width: 100%;
   }
 
-  :global(.gt-select-box::after) {
+  .gt-select-box::after {
     content: "\25BC";
     position: absolute;
     right: 0.75rem;
@@ -81,7 +81,7 @@
     pointer-events: none;
   }
 
-  :global(.gt-btn-toggle) {
+  .gt-btn-toggle {
     background: var(--bg-page);
     border: 1px solid var(--border-base);
     border-radius: 10px;
@@ -96,12 +96,12 @@
     flex-shrink: 0;
   }
 
-  :global(.gt-btn-toggle:hover) {
+  .gt-btn-toggle:hover {
     background: var(--primary-bg);
     transform: scale(1.05);
   }
 
-  :global(.gt-custom-form) {
+  .gt-custom-form {
     margin-top: 1rem;
     padding: 1rem;
     background: var(--bg-page);
@@ -109,7 +109,7 @@
     border: 1px dashed var(--border-base);
   }
 
-  :global(.gt-label-small) {
+  .gt-label-small {
     display: block;
     font-size: 0.65rem;
     font-weight: 700;
@@ -118,12 +118,12 @@
     text-transform: uppercase;
   }
 
-  :global(.gt-custom-row) {
+  .gt-custom-row {
     display: flex;
     gap: 0.5rem;
   }
 
-  :global(.gt-input-text) {
+  .gt-input-text {
     flex: 1;
     min-width: 0;
     padding: 0.5rem;
@@ -134,7 +134,7 @@
     font-size: 0.9rem;
   }
 
-  :global(.gt-btn-secondary) {
+  .gt-btn-secondary {
     background: var(--bg-surface);
     border: 1px solid var(--border-base);
     color: var(--text-base);
@@ -145,7 +145,7 @@
     cursor: pointer;
   }
 
-  :global(.gt-btn-icon) {
+  .gt-btn-icon {
     background: none;
     border: none;
     color: var(--text-muted);
@@ -154,14 +154,14 @@
     padding: 0 0.5rem;
   }
 
-  :global(.gt-log-section) {
+  .gt-log-section {
     background: var(--primary-bg);
     padding: 1rem;
     border-radius: 14px;
     border: 1px solid var(--primary-soft);
   }
 
-  :global(.gt-label-main) {
+  .gt-label-main {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -172,12 +172,12 @@
     text-transform: uppercase;
   }
 
-  :global(.gt-log-row) {
+  .gt-log-row {
     display: flex;
     gap: 0.75rem;
   }
 
-  :global(.gt-input-number) {
+  .gt-input-number {
     flex: 1;
     min-width: 0;
     padding: 0.75rem;
@@ -191,7 +191,7 @@
     outline: none;
   }
 
-  :global(.gt-btn-primary) {
+  .gt-btn-primary {
     background: var(--primary);
     color: white;
     border: none;
@@ -204,7 +204,7 @@
     box-shadow: 0 4px 12px var(--primary-soft);
   }
 
-  :global(.gt-timer-section) {
+  .gt-timer-section {
     background: var(--bg-page);
     border-radius: 16px;
     overflow: hidden;
@@ -212,7 +212,7 @@
     border: 1px solid var(--border-base);
   }
 
-  :global(.gt-timer-container) {
+  .gt-timer-container {
     padding: 1rem;
     display: flex;
     justify-content: space-between;
@@ -220,32 +220,32 @@
     gap: 1.5rem;
   }
 
-  :global(.gt-timer-main) {
+  .gt-timer-main {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 100px;
   }
 
-  :global(.gt-timer-text) {
+  .gt-timer-text {
     font-size: 2rem;
     font-weight: 900;
     color: var(--text-muted);
     font-variant-numeric: tabular-nums;
   }
 
-  :global(.gt-timer-text.gt-timer-active) {
+  .gt-timer-text.gt-timer-active {
     color: var(--primary);
     text-shadow: 0 0 15px var(--primary-soft);
   }
 
-  :global(.gt-timer-actions) {
+  .gt-timer-actions {
     display: flex;
     gap: 0.75rem;
     margin-top: 0.5rem;
   }
 
-  :global(.gt-btn-round) {
+  .gt-btn-round {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -259,25 +259,25 @@
     transition: all 0.2s ease;
   }
 
-  :global(.gt-btn-round:hover) {
+  .gt-btn-round:hover {
     background: var(--bg-page);
     transform: scale(1.1);
   }
 
-  :global(.gt-timer-presets) {
+  .gt-timer-presets {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  :global(.gt-presets-grid) {
+  .gt-presets-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.4rem;
   }
 
-  :global(.gt-preset-btn) {
+  .gt-preset-btn {
     background: var(--bg-surface);
     border: 1px solid var(--border-base);
     color: var(--text-base);
@@ -288,12 +288,12 @@
     cursor: pointer;
   }
 
-  :global(.gt-custom-timer) {
+  .gt-custom-timer {
     display: flex;
     gap: 0.4rem;
   }
 
-  :global(.gt-input-timer) {
+  .gt-input-timer {
     flex: 1;
     padding: 0.3rem;
     border-radius: 6px;
@@ -305,7 +305,7 @@
     min-width: 0;
   }
 
-  :global(.gt-btn-ok) {
+  .gt-btn-ok {
     background: var(--primary);
     color: white;
     border: none;
@@ -316,27 +316,27 @@
     cursor: pointer;
   }
 
-  :global(.gt-progress-bg) {
+  .gt-progress-bg {
     height: 4px;
     background: var(--border-base);
     width: 100%;
   }
 
-  :global(.gt-progress-bar) {
+  .gt-progress-bar {
     height: 100%;
     background: var(--primary);
     width: 0%;
     transition: width 1s linear;
   }
 
-  :global(.gt-dashboard) {
+  .gt-dashboard {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     width: 100%;
   }
 
-  :global(.gt-chart-wrapper) {
+  .gt-chart-wrapper {
     background: var(--bg-page);
     border-radius: 12px;
     padding: 0.75rem;
@@ -346,29 +346,29 @@
     min-width: 0;
   }
 
-  :global(.gt-chart-box) {
+  .gt-chart-box {
     width: 100%;
     height: 100%;
   }
 
-  :global(.gt-svg-chart) {
+  .gt-svg-chart {
     width: 100%;
     height: 100%;
     color: var(--primary);
     overflow: visible;
   }
 
-  :global(.gt-path) {
+  .gt-path {
     filter: drop-shadow(0 0 4px var(--primary-soft));
   }
 
-  :global(.gt-chart-dot) {
+  .gt-chart-dot {
     fill: var(--primary);
     stroke: var(--bg-page);
     stroke-width: 2;
   }
 
-  :global(.gt-empty-state) {
+  .gt-empty-state {
     position: absolute;
     inset: 0;
     display: flex;
@@ -381,14 +381,14 @@
     letter-spacing: 0.1em;
   }
 
-  :global(.gt-stats) {
+  .gt-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
     width: 100%;
   }
 
-  :global(.gt-stat-item) {
+  .gt-stat-item {
     background: var(--bg-page);
     border: 1px solid var(--border-base);
     padding: 0.75rem;
@@ -397,7 +397,7 @@
     min-width: 0;
   }
 
-  :global(.gt-stat-label) {
+  .gt-stat-label {
     display: block;
     font-size: 0.6rem;
     font-weight: 800;
@@ -406,26 +406,26 @@
     margin-bottom: 0.25rem;
   }
 
-  :global(.gt-stat-val) {
+  .gt-stat-val {
     font-size: 1.1rem;
     font-weight: 900;
     color: var(--text-base);
   }
 
-  :global(.gt-history) {
+  .gt-history {
     border-top: 1px solid var(--border-base);
     padding-top: 1rem;
     min-width: 0;
   }
 
-  :global(.gt-history-header) {
+  .gt-history-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.75rem;
   }
 
-  :global(.gt-history-title) {
+  .gt-history-title {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -437,12 +437,12 @@
     white-space: nowrap;
   }
 
-  :global(.gt-history-actions) {
+  .gt-history-actions {
     display: flex;
     gap: 0.75rem;
   }
 
-  :global(.gt-btn-text) {
+  .gt-btn-text {
     background: none;
     border: none;
     color: var(--text-muted);
@@ -454,17 +454,17 @@
     gap: 0.25rem;
   }
 
-  :global(.gt-btn-text:hover) {
+  .gt-btn-text:hover {
     color: var(--primary);
   }
 
-  :global(.gt-export-menu) {
+  .gt-export-menu {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 0.75rem;
   }
 
-  :global(.gt-export-item) {
+  .gt-export-item {
     background: var(--bg-page);
     border: 1px solid var(--border-base);
     color: var(--text-base);
@@ -475,13 +475,13 @@
     cursor: pointer;
   }
 
-  :global(.gt-history-list) {
+  .gt-history-list {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  :global(.gt-history-item) {
+  .gt-history-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -504,18 +504,18 @@
     }
   }
 
-  :global(.gt-history-row) {
+  .gt-history-row {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
 
-  :global(.gt-history-weight) {
+  .gt-history-weight {
     color: var(--primary);
     font-weight: 800;
   }
 
-  :global(.gt-btn-delete-log) {
+  .gt-btn-delete-log {
     background: none;
     border: none;
     color: var(--text-muted);
@@ -527,11 +527,11 @@
     justify-content: center;
   }
 
-  :global(.gt-btn-delete-log:hover) {
+  .gt-btn-delete-log:hover {
     color: #ef4444;
   }
 
-  :global(.gt-modal) {
+  .gt-modal {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
@@ -543,7 +543,7 @@
     padding: 1.5rem;
   }
 
-  :global(.gt-modal-box) {
+  .gt-modal-box {
     background: var(--bg-surface);
     border: 1px solid var(--border-base);
     border-radius: 20px;
@@ -553,26 +553,26 @@
     text-align: center;
   }
 
-  :global(.gt-modal-box h4) {
+  .gt-modal-box h4 {
     margin: 0 0 0.75rem;
     font-size: 1.1rem;
     font-weight: 900;
     color: var(--text-base);
   }
 
-  :global(.gt-modal-box p) {
+  .gt-modal-box p {
     font-size: 0.85rem;
     color: var(--text-muted);
     margin: 0 0 1.5rem;
     line-height: 1.5;
   }
 
-  :global(.gt-modal-btns) {
+  .gt-modal-btns {
     display: flex;
     gap: 0.75rem;
   }
 
-  :global(.gt-btn-danger) {
+  .gt-btn-danger {
     flex: 1;
     background: #ef4444;
     color: white;
@@ -584,7 +584,7 @@
     cursor: pointer;
   }
 
-  :global(.gt-btn-cancel) {
+  .gt-btn-cancel {
     flex: 1;
     background: var(--bg-page);
     border: 1px solid var(--border-base);
@@ -595,37 +595,37 @@
     cursor: pointer;
   }
 
-  :global(.gt-icon-xs) {
+  .gt-icon-xs {
     width: 14px;
     height: 14px;
   }
 
-  :global(.gt-icon-sm) {
+  .gt-icon-sm {
     width: 18px;
     height: 18px;
   }
 
-  :global(.gt-icon-md) {
+  .gt-icon-md {
     width: 22px;
     height: 22px;
   }
 
-  :global(.gt-hidden) {
+  .gt-hidden {
     display: none;
   }
-  :global(.gt-option-highlight) {
+  .gt-option-highlight {
     color: var(--primary);
     font-weight: 800;
   }
 
   @media (min-width: 400px) {
-    :global(.gt-dashboard) {
+    .gt-dashboard {
       flex-direction: column;
     }
-    :global(.gt-chart-wrapper) {
+    .gt-chart-wrapper {
       height: 160px;
     }
-    :global(.gt-stats) {
+    .gt-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
       width: 100%;
@@ -633,7 +633,7 @@
     }
   }
 
-  :global(.gt-animate-in) {
+  .gt-animate-in {
     animation: gt-fade-up 0.5s ease-out;
   }
 
@@ -648,20 +648,20 @@
     }
   }
 
-  :global(.theme-dark .gt-card) {
+  .theme-dark .gt-card {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
   }
 
-  :global(.theme-dark .gt-select),
-  :global(.theme-dark .gt-input-text),
-  :global(.theme-dark .gt-input-number),
-  :global(.theme-dark .gt-input-timer),
-  :global(.theme-dark .gt-btn-toggle),
-  :global(.theme-dark .gt-btn-round),
-  :global(.theme-dark .gt-preset-btn),
-  :global(.theme-dark .gt-export-item),
-  :global(.theme-dark .gt-stat-item),
-  :global(.theme-dark .gt-history-item) {
+  .theme-dark .gt-select,
+  .theme-dark .gt-input-text,
+  .theme-dark .gt-input-number,
+  .theme-dark .gt-input-timer,
+  .theme-dark .gt-btn-toggle,
+  .theme-dark .gt-btn-round,
+  .theme-dark .gt-preset-btn,
+  .theme-dark .gt-export-item,
+  .theme-dark .gt-stat-item,
+  .theme-dark .gt-history-item {
     background-color: var(--bg-page);
     border-color: rgba(255, 255, 255, 0.1);
   }
