@@ -19,7 +19,6 @@ describe('Locale Completeness Validation', () => {
             }
           });
 
-          it('bibliographyTitle should be defined when bibliography items exist', async () => {
             const loader = tool.entry.i18n[locale as keyof typeof tool.entry.i18n];
             const content = (await loader?.()) as ToolLocaleContent;
 
