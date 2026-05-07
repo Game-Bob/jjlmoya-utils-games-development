@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'spor-skor-tablosu';
-const title = 'Online Spor Skor Tablosu: Ücretsiz Skor Sayacı (2026)';
+const title = 'Online Spor Skor Tablosu: Ücretsiz Skor Sayacı ';
 const description =
   'Mobil cihazlar için dev düğmeli dijital skor tablosu. Padel, masa tenisi ve futbol için ideal. Oyunun ortasında can sıkıcı reklamlar yok. Basit ve hızlı.';
 

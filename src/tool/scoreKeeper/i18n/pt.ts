@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'placar-esportivo-online';
-const title = 'Placar Esportivo Online: Marcador de Pontos Grátis (2026)';
+const title = 'Placar Esportivo Online: Marcador de Pontos Grátis ';
 const description =
   'Placar digital com botões gigantes para celular. Ideal para padel, ping-pong e futebol. Sem anúncios irritantes no meio do jogo. Simples e rápido.';
 

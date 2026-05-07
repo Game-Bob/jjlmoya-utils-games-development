@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'tabellone-punti-sportivo';
-const title = 'Tabellone Segnapunti Sportivo Online: Segnapunti Gratis (2026)';
+const title = 'Tabellone Segnapunti Sportivo Online: Segnapunti Gratis ';
 const description =
   'Tabellone segnapunti digitale con bottoni giganti per mobili. Ideale per padel, ping-pong e calcio. Senza pubblicità fastidiose a metà partita. Semplice e veloce.';
 

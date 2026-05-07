@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'sports-scoreboard';
-const title = 'Sports Scoreboard Online: Free Score Counter (2026)';
+const title = 'Sports Scoreboard Online: Free Score Counter ';
 const description =
   'Digital scoreboard with giant buttons for mobile. Ideal for padel, ping-pong and football. No annoying ads in the middle of the game. Simple and fast.';
 

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'sportivnoe-tablo-onlayn';
-const title = 'Спортивное табло онлайн: Бесплатный счетчик очков (2026)';
+const title = 'Спортивное табло онлайн: Бесплатный счетчик очков ';
 const description =
   'Цифровое табло с гигантскими кнопками для мобильных устройств. Идеально для падела, пинг-понга и футбола. Без назойливой рекламы во время игры. Просто и быстро.';
 

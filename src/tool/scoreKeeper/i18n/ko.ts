@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'sports-scoreboard';
-const title = '온라인 스포츠 스코어보드: 무료 점수 계산기 (2026)';
+const title = '온라인 스포츠 스코어보드: 무료 점수 계산기 ';
 const description =
   '모바일용 거대 버튼이 있는 디지털 스코어보드. 파델, 탁구, 축구에 이상적입니다. 경기 도중 짜증나는 광고가 없습니다. 심플하고 빠릅니다.';
 

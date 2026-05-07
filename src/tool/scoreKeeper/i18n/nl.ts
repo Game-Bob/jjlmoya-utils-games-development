@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'sport-scorebord';
-const title = 'Online Sport Scorebord: Gratis Score Teller (2026)';
+const title = 'Online Sport Scorebord: Gratis Score Teller ';
 const description =
   'Digitaal scorebord met gigantische knoppen voor mobiel. Ideaal voor padel, pingpong en voetbal. Geen irritante advertenties tijdens het spel. Simpel en snel.';
 

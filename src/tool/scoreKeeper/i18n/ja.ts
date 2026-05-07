@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'sports-scoreboard';
-const title = 'オンラインスポーツスコアボード：無料スコアカウンター (2026)';
+const title = 'オンラインスポーツスコアボード：無料スコアカウンター ';
 const description =
   'モバイル向けの巨大ボタンを備えたデジタルスコアボード。パデル、卓球、サッカーに最適。試合中の煩わしい広告なし。シンプルで高速。';
 

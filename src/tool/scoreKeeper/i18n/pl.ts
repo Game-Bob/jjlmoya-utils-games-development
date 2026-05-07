@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'tablica-wynikow-sportowych';
-const title = 'Tablica Wyników Sportowych Online: Darmowy Licznik Punktów (2026)';
+const title = 'Tablica Wyników Sportowych Online: Darmowy Licznik Punktów ';
 const description =
   'Cyfrowa tablica wyników z gigantycznymi przyciskami na telefon. Idealna do padla, ping-ponga i piłki nożnej. Bez irytujących reklam w trakcie gry. Prosta i szybka.';
 
