@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'sport-resultattavla';
-const title = 'Resultattavla för Sport Online: Gratis Poängräknare ';
+const title = 'Resultattavla för Sport Online: Gratis Poängräknare';
 const description =
   'Digital resultattavla med jätteknappar för mobilen. Idealisk för padel, pingis och fotboll. Inga irriterande annonser mitt i matchen. Enkelt och snabbt.';
 

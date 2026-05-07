@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'papan-skor-olahraga';
-const title = 'Papan Skor Olahraga Online: Penghitung Skor Gratis ';
+const title = 'Papan Skor Olahraga Online: Penghitung Skor Gratis';
 const description =
   'Papan skor digital dengan tombol raksasa untuk seluler. Ideal untuk padel, ping-pong, dan sepak bola. Tanpa iklan yang mengganggu di tengah permainan. Sederhana dan cepat.';
 

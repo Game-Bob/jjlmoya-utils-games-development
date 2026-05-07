@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'sports-scoreboard';
-const title = '在线运动计分板：免费计分器 ';
+const title = '在线运动计分板：免费计分器';
 const description =
   '专为移动端设计的巨型按钮数字计分板。非常适合板网球、乒乓球和足球。比赛过程中无烦人广告。简单快捷。';
 

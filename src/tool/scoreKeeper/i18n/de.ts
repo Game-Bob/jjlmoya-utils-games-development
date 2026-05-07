@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'sport-punktestand';
-const title = 'Sport Anzeigetafel Online: Kostenloser Punktezähler ';
+const title = 'Sport Anzeigetafel Online: Kostenloser Punktezähler';
 const description =
   'Digitale Anzeigetafel mit riesigen Tasten für das Handy. Ideal für Padel, Tischtennis und Fußball. Keine nervige Werbung während des Spiels. Einfach und schnell.';
 

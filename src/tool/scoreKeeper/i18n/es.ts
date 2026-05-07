@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'marcador';
-const title = 'Marcador Deportivo Online: Contador de Puntos Gratis ';
+const title = 'Marcador Deportivo Online: Contador de Puntos Gratis';
 const description =
   'Marcador digital con botones gigantes para móvil. Ideal para pádel, ping-pong y fútbol. Sin anuncios que molesten en mitad del partido. Simple y rápido.';
 
