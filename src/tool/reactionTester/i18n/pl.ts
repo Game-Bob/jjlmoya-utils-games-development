@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: 'SPOKOJNIE...', wp1s: 'Nie mrugaj teraz',
   wp2t: 'GOTOWY...', wp2s: 'Palce gotowe...',
   wp3t: 'TRZYMAJ...', wp3s: 'Cierpliwości, młody uczniowie',
-  wp4t: 'SKONCENTRUJ...', wp4s: 'To już się zbliża...',
+  wp4t: 'SKONCENTRUJ...', wp4s: 'To już się zbliża...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: 'Jak działa ten test reakcji?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: 'To narzędzie mierzy twoją <strong>wizualną szybkość reakcji</strong> z chirurgiczną dokładnością. Obliczamy dokładny przedział czasu od momentu, gdy ekran się zaświeci, aż sygnał przejdzie z twoich oczu do mózgu, a następnie do palców. Test wymaga <strong>5 kolejnych prób</strong>, aby obliczyć twoją rzeczywistą średnią, eliminując czynnik szczęścia.',
+    html: 'To narzędzie mierzy twoją <strong>wizualną szybkość reakcji</strong> z chirurgiczną dokładnością. Obliczamy dokładny przedział czasu od momentu, gdy ekran się zaświeci, aż sygnał przejdzie z twoich oczu do mózgu, a następnie do palców. Test wymaga <strong>5 kolejnych prób</strong>, aby obliczyć twoją rzeczywistą średnią, eliminując czynnik szczęścia.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>Średnia z 5 prób:</strong> Eliminujemy czynnik \"szczęścia\" poprzez wymaganie konsekwencji. Jedno szczęśliwe kliknięcie nie uczyni cię Cyberateta.',
       '<strong>System Anti-Cheat:</strong> Losowe czasy oczekiwania (1,5s - 4,5s) oraz detekcja wczesnych kliknięć w celu zapobiegania przewidywaniu.',
       '<strong>Prawdziwa nauka:</strong> Przetwarzanie mózgu ~180-200 ms + odpowiedź motoryczna +20-40 ms = twój całkowity czas reakcji.',
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Światowa Tabela Rankingowa', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', 'Człowiek', 'Zdrowa średnia. Jesteś świadomy i funcjonujesz prawidłowo.'],
       ['280 - 350 ms', 'Żółw', 'Poniżej średniej. Odpoczywaj lub więcej ćwicz.'],
       ['&gt; 350 ms', 'Śpiący', 'Możliwe zmęczenie, senność lub powolny sprzęt (opóźnienie wejścia).'],
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Dlaczego jesteś powolny? Obwinianie sprzętu', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: 'Monitor (Hz)',
         description: 'Monitor 60Hz potrzebuje około 16ms na narysowanie klatki. Monitor 144Hz potrzebuje tylko 7ms. Ta różnica 10ms liczy się w twoim ostatecznym wyniku.',
         icon: 'mdi:monitor',
-        points: ['60Hz = około 16ms na klatkę', '144Hz = około 7ms na klatkę', 'Widoczna różnica w teście'],
+        points: ['60Hz = około 16ms na klatkę', '144Hz = około 7ms na klatkę', 'Widoczna różnica w teście']
       },
       {
         title: 'Mysz bezprzewodowa',
         description: 'Tanie biurowe myszy Bluetooth mają wysoką latencję. Do tego testu użyj kabla lub technologii bezprzewodowej 2,4GHz z niską latencją.',
         icon: 'mdi:mouse-variant',
-        points: ['Tanie Bluetooth: +15-50ms', 'Gaming 2.4GHz: <1ms dodatkowe', 'Kabel USB: referencja'],
+        points: ['Tanie Bluetooth: +15-50ms', 'Gaming 2.4GHz: <1ms dodatkowe', 'Kabel USB: referencja']
       },
       {
         title: 'Przeglądarka',
         description: 'Rozszerzenia blokujące reklamy lub ciężkie skrypty mogą powodować opóźnienia. Spróbuj trybu incognito, aby uzyskać twój rzeczywisty wynik.',
         icon: 'mdi:web',
-        points: ['Zamknij ciężkie rozszerzenia', 'Incognito = czystsze', 'Chrome/Firefox zalecane'],
+        points: ['Zamknij ciężkie rozszerzenia', 'Incognito = czystsze', 'Chrome/Firefox zalecane']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: 'Najczęściej Zadawane Pytania', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

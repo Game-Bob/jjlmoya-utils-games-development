@@ -81,8 +81,8 @@ interface Props {
 
 const { Component, locale, content, localeUrls, allToolsNav, englishSlug } = Astro.props;
 
-const globPattern = "../../tool/" + "*".repeat(2) + "/*.css";
-const cssFiles = import.meta.glob(globPattern, { query: "?raw", import: "default" });
+// eslint-disable-next-line custom/no-css-comments
+const cssFiles = import.meta.glob("../../tool/**/*.css", { query: "?raw", import: "default" });
 const cssKey = Object.keys(cssFiles).find((k) => k.endsWith(`/${englishSlug}.css`));
 const toolCss = cssKey ? await cssFiles[cssKey]() as string : "";
 
@@ -133,11 +133,11 @@ const titleBase = words.slice(1).join(" ") || "";
     </section>
 
     <section class="section-faq">
-      <FAQSection items={content.faq} title={content.ui.faqTitle} inLanguage={locale} />
+      <FAQSection items={content.faq} inLanguage={locale} />
     </section>
 
     <section class="section-bibliography">
-      <Bibliography links={content.bibliography} title={content.ui.bibliographyTitle} />
+      <Bibliography links={content.bibliography} />
     </section>
   </div>
 </PreviewLayout>

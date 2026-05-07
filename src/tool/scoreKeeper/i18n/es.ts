@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
@@ -11,55 +12,55 @@ const faqData = [
   {
     question: '¿Funciona sin conexión a internet?',
     answer:
-      'Sí, una vez cargada la página, el marcador funciona completamente offline. No necesitas datos ni WiFi durante el partido. Todo se guarda localmente en tu navegador.',
+      'Sí, una vez cargada la página, el marcador funciona completamente offline. No necesitas datos ni WiFi durante el partido. Todo se guarda localmente en tu navegador.'
   },
   {
     question: '¿Puedo usar el marcador para tenis y pádel?',
     answer:
-      'Sí, el modo Tenis/Pádel gestiona automáticamente la secuencia 15-30-40-AD y lleva la cuenta de sets y juegos según el reglamento oficial. Perfecto para partidos amistosos.',
+      'Sí, el modo Tenis/Pádel gestiona automáticamente la secuencia 15-30-40-AD y lleva la cuenta de sets y juegos según el reglamento oficial. Perfecto para partidos amistosos.'
   },
   {
     question: '¿Se puede poner en pantalla completa?',
     answer:
-      'Sí, puedes activar el modo pantalla completa desde tu navegador (F11 en PC, o botón de pantalla completa en móvil). Los números ocupan el 80% de la pantalla para máxima visibilidad.',
+      'Sí, puedes activar el modo pantalla completa desde tu navegador (F11 en PC, o botón de pantalla completa en móvil). Los números ocupan el 80% de la pantalla para máxima visibilidad.'
   },
   {
     question: '¿Cómo corrijo un punto si me equivoco?',
     answer:
-      'Hay un botón separado para restar puntos en cada tarjeta de jugador. Puedes corregir errores rápidamente sin tener que reiniciar el marcador completo.',
+      'Hay un botón separado para restar puntos en cada tarjeta de jugador. Puedes corregir errores rápidamente sin tener que reiniciar el marcador completo.'
   },
   {
     question: '¿Funciona para baloncesto con canastas de 1, 2 y 3 puntos?',
     answer:
-      'Sí, en el modo Baloncesto aparecen botones dedicados de +1, +2 y +3 para anotar cualquier jugada rápidamente sin pulsaciones extra.',
+      'Sí, en el modo Baloncesto aparecen botones dedicados de +1, +2 y +3 para anotar cualquier jugada rápidamente sin pulsaciones extra.'
   },
   {
     question: '¿El marcador gestiona automáticamente el saque en ping-pong?',
     answer:
-      'Sí, en el modo Ping Pong el indicador de saque rota automáticamente cada 2 puntos (o cada punto en deuce), siguiendo las reglas oficiales de la ITTF.',
+      'Sí, en el modo Ping Pong el indicador de saque rota automáticamente cada 2 puntos (o cada punto en deuce), siguiendo las reglas oficiales de la ITTF.'
   },
 ];
 
 const howToData = [
   {
     name: 'Selecciona tu deporte',
-    text: 'Elige el deporte desde el selector en la parte superior: Libre, Tenis, Pádel, Ping Pong, Voleibol o Baloncesto.',
+    text: 'Elige el deporte desde el selector en la parte superior: Libre, Tenis, Pádel, Ping Pong, Voleibol o Baloncesto.'
   },
   {
     name: 'Personaliza los nombres',
-    text: 'Toca sobre "LOCAL" o "VISITANTE" para cambiar los nombres de los jugadores o equipos.',
+    text: 'Toca sobre "LOCAL" o "VISITANTE" para cambiar los nombres de los jugadores o equipos.'
   },
   {
     name: 'Suma puntos con un toque',
-    text: 'Toca la zona grande del marcador para sumar un punto. En baloncesto usa los botones +1, +2 o +3.',
+    text: 'Toca la zona grande del marcador para sumar un punto. En baloncesto usa los botones +1, +2 o +3.'
   },
   {
     name: 'Indica el saque',
-    text: 'Usa el botón de saque en la esquina inferior para marcar quién saca. El indicador amarillo aparece automáticamente.',
+    text: 'Usa el botón de saque en la esquina inferior para marcar quién saca. El indicador amarillo aparece automáticamente.'
   },
   {
     name: 'Corrige errores',
-    text: 'Usa el botón "−" si sumaste un punto por error. No es necesario reiniciar el marcador completo.',
+    text: 'Usa el botón "−" si sumaste un punto por error. No es necesario reiniciar el marcador completo.'
   },
 ];
 
@@ -69,8 +70,8 @@ const faqSchema: WithContext<FAQPage> = {
   mainEntity: faqData.map((item) => ({
     '@type': 'Question',
     name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
-  })),
+    acceptedAnswer: { '@type': 'Answer', text: item.answer }
+  }))
 };
 
 const howToSchema: WithContext<HowTo> = {
@@ -82,8 +83,8 @@ const howToSchema: WithContext<HowTo> = {
     '@type': 'HowToStep',
     position: i + 1,
     name: step.name,
-    text: step.text,
-  })),
+    text: step.text
+  }))
 };
 
 const appSchema: WithContext<SoftwareApplication> = {
@@ -94,54 +95,31 @@ const appSchema: WithContext<SoftwareApplication> = {
   applicationCategory: 'UtilityApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
-  inLanguage: 'es',
+  inLanguage: 'es'
 };
 
 export const content: ToolLocaleContent<ScoreKeeperUI> = {
   slug,
   title,
   description,
-  faqTitle: 'Preguntas Frecuentes',
   faq: faqData,
-  bibliographyTitle: 'Referencias y Reglamentos Oficiales',
-  bibliography: [
-    {
-      name: 'ITTF: Reglamento oficial de tenis de mesa (Ping Pong)',
-      url: 'https://www.ittf.com/handbook/',
-    },
-    {
-      name: 'ITF: Reglas oficiales del tenis',
-      url: 'https://www.itftennis.com/en/about-us/governance/rules-and-regulations/',
-    },
-    {
-      name: 'FIP: Reglamento oficial del pádel',
-      url: 'https://www.padelfip.com/es/regulaciones/',
-    },
-    {
-      name: 'FIVB: Reglas oficiales del voleibol',
-      url: 'https://www.fivb.com/en/volleyball/thegame_volleyball/rulesofthegame_volleyball',
-    },
-    {
-      name: 'FIBA: Reglas oficiales del baloncesto',
-      url: 'https://www.fiba.basketball/en/official-basketball-rules',
-    },
-  ],
+  bibliography,
   howTo: howToData,
   schemas: [faqSchema, howToSchema, appSchema],
   seo: [
     {
       type: 'title',
       text: 'Tu Árbitro Digital de Bolsillo',
-      level: 2,
+      level: 2
     },
     {
       type: 'paragraph',
-      html: 'En el calor del partido, es fácil perder la cuenta. "¿Íbamos 4-3 o 3-4?". Este marcador está diseñado para resolver esas discusiones antes de que empiecen. Con una interfaz de <strong>botones gigantes</strong> que ocupan casi toda la tarjeta, puedes sumar puntos sin mirar la pantalla, solo estirando el brazo hacia el móvil en el banco.',
+      html: 'En el calor del partido, es fácil perder la cuenta. "¿Íbamos 4-3 o 3-4?". Este marcador está diseñado para resolver esas discusiones antes de que empiecen. Con una interfaz de <strong>botones gigantes</strong> que ocupan casi toda la tarjeta, puedes sumar puntos sin mirar la pantalla, solo estirando el brazo hacia el móvil en el banco.'
     },
     {
       type: 'title',
       text: 'Selector de Deporte Inteligente',
-      level: 2,
+      level: 2
     },
     {
       type: 'comparative',
@@ -152,28 +130,28 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
           description:
             'Interfaz adaptada con contadores de Sets y Juegos. El sistema gestiona automáticamente la secuencia 15-30-40-AD.',
           icon: 'mdi:tennis',
-          points: ['Reglamento oficial', 'Gestión de Advantage', 'Contador de Sets'],
+          points: ['Reglamento oficial', 'Gestión de Advantage', 'Contador de Sets']
         },
         {
           title: 'Modo Baloncesto',
           description:
             'El marcador detecta el deporte y cambia su interfaz. Tendrás botones dedicados de +1, +2 y +3.',
           icon: 'mdi:basketball',
-          points: ['Triples rápidos', 'Tiros libres', 'Sin pulsaciones extra'],
+          points: ['Triples rápidos', 'Tiros libres', 'Sin pulsaciones extra']
         },
         {
           title: 'Modo Ping Pong',
           description:
             'Olvídate de memorizar a quién le toca sacar. El indicador visual rota automáticamente cada 2 puntos.',
           icon: 'mdi:table-tennis',
-          points: ['Reglas ITTF', 'Rotación de saque', 'Modo Deuce (11 pts)'],
+          points: ['Reglas ITTF', 'Rotación de saque', 'Modo Deuce (11 pts)']
         },
-      ],
+      ]
     },
     {
       type: 'title',
       text: 'Características Pensadas para el Deporte',
-      level: 2,
+      level: 2
     },
     {
       type: 'list',
@@ -182,7 +160,7 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
         '<strong>Nombres Editables:</strong> Toca sobre "LOCAL" o "VISITANTE" para poner los nombres de los jugadores.',
         '<strong>Prevención de Errores:</strong> Botón de restar puntos separado para corregir fallos rápidamente sin reiniciar.',
         '<strong>Funciona Offline:</strong> Una vez cargado, no necesitas internet durante el partido.',
-      ],
+      ]
     },
   ],
   ui: {
@@ -202,6 +180,6 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
     sportPadel: 'Pádel',
     sportPingpong: 'Ping Pong',
     sportVolleyball: 'Voleibol',
-    sportBasket: 'Baloncesto',
-  },
+    sportBasket: 'Baloncesto'
+  }
 };

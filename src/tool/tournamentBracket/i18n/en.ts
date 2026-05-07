@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'Link copied to clipboard',
   toastShareFailed: 'Could not copy. URL:',
   toastFinished: 'Tournament Finished!',
-  defaultName: 'Tournament',
+  defaultName: 'Tournament'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: 'Free Online Bracket Generator and Tournament Organizer',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Manage your sports, video game or board game competitions with the most complete, free and registration-free tournament organizer. Create visual and interactive single-elimination brackets in seconds, with an <strong>integrated scoring system</strong>, automatic history and smart match navigation. Everything works offline, directly in your browser.',
+    html: 'Manage your sports, video game or board game competitions with the most complete, free and registration-free tournament organizer. Create visual and interactive single-elimination brackets in seconds, with an <strong>integrated scoring system</strong>, automatic history and smart match navigation. Everything works offline, directly in your browser.'
   },
   {
     type: 'title' as const,
     text: 'How to Create a Single Elimination Tournament?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>Name your tournament</strong>, add participants (one by one or paste a comma-separated list), randomize matchups if you want, generate the bracket, manage results by tapping the winner of each match and use the "Next Match" button to navigate between unresolved matches.',
+    html: '<strong>Name your tournament</strong>, add participants (one by one or paste a comma-separated list), randomize matchups if you want, generate the bracket, manage results by tapping the winner of each match and use the "Next Match" button to navigate between unresolved matches.'
   },
   {
     type: 'title' as const,
     text: 'Advanced Features',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>Persistent history:</strong> All tournaments saved automatically in your browser.',
       '<strong>Auto Walkovers:</strong> Byes and direct passes resolved without manual input.',
       '<strong>Share by URL:</strong> Generate a compressed link to send the bracket to anyone.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Perfect for Any Competition',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'Video Games & eSports',
         description: 'Perfect for FIFA, FC25, Valorant, League of Legends, Street Fighter, Tekken, Super Smash Bros or Rocket League.',
         icon: 'mdi:controller-classic',
-        points: ['Fast matchups', 'No team limit', 'Instantly shareable'],
+        points: ['Fast matchups', 'No team limit', 'Instantly shareable']
       },
       {
         title: 'Sports & Racket Sports',
         description: 'Manage Padel, Tennis, Ping Pong, Badminton, Futsal or 3x3 Basketball brackets.',
         icon: 'mdi:trophy-outline',
-        points: ['Integrated scores', 'Optimized mobile view', 'No paper needed'],
+        points: ['Integrated scores', 'Optimized mobile view', 'No paper needed']
       },
       {
         title: 'Board & Card Games',
         description: 'Organize Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, Chess or Dominoes tournaments.',
         icon: 'mdi:cards-playing-outline',
-        points: ['Up to 64 players', 'Round history', 'Bye management'],
+        points: ['Up to 64 players', 'Round history', 'Bye management']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'What are "Byes" or Direct Passes?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'In an ideal single-elimination tournament the number of participants must be a power of 2 (4, 8, 16, 32...). When you have an odd or non-power-of-2 number —for example 7, 10 or 13 players—, the system automatically assigns <strong>"Byes"</strong> in the first round. A "Bye" means a participant advances directly to the next phase without playing. Our algorithm calculates and assigns these passes fairly and automatically.',
+    html: 'In an ideal single-elimination tournament the number of participants must be a power of 2 (4, 8, 16, 32...). When you have an odd or non-power-of-2 number —for example 7, 10 or 13 players—, the system automatically assigns <strong>"Byes"</strong> in the first round. A "Bye" means a participant advances directly to the next phase without playing. Our algorithm calculates and assigns these passes fairly and automatically.'
   },
   {
     type: 'title' as const,
     text: 'Instant, Free and No Sign-up Required',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Zero friction. No accounts, no installations, no waiting. Add participants and generate your tournament instantly. Everything is automatically saved in your browser via <strong>LocalStorage</strong>: close the tab, shut down the computer and come back days later. Your tournament and full history will still be there.',
+    html: 'Zero friction. No accounts, no installations, no waiting. Add participants and generate your tournament instantly. Everything is automatically saved in your browser via <strong>LocalStorage</strong>: close the tab, shut down the computer and come back days later. Your tournament and full history will still be there.'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'Frequently Asked Questions', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'Link gekopieerd naar klembord',
   toastShareFailed: 'Kon niet kopiëren. URL:',
   toastFinished: 'Toernooi Afgelopen!',
-  defaultName: 'Toernooi',
+  defaultName: 'Toernooi'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: 'Gratis Online Toernooi Generator en Schema Maker',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Beheer je sport-, videogame- of bordspel-competities met de meest complete, gratis en registratievrije toernooi-organisator. Maak visuele en interactieve knock-out schema\'s in seconden, met een <strong>geïntegreerd scoresysteem</strong>, automatische geschiedenis en slimme wedstrijdnavigatie. Alles werkt offline, direct in je browser.',
+    html: 'Beheer je sport-, videogame- of bordspel-competities met de meest complete, gratis en registratievrije toernooi-organisator. Maak visuele en interactieve knock-out schema\'s in seconden, met een <strong>geïntegreerd scoresysteem</strong>, automatische geschiedenis en slimme wedstrijdnavigatie. Alles werkt offline, direct in je browser.'
   },
   {
     type: 'title' as const,
     text: 'Hoe maak je een toernooi met directe uitschakeling?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>Geef je toernooi een naam</strong>, voeg deelnemers toe (één voor één of plak een door komma\'s gescheiden lijst), hussel de matches als je wilt, genereer het schema, beheer resultaten door op de winnaar van elke match te tikken en gebruik de "Volgende Wedstrijd" knop om te navigeren tussen onbesliste wedstrijden.',
+    html: '<strong>Geef je toernooi een naam</strong>, voeg deelnemers toe (één voor één of plak een door komma\'s gescheiden lijst), hussel de matches als je wilt, genereer het schema, beheer resultaten door op de winnaar van elke match te tikken en gebruik de "Volgende Wedstrijd" knop om te navigeren tussen onbesliste wedstrijden.'
   },
   {
     type: 'title' as const,
     text: 'Geavanceerde Functies',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>Permanente geschiedenis:</strong> Alle toernooien worden automatisch opgeslagen in je browser.',
       '<strong>Auto Walkovers:</strong> Byes en direct doorgaan worden opgelost zonder handmatige invoer.',
       '<strong>Delen via URL:</strong> Genereer een gecomprimeerde link om het schema naar iedereen te sturen.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Perfect voor Elke Competitie',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'Videogames & eSports',
         description: 'Perfect voor FIFA, FC25, Valorant, League of Legends, Street Fighter, Tekken, Super Smash Bros of Rocket League.',
         icon: 'mdi:controller-classic',
-        points: ['Snelle matchups', 'Geen teamlimiet', 'Direct deelbaar'],
+        points: ['Snelle matchups', 'Geen teamlimiet', 'Direct deelbaar']
       },
       {
         title: 'Sport & Racketsporten',
         description: 'Beheer schema\'s voor Padel, Tennis, Pingpong, Badminton, Futsal of 3x3 Basketbal.',
         icon: 'mdi:trophy-outline',
-        points: ['Geïntegreerde scores', 'Geoptimaliseerde mobiele weergave', 'Geen papier meer nodig'],
+        points: ['Geïntegreerde scores', 'Geoptimaliseerde mobiele weergave', 'Geen papier meer nodig']
       },
       {
         title: 'Bord en Kaartspellen',
         description: 'Organiseer toernooien voor Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, Schaken of Domino.',
         icon: 'mdi:cards-playing-outline',
-        points: ['Tot 64 spelers', 'Rondegeschiedenis', 'Bye beheer'],
+        points: ['Tot 64 spelers', 'Rondegeschiedenis', 'Bye beheer']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Wat zijn "Byes" of Directe Passages?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'In een ideaal knock-out toernooi moet het aantal deelnemers een macht van 2 zijn (4, 8, 16, 32...). Als je een oneven aantal hebt of geen macht van 2 — bijvoorbeeld 7, 10 of 13 spelers —, wijst het systeem automatisch <strong>"Byes"</strong> toe in de eerste ronde. Een "Bye" betekent dat een deelnemer direct doorgaat naar de volgende fase zonder te spelen. Ons algoritme berekent en wijst deze passages eerlijk und automatisch toe.',
+    html: 'In een ideaal knock-out toernooi moet het aantal deelnemers een macht van 2 zijn (4, 8, 16, 32...). Als je een oneven aantal hebt of geen macht van 2 — bijvoorbeeld 7, 10 of 13 spelers —, wijst het systeem automatisch <strong>"Byes"</strong> toe in de eerste ronde. Een "Bye" betekent dat een deelnemer direct doorgaat naar de volgende fase zonder te spelen. Ons algoritme berekent en wijst deze passages eerlijk und automatisch toe.'
   },
   {
     type: 'title' as const,
     text: 'Direct, Gratis en Geen Registratie Nodig',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Geen drempels. Geen accounts, geen installaties, niet wachten. Voeg deelnemers toe en genereer direct je toernooi. Alles wordt automatisch opgeslagen in je browser via <strong>LocalStorage</strong>: sluit het tabblad, zet de computer uit und kom dagen later terug. Je toernooi en volledige geschiedenis zullen er nog steeds zijn.',
+    html: 'Geen drempels. Geen accounts, geen installaties, niet wachten. Voeg deelnemers toe en genereer direct je toernooi. Alles wordt automatisch opgeslagen in je browser via <strong>LocalStorage</strong>: sluit het tabblad, zet de computer uit und kom dagen later terug. Je toernooi en volledige geschiedenis zullen er nog steeds zijn.'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'Veelgestelde Vragen', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

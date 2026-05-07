@@ -1,10 +1,6 @@
 ---
-import { tournamentBracket } from './index';
-import type { KnownLocale } from '../../types';
-
-interface Props { locale: KnownLocale }
-const { locale } = Astro.props;
-const content = await tournamentBracket.i18n[locale]?.();
+import { Bibliography as SharedBibliography } from '@jjlmoya/utils-shared';
+import { bibliography } from './bibliography';
 ---
 
-{content && content.bibliography.length > 0 && null}
+<SharedBibliography links={bibliography} />

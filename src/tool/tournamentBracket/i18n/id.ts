@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'Tautan disalin ke papan klip',
   toastShareFailed: 'Tidak dapat menyalin. URL:',
   toastFinished: 'Turnamen Selesai!',
-  defaultName: 'Turnamen',
+  defaultName: 'Turnamen'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: 'Pembuat Bagan Turnamen dan Penyelenggara Turnamen Online Gratis',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Kelola kompetisi olahraga, video game, atau permainan papan Anda dengan penyelenggara turnamen yang paling lengkap, gratis, dan tanpa registrasi. Buat bagan sistem gugur yang visual dan interaktif dalam hitungan detik, dengan <strong>sistem penilaian terintegrasi</strong>, riwayat otomatis, dan navigasi pertandingan yang cerdas. Semuanya berfungsi offline, langsung di browser Anda.',
+    html: 'Kelola kompetisi olahraga, video game, atau permainan papan Anda dengan penyelenggara turnamen yang paling lengkap, gratis, dan tanpa registrasi. Buat bagan sistem gugur yang visual dan interaktif dalam hitungan detik, dengan <strong>sistem penilaian terintegrasi</strong>, riwayat otomatis, dan navigasi pertandingan yang cerdas. Semuanya berfungsi offline, langsung di browser Anda.'
   },
   {
     type: 'title' as const,
     text: 'Bagaimana Cara Membuat Turnamen Sistem Gugur?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>Beri nama turnamen Anda</strong>, tambah peserta (satu per satu atau tempel daftar yang dipisahkan koma), acak pertandingan jika diinginkan, buat bagan, kelola hasil dengan mengetuk pemenang setiap pertandingan, dan gunakan tombol "Pertandingan Berikutnya" untuk menavigasi di antara pertandingan yang belum selesai.',
+    html: '<strong>Beri nama turnamen Anda</strong>, tambah peserta (satu per satu atau tempel daftar yang dipisahkan koma), acak pertandingan jika diinginkan, buat bagan, kelola hasil dengan mengetuk pemenang setiap pertandingan, dan gunakan tombol "Pertandingan Berikutnya" untuk menavigasi di antara pertandingan yang belum selesai.'
   },
   {
     type: 'title' as const,
     text: 'Fitur Lanjutan',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>Riwayat persisten:</strong> Semua turnamen disimpan secara otomatis di browser Anda.',
       '<strong>Walkover Otomatis:</strong> Bye dan kelolosan langsung diselesaikan tanpa masukan manual.',
       '<strong>Bagikan melalui URL:</strong> Buat tautan terkompresi untuk mengirim bagan kepada siapa saja.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Sempurna untuk Segala Kompetisi',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'Video Game & eSports',
         description: 'Sempurna untuk FIFA, FC25, Valorant, League of Legends, Street Fighter, Tekken, Super Smash Bros, atau Rocket League.',
         icon: 'mdi:controller-classic',
-        points: ['Pertandingan cepat', 'Tanpa batas tim', 'Dapat dibagikan secara instan'],
+        points: ['Pertandingan cepat', 'Tanpa batas tim', 'Dapat dibagikan secara instan']
       },
       {
         title: 'Olahraga & Raket',
         description: 'Kelola bagan Padel, Tenis, Ping Pong, Bulu Tangkis, Futsal, atau Basket 3x3.',
         icon: 'mdi:trophy-outline',
-        points: ['Skor terintegrasi', 'Tampilan seluler yang dioptimalkan', 'Tidak butuh kertas'],
+        points: ['Skor terintegrasi', 'Tampilan seluler yang dioptimalkan', 'Tidak butuh kertas']
       },
       {
         title: 'Permainan Papan & Kartu',
         description: 'Atur turnamen Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, Catur, atau Domino.',
         icon: 'mdi:cards-playing-outline',
-        points: ['Hingga 64 pemain', 'Riwayat babak', 'Manajemen bye'],
+        points: ['Hingga 64 pemain', 'Riwayat babak', 'Manajemen bye']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Apa itu "Bye" atau Kelolosan Langsung?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Dalam turnamen sistem gugur yang ideal, jumlah peserta harus merupakan pangkat dari 2 (4, 8, 16, 32...). Jika Anda memiliki jumlah ganjil atau bukan pangkat 2 — misalnya 7, 10, atau 13 pemain —, sistem akan secara otomatis memberikan <strong>"Bye"</strong> di babak pertama. "Bye" berarti peserta melaju langsung ke fase berikutnya tanpa bermain. Algoritma kami menghitung dan memberikan kelolosan ini secara adil dan otomatis.',
+    html: 'Dalam turnamen sistem gugur yang ideal, jumlah peserta harus merupakan pangkat dari 2 (4, 8, 16, 32...). Jika Anda memiliki jumlah ganjil atau bukan pangkat 2 — misalnya 7, 10, atau 13 pemain —, sistem akan secara otomatis memberikan <strong>"Bye"</strong> di babak pertama. "Bye" berarti peserta melaju langsung ke fase berikutnya tanpa bermain. Algoritma kami menghitung dan memberikan kelolosan ini secara adil dan otomatis.'
   },
   {
     type: 'title' as const,
     text: 'Instan, Gratis, dan Tanpa Perlu Daftar',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Tanpa hambatan. Tanpa akun, tanpa instalasi, tanpa menunggu. Tambah peserta dan buat turnamen Anda secara instan. Semuanya disimpan secara otomatis di browser Anda melalui <strong>LocalStorage</strong>: tutup tab, matikan komputer, dan kembali beberapa hari kemudian. Turnamen dan riwayat lengkap Anda akan tetap ada.',
+    html: 'Tanpa hambatan. Tanpa akun, tanpa instalasi, tanpa menunggu. Tambah peserta dan buat turnamen Anda secara instan. Semuanya disimpan secara otomatis di browser Anda melalui <strong>LocalStorage</strong>: tutup tab, matikan komputer, dan kembali beberapa hari kemudian. Turnamen dan riwayat lengkap Anda akan tetap ada.'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'Pertanyaan yang Sering Diajukan', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

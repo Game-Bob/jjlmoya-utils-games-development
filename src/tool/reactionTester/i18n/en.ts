@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: 'STILL...', wp1s: 'Don\'t blink now',
   wp2t: 'READY...', wp2s: 'Fingers ready...',
   wp3t: 'HOLD...', wp3s: 'Patience, grasshopper',
-  wp4t: 'FOCUS...', wp4s: 'It\'s coming...',
+  wp4t: 'FOCUS...', wp4s: 'It\'s coming...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: 'How Does This Reaction Test Work?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: 'This tool measures your <strong>visual reaction time</strong> with surgical precision. We calculate the exact interval from when the screen lights up until the signal travels from your eyes to your brain, and then to your fingers. The test requires <strong>5 consecutive attempts</strong> to calculate your real average, eliminating the luck factor.',
+    html: 'This tool measures your <strong>visual reaction time</strong> with surgical precision. We calculate the exact interval from when the screen lights up until the signal travels from your eyes to your brain, and then to your fingers. The test requires <strong>5 consecutive attempts</strong> to calculate your real average, eliminating the luck factor.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>Average of 5 attempts:</strong> We eliminate the "luck" factor by requiring consistency. A single lucky click won\'t make you a Cyberathlete.',
       '<strong>Anti-Cheat System:</strong> Random wait times (1.5s - 4.5s) and early-click detection to prevent prediction.',
       '<strong>Real science:</strong> Brain processing ~180-200ms + motor response +20-40ms = your total reaction time.',
-    ],
+    ]
   },
   { type: 'title' as const, text: 'World Ranking Table', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', 'Human', 'The healthy average. You\'re awake and functioning properly.'],
       ['280 - 350 ms', 'Turtle', 'Below average. Rest or train more.'],
       ['&gt; 350 ms', 'Asleep', 'Possible fatigue, sleepiness or slow hardware (input lag).'],
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Why Are You Slow? Blaming the Hardware', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: 'Monitor (Hz)',
         description: 'A 60Hz monitor takes ~16ms to paint a frame. A 144Hz one takes only 7ms. That 10ms difference counts in your final score.',
         icon: 'mdi:monitor',
-        points: ['60Hz = ~16ms per frame', '144Hz = ~7ms per frame', 'Visible difference in test'],
+        points: ['60Hz = ~16ms per frame', '144Hz = ~7ms per frame', 'Visible difference in test']
       },
       {
         title: 'Wireless Mouse',
         description: 'Cheap office Bluetooth mice have high latency. For this test, use a cable or low-latency 2.4GHz wireless technology.',
         icon: 'mdi:mouse-variant',
-        points: ['Cheap Bluetooth: +15-50ms', '2.4GHz gaming: <1ms extra', 'USB cable: reference'],
+        points: ['Cheap Bluetooth: +15-50ms', '2.4GHz gaming: <1ms extra', 'USB cable: reference']
       },
       {
         title: 'Browser',
         description: 'Extensions that block ads or heavy scripts can cause stuttering. Try incognito mode for your real record.',
         icon: 'mdi:web',
-        points: ['Close heavy extensions', 'Incognito = cleaner', 'Chrome/Firefox recommended'],
+        points: ['Close heavy extensions', 'Incognito = cleaner', 'Chrome/Firefox recommended']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: 'Frequently Asked Questions', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

@@ -1,15 +1,6 @@
 ---
-import { Bibliography } from '@jjlmoya/utils-shared';
-import { gymTracker } from './index';
-import type { KnownLocale } from '../../types';
-
-interface Props {
-  locale?: KnownLocale;
-}
-
-const { locale = 'es' } = Astro.props;
-const content = await gymTracker.i18n[locale]?.();
-if (!content) return;
+import { Bibliography as SharedBibliography } from '@jjlmoya/utils-shared';
+import { bibliography } from './bibliography';
 ---
 
-<Bibliography links={content.bibliography} title={content.bibliographyTitle} />
+<SharedBibliography links={bibliography} />

@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'Länk kopierad till urklipp',
   toastShareFailed: 'Kunde inte kopiera. URL:',
   toastFinished: 'Turneringen avslutad!',
-  defaultName: 'Turnering',
+  defaultName: 'Turnering'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: 'Gratis turneringsgenerator och skapare av slutspelsträd online',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Hantera dina sport-, videospels- eller brädspelstävlingar med den mest kompletta, kostnadsfria och registreringsfria turneringsorganisatören. Skapa visuella och interaktiva slutspelsträd på några sekunder, med ett <strong>integrerat poängsystem</strong>, automatisk historik och smart matchnavigering. Allt fungerar offline, direkt i din webbläsare.',
+    html: 'Hantera dina sport-, videospels- eller brädspelstävlingar med den mest kompletta, kostnadsfria och registreringsfria turneringsorganisatören. Skapa visuella och interaktiva slutspelsträd på några sekunder, med ett <strong>integrerat poängsystem</strong>, automatisk historik och smart matchnavigering. Allt fungerar offline, direkt i din webbläsare.'
   },
   {
     type: 'title' as const,
     text: 'Hur skapar man en utslagsturnering?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>Ge din turnering ett namn</strong>, lägg till deltagare (en och en eller klistra in en kommaseparerad lista), slumpa matchningar om du vill, generera trädet, hantera resultat genom att trycka på vinnaren i varje match och använd knappen "Nästa match" för att navigera mellan oavgjorda matcher.',
+    html: '<strong>Ge din turnering ett namn</strong>, lägg till deltagare (en och en eller klistra in en kommaseparerad lista), slumpa matchningar om du vill, generera trädet, hantera resultat genom att trycka på vinnaren i varje match och använd knappen "Nästa match" för att navigera mellan oavgjorda matcher.'
   },
   {
     type: 'title' as const,
     text: 'Avancerade funktioner',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>Beständig historik:</strong> Alla turneringar sparas automatiskt i din webbläsare.',
       '<strong>Automatiska walkovers:</strong> Byes och direktavancemang löses utan manuell inmatning.',
       '<strong>Dela via URL:</strong> Generera en komprimerad länk för att skicka trädet till vem som helst.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Perfekt för alla tävlingar',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'Videospel & esport',
         description: 'Perfekt för FIFA, FC25, Valorant, League of Legends, Street Fighter, Tekken, Super Smash Bros eller Rocket League.',
         icon: 'mdi:controller-classic',
-        points: ['Snabba matchningar', 'Ingen laggräns', 'Omedelbart delbar'],
+        points: ['Snabba matchningar', 'Ingen laggräns', 'Omedelbart delbar']
       },
       {
         title: 'Sport & racketsport',
         description: 'Hantera träd för padel, tennis, pingis, badminton, futsal eller 3x3 basket.',
         icon: 'mdi:trophy-outline',
-        points: ['Integrerade poäng', 'Optimerad mobilvy', 'Inget mer papper'],
+        points: ['Integrerade poäng', 'Optimerad mobilvy', 'Inget mer papper']
       },
       {
         title: 'Bräd  & kortspel',
         description: 'Organisera turneringar för Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, schack eller domino.',
         icon: 'mdi:cards-playing-outline',
-        points: ['Upp till 64 spelare', 'Omgångshistorik', 'Hantering av byes'],
+        points: ['Upp till 64 spelare', 'Omgångshistorik', 'Hantering av byes']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Vad är "Byes" eller direktavancemang?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'I en idealisk utslagsturnering måste antalet deltagare vara en potens av 2 (4, 8, 16, 32...). När du har ett ojämnt antal eller ett antal som inte är en potens av 2 — till exempel 7, 10 eller 13 spelare — tilldelar systemet automatiskt <strong>"Byes"</strong> i den första omgången. En "Bye" innebär att en deltagare går direkt till nästa fas utan att spela. Vår algoritm beräknar och tilldelar dessa avancemang rättvist och automatiskt.',
+    html: 'I en idealisk utslagsturnering måste antalet deltagare vara en potens av 2 (4, 8, 16, 32...). När du har ett ojämnt antal eller ett antal som inte är en potens av 2 — till exempel 7, 10 eller 13 spelare — tilldelar systemet automatiskt <strong>"Byes"</strong> i den första omgången. En "Bye" innebär att en deltagare går direkt till nästa fas utan att spela. Vår algoritm beräknar och tilldelar dessa avancemang rättvist och automatiskt.'
   },
   {
     type: 'title' as const,
     text: 'Omedelbart, gratis och ingen registrering krävs',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Noll friktion. Inga konton, inga installationer, ingen väntan. Lägg till deltagare och generera din turnering direkt. Allt sparas automatiskt i din webbläsare via <strong>LocalStorage</strong>: stäng fliken, stäng av datorn och kom tillbaka dagar senare. Din turnering och fullständiga historik kommer fortfarande att finnas kvar.',
+    html: 'Noll friktion. Inga konton, inga installationer, ingen väntan. Lägg till deltagare och generera din turnering direkt. Allt sparas automatiskt i din webbläsare via <strong>LocalStorage</strong>: stäng fliken, stäng av datorn och kom tillbaka dagar senare. Din turnering och fullständiga historik kommer fortfarande att finnas kvar.'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'Vanliga frågor', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'Enlace copiado al portapapeles',
   toastShareFailed: 'No se pudo copiar. URL:',
   toastFinished: '¡Torneo Finalizado!',
-  defaultName: 'Torneo',
+  defaultName: 'Torneo'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: 'Generador de Brackets y Organizador de Torneos Online',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Gestiona tus competiciones deportivas, de videojuegos o de mesa con el organizador de torneos más completo, gratuito y sin registro. Crea cuadros de eliminatoria directa (brackets) visuales e interactivos en segundos, con <strong>sistema de puntuación integrado</strong>, historial automático y navegación inteligente entre partidos. Todo funciona offline, directamente en tu navegador.',
+    html: 'Gestiona tus competiciones deportivas, de videojuegos o de mesa con el organizador de torneos más completo, gratuito y sin registro. Crea cuadros de eliminatoria directa (brackets) visuales e interactivos en segundos, con <strong>sistema de puntuación integrado</strong>, historial automático y navegación inteligente entre partidos. Todo funciona offline, directamente en tu navegador.'
   },
   {
     type: 'title' as const,
     text: '¿Cómo crear un Torneo de Eliminación Directa?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Organizar una competición profesional nunca ha sido tan sencillo. <strong>Nombra tu torneo</strong>, añade participantes (uno a uno o pegando una lista separada por comas), aleatoriza los cruces si quieres, genera el bracket, gestiona los resultados tocando al ganador de cada encuentro y usa el botón "Siguiente Partido" para navegar entre partidos sin resolver.',
+    html: 'Organizar una competición profesional nunca ha sido tan sencillo. <strong>Nombra tu torneo</strong>, añade participantes (uno a uno o pegando una lista separada por comas), aleatoriza los cruces si quieres, genera el bracket, gestiona los resultados tocando al ganador de cada encuentro y usa el botón "Siguiente Partido" para navegar entre partidos sin resolver.'
   },
   {
     type: 'title' as const,
     text: 'Funcionalidades Avanzadas',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>Historial persistente:</strong> Todos los torneos se guardan en tu navegador automáticamente.',
       '<strong>Walkovers automáticos:</strong> Resolución de pases directos y Byes sin intervención manual.',
       '<strong>Compartir por URL:</strong> Genera un enlace comprimido para enviar el bracket a cualquiera.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Ideal para cualquier tipo de competición',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'Videojuegos y eSports',
         description: 'Perfecto para FIFA, FC25, Valorant, League of Legends, Street Fighter, Tekken, Super Smash Bros o Rocket League.',
         icon: 'mdi:controller-classic',
-        points: ['Partidas rápidas', 'Sin límite de equipos', 'Compartible al instante'],
+        points: ['Partidas rápidas', 'Sin límite de equipos', 'Compartible al instante']
       },
       {
         title: 'Deportes y Pistas',
         description: 'Gestiona cuadros de Pádel, Tenis, Ping Pong, Bádminton, Fútbol Sala o Baloncesto 3x3.',
         icon: 'mdi:trophy-outline',
-        points: ['Marcadores integrados', 'Vista móvil optimizada', 'Sin papel ni pizarra'],
+        points: ['Marcadores integrados', 'Vista móvil optimizada', 'Sin papel ni pizarra']
       },
       {
         title: 'Juegos de Mesa y Cartas',
         description: 'Organiza partidas de Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, Ajedrez o Dominó.',
         icon: 'mdi:cards-playing-outline',
-        points: ['Hasta 64 jugadores', 'Historial de rondas', 'Gestión de Byes'],
+        points: ['Hasta 64 jugadores', 'Historial de rondas', 'Gestión de Byes']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: '¿Qué son los "Byes" o Pases Directos?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'En un torneo de eliminación directa ideal, el número de participantes debe ser una potencia de 2 (4, 8, 16, 32...). Cuando tienes un número impar o no potencia de 2 —por ejemplo 7, 10 o 13 jugadores—, el sistema asigna automáticamente <strong>"Byes"</strong> en la primera ronda. Un "Bye" significa que un participante pasa directamente a la siguiente fase sin jugar. Nuestro algoritmo calcula y asigna estos pases de forma justa y automática.',
+    html: 'En un torneo de eliminación directa ideal, el número de participantes debe ser una potencia de 2 (4, 8, 16, 32...). Cuando tienes un número impar o no potencia de 2 —por ejemplo 7, 10 o 13 jugadores—, el sistema asigna automáticamente <strong>"Byes"</strong> en la primera ronda. Un "Bye" significa que un participante pasa directamente a la siguiente fase sin jugar. Nuestro algoritmo calcula y asigna estos pases de forma justa y automática.'
   },
   {
     type: 'title' as const,
     text: 'Instantáneo, Gratuito y Sin Registro',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Cero fricción. Sin cuentas, sin instalaciones, sin esperas. Añade participantes y genera tu torneo al instante. Todo se guarda automáticamente en tu navegador con <strong>LocalStorage</strong>: puedes cerrar la pestaña, apagar el ordenador y volver días después. Tu torneo y el historial completo seguirán ahí.',
+    html: 'Cero fricción. Sin cuentas, sin instalaciones, sin esperas. Añade participantes y genera tu torneo al instante. Todo se guarda automáticamente en tu navegador con <strong>LocalStorage</strong>: puedes cerrar la pestaña, apagar el ordenador y volver días después. Tu torneo y el historial completo seguirán ahí.'
   },
 ];
 
@@ -155,14 +156,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -171,8 +172,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'Preguntas frecuentes', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

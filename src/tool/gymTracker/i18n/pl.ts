@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { GymTrackerUI } from '../ui';
@@ -11,41 +12,41 @@ const faqData = [
   {
     question: 'Jaki jest cel śledzenia treningów?',
     answer:
-      'Służy to naukowemu stosowaniu progresywnego przeładowania. Wiedząc dokładnie, ile podniosłeś na poprzedniej sesji, możesz spróbować pobić ten wynik, co gwarantuje wzrost mięśni i długoterminowe zyski siłowe.',
+      'Służy to naukowemu stosowaniu progresywnego przeładowania. Wiedząc dokładnie, ile podniosłeś na poprzedniej sesji, możesz spróbować pobić ten wynik, co gwarantuje wzrost mięśni i długoterminowe zyski siłowe.'
   },
   {
     question: 'Jakie dane powinienem rejestrować?',
     answer:
-      'Najważniejszy jest ciężar maksymalny (top set), który osiągnąłeś z dobrą techniką dla ustalonej liczby powtórzeń. Nasze narzędzie koncentruje się na rejestrowaniu ciężaru na każdej sesji w celu wygenerowania wykresu postępów.',
+      'Najważniejszy jest ciężar maksymalny (top set), który osiągnąłeś z dobrą techniką dla ustalonej liczby powtórzeń. Nasze narzędzie koncentruje się na rejestrowaniu ciężaru na każdej sesji w celu wygenerowania wykresu postępów.'
   },
   {
     question: 'Jak interpretować wykresy?',
     answer:
-      'Linia wznosząca wskazuje, że robisz postępy. Linia płaska (stagnacja) sugeruje, że musisz dostosować objętość, intensywność lub regenerację. Stale opadająca linia może być oznaką przetrenowania.',
+      'Linia wznosząca wskazuje, że robisz postępy. Linia płaska (stagnacja) sugeruje, że musisz dostosować objętość, intensywność lub regenerację. Stale opadająca linia może być oznaką przetrenowania.'
   },
   {
     question: 'Gdzie są przechowywane moje dane?',
     answer:
-      'Dane są przechowywane lokalnie w Twojej przeglądarce (Local Storage). Oznacza to całkowitą prywatność i brak konieczności zakładania konta, ale jeśli wyczyścisz dane przeglądarki, historia zostanie utracona.',
+      'Dane są przechowywane lokalnie w Twojej przeglądarce (Local Storage). Oznacza to całkowitą prywatność i brak konieczności zakładania konta, ale jeśli wyczyścisz dane przeglądarki, historia zostanie utracona.'
   },
 ];
 
 const howToData = [
   {
     name: 'Wybierz ćwiczenie',
-    text: 'Wybierz z rozwijanego menu podstawowe boje, takie jak przysiad, wyciskanie na ławce czy martwy ciąg.',
+    text: 'Wybierz z rozwijanego menu podstawowe boje, takie jak przysiad, wyciskanie na ławce czy martwy ciąg.'
   },
   {
     name: 'Wprowadź ciężar',
-    text: 'Po najcięższej serii wpisz podniesione kilogramy/funty w odpowiednim polu.',
+    text: 'Po najcięższej serii wpisz podniesione kilogramy/funty w odpowiednim polu.'
   },
   {
     name: 'Naciśnij Dodaj',
-    text: 'Zapisz swój wynik. System automatycznie zaktualizuje historię i wykres postępów.',
+    text: 'Zapisz swój wynik. System automatycznie zaktualizuje historię i wykres postępów.'
   },
   {
     name: 'Analizuj swoją ewolucję',
-    text: 'Okresowo zaglądaj do wykresu, aby zidentyfikować przestoje i motywować się widokiem realnego wzrostu siły.',
+    text: 'Okresowo zaglądaj do wykresu, aby zidentyfikować przestoje i motywować się widokiem realnego wzrostu siły.'
   },
 ];
 
@@ -55,8 +56,8 @@ const faqSchema: WithContext<FAQPage> = {
   mainEntity: faqData.map((item) => ({
     '@type': 'Question',
     name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
-  })),
+    acceptedAnswer: { '@type': 'Answer', text: item.answer }
+  }))
 };
 
 const howToSchema: WithContext<HowTo> = {
@@ -68,8 +69,8 @@ const howToSchema: WithContext<HowTo> = {
     '@type': 'HowToStep',
     position: i + 1,
     name: step.name,
-    text: step.text,
-  })),
+    text: step.text
+  }))
 };
 
 const appSchema: WithContext<SoftwareApplication> = {
@@ -80,50 +81,35 @@ const appSchema: WithContext<SoftwareApplication> = {
   applicationCategory: 'HealthApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  inLanguage: 'pl',
+  inLanguage: 'pl'
 };
 
 export const content: ToolLocaleContent<GymTrackerUI & Record<string, string>> = {
   slug,
   title,
   description,
-  faqTitle: 'Często Zadawane Pytania',
   faq: faqData,
-  bibliographyTitle: 'Referencje Naukowe',
-  bibliography: [
-    {
-      name: 'Journal of Strength and Conditioning Research - Progressive Overload Study',
-      url: 'https://journals.lww.com/nsca-jscr/Fulltext/2010/10000/The_Mechanisms_of_Muscle_Hypertrophy_and_Their.40.aspx',
-    },
-    {
-      name: 'National Academy of Sports Medicine - Progressive Overload Explained',
-      url: 'https://blog.nasm.org/progressive-overload-explained',
-    },
-    {
-      name: 'Science of Strength - Data Tracking in Resistance Training',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/30558493/',
-    },
-  ],
+  bibliography,
   howTo: howToData,
   schemas: [faqSchema, howToSchema, appSchema],
   seo: [
     {
       type: 'title',
       text: 'Śledzenie Treningu: Klucz do Prawdziwego Postępu',
-      level: 2,
+      level: 2
     },
     {
       type: 'paragraph',
-      html: 'W świecie fitnessu i kulturystyki istnieje fundamentalna zasada, która oddziela tych, którzy osiągają niesamowite wyniki, od tych, którzy szybko wpadają w stagnację: <strong>progresywne przeładowanie (progressive overload)</strong>. Niemniej jednak, niemożliwe jest skuteczne stosowanie tej zasady, jeśli nie prowadzi się szczegółowych rejestrów swoich dźwignięć. W tym przewodniku zbadamy, dlaczego śledzenie treningów jest kluczowe, jak korzystać z naszego <strong>trackera treningowego</strong>, aby zmaksymalizować zyski, oraz podstawy naukowe wspierające tę praktykę.',
+      html: 'W świecie fitnessu i kulturystyki istnieje fundamentalna zasada, która oddziela tych, którzy osiągają niesamowite wyniki, od tych, którzy szybko wpadają w stagnację: <strong>progresywne przeładowanie (progressive overload)</strong>. Niemniej jednak, niemożliwe jest skuteczne stosowanie tej zasady, jeśli nie prowadzi się szczegółowych rejestrów swoich dźwignięć. W tym przewodniku zbadamy, dlaczego śledzenie treningów jest kluczowe, jak korzystać z naszego <strong>trackera treningowego</strong>, aby zmaksymalizować zyski, oraz podstawy naukowe wspierające tę praktykę.'
     },
     {
       type: 'title',
       text: 'Czym jest Progresywne Przeładowanie?',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Progresywne przeładowanie to stopniowe zwiększanie stresu nakładanego na organizm podczas ćwiczeń fizycznych. Aby mięsień rósł lub stawał się silniejszy, musi być poddawany bodźcowi większemu niż ten, do którego jest przyzwyczajony. Jeśli idziesz na siłownię i zawsze podnosisz ten sam ciężar, z tą samą liczbą powtórzeń i tym samym czasem odpoczynku, Twoje ciało nie będzie miało biologicznego powodu, aby się adaptować i rosnąć.',
+      html: 'Progresywne przeładowanie to stopniowe zwiększanie stresu nakładanego na organizm podczas ćwiczeń fizycznych. Aby mięsień rósł lub stawał się silniejszy, musi być poddawany bodźcowi większemu niż ten, do którego jest przyzwyczajony. Jeśli idziesz na siłownię i zawsze podnosisz ten sam ciężar, z tą samą liczbą powtórzeń i tym samym czasem odpoczynku, Twoje ciało nie będzie miało biologicznego powodu, aby się adaptować i rosnąć.'
     },
     {
       type: 'list',
@@ -133,48 +119,48 @@ export const content: ToolLocaleContent<GymTrackerUI & Record<string, string>> =
         'Zwiększenie objętości: Wykonywanie większej całkowitej liczby serii na grupę mięśniową.',
         'Skrócenie odpoczynku: Wykonanie tej samej pracy w krótszym czasie.',
         'Poprawa techniki: Wykonywanie ćwiczenia z lepszą kontrolą i większym zakresem ruchu.',
-      ],
+      ]
     },
     {
       type: 'title',
       text: 'Dlaczego Dziennik Ręczny jest Lepszy od Pamięci',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Wielu sportowców popełnia błąd, ufając swojej pamięci w kwestii tego, ile podnieśli w zeszłym tygodniu. Jednak w typowym treningu obejmującym od 5 do 10 różnych ćwiczeń, bardzo łatwo jest zapomnieć, czy było to 80 kg czy 82,5 kg na ławce, albo czy powtórzeń było 10 czy 12. Ten brak precyzji prowadzi do przeciętności.',
+      html: 'Wielu sportowców popełnia błąd, ufając swojej pamięci w kwestii tego, ile podnieśli w zeszłym tygodniu. Jednak w typowym treningu obejmującym od 5 do 10 różnych ćwiczeń, bardzo łatwo jest zapomnieć, czy było to 80 kg czy 82,5 kg na ławce, albo czy powtórzeń było 10 czy 12. Ten brak precyzji prowadzi do przeciętności.'
     },
     {
       type: 'tip',
       title: 'Moc Wizualizacji Postępu',
-      html: 'Widok wznoszącej się linii na wykresie daje impuls potrzebny do spróbowania tego dodatkowego powtórzenia, które stanowi różnicę między stagnacją a stałym wzrostem mięśni.',
+      html: 'Widok wznoszącej się linii na wykresie daje impuls potrzebny do spróbowania tego dodatkowego powtórzenia, które stanowi różnicę między stagnacją a stałym wzrostem mięśni.'
     },
     {
       type: 'title',
       text: 'Podstawowe Ćwiczenia do Śledzenia',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Choć wszystkie ćwiczenia są wartościowe, pewne boje złożone (compound) oferują najlepszy wgląd w ogólną siłę i rozwój fizyczny. To na nich powinieneś skupić się w pierwszej kolejności: <strong>Wyciskanie na ławce</strong> dla wypychania horyzontalnego, <strong>Wyciskanie nad głowę</strong> dla wypychania wertykalnego, <strong>Podciąganie</strong> dla przyciągania oraz <strong>Hip Thrust</strong> dla pośladków.',
+      html: 'Choć wszystkie ćwiczenia są wartościowe, pewne boje złożone (compound) oferują najlepszy wgląd w ogólną siłę i rozwój fizyczny. To na nich powinieneś skupić się w pierwszej kolejności: <strong>Wyciskanie na ławce</strong> dla wypychania horyzontalnego, <strong>Wyciskanie nad głowę</strong> dla wypychania wertykalnego, <strong>Podciąganie</strong> dla przyciągania oraz <strong>Hip Thrust</strong> dla pośladków.'
     },
     {
       type: 'title',
       text: 'Jak Analizować Wykresy Postępów',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Po zarejestrowaniu kilku treningów zaczniesz dostrzegać wzorce: <strong>stale wznosząca się linia</strong> wskazuje właściwą drogę, <strong>stagnacja</strong> sugeruje potrzebę dostosowania objętości lub odpoczynku, a <strong>trend spadkowy</strong> może być oznaką nagromadzonego zmęczenia.',
+      html: 'Po zarejestrowaniu kilku treningów zaczniesz dostrzegać wzorce: <strong>stale wznosząca się linia</strong> wskazuje właściwą drogę, <strong>stagnacja</strong> sugeruje potrzebę dostosowania objętości lub odpoczynku, a <strong>trend spadkowy</strong> może być oznaką nagromadzonego zmęczenia.'
     },
     {
       type: 'title',
       text: 'Psychologia Sukcesu na Siłowni',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Trening to wyzwanie zarówno mentalne, jak i fizyczne. Używając wizualnego narzędzia, które pokazuje, że dziś jesteś o 1% silniejszy niż dwa tygodnie temu, karmisz swój dopaminowy system nagrody. Tworzy to pozytywną pętlę zwrotną, która zmienia trening w trwały nawyk.',
+      html: 'Trening to wyzwanie zarówno mentalne, jak i fizyczne. Używając wizualnego narzędzia, które pokazuje, że dziś jesteś o 1% silniejszy niż dwa tygodnie temu, karmisz swój dopaminowy system nagrody. Tworzy to pozytywną pętlę zwrotną, która zmienia trening w trwały nawyk.'
     },
   ],
   ui: {
@@ -220,6 +206,6 @@ export const content: ToolLocaleContent<GymTrackerUI & Record<string, string>> =
     lunges: 'Wykroki',
     gluteKick: 'Odwodzenie nogi na wyciągu',
     hipAbduction: 'Odwodzenie nóg na maszynie',
-    stepUp: 'Step Upy',
-  },
+    stepUp: 'Step Upy'
+  }
 };

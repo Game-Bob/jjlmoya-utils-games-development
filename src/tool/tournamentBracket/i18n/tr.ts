@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'Bağlantı pano kopyalandı',
   toastShareFailed: 'Kopyalanamadı. URL:',
   toastFinished: 'Turnuva Bitti!',
-  defaultName: 'Turnuva',
+  defaultName: 'Turnuva'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: 'Ücretsiz Online Turnuva Jeneratörü ve Braket Oluşturucu',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Spor, video oyunu veya masa oyunu yarışmalarınızı en kapsamlı, ücretsiz ve kayıt gerektirmeyen turnuva düzenleyici ile yönetin. <strong>Entegre skor sistemi</strong>, otomatik geçmiş ve akıllı maç navigasyonu ile saniyeler içinde görsel ve etkileşimli tek elemeli braketler oluşturun. Her şey doğrudan tarayıcınızda, çevrimdışı çalışır.',
+    html: 'Spor, video oyunu veya masa oyunu yarışmalarınızı en kapsamlı, ücretsiz ve kayıt gerektirmeyen turnuva düzenleyici ile yönetin. <strong>Entegre skor sistemi</strong>, otomatik geçmiş ve akıllı maç navigasyonu ile saniyeler içinde görsel ve etkileşimli tek elemeli braketler oluşturun. Her şey doğrudan tarayıcınızda, çevrimdışı çalışır.'
   },
   {
     type: 'title' as const,
     text: 'Tek Elemeli Turnuva Nasıl Oluşturulur?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>Turnuvanıza bir isim verin</strong>, katılımcıları ekleyin (tek tek veya virgülle ayrılmış bir liste yapıştırarak), isterseniz eşleşmeleri karıştırın, braketi oluşturun, her maçın kazananına dokunarak sonuçları yönetin ve sonuçlanmamış maçlar arasında gezinmek için "Sıradaki Maç" düğmesini kullanın.',
+    html: '<strong>Turnuvanıza bir isim verin</strong>, katılımcıları ekleyin (tek tek veya virgülle ayrılmış bir liste yapıştırarak), isterseniz eşleşmeleri karıştırın, braketi oluşturun, her maçın kazananına dokunarak sonuçları yönetin ve sonuçlanmamış maçlar arasında gezinmek için "Sıradaki Maç" düğmesini kullanın.'
   },
   {
     type: 'title' as const,
     text: 'Gelişmiş Özellikler',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>Kalıcı geçmiş:</strong> Tüm turnuvalar tarayıcınıza otomatik olarak kaydedilir.',
       '<strong>Otomatik Hükmen Galibiyetler:</strong> Bye ve direkt geçişler manuel giriş olmadan çözülür.',
       '<strong>URL ile paylaş:</strong> Braketi herkese göndermek için sıkıştırılmış bir bağlantı oluşturun.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Her Yarışma İçin Mükemmel',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'Video Oyunları & eSports',
         description: 'FIFA, FC25, Valorant, League of Legends, Street Fighter, Tekken, Super Smash Bros veya Rocket League için mükemmel.',
         icon: 'mdi:controller-classic',
-        points: ['Hızlı eşleşmeler', 'Takım sınırı yok', 'Anında paylaşılabilir'],
+        points: ['Hızlı eşleşmeler', 'Takım sınırı yok', 'Anında paylaşılabilir']
       },
       {
         title: 'Spor & Raket Sporları',
         description: 'Padel, Tenis, Masa Tenisi, Badminton, Futsal veya 3x3 Basketbol braketlerini yönetin.',
         icon: 'mdi:trophy-outline',
-        points: ['Entegre skorlar', 'Optimize edilmiş mobil görünüm', 'Kağıda gerek yok'],
+        points: ['Entegre skorlar', 'Optimize edilmiş mobil görünüm', 'Kağıda gerek yok']
       },
       {
         title: 'Masa & Kart Oyunları',
         description: 'Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, Satranç veya Domino turnuvaları düzenleyin.',
         icon: 'mdi:cards-playing-outline',
-        points: ['64 oyuncuya kadar', 'Tur geçmişi', 'Bye yönetimi'],
+        points: ['64 oyuncuya kadar', 'Tur geçmişi', 'Bye yönetimi']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: '"Bye" veya Direkt Geçiş Nedir?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'İdeal bir tek elemeli turnuvada katılımcı sayısı 2\'nin bir kuvveti (4, 8, 16, 32...) olmalıdır. Tek bir sayınız olduğunda veya 2\'nin kuvveti olmayan bir sayınız olduğunda —örneğin 7, 10 veya 13 oyuncu— sistem ilk turda otomatik olarak <strong>"Bye"</strong> atar. "Bye", bir katılımcının oynamadan doğrudan bir sonraki aşamaya geçmesi anlamına gelir. Algoritmamız bu geçişleri adil ve otomatik olarak hesaplar ve atar.',
+    html: 'İdeal bir tek elemeli turnuvada katılımcı sayısı 2\'nin bir kuvveti (4, 8, 16, 32...) olmalıdır. Tek bir sayınız olduğunda veya 2\'nin kuvveti olmayan bir sayınız olduğunda —örneğin 7, 10 veya 13 oyuncu— sistem ilk turda otomatik olarak <strong>"Bye"</strong> atar. "Bye", bir katılımcının oynamadan doğrudan bir sonraki aşamaya geçmesi anlamına gelir. Algoritmamız bu geçişleri adil ve otomatik olarak hesaplar ve atar.'
   },
   {
     type: 'title' as const,
     text: 'Anında, Ücretsiz ve Kayıt Gerekmez',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Sıfır sürtünme. Hesap yok, kurulum yok, bekleme yok. Katılımcıları ekleyin ve turnuvanızı anında oluşturun. Her şey tarayıcınızda <strong>LocalStorage</strong> aracılığıyla otomatik olarak kaydedilir: sekmeyi kapatın, bilgisayarı kapatın ve günler sonra geri gelin. Turnuvanız ve tam geçmişiniz hala orada olacaktır.',
+    html: 'Sıfır sürtünme. Hesap yok, kurulum yok, bekleme yok. Katılımcıları ekleyin ve turnuvanızı anında oluşturun. Her şey tarayıcınızda <strong>LocalStorage</strong> aracılığıyla otomatik olarak kaydedilir: sekmeyi kapatın, bilgisayarı kapatın ve günler sonra geri gelin. Turnuvanız ve tam geçmişiniz hala orada olacaktır.'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'Sıkça Sorulan Sorular', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

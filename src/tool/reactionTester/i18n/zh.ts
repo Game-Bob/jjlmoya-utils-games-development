@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: '静止...', wp1s: '现在不要眨眼',
   wp2t: '准备...', wp2s: '手指准备好了...',
   wp3t: '保持...', wp3s: '耐心，年轻的蝗虫',
-  wp4t: '聚焦...', wp4s: '要来了...',
+  wp4t: '聚焦...', wp4s: '要来了...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: '这个反应测试如何工作？', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: '该工具以外科手术的精确度测量你的<strong>视觉反应时间</strong>。我们计算从屏幕点亮到信号从眼睛传递到大脑，然后传递到手指的确切间隔。测试需要<strong>5次连续尝试</strong>来计算你的真实平均值，消除幸运因素。',
+    html: '该工具以外科手术的精确度测量你的<strong>视觉反应时间</strong>。我们计算从屏幕点亮到信号从眼睛传递到大脑，然后传递到手指的确切间隔。测试需要<strong>5次连续尝试</strong>来计算你的真实平均值，消除幸运因素。'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>5次尝试的平均值：</strong>我们通过要求一致性来消除"幸运"因素。单次幸运点击不会让你成为网络运动员。',
       '<strong>反作弊系统：</strong>随机等待时间（1.5秒 - 4.5秒）和早期点击检测以防止预测。',
       '<strong>真实科学：</strong>大脑处理~180-200毫秒+运动反应+20-40毫秒=你的总反应时间。',
-    ],
+    ]
   },
   { type: 'title' as const, text: '世界排名表', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', '人类', '健康的平均值。你清醒并正常运作。'],
       ['280 - 350 ms', '乌龟', '低于平均水平。多休息或训练。'],
       ['&gt; 350 ms', '睡着', '可能疲劳、困倦或硬件缓慢（输入延迟）。'],
-    ],
+    ]
   },
   { type: 'title' as const, text: '为什么你很慢？责怪硬件', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: '显示器（赫兹）',
         description: '60Hz显示器需要约16毫秒来绘制一帧。144Hz只需要7毫秒。这10毫秒的差异在你的最终分数中计算。',
         icon: 'mdi:monitor',
-        points: ['60Hz = 每帧约16毫秒', '144Hz = 每帧约7毫秒', '测试中明显差异'],
+        points: ['60Hz = 每帧约16毫秒', '144Hz = 每帧约7毫秒', '测试中明显差异']
       },
       {
         title: '无线鼠标',
         description: '廉价的办公蓝牙鼠标延迟很高。对于这个测试，使用低延迟的电缆或2.4GHz无线技术。',
         icon: 'mdi:mouse-variant',
-        points: ['便宜蓝牙：+15-50毫秒', '2.4GHz游戏：<1毫秒额外', 'USB电缆：参考'],
+        points: ['便宜蓝牙：+15-50毫秒', '2.4GHz游戏：<1毫秒额外', 'USB电缆：参考']
       },
       {
         title: '浏览器',
         description: '阻止广告的扩展程序或较重的脚本可能导致卡顿。尝试隐私模式获得真实记录。',
         icon: 'mdi:web',
-        points: ['关闭重扩展', '隐私=更清洁', '推荐Chrome/Firefox'],
+        points: ['关闭重扩展', '隐私=更清洁', '推荐Chrome/Firefox']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: '常见问题', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

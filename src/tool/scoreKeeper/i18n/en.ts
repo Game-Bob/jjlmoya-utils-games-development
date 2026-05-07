@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
@@ -11,55 +12,55 @@ const faqData = [
   {
     question: 'Does it work without an internet connection?',
     answer:
-      'Yes, once the page is loaded, the scoreboard works completely offline. You do not need data or WiFi during the match. Everything is saved locally in your browser.',
+      'Yes, once the page is loaded, the scoreboard works completely offline. You do not need data or WiFi during the match. Everything is saved locally in your browser.'
   },
   {
     question: 'Can I use the scoreboard for tennis and padel?',
     answer:
-      'Yes, the Tennis/Padel mode automatically handles the 15-30-40-AD sequence and keeps track of sets and games according to the official rules. Perfect for friendly matches.',
+      'Yes, the Tennis/Padel mode automatically handles the 15-30-40-AD sequence and keeps track of sets and games according to the official rules. Perfect for friendly matches.'
   },
   {
     question: 'Can it be put in full screen?',
     answer:
-      'Yes, you can activate full screen mode from your browser (F11 on PC, or the full screen button on mobile). Numbers take up 80% of the screen for maximum visibility.',
+      'Yes, you can activate full screen mode from your browser (F11 on PC, or the full screen button on mobile). Numbers take up 80% of the screen for maximum visibility.'
   },
   {
     question: 'How do I correct a point if I make a mistake?',
     answer:
-      'There is a separate button to subtract points on each player card. You can quickly correct mistakes without having to restart the entire scoreboard.',
+      'There is a separate button to subtract points on each player card. You can quickly correct mistakes without having to restart the entire scoreboard.'
   },
   {
     question: 'Does it work for basketball with 1, 2 and 3 point baskets?',
     answer:
-      'Yes, in Basketball mode dedicated +1, +2 and +3 buttons appear to score any play quickly without extra taps.',
+      'Yes, in Basketball mode dedicated +1, +2 and +3 buttons appear to score any play quickly without extra taps.'
   },
   {
     question: 'Does the scoreboard automatically handle service in ping-pong?',
     answer:
-      'Yes, in Ping Pong mode the service indicator rotates automatically every 2 points (or every point in deuce), following the official ITTF rules.',
+      'Yes, in Ping Pong mode the service indicator rotates automatically every 2 points (or every point in deuce), following the official ITTF rules.'
   },
 ];
 
 const howToData = [
   {
     name: 'Select your sport',
-    text: 'Choose the sport from the selector at the top: Free, Tennis, Padel, Ping Pong, Volleyball or Basketball.',
+    text: 'Choose the sport from the selector at the top: Free, Tennis, Padel, Ping Pong, Volleyball or Basketball.'
   },
   {
     name: 'Customize names',
-    text: 'Tap on "HOME" or "AWAY" to change the player or team names.',
+    text: 'Tap on "HOME" or "AWAY" to change the player or team names.'
   },
   {
     name: 'Add points with one tap',
-    text: 'Tap the large scoreboard area to add a point. In basketball, use the +1, +2 or +3 buttons.',
+    text: 'Tap the large scoreboard area to add a point. In basketball, use the +1, +2 or +3 buttons.'
   },
   {
     name: 'Indicate serve',
-    text: 'Use the serve button in the bottom corner to mark who is serving. The yellow indicator appears automatically.',
+    text: 'Use the serve button in the bottom corner to mark who is serving. The yellow indicator appears automatically.'
   },
   {
     name: 'Correct mistakes',
-    text: 'Use the "−" button if you added a point by mistake. No need to restart the entire scoreboard.',
+    text: 'Use the "−" button if you added a point by mistake. No need to restart the entire scoreboard.'
   },
 ];
 
@@ -69,8 +70,8 @@ const faqSchema: WithContext<FAQPage> = {
   mainEntity: faqData.map((item) => ({
     '@type': 'Question',
     name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
-  })),
+    acceptedAnswer: { '@type': 'Answer', text: item.answer }
+  }))
 };
 
 const howToSchema: WithContext<HowTo> = {
@@ -82,8 +83,8 @@ const howToSchema: WithContext<HowTo> = {
     '@type': 'HowToStep',
     position: i + 1,
     name: step.name,
-    text: step.text,
-  })),
+    text: step.text
+  }))
 };
 
 const appSchema: WithContext<SoftwareApplication> = {
@@ -94,54 +95,31 @@ const appSchema: WithContext<SoftwareApplication> = {
   applicationCategory: 'UtilityApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  inLanguage: 'en',
+  inLanguage: 'en'
 };
 
 export const content: ToolLocaleContent<ScoreKeeperUI> = {
   slug,
   title,
   description,
-  faqTitle: 'Frequently Asked Questions',
   faq: faqData,
-  bibliographyTitle: 'Official Rules and References',
-  bibliography: [
-    {
-      name: 'ITTF: Official Table Tennis (Ping Pong) Rules',
-      url: 'https://www.ittf.com/handbook/',
-    },
-    {
-      name: 'ITF: Official Tennis Rules',
-      url: 'https://www.itftennis.com/en/about-us/governance/rules-and-regulations/',
-    },
-    {
-      name: 'FIP: Official Padel Regulations',
-      url: 'https://www.padelfip.com/es/regulaciones/',
-    },
-    {
-      name: 'FIVB: Official Volleyball Rules',
-      url: 'https://www.fivb.com/en/volleyball/thegame_volleyball/rulesofthegame_volleyball',
-    },
-    {
-      name: 'FIBA: Official Basketball Rules',
-      url: 'https://www.fiba.basketball/en/official-basketball-rules',
-    },
-  ],
+  bibliography,
   howTo: howToData,
   schemas: [faqSchema, howToSchema, appSchema],
   seo: [
     {
       type: 'title',
       text: 'Your Digital Referee in Your Pocket',
-      level: 2,
+      level: 2
     },
     {
       type: 'paragraph',
-      html: 'In the heat of the match, it\'s easy to lose count. "Was it 4-3 or 3-4?". This scoreboard is designed to settle those disputes before they start. With an interface of <strong>giant buttons</strong> that take up almost the entire card, you can add points without looking at the screen, just reaching out your arm to the phone on the bench.',
+      html: 'In the heat of the match, it\'s easy to lose count. "Was it 4-3 or 3-4?". This scoreboard is designed to settle those disputes before they start. With an interface of <strong>giant buttons</strong> that take up almost the entire card, you can add points without looking at the screen, just reaching out your arm to the phone on the bench.'
     },
     {
       type: 'title',
       text: 'Smart Sport Selector',
-      level: 2,
+      level: 2
     },
     {
       type: 'comparative',
@@ -152,28 +130,28 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
           description:
             'Adapted interface with Sets and Games counters. The system automatically handles the 15-30-40-AD sequence.',
           icon: 'mdi:tennis',
-          points: ['Official rules', 'Advantage management', 'Sets counter'],
+          points: ['Official rules', 'Advantage management', 'Sets counter']
         },
         {
           title: 'Basketball Mode',
           description:
             'The scoreboard detects the sport and changes its interface. Dedicated +1, +2 and +3 buttons.',
           icon: 'mdi:basketball',
-          points: ['Quick triples', 'Free throws', 'No extra taps'],
+          points: ['Quick triples', 'Free throws', 'No extra taps']
         },
         {
           title: 'Ping Pong Mode',
           description:
             'Forget about memorizing whose turn it is to serve. The visual indicator rotates automatically every 2 points.',
           icon: 'mdi:table-tennis',
-          points: ['ITTF rules', 'Serve rotation', 'Deuce mode (11 pts)'],
+          points: ['ITTF rules', 'Serve rotation', 'Deuce mode (11 pts)']
         },
-      ],
+      ]
     },
     {
       type: 'title',
       text: 'Features Designed for Sport',
-      level: 2,
+      level: 2
     },
     {
       type: 'list',
@@ -182,7 +160,7 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
         '<strong>Editable Names:</strong> Tap on "HOME" or "AWAY" to set the player names.',
         '<strong>Error Prevention:</strong> Separate minus button to quickly correct mistakes without restarting.',
         '<strong>Works Offline:</strong> Once loaded, no internet is needed during the match.',
-      ],
+      ]
     },
   ],
   ui: {
@@ -202,6 +180,6 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
     sportPadel: 'Padel',
     sportPingpong: 'Ping Pong',
     sportVolleyball: 'Volleyball',
-    sportBasket: 'Basketball',
-  },
+    sportBasket: 'Basketball'
+  }
 };

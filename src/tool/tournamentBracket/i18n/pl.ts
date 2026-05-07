@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'Link skopiowany do schowka',
   toastShareFailed: 'Nie udało się skopiować. URL:',
   toastFinished: 'Turniej Zakończony!',
-  defaultName: 'Turniej',
+  defaultName: 'Turniej'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: 'Darmowy Generator Drabinek Online i Organizator Turniejów',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Zarządzaj swoimi rozgrywkami sportowymi, grami wideo lub planszowymi za pomocą najbardziej kompletnego, darmowego i niewymagającego rejestracji organizatora turniejów. Twórz wizualne i interaktywne drabinki pucharowe w kilka sekund, ze <strong>zintegrowanym systemem punktacji</strong>, automatyczną historią i inteligentną nawigacją meczów. Wszystko działa offline, bezpośrednio w Twojej przeglądarce.',
+    html: 'Zarządzaj swoimi rozgrywkami sportowymi, grami wideo lub planszowymi za pomocą najbardziej kompletnego, darmowego i niewymagającego rejestracji organizatora turniejów. Twórz wizualne i interaktywne drabinki pucharowe w kilka sekund, ze <strong>zintegrowanym systemem punktacji</strong>, automatyczną historią i inteligentną nawigacją meczów. Wszystko działa offline, bezpośrednio w Twojej przeglądarce.'
   },
   {
     type: 'title' as const,
     text: 'Jak stworzyć turniej w systemie pucharowym?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>Nadaj nazwę turniejowi</strong>, dodaj uczestników (pojedynczo lub wklejając listę oddzieloną przecinkami), losuj pary, jeśli chcesz, wygeneruj drabinkę, zarządzaj wynikami, klikając zwycięzcę każdego meczu, i używaj przycisku „Następny Mecz”, aby poruszać się między nierozstrzygniętymi spotkaniami.',
+    html: '<strong>Nadaj nazwę turniejowi</strong>, dodaj uczestników (pojedynczo lub wklejając listę oddzieloną przecinkami), losuj pary, jeśli chcesz, wygeneruj drabinkę, zarządzaj wynikami, klikając zwycięzcę każdego meczu, i używaj przycisku „Następny Mecz”, aby poruszać się między nierozstrzygniętymi spotkaniami.'
   },
   {
     type: 'title' as const,
     text: 'Zaawansowane Funkcje',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>Trwała historia:</strong> Wszystkie turnieje zapisywane automatycznie w Twojej przeglądarce.',
       '<strong>Automatyczne wolne losy:</strong> „Bye” i bezpośrednie awanse rozwiązywane bez ręcznej ingerencji.',
       '<strong>Udostępnianie przez URL:</strong> Generuj skompresowany link, aby wysłać drabinkę komukolwiek.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Idealne dla Każdej Rywalizacji',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'Gry Wideo & Esport',
         description: 'Idealne do FIFA, FC25, Valorant, League of Legends, Street Fighter, Tekken, Super Smash Bros czy Rocket League.',
         icon: 'mdi:controller-classic',
-        points: ['Szybkie parowanie', 'Brak limitu drużyn', 'Natychmiastowe udostępnianie'],
+        points: ['Szybkie parowanie', 'Brak limitu drużyn', 'Natychmiastowe udostępnianie']
       },
       {
         title: 'Sporty & Gry Rakietowe',
         description: 'Zarządzaj drabinkami do Padla, Tenisa, Ping Ponga, Badmintona, Futsalu czy Koszykówki 3x3.',
         icon: 'mdi:trophy-outline',
-        points: ['Zintegrowane wyniki', 'Zoptymalizowany widok mobilny', 'Koniec z papierem'],
+        points: ['Zintegrowane wyniki', 'Zoptymalizowany widok mobilny', 'Koniec z papierem']
       },
       {
         title: 'Gry Planszowe & Karciane',
         description: 'Organizuj turnieje Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, Szachy czy Domino.',
         icon: 'mdi:cards-playing-outline',
-        points: ['Do 64 graczy', 'Historia rund', 'Zarządzanie wolnymi losami'],
+        points: ['Do 64 graczy', 'Historia rund', 'Zarządzanie wolnymi losami']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Czym są „Bye” lub Wolne Losy?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'W idealnym turnieju pucharowym liczba uczestników musi być potęgą liczby 2 (4, 8, 16, 32...). Kiedy masz nieparzystą liczbę lub niebędącą potęgą 2 — na przykład 7, 10 lub 13 graczy — system automatycznie przypisuje <strong>„Byes”</strong> (wolne losy) w pierwszej rundzie. Wolny los oznacza, że uczestnik przechodzi bezpośrednio do następnej fazy bez grania meczu. Nasz algorytm sprawiedliwie i automatycznie oblicza oraz przydziela te awanse.',
+    html: 'W idealnym turnieju pucharowym liczba uczestników musi być potęgą liczby 2 (4, 8, 16, 32...). Kiedy masz nieparzystą liczbę lub niebędącą potęgą 2 — na przykład 7, 10 lub 13 graczy — system automatycznie przypisuje <strong>„Byes”</strong> (wolne losy) w pierwszej rundzie. Wolny los oznacza, że uczestnik przechodzi bezpośrednio do następnej fazy bez grania meczu. Nasz algorytm sprawiedliwie i automatycznie oblicza oraz przydziela te awanse.'
   },
   {
     type: 'title' as const,
     text: 'Natychmiast, Za Darmo i Bez Logowania',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Zero oporów. Żadnych kont, instalacji czy czekania. Dodaj uczestników i wygeneruj turniej natychmiast. Wszystko zapisuje się automatycznie w przeglądarce przez <strong>LocalStorage</strong>: zamknij kartę, wyłącz komputer i wróć po paru dniach. Twój turniej i pełna historia wciąż tam będą.',
+    html: 'Zero oporów. Żadnych kont, instalacji czy czekania. Dodaj uczestników i wygeneruj turniej natychmiast. Wszystko zapisuje się automatycznie w przeglądarce przez <strong>LocalStorage</strong>: zamknij kartę, wyłącz komputer i wróć po paru dniach. Twój turniej i pełna historia wciąż tam będą.'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'Często Zadawane Pytania', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

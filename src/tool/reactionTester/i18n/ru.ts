@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: 'ТИШИНА...', wp1s: 'Не мигайте',
   wp2t: 'ГОТОВЫ...', wp2s: 'Пальцы готовы...',
   wp3t: 'ДЕРЖИТЕ...', wp3s: 'Терпение, молодой боец',
-  wp4t: 'ФОКУС...', wp4s: 'Вот и придет...',
+  wp4t: 'ФОКУС...', wp4s: 'Вот и придет...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: 'Как Работает Этот Тест Реакции?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: 'Этот инструмент измеряет ваше <strong>время визуальной реакции</strong> с хирургической точностью. Мы рассчитываем точный интервал от момента, когда экран загорается, до момента, когда сигнал проходит от ваших глаз к мозгу, а затем к вашим пальцам. Тест требует <strong>5 последовательных попыток</strong> для расчета вашего истинного среднего значения, исключая фактор удачи.',
+    html: 'Этот инструмент измеряет ваше <strong>время визуальной реакции</strong> с хирургической точностью. Мы рассчитываем точный интервал от момента, когда экран загорается, до момента, когда сигнал проходит от ваших глаз к мозгу, а затем к вашим пальцам. Тест требует <strong>5 последовательных попыток</strong> для расчета вашего истинного среднего значения, исключая фактор удачи.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>Среднее из 5 попыток:</strong> Мы исключаем фактор «удачи», требуя последовательности. Один счастливый клик не сделает вас киберспортсменом.',
       '<strong>Система Анти-Чит:</strong> Случайные времена ожидания (1,5 с - 4,5 с) и обнаружение ранних кликов для предотвращения предугадывания.',
       '<strong>Реальная наука:</strong> Обработка мозга ~180-200 мс + моторный ответ +20-40 мс = ваше общее время реакции.',
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Таблица Мирового Рейтинга', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', 'Человек', 'Здоровый средний показатель. Вы бодры и функционируете правильно.'],
       ['280 - 350 ms', 'Черепаха', 'Ниже среднего. Отдохните или больше тренируйтесь.'],
       ['&gt; 350 ms', 'Спящий', 'Возможно усталость, сонливость или медленное оборудование (задержка входа).'],
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Почему Вы Медленны? Винить Оборудование', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: 'Монитор (Hz)',
         description: 'Монитор 60Hz требует ~16 мс для рисования кадра. 144Hz требует всего 7 мс. Эта разница в 10 мс имеет значение в вашем итоговом баллу.',
         icon: 'mdi:monitor',
-        points: ['60Hz = ~16мс на кадр', '144Hz = ~7мс на кадр', 'Видимая разница в тесте'],
+        points: ['60Hz = ~16мс на кадр', '144Hz = ~7мс на кадр', 'Видимая разница в тесте']
       },
       {
         title: 'Беспроводная Мышь',
         description: 'Дешевые офисные мыши Bluetooth имеют высокую задержку. Для этого теста используйте кабель или беспроводную технологию 2,4GHz с низкой задержкой.',
         icon: 'mdi:mouse-variant',
-        points: ['Дешевый Bluetooth: +15-50мс', '2.4GHz gaming: <1мс добавок', 'USB кабель: эталон'],
+        points: ['Дешевый Bluetooth: +15-50мс', '2.4GHz gaming: <1мс добавок', 'USB кабель: эталон']
       },
       {
         title: 'Браузер',
         description: 'Расширения, блокирующие объявления, или тяжелые скрипты могут вызвать рывки. Попробуйте режим инкогнито для вашего реального рекорда.',
         icon: 'mdi:web',
-        points: ['Закройте тяжелые расширения', 'Инкогнито = чище', 'Chrome/Firefox рекомендуется'],
+        points: ['Закройте тяжелые расширения', 'Инкогнито = чище', 'Chrome/Firefox рекомендуется']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: 'Часто Задаваемые Вопросы', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

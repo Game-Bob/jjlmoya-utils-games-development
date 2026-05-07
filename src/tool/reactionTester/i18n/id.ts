@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: 'DIAM...', wp1s: 'Jangan berkedip sekarang',
   wp2t: 'SIAP...', wp2s: 'Jari siap...',
   wp3t: 'TAHAN...', wp3s: 'Sabar, belalang muda',
-  wp4t: 'FOKUS...', wp4s: 'Ini akan tiba...',
+  wp4t: 'FOKUS...', wp4s: 'Ini akan tiba...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: 'Bagaimana Uji Reaksi Ini Bekerja?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: 'Alat ini mengukur <strong>waktu reaksi visual</strong> Anda dengan presisi tinggi. Kami menghitung interval persis dari saat layar menyala hingga sinyal merambat dari mata ke otak Anda, dan kemudian ke jari Anda. Uji ini memerlukan <strong>5 percobaan berturut-turut</strong> untuk menghitung rata-rata sebenarnya, menghilangkan faktor keberuntungan.',
+    html: 'Alat ini mengukur <strong>waktu reaksi visual</strong> Anda dengan presisi tinggi. Kami menghitung interval persis dari saat layar menyala hingga sinyal merambat dari mata ke otak Anda, dan kemudian ke jari Anda. Uji ini memerlukan <strong>5 percobaan berturut-turut</strong> untuk menghitung rata-rata sebenarnya, menghilangkan faktor keberuntungan.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>Rata-rata 5 percobaan:</strong> Kami menghilangkan faktor \"keberuntungan\" dengan memerlukan konsistensi. Satu klik beruntung tidak akan membuat Anda Siber-atlet.',
       '<strong>Sistem Anti-Cheat:</strong> Waktu tunggu acak (1,5 detik - 4,5 detik) dan deteksi klik awal untuk mencegah prediksi.',
       '<strong>Sains nyata:</strong> Pemrosesan otak ~180-200 ms + respons motorik +20-40 ms = total waktu reaksi Anda.',
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Tabel Peringkat Dunia', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', 'Manusia', 'Rata-rata yang sehat. Anda terjaga dan berfungsi dengan baik.'],
       ['280 - 350 ms', 'Kura-kura', 'Di bawah rata-rata. Istirahat atau latih lebih banyak.'],
       ['&gt; 350 ms', 'Tertidur', 'Kemungkinan kelelahan, mengantuk, atau hardware lambat (input lag).'],
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Mengapa Anda Lambat? Menyalahkan Perangkat Keras', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: 'Monitor (Hz)',
         description: 'Monitor 60Hz memerlukan waktu ~16ms untuk melukis frame. Monitor 144Hz hanya memerlukan 7ms. Perbedaan 10ms ini penting dalam skor akhir Anda.',
         icon: 'mdi:monitor',
-        points: ['60Hz = ~16ms per frame', '144Hz = ~7ms per frame', 'Perbedaan terlihat dalam tes'],
+        points: ['60Hz = ~16ms per frame', '144Hz = ~7ms per frame', 'Perbedaan terlihat dalam tes']
       },
       {
         title: 'Mouse Nirkabel',
         description: 'Mouse Bluetooth kantor murah memiliki latensi tinggi. Untuk tes ini, gunakan kabel atau teknologi nirkabel 2,4GHz dengan latensi rendah.',
         icon: 'mdi:mouse-variant',
-        points: ['Bluetooth murah: +15-50ms', '2.4GHz gaming: <1ms ekstra', 'Kabel USB: referensi'],
+        points: ['Bluetooth murah: +15-50ms', '2.4GHz gaming: <1ms ekstra', 'Kabel USB: referensi']
       },
       {
         title: 'Peramban',
         description: 'Ekstensi yang memblokir iklan atau skrip berat dapat menyebabkan stuttering. Coba mode inkhognito untuk rekor nyata Anda.',
         icon: 'mdi:web',
-        points: ['Tutup ekstensi berat', 'Inkognito = lebih bersih', 'Chrome/Firefox direkomendasikan'],
+        points: ['Tutup ekstensi berat', 'Inkognito = lebih bersih', 'Chrome/Firefox direkomendasikan']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: 'Pertanyaan yang Sering Diajukan', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

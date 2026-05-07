@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: 'STILL...', wp1s: 'Nicht blinzeln',
   wp2t: 'BEREIT...', wp2s: 'Finger bereit...',
   wp3t: 'HALTEN...', wp3s: 'Geduld, junger Grasshopper',
-  wp4t: 'FOKUS...', wp4s: 'Es kommt...',
+  wp4t: 'FOKUS...', wp4s: 'Es kommt...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: 'Wie funktioniert dieser Reaktionstest?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: 'Dieses Tool misst Ihre <strong>visuelle Reaktionszeit</strong> mit chirurgischer Präzision. Wir berechnen das genaue Intervall vom Aufleuchten des Bildschirms bis zur Signalübertragung von Ihren Augen zu Ihrem Gehirn und dann zu Ihren Fingern. Der Test erfordert <strong>5 aufeinanderfolgende Versuche</strong>, um Ihren echten Durchschnitt zu berechnen und den Glücksfaktor auszuschalten.',
+    html: 'Dieses Tool misst Ihre <strong>visuelle Reaktionszeit</strong> mit chirurgischer Präzision. Wir berechnen das genaue Intervall vom Aufleuchten des Bildschirms bis zur Signalübertragung von Ihren Augen zu Ihrem Gehirn und dann zu Ihren Fingern. Der Test erfordert <strong>5 aufeinanderfolgende Versuche</strong>, um Ihren echten Durchschnitt zu berechnen und den Glücksfaktor auszuschalten.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>Durchschnitt von 5 Versuchen:</strong> Wir eliminieren den „Glücksfaktor", indem wir Konsistenz erfordern. Ein einziger glücklicher Klick macht Sie nicht zu einem Cyberatleten.',
       '<strong>Anti-Cheat-System:</strong> Zufällige Wartezeiten (1,5 s - 4,5 s) und Erkennung von Frühanschlägen zur Verhütung von Vorhersagen.',
       '<strong>Echte Wissenschaft:</strong> Gehirnverarbeitung ~180-200 ms + motorische Reaktion +20-40 ms = Ihre gesamte Reaktionszeit.',
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Weltranglisten-Tabelle', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', 'Mensch', 'Der gesunde Durchschnitt. Sie sind wach und funktionieren ordnungsgemäß.'],
       ['280 - 350 ms', 'Schildkröte', 'Unterdurchschnittlich. Ruhen Sie sich aus oder trainieren Sie mehr.'],
       ['&gt; 350 ms', 'Schläfrig', 'Mögliche Müdigkeit, Schläfrigkeit oder langsame Hardware (Input Lag).'],
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Warum sind Sie langsam? Hardware-Schuldzuweisung', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: 'Monitor (Hz)',
         description: 'Ein 60-Hz-Monitor benötigt etwa 16 ms, um einen Frame zu zeichnen. Ein 144-Hz-Monitor benötigt nur 7 ms. Diese 10-ms-Differenz zählt in Ihrem Endergebnis.',
         icon: 'mdi:monitor',
-        points: ['60 Hz = ~16 ms pro Frame', '144 Hz = ~7 ms pro Frame', 'Sichtbarer Unterschied im Test'],
+        points: ['60 Hz = ~16 ms pro Frame', '144 Hz = ~7 ms pro Frame', 'Sichtbarer Unterschied im Test']
       },
       {
         title: 'Kabellose Maus',
         description: 'Billige Office-Bluetooth-Mäuse haben hohe Latenz. Für diesen Test verwenden Sie ein Kabel oder 2,4-GHz-Funktechnologie mit niedriger Latenz.',
         icon: 'mdi:mouse-variant',
-        points: ['Billiges Bluetooth: +15-50 ms', '2,4 GHz Gaming: <1 ms extra', 'USB-Kabel: Referenz'],
+        points: ['Billiges Bluetooth: +15-50 ms', '2,4 GHz Gaming: <1 ms extra', 'USB-Kabel: Referenz']
       },
       {
         title: 'Browser',
         description: 'Erweiterungen, die Anzeigen blockieren, oder schwere Skripte können zu Ruckeln führen. Versuchen Sie den Inkognito-Modus für Ihren echten Rekord.',
         icon: 'mdi:web',
-        points: ['Schließen Sie schwere Erweiterungen', 'Inkognito = sauberer', 'Chrome/Firefox empfohlen'],
+        points: ['Schließen Sie schwere Erweiterungen', 'Inkognito = sauberer', 'Chrome/Firefox empfohlen']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: 'Häufig gestellte Fragen', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

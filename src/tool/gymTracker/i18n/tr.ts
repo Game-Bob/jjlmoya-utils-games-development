@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { GymTrackerUI } from '../ui';
@@ -11,41 +12,41 @@ const faqData = [
   {
     question: 'Antrenman takibinin amacı nedir?',
     answer:
-      'Bilimsel olarak progresif aşırı yükleme (progressive overload) uygulamaya hizmet eder. Bir önceki seansta ne kadar kaldırdığınızı tam olarak bilerek, o sınırı aşmaya çalışabilir, kas büyümesini ve uzun vadeli güç kazanımlarını garanti altına alabilirsiniz.',
+      'Bilimsel olarak progresif aşırı yükleme (progressive overload) uygulamaya hizmet eder. Bir önceki seansta ne kadar kaldırdığınızı tam olarak bilerek, o sınırı aşmaya çalışabilir, kas büyümesini ve uzun vadeli güç kazanımlarını garanti altına alabilirsiniz.'
   },
   {
     question: 'Hangi verileri kaydetmeliyim?',
     answer:
-      'En önemli şey, belirlenen tekrar sayısı için iyi bir formla ulaştığınız maksimum ağırlıktır (top set). Aracımız, ilerleme grafiğinizi oluşturmak için seans başına ağırlık kaydetmeye odaklanır.',
+      'En önemli şey, belirlenen tekrar sayısı için iyi bir formla ulaştığınız maksimum ağırlıktır (top set). Aracımız, ilerleme grafiğinizi oluşturmak için seans başına ağırlık kaydetmeye odaklanır.'
   },
   {
     question: 'Grafikler nasıl yorumlanır?',
     answer:
-      'Yukarı doğru giden bir çizgi ilerlediğinizi gösterir. Düz bir çizgi (plato), hacminizi, yoğunluğunuzu veya dinlenmenizi ayarlamanız gerektiğini gösterir. Sürekli aşağı doğru giden bir çizgi, aşırı antrenman belirtisi olabilir.',
+      'Yukarı doğru giden bir çizgi ilerlediğinizi gösterir. Düz bir çizgi (plato), hacminizi, yoğunluğunuzu veya dinlenmenizi ayarlamanız gerektiğini gösterir. Sürekli aşağı doğru giden bir çizgi, aşırı antrenman belirtisi olabilir.'
   },
   {
     question: 'Verilerim nerede saklanıyor?',
     answer:
-      'Veriler yerel olarak tarayıcınızda (Local Storage) saklanır. Bu, gizliliğinizin tam olduğu ve bir hesap oluşturmanıza gerek olmadığı anlamına gelir; ancak tarayıcı verilerini temizlerseniz geçmiş silinecektir.',
+      'Veriler yerel olarak tarayıcınızda (Local Storage) saklanır. Bu, gizliliğinizin tam olduğu ve bir hesap oluşturmanıza gerek olmadığı anlamına gelir; ancak tarayıcı verilerini temizlerseniz geçmiş silinecektir.'
   },
 ];
 
 const howToData = [
   {
     name: 'Egzersizi seçin',
-    text: 'Açılır menüden Squat, Bench Press veya Deadlift gibi temel hareketlerden birini seçin.',
+    text: 'Açılır menüden Squat, Bench Press veya Deadlift gibi temel hareketlerden birini seçin.'
   },
   {
     name: 'Ağırlığı girin',
-    text: 'En ağır setinizden sonra, kaldırılan kilogram/pound cinsinden değeri ilgili alana girin.',
+    text: 'En ağır setinizden sonra, kaldırılan kilogram/pound cinsinden değeri ilgili alana girin.'
   },
   {
     name: 'Ekle\'ye basın',
-    text: 'Derecenizi kaydedin. Sistem geçmişinizi ve ilerleme grafiğinizi otomatik olarak güncelleyecektir.',
+    text: 'Derecenizi kaydedin. Sistem geçmişinizi ve ilerleme grafiğinizi otomatik olarak güncelleyecektir.'
   },
   {
     name: 'Gelişiminizi analiz edin',
-    text: 'Platoları belirlemek ve gerçek güç artışınızı görerek kendinizi motive etmek için grafiği periyodik olarak kontrol edin.',
+    text: 'Platoları belirlemek ve gerçek güç artışınızı görerek kendinizi motive etmek için grafiği periyodik olarak kontrol edin.'
   },
 ];
 
@@ -55,8 +56,8 @@ const faqSchema: WithContext<FAQPage> = {
   mainEntity: faqData.map((item) => ({
     '@type': 'Question',
     name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
-  })),
+    acceptedAnswer: { '@type': 'Answer', text: item.answer }
+  }))
 };
 
 const howToSchema: WithContext<HowTo> = {
@@ -68,8 +69,8 @@ const howToSchema: WithContext<HowTo> = {
     '@type': 'HowToStep',
     position: i + 1,
     name: step.name,
-    text: step.text,
-  })),
+    text: step.text
+  }))
 };
 
 const appSchema: WithContext<SoftwareApplication> = {
@@ -80,50 +81,35 @@ const appSchema: WithContext<SoftwareApplication> = {
   applicationCategory: 'HealthApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  inLanguage: 'tr',
+  inLanguage: 'tr'
 };
 
 export const content: ToolLocaleContent<GymTrackerUI & Record<string, string>> = {
   slug,
   title,
   description,
-  faqTitle: 'Sıkça Sorulan Sorular',
   faq: faqData,
-  bibliographyTitle: 'Bilimsel Referanslar',
-  bibliography: [
-    {
-      name: 'Journal of Strength and Conditioning Research - Progresif Aşırı Yükleme Çalışması',
-      url: 'https://journals.lww.com/nsca-jscr/Fulltext/2010/10000/The_Mechanisms_of_Muscle_Hypertrophy_and_Their.40.aspx',
-    },
-    {
-      name: 'National Academy of Sports Medicine - Progresif Aşırı Yükleme Açıklaması',
-      url: 'https://blog.nasm.org/progressive-overload-explained',
-    },
-    {
-      name: 'Science of Strength - Direnç Eğitiminde Veri Takibi',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/30558493/',
-    },
-  ],
+  bibliography,
   howTo: howToData,
   schemas: [faqSchema, howToSchema, appSchema],
   seo: [
     {
       type: 'title',
       text: 'Antrenman Takibi: Gerçek İlerlemenin Anahtarı',
-      level: 2,
+      level: 2
     },
     {
       type: 'paragraph',
-      html: 'Fitness ve vücut geliştirme dünyasında, harika sonuçlar alanları hızla duraklayanlardan ayıran temel bir prensip vardır: <strong>progresif aşırı yükleme (progressive overload)</strong>. Ancak, kaldırdığınız ağırlıkların ayrıntılı kayıtlarını tutmazsanız bu prensibi etkili bir şekilde uygulamanız imkansızdır. Bu kılavuzda, antrenmanlarınızı takip etmenin neden hayati olduğunu, kazanımlarınızı en üst düzeye çıkarmak için <strong>antrenman takibi</strong> aracımızı nasıl kullanacağınızı ve bu uygulamayı destekleyen bilimsel temelleri keşfedeceğiz.',
+      html: 'Fitness ve vücut geliştirme dünyasında, harika sonuçlar alanları hızla duraklayanlardan ayıran temel bir prensip vardır: <strong>progresif aşırı yükleme (progressive overload)</strong>. Ancak, kaldırdığınız ağırlıkların ayrıntılı kayıtlarını tutmazsanız bu prensibi etkili bir şekilde uygulamanız imkansızdır. Bu kılavuzda, antrenmanlarınızı takip etmenin neden hayati olduğunu, kazanımlarınızı en üst düzeye çıkarmak için <strong>antrenman takibi</strong> aracımızı nasıl kullanacağınızı ve bu uygulamayı destekleyen bilimsel temelleri keşfedeceğiz.'
     },
     {
       type: 'title',
       text: 'Progresif Aşırı Yükleme Nedir?',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Progresif aşırı yükleme, fiziksel egzersiz sırasında vücuda uygulanan stresin kademeli olarak artırılmasıdır. Bir kasın büyümesi veya güçlenmesi için, alıştığından daha büyük bir uyarana maruz kalması gerekir. Eğer spor salonuna gidip her zaman aynı ağırlığı, aynı tekrar sayısı ve aynı dinlenme süresiyle kaldırırsanız, vücudunuzun uyum sağlamak ve büyümek için hiçbir biyolojik nedeni kalmaz.',
+      html: 'Progresif aşırı yükleme, fiziksel egzersiz sırasında vücuda uygulanan stresin kademeli olarak artırılmasıdır. Bir kasın büyümesi veya güçlenmesi için, alıştığından daha büyük bir uyarana maruz kalması gerekir. Eğer spor salonuna gidip her zaman aynı ağırlığı, aynı tekrar sayısı ve aynı dinlenme süresiyle kaldırırsanız, vücudunuzun uyum sağlamak ve büyümek için hiçbir biyolojik nedeni kalmaz.'
     },
     {
       type: 'list',
@@ -133,48 +119,48 @@ export const content: ToolLocaleContent<GymTrackerUI & Record<string, string>> =
         'Hacim artışı: Kas grubu başına toplam set sayısını artırmak.',
         'Dinlenme süresini azaltmak: Aynı işi daha kısa sürede yapmak.',
         'Formu iyileştirmek: Egzersizi daha üstün bir kontrol ve daha geniş bir hareket açıklığıyla uygulamak.',
-      ],
+      ]
     },
     {
       type: 'title',
       text: 'Manuel Kayıt Neden Hafızadan Daha Üstündür',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Birçok sporcu, geçen hafta ne kadar kaldırdığını hatırlamak için hafızasına güvenme hatasına düşer. Ancak, 5 ila 10 farklı egzersiz içeren tipik bir antrenmanda, bench presste 80 kg mı yoksa 82,5 kg mı bastığınızı veya 10 tekrar mı yoksa 12 tekrar mı yaptığınızı unutmak çok kolaydır. Bu hassasiyet eksikliği sıradanlığa yol açar.',
+      html: 'Birçok sporcu, geçen hafta ne kadar kaldırdığını hatırlamak için hafızasına güvenme hatasına düşer. Ancak, 5 ila 10 farklı egzersiz içeren tipik bir antrenmanda, bench presste 80 kg mı yoksa 82,5 kg mı bastığınızı veya 10 tekrar mı yoksa 12 tekrar mı yaptığınızı unutmak çok kolaydır. Bu hassasiyet eksikliği sıradanlığa yol açar.'
     },
     {
       type: 'tip',
       title: 'İlerlemeyi Görselleştirmenin Gücü',
-      html: 'Bir grafikte yükselen bir çizgi görmek, size duraklama ile sürekli kas büyümesi arasındaki farkı belirleyen o ekstra tekrarı denemek için gereken motivasyonu sağlar.',
+      html: 'Bir grafikte yükselen bir çizgi görmek, size duraklama ile sürekli kas büyümesi arasındaki farkı belirleyen o ekstra tekrarı denemek için gereken motivasyonu sağlar.'
     },
     {
       type: 'title',
       text: 'Takip İçin Temel Egzersizler',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Tüm egzersizler değerli olsa da, belirli bileşik (compound) hareketler genel gücünüz ve fiziksel gelişiminiz hakkında en iyi görünümü sunar. Takibinizde öncelik vermeniz gerekenler şunlardır: Yatay itiş için <strong>Bench Press</strong>, dikey itiş için <strong>Overhead Press</strong>, çekiş için <strong>Barfiks (Pull-ups)</strong> ve kalça kasları için <strong>Hip Thrust</strong>.',
+      html: 'Tüm egzersizler değerli olsa da, belirli bileşik (compound) hareketler genel gücünüz ve fiziksel gelişiminiz hakkında en iyi görünümü sunar. Takibinizde öncelik vermeniz gerekenler şunlardır: Yatay itiş için <strong>Bench Press</strong>, dikey itiş için <strong>Overhead Press</strong>, çekiş için <strong>Barfiks (Pull-ups)</strong> ve kalça kasları için <strong>Hip Thrust</strong>.'
     },
     {
       type: 'title',
       text: 'İlerleme Grafiklerinizi Nasıl Analiz Edersiniz?',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Birkaç antrenman kaydettikten sonra kalıpları görmeye başlayacaksınız: <strong>sürekli yükselen bir çizgi</strong> doğru yolda olduğunuzu gösterir, bir <strong>plato</strong> hacminizi veya dinlenmenizi ayarlamanız gerektiğini hatırlatır ve <strong>düşüş eğilimi</strong> birikmiş yorgunluk belirtisi olabilir.',
+      html: 'Birkaç antrenman kaydettikten sonra kalıpları görmeye başlayacaksınız: <strong>sürekli yükselen bir çizgi</strong> doğru yolda olduğunuzu gösterir, bir <strong>plato</strong> hacminizi veya dinlenmenizi ayarlamanız gerektiğini hatırlatır ve <strong>düşüş eğilimi</strong> birikmiş yorgunluk belirtisi olabilir.'
     },
     {
       type: 'title',
       text: 'Spor Salonunda Başarının Psikolojisi',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Antrenman hem zihinsel hem de fiziksel bir zorluktur. Bugün, on beş gün öncesine göre %1 daha güçlü olduğunuzu gösteren görsel bir araç kullanarak dopamin ödül sisteminizi beslersiniz. Bu, antrenmanı sürdürülebilir bir alışkanlığa dönüştüren olumlu bir geri bildirim döngüsü yaratır.',
+      html: 'Antrenman hem zihinsel hem de fiziksel bir zorluktur. Bugün, on beş gün öncesine göre %1 daha güçlü olduğunuzu gösteren görsel bir araç kullanarak dopamin ödül sisteminizi beslersiniz. Bu, antrenmanı sürdürülebilir bir alışkanlığa dönüştüren olumlu bir geri bildirim döngüsü yaratır.'
     },
   ],
   ui: {
@@ -220,6 +206,6 @@ export const content: ToolLocaleContent<GymTrackerUI & Record<string, string>> =
     lunges: 'Lunges',
     gluteKick: 'Kablolu Kalça Geriye Tekme',
     hipAbduction: 'Makinede Kalça Açma',
-    stepUp: 'Step Up',
-  },
+    stepUp: 'Step Up'
+  }
 };

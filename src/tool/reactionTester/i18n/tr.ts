@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: 'DURUN...', wp1s: 'Şimdi göz kırpmayın',
   wp2t: 'HAZIR...', wp2s: 'Parmaklar hazır...',
   wp3t: 'TUT...', wp3s: 'Sabır, genç çöpçü',
-  wp4t: 'ODAKLANI...', wp4s: 'Geliyor...',
+  wp4t: 'ODAKLANI...', wp4s: 'Geliyor...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: 'Bu Tepki Testi Nasıl Çalışır?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: 'Bu araç <strong>görsel tepki sürenizi</strong> cerrahî kesinlikle ölçer. Ekran yandığı andan itibaren sinyalin gözlerinizden beyninize, ardından parmaklarınıza seyahat etmesine kadar olan tam aralığı hesaplarız. Test <strong>5 ardışık deneme</strong> gerektirir, şans faktörünü ortadan kaldırarak gerçek ortalamanızı hesaplamak için.',
+    html: 'Bu araç <strong>görsel tepki sürenizi</strong> cerrahî kesinlikle ölçer. Ekran yandığı andan itibaren sinyalin gözlerinizden beyninize, ardından parmaklarınıza seyahat etmesine kadar olan tam aralığı hesaplarız. Test <strong>5 ardışık deneme</strong> gerektirir, şans faktörünü ortadan kaldırarak gerçek ortalamanızı hesaplamak için.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>5 denemeden ortalama:</strong> Tutarlılık gerektirerek \"şans\" faktörünü ortadan kaldırırız. Tek bir şanslı tıklama sizi Siber Sporcu yapmaz.',
       '<strong>Hile Aleyine Sistemi:</strong> Tahmin edici davranışı önlemek için rastgele bekleme süreleri (1,5 s - 4,5 s) ve erken tıklama algılaması.',
       '<strong>Gerçek bilim:</strong> Beyin işleme ~180-200 ms + motor tepkisi +20-40 ms = toplam tepki süreniz.',
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Dünya Sıralama Tablosu', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', 'İnsan', 'Sağlıklı ortalama. Uyandı mısınız ve düzgün çalışıyorsunuz.'],
       ['280 - 350 ms', 'Kaplumbağa', 'Ortalamanın altında. Daha fazla dinlenin veya antrenman yapın.'],
       ['&gt; 350 ms', 'Uyuyor', 'Olası yorgunluk, uyku halinde veya yavaş donanım (giriş gecikmesi).'],
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Neden Yavaşsın? Donanımı Suçlamak', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: 'Monitör (Hz)',
         description: '60Hz monitörü bir frame çizmek ~16ms alır. 144Hz sadece 7ms alır. Bu 10ms farkı son puanında sayılır.',
         icon: 'mdi:monitor',
-        points: ['60Hz = kare başına ~16ms', '144Hz = kare başına ~7ms', 'Testte görülür fark'],
+        points: ['60Hz = kare başına ~16ms', '144Hz = kare başına ~7ms', 'Testte görülür fark']
       },
       {
         title: 'Kablosuz Fare',
         description: 'Ucuz ofis Bluetooth fareler yüksek gecikmesi vardır. Bu test için, kablo veya düşük gecikmeli 2,4GHz kablosuz teknoloji kullanın.',
         icon: 'mdi:mouse-variant',
-        points: ['Ucuz Bluetooth: +15-50ms', '2.4GHz oyun: <1ms ekstra', 'USB kabel: referans'],
+        points: ['Ucuz Bluetooth: +15-50ms', '2.4GHz oyun: <1ms ekstra', 'USB kabel: referans']
       },
       {
         title: 'Tarayıcı',
         description: 'Reklamları engelleyen uzantılar veya ağır komut dosyaları gecikmelere neden olabilir. Gerçek rekorunuz için gizli modu deneyin.',
         icon: 'mdi:web',
-        points: ['Ağır uzantıları kapatın', 'Gizli = daha temiz', 'Chrome/Firefox önerilir'],
+        points: ['Ağır uzantıları kapatın', 'Gizli = daha temiz', 'Chrome/Firefox önerilir']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: 'Sık Sorulan Sorular', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'Link copiado para a área de transferência',
   toastShareFailed: 'Não foi possível copiar. URL:',
   toastFinished: 'Torneio Finalizado!',
-  defaultName: 'Torneio',
+  defaultName: 'Torneio'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: 'Gerador de Tabela de Torneio Online Grátis e Organizador de Competições',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Gerencie suas competições de esportes, videogames ou jogos de tabuleiro com o organizador de torneios mais completo, gratuito e sem registro. Crie tabelas de eliminatória simples visuais e interativas em segundos, com um <strong>sistema de pontuação integrado</strong>, histórico automático e navegação inteligente por partidas. Tudo funciona offline, diretamente no seu navegador.',
+    html: 'Gerencie suas competições de esportes, videogames ou jogos de tabuleiro com o organizador de torneios mais completo, gratuito e sem registro. Crie tabelas de eliminatória simples visuais e interativas em segundos, com um <strong>sistema de pontuação integrado</strong>, histórico automático e navegação inteligente por partidas. Tudo funciona offline, diretamente no seu navegador.'
   },
   {
     type: 'title' as const,
     text: 'Como Criar um Torneio de Eliminatória Simples?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>Dê um nome ao seu torneio</strong>, adicione participantes (um por um ou colando uma lista separada por vírgulas), embaralhe as partidas se desejar, gere a tabela, gerencie os resultados tocando no vencedor de cada partida e use o botão "Próxima Partida" para navegar entre os confrontos pendentes.',
+    html: '<strong>Dê um nome ao seu torneio</strong>, adicione participantes (um por um ou colando uma lista separada por vírgulas), embaralhe as partidas se desejar, gere a tabela, gerencie os resultados tocando no vencedor de cada partida e use o botão "Próxima Partida" para navegar entre os confrontos pendentes.'
   },
   {
     type: 'title' as const,
     text: 'Recursos Avançados',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>Histórico persistente:</strong> Todos os torneios salvos automaticamente no seu navegador.',
       '<strong>Walkovers Automáticos:</strong> Byes e passagens diretas resolvidos sem entrada manual.',
       '<strong>Compartilhe por URL:</strong> Gere um link compactado para enviar a tabela para qualquer pessoa.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Perfeito para Qualquer Competição',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'Videogames & eSports',
         description: 'Perfeito para FIFA, FC25, Valorant, League of Legends, Street Fighter, Tekken, Super Smash Bros ou Rocket League.',
         icon: 'mdi:controller-classic',
-        points: ['Partidas rápidas', 'Sem limite de equipes', 'Compartilhável instantaneamente'],
+        points: ['Partidas rápidas', 'Sem limite de equipes', 'Compartilhável instantaneamente']
       },
       {
         title: 'Esportes & Esportes de Raquete',
         description: 'Gerencie tabelas de Padel, Tênis, Ping Pong, Badminton, Futsal ou Basquete 3x3.',
         icon: 'mdi:trophy-outline',
-        points: ['Placares integrados', 'Visualização móvel otimizada', 'Chega de papel'],
+        points: ['Placares integrados', 'Visualização móvel otimizada', 'Chega de papel']
       },
       {
         title: 'Jogos de Tabuleiro & Cartas',
         description: 'Organize torneios de Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, Xadrez ou Dominó.',
         icon: 'mdi:cards-playing-outline',
-        points: ['Até 64 jogadores', 'Histórico de rodadas', 'Gestão de byes'],
+        points: ['Até 64 jogadores', 'Histórico de rodadas', 'Gestão de byes']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'O que são "Byes" ou Passagens Diretas?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Em um torneio de eliminatória simples ideal, o número de participantes deve ser uma potência de 2 (4, 8, 16, 32...). Quando você tem um número ímpar ou que não é potência de 2 — por exemplo, 7, 10 ou 13 jogadores —, o sistema atribui automaticamente <strong>"Byes"</strong> na primeira rodada. Um "Bye" significa que um participante avança diretamente para a próxima fase sem jogar. Nosso algoritmo calcula e atribui essas passagens de forma justa e automática.',
+    html: 'Em um torneio de eliminatória simples ideal, o número de participantes deve ser uma potência de 2 (4, 8, 16, 32...). Quando você tem um número ímpar ou que não é potência de 2 — por exemplo, 7, 10 ou 13 jogadores —, o sistema atribui automaticamente <strong>"Byes"</strong> na primeira rodada. Um "Bye" significa que um participante avança diretamente para a próxima fase sem jogar. Nosso algoritmo calcula e atribui essas passagens de forma justa e automática.'
   },
   {
     type: 'title' as const,
     text: 'Instantâneo, Grátis e Sem Cadastro',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Zero fricção. Sem contas, sem instalações, sem espera. Adicione participantes e gere seu torneio instantaneamente. Tudo é salvo automaticamente no seu navegador via <strong>LocalStorage</strong>: feche a aba, desligue o computador e volte dias depois. Seu torneio e histórico completo ainda estarão lá.',
+    html: 'Zero fricção. Sem contas, sem instalações, sem espera. Adicione participantes e gere seu torneio instantaneamente. Tudo é salvo automaticamente no seu navegador via <strong>LocalStorage</strong>: feche a aba, desligue o computador e volte dias depois. Seu torneio e histórico completo ainda estarão lá.'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'Perguntas Frequentes', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

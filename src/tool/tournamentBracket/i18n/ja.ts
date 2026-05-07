@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'リンクをクリップボードにコピーしました',
   toastShareFailed: 'コピーできませんでした。URL:',
   toastFinished: 'トーナメント終了！',
-  defaultName: 'トーナメント',
+  defaultName: 'トーナメント'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: '無料オンライン・トーナメント表作成・運営ツール',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '最も充実した、無料・登録不要のトーナメント運営ツールで、スポーツやビデオゲーム、ボードゲームの大会を管理しましょう。<strong>スコアリングシステム</strong>、自動履歴保存、スマートな試合ナビゲーションを備えた、視覚的でインタラクティブなシングルエリミネーション表を数秒で作成。すべてブラウザ上で直接オフラインで動作します。',
+    html: '最も充実した、無料・登録不要のトーナメント運営ツールで、スポーツやビデオゲーム、ボードゲームの大会を管理しましょう。<strong>スコアリングシステム</strong>、自動履歴保存、スマートな試合ナビゲーションを備えた、視覚的でインタラクティブなシングルエリミネーション表を数秒で作成。すべてブラウザ上で直接オフラインで動作します。'
   },
   {
     type: 'title' as const,
     text: 'シングルエリミネーション・トーナメントの作り方',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>大会名を設定し</strong>、参加者を追加（1人ずつ、またはカンマ区切りリストを貼り付け）、必要に応じて対戦をシャッフルし、トーナメント表を生成します。各試合の勝者をタップして結果を管理し、「次の試合」ボタンを使って未完了の試合間を移動しましょう。',
+    html: '<strong>大会名を設定し</strong>、参加者を追加（1人ずつ、またはカンマ区切りリストを貼り付け）、必要に応じて対戦をシャッフルし、トーナメント表を生成します。各試合の勝者をタップして結果を管理し、「次の試合」ボタンを使って未完了の試合間を移動しましょう。'
   },
   {
     type: 'title' as const,
     text: '高度な機能',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>永続的な履歴：</strong> すべてのトーナメントをブラウザに自動保存。',
       '<strong>自動不戦勝処理：</strong> シードや直接通過を手動入力なしで解決。',
       '<strong>URLで共有：</strong> 圧縮されたリンクを生成し、誰にでもトーナメント表を送信。',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'あらゆる競技に最適',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'ビデオゲーム & eスポーツ',
         description: 'FIFA、FC25、Valorant、League of Legends、Street Fighter、Tekken、Super Smash Bros、Rocket Leagueに最適。',
         icon: 'mdi:controller-classic',
-        points: ['迅速なマッチング', 'チーム制限なし', '即座に共有可能'],
+        points: ['迅速なマッチング', 'チーム制限なし', '即座に共有可能']
       },
       {
         title: 'スポーツ & ラケット競技',
         description: 'パデル、テニス、卓球、バドミントン、フットサル、3x3バスケットボールの表を管理。',
         icon: 'mdi:trophy-outline',
-        points: ['スコア統合', 'モバイル表示に最適化', '紙はもう不要'],
+        points: ['スコア統合', 'モバイル表示に最適化', '紙はもう不要']
       },
       {
         title: 'ボードゲーム & カードゲーム',
         description: 'Magic: The Gathering、ポケモンカードゲーム、遊戯王、カタン、チェス、ドミノの大会を運営。',
         icon: 'mdi:cards-playing-outline',
-        points: ['最大64人まで', 'ラウンド履歴', 'シード管理'],
+        points: ['最大64人まで', 'ラウンド履歴', 'シード管理']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: '「シード（Bye）」や不戦勝とは何ですか？',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '理想的なシングルエリミネーション・トーナメントでは、参加人数が2の累乗（4, 8, 16, 32...）である必要があります。参加者が奇数や2の累乗でない場合（例：7人、10人、13人）、システムは第1ラウンドで自動的に<strong>「シード（Bye）」</strong>を割り当てます。シードとは、試合をせずに直接次のフェーズに進むことを意味します。当社のアルゴリズムは、これらの不戦勝を公平かつ自動的に計算・割り当てします。',
+    html: '理想的なシングルエリミネーション・トーナメントでは、参加人数が2の累乗（4, 8, 16, 32...）である必要があります。参加者が奇数や2の累乗でない場合（例：7人、10人、13人）、システムは第1ラウンドで自動的に<strong>「シード（Bye）」</strong>を割り当てます。シードとは、試合をせずに直接次のフェーズに進むことを意味します。当社のアルゴリズムは、これらの不戦勝を公平かつ自動的に計算・割り当てします。'
   },
   {
     type: 'title' as const,
     text: '即座に、無料で、登録不要',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '摩擦ゼロ。アカウント不要、インストール不要、待ち時間なし。参加者を追加して、即座にトーナメントを作成。すべてブラウザの<strong>LocalStorage</strong>を介して自動的に保存されます。タブを閉じたりPCをシャットダウンしたりしても、数日後に戻れば大会と完全な履歴はそのまま残っています。',
+    html: '摩擦ゼロ。アカウント不要、インストール不要、待ち時間なし。参加者を追加して、即座にトーナメントを作成。すべてブラウザの<strong>LocalStorage</strong>を介して自動的に保存されます。タブを閉じたりPCをシャットダウンしたりしても、数日後に戻れば大会と完全な履歴はそのまま残っています。'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'よくある質問', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

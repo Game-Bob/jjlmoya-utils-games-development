@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { GymTrackerUI } from '../ui';
@@ -11,41 +12,41 @@ const faqData = [
   {
     question: 'Qual è lo scopo del tracciamento dell\'allenamento?',
     answer:
-      'Serve ad applicare scientificamente il sovraccarico progressivo. Sapendo esattamente quanto hai sollevato nella sessione precedente, puoi provare a superare quel traguardo, garantendo la crescita muscolare e guadagni di forza a lungo termine.',
+      'Serve ad applicare scientificamente il sovraccarico progressivo. Sapendo esattamente quanto hai sollevato nella sessione precedente, puoi provare a superare quel traguardo, garantendo la crescita muscolare e guadagni di forza a lungo termine.'
   },
   {
     question: 'Quali dati dovrei registrare?',
     answer:
-      'La cosa più importante è il peso massimo (top set) che hai raggiunto con una buona esecuzione per un numero stabilito di ripetizioni. Il nostro strumento si concentra sulla registrazione del peso per sessione per generare il tuo grafico di progresso.',
+      'La cosa più importante è il peso massimo (top set) che hai raggiunto con una buona esecuzione per un numero stabilito di ripetizioni. Il nostro strumento si concentra sulla registrazione del peso per sessione per generare il tuo grafico di progresso.'
   },
   {
     question: 'Come vengono interpretati i grafici?',
     answer:
-      'Una linea verso l\'alto indica che stai progredendo. Una linea piatta (plateau) suggerisce che devi regolare il volume, l\'intensità o il recupero. Una linea costantemente verso il basso può essere un segno di sovrallenamento.',
+      'Una linea verso l\'alto indica che stai progredendo. Una linea piatta (plateau) suggerisce che devi regolare il volume, l\'intensità o il recupero. Una linea costantemente verso il basso può essere un segno di sovrallenamento.'
   },
   {
     question: 'Dove vengono memorizzati i miei dati?',
     answer:
-      'I dati vengono memorizzati localmente nel tuo browser (Local Storage). Ciò significa che la tua privacy è totale e non è necessario creare un account, ma se cancelli i dati del browser, la cronologia andrà persa.',
+      'I dati vengono memorizzati localmente nel tuo browser (Local Storage). Ciò significa che la tua privacy è totale e non è necessario creare un account, ma se cancelli i dati del browser, la cronologia andrà persa.'
   },
 ];
 
 const howToData = [
   {
     name: 'Seleziona l\'esercizio',
-    text: 'Scegli tra gli esercizi fondamentali come Squat, Panca Piana o Stacco nel menu a discesa.',
+    text: 'Scegli tra gli esercizi fondamentali come Squat, Panca Piana o Stacco nel menu a discesa.'
   },
   {
     name: 'Inserisci il peso',
-    text: 'Dopo la tua serie più pesante, inserisci i chilogrammi/libbre sollevati nel campo corrispondente.',
+    text: 'Dopo la tua serie più pesante, inserisci i chilogrammi/libbre sollevati nel campo corrispondente.'
   },
   {
     name: 'Premi Aggiungi',
-    text: 'Salva il tuo traguardo. Il sistema aggiornerà automaticamente la tua cronologia e il tuo grafico di progresso.',
+    text: 'Salva il tuo traguardo. Il sistema aggiornerà automaticamente la tua cronologia e il tuo grafico di progresso.'
   },
   {
     name: 'Analizza la tua evoluzione',
-    text: 'Consulta periodicamente il grafico per identificare i plateau e motivarti vedendo la tua reale crescita di forza.',
+    text: 'Consulta periodicamente il grafico per identificare i plateau e motivarti vedendo la tua reale crescita di forza.'
   },
 ];
 
@@ -55,8 +56,8 @@ const faqSchema: WithContext<FAQPage> = {
   mainEntity: faqData.map((item) => ({
     '@type': 'Question',
     name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
-  })),
+    acceptedAnswer: { '@type': 'Answer', text: item.answer }
+  }))
 };
 
 const howToSchema: WithContext<HowTo> = {
@@ -68,8 +69,8 @@ const howToSchema: WithContext<HowTo> = {
     '@type': 'HowToStep',
     position: i + 1,
     name: step.name,
-    text: step.text,
-  })),
+    text: step.text
+  }))
 };
 
 const appSchema: WithContext<SoftwareApplication> = {
@@ -80,50 +81,35 @@ const appSchema: WithContext<SoftwareApplication> = {
   applicationCategory: 'HealthApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  inLanguage: 'it',
+  inLanguage: 'it'
 };
 
 export const content: ToolLocaleContent<GymTrackerUI & Record<string, string>> = {
   slug,
   title,
   description,
-  faqTitle: 'Domande Frequenti',
   faq: faqData,
-  bibliographyTitle: 'Riferimenti Scientifici',
-  bibliography: [
-    {
-      name: 'Journal of Strength and Conditioning Research - Progressive Overload Study',
-      url: 'https://journals.lww.com/nsca-jscr/Fulltext/2010/10000/The_Mechanisms_of_Muscle_Hypertrophy_and_Their.40.aspx',
-    },
-    {
-      name: 'National Academy of Sports Medicine - Progressive Overload Explained',
-      url: 'https://blog.nasm.org/progressive-overload-explained',
-    },
-    {
-      name: 'Science of Strength - Data Tracking in Resistance Training',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/30558493/',
-    },
-  ],
+  bibliography,
   howTo: howToData,
   schemas: [faqSchema, howToSchema, appSchema],
   seo: [
     {
       type: 'title',
       text: 'Tracciamento Allenamento Palestra: La Chiave per Progressi Reali',
-      level: 2,
+      level: 2
     },
     {
       type: 'paragraph',
-      html: 'Nel mondo del fitness e del bodybuilding, c\'è un principio fondamentale che separa chi ottiene risultati incredibili da chi va rapidamente in stallo: <strong>il sovraccarico progressivo</strong>. Tuttavia, è impossibile applicare questo principio in modo efficace se non si tiene un registro dettagliato dei sollevamenti. In questa guida esploreremo perché tracciare l\'allenamento è vitale, come usare il nostro <strong>gym workout tracker</strong> per massimizzare i guadagni e le basi scientifiche che supportano questa pratica.',
+      html: 'Nel mondo del fitness e del bodybuilding, c\'è un principio fondamentale che separa chi ottiene risultati incredibili da chi va rapidamente in stallo: <strong>il sovraccarico progressivo</strong>. Tuttavia, è impossibile applicare questo principio in modo efficace se non si tiene un registro dettagliato dei sollevamenti. In questa guida esploreremo perché tracciare l\'allenamento è vitale, come usare il nostro <strong>gym workout tracker</strong> per massimizzare i guadagni e le basi scientifiche che supportano questa pratica.'
     },
     {
       type: 'title',
       text: 'Cos\'è il Sovraccarico Progressivo?',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Il sovraccarico progressivo è l\'aumento graduale dello stress applicato al corpo durante l\'esercizio fisico. Per far sì che un muscolo cresca o si rafforzi, deve essere sottoposto a uno stimolo maggiore di quello a cui è abituato. Se vai in palestra e sollevi sempre lo stesso peso, con le stesse ripetizioni e lo stesso tempo di recupero, il tuo corpo non avrà alcun motivo biologico per adattarsi e crescere.',
+      html: 'Il sovraccarico progressivo è l\'aumento graduale dello stress applicato al corpo durante l\'esercizio fisico. Per far sì che un muscolo cresca o si rafforzi, deve essere sottoposto a uno stimolo maggiore di quello a cui è abituato. Se vai in palestra e sollevi sempre lo stesso peso, con le stesse ripetizioni e lo stesso tempo di recupero, il tuo corpo non avrà alcun motivo biologico per adattarsi e crescere.'
     },
     {
       type: 'list',
@@ -133,48 +119,48 @@ export const content: ToolLocaleContent<GymTrackerUI & Record<string, string>> =
         'Aumento del volume: Eseguire più serie totali per gruppo muscolare.',
         'Riduzione del recupero: Fare lo stesso lavoro in meno tempo.',
         'Miglioramento dell\'esecuzione: Eseguire l\'esercizio con un controllo superiore e un raggio di movimento maggiore.',
-      ],
+      ]
     },
     {
       type: 'title',
       text: 'Perché il Registro Manuale è Superiore alla Memoria',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Molti atleti commettono l\'errore di affidarsi alla propria memoria per ricordare quanto hanno sollevato la settimana scorsa. Tuttavia, in un allenamento tipico che include tra 5 e 10 esercizi diversi, è molto facile dimenticare se hai fatto 80 kg o 82,5 kg alla panca, o se hai gestito 10 ripetizioni o 12. Questa mancanza di precisione porta alla mediocrità.',
+      html: 'Molti atleti commettono l\'errore di affidarsi alla propria memoria per ricordare quanto hanno sollevato la settimana scorsa. Tuttavia, in un allenamento tipico che include tra 5 e 10 esercizi diversi, è molto facile dimenticare se hai fatto 80 kg o 82,5 kg alla panca, o se hai gestito 10 ripetizioni o 12. Questa mancanza di precisione porta alla mediocrità.'
     },
     {
       type: 'tip',
       title: 'Il Potere di Visualizzare il Progresso',
-      html: 'Vedere una linea che sale su un grafico ti dà la spinta necessaria per provare quella ripetizione extra che segna la differenza tra ristagno e crescita muscolare costante.',
+      html: 'Vedere una linea che sale su un grafico ti dà la spinta necessaria per provare quella ripetizione extra che segna la differenza tra ristagno e crescita muscolare costante.'
     },
     {
       type: 'title',
       text: 'Esercizi Fondamentali per il Tracciamento',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Sebbene tutti gli esercizi siano validi, certi colpi composti offrono la migliore visione della tua forza complessiva e del tuo sviluppo fisico. Questi sono quelli che dovresti prioritizzare nel tuo tracciamento: <strong>Panca Piana</strong> per la spinta orizzontale, <strong>Lento Avanti</strong> per la spinta verticale, <strong>Trazioni</strong> per la trazione e <strong>Hip Thrust</strong> per i glutei.',
+      html: 'Sebbene tutti gli esercizi siano validi, certi colpi composti offrono la migliore visione della tua forza complessiva e del tuo sviluppo fisico. Questi sono quelli che dovresti prioritizzare nel tuo tracciamento: <strong>Panca Piana</strong> per la spinta orizzontale, <strong>Lento Avanti</strong> per la spinta verticale, <strong>Trazioni</strong> per la trazione e <strong>Hip Thrust</strong> per i glutei.'
     },
     {
       type: 'title',
       text: 'Come Analizzare i tuoi Grafici di Progresso',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'Una volta registrati diversi allenamenti, inizierai a vedere dei modelli: una <strong>linea costante verso l\'alto</strong> indica la strada giusta, un <strong>plateau</strong> suggerisce che devi regolare il volume o il recupero, e una <strong>tendenza al ribasso</strong> può essere un segno di fatica accumulata.',
+      html: 'Una volta registrati diversi allenamenti, inizierai a vedere dei modelli: una <strong>linea costante verso l\'alto</strong> indica la strada giusta, un <strong>plateau</strong> suggerisce che devi regolare il volume o il recupero, e una <strong>tendenza al ribasso</strong> può essere un segno di fatica accumulata.'
     },
     {
       type: 'title',
       text: 'La Psicologia del Successo in Palestra',
-      level: 3,
+      level: 3
     },
     {
       type: 'paragraph',
-      html: 'L\'allenamento è una sfida tanto mentale quanto fisica. Utilizzando uno strumento visivo che ti mostra che oggi sei l\'1% più forte di quindici giorni fa, stai alimentando il tuo sistema di ricompensa della dopamina. Questo crea un circolo vizioso positivo che trasforma l\'allenamento in un\'abitudine sostenibile.',
+      html: 'L\'allenamento è una sfida tanto mentale quanto fisica. Utilizzando uno strumento visivo che ti mostra che oggi sei l\'1% più forte di quindici giorni fa, stai alimentando il tuo sistema di ricompensa della dopamina. Questo crea un circolo vizioso positivo che trasforma l\'allenamento in un\'abitudine sostenibile.'
     },
   ],
   ui: {
@@ -220,6 +206,6 @@ export const content: ToolLocaleContent<GymTrackerUI & Record<string, string>> =
     lunges: 'Affondi',
     gluteKick: 'Slanci Glutei Cavo',
     hipAbduction: 'Abduzioni Macchina',
-    stepUp: 'Step Up',
-  },
+    stepUp: 'Step Up'
+  }
 };

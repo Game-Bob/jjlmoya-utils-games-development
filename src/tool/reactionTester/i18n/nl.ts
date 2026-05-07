@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: 'STIL...', wp1s: 'Niet nu knipperen',
   wp2t: 'KLAAR...', wp2s: 'Vingers klaar...',
   wp3t: 'HOUD VAST...', wp3s: 'Geduld, jongeling',
-  wp4t: 'FOCUS...', wp4s: 'Het komt eraan...',
+  wp4t: 'FOCUS...', wp4s: 'Het komt eraan...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: 'Hoe werkt deze reactietest?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: 'Deze tool meet uw <strong>visuele reactietijd</strong> met chirurgische precisie. We berekenen het exacte interval van het moment waarop het scherm oplicht tot het moment waarop het signaal van uw ogen naar uw hersenen en vervolgens naar uw vingers reist. De test vereist <strong>5 opeenvolgende pogingen</strong> om uw werkelijke gemiddelde te berekenen, waardoor de geluksfactor wordt geëlimineerd.',
+    html: 'Deze tool meet uw <strong>visuele reactietijd</strong> met chirurgische precisie. We berekenen het exacte interval van het moment waarop het scherm oplicht tot het moment waarop het signaal van uw ogen naar uw hersenen en vervolgens naar uw vingers reist. De test vereist <strong>5 opeenvolgende pogingen</strong> om uw werkelijke gemiddelde te berekenen, waardoor de geluksfactor wordt geëlimineerd.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>Gemiddelde van 5 pogingen:</strong> We elimineren de \"geluk\"-factor door consistentie te eisen. Eén gelukkige klik maakt je niet tot Cyberatheet.',
       '<strong>Anti-cheat-systeem:</strong> Willekeurige wachttijden (1,5 s - 4,5 s) en vroege-klik-detectie ter voorkoming van voorspelling.',
       '<strong>Echte wetenschap:</strong> Hersenverwerking ~180-200 ms + motorische respons +20-40 ms = uw totale reactietijd.',
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Wereldranglijst Tabel', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', 'Mens', 'Het gezonde gemiddelde. Je bent wakker en functioneert correct.'],
       ['280 - 350 ms', 'Schildpad', 'Beneden gemiddeld. Rust uit of train meer.'],
       ['&gt; 350 ms', 'Slaapt', 'Mogelijke vermoeidheid, slaperigheid of trage hardware (inputvertraging).'],
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Waarom ben je traag? Hardware de schuld geven', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: 'Monitor (Hz)',
         description: 'Een 60Hz-monitor heeft ongeveer 16 ms nodig om een frame te tekenen. Een 144Hz duurt maar 7 ms. Dit 10ms-verschil telt in uw eindresultaat.',
         icon: 'mdi:monitor',
-        points: ['60Hz = ~16ms per frame', '144Hz = ~7ms per frame', 'Zichtbaar verschil in test'],
+        points: ['60Hz = ~16ms per frame', '144Hz = ~7ms per frame', 'Zichtbaar verschil in test']
       },
       {
         title: 'Draadloze muis',
         description: 'Goedkope kantoor-Bluetooth-muizen hebben een hoge latentie. Voor deze test gebruikt u een kabel of 2,4GHz-draadloze technologie met lage latentie.',
         icon: 'mdi:mouse-variant',
-        points: ['Goedkope Bluetooth: +15-50ms', '2.4GHz gaming: <1ms extra', 'USB-kabel: referentie'],
+        points: ['Goedkope Bluetooth: +15-50ms', '2.4GHz gaming: <1ms extra', 'USB-kabel: referentie']
       },
       {
         title: 'Browser',
         description: 'Extensies die advertenties blokkeren of zware scripts kunnen ruis veroorzaken. Probeer de incognitomodus voor uw echte record.',
         icon: 'mdi:web',
-        points: ['Sluit zware extensies', 'Incognito = schoner', 'Chrome/Firefox aanbevolen'],
+        points: ['Sluit zware extensies', 'Incognito = schoner', 'Chrome/Firefox aanbevolen']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: 'Veelgestelde vragen', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

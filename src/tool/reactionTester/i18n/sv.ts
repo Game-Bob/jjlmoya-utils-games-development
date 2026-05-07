@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: 'STILLA...', wp1s: 'Ögonen öppna',
   wp2t: 'REDO...', wp2s: 'Fingrar redo...',
   wp3t: 'HÅL...', wp3s: 'Tålamod, ung lärling',
-  wp4t: 'FOKUS...', wp4s: 'Det kommer...',
+  wp4t: 'FOKUS...', wp4s: 'Det kommer...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: 'Hur Fungerar Detta Reaktionstest?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: 'Detta verktyg mäter din <strong>visuella reaktionstid</strong> med kirurgisk precision. Vi beräknar det exakta intervallet från när skärmen lyser upp tills signalen reser från dina ögon till din hjärna och sedan till dina fingrar. Testet kräver <strong>5 på varandra följande försök</strong> för att beräkna ditt verkliga medelvärde, vilket eliminerar lyckan.',
+    html: 'Detta verktyg mäter din <strong>visuella reaktionstid</strong> med kirurgisk precision. Vi beräknar det exakta intervallet från när skärmen lyser upp tills signalen reser från dina ögon till din hjärna och sedan till dina fingrar. Testet kräver <strong>5 på varandra följande försök</strong> för att beräkna ditt verkliga medelvärde, vilket eliminerar lyckan.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>Medelvärde av 5 försök:</strong> Vi eliminerar \"lycka\"-faktorn genom att kräva överensstämmelse. Ett enda lyckligt klick gör dig inte till Cyberatlet.',
       '<strong>Anti-Cheat-system:</strong> Slumpmässiga väntetider (1,5 s - 4,5 s) och tidig klickdetektering för att förhindra förutsägelse.',
       '<strong>Riktig vetenskap:</strong> Hjärnbehandling ~180-200 ms + motorsvaret +20-40 ms = din totala reaktionstid.',
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Världsrankningtabell', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', 'Människa', 'Det friska genomsnittet. Du är vaken och fungerar korrekt.'],
       ['280 - 350 ms', 'Sköldpadda', 'Under genomsnittet. Vila eller träna mer.'],
       ['&gt; 350 ms', 'Sovande', 'Möjlig trötthet, sömnighet eller långsam maskinvara (indatafördröjning).'],
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Varför Är Du Långsam? Skylla på Hårdvaran', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: 'Bildskärm (Hz)',
         description: 'En 60Hz-skärm tar ungefär 16 ms att måla en ram. En 144Hz tar bara 7 ms. Denna 10 ms skillnad räknas i ditt slutresultat.',
         icon: 'mdi:monitor',
-        points: ['60Hz = ~16ms per ram', '144Hz = ~7ms per ram', 'Synlig skillnad i test'],
+        points: ['60Hz = ~16ms per ram', '144Hz = ~7ms per ram', 'Synlig skillnad i test']
       },
       {
         title: 'Trådlös Mus',
         description: 'Billiga kontorsbluetoothmussor har höga fördröjningar. För detta test, använd en kabel eller 2,4GHz trådlös teknik med låg latens.',
         icon: 'mdi:mouse-variant',
-        points: ['Billig Bluetooth: +15-50ms', '2,4GHz gaming: <1ms extra', 'USB-kabel: referens'],
+        points: ['Billig Bluetooth: +15-50ms', '2,4GHz gaming: <1ms extra', 'USB-kabel: referens']
       },
       {
         title: 'Webbläsare',
         description: 'Tillägg som blockerar annonser eller tunga skript kan orsaka stutterning. Prova inkognitoräget för ditt verkliga rekord.',
         icon: 'mdi:web',
-        points: ['Stäng tunga tillägg', 'Inkognito = renare', 'Chrome/Firefox rekommenderas'],
+        points: ['Stäng tunga tillägg', 'Inkognito = renare', 'Chrome/Firefox rekommenderas']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: 'Vanliga Frågor', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

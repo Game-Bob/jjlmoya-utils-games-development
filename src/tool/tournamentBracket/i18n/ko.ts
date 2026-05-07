@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: '링크가 클립보드에 복사되었습니다',
   toastShareFailed: '복사할 수 없습니다. URL:',
   toastFinished: '토너먼트 종료!',
-  defaultName: '토너먼트',
+  defaultName: '토너먼트'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: '무료 온라인 대진표 생성기 및 토너먼트 구성기',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '가장 완벽하고 무료이며 가입이 필요 없는 토너먼트 구성기로 스포츠, 비디오 게임 또는 보드 게임 대회를 관리하세요. <strong>통합 점수 시스템</strong>, 자동 기록 및 스마트 경기 내비게이션을 통해 몇 초 만에 시각적이고 인터랙티브한 싱글 엘리미네이션 대진표를 만드세요. 모든 기능은 브라우저에서 직접 오프라인으로 작동합니다.',
+    html: '가장 완벽하고 무료이며 가입이 필요 없는 토너먼트 구성기로 스포츠, 비디오 게임 또는 보드 게임 대회를 관리하세요. <strong>통합 점수 시스템</strong>, 자동 기록 및 스마트 경기 내비게이션을 통해 몇 초 만에 시각적이고 인터랙티브한 싱글 엘리미네이션 대진표를 만드세요. 모든 기능은 브라우저에서 직접 오프라인으로 작동합니다.'
   },
   {
     type: 'title' as const,
     text: '싱글 엘리미네이션 토너먼트를 만드는 방법은?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>토너먼트 이름을 지정</strong>하고, 참가자를 추가(하나씩 또는 쉼표로 구분된 목록 붙여넣기)하고, 원하는 경우 대진을 랜덤으로 섞고, 대진표를 생성하고, 각 경기의 승자를 눌러 결과를 관리하고, "다음 경기" 버튼을 사용하여 미해결 경기 사이를 탐색하세요.',
+    html: '<strong>토너먼트 이름을 지정</strong>하고, 참가자를 추가(하나씩 또는 쉼표로 구분된 목록 붙여넣기)하고, 원하는 경우 대진을 랜덤으로 섞고, 대진표를 생성하고, 각 경기의 승자를 눌러 결과를 관리하고, "다음 경기" 버튼을 사용하여 미해결 경기 사이를 탐색하세요.'
   },
   {
     type: 'title' as const,
     text: '고급 기능',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>영구 기록:</strong> 모든 토너먼트가 브라우저에 자동으로 저장됩니다.',
       '<strong>자동 몰수승:</strong> 수동 입력 없이 부전승 및 직접 통과가 해결됩니다.',
       '<strong>URL로 공유:</strong> 압축된 링크를 생성하여 누구에게나 대진표를 보냅니다.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: '모든 경쟁에 완벽함',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: '비디오 게임 & e스포츠',
         description: 'FIFA, FC25, 발로란트, 리그 오브 레전드, 스트리트 파이터, 철권, 슈퍼 스매시 브라더스 또는 로켓 리그에 적합합니다.',
         icon: 'mdi:controller-classic',
-        points: ['빠른 대진 형성', '팀 제한 없음', '즉시 공유 가능'],
+        points: ['빠른 대진 형성', '팀 제한 없음', '즉시 공유 가능']
       },
       {
         title: '스포츠 & 라켓 스포츠',
         description: '파델, 테니스, 탁구, 배드민턴, 풋살 또는 3x3 농구 대진표를 관리하세요.',
         icon: 'mdi:trophy-outline',
-        points: ['통합 점수', '최적화된 모바일 뷰', '종이가 필요 없음'],
+        points: ['통합 점수', '최적화된 모바일 뷰', '종이가 필요 없음']
       },
       {
         title: '보드 & 카드 게임',
         description: '매직 더 개더링, 포켓몬 TCG, 유희왕, 카탄, 체스 또는 도미노 토너먼트를 구성하세요.',
         icon: 'mdi:cards-playing-outline',
-        points: ['최대 64명까지', '라운드 기록', '부전승 관리'],
+        points: ['최대 64명까지', '라운드 기록', '부전승 관리']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: '"부전승(Byes)" 또는 직접 통과란 무엇인가요?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '이상적인 싱글 엘리미네이션 토너먼트에서 참가자 수는 2의 거듭제곱(4, 8, 16, 32...)이어야 합니다. 인원이 홀수이거나 2의 거듭제곱이 아닌 경우(예: 7명, 10명 또는 13명) 시스템은 1라운드에서 자동으로 <strong>"부전승(Byes)"</strong>을 할당합니다. 부전승은 참가자가 경기 없이 다음 단계로 바로 진출함을 의미합니다. 당사의 알고리즘은 이러한 통과권을 공정하고 자동으로 계산하여 할당합니다.',
+    html: '이상적인 싱글 엘리미네이션 토너먼트에서 참가자 수는 2의 거듭제곱(4, 8, 16, 32...)이어야 합니다. 인원이 홀수이거나 2의 거듭제곱이 아닌 경우(예: 7명, 10명 또는 13명) 시스템은 1라운드에서 자동으로 <strong>"부전승(Byes)"</strong>을 할당합니다. 부전승은 참가자가 경기 없이 다음 단계로 바로 진출함을 의미합니다. 당사의 알고리즘은 이러한 통과권을 공정하고 자동으로 계산하여 할당합니다.'
   },
   {
     type: 'title' as const,
     text: '즉각적이고 무료이며 가입이 필요 없음',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '번거로움 제로. 계정, 설치, 대기가 필요 없습니다. 참가자를 추가하고 즉시 토너먼트를 생성하세요. 모든 정보는 <strong>LocalStorage</strong>를 통해 브라우저에 자동으로 저장됩니다. 탭을 닫거나 컴퓨터를 끄고 며칠 후에 다시 돌아와도 토너먼트와 전체 기록이 그대로 남아 있습니다.',
+    html: '번거로움 제로. 계정, 설치, 대기가 필요 없습니다. 참가자를 추가하고 즉시 토너먼트를 생성하세요. 모든 정보는 <strong>LocalStorage</strong>를 통해 브라우저에 자동으로 저장됩니다. 탭을 닫거나 컴퓨터를 끄고 며칠 후에 다시 돌아와도 토너먼트와 전체 기록이 그대로 남아 있습니다.'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: '자주 묻는 질문', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

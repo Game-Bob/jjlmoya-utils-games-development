@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: '가만히...', wp1s: '지금 깜빡이지 마세요',
   wp2t: '준비됐어...', wp2s: '손가락 준비...',
   wp3t: '기다리세요...', wp3s: '인내심을 가지세요, 어린 선수',
-  wp4t: '집중...', wp4s: '곧 올 거야...',
+  wp4t: '집중...', wp4s: '곧 올 거야...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: '이 반응 테스트는 어떻게 작동하나요?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: '이 도구는 당신의 <strong>시각적 반응 시간</strong>을 정밀하게 측정합니다. 화면이 밝아진 순간부터 신호가 눈에서 뇌로, 그리고 손가락으로 이동하는 정확한 간격을 계산합니다. 테스트는 운의 요소를 제거하기 위해 실제 평균값을 계산하기 위해 <strong>5회 연속 시도</strong>를 요구합니다.',
+    html: '이 도구는 당신의 <strong>시각적 반응 시간</strong>을 정밀하게 측정합니다. 화면이 밝아진 순간부터 신호가 눈에서 뇌로, 그리고 손가락으로 이동하는 정확한 간격을 계산합니다. 테스트는 운의 요소를 제거하기 위해 실제 평균값을 계산하기 위해 <strong>5회 연속 시도</strong>를 요구합니다.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>5회 시도의 평균:</strong> 일관성을 요구함으로써 \"운\"의 요소를 제거합니다. 한 번의 행운의 클릭으로는 사이버 운동선수가 될 수 없습니다.',
       '<strong>안티 치트 시스템:</strong> 무작위 대기 시간(1.5초~4.5초)과 조기 클릭 감지로 예측 방지.',
       '<strong>실제 과학:</strong> 뇌 처리 ~180-200ms + 운동 반응 +20-40ms = 총 반응 시간.',
-    ],
+    ]
   },
   { type: 'title' as const, text: '세계 순위 표', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', '인간', '건강한 평균. 당신은 깨어 있고 제대로 기능하고 있습니다.'],
       ['280 - 350 ms', '거북이', '평균 이하. 더 쉬거나 훈련하세요.'],
       ['&gt; 350 ms', '잠자는 중', '피로, 졸음 또는 느린 하드웨어(입력 지연) 가능성.'],
-    ],
+    ]
   },
   { type: 'title' as const, text: '느린 이유는? 하드웨어 탓하기', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: '모니터 (Hz)',
         description: '60Hz 모니터는 한 프레임을 그리는 데 약 16ms가 걸립니다. 144Hz는 7ms만 걸립니다. 이 10ms의 차이가 최종 점수에 영향을 줍니다.',
         icon: 'mdi:monitor',
-        points: ['60Hz = 프레임당 약 16ms', '144Hz = 프레임당 약 7ms', '테스트에서 눈에 띄는 차이'],
+        points: ['60Hz = 프레임당 약 16ms', '144Hz = 프레임당 약 7ms', '테스트에서 눈에 띄는 차이']
       },
       {
         title: '무선 마우스',
         description: '저가형 오피스 블루투스 마우스는 지연 시간이 높습니다. 이 테스트의 경우 케이블 또는 낮은 지연 2.4GHz 무선 기술을 사용하세요.',
         icon: 'mdi:mouse-variant',
-        points: ['저가 블루투스: +15-50ms', '2.4GHz 게이밍: <1ms 추가', 'USB 케이블: 기준'],
+        points: ['저가 블루투스: +15-50ms', '2.4GHz 게이밍: <1ms 추가', 'USB 케이블: 기준']
       },
       {
         title: '브라우저',
         description: '광고를 차단하는 확장 프로그램이나 무거운 스크립트는 끊김을 유발할 수 있습니다. 실제 기록을 위해 시크릿 모드를 시도하세요.',
         icon: 'mdi:web',
-        points: ['무거운 확장 프로그램 닫기', '시크릿 = 더 깔끔함', 'Chrome/Firefox 권장'],
+        points: ['무거운 확장 프로그램 닫기', '시크릿 = 더 깔끔함', 'Chrome/Firefox 권장']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: '자주 묻는 질문', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

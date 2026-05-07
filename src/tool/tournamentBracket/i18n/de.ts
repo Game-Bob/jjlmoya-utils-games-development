@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: 'Link in die Zwischenablage kopiert',
   toastShareFailed: 'Kopieren fehlgeschlagen. URL:',
   toastFinished: 'Turnier beendet!',
-  defaultName: 'Turnier',
+  defaultName: 'Turnier'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: 'Kostenloser Online-Turnier-Generator und Bracket-Ersteller',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Verwalten Sie Ihre Sport-, Videospiel- oder Brettspielwettbewerbe mit dem umfassendsten, kostenlosen und registrierungsfreien Turnierorganisator. Erstellen Sie in Sekundenschnelle visuelle und interaktive K.-o.-System-Brackets mit einem <strong>integrierten Punktesystem</strong>, automatischem Verlauf und intelligenter Spielnavigation. Alles funktioniert offline, direkt in Ihrem Browser.',
+    html: 'Verwalten Sie Ihre Sport-, Videospiel- oder Brettspielwettbewerbe mit dem umfassendsten, kostenlosen und registrierungsfreien Turnierorganisator. Erstellen Sie in Sekundenschnelle visuelle und interaktive K.-o.-System-Brackets mit einem <strong>integrierten Punktesystem</strong>, automatischem Verlauf und intelligenter Spielnavigation. Alles funktioniert offline, direkt in Ihrem Browser.'
   },
   {
     type: 'title' as const,
     text: 'Wie erstelle ich ein K.-o.-Runden-Turnier?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>Benennen Sie Ihr Turnier</strong>, fügen Sie Teilnehmer hinzu (einzeln oder als kommagetrennte Liste), mischen Sie die Paarungen nach Belieben, generieren Sie das Bracket, verwalten Sie die Ergebnisse durch Antippen des Gewinners und nutzen Sie die Taste "Nächstes Spiel", um zwischen offenen Spielen zu navigieren.',
+    html: '<strong>Benennen Sie Ihr Turnier</strong>, fügen Sie Teilnehmer hinzu (einzeln oder als kommagetrennte Liste), mischen Sie die Paarungen nach Belieben, generieren Sie das Bracket, verwalten Sie die Ergebnisse durch Antippen des Gewinners und nutzen Sie die Taste "Nächstes Spiel", um zwischen offenen Spielen zu navigieren.'
   },
   {
     type: 'title' as const,
     text: 'Erweiterte Funktionen',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>Permanenter Verlauf:</strong> Alle Turniere werden automatisch in Ihrem Browser gespeichert.',
       '<strong>Auto-Walkovers:</strong> Freilose und direktes Weiterkommen werden ohne manuelle Eingabe gelöst.',
       '<strong>Per URL teilen:</strong> Generieren Sie einen komprimierten Link, um das Bracket an jeden zu senden.',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Perfekt für jeden Wettbewerb',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: 'Videospiele & eSports',
         description: 'Perfekt für FIFA, FC25, Valorant, League of Legends, Street Fighter, Tekken, Super Smash Bros oder Rocket League.',
         icon: 'mdi:controller-classic',
-        points: ['Schnelle Paarungen', 'Kein Teamlimit', 'Sofort teilbar'],
+        points: ['Schnelle Paarungen', 'Kein Teamlimit', 'Sofort teilbar']
       },
       {
         title: 'Sport & Rückschlagspiele',
         description: 'Verwalten Sie Brackets für Padel, Tennis, Tischtennis, Badminton, Futsal oder 3x3-Basketball.',
         icon: 'mdi:trophy-outline',
-        points: ['Integrierte Ergebnisse', 'Optimierte Mobilansicht', 'Kein Papier nötig'],
+        points: ['Integrierte Ergebnisse', 'Optimierte Mobilansicht', 'Kein Papier nötig']
       },
       {
         title: 'Brett und Kartenspiele',
         description: 'Organisieren Sie Turniere für Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, Schach oder Domino.',
         icon: 'mdi:cards-playing-outline',
-        points: ['Bis zu 64 Spieler', 'Rundenverlauf', 'Freilos-Management'],
+        points: ['Bis zu 64 Spieler', 'Rundenverlauf', 'Freilos-Management']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: 'Was sind "Freilose" oder Direktpass-Regeln?',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'In einem idealen K.-o.-Turnier muss die Teilnehmerzahl eine Zweierpotenz sein (4, 8, 16, 32...). Wenn Sie eine ungerade oder keine Zweierpotenz-Zahl haben — zum Beispiel 7, 10 oder 13 Spieler —, weist das System in der ersten Runde automatisch <strong>"Freilose"</strong> (Byes) zu. Ein Freilos bedeutet, dass ein Teilnehmer direkt in die nächste Phase vorrückt, ohne zu spielen. Unser Algorithmus berechnet und weist diese Pässe fair und automatisch zu.',
+    html: 'In einem idealen K.-o.-Turnier muss die Teilnehmerzahl eine Zweierpotenz sein (4, 8, 16, 32...). Wenn Sie eine ungerade oder keine Zweierpotenz-Zahl haben — zum Beispiel 7, 10 oder 13 Spieler —, weist das System in der ersten Runde automatisch <strong>"Freilose"</strong> (Byes) zu. Ein Freilos bedeutet, dass ein Teilnehmer direkt in die nächste Phase vorrückt, ohne zu spielen. Unser Algorithmus berechnet und weist diese Pässe fair und automatisch zu.'
   },
   {
     type: 'title' as const,
     text: 'Sofort, kostenlos und keine Anmeldung erforderlich',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'Keine Hürden. Keine Konten, keine Installationen, kein Warten. Fügen Sie Teilnehmer hinzu und generieren Sie Ihr Turnier sofort. Alles wird automatisch in Ihrem Browser über <strong>LocalStorage</strong> gespeichert: Schließen Sie den Tab, schalten Sie den Computer aus und kommen Sie Tage später wieder. Ihr Turnier und der vollständige Verlauf werden immer noch da sein.',
+    html: 'Keine Hürden. Keine Konten, keine Installationen, kein Warten. Fügen Sie Teilnehmer hinzu und generieren Sie Ihr Turnier sofort. Alles wird automatisch in Ihrem Browser über <strong>LocalStorage</strong> gespeichert: Schließen Sie den Tab, schalten Sie den Computer aus und kommen Sie Tage später wieder. Ihr Turnier und der vollständige Verlauf werden immer noch da sein.'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: 'Häufig gestellte Fragen', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

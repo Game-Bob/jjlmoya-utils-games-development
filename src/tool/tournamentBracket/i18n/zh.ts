@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -46,7 +47,7 @@ const ui: TournamentBracketUI = {
   toastShareCopied: '链接已复制到剪贴板',
   toastShareFailed: '无法复制。URL：',
   toastFinished: '锦标赛结束！',
-  defaultName: '锦标赛',
+  defaultName: '锦标赛'
 };
 
 const faqData = [
@@ -70,25 +71,25 @@ const seo = [
   {
     type: 'title' as const,
     text: '免费在线对阵图生成器及锦标赛组织工具',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '使用功能最全、免费且无需注册的锦标赛组织器管理您的体育、视频游戏或桌游竞赛。在秒级时间内通过<strong>集成计分系统</strong>、自动历史记录和智能比赛导航，创建直观互动的单败淘汰赛对阵图。一切都能在您的浏览器中直接脱机运行。',
+    html: '使用功能最全、免费且无需注册的锦标赛组织器管理您的体育、视频游戏或桌游竞赛。在秒级时间内通过<strong>集成计分系统</strong>、自动历史记录和智能比赛导航，创建直观互动的单败淘汰赛对阵图。一切都能在您的浏览器中直接脱机运行。'
   },
   {
     type: 'title' as const,
     text: '如何创建单败淘汰赛锦标赛？',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>为您的锦标赛命名</strong>，添加参赛者（逐个添加或通过英文逗号分隔的列表粘贴），根据需要随机对阵，生成对阵图，通过点击每场比赛的获胜者管理结果，并使用“下一场比赛”按钮在未决比赛之间切换。',
+    html: '<strong>为您的锦标赛命名</strong>，添加参赛者（逐个添加或通过英文逗号分隔的列表粘贴），根据需要随机对阵，生成对阵图，通过点击每场比赛的获胜者管理结果，并使用“下一场比赛”按钮在未决比赛之间切换。'
   },
   {
     type: 'title' as const,
     text: '高级功能',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'list' as const,
@@ -100,12 +101,12 @@ const seo = [
       '<strong>持久历史记录：</strong> 所有锦标赛都会自动保存在您的浏览器中。',
       '<strong>自动轮空处理：</strong> 轮空和直接晋级无需手动操作。',
       '<strong>通过 URL 分享：</strong> 生成压缩链接，将对阵图发送给任何人。',
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: '适用于任何竞赛',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'comparative' as const,
@@ -115,39 +116,39 @@ const seo = [
         title: '视频游戏 & 电子竞技',
         description: '非常适合 FIFA、FC25、Valorant、英雄联盟、街霸、铁拳、任天堂明星大乱斗或火箭联盟。',
         icon: 'mdi:controller-classic',
-        points: ['快速对阵', '无队伍限制', '即时分享'],
+        points: ['快速对阵', '无队伍限制', '即时分享']
       },
       {
         title: '体育 & 球拍运动',
         description: '管理板网球、网球、乒乓球、羽毛球、室内五人制足球或 3x3 篮球的对阵。',
         icon: 'mdi:trophy-outline',
-        points: ['集成比分', '优化的移动端视图', '告别纸笔'],
+        points: ['集成比分', '优化的移动端视图', '告别纸笔']
       },
       {
         title: '桌游 & 卡牌游戏',
         description: '组织万智牌、宝可梦 TCG、游戏王、卡坦岛、国际象棋或多米诺骨牌比赛。',
         icon: 'mdi:cards-playing-outline',
-        points: ['高达 64 名玩家', '轮次历史', '轮空管理'],
+        points: ['高达 64 名玩家', '轮次历史', '轮空管理']
       },
-    ],
+    ]
   },
   {
     type: 'title' as const,
     text: '什么是“轮空” (Byes) 或直通名额？',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '在理想的单败淘汰赛中，参赛者人数必须是 2 的幂次方（4, 8, 16, 32...）。当人数为奇数或非 2 的幂次方时（例如 7, 10 或 13 人），系统将在第一轮自动分配<strong>“轮空”</strong>。轮空意味着参赛者无需比赛直接晋级下一阶段。我们的算法会公平地自动计算并分配这些名额。',
+    html: '在理想的单败淘汰赛中，参赛者人数必须是 2 的幂次方（4, 8, 16, 32...）。当人数为奇数或非 2 的幂次方时（例如 7, 10 或 13 人），系统将在第一轮自动分配<strong>“轮空”</strong>。轮空意味着参赛者无需比赛直接晋级下一阶段。我们的算法会公平地自动计算并分配这些名额。'
   },
   {
     type: 'title' as const,
     text: '即时、免费且无需注册',
-    level: 2 as const,
+    level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: '零门槛。无账户、无安装、无等待。添加参赛者并在瞬间生成您的锦标赛。一切都会通过 <strong>LocalStorage</strong> 自动保存在您的浏览器中：关闭标签页、关机并在几天后回来，您的锦标赛和完整历史记录依然会在那里。',
+    html: '零门槛。无账户、无安装、无等待。添加参赛者并在瞬间生成您的锦标赛。一切都会通过 <strong>LocalStorage</strong> 自动保存在您的浏览器中：关闭标签页、关机并在几天后回来，您的锦标赛和完整历史记录依然会在那里。'
   },
 ];
 
@@ -157,4 +158,4 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, description, applicationCategory: 'SportsApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } },
 ];
 
-export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faqTitle: '常见问题', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<TournamentBracketUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };

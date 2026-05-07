@@ -1,3 +1,4 @@
+import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { ReactionTesterUI } from '../ui';
@@ -47,7 +48,7 @@ const ui: ReactionTesterUI = {
   wp1t: 'QUIETO...', wp1s: 'No parpadees ahora',
   wp2t: 'ATENTO...', wp2s: 'Dedos preparados...',
   wp3t: 'HOLD...', wp3s: 'Paciencia, saltamontes',
-  wp4t: 'OJITO...', wp4s: 'Va a salir ya...',
+  wp4t: 'OJITO...', wp4s: 'Va a salir ya...'
 };
 
 const faqData = [
@@ -68,7 +69,7 @@ const seo = [
   { type: 'title' as const, text: '¿Cómo funciona este Test de Reflejos?', level: 2 as const },
   {
     type: 'paragraph' as const,
-    html: 'Esta herramienta mide tu <strong>tiempo de reacción visual</strong> con precisión quirúrgica. Calculamos el intervalo exacto desde que la pantalla se ilumina hasta que la señal viaja de tus ojos al cerebro, y de ahí a tus dedos. El test exige <strong>5 intentos consecutivos</strong> para calcular tu promedio real, eliminando el factor suerte.',
+    html: 'Esta herramienta mide tu <strong>tiempo de reacción visual</strong> con precisión quirúrgica. Calculamos el intervalo exacto desde que la pantalla se ilumina hasta que la señal viaja de tus ojos al cerebro, y de ahí a tus dedos. El test exige <strong>5 intentos consecutivos</strong> para calcular tu promedio real, eliminando el factor suerte.'
   },
   {
     type: 'list' as const,
@@ -76,7 +77,7 @@ const seo = [
       '<strong>Promedio de 5 intentos:</strong> Eliminamos el factor "suerte" obligándote a ser consistente. Un solo clic afortunado no te hará un Ciberatleta.',
       '<strong>Sistema Anti-Trampas:</strong> Tiempos de espera aleatorios (1.5s - 4.5s) y detección de clics anticipados para evitar predicciones.',
       '<strong>Ciencia real:</strong> Procesamiento cerebral ~180-200ms + respuesta motora +20-40ms = tu tiempo total de reacción.',
-    ],
+    ]
   },
   { type: 'title' as const, text: 'Tabla de Clasificación Mundial', level: 2 as const },
   {
@@ -88,7 +89,7 @@ const seo = [
       ['230 - 280 ms', 'Humano', 'El promedio saludable. Estás despierto y funcionando correctamente.'],
       ['280 - 350 ms', 'Tortuga', 'Por debajo de la media. Descansa o entrena más.'],
       ['&gt; 350 ms', 'Dormido', 'Posible fatiga, sueño o hardware lento (input lag).'],
-    ],
+    ]
   },
   { type: 'title' as const, text: '¿Por qué eres lento? Culpando al Hardware', level: 2 as const },
   {
@@ -99,21 +100,21 @@ const seo = [
         title: 'Monitor (Hz)',
         description: 'Un monitor de 60Hz tarda ~16ms en pintar un cuadro. Uno de 144Hz tarda solo 7ms. Esa diferencia de 10ms cuenta en tu puntuación final.',
         icon: 'mdi:monitor',
-        points: ['60Hz = ~16ms por frame', '144Hz = ~7ms por frame', 'Diferencia visible en test'],
+        points: ['60Hz = ~16ms por frame', '144Hz = ~7ms por frame', 'Diferencia visible en test']
       },
       {
         title: 'Ratón Inalámbrico',
         description: 'Los ratones bluetooth de oficina baratos tienen latencias altas. Para este test, usa cable o tecnología wireless 2.4GHz de baja latencia.',
         icon: 'mdi:mouse-variant',
-        points: ['Bluetooth barato: +15-50ms', '2.4GHz gamer: <1ms extra', 'Cable USB: referencia'],
+        points: ['Bluetooth barato: +15-50ms', '2.4GHz gamer: <1ms extra', 'Cable USB: referencia']
       },
       {
         title: 'Navegador',
         description: 'Las extensiones que bloquean anuncios o scripts pesados pueden causar "stuttering". Prueba en modo incógnito para tu récord real.',
         icon: 'mdi:web',
-        points: ['Cierra extensiones pesadas', 'Modo incógnito = más limpio', 'Chrome/Firefox recomendado'],
+        points: ['Cierra extensiones pesadas', 'Modo incógnito = más limpio', 'Chrome/Firefox recomendado']
       },
-    ],
+    ]
   },
 ];
 
@@ -121,14 +122,14 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
   {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    mainEntity: faqData.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } }))
   },
   {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: title,
     description,
-    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text })),
+    step: howTo.map((s) => ({ '@type': 'HowToStep', name: s.name, text: s.text }))
   },
   {
     '@context': 'https://schema.org',
@@ -137,8 +138,8 @@ const schemas: [WithContext<FAQPage>, WithContext<HowTo>, WithContext<SoftwareAp
     description,
     applicationCategory: 'SportsApplication',
     operatingSystem: 'Web',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }
   },
 ];
 
-export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faqTitle: 'Preguntas frecuentes', faq: faqData, bibliography: [], howTo, schemas };
+export const content: ToolLocaleContent<ReactionTesterUI> = { slug, title, description, ui, seo, faq: faqData, bibliography, howTo, schemas };
