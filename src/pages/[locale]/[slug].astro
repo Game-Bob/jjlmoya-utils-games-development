@@ -81,8 +81,7 @@ interface Props {
 
 const { Component, locale, content, localeUrls, allToolsNav, englishSlug } = Astro.props;
 
-// eslint-disable-next-line custom/no-css-comments
-const cssFiles = import.meta.glob("../../tool/**/*.css", { query: "?raw", import: "default" });
+const cssFiles = import.meta.glob("../../tool/**" + "/" + "*.css", { query: "?raw", import: "default" });
 const cssKey = Object.keys(cssFiles).find((k) => k.endsWith(`/${englishSlug}.css`));
 const toolCss = cssKey ? await cssFiles[cssKey]() as string : "";
 

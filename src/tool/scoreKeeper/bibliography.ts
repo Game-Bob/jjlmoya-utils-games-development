@@ -3,7 +3,7 @@ import type { BibliographyEntry } from '../../types';
 export const bibliography: BibliographyEntry[] = [
   {
     name: 'ITTF: Official Table Tennis (Ping Pong) Rules',
-    url: 'https://www.ittf.com/handbook/',
+    url: 'https://www.ittf.com/statutes/',
   },
   {
     name: 'ITF: Official Tennis Rules',
@@ -11,14 +11,14 @@ export const bibliography: BibliographyEntry[] = [
   },
   {
     name: 'FIP: Official Padel Regulations',
-    url: 'https://www.padelfip.com/es/regulaciones/',
+    url: 'https://www.padelfip.com/es/documents/',
   },
   {
     name: 'FIVB: Official Volleyball Rules',
-    url: 'https://www.fivb.com/en/volleyball/thegame_volleyball/rulesofthegame_volleyball',
+    url: 'https://www.fivb.com/volleyball/the-game/official-volleyball-rules/',
   },
   {
     name: 'FIBA: Official Basketball Rules',
-    url: 'https://www.fiba.basketball/en/official-basketball-rules',
+    url: 'https://about.fiba.basketball/en/our-sport/official-basketball-rules',
   },
 ];
