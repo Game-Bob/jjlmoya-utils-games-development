@@ -9,7 +9,7 @@ interface Props {
 
 const { locale = 'es' } = Astro.props;
 const content = await scoreKeeper.i18n[locale]?.();
-if (!content) return;
+if (!content) return null;
 ---
 
-<SEORenderer content={{ locale: locale as string, sections: content.seo }} />
+{content.seo?.length > 0 && <SEORenderer content={{ locale, sections: content.seo }} />}
