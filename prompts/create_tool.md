@@ -57,7 +57,7 @@ src/tool/$TOOL_ID/i18n/en.ts (English dictionary)
 
 src/tool/$TOOL_ID/$TOOL_ID.css (Scoped styles)
 
-Map all i18n properties in the entry file to the English dictionary temporarily.
+Map ONLY the 'en' property in the entry file's i18n object to the English dictionary temporarily (leave other locales unregistered/omitted so that i18n completeness tests intentionally fail until QA is completed).
 
 Add the new tool entry to the central registration files (indexes, categories, and routing lists).
 

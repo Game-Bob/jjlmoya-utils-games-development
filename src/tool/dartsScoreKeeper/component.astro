@@ -1,0 +1,156 @@
+---
+import type { KnownLocale } from '../../types';
+import type { DartsScoreKeeperUI } from './ui';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as DartsScoreKeeperUI;
+---
+
+<div class="tn-console" id="tn-card" data-tn-ui={JSON.stringify(t)}>
+  <div class="tn-header-panel">
+    <div class="tn-header-actions">
+      <button class="tn-action-btn" id="tn-toggle-view-btn" title="Toggle View">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="6"/>
+          <circle cx="12" cy="12" r="2"/>
+        </svg>
+      </button>
+      <button class="tn-action-btn" data-tn-reset title={t.reset}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+          <path d="M16 3h5v5M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+          <path d="M8 21H3v-5"/>
+        </svg>
+      </button>
+      <button class="tn-action-btn" data-tn-fs title={t.fullscreen}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="tn-scoreboard">
+    <div class="tn-player-card tn-player-card-active" id="tn-card-a">
+      <div class="tn-player-name-section">
+        <input type="text" value={t.playerA} class="tn-player-input" id="tn-name-a" />
+      </div>
+      <div class="tn-big-score" id="tn-score-a">501</div>
+      <div class="tn-player-stats">
+        <div class="tn-legs-indicator" id="tn-legs-indicator-a">
+          <span class="tn-legs-dot"></span>
+          <span class="tn-legs-dot"></span>
+          <span class="tn-legs-dot"></span>
+        </div>
+        <span id="tn-avg-a">{t.average}: 0.00</span>
+      </div>
+    </div>
+
+    <div class="tn-player-card" id="tn-card-b">
+      <div class="tn-player-name-section">
+        <input type="text" value={t.playerB} class="tn-player-input" id="tn-name-b" />
+      </div>
+      <div class="tn-big-score" id="tn-score-b">501</div>
+      <div class="tn-player-stats">
+        <div class="tn-legs-indicator" id="tn-legs-indicator-b">
+          <span class="tn-legs-dot"></span>
+          <span class="tn-legs-dot"></span>
+          <span class="tn-legs-dot"></span>
+        </div>
+        <span id="tn-avg-b">{t.average}: 0.00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tn-checkout-panel">
+    <div class="tn-checkout-title" id="tn-checkout-suggest"></div>
+  </div>
+
+  <div class="tn-dartboard-container" id="tn-dartboard-container">
+    <div class="tn-dartboard-wrapper">
+      <svg id="tn-dartboard-svg" viewBox="0 0 320 320"></svg>
+    </div>
+    <div class="tn-dartboard-actions">
+      <button class="tn-special-btn tn-special-btn-undo" data-dt-undo>Undo</button>
+      <button class="tn-special-btn tn-special-btn-miss" data-dt-val="0">Miss (0)</button>
+    </div>
+  </div>
+
+  <div class="tn-turn-info">
+    <div class="tn-turn-title">{t.dart}</div>
+    <div class="tn-turn-darts" id="tn-turn-darts"></div>
+  </div>
+
+  <div class="tn-keypad">
+    <div class="tn-modifiers">
+      <button class="tn-mod-btn tn-mod-active" data-dt-mod="1">Single (x1)</button>
+      <button class="tn-mod-btn" data-dt-mod="2">Double (x2)</button>
+      <button class="tn-mod-btn" data-dt-mod="3">Triple (x3)</button>
+    </div>
+
+    <div class="tn-numbers-grid">
+      {Array.from({ length: 20 }, (_, i) => i + 1).map((n) => (
+        <button class="tn-val-btn" data-dt-val={n}>{n}</button>
+      ))}
+    </div>
+
+    <div class="tn-special-grid">
+      <button class="tn-special-btn" data-dt-val="25">OB (25)</button>
+      <button class="tn-special-btn" data-dt-val="50">DB (50)</button>
+      <button class="tn-special-btn tn-special-btn-miss" data-dt-val="0">Miss (0)</button>
+    </div>
+
+    <div class="tn-special-grid">
+      <button class="tn-special-btn tn-special-btn-undo" data-dt-undo>Undo</button>
+    </div>
+  </div>
+
+  <div class="tn-history-panel">
+    <div class="tn-history-grid" id="tn-history-list"></div>
+  </div>
+
+  <div class="tn-console-controls">
+    <div class="tn-control-group">
+      <button class="tn-control-btn tn-format-btn tn-format-active" data-dt-format="501">{t.score501}</button>
+      <button class="tn-control-btn tn-format-btn" data-dt-format="301">{t.score301}</button>
+    </div>
+    <div class="tn-control-group">
+      <button class="tn-control-btn tn-doubleout-active" data-dt-doubleout>{t.doubleOut}</button>
+    </div>
+  </div>
+
+  <div id="tn-winner" class="tn-celebration-screen">
+    <div class="tn-celebration-box">
+      <svg class="tn-celebration-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6m12 5h1.5a2.5 2.5 0 0 0 0-5H18M6 4h12M12 18v3m-4 0h8m-4-17v14a4 4 0 0 1-4-4"/>
+      </svg>
+      <div class="tn-celebration-label">{t.winnerLabel}</div>
+      <div id="tn-winner-team" class="tn-celebration-name">Player 1</div>
+      <div id="tn-winner-score" class="tn-celebration-score">Set: 0 - 0</div>
+      <button class="tn-celebration-btn" data-close-winner>&times;</button>
+    </div>
+  </div>
+
+  <div id="tn-confetti" class="tn-confetti-field"></div>
+
+  <div id="tn-modal" class="tn-inline-modal">
+    <div class="tn-inline-modal-box">
+      <p class="tn-inline-modal-text">{t.resetConfirm}</p>
+      <div class="tn-inline-modal-btns">
+        <button id="tn-modal-cancel" class="tn-inline-modal-btn tn-inline-btn-cancel">{t.cancel}</button>
+        <button id="tn-modal-confirm" class="tn-inline-modal-btn tn-inline-btn-reset">{t.reset}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initDartsScoreKeeper } from './logic';
+  initDartsScoreKeeper();
+</script>
