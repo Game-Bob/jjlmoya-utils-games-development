@@ -1,4 +1,4 @@
-import { bibliography } from '../bibliography';
+﻿import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { ToolLocaleContent } from '../../../types';
 import type { TournamentBracketUI } from '../ui';
@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'İdeal bir tek elemeli turnuvada katılımcı sayısı 2\'nin bir kuvveti (4, 8, 16, 32...) olmalıdır. Tek bir sayınız olduğunda veya 2\'nin kuvveti olmayan bir sayınız olduğunda —örneğin 7, 10 veya 13 oyuncu— sistem ilk turda otomatik olarak <strong>"Bye"</strong> atar. "Bye", bir katılımcının oynamadan doğrudan bir sonraki aşamaya geçmesi anlamına gelir. Algoritmamız bu geçişleri adil ve otomatik olarak hesaplar ve atar.'
+    html: 'İdeal bir tek elemeli turnuvada katılımcı sayısı 2\'nin bir kuvveti (4, 8, 16, 32...) olmalıdır. Tek bir sayınız olduğunda veya 2\'nin kuvveti olmayan bir sayınız olduğunda :örneğin 7, 10 veya 13 oyuncu: sistem ilk turda otomatik olarak <strong>"Bye"</strong> atar. "Bye", bir katılımcının oynamadan doğrudan bir sonraki aşamaya geçmesi anlamına gelir. Algoritmamız bu geçişleri adil ve otomatik olarak hesaplar ve atar.'
   },
   {
     type: 'title' as const,

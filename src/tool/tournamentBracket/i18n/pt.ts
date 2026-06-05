@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'Em um torneio de eliminatória simples ideal, o número de participantes deve ser uma potência de 2 (4, 8, 16, 32...). Quando você tem um número ímpar ou que não é potência de 2 — por exemplo, 7, 10 ou 13 jogadores —, o sistema atribui automaticamente <strong>"Byes"</strong> na primeira rodada. Um "Bye" significa que um participante avança diretamente para a próxima fase sem jogar. Nosso algoritmo calcula e atribui essas passagens de forma justa e automática.'
+    html: 'Em um torneio de eliminatória simples ideal, o número de participantes deve ser uma potência de 2 (4, 8, 16, 32...). Quando você tem um número ímpar ou que não é potência de 2 , por exemplo, 7, 10 ou 13 jogadores, o sistema atribui automaticamente <strong>"Byes"</strong> na primeira rodada. Um "Bye" significa que um participante avança diretamente para a próxima fase sem jogar. Nosso algoritmo calcula e atribui essas passagens de forma justa e automática.'
   },
   {
     type: 'title' as const,

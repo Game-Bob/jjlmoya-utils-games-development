@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'In un torneo ideale a eliminazione diretta, il numero di partecipanti deve essere una potenza di 2 (4, 8, 16, 32...). Quando hai un numero dispari o non potenza di 2 — per esempio 7, 10 o 13 giocatori —, il sistema assegna automaticamente i <strong>"Bye"</strong> nel primo turno. Un "Bye" significa che un partecipante avanza direttamente alla fase successiva senza giocare. Il nostro algoritmo calcola e assegna questi passaggi in modo equo e automatico.'
+    html: 'In un torneo ideale a eliminazione diretta, il numero di partecipanti deve essere una potenza di 2 (4, 8, 16, 32...). Quando hai un numero dispari o non potenza di 2 , per esempio 7, 10 o 13 giocatori, il sistema assegna automaticamente i <strong>"Bye"</strong> nel primo turno. Un "Bye" significa che un partecipante avanza direttamente alla fase successiva senza giocare. Il nostro algoritmo calcola e assegna questi passaggi in modo equo e automatico.'
   },
   {
     type: 'title' as const,

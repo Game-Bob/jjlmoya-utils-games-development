@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'W idealnym turnieju pucharowym liczba uczestników musi być potęgą liczby 2 (4, 8, 16, 32...). Kiedy masz nieparzystą liczbę lub niebędącą potęgą 2 — na przykład 7, 10 lub 13 graczy — system automatycznie przypisuje <strong>„Byes”</strong> (wolne losy) w pierwszej rundzie. Wolny los oznacza, że uczestnik przechodzi bezpośrednio do następnej fazy bez grania meczu. Nasz algorytm sprawiedliwie i automatycznie oblicza oraz przydziela te awanse.'
+    html: 'W idealnym turnieju pucharowym liczba uczestników musi być potęgą liczby 2 (4, 8, 16, 32...). Kiedy masz nieparzystą liczbę lub niebędącą potęgą 2 , na przykład 7, 10 lub 13 graczy, system automatycznie przypisuje <strong>„Byes”</strong> (wolne losy) w pierwszej rundzie. Wolny los oznacza, że uczestnik przechodzi bezpośrednio do następnej fazy bez grania meczu. Nasz algorytm sprawiedliwie i automatycznie oblicza oraz przydziela te awanse.'
   },
   {
     type: 'title' as const,

@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'In einem idealen K.-o.-Turnier muss die Teilnehmerzahl eine Zweierpotenz sein (4, 8, 16, 32...). Wenn Sie eine ungerade oder keine Zweierpotenz-Zahl haben — zum Beispiel 7, 10 oder 13 Spieler —, weist das System in der ersten Runde automatisch <strong>"Freilose"</strong> (Byes) zu. Ein Freilos bedeutet, dass ein Teilnehmer direkt in die nächste Phase vorrückt, ohne zu spielen. Unser Algorithmus berechnet und weist diese Pässe fair und automatisch zu.'
+    html: 'In einem idealen K.-o.-Turnier muss die Teilnehmerzahl eine Zweierpotenz sein (4, 8, 16, 32...). Wenn Sie eine ungerade oder keine Zweierpotenz-Zahl haben , zum Beispiel 7, 10 oder 13 Spieler, weist das System in der ersten Runde automatisch <strong>"Freilose"</strong> (Byes) zu. Ein Freilos bedeutet, dass ein Teilnehmer direkt in die nächste Phase vorrückt, ohne zu spielen. Unser Algorithmus berechnet und weist diese Pässe fair und automatisch zu.'
   },
   {
     type: 'title' as const,

@@ -1,0 +1,115 @@
+---
+import type { KnownLocale } from '../../types';
+import type { BasketScoreKeeperUI } from './ui';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as BasketScoreKeeperUI;
+---
+
+<div class="bk-card" id="basket-scoreboard" data-bk-ui={JSON.stringify(t)}>
+  <div class="bk-bar">
+    <div class="bk-bar-left">
+      <button id="bk-btn-fs" class="bk-bar-btn" data-fs>
+        <svg class="bk-fs-e" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2.5" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        <svg class="bk-fs-c" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2.5" stroke-linecap="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+      </button>
+    </div>
+    <div class="bk-bar-right">
+      <button id="bk-btn-swap" class="bk-bar-btn" data-swap>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round"><path d="M7 16V4M7 4L3 8M7 4L11 8"/><path d="M17 8V20M17 20L21 16M17 20L13 16"/></svg>
+      </button>
+      <button id="bk-btn-reset" class="bk-bar-btn" data-reset>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="bk-team" id="bk-team-a">
+    <div class="bk-team-top">
+      <input type="text" value={t.playerA} class="bk-name" />
+      <div id="bk-fire-a" class="bk-fire"></div>
+      <div id="bk-streak-a" class="bk-streak"><span id="bk-streak-val-a" class="bk-streak-val"></span></div>
+    </div>
+    <div id="bk-particles-a" class="bk-particles"></div>
+    <div class="bk-score-stack" id="bk-stack-a">
+      <div class="bk-score-slot">
+        <div id="bk-score-a" class="bk-score-digit">0</div>
+      </div>
+    </div>
+    <div class="bk-pts">
+      <button class="bk-inc" data-val="1" onclick="window.basket.addScore('A', 1, event)">+1</button>
+      <button class="bk-inc" data-val="2" onclick="window.basket.addScore('A', 2, event)">+2</button>
+      <button class="bk-inc" data-val="3" onclick="window.basket.addScore('A', 3, event)">+3</button>
+    </div>
+    <div class="bk-dec-wrap">
+      <button class="bk-dec" onclick="window.basket.adjScore('A', -1)">−</button>
+    </div>
+  </div>
+
+  <div class="bk-divider"></div>
+
+  <div class="bk-team" id="bk-team-b">
+    <div class="bk-team-top bk-team-top-right">
+      <div id="bk-streak-b" class="bk-streak"><span id="bk-streak-val-b" class="bk-streak-val"></span></div>
+      <div id="bk-fire-b" class="bk-fire"></div>
+      <input type="text" value={t.playerB} class="bk-name bk-name-right" />
+    </div>
+    <div id="bk-particles-b" class="bk-particles"></div>
+    <div class="bk-score-stack" id="bk-stack-b">
+      <div class="bk-score-slot">
+        <div id="bk-score-b" class="bk-score-digit">0</div>
+      </div>
+    </div>
+    <div class="bk-pts">
+      <button class="bk-inc" data-val="1" onclick="window.basket.addScore('B', 1, event)">+1</button>
+      <button class="bk-inc" data-val="2" onclick="window.basket.addScore('B', 2, event)">+2</button>
+      <button class="bk-inc" data-val="3" onclick="window.basket.addScore('B', 3, event)">+3</button>
+    </div>
+    <div class="bk-dec-wrap">
+      <button class="bk-dec" onclick="window.basket.adjScore('B', -1)">−</button>
+    </div>
+  </div>
+
+  <div id="bk-flash" class="bk-flash"></div>
+  <div id="bk-winner" class="bk-winner bk-winner-off">
+    <div class="bk-winner-bg"></div>
+    <div class="bk-winner-box">
+      <div class="bk-winner-crown">
+        <svg viewBox="0 0 64 64" fill="currentcolor" width="64" height="64">
+          <path d="M8 48l8-32 12 16 4-24 4 24 12-16 8 32z"/>
+          <rect x="12" y="48" width="40" height="6" rx="2"/>
+        </svg>
+      </div>
+      <div class="bk-winner-label">{t.winnerLabel}</div>
+      <div id="bk-winner-name" class="bk-winner-name">HOME</div>
+      <div id="bk-winner-score" class="bk-winner-score">87 - 82</div>
+      <div class="bk-winner-confetti" id="bk-winner-confetti"></div>
+    </div>
+  </div>
+
+  <div id="bk-modal" class="bk-modal" style="display:none">
+    <div class="bk-modal-bg"></div>
+    <div class="bk-modal-box">
+      <div class="bk-modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p class="bk-modal-text">{t.resetConfirm}</p>
+      <div class="bk-modal-btns">
+        <button id="bk-modal-cancel" class="bk-modal-btn bk-modal-btn-cancel">{t.cancel}</button>
+        <button id="bk-modal-confirm" class="bk-modal-btn bk-modal-btn-reset">{t.reset}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initBasketScoreKeeper } from './logic';
+  initBasketScoreKeeper();
+</script>

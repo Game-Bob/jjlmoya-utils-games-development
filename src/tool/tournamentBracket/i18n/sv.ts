@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'I en idealisk utslagsturnering måste antalet deltagare vara en potens av 2 (4, 8, 16, 32...). När du har ett ojämnt antal eller ett antal som inte är en potens av 2 — till exempel 7, 10 eller 13 spelare — tilldelar systemet automatiskt <strong>"Byes"</strong> i den första omgången. En "Bye" innebär att en deltagare går direkt till nästa fas utan att spela. Vår algoritm beräknar och tilldelar dessa avancemang rättvist och automatiskt.'
+    html: 'I en idealisk utslagsturnering måste antalet deltagare vara en potens av 2 (4, 8, 16, 32...). När du har ett ojämnt antal eller ett antal som inte är en potens av 2 , till exempel 7, 10 eller 13 spelare, tilldelar systemet automatiskt <strong>"Byes"</strong> i den första omgången. En "Bye" innebär att en deltagare går direkt till nästa fas utan att spela. Vår algoritm beräknar och tilldelar dessa avancemang rättvist och automatiskt.'
   },
   {
     type: 'title' as const,

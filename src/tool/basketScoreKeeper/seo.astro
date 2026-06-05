@@ -1,0 +1,15 @@
+---
+import { SEORenderer } from '@jjlmoya/utils-shared';
+import { basketScoreKeeper } from './index';
+import type { KnownLocale } from '../../types';
+
+interface Props {
+  locale?: KnownLocale;
+}
+
+const { locale = 'es' } = Astro.props;
+const content = await basketScoreKeeper.i18n[locale]?.();
+if (!content) return null;
+---
+
+{content.seo?.length > 0 && <SEORenderer content={{ locale, sections: content.seo }} />}

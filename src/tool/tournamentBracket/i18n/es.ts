@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'En un torneo de eliminación directa ideal, el número de participantes debe ser una potencia de 2 (4, 8, 16, 32...). Cuando tienes un número impar o no potencia de 2 —por ejemplo 7, 10 o 13 jugadores—, el sistema asigna automáticamente <strong>"Byes"</strong> en la primera ronda. Un "Bye" significa que un participante pasa directamente a la siguiente fase sin jugar. Nuestro algoritmo calcula y asigna estos pases de forma justa y automática.'
+    html: 'En un torneo de eliminación directa ideal, el número de participantes debe ser una potencia de 2 (4, 8, 16, 32...). Cuando tienes un número impar o no potencia de 2 , por ejemplo 7, 10 o 13 jugadores, el sistema asigna automáticamente <strong>"Byes"</strong> en la primera ronda. Un "Bye" significa que un participante pasa directamente a la siguiente fase sin jugar. Nuestro algoritmo calcula y asigna estos pases de forma justa y automática.'
   },
   {
     type: 'title' as const,

@@ -1,24 +1,21 @@
-import type { SportsCategoryEntry, SportsToolEntry } from '../types';
-import { basketScoreKeeper } from '../tool/basketScoreKeeper/index';
-import { scoreKeeper } from '../tool/scoreKeeper/index';
-import { tournamentBracket } from '../tool/tournamentBracket/index';
-import { gymTracker } from '../tool/gymTracker/index';
-import { reactionTester } from '../tool/reactionTester/index';
+import type { SportsToolEntry, ToolLocaleContent } from '../../types';
 
-export const sportsCategory: SportsCategoryEntry = {
-  icon: 'mdi:basketball',
-  tools: [
-    basketScoreKeeper,
-    scoreKeeper,
-    tournamentBracket,
-    gymTracker,
-    reactionTester,
-  ] as unknown as SportsToolEntry<Record<string, string>>[],
+import type { BasketScoreKeeperUI } from './ui';
+
+export type { BasketScoreKeeperUI };
+export type BasketScoreKeeperLocaleContent = ToolLocaleContent<BasketScoreKeeperUI>;
+
+export const basketScoreKeeper: SportsToolEntry<BasketScoreKeeperUI> = {
+  id: 'basketball-scoreboard',
+  icons: {
+    bg: 'mdi:basketball',
+    fg: 'mdi:scoreboard-outline',
+  },
   i18n: {
-    es: () => import('./i18n/es').then((m) => m.content),
-    en: () => import('./i18n/en').then((m) => m.content),
-    fr: () => import('./i18n/fr').then((m) => m.content),
     de: () => import('./i18n/de').then((m) => m.content),
+    en: () => import('./i18n/en').then((m) => m.content),
+    es: () => import('./i18n/es').then((m) => m.content),
+    fr: () => import('./i18n/fr').then((m) => m.content),
     id: () => import('./i18n/id').then((m) => m.content),
     it: () => import('./i18n/it').then((m) => m.content),
     ja: () => import('./i18n/ja').then((m) => m.content),

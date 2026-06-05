@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'Dans un tournoi à élimination directe idéal, le nombre de participants doit être une puissance de 2 (4, 8, 16, 32...). Quand vous avez un nombre impair ou non puissance de 2 —par exemple 7, 10 ou 13 joueurs—, le système assigne automatiquement des <strong>"Byes"</strong> au premier tour. Un "Bye" signifie qu\'un participant passe directement à la phase suivante sans jouer. Notre algorithme calcule et assigne ces passages de façon juste et automatique.'
+    html: 'Dans un tournoi à élimination directe idéal, le nombre de participants doit être une puissance de 2 (4, 8, 16, 32...). Quand vous avez un nombre impair ou non puissance de 2 , par exemple 7, 10 ou 13 joueurs, le système assigne automatiquement des <strong>"Byes"</strong> au premier tour. Un "Bye" signifie qu\'un participant passe directement à la phase suivante sans jouer. Notre algorithme calcule et assigne ces passages de façon juste et automatique.'
   },
   {
     type: 'title' as const,

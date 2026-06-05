@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'Dalam turnamen sistem gugur yang ideal, jumlah peserta harus merupakan pangkat dari 2 (4, 8, 16, 32...). Jika Anda memiliki jumlah ganjil atau bukan pangkat 2 — misalnya 7, 10, atau 13 pemain —, sistem akan secara otomatis memberikan <strong>"Bye"</strong> di babak pertama. "Bye" berarti peserta melaju langsung ke fase berikutnya tanpa bermain. Algoritma kami menghitung dan memberikan kelolosan ini secara adil dan otomatis.'
+    html: 'Dalam turnamen sistem gugur yang ideal, jumlah peserta harus merupakan pangkat dari 2 (4, 8, 16, 32...). Jika Anda memiliki jumlah ganjil atau bukan pangkat 2 , misalnya 7, 10, atau 13 pemain, sistem akan secara otomatis memberikan <strong>"Bye"</strong> di babak pertama. "Bye" berarti peserta melaju langsung ke fase berikutnya tanpa bermain. Algoritma kami menghitung dan memberikan kelolosan ini secara adil dan otomatis.'
   },
   {
     type: 'title' as const,

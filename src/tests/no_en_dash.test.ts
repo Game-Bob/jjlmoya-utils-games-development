@@ -34,7 +34,7 @@ describe('En-Dash Character Validation', () => {
     const relativePath = path.relative(process.cwd(), filePath);
     it(`should not contain en-dash in ${relativePath}`, () => {
       const content = fs.readFileSync(filePath, 'utf-8');
-      const hasEnDash = content.includes('\u2013') || content.includes('–');
+      const hasEnDash = content.includes('\u2013') || content.includes('–') || content.includes('—');
       expect(hasEnDash).toBe(false);
     });
   });

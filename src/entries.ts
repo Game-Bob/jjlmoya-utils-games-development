@@ -1,3 +1,5 @@
+export { basketScoreKeeper } from './tool/basketScoreKeeper/entry';
+export type { BasketScoreKeeperLocaleContent } from './tool/basketScoreKeeper/entry';
 export { gymTracker } from './tool/gymTracker/entry';
 export type { GymTrackerLocaleContent } from './tool/gymTracker/entry';
 export { reactionTester } from './tool/reactionTester/entry';
@@ -7,8 +9,9 @@ export type { ScoreKeeperLocaleContent } from './tool/scoreKeeper/entry';
 export { tournamentBracket } from './tool/tournamentBracket/entry';
 export type { TournamentBracketLocaleContent } from './tool/tournamentBracket/entry';
 export { sportsCategory } from './category';
+import { basketScoreKeeper } from './tool/basketScoreKeeper/entry';
 import { gymTracker } from './tool/gymTracker/entry';
 import { reactionTester } from './tool/reactionTester/entry';
 import { scoreKeeper } from './tool/scoreKeeper/entry';
 import { tournamentBracket } from './tool/tournamentBracket/entry';
-export const ALL_ENTRIES = [gymTracker, reactionTester, scoreKeeper, tournamentBracket];
+export const ALL_ENTRIES = [basketScoreKeeper, gymTracker, reactionTester, scoreKeeper, tournamentBracket];

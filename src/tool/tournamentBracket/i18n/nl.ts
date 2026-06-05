@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'In een ideaal knock-out toernooi moet het aantal deelnemers een macht van 2 zijn (4, 8, 16, 32...). Als je een oneven aantal hebt of geen macht van 2 — bijvoorbeeld 7, 10 of 13 spelers —, wijst het systeem automatisch <strong>"Byes"</strong> toe in de eerste ronde. Een "Bye" betekent dat een deelnemer direct doorgaat naar de volgende fase zonder te spelen. Ons algoritme berekent en wijst deze passages eerlijk und automatisch toe.'
+    html: 'In een ideaal knock-out toernooi moet het aantal deelnemers een macht van 2 zijn (4, 8, 16, 32...). Als je een oneven aantal hebt of geen macht van 2 , bijvoorbeeld 7, 10 of 13 spelers, wijst het systeem automatisch <strong>"Byes"</strong> toe in de eerste ronde. Een "Bye" betekent dat een deelnemer direct doorgaat naar de volgende fase zonder te spelen. Ons algoritme berekent en wijst deze passages eerlijk und automatisch toe.'
   },
   {
     type: 'title' as const,

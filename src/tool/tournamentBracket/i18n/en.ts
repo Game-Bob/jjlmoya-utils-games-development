@@ -139,7 +139,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'In an ideal single-elimination tournament the number of participants must be a power of 2 (4, 8, 16, 32...). When you have an odd or non-power-of-2 number —for example 7, 10 or 13 players—, the system automatically assigns <strong>"Byes"</strong> in the first round. A "Bye" means a participant advances directly to the next phase without playing. Our algorithm calculates and assigns these passes fairly and automatically.'
+    html: 'In an ideal single-elimination tournament the number of participants must be a power of 2 (4, 8, 16, 32...). When you have an odd or non-power-of-2 number , for example 7, 10 or 13 players, the system automatically assigns <strong>"Byes"</strong> in the first round. A "Bye" means a participant advances directly to the next phase without playing. Our algorithm calculates and assigns these passes fairly and automatically.'
   },
   {
     type: 'title' as const,
