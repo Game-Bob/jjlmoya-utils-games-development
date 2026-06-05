@@ -54,14 +54,18 @@ export function checkGamePointOpportunity(score: MatchScore): PlayerSide | null 
   return null;
 }
 
+function isOneGameAway(leader: number, trailing: number, need: number): boolean {
+  return leader >= need - 1 && leader > trailing;
+}
+
+function isAtGamePoint(leaderPoints: number, trailingPoints: number): boolean {
+  return leaderPoints >= POINTS_TO_WIN_GAME - 1 && leaderPoints > trailingPoints;
+}
+
 export function checkMatchPointOpportunity(score: MatchScore): PlayerSide | null {
   const need = gamesNeededForMatchWin(score.format);
-  const oneGameAway = score.gamesWonByA >= need - 1 && score.gamesWonByA > score.gamesWonByB;
-  const oneGameAwayB = score.gamesWonByB >= need - 1 && score.gamesWonByB > score.gamesWonByA;
-  const atGamePointA = score.currentGamePointsA >= POINTS_TO_WIN_GAME - 1 && score.currentGamePointsA > score.currentGamePointsB;
-  const atGamePointB = score.currentGamePointsB >= POINTS_TO_WIN_GAME - 1 && score.currentGamePointsB > score.currentGamePointsA;
-  if (oneGameAway && atGamePointA) return 'a';
-  if (oneGameAwayB && atGamePointB) return 'b';
+  if (isOneGameAway(score.gamesWonByA, score.gamesWonByB, need) && isAtGamePoint(score.currentGamePointsA, score.currentGamePointsB)) return 'a';
+  if (isOneGameAway(score.gamesWonByB, score.gamesWonByA, need) && isAtGamePoint(score.currentGamePointsB, score.currentGamePointsA)) return 'b';
   return null;
 }
 
