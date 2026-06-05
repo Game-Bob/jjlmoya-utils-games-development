@@ -1,0 +1,124 @@
+---
+import type { KnownLocale } from '../../types';
+import type { PingPongScoreKeeperUI } from './ui';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as PingPongScoreKeeperUI;
+---
+
+<div class="pp-card" id="pp-card" data-pp-ui={JSON.stringify(t)}>
+  <div class="pp-bar">
+    <button class="pp-bar-btn" data-pp-fs>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+    </button>
+    <div class="pp-mode">
+      <button class="pp-mode-btn" data-mode-bo1>{t.bo1}</button>
+      <button class="pp-mode-btn" data-mode-bo3>{t.bo3}</button>
+      <button class="pp-mode-btn pp-mode-active" data-mode-bo5>{t.bo5}</button>
+      <button class="pp-mode-btn" data-mode-bo7>{t.bo7}</button>
+    </div>
+    <button class="pp-bar-btn" data-pp-reset>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="pp-board" id="pp-board">
+    <div class="pp-side pp-side-a" id="pp-side-a">
+      <div id="pp-particles-a" class="pp-particles"></div>
+      <svg class="pp-ball" id="pp-ball-a" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="30" r="28" fill="currentcolor" opacity="0.12"/>
+        <path d="M12 12 Q30 50 48 48" stroke="currentcolor" stroke-width="0.8" opacity="0.08" fill="none"/>
+        <path d="M12 48 Q30 10 48 12" stroke="currentcolor" stroke-width="0.8" opacity="0.08" fill="none"/>
+      </svg>
+      <div class="pp-name-wrap">
+        <input type="text" value={t.playerA} class="pp-name" id="pp-name-a" list="pp-names-a" />
+        <datalist id="pp-names-a"></datalist>
+        <svg class="pp-pencil" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+      </div>
+      <div class="pp-dots" id="pp-dots-a"></div>
+      <div class="pp-score pp-score-a" id="pp-score-a">0</div>
+      <button class="pp-btn-plus pp-btn-plus-a" data-pp-a>+</button>
+      <button class="pp-btn-minus pp-btn-minus-a" data-minus-a>&minus;</button>
+    </div>
+    <div class="pp-side pp-side-b" id="pp-side-b">
+      <div id="pp-particles-b" class="pp-particles"></div>
+      <svg class="pp-ball" id="pp-ball-b" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="30" r="28" fill="currentcolor" opacity="0.12"/>
+        <path d="M12 12 Q30 50 48 48" stroke="currentcolor" stroke-width="0.8" opacity="0.08" fill="none"/>
+        <path d="M12 48 Q30 10 48 12" stroke="currentcolor" stroke-width="0.8" opacity="0.08" fill="none"/>
+      </svg>
+      <div class="pp-name-wrap">
+        <input type="text" value={t.playerB} class="pp-name" id="pp-name-b" list="pp-names-b" />
+        <datalist id="pp-names-b"></datalist>
+        <svg class="pp-pencil" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+      </div>
+      <div class="pp-dots" id="pp-dots-b"></div>
+      <div class="pp-score pp-score-b" id="pp-score-b">0</div>
+      <button class="pp-btn-plus pp-btn-plus-b" data-pp-b>+</button>
+      <button class="pp-btn-minus pp-btn-minus-b" data-minus-b>&minus;</button>
+    </div>
+  </div>
+
+  <div class="pp-status" id="pp-status"></div>
+
+  <div class="pp-actions">
+    <button class="pp-action" data-pp-new>{t.newGame}</button>
+  </div>
+
+  <div class="pp-history" id="pp-history"></div>
+
+  <div id="pp-swap" class="pp-swap">
+    <div class="pp-swap-bg"></div>
+    <div class="pp-swap-box" data-pp-swap>
+      <div class="pp-swap-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentcolor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="40" height="40">
+          <path d="M12 36L6 30M6 30L12 24M6 30H36"/>
+          <path d="M36 12L42 18M42 18L36 24M42 18H12"/>
+        </svg>
+      </div>
+      <div class="pp-swap-text">{t.changeSide}</div>
+      <div class="pp-swap-sub">{t.swapHint}</div>
+    </div>
+  </div>
+
+  <div id="pp-winner" class="pp-winner">
+    <div class="pp-winner-bg" data-close-winner></div>
+    <div class="pp-winner-box">
+      <button class="pp-winner-close" data-close-winner>&times;</button>
+      <div class="pp-winner-cup">
+        <svg viewBox="0 0 64 64" fill="currentcolor" width="40" height="40">
+          <path d="M8 48l8-32 12 16 4-24 4 24 12-16 8 32z"/>
+          <rect x="12" y="48" width="40" height="6" rx="2"/>
+        </svg>
+      </div>
+      <div class="pp-winner-label">{t.winnerLabel}</div>
+      <div id="pp-winner-team" class="pp-winner-team">Player 1</div>
+      <div id="pp-winner-score" class="pp-winner-score">0 &minus; 0</div>
+    </div>
+  </div>
+
+  <div id="pp-confetti" class="pp-confetti"></div>
+
+  <div id="pp-modal" class="pp-modal">
+    <div class="pp-modal-bg"></div>
+    <div class="pp-modal-box">
+      <p class="pp-modal-text">{t.resetConfirm}</p>
+      <div class="pp-modal-btns">
+        <button id="pp-modal-cancel" class="pp-modal-btn pp-modal-btn-cancel">{t.cancel}</button>
+        <button id="pp-modal-confirm" class="pp-modal-btn pp-modal-btn-reset">{t.reset}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initPingPongScoreKeeper } from './logic';
+  initPingPongScoreKeeper();
+</script>

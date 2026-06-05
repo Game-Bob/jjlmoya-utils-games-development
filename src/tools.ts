@@ -6,6 +6,7 @@ import { TOURNAMENT_BRACKET_TOOL } from './tool/tournamentBracket/index';
 import { GYM_TRACKER_TOOL } from './tool/gymTracker/index';
 import { REACTION_TESTER_TOOL } from './tool/reactionTester/index';
 import { FOOTBALL_SCORE_KEEPER_TOOL } from './tool/footballScoreKeeper/index';
+import { PING_PONG_SCORE_KEEPER_TOOL } from './tool/pingPongScoreKeeper/index';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   BASKET_SCORE_KEEPER_TOOL,
@@ -14,6 +15,7 @@ export const ALL_TOOLS: ToolDefinition[] = [
   GYM_TRACKER_TOOL,
   REACTION_TESTER_TOOL,
   FOOTBALL_SCORE_KEEPER_TOOL,
+  PING_PONG_SCORE_KEEPER_TOOL,
 ];
 
 

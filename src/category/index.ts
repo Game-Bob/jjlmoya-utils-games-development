@@ -5,6 +5,7 @@ import { scoreKeeper } from '../tool/scoreKeeper/index';
 import { tournamentBracket } from '../tool/tournamentBracket/index';
 import { gymTracker } from '../tool/gymTracker/index';
 import { reactionTester } from '../tool/reactionTester/index';
+import { pingPongScoreKeeper } from '../tool/pingPongScoreKeeper/index';
 
 export const sportsCategory: SportsCategoryEntry = {
   icon: 'mdi:soccer',
@@ -15,6 +16,7 @@ export const sportsCategory: SportsCategoryEntry = {
     tournamentBracket,
     gymTracker,
     reactionTester,
+    pingPongScoreKeeper,
   ] as unknown as SportsToolEntry<Record<string, string>>[],
   i18n: {
     es: () => import('./i18n/es').then((m) => m.content),
