@@ -48,19 +48,16 @@ export function setsNeededForMatchWin(format: MatchFormat): number {
   return format === 'bo3' ? 2 : 3;
 }
 
-export function getPointLabel(points: number, opponentPoints: number, inTiebreak: boolean): string {
-  if (inTiebreak) {
-    return String(points);
-  }
-  if (points === 0) return '0';
-  if (points === 1) return '15';
+function standardPointLabel(points: number, opponentPoints: number): string {
+  if (points <= 1) return points === 0 ? '0' : '15';
   if (points === 2) return '30';
-  if (points === 3) return '40';
-  if (points > 3) {
-    if (points === opponentPoints) return '40';
-    if (points - opponentPoints === 1) return 'Ad';
-  }
+  if (points === 3 || points === opponentPoints) return '40';
+  if (points - opponentPoints === 1) return 'Ad';
   return '0';
+}
+
+export function getPointLabel(points: number, opponentPoints: number, inTiebreak: boolean): string {
+  return inTiebreak ? String(points) : standardPointLabel(points, opponentPoints);
 }
 
 export function checkMatchOver(score: MatchScore): PlayerSide | null {
@@ -70,17 +67,21 @@ export function checkMatchOver(score: MatchScore): PlayerSide | null {
   return null;
 }
 
-export function checkSetOver(score: MatchScore): PlayerSide | null {
-  const a = score.gamesWonInCurrentSetA;
-  const b = score.gamesWonInCurrentSetB;
-  if (score.inTiebreak) {
-    if (score.tiebreakPointsA >= 7 && score.tiebreakPointsA - score.tiebreakPointsB >= 2) return 'a';
-    if (score.tiebreakPointsB >= 7 && score.tiebreakPointsB - score.tiebreakPointsA >= 2) return 'b';
-  } else {
-    if (a >= 6 && a - b >= 2) return 'a';
-    if (b >= 6 && b - a >= 2) return 'b';
-  }
+function tiebreakSetWinner(score: MatchScore): PlayerSide | null {
+  if (score.tiebreakPointsA >= 7 && score.tiebreakPointsA - score.tiebreakPointsB >= 2) return 'a';
+  if (score.tiebreakPointsB >= 7 && score.tiebreakPointsB - score.tiebreakPointsA >= 2) return 'b';
   return null;
+}
+
+function regularSetWinner(a: number, b: number): PlayerSide | null {
+  if (a >= 6 && a - b >= 2) return 'a';
+  if (b >= 6 && b - a >= 2) return 'b';
+  return null;
+}
+
+export function checkSetOver(score: MatchScore): PlayerSide | null {
+  if (score.inTiebreak) return tiebreakSetWinner(score);
+  return regularSetWinner(score.gamesWonInCurrentSetA, score.gamesWonInCurrentSetB);
 }
 
 export function checkGameOver(score: MatchScore): PlayerSide | null {
@@ -94,32 +95,37 @@ export function checkGameOver(score: MatchScore): PlayerSide | null {
   return null;
 }
 
-export function checkPointWinnerOpportunity(score: MatchScore): PlayerSide | null {
-  if (checkMatchOver(score)) return null;
-  if (score.inTiebreak) {
-    const a = score.tiebreakPointsA;
-    const b = score.tiebreakPointsB;
-    if (a >= 6 && a > b) return 'a';
-    if (b >= 6 && b > a) return 'b';
-    return null;
-  }
-  const a = score.currentGamePointsA;
-  const b = score.currentGamePointsB;
+function tiebreakPointWinner(a: number, b: number): PlayerSide | null {
+  if (a >= 6 && a > b) return 'a';
+  if (b >= 6 && b > a) return 'b';
+  return null;
+}
+
+function gamePointWinner(a: number, b: number): PlayerSide | null {
   if (a >= 3 && a > b) return 'a';
   if (b >= 3 && b > a) return 'b';
   return null;
 }
 
+export function checkPointWinnerOpportunity(score: MatchScore): PlayerSide | null {
+  if (checkMatchOver(score)) return null;
+  return score.inTiebreak
+    ? tiebreakPointWinner(score.tiebreakPointsA, score.tiebreakPointsB)
+    : gamePointWinner(score.currentGamePointsA, score.currentGamePointsB);
+}
+
+function isSetPointForSide(gamesLeader: number, gamesTrailer: number): boolean {
+  return (gamesLeader === 5 && gamesTrailer <= 4) || (gamesLeader === 6 && gamesTrailer === 5);
+}
+
 export function isSetPoint(score: MatchScore): PlayerSide | null {
   const opp = checkPointWinnerOpportunity(score);
   if (!opp) return null;
+  if (score.inTiebreak) return opp;
   const gA = score.gamesWonInCurrentSetA;
   const gB = score.gamesWonInCurrentSetB;
-  if (score.inTiebreak) {
-    return opp;
-  }
-  if (opp === 'a' && ((gA === 5 && gB <= 4) || (gA === 6 && gB === 5))) return 'a';
-  if (opp === 'b' && ((gB === 5 && gA <= 4) || (gB === 6 && gA === 5))) return 'b';
+  if (opp === 'a' && isSetPointForSide(gA, gB)) return 'a';
+  if (opp === 'b' && isSetPointForSide(gB, gA)) return 'b';
   return null;
 }
 
@@ -132,48 +138,56 @@ export function isMatchPoint(score: MatchScore): PlayerSide | null {
   return null;
 }
 
+function getTiebreakServer(firstServer: PlayerSide, totalPoints: number): PlayerSide {
+  if (totalPoints % 2 === 1) return oppositeSide(firstServer);
+  return ((totalPoints / 2) % 2 === 1) ? oppositeSide(firstServer) : firstServer;
+}
+
+function oppositeSide(side: PlayerSide): PlayerSide {
+  return side === 'a' ? 'b' : 'a';
+}
+
+function awardTiebreakPoint(next: MatchScore, side: PlayerSide): void {
+  if (side === 'a') next.tiebreakPointsA += 1;
+  else next.tiebreakPointsB += 1;
+  next.servingPlayer = getTiebreakServer(next.firstServerOfSet, next.tiebreakPointsA + next.tiebreakPointsB);
+}
+
+function awardRegularPoint(next: MatchScore, side: PlayerSide): void {
+  if (side === 'a') next.currentGamePointsA += 1;
+  else next.currentGamePointsB += 1;
+}
+
 export function awardPointToPlayer(score: MatchScore, side: PlayerSide): MatchScore {
   if (checkMatchOver(score)) return score;
   const next = { ...score };
-  if (next.inTiebreak) {
-    if (side === 'a') next.tiebreakPointsA += 1;
-    else next.tiebreakPointsB += 1;
-    const totalPoints = next.tiebreakPointsA + next.tiebreakPointsB;
-    if (totalPoints % 2 === 1) {
-      next.servingPlayer = next.servingPlayer === 'a' ? 'b' : 'a';
-    } else {
-      next.servingPlayer = ((totalPoints / 2) % 2 === 1)
-        ? (next.firstServerOfSet === 'a' ? 'b' : 'a')
-        : next.firstServerOfSet;
-    }
-  } else {
-    if (side === 'a') next.currentGamePointsA += 1;
-    else next.currentGamePointsB += 1;
-  }
+  if (next.inTiebreak) awardTiebreakPoint(next, side);
+  else awardRegularPoint(next, side);
   return next;
+}
+
+function undoLastTiebreakPoint(next: MatchScore, side: PlayerSide): boolean {
+  if (side === 'a' && next.tiebreakPointsA > 0) next.tiebreakPointsA -= 1;
+  else if (side === 'b' && next.tiebreakPointsB > 0) next.tiebreakPointsB -= 1;
+  else return false;
+  next.servingPlayer = getTiebreakServer(next.firstServerOfSet, next.tiebreakPointsA + next.tiebreakPointsB);
+  return true;
+}
+
+function undoLastRegularPoint(next: MatchScore, side: PlayerSide): boolean {
+  if (side === 'a' && next.currentGamePointsA > 0) next.currentGamePointsA -= 1;
+  else if (side === 'b' && next.currentGamePointsB > 0) next.currentGamePointsB -= 1;
+  else return false;
+  return true;
 }
 
 export function undoLastPoint(score: MatchScore, side: PlayerSide): MatchScore {
   if (checkMatchOver(score)) return score;
   const next = { ...score };
-  if (next.inTiebreak) {
-    if (side === 'a' && next.tiebreakPointsA > 0) next.tiebreakPointsA -= 1;
-    else if (side === 'b' && next.tiebreakPointsB > 0) next.tiebreakPointsB -= 1;
-    else return score;
-    const totalPoints = next.tiebreakPointsA + next.tiebreakPointsB;
-    if (totalPoints % 2 === 1) {
-      next.servingPlayer = next.servingPlayer === 'a' ? 'b' : 'a';
-    } else {
-      next.servingPlayer = ((totalPoints / 2) % 2 === 1)
-        ? (next.firstServerOfSet === 'a' ? 'b' : 'a')
-        : next.firstServerOfSet;
-    }
-  } else {
-    if (side === 'a' && next.currentGamePointsA > 0) next.currentGamePointsA -= 1;
-    else if (side === 'b' && next.currentGamePointsB > 0) next.currentGamePointsB -= 1;
-    else return score;
-  }
-  return next;
+  const ok = next.inTiebreak
+    ? undoLastTiebreakPoint(next, side)
+    : undoLastRegularPoint(next, side);
+  return ok ? next : score;
 }
 
 export function concludeGame(score: MatchScore, gameWinner: PlayerSide): MatchScore {
@@ -194,29 +208,21 @@ export function concludeGame(score: MatchScore, gameWinner: PlayerSide): MatchSc
   return next;
 }
 
-export function concludeSet(score: MatchScore, setWinner: PlayerSide): MatchScore {
-  const next = { ...score };
-  const historyItem: SetScore = {
+function makeSetHistoryItem(next: MatchScore, setWinner: PlayerSide): SetScore {
+  const item: SetScore = {
     gamesA: next.gamesWonInCurrentSetA,
     gamesB: next.gamesWonInCurrentSetB,
   };
   if (next.inTiebreak) {
-    historyItem.tiebreakPointsA = next.tiebreakPointsA;
-    historyItem.tiebreakPointsB = next.tiebreakPointsB;
-    if (setWinner === 'a') {
-      historyItem.gamesA = 7;
-      historyItem.gamesB = 6;
-    } else {
-      historyItem.gamesA = 6;
-      historyItem.gamesB = 7;
-    }
+    item.tiebreakPointsA = next.tiebreakPointsA;
+    item.tiebreakPointsB = next.tiebreakPointsB;
+    item.gamesA = setWinner === 'a' ? 7 : 6;
+    item.gamesB = setWinner === 'a' ? 6 : 7;
   }
-  next.setHistory = [...next.setHistory, historyItem];
-  if (setWinner === 'a') {
-    next.setsWonA += 1;
-  } else {
-    next.setsWonB += 1;
-  }
+  return item;
+}
+
+function resetSetState(next: MatchScore): void {
   next.gamesWonInCurrentSetA = 0;
   next.gamesWonInCurrentSetB = 0;
   next.currentGamePointsA = 0;
@@ -226,6 +232,14 @@ export function concludeSet(score: MatchScore, setWinner: PlayerSide): MatchScor
   next.tiebreakPointsB = 0;
   next.firstServerOfSet = next.firstServerOfSet === 'a' ? 'b' : 'a';
   next.servingPlayer = next.firstServerOfSet;
+}
+
+export function concludeSet(score: MatchScore, setWinner: PlayerSide): MatchScore {
+  const next = { ...score };
+  next.setHistory = [...next.setHistory, makeSetHistoryItem(next, setWinner)];
+  if (setWinner === 'a') next.setsWonA += 1;
+  else next.setsWonB += 1;
+  resetSetState(next);
   return next;
 }
 

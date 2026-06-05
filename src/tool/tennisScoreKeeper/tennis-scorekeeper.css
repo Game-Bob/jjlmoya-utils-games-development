@@ -11,7 +11,6 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-base);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  font-family: 'Inter', sans-serif;
 }
 
 .tn-header-panel {
@@ -227,9 +226,9 @@
 }
 
 .tn-hud-dot-won {
-  background: #ccff00;
-  border-color: #ccff00;
-  box-shadow: 0 0 8px #ccff00;
+  background: #cf0;
+  border-color: #cf0;
+  box-shadow: 0 0 8px #cf0;
 }
 
 .tn-court-score-box {
@@ -252,15 +251,15 @@
 }
 
 .theme-dark .tn-court-score {
-  color: #ccff00;
+  color: #cf0;
   text-shadow: 0 0 15px rgba(204, 255, 0, 0.35);
 }
 
 .tn-court-score-pop {
-  animation: tnCourtScorePop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: tn-court-score-pop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes tnCourtScorePop {
+@keyframes tn-court-score-pop {
   0% { transform: scale(1); }
   50% { transform: scale(1.2) rotate(3deg); }
   100% { transform: scale(1); }
@@ -291,10 +290,10 @@
 }
 
 .tn-racquet-serving {
-  opacity: 1 !important;
-  color: #ccff00 !important;
-  background: rgba(0, 0, 0, 0.75) !important;
-  box-shadow: 0 0 12px #ccff00;
+  opacity: 1;
+  color: #cf0;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 12px #cf0;
   transform: scale(1.2);
 }
 
@@ -310,13 +309,20 @@
   width: 0.95rem;
   height: 0.95rem;
   display: inline-block;
-  filter: drop-shadow(0 0 4px #ccff00);
-  animation: tnPulseBall 1.5s infinite ease-in-out;
+  filter: drop-shadow(0 0 4px #cf0);
+  animation: tn-pulse-ball 1.5s infinite ease-in-out;
 }
 
-@keyframes tnPulseBall {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #ccff00); }
-  50% { transform: scale(1.2); filter: drop-shadow(0 0 8px #ccff00); }
+@keyframes tn-pulse-ball {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px #cf0);
+  }
+  50% {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px #cf0);
+  }
 }
 
 .tn-side-actions {
@@ -340,7 +346,7 @@
   text-align: center;
   font-size: 0.85rem;
   font-weight: 900;
-  color: #ccff00;
+  color: #cf0;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   padding: 0.75rem;
@@ -468,14 +474,14 @@
 .tn-tb-score {
   font-size: 0.55rem;
   font-weight: 700;
-  color: #ccff00;
+  color: #cf0;
   position: absolute;
   top: -0.25rem;
   right: -0.25rem;
   background: var(--bg-surface);
   padding: 0 0.15rem;
   border-radius: 0.2rem;
-  border: 1px solid #ccff00;
+  border: 1px solid #cf0;
 }
 
 .theme-light .tn-tb-score {
@@ -496,12 +502,18 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.35);
   transform: translate(-50%, -50%) scale(0);
-  animation: tnRippleEffect 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  animation: tn-ripple-effect 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
 
-@keyframes tnRippleEffect {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+@keyframes tn-ripple-effect {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
 }
 
 .tn-glow-particle {
@@ -509,15 +521,21 @@
   pointer-events: none;
   width: 0.65rem;
   height: 0.65rem;
-  background: #ccff00;
+  background: #cf0;
   border-radius: 50%;
-  box-shadow: 0 0 8px #ccff00;
-  animation: tnParticleFly 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  box-shadow: 0 0 8px #cf0;
+  animation: tn-particle-fly 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-@keyframes tnParticleFly {
-  0% { transform: translate(0, 0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+@keyframes tn-particle-fly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
 }
 
 .tn-swap-overlay {
@@ -549,22 +567,27 @@
   padding: 1rem 1.5rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  animation: tnPulse 2s infinite;
+  animation: tn-pulse 2s infinite;
 }
 
-@keyframes tnPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
+@keyframes tn-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
 }
 
 .tn-swap-toast-icon {
   width: 2rem;
   height: 2rem;
   color: var(--accent);
-  animation: tnSpinSwap 4s linear infinite;
+  animation: tn-spin-swap 4s linear infinite;
 }
 
-@keyframes tnSpinSwap {
+@keyframes tn-spin-swap {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
@@ -623,9 +646,9 @@
 .tn-celebration-cup {
   width: 6rem;
   height: 6rem;
-  color: #ccff00;
+  color: #cf0;
   filter: drop-shadow(0 0 15px rgba(204, 255, 0, 0.4));
-  animation: tnFloatTrophy 3s ease-in-out infinite;
+  animation: tn-float-trophy 3s ease-in-out infinite;
 }
 
 .theme-light .tn-celebration-cup {
@@ -633,9 +656,14 @@
   filter: none;
 }
 
-@keyframes tnFloatTrophy {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@keyframes tn-float-trophy {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .tn-celebration-label {
@@ -691,12 +719,18 @@
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 50%;
-  animation: tnConfettiFall linear forwards;
+  animation: tn-confetti-fall linear forwards;
 }
 
-@keyframes tnConfettiFall {
-  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+@keyframes tn-confetti-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 .tn-inline-modal {

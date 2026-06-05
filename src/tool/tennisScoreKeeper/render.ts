@@ -53,36 +53,66 @@ export function spawnRipple(e: MouseEvent): void {
   setTimeout(() => r.remove(), 600);
 }
 
+function getStatusPlayerName(side: PlayerSide | null, t: TennisScoreKeeperUI): string {
+  if (!side) return '';
+  const input = document.getElementById(`tn-name-${side}`) as HTMLInputElement;
+  return input?.value?.trim() || (side === 'a' ? t.playerA : t.playerB);
+}
+
+function isDeuceScore(score: MatchScore): boolean {
+  return score.currentGamePointsA >= 3 && score.currentGamePointsB >= 3 && score.currentGamePointsA === score.currentGamePointsB;
+}
+
 function renderStatus(score: MatchScore, t: TennisScoreKeeperUI): void {
   const st = el('tn-status');
   if (!st) return;
-
-  const getN = (s: PlayerSide) => {
-    const input = document.getElementById(`tn-name-${s}`) as HTMLInputElement;
-    return input?.value?.trim() || (s === 'a' ? t.playerA : t.playerB);
-  };
-
   const mp = isMatchPoint(score);
+  if (mp) { st.textContent = `${getStatusPlayerName(mp, t)} ${t.matchPoint}`; return; }
   const sp = isSetPoint(score);
+  if (sp) { st.textContent = `${getStatusPlayerName(sp, t)} ${t.setPoint}`; return; }
   const gp = checkPointWinnerOpportunity(score);
+  if (gp) { st.textContent = `${getStatusPlayerName(gp, t)} ${t.gamePoint}`; return; }
+  if (score.inTiebreak) { st.textContent = t.tiebreak; return; }
+  if (isDeuceScore(score)) { st.textContent = t.deuce; return; }
+  st.textContent = '';
+}
 
-  if (mp) {
-    st.textContent = `${getN(mp)} - ${t.matchPoint}`;
-  } else if (sp) {
-    st.textContent = `${getN(sp)} - ${t.setPoint}`;
-  } else if (gp) {
-    st.textContent = `${getN(gp)} - ${t.gamePoint}`;
-  } else if (score.inTiebreak) {
-    st.textContent = t.tiebreak;
-  } else if (
-    score.currentGamePointsA >= 3 &&
-    score.currentGamePointsB >= 3 &&
-    score.currentGamePointsA === score.currentGamePointsB
-  ) {
-    st.textContent = t.deuce;
+function buildSetBox(score: MatchScore, i: number): { boxA: HTMLDivElement; boxB: HTMLDivElement } {
+  const boxA = document.createElement('div');
+  boxA.className = 'tn-set-box';
+  const boxB = document.createElement('div');
+  boxB.className = 'tn-set-box';
+  const activeIndex = score.setHistory.length;
+
+  if (i < score.setHistory.length) {
+    const set = score.setHistory[i];
+    boxA.textContent = String(set.gamesA);
+    boxB.textContent = String(set.gamesB);
+    if (set.tiebreakPointsA !== undefined) {
+      appendTiebreakScore(boxA, String(set.tiebreakPointsA));
+      appendTiebreakScore(boxB, String(set.tiebreakPointsB));
+    }
+  } else if (i === activeIndex && !checkSetOver(score)) {
+    boxA.classList.add('tn-set-box-active');
+    boxB.classList.add('tn-set-box-active');
+    boxA.textContent = String(score.gamesWonInCurrentSetA);
+    boxB.textContent = String(score.gamesWonInCurrentSetB);
+    if (score.inTiebreak) {
+      appendTiebreakScore(boxA, String(score.tiebreakPointsA));
+      appendTiebreakScore(boxB, String(score.tiebreakPointsB));
+    }
   } else {
-    st.textContent = '';
+    boxA.textContent = '';
+    boxB.textContent = '';
   }
+  return { boxA, boxB };
+}
+
+function appendTiebreakScore(box: HTMLDivElement, text: string): void {
+  const span = document.createElement('span');
+  span.className = 'tn-tb-score';
+  span.textContent = text;
+  box.appendChild(span);
 }
 
 function updateSetBoxes(score: MatchScore): void {
@@ -94,104 +124,33 @@ function updateSetBoxes(score: MatchScore): void {
   listA.innerHTML = '';
   listB.innerHTML = '';
 
-  const activeIndex = score.setHistory.length;
-
   for (let i = 0; i < maxSets; i++) {
-    const boxA = document.createElement('div');
-    boxA.className = 'tn-set-box';
-    const boxB = document.createElement('div');
-    boxB.className = 'tn-set-box';
-
-    if (i < score.setHistory.length) {
-      const set = score.setHistory[i];
-      boxA.textContent = String(set.gamesA);
-      boxB.textContent = String(set.gamesB);
-
-      if (set.tiebreakPointsA !== undefined && set.tiebreakPointsB !== undefined) {
-        const tbA = document.createElement('span');
-        tbA.className = 'tn-tb-score';
-        tbA.textContent = String(set.tiebreakPointsA);
-        boxA.appendChild(tbA);
-
-        const tbB = document.createElement('span');
-        tbB.className = 'tn-tb-score';
-        tbB.textContent = String(set.tiebreakPointsB);
-        boxB.appendChild(tbB);
-      }
-    } else if (i === activeIndex && !checkSetOver(score)) {
-      boxA.classList.add('tn-set-box-active');
-      boxB.classList.add('tn-set-box-active');
-      boxA.textContent = String(score.gamesWonInCurrentSetA);
-      boxB.textContent = String(score.gamesWonInCurrentSetB);
-
-      if (score.inTiebreak) {
-        const tbA = document.createElement('span');
-        tbA.className = 'tn-tb-score';
-        tbA.textContent = String(score.tiebreakPointsA);
-        boxA.appendChild(tbA);
-
-        const tbB = document.createElement('span');
-        tbB.className = 'tn-tb-score';
-        tbB.textContent = String(score.tiebreakPointsB);
-        boxB.appendChild(tbB);
-      }
-    } else {
-      boxA.textContent = '';
-      boxB.textContent = '';
-    }
-
+    const { boxA, boxB } = buildSetBox(score, i);
     listA.appendChild(boxA);
     listB.appendChild(boxB);
   }
 }
 
-export function render(score: MatchScore, t: TennisScoreKeeperUI): void {
-  const labelA = getPointLabel(score.currentGamePointsA, score.currentGamePointsB, score.inTiebreak);
-  const labelB = getPointLabel(score.currentGamePointsB, score.currentGamePointsA, score.inTiebreak);
-
-  const scoreAEl = el('tn-score-val-a');
-  if (scoreAEl) scoreAEl.textContent = labelA;
-
-  const scoreBEl = el('tn-score-val-b');
-  if (scoreBEl) scoreBEl.textContent = labelB;
-
-  const gamesAEl = el('tn-games-a');
-  if (gamesAEl) gamesAEl.textContent = `${t.game}: ${score.gamesWonInCurrentSetA}`;
-  const gamesBEl = el('tn-games-b');
-  if (gamesBEl) gamesBEl.textContent = `${t.game}: ${score.gamesWonInCurrentSetB}`;
-
-  const inputA = document.getElementById('tn-name-a') as HTMLInputElement;
-  const nameA = inputA?.value?.trim() || t.playerA;
-  const inputB = document.getElementById('tn-name-b') as HTMLInputElement;
-  const nameB = inputB?.value?.trim() || t.playerB;
-
-  const histNameA = el('tn-hist-name-a');
-  if (histNameA) histNameA.textContent = nameA;
-  const histNameB = el('tn-hist-name-b');
-  if (histNameB) histNameB.textContent = nameB;
-
+function renderSetDots(score: MatchScore): void {
   const setsA = el('tn-sets-a');
   const setsB = el('tn-sets-b');
-  if (setsA && setsB) {
-    const need = setsNeededForMatchWin(score.format);
-    setsA.innerHTML = '';
-    setsB.innerHTML = '';
-    for (let i = 0; i < need; i++) {
-      const dotA = document.createElement('div');
-      dotA.className = 'tn-hud-dot' + (i < score.setsWonA ? ' tn-hud-dot-won' : '');
-      setsA.appendChild(dotA);
-
-      const dotB = document.createElement('div');
-      dotB.className = 'tn-hud-dot' + (i < score.setsWonB ? ' tn-hud-dot-won' : '');
-      setsB.appendChild(dotB);
-    }
+  if (!setsA || !setsB) return;
+  const need = setsNeededForMatchWin(score.format);
+  setsA.innerHTML = '';
+  setsB.innerHTML = '';
+  for (let i = 0; i < need; i++) {
+    const dotA = document.createElement('div');
+    dotA.className = 'tn-hud-dot' + (i < score.setsWonA ? ' tn-hud-dot-won' : '');
+    setsA.appendChild(dotA);
+    const dotB = document.createElement('div');
+    dotB.className = 'tn-hud-dot' + (i < score.setsWonB ? ' tn-hud-dot-won' : '');
+    setsB.appendChild(dotB);
   }
+}
 
-  updateSetBoxes(score);
-
+function renderServeIndicators(score: MatchScore): void {
   const reqA = el('tn-racquet-a');
   const reqB = el('tn-racquet-b');
-
   if (reqA) reqA.classList.toggle('tn-racquet-serving', score.servingPlayer === 'a');
   if (reqB) reqB.classList.toggle('tn-racquet-serving', score.servingPlayer === 'b');
 
@@ -202,23 +161,56 @@ export function render(score: MatchScore, t: TennisScoreKeeperUI): void {
     serveA.innerHTML = score.servingPlayer === 'a' ? ballSvg : '';
     serveB.innerHTML = score.servingPlayer === 'b' ? ballSvg : '';
   }
+}
 
-  const board = el('tn-interactive-court');
-  if (board) {
-    board.classList.toggle('tn-swapped', score.areSidesSwapped);
-  }
-
+function renderHistoryOrder(score: MatchScore): void {
   const histGrid = el('tn-history');
   const rowA = el('tn-row-a');
   const rowB = el('tn-row-b');
   if (histGrid && rowA && rowB) {
-    if (score.areSidesSwapped) {
-      histGrid.insertBefore(rowB, rowA);
-    } else {
-      histGrid.insertBefore(rowA, rowB);
-    }
+    if (score.areSidesSwapped) histGrid.insertBefore(rowB, rowA);
+    else histGrid.insertBefore(rowA, rowB);
   }
+}
 
+function getInputName(side: PlayerSide, fallback: string): string {
+  const inp = document.getElementById(`tn-name-${side}`) as HTMLInputElement;
+  return inp?.value?.trim() || fallback;
+}
+
+function renderPlayerNames(score: MatchScore, t: TennisScoreKeeperUI): void {
+  const nameA = getInputName('a', t.playerA);
+  const nameB = getInputName('b', t.playerB);
+  const hA = el('tn-hist-name-a');
+  if (hA) hA.textContent = nameA;
+  const hB = el('tn-hist-name-b');
+  if (hB) hB.textContent = nameB;
+}
+
+function renderScores(score: MatchScore, t: TennisScoreKeeperUI): void {
+  const labelA = getPointLabel(score.currentGamePointsA, score.currentGamePointsB, score.inTiebreak);
+  const labelB = getPointLabel(score.currentGamePointsB, score.currentGamePointsA, score.inTiebreak);
+  const sA = el('tn-score-val-a');
+  if (sA) sA.textContent = labelA;
+  const sB = el('tn-score-val-b');
+  if (sB) sB.textContent = labelB;
+  const gA = el('tn-games-a');
+  if (gA) gA.textContent = `${t.game}: ${score.gamesWonInCurrentSetA}`;
+  const gB = el('tn-games-b');
+  if (gB) gB.textContent = `${t.game}: ${score.gamesWonInCurrentSetB}`;
+}
+
+export function render(score: MatchScore, t: TennisScoreKeeperUI): void {
+  renderScores(score, t);
+  renderPlayerNames(score, t);
+  renderSetDots(score);
+  updateSetBoxes(score);
+  renderServeIndicators(score);
+
+  const board = el('tn-interactive-court');
+  if (board) board.classList.toggle('tn-swapped', score.areSidesSwapped);
+
+  renderHistoryOrder(score);
   renderStatus(score, t);
 }
 
@@ -253,16 +245,12 @@ export function restoreDomOrder(): void {
   if (board) {
     const sideA = el('tn-court-half-a');
     const sideB = el('tn-court-half-b');
-    if (sideA && sideB) {
-      board.insertBefore(sideA, sideB);
-    }
+    if (sideA && sideB) board.insertBefore(sideA, sideB);
   }
   const histGrid = el('tn-history');
   if (histGrid) {
     const rowA = el('tn-row-a');
     const rowB = el('tn-row-b');
-    if (rowA && rowB) {
-      histGrid.insertBefore(rowA, rowB);
-    }
+    if (rowA && rowB) histGrid.insertBefore(rowA, rowB);
   }
 }
