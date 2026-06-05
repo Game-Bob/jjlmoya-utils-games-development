@@ -1,13 +1,15 @@
 import type { SportsCategoryEntry, SportsToolEntry } from '../types';
 import { basketScoreKeeper } from '../tool/basketScoreKeeper/index';
+import { footballScoreKeeper } from '../tool/footballScoreKeeper/index';
 import { scoreKeeper } from '../tool/scoreKeeper/index';
 import { tournamentBracket } from '../tool/tournamentBracket/index';
 import { gymTracker } from '../tool/gymTracker/index';
 import { reactionTester } from '../tool/reactionTester/index';
 
 export const sportsCategory: SportsCategoryEntry = {
-  icon: 'mdi:basketball',
+  icon: 'mdi:soccer',
   tools: [
+    footballScoreKeeper,
     basketScoreKeeper,
     scoreKeeper,
     tournamentBracket,

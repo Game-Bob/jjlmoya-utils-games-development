@@ -1,0 +1,83 @@
+---
+import type { KnownLocale } from '../../types';
+import type { FootballScoreKeeperUI } from './ui';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as FootballScoreKeeperUI;
+---
+
+<div class="fk-card" id="fk-card" data-fk-ui={JSON.stringify(t)}>
+  <div class="fk-bar">
+    <button class="fk-bar-btn" data-fs>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+    </button>
+    <button class="fk-bar-btn" data-reset>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="fk-team fk-team-a" id="fk-team-a">
+    <div id="fk-particles-a" class="fk-particles"></div>
+    <div id="fk-flash-a" class="fk-goal-flash fk-goal-flash-a"></div>
+    <div id="fk-goal-text-a" class="fk-goal-text fk-goal-text-a">GOOOL!</div>
+    <input type="text" value={t.playerA} class="fk-name" id="fk-name-a" placeholder="Local" />
+    <div class="fk-score fk-score-a" id="fk-score-a">0</div>
+    <button class="fk-btn-plus fk-btn-plus-a" data-goal-a>+</button>
+    <button class="fk-btn-minus fk-btn-minus-a" data-minus-a>&minus;</button>
+  </div>
+
+  <div class="fk-team fk-team-b" id="fk-team-b">
+    <div id="fk-particles-b" class="fk-particles"></div>
+    <div id="fk-flash-b" class="fk-goal-flash fk-goal-flash-b"></div>
+    <div id="fk-goal-text-b" class="fk-goal-text fk-goal-text-b">GOOOL!</div>
+    <input type="text" value={t.playerB} class="fk-name" id="fk-name-b" placeholder="Visitante" />
+    <div class="fk-score fk-score-b" id="fk-score-b">0</div>
+    <button class="fk-btn-plus fk-btn-plus-b" data-goal-b>+</button>
+    <button class="fk-btn-minus fk-btn-minus-b" data-minus-b>&minus;</button>
+  </div>
+
+  <div class="fk-finish-wrap">
+    <button class="fk-btn-finish" data-finish>{t.finishMatch || 'Finish Match'}</button>
+  </div>
+
+  <div id="fk-winner" class="fk-winner">
+    <div class="fk-winner-bg" data-close-winner></div>
+    <div class="fk-winner-box">
+      <button class="fk-winner-close" data-close-winner>&times;</button>
+      <div class="fk-winner-trophy">
+        <svg viewBox="0 0 64 64" fill="currentcolor" width="48" height="48">
+          <path d="M8 48l8-32 12 16 4-24 4 24 12-16 8 32z"/>
+          <rect x="12" y="48" width="40" height="6" rx="2"/>
+        </svg>
+      </div>
+      <div class="fk-winner-label">{t.winnerLabel}</div>
+      <div id="fk-winner-team" class="fk-winner-team">Local</div>
+      <div id="fk-winner-score" class="fk-winner-score">0 &minus; 0</div>
+    </div>
+  </div>
+
+  <div id="fk-confetti" class="fk-confetti"></div>
+
+  <div id="fk-modal" class="fk-modal">
+    <div class="fk-modal-bg"></div>
+    <div class="fk-modal-box">
+      <p class="fk-modal-text">{t.resetConfirm}</p>
+      <div class="fk-modal-btns">
+        <button id="fk-modal-cancel" class="fk-modal-btn fk-modal-btn-cancel">{t.cancel}</button>
+        <button id="fk-modal-confirm" class="fk-modal-btn fk-modal-btn-reset">{t.reset}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initFootballScoreKeeper } from './logic';
+  initFootballScoreKeeper();
+</script>
