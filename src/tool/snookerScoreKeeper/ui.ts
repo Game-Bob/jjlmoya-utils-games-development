@@ -1,0 +1,34 @@
+export interface SnookerScoreKeeperUI {
+  title: string;
+  description: string;
+  player1: string;
+  player2: string;
+  score: string;
+  currentBreak: string;
+  remainingPoints: string;
+  deficit: string;
+  statusSafe: string;
+  statusNeedSnookers: string;
+  statusDecidingBlack: string;
+  statusNormal: string;
+  foul: string;
+  foulTitle: string;
+  foulPoints: string;
+  foulOnRed: string;
+  foulOnYellow: string;
+  foulOnGreen: string;
+  foulOnBrown: string;
+  foulOnBlue: string;
+  foulOnPink: string;
+  foulOnBlack: string;
+  reset: string;
+  resetConfirm: string;
+  cancel: string;
+  confirm: string;
+  endTurn: string;
+  miss: string;
+  redsRemaining: string;
+  pocketedBalls: string;
+  toggleSound: string;
+  fullscreen: string;
+}

@@ -1,0 +1,153 @@
+---
+import type { KnownLocale } from '../../types';
+import type { SnookerScoreKeeperUI } from './ui';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as SnookerScoreKeeperUI;
+---
+
+<div class="sn-console" id="sn-card" data-sn-ui={JSON.stringify(t)}>
+  <div class="sn-header">
+    <div class="sn-header-actions">
+      <button class="sn-action-btn" id="sn-sound-btn" title={t.toggleSound}>
+        <svg id="sn-sound-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+        <svg id="sn-sound-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+      </button>
+      <button class="sn-action-btn" id="sn-reset-btn" title={t.reset}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+          <path d="M16 3h5v5M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+          <path d="M8 21H3v-5"/>
+        </svg>
+      </button>
+      <button class="sn-action-btn" data-sn-fs title={t.fullscreen}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="sn-dashboard-grid">
+    <div class="sn-player-panel" id="sn-panel-a">
+      <input type="text" class="sn-player-name" id="sn-name-a" value={t.player1} />
+      <span class="sn-indicator-active"></span>
+      <div class="sn-player-score" id="sn-score-a">0</div>
+      <div class="sn-break-value" id="sn-break-a"></div>
+    </div>
+
+    <div class="sn-player-panel" id="sn-panel-b">
+      <input type="text" class="sn-player-name" id="sn-name-b" value={t.player2} />
+      <span class="sn-indicator-active"></span>
+      <div class="sn-player-score" id="sn-score-b">0</div>
+      <div class="sn-break-value" id="sn-break-b"></div>
+    </div>
+  </div>
+
+  <div class="sn-felt-container">
+    <div class="sn-rack">
+      <button class="sn-ball-btn sn-ball-red" id="sn-btn-red" title="Red">
+        <span class="sn-ball-value">1</span>
+      </button>
+      <button class="sn-ball-btn sn-ball-yellow" id="sn-btn-yellow" title="Yellow">
+        <span class="sn-ball-value">2</span>
+      </button>
+      <button class="sn-ball-btn sn-ball-green" id="sn-btn-green" title="Green">
+        <span class="sn-ball-value">3</span>
+      </button>
+      <button class="sn-ball-btn sn-ball-brown" id="sn-btn-brown" title="Brown">
+        <span class="sn-ball-value">4</span>
+      </button>
+      <button class="sn-ball-btn sn-ball-blue" id="sn-btn-blue" title="Blue">
+        <span class="sn-ball-value">5</span>
+      </button>
+      <button class="sn-ball-btn sn-ball-pink" id="sn-btn-pink" title="Pink">
+        <span class="sn-ball-value">6</span>
+      </button>
+      <button class="sn-ball-btn sn-ball-black" id="sn-btn-black" title="Black">
+        <span class="sn-ball-value">7</span>
+      </button>
+    </div>
+
+    <div class="sn-interactive-hud">
+      <div class="sn-potted-strip" id="sn-potted-strip"></div>
+      <div class="sn-hud-metrics">
+        <div class="sn-metric-box">
+          <div class="sn-metric-lbl">{t.redsRemaining}</div>
+          <div class="sn-metric-val" id="sn-reds-remaining">15</div>
+        </div>
+        <div class="sn-metric-box">
+          <div class="sn-metric-lbl">{t.remainingPoints}</div>
+          <div class="sn-metric-val sn-gold" id="sn-points-remaining">147</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn-gauge-container">
+    <div class="sn-status-badge sn-status-normal" id="sn-status-badge">{t.statusNormal}</div>
+    <div class="sn-gauge-track">
+      <div class="sn-gauge-bar" id="sn-gauge-bar"></div>
+    </div>
+  </div>
+
+  <div class="sn-control-toolbar">
+    <button class="sn-btn-action" id="sn-undo-btn">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 7v6h6M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/>
+      </svg>
+      Undo
+    </button>
+    <button class="sn-btn-action" id="sn-btn-foul">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      {t.foul}
+    </button>
+    <button class="sn-btn-action sn-btn-end-turn" id="sn-btn-end-turn">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+      {t.endTurn}
+    </button>
+  </div>
+
+  <div class="sn-foul-panel" id="sn-foul-panel">
+    <div class="sn-foul-title">{t.foulTitle}</div>
+    <div class="sn-foul-grid">
+      <button class="sn-btn-foul-select" id="sn-btn-foul-4">{t.foulOnRed} (4)</button>
+      <button class="sn-btn-foul-select" id="sn-btn-foul-5">{t.foulOnBlue} (5)</button>
+      <button class="sn-btn-foul-select" id="sn-btn-foul-6">{t.foulOnPink} (6)</button>
+      <button class="sn-btn-foul-select" id="sn-btn-foul-7">{t.foulOnBlack} (7)</button>
+    </div>
+  </div>
+
+  <div id="sn-particle-container" class="sn-particle-container"></div>
+
+  <div class="sn-reset-modal" id="sn-modal">
+    <div class="sn-modal-content">
+      <div class="sn-modal-text">{t.resetConfirm}</div>
+      <div class="sn-modal-btns">
+        <button class="sn-btn-modal sn-btn-modal-cancel" id="sn-modal-cancel">{t.cancel}</button>
+        <button class="sn-btn-modal sn-btn-modal-confirm" id="sn-modal-confirm">{t.confirm}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initSnookerScoreKeeper } from './logic';
+  initSnookerScoreKeeper();
+</script>

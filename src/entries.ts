@@ -22,6 +22,8 @@ export { streetballScoreKeeper } from './tool/streetballScoreKeeper/entry';
 export type { StreetballLocaleContent } from './tool/streetballScoreKeeper/entry';
 export { beachVolleyballScoreKeeper } from './tool/beachVolleyballScoreKeeper/entry';
 export type { BeachVolleyballLocaleContent } from './tool/beachVolleyballScoreKeeper/entry';
+export { snookerScoreKeeper } from './tool/snookerScoreKeeper/entry';
+export type { SnookerScoreKeeperLocaleContent } from './tool/snookerScoreKeeper/entry';
 export { sportsCategory } from './category';
 import { basketScoreKeeper } from './tool/basketScoreKeeper/entry';
 import { footballScoreKeeper } from './tool/footballScoreKeeper/entry';
@@ -35,4 +37,6 @@ import { dartsScoreKeeper } from './tool/dartsScoreKeeper/entry';
 import { padelScoreKeeper } from './tool/padelScoreKeeper/entry';
 import { streetballScoreKeeper } from './tool/streetballScoreKeeper/entry';
 import { beachVolleyballScoreKeeper } from './tool/beachVolleyballScoreKeeper/entry';
-export const ALL_ENTRIES = [basketScoreKeeper, footballScoreKeeper, gymTracker, pingPongScoreKeeper, reactionTester, scoreKeeper, tournamentBracket, tennisScoreKeeper, dartsScoreKeeper, padelScoreKeeper, streetballScoreKeeper, beachVolleyballScoreKeeper];
+import { snookerScoreKeeper } from './tool/snookerScoreKeeper/entry';
+export const ALL_ENTRIES = [basketScoreKeeper, footballScoreKeeper, gymTracker, pingPongScoreKeeper, reactionTester, scoreKeeper, tournamentBracket, tennisScoreKeeper, dartsScoreKeeper, padelScoreKeeper, streetballScoreKeeper, beachVolleyballScoreKeeper, snookerScoreKeeper];
+
