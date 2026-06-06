@@ -1,15 +1,6 @@
 ---
+import { Bibliography as SharedBibliography } from '@jjlmoya/utils-shared';
 import { bibliography } from './bibliography';
 ---
 
-<ul>
-  {
-    bibliography.map((link) => (
-      <li>
-        <a href={link.url} target="_blank" rel="noopener noreferrer">
-          {link.title}
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<SharedBibliography links={bibliography} />

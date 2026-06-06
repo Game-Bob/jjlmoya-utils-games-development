@@ -1,15 +1,6 @@
 ---
+import { Bibliography as SharedBibliography } from '@jjlmoya/utils-shared';
 import { bibliography } from './bibliography';
 ---
 
-<ul class="tn-bib-list">
-  {
-    bibliography.map((entry) => (
-      <li>
-        <a href={entry.url} target="_blank" rel="noopener noreferrer">
-          {entry.name}
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<SharedBibliography links={bibliography} />

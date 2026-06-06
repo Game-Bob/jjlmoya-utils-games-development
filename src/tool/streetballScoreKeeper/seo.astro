@@ -1,4 +1,15 @@
 ---
+import { SEORenderer } from '@jjlmoya/utils-shared';
+import { streetballScoreKeeper } from './index';
+import type { KnownLocale } from '../../types';
+
+interface Props {
+  locale?: KnownLocale;
+}
+
+const { locale = 'en' } = Astro.props;
+const content = await streetballScoreKeeper.i18n[locale]?.();
+if (!content) return null;
 ---
 
-<meta name="robots" content="index, follow" />
+{content.seo?.length > 0 && <SEORenderer content={{ locale, sections: content.seo }} />}
