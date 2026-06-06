@@ -1,0 +1,174 @@
+---
+import type { KnownLocale } from '../../types';
+import type { BeachVolleyballUI } from './ui';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as BeachVolleyballUI;
+---
+
+<div class="tn-console" id="tn-card" data-tn-ui={JSON.stringify(t)}>
+  <div class="tn-header-panel">
+    <div class="tn-header-actions">
+      <button class="tn-action-btn" id="tn-reset-btn" title={t.reset}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+          <path d="M16 3h5v5M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+          <path d="M8 21H3v-5"/>
+        </svg>
+      </button>
+      <button class="tn-action-btn" data-tn-fs title={t.fullscreen}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="tn-swap-banner" id="tn-swap-banner">
+    <span>{t.switchSidesDesc}</span>
+    <button class="tn-btn-banner" data-action-swap>{t.switchSides}</button>
+  </div>
+
+  <div class="tn-beach-scene">
+    <div class="tn-beach-controls">
+      <button class="tn-beach-btn" id="tn-open-lineup-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      </button>
+      
+      <div class="tn-beach-set-hud">
+        <span class="tn-beach-set-lbl" id="tn-set-label">SET 1</span>
+        <div class="tn-beach-set-history" id="tn-set-history"></div>
+      </div>
+
+      <button class="tn-beach-btn" data-action-undo title={t.undo}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 7v6h6M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="tn-interactive-court-wrapper">
+      <div class="tn-court-aspect-ratio">
+        <svg class="tn-beach-court-svg" viewBox="0 0 400 300" id="tn-court">
+          <rect class="tn-sand-bg" x="0" y="0" width="400" height="300" rx="16" />
+          
+          <path class="tn-beach-wave" d="M 0 10 Q 50 20 100 10 T 200 10 T 300 10 T 400 10 L 400 0 L 0 0 Z" />
+          <path class="tn-beach-wave" d="M 0 290 Q 50 280 100 290 T 200 290 T 300 290 T 400 290 L 400 300 L 0 300 Z" />
+
+          <rect class="tn-court-boundary" x="40" y="40" width="320" height="220" />
+          <line class="tn-court-net-line" x1="200" y1="30" x2="200" y2="270" />
+          <circle class="tn-net-post" cx="200" cy="30" r="5" />
+          <circle class="tn-net-post" cx="200" cy="270" r="5" />
+
+          <rect id="tn-court-half-a" class="tn-court-click-zone" x="40" y="40" width="160" height="220" />
+          <rect id="tn-court-half-b" class="tn-court-click-zone" x="200" y="40" width="160" height="220" />
+
+          <text id="tn-score-a" class="tn-sand-score" x="120" y="150">0</text>
+          <text id="tn-score-b" class="tn-sand-score" x="280" y="150">0</text>
+
+          <g id="tn-sets-group-a">
+            <text x="25" y="140" class="tn-sets-title">SETS</text>
+            <text id="tn-sets-a" x="25" y="165" class="tn-sets-count">0</text>
+          </g>
+          <g id="tn-sets-group-b">
+            <text x="375" y="140" class="tn-sets-title">SETS</text>
+            <text id="tn-sets-b" x="375" y="165" class="tn-sets-count">0</text>
+          </g>
+
+          <g class="tn-player-node" id="tn-player-a1-node">
+            <circle cx="100" cy="90" r="18" class="tn-player-circle" />
+            <text x="100" y="90" class="tn-player-initials" id="tn-player-a1-initials">P1</text>
+            <circle cx="100" cy="90" r="24" class="tn-player-ring" />
+            <circle id="tn-serve-a1" cx="118" cy="72" r="6" class="tn-serving-ball" />
+          </g>
+          <g class="tn-player-node" id="tn-player-a2-node">
+            <circle cx="100" cy="210" r="18" class="tn-player-circle" />
+            <text x="100" y="210" class="tn-player-initials" id="tn-player-a2-initials">P2</text>
+            <circle cx="100" cy="210" r="24" class="tn-player-ring" />
+            <circle id="tn-serve-a2" cx="118" cy="192" r="6" class="tn-serving-ball" />
+          </g>
+
+          <g class="tn-player-node" id="tn-player-b1-node">
+            <circle cx="300" cy="90" r="18" class="tn-player-circle" />
+            <text x="300" y="90" class="tn-player-initials" id="tn-player-b1-initials">P1</text>
+            <circle cx="300" cy="90" r="24" class="tn-player-ring" />
+            <circle id="tn-serve-b1" cx="318" cy="72" r="6" class="tn-serving-ball" />
+          </g>
+          <g class="tn-player-node" id="tn-player-b2-node">
+            <circle cx="300" cy="210" r="18" class="tn-player-circle" />
+            <text x="300" y="210" class="tn-player-initials" id="tn-player-b2-initials">P2</text>
+            <circle cx="300" cy="210" r="24" class="tn-player-ring" />
+            <circle id="tn-serve-b2" cx="318" cy="192" r="6" class="tn-serving-ball" />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="tn-serving-bar">
+      <div id="tn-serve-indicator-a" class="tn-serve-status-indicator">
+        <span class="tn-serve-dot"></span>
+        <span class="tn-serve-label">{t.serving}</span>
+      </div>
+      <div id="tn-serve-indicator-b" class="tn-serve-status-indicator">
+        <span class="tn-serve-dot"></span>
+        <span class="tn-serve-label">{t.serving}</span>
+      </div>
+    </div>
+
+    <div class="tn-lineup-overlay" id="tn-lineup-overlay">
+      <div class="tn-lineup-card">
+        <h3 class="tn-lineup-title">Team Lineups</h3>
+        <div class="tn-lineup-grid">
+          <div class="tn-lineup-team-section">
+            <span class="tn-team-name-hdr">{t.teamA}</span>
+            <input type="text" class="tn-beach-input" id="tn-name-a1" placeholder={t.player1} />
+            <input type="text" class="tn-beach-input" id="tn-name-a2" placeholder={t.player2} />
+          </div>
+          <div class="tn-lineup-team-section">
+            <span class="tn-team-name-hdr">{t.teamB}</span>
+            <input type="text" class="tn-beach-input" id="tn-name-b1" placeholder={t.player1} />
+            <input type="text" class="tn-beach-input" id="tn-name-b2" placeholder={t.player2} />
+          </div>
+        </div>
+        <button class="tn-btn-control" id="tn-close-lineup-btn">Done</button>
+      </div>
+    </div>
+
+    <div class="tn-floating-actions">
+      <button class="tn-btn-control" data-action-swap>{t.switchSides}</button>
+    </div>
+  </div>
+
+  <div id="tn-winner-overlay" class="tn-winner-overlay">
+    <div class="tn-winner-title">{t.winner}</div>
+    <div class="tn-winner-name" id="tn-winner-name"></div>
+    <button class="tn-btn-control" id="tn-winner-reset">{t.reset}</button>
+  </div>
+
+  <div id="tn-particle-container" class="tn-particle-container"></div>
+
+  <div id="tn-modal" class="tn-modal">
+    <div class="tn-modal-box">
+      <p class="tn-modal-text">{t.resetConfirm}</p>
+      <div class="tn-modal-btns">
+        <button id="tn-modal-cancel" class="tn-modal-btn tn-btn-cancel">{t.cancel}</button>
+        <button id="tn-modal-confirm" class="tn-modal-btn tn-btn-confirm">{t.reset}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initBeachVolleyballScoreKeeper } from './logic';
+  initBeachVolleyballScoreKeeper();
+</script>

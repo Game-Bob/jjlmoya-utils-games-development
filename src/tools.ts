@@ -11,6 +11,7 @@ import { TENNIS_SCORE_KEEPER_TOOL } from './tool/tennisScoreKeeper/index';
 import { DARTS_SCORE_KEEPER_TOOL } from './tool/dartsScoreKeeper/index';
 import { PADEL_SCOREKEEPER_TOOL } from './tool/padelScoreKeeper/index';
 import { STREETBALL_SCOREKEEPER_TOOL } from './tool/streetballScoreKeeper/index';
+import { BEACH_VOLLEYBALL_SCOREKEEPER_TOOL } from './tool/beachVolleyballScoreKeeper/index';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   BASKET_SCORE_KEEPER_TOOL,
@@ -24,6 +25,7 @@ export const ALL_TOOLS: ToolDefinition[] = [
   DARTS_SCORE_KEEPER_TOOL,
   PADEL_SCOREKEEPER_TOOL,
   STREETBALL_SCOREKEEPER_TOOL,
+  BEACH_VOLLEYBALL_SCOREKEEPER_TOOL,
 ];
 
 
