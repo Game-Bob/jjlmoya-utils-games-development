@@ -13,99 +13,114 @@ const t = (ui ?? {}) as BaseballScoreKeeperUI;
 
 <div class="bb-app" id="bb-app" data-bb-ui={JSON.stringify(t)}>
 
-  <div class="bb-strip">
-    <div class="bb-team">
-      <input type="text" class="bb-name" id="bb-name-away" value={t.away} />
-      <div class="bb-score" id="bb-score-away">0</div>
-    </div>
-    <div class="bb-divider">
-      <span class="bb-inning-badge" id="bb-inning-label">Top 1</span>
-    </div>
-    <div class="bb-team">
-      <input type="text" class="bb-name" id="bb-name-home" value={t.home} />
-      <div class="bb-score" id="bb-score-home">0</div>
-    </div>
-  </div>
+  <div class="bb-main-card">
 
-  <div class="bb-count-row">
-    <div class="bb-count-item">
-      <span class="bb-count-label">{t.balls}</span>
-      <div class="bb-dots" id="bb-dots-balls">
-        <span class="bb-dot"></span><span class="bb-dot"></span><span class="bb-dot"></span><span class="bb-dot"></span>
+    <div class="bb-strip">
+      <div class="bb-team">
+        <input type="text" class="bb-name" id="bb-name-away" value={t.away} />
+        <div class="bb-score" id="bb-score-away">0</div>
+      </div>
+      <div class="bb-divider">
+        <span class="bb-inning-badge" id="bb-inning-label">Top 1</span>
+      </div>
+      <div class="bb-team">
+        <input type="text" class="bb-name" id="bb-name-home" value={t.home} />
+        <div class="bb-score" id="bb-score-home">0</div>
       </div>
     </div>
-    <div class="bb-count-item">
-      <span class="bb-count-label">{t.strikes}</span>
-      <div class="bb-dots" id="bb-dots-strikes">
-        <span class="bb-dot"></span><span class="bb-dot"></span><span class="bb-dot"></span>
-      </div>
-    </div>
-    <div class="bb-count-item">
-      <span class="bb-count-label">{t.outs}</span>
-      <div class="bb-dots" id="bb-dots-outs">
-        <span class="bb-dot bb-dot-out"></span><span class="bb-dot bb-dot-out"></span><span class="bb-dot bb-dot-out"></span>
-      </div>
-    </div>
-  </div>
 
-  <div class="bb-main-grid">
-    <div class="bb-diamond-zone">
-      <svg class="bb-diamond-svg" viewBox="0 0 200 200">
-        <polygon class="bb-diamond-bg" points="100,10 190,100 100,190 10,100" />
-        <circle class="bb-base bb-base-first" id="bb-base-first" cx="160" cy="130" r="18" />
-        <circle class="bb-base bb-base-second" id="bb-base-second" cx="100" cy="40" r="18" />
-        <circle class="bb-base bb-base-third" id="bb-base-third" cx="40" cy="130" r="18" />
-        <text class="bb-base-label" x="160" y="135">1B</text>
-        <text class="bb-base-label" x="100" y="45">2B</text>
-        <text class="bb-base-label" x="40" y="135">3B</text>
-        <circle class="bb-home-plate" cx="100" cy="178" r="10" />
-        <text class="bb-base-label" x="100" y="183">H</text>
+    <div class="bb-diamond-wrap">
+      <svg class="bb-diamond-svg" viewBox="0 0 240 240">
+        <polygon class="bb-diamond-bg" points="120,12 228,120 120,228 12,120" />
+        <circle class="bb-base" id="bb-base-first" cx="190" cy="155" r="24" />
+        <circle class="bb-base" id="bb-base-second" cx="120" cy="50" r="24" />
+        <circle class="bb-base" id="bb-base-third" cx="50" cy="155" r="24" />
+        <text class="bb-base-label" x="190" y="161">1B</text>
+        <text class="bb-base-label" x="120" y="56">2B</text>
+        <text class="bb-base-label" x="50" y="161">3B</text>
+        <path class="bb-home-plate" d="M 112 212 L 128 212 L 128 224 L 120 230 L 112 224 Z" />
       </svg>
     </div>
-    <div class="bb-rhe-box">
+
+    <div class="bb-count-row">
+      <div class="bb-count-item">
+        <span class="bb-count-label">{t.balls}</span>
+        <div class="bb-dots" id="bb-dots-balls">
+          <span class="bb-dot"></span><span class="bb-dot"></span><span class="bb-dot"></span><span class="bb-dot"></span>
+        </div>
+      </div>
+      <div class="bb-count-item">
+        <span class="bb-count-label">{t.strikes}</span>
+        <div class="bb-dots" id="bb-dots-strikes">
+          <span class="bb-dot"></span><span class="bb-dot"></span><span class="bb-dot"></span>
+        </div>
+      </div>
+      <div class="bb-count-item">
+        <span class="bb-count-label">{t.outs}</span>
+        <div class="bb-dots" id="bb-dots-outs">
+          <span class="bb-dot bb-dot-out"></span><span class="bb-dot bb-dot-out"></span><span class="bb-dot bb-dot-out"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bb-rhe-wrap">
       <table class="bb-rhe-table">
         <thead>
-          <tr><th></th><th>{t.runs}</th><th>{t.hits}</th><th>{t.errors}</th></tr>
+          <tr>
+            <th></th>
+            <th class="bb-th-runs">{t.runs}</th>
+            <th class="bb-th-hits">{t.hits}</th>
+            <th class="bb-th-errors">{t.errors}</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td class="bb-rhe-team" id="bb-rhe-away-label">{t.away}</td><td id="bb-rhe-away-r">0</td><td id="bb-rhe-away-h">0</td><td id="bb-rhe-away-e">0</td></tr>
-          <tr><td class="bb-rhe-team" id="bb-rhe-home-label">{t.home}</td><td id="bb-rhe-home-r">0</td><td id="bb-rhe-home-h">0</td><td id="bb-rhe-home-e">0</td></tr>
+          <tr>
+            <td class="bb-rhe-team" id="bb-rhe-away-label">{t.away}</td>
+            <td class="bb-rhe-val" id="bb-rhe-away-r">0</td>
+            <td class="bb-rhe-val" id="bb-rhe-away-h">0</td>
+            <td class="bb-rhe-val" id="bb-rhe-away-e">0</td>
+          </tr>
+          <tr>
+            <td class="bb-rhe-team" id="bb-rhe-home-label">{t.home}</td>
+            <td class="bb-rhe-val" id="bb-rhe-home-r">0</td>
+            <td class="bb-rhe-val" id="bb-rhe-home-h">0</td>
+            <td class="bb-rhe-val" id="bb-rhe-home-e">0</td>
+          </tr>
         </tbody>
       </table>
     </div>
-  </div>
 
-  <div class="bb-inning-grid" id="bb-inning-grid">
-    <div class="bb-inning-header">
-      <span class="bb-inning-header-team"></span>
-      <span class="bb-inning-header-cell">1</span>
-      <span class="bb-inning-header-cell">2</span>
-      <span class="bb-inning-header-cell">3</span>
-      <span class="bb-inning-header-cell">4</span>
-      <span class="bb-inning-header-cell">5</span>
-      <span class="bb-inning-header-cell">6</span>
-      <span class="bb-inning-header-cell">7</span>
-      <span class="bb-inning-header-cell">8</span>
-      <span class="bb-inning-header-cell">9</span>
+    <div class="bb-inning-scroll" id="bb-inning-scroll">
+      <div class="bb-inning-header">
+        <span class="bb-ih-team"></span>
+        <span class="bb-ih-cell">1</span>
+        <span class="bb-ih-cell">2</span>
+        <span class="bb-ih-cell">3</span>
+        <span class="bb-ih-cell">4</span>
+        <span class="bb-ih-cell">5</span>
+        <span class="bb-ih-cell">6</span>
+        <span class="bb-ih-cell">7</span>
+        <span class="bb-ih-cell">8</span>
+        <span class="bb-ih-cell">9</span>
+      </div>
+      <div class="bb-inning-row" id="bb-row-away">
+        <span class="bb-ir-team" id="bb-ir-away-label">{t.away}</span>
+      </div>
+      <div class="bb-inning-row" id="bb-row-home">
+        <span class="bb-ir-team" id="bb-ir-home-label">{t.home}</span>
+      </div>
     </div>
-    <div class="bb-inning-row" id="bb-inning-row-away">
-      <span class="bb-inning-row-team" id="bb-inning-row-away-label">{t.away}</span>
-    </div>
-    <div class="bb-inning-row" id="bb-inning-row-home">
-      <span class="bb-inning-row-team" id="bb-inning-row-home-label">{t.home}</span>
-    </div>
-  </div>
 
-  <div class="bb-btn-row">
-    <button class="bb-btn bb-btn-strike" id="bb-btn-strike">{t.strikeBtn}</button>
-    <button class="bb-btn bb-btn-ball" id="bb-btn-ball">{t.ballBtn}</button>
-    <button class="bb-btn bb-btn-foul" id="bb-btn-foul">{t.foulBtn}</button>
-    <button class="bb-btn bb-btn-hit" id="bb-btn-hit">{t.hitBtn}</button>
-    <button class="bb-btn bb-btn-out" id="bb-btn-out">{t.outBtn}</button>
-  </div>
+    <div class="bb-btn-row">
+      <button class="bb-btn bb-btn-strike" id="bb-btn-strike">{t.strikeBtn}</button>
+      <button class="bb-btn bb-btn-ball" id="bb-btn-ball">{t.ballBtn}</button>
+      <button class="bb-btn bb-btn-foul" id="bb-btn-foul">{t.foulBtn}</button>
+      <button class="bb-btn bb-btn-hit" id="bb-btn-hit">{t.hitBtn}</button>
+      <button class="bb-btn bb-btn-out" id="bb-btn-out">{t.outBtn}</button>
+    </div>
 
-  <div class="bb-actions">
     <button class="bb-btn bb-btn-reset" id="bb-btn-reset">{t.resetMatch}</button>
+
   </div>
 
   <div class="bb-reset-modal" id="bb-modal">
