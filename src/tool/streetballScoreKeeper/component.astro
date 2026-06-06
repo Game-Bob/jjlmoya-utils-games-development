@@ -1,0 +1,163 @@
+---
+import type { KnownLocale } from '../../types';
+import type { StreetballScoreKeeperUI } from './ui';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as StreetballScoreKeeperUI;
+---
+
+<div class="tn-console" id="tn-card" data-tn-ui={JSON.stringify(t)}>
+  <div class="tn-header-panel">
+    <div class="tn-header-actions">
+      <button class="tn-action-btn" id="tn-sound-btn" title={t.toggleSound}>
+        <svg id="tn-sound-icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+        <svg id="tn-sound-icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+      </button>
+      <button class="tn-action-btn" id="tn-reset-btn" title={t.reset}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+          <path d="M16 3h5v5M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+          <path d="M8 21H3v-5"/>
+        </svg>
+      </button>
+      <button class="tn-action-btn" data-tn-fs title={t.fullscreen}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="tn-clear-ball-alert" id="tn-clear-ball-alert">
+    {t.clearBall}
+  </div>
+
+  <div class="tn-scoreboard">
+    <div class="tn-player-card tn-player-card-a">
+      <div class="tn-name-section">
+        <input type="text" value={t.teamA} class="tn-player-input" id="tn-name-a" />
+        <span class="tn-poss-indicator" id="tn-poss-a"></span>
+      </div>
+      <div class="tn-big-score" id="tn-score-a">0</div>
+      <div class="tn-team-actions">
+        <button class="tn-team-btn" data-point-team="a" data-points="1">+1</button>
+        <button class="tn-team-btn" data-point-team="a" data-points="2">+2</button>
+      </div>
+      <div class="tn-stats-row">
+        <button class="tn-stat-box" data-foul-team="a" title={t.fouls}>
+          <span class="tn-stat-val" id="tn-fouls-a">0</span>
+          <span class="tn-stat-lbl">{t.fouls}</span>
+        </button>
+        <button class="tn-stat-box" data-timeout-team="a" title={t.timeouts}>
+          <span class="tn-stat-val" id="tn-timeouts-a">1</span>
+          <span class="tn-stat-lbl">{t.timeouts}</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="tn-player-card tn-player-card-b">
+      <div class="tn-name-section">
+        <input type="text" value={t.teamB} class="tn-player-input" id="tn-name-b" />
+        <span class="tn-poss-indicator" id="tn-poss-b"></span>
+      </div>
+      <div class="tn-big-score" id="tn-score-b">0</div>
+      <div class="tn-team-actions">
+        <button class="tn-team-btn" data-point-team="b" data-points="1">+1</button>
+        <button class="tn-team-btn" data-point-team="b" data-points="2">+2</button>
+      </div>
+      <div class="tn-stats-row">
+        <button class="tn-stat-box" data-foul-team="b" title={t.fouls}>
+          <span class="tn-stat-val" id="tn-fouls-b">0</span>
+          <span class="tn-stat-lbl">{t.fouls}</span>
+        </button>
+        <button class="tn-stat-box" data-timeout-team="b" title={t.timeouts}>
+          <span class="tn-stat-val" id="tn-timeouts-b">1</span>
+          <span class="tn-stat-lbl">{t.timeouts}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tn-clocks-panel">
+    <div class="tn-clock-container">
+      <div class="tn-clock-box tn-clock-box-game" id="tn-btn-start-clock">
+        <div class="tn-clock-lbl">{t.gameTime}</div>
+        <div class="tn-clock-digits tn-clock-digits-game" id="tn-game-clock">10:00</div>
+      </div>
+      <div class="tn-clock-box tn-clock-box-shot" id="tn-shot-clock-box">
+        <div class="tn-clock-lbl">{t.shotClock}</div>
+        <div class="tn-clock-digits tn-clock-digits-shot" id="tn-shot-clock">12</div>
+      </div>
+    </div>
+    <div class="tn-clock-controls">
+      <button class="tn-control-btn" id="tn-btn-reset-14">+14s</button>
+      <button class="tn-control-btn" id="tn-poss-toggle">{t.possession}</button>
+      <button class="tn-control-btn" id="tn-undo-btn">Undo</button>
+    </div>
+  </div>
+
+  <div class="tn-court-panel">
+    <div class="tn-court-wrapper">
+      <svg class="tn-street-court" viewBox="0 0 240 200" id="tn-court">
+        <rect class="tn-court-arc-outer" x="0" y="0" width="240" height="200" />
+        <path class="tn-court-arc-inner tn-court-quadrant" d="M 10 20 A 110 110 0 0 0 230 20 L 230 200 L 10 200 Z" />
+        <line class="tn-board" x1="100" y1="12" x2="140" y2="12" />
+        <circle class="tn-rim" cx="120" cy="18" r="6" />
+        <rect class="tn-key-lines" x="96" y="20" width="48" height="60" />
+        <text x="120" y="60" class="tn-court-text tn-court-text-inner">+1</text>
+        <text x="40" y="160" class="tn-court-text tn-court-text-outer">+2</text>
+        <text x="120" y="160" class="tn-court-text tn-court-text-outer">+2</text>
+        <text x="200" y="160" class="tn-court-text tn-court-text-outer">+2</text>
+      </svg>
+    </div>
+  </div>
+
+  <div id="tn-timeout-overlay" class="tn-timeout-overlay">
+    <div class="tn-timeout-bg-glow"></div>
+    <div class="tn-timeout-content">
+      <div class="tn-timeout-title">{t.timeoutActive}</div>
+      <div id="tn-timeout-timer" class="tn-timeout-digits">30.0</div>
+      <div class="tn-timeout-subtitle">Click to Resume</div>
+    </div>
+  </div>
+
+  <div id="tn-winner" class="tn-winner-overlay">
+    <div class="tn-winner-box">
+      <svg class="tn-winner-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6m12 5h1.5a2.5 2.5 0 0 0 0-5H18M6 4h12M12 18v3m-4 0h8m-4-17v14a4 4 0 0 1-4-4"/>
+      </svg>
+      <div class="tn-winner-title">{t.matchWon}</div>
+      <div id="tn-winner-team" class="tn-winner-team">Team 1</div>
+      <button class="tn-control-btn" data-close-winner>Reset</button>
+    </div>
+  </div>
+
+  <div id="tn-particle-container" class="tn-particle-container"></div>
+
+  <div id="tn-modal" class="tn-modal">
+    <div class="tn-modal-box">
+      <p class="tn-modal-text">{t.resetConfirm}</p>
+      <div class="tn-modal-btns">
+        <button id="tn-modal-cancel" class="tn-modal-btn tn-btn-cancel">{t.cancel}</button>
+        <button id="tn-modal-confirm" class="tn-modal-btn tn-btn-confirm">{t.reset}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initStreetballScoreKeeper } from './logic';
+  initStreetballScoreKeeper();
+</script>

@@ -4,8 +4,8 @@ import { sportsCategory } from '../data';
 
 describe('Tool Validation Suite', () => {
   describe('Library Registration', () => {
-    it('should have 10 tools in ALL_TOOLS', () => {
-      expect(ALL_TOOLS.length).toBe(10);
+    it('should have 11 tools in ALL_TOOLS', () => {
+      expect(ALL_TOOLS.length).toBe(11);
     });
 
     it('sportsCategory should be defined', () => {
