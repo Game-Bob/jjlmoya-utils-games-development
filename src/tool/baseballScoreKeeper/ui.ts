@@ -1,0 +1,29 @@
+export interface BaseballScoreKeeperUI {
+  title: string;
+  description: string;
+  away: string;
+  home: string;
+  runs: string;
+  hits: string;
+  errors: string;
+  inning: string;
+  topInning: string;
+  bottomInning: string;
+  balls: string;
+  strikes: string;
+  outs: string;
+  strikeBtn: string;
+  ballBtn: string;
+  foulBtn: string;
+  hitBtn: string;
+  outBtn: string;
+  walkBtn: string;
+  newBatter: string;
+  resetMatch: string;
+  resetConfirm: string;
+  cancel: string;
+  confirm: string;
+  total: string;
+  fullscreen: string;
+  toggleSound: string;
+}
