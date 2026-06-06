@@ -106,7 +106,7 @@ export const content: StreetballLocaleContent = {
       columns: 3,
       items: [
         {
-          title: 'Casual Pickup-spel',
+          title: 'Casual Pickup Spel',
           description: 'Snabba poängräkning för streetbasket med vänner på lokala planer.',
           icon: 'mdi:basketball',
           points: ['Enkla poängknappar', 'Responsiv layout', 'Fungerar offline'],

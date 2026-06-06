@@ -2,7 +2,7 @@ import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { StreetballLocaleContent } from '../entry';
 
-const slug = 'streetball-3x3-seukeokipa';
+const slug = 'streetball-3x3-basketball-scorekeeper';
 const title = '프리미엄 스트리트볼 3x3 스코어키퍼 (쇼트클록 포함)';
 const description = '통합 12초 쇼트클록, 팀 파울, 서든데스 점수, 다이나믹 하프코트 시각 표시기로 FIBA 3x3 스트리트볼 점수를 추적하세요.';
 

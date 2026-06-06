@@ -2,7 +2,7 @@ import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { StreetballLocaleContent } from '../entry';
 
-const slug = 'marcador-streetball-3x3';
+const slug = 'placar-streetball-3x3';
 const title = 'Marcador Premium de Streetball 3x3 com Cronômetro de Arremesso';
 const description = 'Acompanhe os placares do streetball FIBA 3x3 com um cronômetro de arremesso de 12 segundos integrado, faltas por equipe, pontos de morte súbita e indicadores visuais dinâmicos de meia quadra.';
 

@@ -118,7 +118,7 @@ export const content: StreetballLocaleContent = {
           points: ['10-Minuten-Countdown', 'Sudden Death bei 21 Pkt', 'Foul-Strafzustände'],
         },
         {
-          title: 'Schiedsrichter-Dashboard',
+          title: 'Schiedsrichter Dashboard',
           description: 'Speziell für Schiedsrichter entwickelt, um schnelle Wurfuhr-Rücksetzungen und Ballbesitz zu verwalten.',
           icon: 'mdi:school',
           points: ['12s und 14s Rücksetzung', 'Summer-Sound', 'Taktile Gesten'],

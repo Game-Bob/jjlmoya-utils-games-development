@@ -2,7 +2,7 @@ import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { StreetballLocaleContent } from '../entry';
 
-const slug = 'streetball-3x3-sukoakipa';
+const slug = 'streetball-3x3-basketball-scorekeeper';
 const title = 'プレミアム ストリートボール3x3 スコアキーパー（ショットクロック付き）';
 const description = 'FIBA 3x3 ストリートボールのスコア管理を、統合された12秒ショットクロック、チームファウル、サドンデスポイント、ダイナミックなハーフコート表示で実現。';
 

@@ -2,7 +2,7 @@ import { bibliography } from '../bibliography';
 import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dts';
 import type { StreetballLocaleContent } from '../entry';
 
-const slug = 'streetball-3x3-ji-fen-qi';
+const slug = 'streetball-3x3-basketball-scorekeeper';
 const title = '高级街头篮球3x3记分器（含进攻计时器）';
 const description = '通过集成的12秒进攻计时器、团队犯规、突然死亡得分以及动态半场视觉指示器，追踪FIBA 3x3街头篮球比分。';
 
