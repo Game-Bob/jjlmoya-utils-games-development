@@ -1,0 +1,137 @@
+---
+import type { KnownLocale } from '../../types';
+import type { RugbyScoreKeeperUI } from './ui';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as RugbyScoreKeeperUI;
+---
+
+<div class="rg-app" id="rg-app" data-rg-ui={JSON.stringify(t)}>
+
+  <div class="rg-main-card">
+
+  <div class="rg-strip">
+    <div class="rg-team">
+      <input type="text" class="rg-name" id="rg-name-home" value={t.home} />
+      <div class="rg-score" id="rg-score-home">0</div>
+      <div class="rg-bonus" id="rg-bonus-home"></div>
+    </div>
+    <div class="rg-divider">
+      <span class="rg-vs">VS</span>
+      <div class="rg-half-badge" id="rg-half-badge">{t.half1}</div>
+    </div>
+    <div class="rg-team">
+      <input type="text" class="rg-name" id="rg-name-away" value={t.away} />
+      <div class="rg-score" id="rg-score-away">0</div>
+      <div class="rg-bonus" id="rg-bonus-away"></div>
+    </div>
+  </div>
+
+  <div class="rg-columns">
+    <div class="rg-col" data-team="home">
+      <div class="rg-col-label">{t.home}</div>
+      <button class="rg-btn rg-btn-try" data-action="try">+5 {t.tryLabel}</button>
+      <button class="rg-btn rg-btn-conv" id="rg-conv-home" data-action="conv" disabled>+2 {t.conversion}</button>
+      <button class="rg-btn rg-btn-pen" data-action="pen">+3 {t.penalty}</button>
+      <button class="rg-btn rg-btn-drop" data-action="drop">+3 {t.dropGoal}</button>
+    </div>
+    <div class="rg-col" data-team="away">
+      <div class="rg-col-label">{t.away}</div>
+      <button class="rg-btn rg-btn-try" data-action="try">+5 {t.tryLabel}</button>
+      <button class="rg-btn rg-btn-conv" id="rg-conv-away" data-action="conv" disabled>+2 {t.conversion}</button>
+      <button class="rg-btn rg-btn-pen" data-action="pen">+3 {t.penalty}</button>
+      <button class="rg-btn rg-btn-drop" data-action="drop">+3 {t.dropGoal}</button>
+    </div>
+  </div>
+
+  <div class="rg-mid-row">
+    <div class="rg-clock-panel">
+      <div class="rg-clock-ring">
+        <svg class="rg-clock-svg" viewBox="0 0 120 120">
+          <circle class="rg-clock-bg" cx="60" cy="60" r="54" />
+          <circle class="rg-clock-fill" id="rg-clock-fill" cx="60" cy="60" r="54" />
+        </svg>
+        <div class="rg-clock-inner">
+          <div class="rg-clock-time" id="rg-clock-time">00:00</div>
+          <div class="rg-clock-label">{t.half} <span id="rg-half-label">1</span></div>
+        </div>
+      </div>
+      <button class="rg-btn rg-btn-clock" id="rg-btn-clock">{t.startMatch}</button>
+    </div>
+    <div class="rg-sinbin-panel">
+      <div class="rg-panel-header">{t.sinBin}</div>
+      <div class="rg-sinbin-form">
+        <input type="text" class="rg-input" id="rg-sinbin-input" placeholder={t.sinBinPlayer} />
+        <select class="rg-select" id="rg-sinbin-duration">
+          <option value="600">10 min</option>
+          <option value="300">5 min</option>
+        </select>
+        <button class="rg-btn rg-btn-yellow" id="rg-btn-sinbin">{t.sinBinAdd}</button>
+      </div>
+      <div class="rg-sinbin-list" id="rg-sinbin-list">
+        <div class="rg-sinbin-empty">{t.sinBinEmpty}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rg-bottom-row">
+    <div class="rg-history">
+      <div class="rg-panel-header">{t.eventLog}</div>
+      <div class="rg-history-list" id="rg-history-list">
+        <div class="rg-history-empty">{t.eventEmpty}</div>
+      </div>
+      <button class="rg-btn rg-btn-undo" id="rg-btn-undo" disabled>{t.undoBtn}</button>
+    </div>
+    <div class="rg-summary">
+      <div class="rg-panel-header">{t.scoringSummary}</div>
+      <table class="rg-table">
+        <thead>
+          <tr><th></th><th>{t.home}</th><th>{t.away}</th></tr>
+        </thead>
+        <tbody id="rg-summary-body">
+          <tr><td>{t.tryScored}</td><td>0</td><td>0</td></tr>
+          <tr><td>{t.conversionSuccess}</td><td>0</td><td>0</td></tr>
+          <tr><td>{t.penaltyScored}</td><td>0</td><td>0</td></tr>
+          <tr><td>{t.dropGoalScored}</td><td>0</td><td>0</td></tr>
+        </tbody>
+        <tfoot>
+          <tr class="rg-total-row">
+            <td>{t.totalPoints}</td>
+            <td id="rg-total-home">0</td>
+            <td id="rg-total-away">0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div id="rg-banner" class="rg-banner" style="display:none">
+    <div class="rg-banner-text" id="rg-banner-text"></div>
+  </div>
+
+  <div class="rg-reset-modal" id="rg-modal">
+    <div class="rg-modal-content">
+      <div class="rg-modal-text">{t.resetConfirm}</div>
+      <div class="rg-modal-btns">
+        <button class="rg-btn rg-btn-modal-cancel" id="rg-modal-cancel">{t.cancel}</button>
+        <button class="rg-btn rg-btn-modal-confirm" id="rg-modal-confirm">{t.confirm}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rg-actions">
+    <button class="rg-btn rg-btn-reset" id="rg-btn-reset">{t.resetMatch}</button>
+  </div>
+
+  </div>
+</div>
+
+<script>
+  import { initRugbyScorekeeper } from './ui-init';
+  initRugbyScorekeeper();
+</script>
