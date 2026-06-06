@@ -1,12 +1,13 @@
 import type { GameState, BaseKey } from './logic';
-import { createInitialState, recordStrike, recordBall, recordFoul, recordHit, recordOut, formatInning } from './logic';
+import { createInitialState, recordStrike, recordBall, recordFoul, recordHit, recordOut, recordRun, recordError, formatInning } from './logic';
 
 interface BBUI {
   away: string; home: string; runs: string; hits: string; errors: string;
   inning: string; topInning: string; bottomInning: string; balls: string;
   strikes: string; outs: string; strikeBtn: string; ballBtn: string;
   foulBtn: string; hitBtn: string; outBtn: string; walkBtn: string;
-  newBatter: string; resetMatch: string; resetConfirm: string;
+  runBtn: string; errorBtn: string; newBatter: string;
+  resetMatch: string; resetConfirm: string;
   cancel: string; confirm: string; total: string; fullscreen: string;
   toggleSound: string;
 }
@@ -107,6 +108,8 @@ function wireActions(state: { v: GameState }) {
     renderAll(state.v);
   }
   ['strike', 'ball', 'foul', 'hit', 'out'].forEach((a) => onBtn(`bb-btn-${a}`, () => doAction(a)));
+  onBtn('bb-btn-run', () => { state.v = recordRun(state.v); renderAll(state.v); });
+  onBtn('bb-btn-error', () => { state.v = recordError(state.v); renderAll(state.v); });
   onBtn('bb-btn-reset', () => q('bb-modal')!.style.display = 'flex');
   onBtn('bb-modal-cancel', () => q('bb-modal')!.style.display = 'none');
   onBtn('bb-modal-confirm', doConfirmReset);

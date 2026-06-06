@@ -340,6 +340,22 @@
   color: var(--text-on-accent);
 }
 
+.bb-btn-row-secondary {
+  margin-top: -8px;
+}
+
+.bb-btn-run {
+  background: var(--bb-gold);
+  border-color: var(--bb-gold);
+  color: #0d1117;
+}
+
+.bb-btn-error {
+  background: var(--bb-bg-surface);
+  border-color: var(--bb-strike);
+  color: var(--bb-strike);
+}
+
 .bb-btn-reset {
   background: var(--bb-danger);
   color: var(--text-on-accent);

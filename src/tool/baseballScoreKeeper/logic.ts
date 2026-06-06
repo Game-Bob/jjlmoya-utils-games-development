@@ -50,6 +50,10 @@ function battingTeam(state: GameState): TeamStats {
   return state.topHalf ? state.away : state.home;
 }
 
+function pitchingTeam(state: GameState): TeamStats {
+  return state.topHalf ? state.home : state.away;
+}
+
 function halfInningRuns(state: GameState): number {
   const total = battingTeam(state).runs;
   const prev = state.lastRun;
@@ -112,9 +116,14 @@ export function recordHit(state: GameState): GameState {
   const s = structuredClone(state);
   s.count = emptyCount();
   battingTeam(s).hits++;
-  battingTeam(s).runs += s.bases.length + 1;
-  s.bases = [];
-  s.bases.push('first');
+  const advanced: BaseKey[] = [];
+  for (const b of s.bases) {
+    if (b === 'first') advanced.push('second');
+    else if (b === 'second') advanced.push('third');
+    else if (b === 'third') battingTeam(s).runs++;
+  }
+  advanced.push('first');
+  s.bases = advanced;
   return s;
 }
 
@@ -126,6 +135,19 @@ export function recordOut(state: GameState): GameState {
     s.count.outs = 0;
     endHalf(s);
   }
+  return s;
+}
+
+export function recordRun(state: GameState): GameState {
+  const s = structuredClone(state);
+  s.count = emptyCount();
+  battingTeam(s).runs++;
+  return s;
+}
+
+export function recordError(state: GameState): GameState {
+  const s = structuredClone(state);
+  pitchingTeam(s).errors++;
   return s;
 }
 

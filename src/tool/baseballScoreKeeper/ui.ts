@@ -18,6 +18,8 @@ export interface BaseballScoreKeeperUI {
   hitBtn: string;
   outBtn: string;
   walkBtn: string;
+  runBtn: string;
+  errorBtn: string;
   newBatter: string;
   resetMatch: string;
   resetConfirm: string;
