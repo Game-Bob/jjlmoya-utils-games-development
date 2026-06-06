@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'marcador-de-rugby';
-const title = 'Marcador de Rugby Premium con Cronómetros de Castigo y Reloj de Partido';
+const title = 'Marcador de Rugby con Cronómetros de Castigo y Reloj de Partido';
 const description = 'Sigue los resultados en vivo de partidos de rugby con registro de ensayos, conversiones, penaltis y drops. Gestiona los cronómetros de castigo y los tiempos de cada tiempo con un marcador interactivo de estadio.';
 
 const faqData = [

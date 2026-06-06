@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { StreetballLocaleContent } from '../entry';
 
 const slug = 'streetball-3x3-spielstand';
-const title = 'Premium Streetball 3x3 Spielstand mit Wurfuhr';
+const title = 'Streetball 3x3 Spielstand mit Wurfuhr';
 const description = 'Verfolge FIBA 3x3 Streetball-Ergebnisse mit integrierter 12-Sekunden-Wurfuhr, Teamfouls, Sudden-Death-Punkten und dynamischen visuellen Anzeigen für die Spielfeldhälfte.';
 
 const faq = [

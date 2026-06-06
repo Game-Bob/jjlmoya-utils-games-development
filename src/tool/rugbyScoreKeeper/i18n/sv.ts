@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'rugby-poangraknare';
-const title = 'Premium Rugbypoängräknare med Utvisningstimer och Matchklocka';
+const title = 'Rugbypoängräknare med Utvisningstimer och Matchklocka';
 const description = 'Följ livescoring i rugbymatcher med registrering av försök, omvandlingar, straffar och drop goals. Hantera utvisningsnedräkningar och matchhalvlekar med en interaktiv matchtavla.';
 
 const faqData = [

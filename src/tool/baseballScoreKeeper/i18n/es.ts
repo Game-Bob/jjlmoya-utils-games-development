@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'anotador-beisbol';
-const title = 'Anotador Premium de Beisbol y Softbol con Seguimiento de Corredores';
+const title = 'Anotador de Beisbol y Softbol con Seguimiento de Corredores';
 const description = 'Registra en vivo los puntajes de beisbol con carreras, hits y errores. Diamante visual con posiciones de corredores, conteo de bolas y strikes, e historial entrada por entrada.';
 
 const faqData = [

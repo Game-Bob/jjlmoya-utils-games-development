@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'pencatat-skor-baseball';
-const title = 'Pencatat Skor Baseball dan Softball Premium dengan Pelacak Diamond';
+const title = 'Pencatat Skor Baseball dan Softball dengan Pelacak Diamond';
 const description = 'Lacak skor baseball langsung dengan runs, hits dan errors. Diamond visual dengan posisi pelari, penghitung bolanya dan strike, serta riwayat inning per inning.';
 
 const faqData = [

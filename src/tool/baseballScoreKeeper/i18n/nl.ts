@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'honkbalscorebord';
-const title = 'Premium Honkbal en Softbal Scorebord met Diamond Tracker';
+const title = 'Honkbal en Softbal Scorebord met Diamond Tracker';
 const description = 'Volg live honkbal scores met runs, hits en fouten. Visueel diamant met honkloper posities, ballen en slag telling, en inning voor inning geschiedenisoverzicht.';
 
 const faqData = [

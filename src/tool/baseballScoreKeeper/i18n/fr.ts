@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'marqueur-baseball';
-const title = 'Marqueur Premium de Baseball et Softball avec Suivi des Coureurs';
+const title = 'Marqueur de Baseball et Softball avec Suivi des Coureurs';
 const description = 'Suivez les scores de baseball en direct avec les points, les coups surs et les erreurs. Diamant visuel avec positions des coureurs, compteur de balles et de prises, et historique manche par manche.';
 
 const faqData = [

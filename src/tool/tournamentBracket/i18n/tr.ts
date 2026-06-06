@@ -55,7 +55,7 @@ const faqData = [
   { question: 'Oyuncu sayım tek ise ne olur?', answer: 'Aracımız "BYE" işlemlerini otomatik olarak halleder. Braketin her zaman ikinin kuvveti (2, 4, 8, 16...) şeklinde bitmesi için bazı oyuncular ilk turda oynamadan doğrudan ikinci tura yükselir.' },
   { question: 'Turnuva braketini kaydedip paylaşabilir miyim?', answer: 'Evet, anında oluşturulan benzersiz bir bağlantı aracılığıyla braketi paylaşabilirsiniz. Kayıt gerektirmeyen bir araç olduğu için, sekme açık olduğu sürece veriler tarayıcınızda tutulur.' },
   { question: 'FIFA veya LoL gibi eSports turnuvaları için uygun mu?', answer: 'Kesinlikle. Hızlı ve görsel olacak şekilde tasarlanmıştır; hızlı konsol, PC oyunu ve hatta masa ve kart oyunu turnuvalarını yönetmek için idealdir.' },
-  { question: 'Turnuva oluşturmak ücretsiz mi?', answer: 'Evet, tamamen ücretsiz ve kısıtlamasız. Premium planlar, katılımcı sınırları, filigranlar veya rahatsız edici reklamlar yok. Her şey tarayıcınızda çevrimdışı çalışır.' },
+  { question: 'Turnuva oluşturmak ücretsiz mi?', answer: 'Evet, tamamen ücretsiz ve kısıtlamasız. planlar, katılımcı sınırları, filigranlar veya rahatsız edici reklamlar yok. Her şey tarayıcınızda çevrimdışı çalışır.' },
   { question: 'Tarayıcıyı kapatırsam verilerim silinir mi?', answer: 'Hayır. Tüm turnuvalarınızı cihazınıza otomatik olarak kaydetmek için LocalStorage kullanıyoruz. Sekmeyi kapatabilir, bilgisayarı kapatabilir ve günler sonra geri gelebilirsiniz: turnuvanız hala orada olacaktır.' },
   { question: '"Sıradaki Maç" düğmesi nasıl çalışır?', answer: 'Sistem, her iki katılımcısı da onaylanmış ancak henüz sonucu girilmemiş bir sonraki hazır eşleşmeyi otomatik olarak algılar. "Sıradaki Maç" düğmesine basıldığında görünüm doğrudan o maça atlar.' },
 ];

@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { SnookerScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'snooker-frame-tracker-en-break-calculator';
-const title = 'Premium Snooker Frame Tracker en Break Calculator';
+const title = 'Snooker Frame Tracker en Break Calculator';
 const description = 'Volg live snooker frame scores bij, bereken huidige break waarden, toon resterende punten op tafel en ontvang real-time deficit status zoals benodigde snookers.';
 
 const faqData = [

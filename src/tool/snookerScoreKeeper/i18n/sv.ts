@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { SnookerScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'snooker-ram-raknare-och-break-kalkylator';
-const title = 'Premium Snooker Ramräknare och Breakkalkylator';
+const title = 'Snooker Ramräknare och Breakkalkylator';
 const description = 'Spåra snookerramsresultat i realtid, beräkna aktuella breakvärden, visa återstående poäng på bordet och få realtidsstatus för underskott som behov av snookrar.';
 
 const faqData = [

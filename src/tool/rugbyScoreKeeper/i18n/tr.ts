@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'rugby-skor-takip';
-const title = 'Premium Rugby Skor Takip ile Sin Bin Süreölçer ve Maç Saati';
+const title = 'Rugby Skor Takip ile Sin Bin Süreölçer ve Maç Saati';
 const description = 'Denemeler, dönüşümler, penaltılar ve drop golleri kaydederek rugby maç skorlarını canlı takip edin. İnteraktif bir stadyum skorboardu ile sin bin geri sayım sürelerini ve maç devrelerini yönetin.';
 
 const faqData = [

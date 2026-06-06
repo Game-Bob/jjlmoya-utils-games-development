@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'rugby-scorekeeper';
-const title = 'Premium Rugby Scorekeeper with Sin Bin Timers and Match Clock';
+const title = 'Rugby Scorekeeper with Sin Bin Timers and Match Clock';
 const description = 'Track live rugby match scores with try, conversion, penalty and drop goal logging. Manage sin bin countdown timers and match halves with an interactive stadium scoreboard.';
 
 const faqData = [

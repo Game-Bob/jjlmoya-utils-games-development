@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'segnapunti-baseball-softball';
-const title = 'Segnapunti Premium per Baseball e Softball con Tracciamento del Diamante';
+const title = 'Segnapunti per Baseball e Softball con Tracciamento del Diamante';
 const description = 'Segna i punteggi delle partite in tempo reale con runs, hits ed errori. Diamante visivo con posizioni dei corridori, conteggio di palle e strike e griglia cronologica inning per inning.';
 
 const faqData = [

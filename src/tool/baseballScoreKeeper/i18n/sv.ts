@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'baseball-poangraknare';
-const title = 'Premium Baseball och Softball Poangraknare med Diamond Tracker';
+const title = 'Baseball och Softball Poangraknare med Diamond Tracker';
 const description = 'Folj live baseballpoang med runs, hits och errors. Visuell diamond med basloparpositioner, ball strike raknare och inning for inning historikgrid.';
 
 const faqData = [

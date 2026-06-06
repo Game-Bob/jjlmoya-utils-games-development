@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'papan-skor-rugbi';
-const title = 'Papan Skor Rugbi Premium dengan Pengatur Waktu Sin Bin dan Jam Pertandingan';
+const title = 'Papan Skor Rugbi dengan Pengatur Waktu Sin Bin dan Jam Pertandingan';
 const description = 'Lacak skor pertandingan rugbi secara langsung dengan pencatatan try, konversi, penalti, dan drop goal. Kelola hitung mundur waktu sin bin dan babak pertandingan dengan papan skor stadion interaktif.';
 
 const faqData = [

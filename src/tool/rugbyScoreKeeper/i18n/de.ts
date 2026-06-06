@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'rugby-punktetafel';
-const title = 'Premium Rugby Punktezähler mit Zeitstrafen und Spieluhr';
+const title = 'Rugby Punktezähler mit Zeitstrafen und Spieluhr';
 const description = 'Verfolge Live-Ergebnisse von Rugbyspielen mit Erfassung von Versuchen, Erhöhungen, Straftritten und Dropgoals. Verwalte Zeitstrafen und Spielhälften mit einer interaktiven Stadionanzeigetafel.';
 
 const faqData = [

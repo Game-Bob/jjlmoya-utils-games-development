@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'padel-resultatraknare';
-const title = 'Premium Padel Resultaträknare : Guldpoäng & Rotation Spårare';
+const title = 'Padel Resultaträknare : Guldpoäng & Rotation Spårare';
 const description = 'Håll koll på padel-poäng med den officiella Punto de Oro (Guldpoäng)-regeln, serveringsrotationsvarningar, tiebreaks och dynamisk sidbytesanimation.';
 
 const faq = [

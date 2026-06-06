@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { StreetballLocaleContent } from '../entry';
 
 const slug = 'papan-skor-streetball-3x3';
-const title = 'Papan Skor Streetball 3x3 Premium dengan Shot Clock';
+const title = 'Papan Skor Streetball 3x3 dengan Shot Clock';
 const description = 'Catat skor streetball FIBA 3x3 dengan shot clock 12 detik terintegrasi, pelanggaran tim, poin sudden death, dan indikator visual setengah lapangan yang dinamis.';
 
 const faq = [

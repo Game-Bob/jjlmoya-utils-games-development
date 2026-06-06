@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { StreetballLocaleContent } from '../entry';
 
 const slug = 'streetball-3x3-scorehouder';
-const title = 'Premium Streetball 3x3 Scorehouder met Schotklok';
+const title = 'Streetball 3x3 Scorehouder met Schotklok';
 const description = 'Volg FIBA 3x3 Streetball scores met een geïntegreerde 12-seconden schotklok, teamfouten, sudden death punten en dynamische halfcourt visuele indicatoren.';
 
 const faq = [

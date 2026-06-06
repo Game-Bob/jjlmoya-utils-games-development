@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { SnookerScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'penghitung-break-dan-pelacak-frame-snooker';
-const title = 'Pelacak Frame Snooker dan Kalkulator Break Premium';
+const title = 'Pelacak Frame Snooker dan Kalkulator Break ';
 const description = 'Lacak skor frame snooker langsung, hitung nilai break terkini, tampilkan sisa poin di meja, dan dapatkan status defisit secara langsung seperti kebutuhan snooker.';
 
 const faqData = [

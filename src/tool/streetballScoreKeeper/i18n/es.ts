@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { StreetballLocaleContent } from '../entry';
 
 const slug = 'marcador-streetball-3x3';
-const title = 'Marcador Premium de Streetball 3x3 con Reloj de Tiro';
+const title = 'Marcador de Streetball 3x3 con Reloj de Tiro';
 const description = 'Controla los marcadores de streetball FIBA 3x3 con un reloj de tiro de 12 segundos integrado, faltas por equipo, puntos de muerte súbita e indicadores visuales de media cancha.';
 
 const faq = [

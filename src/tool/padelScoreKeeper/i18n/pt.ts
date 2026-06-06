@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'marcador-pontos-padel';
-const title = 'Marcador de Padel Premium : Ponto de Ouro & Rotação de Saque';
+const title = 'Marcador de Padel : Ponto de Ouro & Rotação de Saque';
 const description = 'Monitore os pontos do padel com a regra oficial do Punto de Oro (Ponto de Ouro), alertas de rotação de saque, tiebreaks e animação dinâmica de troca de lado.';
 
 const faq = [

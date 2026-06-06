@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'arbitro-rugby-punteggio';
-const title = 'Segnapunti Rugby Premium con Timer Espulsioni Temporanee e Cronometro Partita';
+const title = 'Segnapunti Rugby con Timer Espulsioni Temporanee e Cronometro Partita';
 const description = 'Registra i punteggi delle partite di rugby in diretta con mete, trasformazioni, calci di punizione e drop. Gestisci i timer per le espulsioni temporanee e i tempi di gioco con un tabellone interattivo.';
 
 const faqData = [

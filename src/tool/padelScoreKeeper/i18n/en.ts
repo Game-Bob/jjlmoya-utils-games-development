@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'padel-scorekeeper';
-const title = 'Premium Padel Scorekeeper : Gold Point & Rotation Tracker';
+const title = 'Padel Scorekeeper : Gold Point & Rotation Tracker';
 const description = 'Track padel scores with the official Punto de Oro (Gold Point) rule, serve rotation alerts, set tiebreaks, and dynamic ends swapping animation.';
 
 const faq = [

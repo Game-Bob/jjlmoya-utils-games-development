@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { SnookerScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'snooker-frame-tracker-break-rechner';
-const title = 'Premium Snooker Frame Tracker und Break Rechner';
+const title = 'Snooker Frame Tracker und Break Rechner';
 const description = 'Verfolge live Snooker-Frame-Ergebnisse, berechne aktuelle Break-Werte, zeige verbleibende Punkte auf dem Tisch an und erhalte Echtzeit-Status zum Rückstand, einschließlich benöter Snooker.';
 
 const faqData = [

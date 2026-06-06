@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'placar-rugby-cronometro';
-const title = 'Placar de Rugby Premium com Cronômetros de Sin Bin e Relógio de Partida';
+const title = 'Placar de Rugby com Cronômetros de Sin Bin e Relógio de Partida';
 const description = 'Registre as pontuações de partidas de rugby ao vivo com tries, conversões, penalidades e drop goals. Gerencie cronômetros de sin bin e os tempos de jogo com um placar interativo de estádio.';
 
 const faqData = [

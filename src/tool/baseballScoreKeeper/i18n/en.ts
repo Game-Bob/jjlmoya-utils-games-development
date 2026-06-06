@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'baseball-scorekeeper';
-const title = 'Premium Baseball and Softball Scorekeeper with Diamond Tracker';
+const title = 'Baseball and Softball Scorekeeper with Diamond Tracker';
 const description = 'Track live baseball scores with runs, hits and errors. Visual diamond with base runner positions, ball strike count tracker, and inning by inning history grid.';
 
 const faqData = [

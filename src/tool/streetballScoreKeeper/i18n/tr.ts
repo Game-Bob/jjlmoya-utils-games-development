@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { StreetballLocaleContent } from '../entry';
 
 const slug = 'streetball-3x3-skor-takipcisi';
-const title = 'Premium Streetball 3x3 Skor Takipçisi ve Atış Saati';
+const title = 'Streetball 3x3 Skor Takipçisi ve Atış Saati';
 const description = 'Entegre 12 saniyelik atış saati, takım faulleri, ani ölüm puanları ve dinamik yarı saha görsel göstergeleri ile FIBA 3x3 Streetball skorlarını takip edin.';
 
 const faq = [

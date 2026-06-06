@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'tableau-de-score-rugby';
-const title = 'Tableau de Score Rugby Premium avec Chronomètres d Exclusion et Horloge de Match';
+const title = 'Tableau de Score Rugby avec Chronomètres d Exclusion et Horloge de Match';
 const description = 'Suivez les scores en direct d un match de rugby avec comptabilisation des essais, transformations, pénalités et drops. Gérez les chronomètres d exclusion et les mi-temps avec un tableau de bord interactif.';
 
 const faqData = [

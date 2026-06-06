@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { StreetballLocaleContent } from '../entry';
 
 const slug = 'streetball-3x3-resultatraknare';
-const title = 'Premium Streetball 3x3 Resultaträknare med Skottklocka';
+const title = 'Streetball 3x3 Resultaträknare med Skottklocka';
 const description = 'Håll koll på FIBA 3x3 Streetball-poäng med en integrerad 12-sekunders skottklocka, lagfoular, sudden death-poäng och dynamiska halvplanindikatorer.';
 
 const faq = [

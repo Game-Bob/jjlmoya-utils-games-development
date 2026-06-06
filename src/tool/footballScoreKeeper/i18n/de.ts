@@ -32,7 +32,7 @@ const faqData = [
   {
     question: 'Ist das Tool wirklich kostenlos ohne versteckte Einschränkungen?',
     answer:
-      'Ja, komplett kostenlos und ohne Einschränkungen. Keine Premium-Tarife, keine Teilnehmerbegrenzung, keine Wasserzeichen, keine Werbung. Alles funktioniert offline in deinem Browser. Kein Konto oder E-Mail erforderlich.',
+      'Ja, komplett kostenlos und ohne Einschränkungen. Keine -Tarife, keine Teilnehmerbegrenzung, keine Wasserzeichen, keine Werbung. Alles funktioniert offline in deinem Browser. Kein Konto oder E-Mail erforderlich.',
   },
 ];
 
@@ -198,7 +198,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Dieses Tool ist komplett kostenlos und ohne Einschränkungen nutzbar. Es gibt keine Premium-Stufen, keine versteckten Funktionen hinter einer Bezahlschranke und keine Wasserzeichen auf dem Bildschirm. Es funktioniert für jedes Fußballniveau : vom lockeren Kick mit Freunden bis zu organisierten Ligaspielen. Die einfache Oberfläche bedeutet, dass jeder es nutzen kann, von jungen Spielern, die das Spiel lernen, bis zu erfahrenen Trainern, die ein Turnier leiten. Keine Registrierung erforderlich. Keine E-Mail-Adresse. Keine persönlichen Daten. Öffne die Seite, starte das Spiel, tippe die Tore. Das ist alles.',
+      html: 'Dieses Tool ist komplett kostenlos und ohne Einschränkungen nutzbar. Es gibt keine -Stufen, keine versteckten Funktionen hinter einer Bezahlschranke und keine Wasserzeichen auf dem Bildschirm. Es funktioniert für jedes Fußballniveau : vom lockeren Kick mit Freunden bis zu organisierten Ligaspielen. Die einfache Oberfläche bedeutet, dass jeder es nutzen kann, von jungen Spielern, die das Spiel lernen, bis zu erfahrenen Trainern, die ein Turnier leiten. Keine Registrierung erforderlich. Keine E-Mail-Adresse. Keine persönlichen Daten. Öffne die Seite, starte das Spiel, tippe die Tore. Das ist alles.',
     },
   ],
   ui: {

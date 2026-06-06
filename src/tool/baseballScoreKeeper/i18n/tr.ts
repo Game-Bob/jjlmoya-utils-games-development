@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'beyzbol-skor-takip';
-const title = 'Premium Beyzbol ve Softbol Skor Takipcisi ile Elmas Goruntuleyici';
+const title = 'Beyzbol ve Softbol Skor Takipcisi ile Elmas Goruntuleyici';
 const description = 'Canli beyzbol skorlarini kosu, vurus ve hata sayilariyla takip edin. Baz kosucu pozisyonlari, top strike sayaci ve devre devre gecmis tablosu iceren gorsel bir elmas.';
 
 const faqData = [

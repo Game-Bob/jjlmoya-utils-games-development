@@ -32,7 +32,7 @@ const faqData = [
   {
     question: 'Gerçekten ücretsiz mi, gizli sınırlamalar var mı?',
     answer:
-      'Evet, tamamen ücretsiz ve hiçbir kısıtlama yoktur. Premium plan yok, katılımcı sınırı yok, filigran yok, reklam yok. Her şey tarayıcınızda çevrimdışı çalışır. Hesap veya e-posta gerekmez.',
+      'Evet, tamamen ücretsiz ve hiçbir kısıtlama yoktur. plan yok, katılımcı sınırı yok, filigran yok, reklam yok. Her şey tarayıcınızda çevrimdışı çalışır. Hesap veya e-posta gerekmez.',
   },
 ];
 
@@ -198,7 +198,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Bu araç, hiçbir sınırlama olmaksızın tamamen ücretsizdir. Premium katmanlar, ödeme duvarının arkasında gizli özellikler veya ekranda filigran yoktur. Arkadaşlarla sıradan maçlardan organize lig karşılaşmalarına kadar her futbol seviyesinde çalışır. Basit arayüz, oyunu öğrenen genç oyunculardan turnuva yöneten deneyimli antrenörlere kadar herkesin kullanabilmesi anlamına gelir. Kayıt gerekmez. E-posta adresi gerekmez. Kişisel veri toplanmaz. Sayfayı açın, maça başlayın, gollere dokunun. Hepsi bu kadar.',
+      html: 'Bu araç, hiçbir sınırlama olmaksızın tamamen ücretsizdir. katmanlar, ödeme duvarının arkasında gizli özellikler veya ekranda filigran yoktur. Arkadaşlarla sıradan maçlardan organize lig karşılaşmalarına kadar her futbol seviyesinde çalışır. Basit arayüz, oyunu öğrenen genç oyunculardan turnuva yöneten deneyimli antrenörlere kadar herkesin kullanabilmesi anlamına gelir. Kayıt gerekmez. E-posta adresi gerekmez. Kişisel veri toplanmaz. Sayfayı açın, maça başlayın, gollere dokunun. Hepsi bu kadar.',
     },
   ],
   ui: {

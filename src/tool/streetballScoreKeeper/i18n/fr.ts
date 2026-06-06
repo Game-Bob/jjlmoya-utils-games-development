@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { StreetballLocaleContent } from '../entry';
 
 const slug = 'scoreur-streetball-3x3';
-const title = 'Scoreur Premium Streetball 3x3 avec Chronomètre de Tir';
+const title = 'Scoreur Streetball 3x3 avec Chronomètre de Tir';
 const description = 'Suivez les scores du streetball FIBA 3x3 avec un chronomètre de tir de 12 secondes intégré, les fautes d\'équipe, les points de mort subite et des indicateurs visuels de demi-terrain dynamiques.';
 
 const faq = [

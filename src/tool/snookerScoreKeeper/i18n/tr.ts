@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { SnookerScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'snooker-frame-takip-ve-break-hesaplama';
-const title = 'Premium Snooker Frame Takipçisi ve Break Hesaplayıcı';
+const title = 'Snooker Frame Takipçisi ve Break Hesaplayıcı';
 const description = 'Canlı snooker frame skorlarını takip edin, mevcut break değerlerini hesaplayın, masada kalan puanları görüntüleyin ve snooker ihtiyacı gibi gerçek zamanlı fark durumunu alın.';
 
 const faqData = [

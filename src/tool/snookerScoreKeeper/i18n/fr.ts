@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { SnookerScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'marqueur-de-snooker-calculateur-de-break';
-const title = 'Marqueur de Snooker Premium et Calculateur de Break';
+const title = 'Marqueur de Snooker et Calculateur de Break';
 const description = 'Suivez les scores des frames de snooker en direct, calculez les valeurs de break actuelles, affichez les points restants sur la table et obtenez l\'état du déficit en temps réel, y compris le besoin de snookers.';
 
 const faqData = [

@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { StreetballLocaleContent } from '../entry';
 
 const slug = 'segnapunti-streetball-3x3';
-const title = 'Segnapunti Premium Streetball 3x3 con Cronometro di Tiro';
+const title = 'Segnapunti Streetball 3x3 con Cronometro di Tiro';
 const description = 'Tieni traccia dei punteggi dello streetball FIBA 3x3 con un cronometro di tiro da 12 secondi integrato, falli di squadra, punti morte improvvisa e indicatori visivi dinamici di metà campo.';
 
 const faq = [

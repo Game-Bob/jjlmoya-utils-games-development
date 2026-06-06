@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'padel-spielstand';
-const title = 'Premium Padel Spielstand : Gold Point & Aufschlagrotation';
+const title = 'Padel Spielstand : Gold Point & Aufschlagrotation';
 const description = 'Verfolge Padel-Punkte mit der offiziellen Punto de Oro (Gold Point) Regel, Aufschlagrotations-Alarmen, Tiebreaks und dynamischer Seitenwechsel-Animation.';
 
 const faq = [

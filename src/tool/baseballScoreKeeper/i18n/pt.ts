@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'placar-baseball-softball';
-const title = 'Placar Premium de Baseball e Softbol com Rastreador de Diamante';
+const title = 'Placar de Baseball e Softbol com Rastreador de Diamante';
 const description = 'Acompanhe pontuacoes ao vivo de baseball com corridas, rebatidas e erros. Diamante visual com posicoes dos corredores, contagem de bolas e strikes e grade historica inning por inning.';
 
 const faqData = [

@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'baseball-spielstand';
-const title = 'Premium Baseball und Softball Spielstand mit Laeuferverfolgung';
+const title = 'Baseball und Softball Spielstand mit Laeuferverfolgung';
 const description = 'Erfasse Live Baseballergebnisse mit Runs, Hits und Errors. Visuelles Diamantfeld mit Laeuferpositionen, Ball Strike Zaehler und Inning fuer Inning Verlaufsanzeige.';
 
 const faqData = [

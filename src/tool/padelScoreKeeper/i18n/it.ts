@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'segnapunti-padel';
-const title = 'Segnapunti Padel Premium : Punto de Oro e Rotazione del Servizio';
+const title = 'Segnapunti Padel : Punto de Oro e Rotazione del Servizio';
 const description = 'Tieni traccia dei punteggi del padel con la regola ufficiale del Punto de Oro (Gold Point), avvisi di rotazione del servizio, tiebreak e animazione dinamica del cambio campo.';
 
 const faq = [

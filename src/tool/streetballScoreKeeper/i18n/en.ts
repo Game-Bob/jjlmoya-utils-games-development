@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { StreetballLocaleContent } from '../entry';
 
 const slug = 'streetball-3x3-basketball-scorekeeper';
-const title = 'Premium Streetball 3x3 Scorekeeper with Shot Clock';
+const title = 'Streetball 3x3 Scorekeeper with Shot Clock';
 const description = 'Track FIBA 3x3 Streetball scores with an integrated 12-second shot clock, team fouls, sudden death points, and dynamic half-court visual indicators.';
 
 const faq = [

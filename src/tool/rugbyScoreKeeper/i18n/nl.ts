@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { RugbyScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'rugby-scorebord-timer';
-const title = 'Premium Rugbyscorebord met Sin Bin Timers en Wedstrijdklok';
+const title = 'Rugbyscorebord met Sin Bin Timers en Wedstrijdklok';
 const description = 'Volg live rugbyscores met registers voor try, conversie, strafschop en dropgoal. Beheer sin bin aftelklokken en wedstrijdhelften met een interactief stadionscorebord.';
 
 const faqData = [
