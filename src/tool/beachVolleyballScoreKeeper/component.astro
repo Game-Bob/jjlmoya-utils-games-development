@@ -77,51 +77,50 @@ const t = (ui ?? {}) as BeachVolleyballUI;
           <text id="tn-score-b" class="tn-sand-score" x="280" y="150">0</text>
 
           <g id="tn-sets-group-a">
-            <text x="25" y="140" class="tn-sets-title">SETS</text>
-            <text id="tn-sets-a" x="25" y="165" class="tn-sets-count">0</text>
+            <rect x="5" y="115" width="30" height="70" rx="8" class="tn-sets-bg-rect" />
+            <text x="20" y="138" class="tn-sets-title">SETS</text>
+            <text id="tn-sets-a" x="20" y="165" class="tn-sets-count">0</text>
           </g>
           <g id="tn-sets-group-b">
-            <text x="375" y="140" class="tn-sets-title">SETS</text>
-            <text id="tn-sets-b" x="375" y="165" class="tn-sets-count">0</text>
+            <rect x="365" y="115" width="30" height="70" rx="8" class="tn-sets-bg-rect" />
+            <text x="380" y="138" class="tn-sets-title">SETS</text>
+            <text id="tn-sets-b" x="380" y="165" class="tn-sets-count">0</text>
           </g>
 
           <g class="tn-player-node" id="tn-player-a1-node">
             <circle cx="100" cy="90" r="18" class="tn-player-circle" />
             <text x="100" y="90" class="tn-player-initials" id="tn-player-a1-initials">P1</text>
             <circle cx="100" cy="90" r="24" class="tn-player-ring" />
-            <circle id="tn-serve-a1" cx="118" cy="72" r="6" class="tn-serving-ball" />
+            <circle id="tn-serve-a1" cx="118" cy="72" r="6" class="tn-serving-ball">
+              <animate attributeName="cy" values="72;66;72" dur="1.2s" repeatCount="indefinite" />
+            </circle>
           </g>
           <g class="tn-player-node" id="tn-player-a2-node">
             <circle cx="100" cy="210" r="18" class="tn-player-circle" />
             <text x="100" y="210" class="tn-player-initials" id="tn-player-a2-initials">P2</text>
             <circle cx="100" cy="210" r="24" class="tn-player-ring" />
-            <circle id="tn-serve-a2" cx="118" cy="192" r="6" class="tn-serving-ball" />
+            <circle id="tn-serve-a2" cx="118" cy="192" r="6" class="tn-serving-ball">
+              <animate attributeName="cy" values="192;186;192" dur="1.2s" repeatCount="indefinite" />
+            </circle>
           </g>
 
           <g class="tn-player-node" id="tn-player-b1-node">
             <circle cx="300" cy="90" r="18" class="tn-player-circle" />
             <text x="300" y="90" class="tn-player-initials" id="tn-player-b1-initials">P1</text>
             <circle cx="300" cy="90" r="24" class="tn-player-ring" />
-            <circle id="tn-serve-b1" cx="318" cy="72" r="6" class="tn-serving-ball" />
+            <circle id="tn-serve-b1" cx="318" cy="72" r="6" class="tn-serving-ball">
+              <animate attributeName="cy" values="72;66;72" dur="1.2s" repeatCount="indefinite" />
+            </circle>
           </g>
           <g class="tn-player-node" id="tn-player-b2-node">
             <circle cx="300" cy="210" r="18" class="tn-player-circle" />
             <text x="300" y="210" class="tn-player-initials" id="tn-player-b2-initials">P2</text>
             <circle cx="300" cy="210" r="24" class="tn-player-ring" />
-            <circle id="tn-serve-b2" cx="318" cy="192" r="6" class="tn-serving-ball" />
+            <circle id="tn-serve-b2" cx="318" cy="192" r="6" class="tn-serving-ball">
+              <animate attributeName="cy" values="192;186;192" dur="1.2s" repeatCount="indefinite" />
+            </circle>
           </g>
         </svg>
-      </div>
-    </div>
-
-    <div class="tn-serving-bar">
-      <div id="tn-serve-indicator-a" class="tn-serve-status-indicator">
-        <span class="tn-serve-dot"></span>
-        <span class="tn-serve-label">{t.serving}</span>
-      </div>
-      <div id="tn-serve-indicator-b" class="tn-serve-status-indicator">
-        <span class="tn-serve-dot"></span>
-        <span class="tn-serve-label">{t.serving}</span>
       </div>
     </div>
 

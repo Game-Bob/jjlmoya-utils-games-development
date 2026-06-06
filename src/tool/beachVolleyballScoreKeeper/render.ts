@@ -60,13 +60,6 @@ export function spawnSandSplash(x: number, y: number): void {
   }
 }
 
-function updateServingIndicators(isA: boolean): void {
-  const indicatorA = el('tn-serve-indicator-a');
-  const indicatorB = el('tn-serve-indicator-b');
-  if (indicatorA) indicatorA.style.display = isA ? 'block' : 'none';
-  if (indicatorB) indicatorB.style.display = !isA ? 'block' : 'none';
-}
-
 function updateSingleTeamServer(isA: boolean, team: 'a' | 'b', server: number): void {
   const activeTeam = isA === (team === 'a');
   const s1 = el(`tn-serve-${team}1`);
@@ -82,7 +75,6 @@ function updateServerLabels(isA: boolean, serverA: number, serverB: number): voi
 
 function updateServingState(state: BeachVolleyballState): void {
   const isA = state.servingTeam === 'a';
-  updateServingIndicators(isA);
   updateServerLabels(isA, state.teamA.lastServer, state.teamB.lastServer);
 }
 
