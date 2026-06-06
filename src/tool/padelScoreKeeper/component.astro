@@ -1,0 +1,142 @@
+---
+import type { KnownLocale } from '../../types';
+import type { PadelScoreKeeperUI } from './ui';
+
+interface Props {
+  locale?: KnownLocale;
+  ui?: Record<string, unknown>;
+}
+
+const { ui } = Astro.props;
+const t = (ui ?? {}) as PadelScoreKeeperUI;
+---
+
+<div class="tn-console" id="tn-card" data-tn-ui={JSON.stringify(t)}>
+  <div class="tn-header-panel">
+    <div class="tn-header-actions">
+      <button class="tn-action-btn" data-tn-reset title={t.reset}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+          <path d="M16 3h5v5M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+          <path d="M8 21H3v-5"/>
+        </svg>
+      </button>
+      <button class="tn-action-btn" data-tn-fs title={t.fullscreen}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="tn-scoreboard">
+    <div class="tn-player-card tn-player-card-active" id="tn-card-a">
+      <div class="tn-name-section">
+        <input type="text" value={t.playerA} class="tn-player-input" id="tn-name-a" />
+        <span class="tn-server-ball" id="tn-ball-a"></span>
+      </div>
+      <div class="tn-big-score" id="tn-score-a">0</div>
+      <div class="tn-sets-display" id="tn-sets-a"></div>
+    </div>
+
+    <div class="tn-player-card" id="tn-card-b">
+      <div class="tn-name-section">
+        <input type="text" value={t.playerB} class="tn-player-input" id="tn-name-b" />
+        <span class="tn-server-ball" id="tn-ball-b"></span>
+      </div>
+      <div class="tn-big-score" id="tn-score-b">0</div>
+      <div class="tn-sets-display" id="tn-sets-b"></div>
+    </div>
+  </div>
+
+  <div class="tn-court-panel">
+    <div class="tn-court-side-label tn-side-label-top" id="tn-court-label-top">{t.playerB}</div>
+    <div class="tn-court-wrapper">
+      <div class="tn-padel-court" id="tn-court">
+        <div class="tn-court-half tn-court-top" id="tn-court-half-b" data-court-half="top">
+          <div class="tn-court-quadrant tn-quad-left" data-quad-side="top" data-quad="left">
+            <div class="tn-quad-role tn-role-server">S</div>
+            <div class="tn-quad-role tn-role-receiver">R</div>
+          </div>
+          <div class="tn-court-quadrant tn-quad-right" data-quad-side="top" data-quad="right">
+            <div class="tn-quad-role tn-role-server">S</div>
+            <div class="tn-quad-role tn-role-receiver">R</div>
+          </div>
+        </div>
+        <div class="tn-net-line"></div>
+        <div class="tn-court-half tn-court-bottom" id="tn-court-half-a" data-court-half="bottom">
+          <div class="tn-court-quadrant tn-quad-left" data-quad-side="bottom" data-quad="left">
+            <div class="tn-quad-role tn-role-server">S</div>
+            <div class="tn-quad-role tn-role-receiver">R</div>
+          </div>
+          <div class="tn-court-quadrant tn-quad-right" data-quad-side="bottom" data-quad="right">
+            <div class="tn-quad-role tn-role-server">S</div>
+            <div class="tn-quad-role tn-role-receiver">R</div>
+          </div>
+        </div>
+        <svg class="tn-serve-arrow-svg" viewBox="0 0 200 300">
+          <path id="tn-serve-path" d="" fill="none" stroke="#cf0" stroke-width="3" stroke-dasharray="6,4" />
+        </svg>
+      </div>
+    </div>
+    <div class="tn-court-side-label tn-side-label-bottom" id="tn-court-label-bottom">{t.playerA}</div>
+  </div>
+
+  <div class="tn-action-controls">
+    <button class="tn-score-action-btn tn-score-btn-a" id="tn-btn-score-a">
+      <span class="tn-score-btn-lbl">+</span>
+      <span class="tn-score-btn-name" id="tn-btn-name-a">{t.playerA}</span>
+    </button>
+    <button class="tn-score-action-btn tn-score-btn-b" id="tn-btn-score-b">
+      <span class="tn-score-btn-lbl">+</span>
+      <span class="tn-score-btn-name" id="tn-btn-name-b">{t.playerB}</span>
+    </button>
+  </div>
+
+  <div class="tn-bottom-toolbar">
+    <button class="tn-toolbar-btn" data-dt-undo>Undo</button>
+    <div class="tn-control-group">
+      <button class="tn-control-btn tn-format-btn tn-format-active" data-dt-format="standard">{t.formatStandard}</button>
+      <button class="tn-control-btn tn-format-btn" data-dt-format="golden">{t.formatGoldenSet}</button>
+    </div>
+  </div>
+
+  <div id="tn-winner" class="tn-celebration-screen">
+    <div class="tn-celebration-box">
+      <svg class="tn-celebration-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6m12 5h1.5a2.5 2.5 0 0 0 0-5H18M6 4h12M12 18v3m-4 0h8m-4-17v14a4 4 0 0 1-4-4"/>
+      </svg>
+      <div class="tn-celebration-label">{t.matchWon}</div>
+      <div id="tn-winner-team" class="tn-celebration-name">Team 1</div>
+      <button class="tn-celebration-btn" data-close-winner>&times;</button>
+    </div>
+  </div>
+
+  <div id="tn-confetti" class="tn-confetti-field"></div>
+
+  <div id="tn-modal" class="tn-inline-modal">
+    <div class="tn-inline-modal-box">
+      <p class="tn-inline-modal-text">{t.resetConfirm}</p>
+      <div class="tn-inline-modal-btns">
+        <button id="tn-modal-cancel" class="tn-inline-modal-btn tn-inline-btn-cancel">{t.cancel}</button>
+        <button id="tn-modal-confirm" class="tn-inline-modal-btn tn-inline-btn-reset">{t.reset}</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="tn-goldpoint-modal" class="tn-goldpoint-modal">
+    <div class="tn-goldpoint-box">
+      <div class="tn-goldpoint-title">{t.goldPointTitle}</div>
+      <div class="tn-goldpoint-desc">{t.selectReceiver}</div>
+      <div class="tn-goldpoint-btns">
+        <button class="tn-gp-btn" data-gp-side="left">{t.leftReceiver}</button>
+        <button class="tn-gp-btn" data-gp-side="right">{t.rightReceiver}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initPadelScoreKeeper } from './logic';
+  initPadelScoreKeeper();
+</script>

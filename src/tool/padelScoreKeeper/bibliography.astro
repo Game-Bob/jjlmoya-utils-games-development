@@ -1,0 +1,15 @@
+---
+import { bibliography } from './bibliography';
+---
+
+<ul class="tn-bib-list">
+  {
+    bibliography.map((entry) => (
+      <li>
+        <a href={entry.url} target="_blank" rel="noopener noreferrer">
+          {entry.name}
+        </a>
+      </li>
+    ))
+  }
+</ul>
