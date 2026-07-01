@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'tischtennis-punktestand';
-const title = 'Tischtennis Punktestand Online : Kostenloser Table Tennis Tracker';
+const title = 'Tischtennis Punktestand Online: Kostenloser Table Tennis Tracker';
 const description =
   'Verfolge Tischtennis-Matches mit Spiel- und Satzpunktzählung. Kostenloser Online-Punktestand für Trainingsspiele und Turniere. Keine Anmeldung nötig.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Kostenloser Online-Tischtennis-Punktestand : Match-Tracker',
+      text: 'Kostenloser Online-Tischtennis-Punktestand: Match-Tracker',
       level: 2,
     },
     {

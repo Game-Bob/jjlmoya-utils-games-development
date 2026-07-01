@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { ScoreKeeperUI } from '../ui';
 
 const slug = 'tableau-de-score-sportif';
-const title = 'Tableau de Score Sportif en Ligne : Compteur de Points Gratuit';
+const title = 'Tableau de Score Sportif en Ligne: Compteur de Points Gratuit';
 const description =
   'Tableau de score numérique avec grands boutons pour mobile. Idéal pour le padel, le ping-pong et le football. Sans publicités pendant le match. Simple et rapide.';
 
@@ -44,7 +44,7 @@ const faqData = [
 const howToData = [
   {
     name: 'Sélectionnez votre sport',
-    text: 'Choisissez le sport dans le sélecteur en haut : Libre, Tennis, Padel, Ping Pong, Volleyball ou Basketball.'
+    text: 'Choisissez le sport dans le sélecteur en haut: Libre, Tennis, Padel, Ping Pong, Volleyball ou Basketball.'
   },
   {
     name: 'Personnalisez les noms',

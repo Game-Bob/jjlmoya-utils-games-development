@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'fotboll-malrakning';
-const title = 'Fotboll Målräkning Online : Gratis Matchpoängsräknare';
+const title = 'Fotboll Målräkning Online: Gratis Matchpoängsräknare';
 const description =
   'Håll koll på fotbollspoäng online gratis. Enkel målräknare för träningsmatcher, vänskapsmatcher och turneringar. Ingen registrering krävs.';
 
@@ -12,7 +12,7 @@ const faqData = [
   {
     question: 'Hur använder jag den här fotbollsmålräknaren?',
     answer:
-      'Tryck på +-knappen under varje lag för att lägga till ett mål. Poängen uppdateras direkt med en festanimation. Använd minusknappen för att ångra ett misstag. Lagnamn kan redigeras : tryck bara på standardnamnet och skriv ditt eget. Allt sparas automatiskt i din webbläsare så att du kan stänga sidan och komma tillbaka senare.',
+      'Tryck på +-knappen under varje lag för att lägga till ett mål. Poängen uppdateras direkt med en festanimation. Använd minusknappen för att ångra ett misstag. Lagnamn kan redigeras: tryck bara på standardnamnet och skriv ditt eget. Allt sparas automatiskt i din webbläsare så att du kan stänga sidan och komma tillbaka senare.',
   },
   {
     question: 'Kan jag använda den på min telefon under en match?',
@@ -27,7 +27,7 @@ const faqData = [
   {
     question: 'Kan jag hålla koll på förlängning eller straffläggning?',
     answer:
-      'Ja. Målräknaren fungerar på samma sätt för alla matchformat. Fortsätt bara att använda +-knapparna under förlängning eller straffläggning. När matchen är slut trycker du på „Avsluta match" för att se slutresultatet.',
+      'Ja. Målräknaren fungerar på samma sätt för alla matchformat. Fortsätt bara att använda +-knapparna under förlängning eller straffläggning. När matchen är slut trycker du på "Avsluta match" för att se slutresultatet.',
   },
   {
     question: 'Är det verkligen gratis utan dolda begränsningar?',
@@ -51,7 +51,7 @@ const howToData = [
   },
   {
     name: 'Avsluta matchen',
-    text: 'Tryck på „Avsluta match" längst ner för att se vinnaren utropas med trofé och konfetti. Stäng firandet genom att trycka utanför.',
+    text: 'Tryck på "Avsluta match" längst ner för att se vinnaren utropas med trofé och konfetti. Stäng firandet genom att trycka utanför.',
   },
   {
     name: 'Återställ matchen',
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Gratis Online Fotbollsmålräknare : Live Matchpoängsräknare',
+      text: 'Gratis Online Fotbollsmålräknare: Live Matchpoängsräknare',
       level: 2,
     },
     {
@@ -118,7 +118,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'En generisk sifferräknare fungerar för att räkna vad som helst, men en dedikerad fotbollsmålräknare förstår hur spelet fungerar. Den separerar de två lagen visuellt med distinkta färger så att du aldrig trycker på fel sida. Målknappen är stor och tillfredsställande att trycka på, även när du håller en telefon i en hand vid sidlinjen. Minusknappen låter dig korrigera fel direkt utan att behöva återställa hela matchen. Och när matchen är över utlöser knappen „Avsluta match" en firandeskärm som visar slutresultatet med konfetti och en trofé. Generiska räknare kan inget av det där. De behandlar varje poäng på samma sätt. Fotboll är inte generiskt och din poängräknare borde inte vara det heller.',
+      html: 'En generisk sifferräknare fungerar för att räkna vad som helst, men en dedikerad fotbollsmålräknare förstår hur spelet fungerar. Den separerar de två lagen visuellt med distinkta färger så att du aldrig trycker på fel sida. Målknappen är stor och tillfredsställande att trycka på, även när du håller en telefon i en hand vid sidlinjen. Minusknappen låter dig korrigera fel direkt utan att behöva återställa hela matchen. Och när matchen är över utlöser knappen "Avsluta match" en firandeskärm som visar slutresultatet med konfetti och en trofé. Generiska räknare kan inget av det där. De behandlar varje poäng på samma sätt. Fotboll är inte generiskt och din poängräknare borde inte vara det heller.',
     },
     {
       type: 'comparative',
@@ -151,7 +151,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Att använda den här fotbollspoängtavlan är enkelt. När du öppnar sidan ser du två lagsektioner. Hemmalaget visas i rött och bortalaget i blått. Varje sektion har ett stort poängnummer i mitten, ett lagnamnsfält högst upp och två knappar under. Tryck på den stora runda +-knappen för att lägga till ett mål för det laget. Poängnumret animeras med en festeffekt varje gång ett mål registreras. Åtta olika mål-animationer roterar slumpmässigt, så varje mål känns unikt. Flygande partiklar sprutar från knappområdet med text som MÅL och SIUUU. Skärmen blinkar till kort för att markera ögonblicket. Om du gör ett misstag trycker du på den lilla minusknappen för att ta bort det senaste målet. Lagnamnsfälten är redigerbara. Tryck på standardnamnet för att skriva ditt eget lagnamn. Namnen sparas automatiskt i din webbläsare tillsammans med den aktuella poängen. Det betyder att du kan stänga sidan, komma tillbaka senare och dina matchdata finns fortfarande kvar. I slutet av matchen trycker du på „Avsluta match" för att se vinnaren utropas med en troféanimation och fallande konfetti. Du kan stänga firandet och poängen förblir synlig.',
+      html: 'Att använda den här fotbollspoängtavlan är enkelt. När du öppnar sidan ser du två lagsektioner. Hemmalaget visas i rött och bortalaget i blått. Varje sektion har ett stort poängnummer i mitten, ett lagnamnsfält högst upp och två knappar under. Tryck på den stora runda +-knappen för att lägga till ett mål för det laget. Poängnumret animeras med en festeffekt varje gång ett mål registreras. Åtta olika mål-animationer roterar slumpmässigt, så varje mål känns unikt. Flygande partiklar sprutar från knappområdet med text som MÅL och SIUUU. Skärmen blinkar till kort för att markera ögonblicket. Om du gör ett misstag trycker du på den lilla minusknappen för att ta bort det senaste målet. Lagnamnsfälten är redigerbara. Tryck på standardnamnet för att skriva ditt eget lagnamn. Namnen sparas automatiskt i din webbläsare tillsammans med den aktuella poängen. Det betyder att du kan stänga sidan, komma tillbaka senare och dina matchdata finns fortfarande kvar. I slutet av matchen trycker du på "Avsluta match" för att se vinnaren utropas med en troféanimation och fallande konfetti. Du kan stänga firandet och poängen förblir synlig.',
     },
     {
       type: 'title',
@@ -173,7 +173,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
         '<strong>Färgkodade lag</strong> rött för hemma och blått för borta. Du ser direkt vilken sida som är vilken utan att läsa text.',
         '<strong>Målfirningsanimationer</strong> varje mål utlöser ett slumpmässigt firande. Åtta olika animationer inklusive boom, rise, glow och ball bounce.',
         '<strong>Flygande partiklar</strong> varje mål skapar flytande text med meddelanden som MÅL och SIUUU. Varje firande känns unikt.',
-        '<strong>Avsluta match-ceremoni</strong> tryck på „Avsluta match" för att utropa vinnaren med troféanimation, lagnamn och konfettiregn.',
+        '<strong>Avsluta match-ceremoni</strong> tryck på "Avsluta match" för att utropa vinnaren med troféanimation, lagnamn och konfettiregn.',
         '<strong>Redigerbara lagnamn</strong> tryck på namnfältet för att byta namn på dina lag. Namn sparas lokalt i din webbläsare.',
         '<strong>Skärmlås</strong> helskärmsläget förhindrar att din telefonskärm släcks under matchen.',
         '<strong>Helskärmsläge</strong> döljer webbläsarens gränssnitt så att poängtavlan fyller hela skärmen utan distraktioner.',
@@ -184,7 +184,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: 'Fotbollsmålräknare vs. Papperspoängblad : varför digitalt är bättre',
+      text: 'Fotbollsmålräknare vs. Papperspoängblad: varför digitalt är bättre',
       level: 2,
     },
     {

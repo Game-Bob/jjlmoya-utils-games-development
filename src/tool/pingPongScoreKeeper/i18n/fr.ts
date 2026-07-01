@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'scoreur-de-ping-pong';
-const title = 'Scoreur de Ping Pong en Ligne : Compteur de Tennis de Table Gratuit';
+const title = 'Scoreur de Ping Pong en Ligne: Compteur de Tennis de Table Gratuit';
 const description =
   'Suivez les matchs de tennis de table avec le décompte des jeux et des sets. Scoreur de ping pong en ligne gratuit pour les parties amicales et les tournois. Aucune inscription requise.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Scoreur de Ping Pong en Ligne Gratuit : Suivi de Matchs de Tennis de Table',
+      text: 'Scoreur de Ping Pong en Ligne Gratuit: Suivi de Matchs de Tennis de Table',
       level: 2,
     },
     {

@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'padel-scorehouder';
-const title = 'Padel Scorehouder : Goudpunt & Rotatie Tracker';
+const title = 'Padel Scorehouder: Goudpunt & Rotatie Tracker';
 const description = 'Houd padel-scores bij met de officiële Punto de Oro (goudpunt) regel, serveerrotatie-meldingen, tiebreaks en een dynamische baanwissel-animatie.';
 
 const faq = [

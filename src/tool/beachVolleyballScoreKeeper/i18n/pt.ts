@@ -3,36 +3,36 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BeachVolleyballLocaleContent } from '../entry';
 
 const slug = 'marcador-volei-praia';
-const title = 'Marcador de Volei de Praia e Controle de Rotacao';
-const description = 'Acompanhe os pontos do volei de praia, ordem de saque, trocas de lado por vento e sets com uma visualizacao interativa de quadra de areia dourada vista de cima.';
+const title = 'Marcador de Vôlei de Praia e Controle de Rotação';
+const description = 'Acompanhe os pontos do vôlei de praia, ordem de saque, trocas de lado por vento e sets com uma visualização interativa de quadra de areia dourada vista de cima.';
 
 const faq = [
   {
-    question: 'Quando as equipes trocam de lado no Volei de Praia?',
-    answer: 'Para garantir justica em condicoes externas (vento, sol, areia), as equipes trocam de lado a cada 7 pontos durante os dois primeiros sets, e a cada 5 pontos durante o set de desempate.',
+    question: 'Quando as equipes trocam de lado no Vôlei de Praia?',
+    answer: 'Para garantir justiça em condições externas (vento, sol, areia), as equipes trocam de lado a cada 7 pontos durante os dois primeiros sets, e a cada 5 pontos durante o set de desempate.',
   },
   {
-    question: 'Como funciona a rotacao de saque no Volei de Praia?',
-    answer: 'Cada equipe tem 2 jogadores que devem alternar o saque. Quando uma equipe vence uma quebra de servico (side-out), eles devem rodar o sacador para que o jogador que nao sacou da ultima vez seja o proximo a sacar.',
+    question: 'Como funciona a rotação de saque no Vôlei de Praia?',
+    answer: 'Cada equipe tem 2 jogadores que devem alternar o saque. Quando uma equipe vence uma quebra de serviço (side-out), eles devem rodar o sacador para que o jogador que não sacou da última vez seja o próximo a sacar.',
   },
   {
-    question: 'Quantos pontos sao necessarios para vencer um set de Volei de Praia?',
-    answer: 'Os sets 1 e 2 sao jogados ate 21 pontos. Se um terceiro set for necessario, ele e jogado ate 15 pontos. Em todos os casos, uma equipe deve vencer por pelo menos 2 pontos de diferenca.',
+    question: 'Quantos pontos são necessários para vencer um set de Vôlei de Praia?',
+    answer: 'Os sets 1 e 2 são jogados até 21 pontos. Se um terceiro set for necessário, ele é jogado até 15 pontos. Em todos os casos, uma equipe deve vencer por pelo menos 2 pontos de diferença.',
   },
 ];
 
 const howTo = [
   {
-    name: 'Configurar Escalacao',
+    name: 'Configurar Escalação',
     text: 'Insira nomes personalizados para os dois jogadores de ambas as equipes A e B.',
   },
   {
     name: 'Registrar Pontos',
-    text: 'Toque no cartao de uma equipe ou clique na quadra interativa para adicionar pontos. A escalacao e a rotacao sao atualizadas automaticamente.',
+    text: 'Toque no cartão de uma equipe ou clique na quadra interativa para adicionar pontos. A escalação e a rotação são atualizadas automaticamente.',
   },
   {
     name: 'Seguir Alertas de Troca de Lado',
-    text: 'Quando o banner de troca deslizar para baixo, realize a troca fisica de lado e clique no botao de troca para inverter a orientacao da quadra.',
+    text: 'Quando o banner de troca deslizar para baixo, realize a troca física de lado e clique no botão de troca para inverter a orientação da quadra.',
   },
 ];
 
@@ -81,21 +81,21 @@ export const content: BeachVolleyballLocaleContent = {
   seo: [
     {
       type: 'title',
-      text: 'Placar de Volei de Praia Online e Controle de Rotacao de Saque',
+      text: 'Placar de Vôlei de Praia Online e Controle de Rotação de Saque',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Manter o controle da ordem de saque e das posicoes das equipes sob o sol quente pode ser dificil. Este marcador profissional de volei de praia possui um layout digital de quadra com textura de areia e alto contraste, otimizado para visibilidade externa. Ele evita problemas de leitura por reflexo, automatiza as regras de troca de lado e rastreia qual dos dois jogadores deve sacar apos cada ponto de side-out.',
+      html: 'Manter o controle da ordem de saque e das posições das equipes sob o sol quente pode ser difícil. Este marcador profissional de vôlei de praia possui um layout digital de quadra com textura de areia e alto contraste, otimizado para visibilidade externa. Ele evita problemas de leitura por reflexo, automatiza as regras de troca de lado e rastreia qual dos dois jogadores deve sacar após cada ponto de side-out.',
     },
     {
       type: 'title',
-      text: 'Entendendo a Rotacao e as Regras de Saque no Volei de Praia',
+      text: 'Entendendo a Rotação e as Regras de Saque no Vôlei de Praia',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Embora nao existam posicoes fixas ou faltas de rotacao baseadas na localizacao na quadra no volei de praia 2v2, os jogadores devem alternar estritamente o saque. Sempre que a equipe receptora vence uma jogada (conhecida como side-out), ela ganha o direito de sacar. O jogador que nao sacou da ultima vez que sua equipe serviu deve ser o novo sacador. Sacar fora de ordem e uma falta e resulta em um ponto para os adversarios. Este placar digital possui indicadores de saque ativos e bolas quicando ao lado dos circulos dos jogadores para evitar erros de rotacao.',
+      html: 'Embora não existam posições fixas ou faltas de rotação baseadas na localização na quadra no vôlei de praia 2v2, os jogadores devem alternar estritamente o saque. Sempre que a equipe receptora vence uma jogada (conhecida como side-out), ela ganha o direito de sacar. O jogador que não sacou da última vez que sua equipe serviu deve ser o novo sacador. Sacar fora de ordem é uma falta e resulta em um ponto para os adversários. Este placar digital possui indicadores de saque ativos e bolas quicando ao lado dos círculos dos jogadores para evitar erros de rotação.',
     },
     {
       type: 'comparative',
@@ -103,47 +103,47 @@ export const content: BeachVolleyballLocaleContent = {
       items: [
         {
           title: 'Regras Oficiais FIVB',
-          description: 'Cumpra as diretrizes oficiais de pontuacao, incluindo limites de sets e trocas de lado.',
+          description: 'Cumpra as diretrizes oficiais de pontuação, incluindo limites de sets e trocas de lado.',
           icon: 'mdi:volleyball',
-          points: ['Sets ate 21 (desempate ate 15)', 'Margem estrita de vantagem de 2', 'Trocas de lado automatizadas'],
+          points: ['Sets até 21 (desempate até 15)', 'Margem estrita de vantagem de 2', 'Trocas de lado automatizadas'],
         },
         {
-          title: 'Controle de Rotacao',
-          description: 'Nunca discuta ou se confunda sobre de quem e a vez de sacar.',
+          title: 'Controle de Rotação',
+          description: 'Nunca discuta ou se confunda sobre de quem é a vez de sacar.',
           icon: 'mdi:account-sync-outline',
-          points: ['Indicadores de saque brilhantes', 'Iniciais mapeadas na areia', 'Modal de sobreposicao de escalacao'],
+          points: ['Indicadores de saque brilhantes', 'Iniciais mapeadas na areia', 'Modal de sobreposição de escalação'],
         },
         {
           title: 'Otimizado para Externas',
-          description: 'Construido para jogar em quadras de areia sob luz solar direta.',
+          description: 'Construído para jogar em quadras de areia sob luz solar direta.',
           icon: 'mdi:weather-sunny',
-          points: ['Tema amarelo de alto contraste', 'Persistencia de tela Wake Lock', 'Gesto de deslizar para desfazer ponto'],
+          points: ['Tema amarelo de alto contraste', 'Persistência de tela Wake Lock', 'Gesto de deslizar para desfazer ponto'],
         },
       ],
     },
     {
       type: 'title',
-      text: 'Funcionalidades Interativas e Configuracoes do Jogo',
+      text: 'Funcionalidades Interativas e Configurações do Jogo',
       level: 2,
     },
     {
       type: 'list',
       items: [
         '<strong>Quadra SVG Areia Dourada:</strong> Reflete visualmente o estado do jogo. Toque diretamente em qualquer metade da quadra para conceder um ponto a essa equipe.',
-        '<strong>Animacao de Rotacao da Quadra:</strong> Quando o alerta de troca de lado for acionado, clicar no botao de troca gira toda a quadra SVG em 180 graus para que a tela se alinhe com suas posicoes fisicas.',
-        '<strong>Alarmes de Troca de Lado FIVB:</strong> Exibe um banner de aviso de alta visibilidade quando a pontuacao combinada e multipla de 7 (nos sets 1 e 2) ou multipla de 5 (no set final).',
-        '<strong>Particulas de Areia:</strong> Adiciona feedback visual nas mudancas de pontuacao com particulas de areia animadas explodindo a partir das coordenadas do toque.',
-        '<strong>Controle de Desfazer por Gesto:</strong> Deslize para baixo no cartao para desfazer o ultimo ponto registrado instantaneamente.',
+        '<strong>Animação de Rotação da Quadra:</strong> Quando o alerta de troca de lado for acionado, clicar no botão de troca gira toda a quadra SVG em 180 graus para que a tela se alinhe com suas posições físicas.',
+        '<strong>Alarmes de Troca de Lado FIVB:</strong> Exibe um banner de aviso de alta visibilidade quando a pontuação combinada é múltipla de 7 (nos sets 1 e 2) ou múltipla de 5 (no set final).',
+        '<strong>Partículas de Areia:</strong> Adiciona feedback visual nas mudanças de pontuação com partículas de areia animadas explodindo a partir das coordenadas do toque.',
+        '<strong>Controle de Desfazer por Gesto:</strong> Deslize para baixo no cartão para desfazer o último ponto registrado instantaneamente.',
       ],
     },
     {
       type: 'title',
-      text: 'Por Que as Equipes Trocam de Lado no Volei de Praia',
+      text: 'Por Que as Equipes Trocam de Lado no Vôlei de Praia',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Ao contrario do volei indoor, as partidas de volei de praia sao fortemente influenciadas por elementos ambientais como reflexo do sol, calor, forca do vento e consistencia da areia. Trocar de lado com frequencia garante que nenhuma equipe receba uma vantagem injusta devido a uma direcao favoravel do vento ou ter o sol nos olhos. As regras determinam a troca de lado a cada 7 pontos durante os dois primeiros sets, e a cada 5 pontos durante o terceiro set.',
+      html: 'Ao contrário do vôlei indoor, as partidas de vôlei de praia são fortemente influenciadas por elementos ambientais como reflexo do sol, calor, força do vento e consistência da areia. Trocar de lado com frequência garante que nenhuma equipe receba uma vantagem injusta devido a uma direção favorável do vento ou ter o sol nos olhos. As regras determinam a troca de lado a cada 7 pontos durante os dois primeiros sets, e a cada 5 pontos durante o terceiro set.',
     },
   ],
   ui: {
@@ -152,10 +152,10 @@ export const content: BeachVolleyballLocaleContent = {
     points: 'Pontos',
     sets: 'Sets',
     reset: 'Reiniciar',
-    resetConfirm: 'Reiniciar a partida? Todos os pontos e escalacoes serao perdidos.',
+    resetConfirm: 'Reiniciar a partida? Todos os pontos e escalações serão perdidos.',
     cancel: 'Cancelar',
     switchSides: 'Trocar de Lado',
-    switchSidesDesc: 'Pontuacao acumulada atingiu o limite de troca!',
+    switchSidesDesc: 'Pontuação acumulada atingiu o limite de troca!',
     fullscreen: 'Tela Cheia',
     exitFullscreen: 'Sair da Tela Cheia',
     player1: 'Jogador 1',
@@ -165,3 +165,4 @@ export const content: BeachVolleyballLocaleContent = {
     undo: 'Desfazer',
   },
 };
+

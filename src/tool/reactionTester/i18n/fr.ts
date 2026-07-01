@@ -30,7 +30,7 @@ const ui: ReactionTesterUI = {
   historyWorst: 'Top 5 Pires',
   historyEmpty: 'Jouez pour enregistrer votre premier score',
   copySuccess: 'Copié !',
-  shareText: 'J\'ai obtenu {ms}ms au Test de Réflexes !\nRang : {rank}\n\nPeux-tu me battre ?\n{url}',
+  shareText: 'J\'ai obtenu {ms}ms au Test de Réflexes !\nRang: {rank}\n\nPeux-tu me battre ?\n{url}',
   rankCiberatleta: 'Cyberathlète',
   rankTigre: 'Tigre',
   rankHumano: 'Humain',

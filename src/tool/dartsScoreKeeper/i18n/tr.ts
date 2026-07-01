@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'dart-skor-takipcisi';
-const title = 'Çevrimiçi Dart Skor Takipçisi : Leg ve Set Takipçisi';
+const title = 'Çevrimiçi Dart Skor Takipçisi: Leg ve Set Takipçisi';
 const description = 'Leg ve set puanlamasıyla dart maçlarını takip edin. Canlı checkout hesaplamaları ve istatistiklerle 501 ve 301 maçları için ücretsiz çevrimiçi dart skor takipçisi.';
 
 const faqData = [

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'segnapunti-ping-pong';
-const title = 'Segnapunti Ping Pong Online : Tracker Tennistavolo Gratuito';
+const title = 'Segnapunti Ping Pong Online: Tracker Tennistavolo Gratuito';
 const description =
   'Segui le partite di tennistavolo con punteggio di game e set. Segnapunti ping pong online gratuito per partite amichevoli e tornei. Nessuna registrazione necessaria.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Segnapunti Ping Pong Online Gratuito : Tracker Partite Tennistavolo',
+      text: 'Segnapunti Ping Pong Online Gratuito: Tracker Partite Tennistavolo',
       level: 2,
     },
     {

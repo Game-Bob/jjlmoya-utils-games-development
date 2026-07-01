@@ -48,7 +48,7 @@ const howToData = [
   },
   {
     name: '自定义名称',
-    text: '点击“主场”或“客场”更改球员或球队名称。'
+    text: '点击"主场"或"客场"更改球员或球队名称。'
   },
   {
     name: '一键加分',
@@ -60,7 +60,7 @@ const howToData = [
   },
   {
     name: '修正错误',
-    text: '如果您误加了分，请使用“−”按钮。无需重新启动整个计分板。'
+    text: '如果您误加了分，请使用"−"按钮。无需重新启动整个计分板。'
   },
 ];
 
@@ -114,7 +114,7 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: '在激烈的比赛中，很容易记混比分。“是 4-3 还是 3-4？”。这款计分板旨在纠纷发生前将其化解。其界面采用占据几乎整个卡片的<strong>巨型按钮</strong>，您无需看屏幕，只需伸手触碰长椅上的手机即可加分。'
+      html: '在激烈的比赛中，很容易记混比分。"是 4-3 还是 3-4？"。这款计分板旨在纠纷发生前将其化解。其界面采用占据几乎整个卡片的<strong>巨型按钮</strong>，您无需看屏幕，只需伸手触碰长椅上的手机即可加分。'
     },
     {
       type: 'title',
@@ -157,7 +157,7 @@ export const content: ToolLocaleContent<ScoreKeeperUI> = {
       type: 'list',
       items: [
         '<strong>高可见度：</strong> 数字占据屏幕 80% 的面积，确保在阳光下也能清晰阅读。',
-        '<strong>可编辑名称：</strong> 点击“主场”或“客场”设置球员姓名。',
+        '<strong>可编辑名称：</strong> 点击"主场"或"客场"设置球员姓名。',
         '<strong>防止错误：</strong> 独立的减号按钮可在不重启的情况下快速修正错误。',
         '<strong>脱机工作：</strong> 加载完成后，比赛期间无需联网。',
       ]

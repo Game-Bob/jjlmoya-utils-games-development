@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'marcador-baloncesto';
-const title = 'Marcador de baloncesto online : Anotador gratuito';
+const title = 'Marcador de baloncesto online: Anotador gratuito';
 const description =
   'Marcador de baloncesto online gratuito con botones +1, +2 y +3. Lleva la puntuación en partidos de calle, baloncesto escolar y ligas locales. Sin registro, sin descarga, funciona sin conexión.';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Marcador de baloncesto online gratuito : Sin registro, sin descarga',
+      text: 'Marcador de baloncesto online gratuito: Sin registro, sin descarga',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'La mayoría de las aplicaciones de marcador te obligan a pulsar el mismo botón varias veces para sumar dos o tres puntos. Ese toque extra se acumula a lo largo de un partido de 40 minutos y aumenta la probabilidad de perder la cuenta durante un contraataque o un cambio rápido. Este marcador tiene <strong>tres botones separados</strong> : uno para cada valor de anotación : así que pulsas exactamente una vez por jugada de anotación. El botón +3 se ilumina en rojo y activa una animación explosiva que acompaña la emoción de un triple encestado.',
+      html: 'La mayoría de las aplicaciones de marcador te obligan a pulsar el mismo botón varias veces para sumar dos o tres puntos. Ese toque extra se acumula a lo largo de un partido de 40 minutos y aumenta la probabilidad de perder la cuenta durante un contraataque o un cambio rápido. Este marcador tiene <strong>tres botones separados</strong>: uno para cada valor de anotación: así que pulsas exactamente una vez por jugada de anotación. El botón +3 se ilumina en rojo y activa una animación explosiva que acompaña la emoción de un triple encestado.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'El baloncesto no tiene un límite de puntuación fijo : el partido termina cuando el reloj llega a cero. Pero el baloncesto callejero suele usar puntuaciones objetivo como el primero en llegar a 16, 21 u 11 (ganar por 2). Este marcador no impone una condición de victoria porque el baloncesto no termina por puntuación. Tú decides cuándo termina el partido, y el botón de reinicio limpia el marcador para el siguiente partido. Los nombres de los equipos se conservan para que puedas jugar partidos consecutivos sin volver a escribirlos.',
+      html: 'El baloncesto no tiene un límite de puntuación fijo: el partido termina cuando el reloj llega a cero. Pero el baloncesto callejero suele usar puntuaciones objetivo como el primero en llegar a 16, 21 u 11 (ganar por 2). Este marcador no impone una condición de victoria porque el baloncesto no termina por puntuación. Tú decides cuándo termina el partido, y el botón de reinicio limpia el marcador para el siguiente partido. Los nombres de los equipos se conservan para que puedas jugar partidos consecutivos sin volver a escribirlos.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Tres botones dedicados</strong> : +1, +2 y +3. Sin cambios cíclicos de valores, sin pulsación prolongada, sin toques adicionales.',
-        '<strong>Nombres de equipo editables</strong> : toca el nombre para cambiarlo. Los nombres se guardan en tu navegador y persisten al recargar la página.',
-        '<strong>Bloqueo de pantalla activo</strong> : cuando entras en pantalla completa, el marcador evita que la pantalla de tu móvil se apague. No más tocar la pantalla solo para mantenerla encendida.',
-        '<strong>Modo de pantalla completa</strong> : oculta las pestañas del navegador y la barra de direcciones para que el marcador ocupe toda la pantalla. Toca el botón de pantalla completa una vez y la herramienta se expande.',
-        '<strong>Prioridad sin conexión</strong> : todo el marcador funciona sin conexión a internet después de la primera carga. Sin anuncios, sin rastreadores, sin recopilación de datos.',
-        '<strong>Respuesta satisfactoria</strong> : cada toque activa una animación de puntuación, partículas flotantes y una sutil vibración en dispositivos compatibles. El +3 obtiene un efecto de explosión adicional.',
-        '<strong>El estado del partido se guarda</strong> : recarga la página, cierra el navegador o vuelve mañana. Las puntuaciones y los nombres de los equipos se almacenan localmente.',
+        '<strong>Tres botones dedicados</strong>: +1, +2 y +3. Sin cambios cíclicos de valores, sin pulsación prolongada, sin toques adicionales.',
+        '<strong>Nombres de equipo editables</strong>: toca el nombre para cambiarlo. Los nombres se guardan en tu navegador y persisten al recargar la página.',
+        '<strong>Bloqueo de pantalla activo</strong>: cuando entras en pantalla completa, el marcador evita que la pantalla de tu móvil se apague. No más tocar la pantalla solo para mantenerla encendida.',
+        '<strong>Modo de pantalla completa</strong>: oculta las pestañas del navegador y la barra de direcciones para que el marcador ocupe toda la pantalla. Toca el botón de pantalla completa una vez y la herramienta se expande.',
+        '<strong>Prioridad sin conexión</strong>: todo el marcador funciona sin conexión a internet después de la primera carga. Sin anuncios, sin rastreadores, sin recopilación de datos.',
+        '<strong>Respuesta satisfactoria</strong>: cada toque activa una animación de puntuación, partículas flotantes y una sutil vibración en dispositivos compatibles. El +3 obtiene un efecto de explosión adicional.',
+        '<strong>El estado del partido se guarda</strong>: recarga la página, cierra el navegador o vuelve mañana. Las puntuaciones y los nombres de los equipos se almacenan localmente.',
       ],
     },
     {

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'ping-pong-scorekeeper';
-const title = '在线乒乓球记分员 : 免费乒乓球追踪器';
+const title = '在线乒乓球记分员: 免费乒乓球追踪器';
 const description =
   '使用游戏和局比分追踪乒乓球比赛。适用于友谊赛和锦标赛的免费在线乒乓球记分员。无需注册。';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: '免费在线乒乓球记分员 : 乒乓球比赛追踪器',
+      text: '免费在线乒乓球记分员: 乒乓球比赛追踪器',
       level: 2,
     },
     {

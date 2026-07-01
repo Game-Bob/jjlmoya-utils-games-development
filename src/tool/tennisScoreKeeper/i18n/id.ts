@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'pencatat-skor-tenis';
-const title = 'Pencatat Skor Tenis Online : Pelacak Pertandingan Gratis';
+const title = 'Pencatat Skor Tenis Online: Pelacak Pertandingan Gratis';
 const description = 'Lacak pertandingan tenis dengan skor set dan game. Pencatat skor tenis online gratis untuk pertandingan dan turnamen. Tidak perlu registrasi.';
 
 const faqData = [

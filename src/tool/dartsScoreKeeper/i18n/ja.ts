@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'darts-scorekeeper';
-const title = 'オンラインダーツスコアキーパー : レッグ＆セットトラッカー';
+const title = 'オンラインダーツスコアキーパー: レッグ＆セットトラッカー';
 const description = 'レッグとセットのスコアでダーツの試合を追跡。501および301の試合用無料オンラインダーツスコアキーパー。ライブチェックアウト計算と統計付き。';
 
 const faqData = [

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'licznik-bramek';
-const title = 'Licznik Bramek Online : Darmowy Licznik Goli Meczowych';
+const title = 'Licznik Bramek Online: Darmowy Licznik Goli Meczowych';
 const description =
   'Śledź wyniki meczów piłkarskich online za darmo. Prosty licznik goli do meczów towarzyskich, treningów i turniejów. Bez rejestracji.';
 
@@ -12,22 +12,22 @@ const faqData = [
   {
     question: 'Jak korzystać z tego licznika bramek?',
     answer:
-      'Dotknij przycisku + pod każdą drużyną, aby dodać gola. Wynik aktualizuje się natychmiast z animacją radości. Użyj przycisku minus, aby cofnąć pomyłkę. Nazwy drużyn można edytować : wystarczy dotknąć domyślnej nazwy i wpisać własną. Wszystko jest automatycznie zapisywane w przeglądarce, więc możesz zamknąć stronę i wrócić później.',
+      'Dotknij przycisku + pod każdą drużyną, aby dodać gola. Wynik aktualizuje się natychmiast z animacją radości. Użyj przycisku minus, aby cofnąć pomyłkę. Nazwy drużyn można edytować: wystarczy dotknąć domyślnej nazwy i wpisać własną. Wszystko jest automatycznie zapisywane w przeglądarce, więc możesz zamknąć stronę i wrócić później.',
   },
   {
     question: 'Czy mogę go używać na telefonie podczas meczu?',
     answer:
-      'Tak. Interfejs został zaprojektowany z myślą o urządzeniach mobilnych : duże przyciski, które można nacisnąć bez patrzenia. Tryb pełnoekranowy ukrywa przeglądarkę i utrzymuje ekran telefonu włączony przez cały mecz. Pionowy układ pozwala łatwo sięgnąć kciukiem do obu sekcji drużyn.',
+      'Tak. Interfejs został zaprojektowany z myślą o urządzeniach mobilnych: duże przyciski, które można nacisnąć bez patrzenia. Tryb pełnoekranowy ukrywa przeglądarkę i utrzymuje ekran telefonu włączony przez cały mecz. Pionowy układ pozwala łatwo sięgnąć kciukiem do obu sekcji drużyn.',
   },
   {
     question: 'Czy moje dane meczowe są zapisywane?',
     answer:
-      'Tak. Aktualny wynik i nazwy drużyn są automatycznie zapisywane w przeglądarce. Możesz odświeżyć stronę, zamknąć przeglądarkę lub wrócić następnego dnia : dane meczowe wciąż będą dostępne.',
+      'Tak. Aktualny wynik i nazwy drużyn są automatycznie zapisywane w przeglądarce. Możesz odświeżyć stronę, zamknąć przeglądarkę lub wrócić następnego dnia: dane meczowe wciąż będą dostępne.',
   },
   {
     question: 'Czy mogę śledzić dogrywkę lub rzuty karne?',
     answer:
-      'Tak. Licznik działa tak samo dla każdego formatu meczu. Po prostu używaj przycisków + podczas dogrywki lub rzutów karnych. Gdy mecz się zakończy, dotknij „Zakończ mecz", aby zobaczyć końcowy wynik.',
+      'Tak. Licznik działa tak samo dla każdego formatu meczu. Po prostu używaj przycisków + podczas dogrywki lub rzutów karnych. Gdy mecz się zakończy, dotknij "Zakończ mecz", aby zobaczyć końcowy wynik.',
   },
   {
     question: 'Czy to naprawdę darmowe bez ukrytych ograniczeń?',
@@ -51,7 +51,7 @@ const howToData = [
   },
   {
     name: 'Zakończ mecz',
-    text: 'Dotknij „Zakończ mecz" na dole, aby zobaczyć ogłoszenie zwycięzcy z trofeum i konfetti. Zamknij uroczystość, dotykając poza obszarem.',
+    text: 'Dotknij "Zakończ mecz" na dole, aby zobaczyć ogłoszenie zwycięzcy z trofeum i konfetti. Zamknij uroczystość, dotykając poza obszarem.',
   },
   {
     name: 'Zresetuj mecz',
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Darmowy Licznik Bramek Online : Na Żywo Wyniki Meczów Piłkarskich',
+      text: 'Darmowy Licznik Bramek Online: Na Żywo Wyniki Meczów Piłkarskich',
       level: 2,
     },
     {
@@ -118,7 +118,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Zwykły licznik cyfrowy nadaje się do liczenia wszystkiego, ale dedykowany licznik bramek rozumie, jak działa gra. Rozdziela dwie drużyny wizualnie za pomocą wyraźnych kolorów, dzięki czemu nigdy nie dotkniesz niewłaściwej strony. Przycisk gola jest duży i satysfakcjonujący w dotyku, nawet gdy trzymasz telefon w jednej ręce na linii bocznej. Przycisk minus pozwala natychmiast poprawić błędy bez konieczności resetowania całego meczu. A gdy mecz się skończy, przycisk „Zakończ mecz" uruchamia ekran świętowania pokazujący końcowy wynik z konfetti i trofeum. Zwykłe liczniki nie potrafią niczego z tego. Traktują każdy punkt tak samo. Piłka nożna nie jest zwykła i twój licznik bramek też nie powinien być.',
+      html: 'Zwykły licznik cyfrowy nadaje się do liczenia wszystkiego, ale dedykowany licznik bramek rozumie, jak działa gra. Rozdziela dwie drużyny wizualnie za pomocą wyraźnych kolorów, dzięki czemu nigdy nie dotkniesz niewłaściwej strony. Przycisk gola jest duży i satysfakcjonujący w dotyku, nawet gdy trzymasz telefon w jednej ręce na linii bocznej. Przycisk minus pozwala natychmiast poprawić błędy bez konieczności resetowania całego meczu. A gdy mecz się skończy, przycisk "Zakończ mecz" uruchamia ekran świętowania pokazujący końcowy wynik z konfetti i trofeum. Zwykłe liczniki nie potrafią niczego z tego. Traktują każdy punkt tak samo. Piłka nożna nie jest zwykła i twój licznik bramek też nie powinien być.',
     },
     {
       type: 'comparative',
@@ -151,7 +151,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Korzystanie z tej tablicy wyników jest proste. Po otwarciu strony widzisz dwie sekcje drużyn. Gospodarze są pokazani na czerwono, a goście na niebiesko. Każda sekcja ma duży wyświetlacz wyniku pośrodku, pole nazwy drużyny u góry i dwa przyciski poniżej. Dotknij dużego okrągłego przycisku +, aby dodać gola dla tej drużyny. Licznik animuje się z efektem radości za każdym razem, gdy gol zostanie zarejestrowany. Osiem różnych animacji goli losowo się zmienia, więc każdy gol wydaje się wyjątkowy. Latające cząsteczki wylatują z obszaru przycisku z tekstami takimi jak GOL i SIUUU. Ekran na chwilę miga, aby zaznaczyć ten moment. Jeśli popełnisz błąd, dotknij małego przycisku minus, aby usunąć ostatniego gola. Pola nazw drużyn są edytowalne. Dotknij domyślnej nazwy, aby wpisać własną. Nazwy są automatycznie zapisywane w przeglądarce wraz z bieżącym wynikiem. Oznacza to, że możesz zamknąć stronę, wrócić później, a dane meczowe wciąż będą dostępne. Na koniec meczu dotknij „Zakończ mecz", aby zobaczyć ogłoszenie zwycięzcy z animacją trofeum i opadającym konfetti. Możesz zamknąć uroczystość, a wynik pozostanie wyświetlony.',
+      html: 'Korzystanie z tej tablicy wyników jest proste. Po otwarciu strony widzisz dwie sekcje drużyn. Gospodarze są pokazani na czerwono, a goście na niebiesko. Każda sekcja ma duży wyświetlacz wyniku pośrodku, pole nazwy drużyny u góry i dwa przyciski poniżej. Dotknij dużego okrągłego przycisku +, aby dodać gola dla tej drużyny. Licznik animuje się z efektem radości za każdym razem, gdy gol zostanie zarejestrowany. Osiem różnych animacji goli losowo się zmienia, więc każdy gol wydaje się wyjątkowy. Latające cząsteczki wylatują z obszaru przycisku z tekstami takimi jak GOL i SIUUU. Ekran na chwilę miga, aby zaznaczyć ten moment. Jeśli popełnisz błąd, dotknij małego przycisku minus, aby usunąć ostatniego gola. Pola nazw drużyn są edytowalne. Dotknij domyślnej nazwy, aby wpisać własną. Nazwy są automatycznie zapisywane w przeglądarce wraz z bieżącym wynikiem. Oznacza to, że możesz zamknąć stronę, wrócić później, a dane meczowe wciąż będą dostępne. Na koniec meczu dotknij "Zakończ mecz", aby zobaczyć ogłoszenie zwycięzcy z animacją trofeum i opadającym konfetti. Możesz zamknąć uroczystość, a wynik pozostanie wyświetlony.',
     },
     {
       type: 'title',
@@ -173,18 +173,18 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
         '<strong>Kolorowe drużyny</strong> czerwony dla gospodarzy i niebieski dla gości. Od razu widzisz, która strona jest która, bez czytania tekstu.',
         '<strong>Animacje radości po golu</strong> każdy gol uruchamia losową fetę. Osiem różnych animacji, w tym boom, rise, glow i ball bounce.',
         '<strong>Latające cząsteczki</strong> każdy gol generuje unoszący się tekst z napisami takimi jak GOL i SIUUU. Każda feta wydaje się wyjątkowa.',
-        '<strong>Ceremonia zakończenia meczu</strong> dotknij „Zakończ mecz", aby uruchomić ogłoszenie zwycięzcy z animacją trofeum, nazwą drużyny i deszczem konfetti.',
+        '<strong>Ceremonia zakończenia meczu</strong> dotknij "Zakończ mecz", aby uruchomić ogłoszenie zwycięzcy z animacją trofeum, nazwą drużyny i deszczem konfetti.',
         '<strong>Edytowalne nazwy drużyn</strong> dotknij pola nazwy, aby zmienić nazwy drużyn. Nazwy są zapisywane lokalnie w przeglądarce.',
         '<strong>Blokada wyłączenia ekranu</strong> tryb pełnoekranowy zapobiega wyłączeniu ekranu telefonu podczas meczu.',
-        '<strong>Tryb pełnoekranowy</strong> ukrywa interfejs przeglądarki, aby tablica wyników wypełniła cały ekran : bez rozpraszaczy.',
+        '<strong>Tryb pełnoekranowy</strong> ukrywa interfejs przeglądarki, aby tablica wyników wypełniła cały ekran: bez rozpraszaczy.',
         '<strong>Offline first</strong> działa bez internetu po pierwszej wizycie. Bez reklam, bez śledzenia, bez zbierania danych.',
-        '<strong>Natychmiastowe zapisywanie danych</strong> wyniki i nazwy drużyn są automatycznie zapisywane. Odśwież stronę lub zamknij przeglądarkę : dane wracają.',
+        '<strong>Natychmiastowe zapisywanie danych</strong> wyniki i nazwy drużyn są automatycznie zapisywane. Odśwież stronę lub zamknij przeglądarkę: dane wracają.',
         '<strong>Resetowanie z potwierdzeniem</strong> przycisk resetu prosi o potwierdzenie przed wyczyszczeniem wyników. Zapobiega przypadkowej utracie danych.',
       ],
     },
     {
       type: 'title',
-      text: 'Licznik bramek vs. Papierowy arkusz wyników : dlaczego cyfrowy jest lepszy',
+      text: 'Licznik bramek vs. Papierowy arkusz wyników: dlaczego cyfrowy jest lepszy',
       level: 2,
     },
     {
@@ -198,7 +198,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'To narzędzie jest całkowicie darmowe i bez ograniczeń. Nie ma poziomów premium, ukrytych funkcji za paywallem ani znaków wodnych na ekranie. Działa na każdym poziomie piłki nożnej : od luźnych kopanin ze znajomymi po zorganizowane mecze ligowe. Prosty interfejs oznacza, że każdy może go używać, od młodych graczy uczących się gry po doświadczonych trenerów prowadzących turniej. Żadna rejestracja nie jest wymagana. Żaden adres e-mail. Żadne dane osobowe nie są zbierane. Otwórz stronę, rozpocznij mecz, dotknij gole. To wszystko.',
+      html: 'To narzędzie jest całkowicie darmowe i bez ograniczeń. Nie ma poziomów premium, ukrytych funkcji za paywallem ani znaków wodnych na ekranie. Działa na każdym poziomie piłki nożnej: od luźnych kopanin ze znajomymi po zorganizowane mecze ligowe. Prosty interfejs oznacza, że każdy może go używać, od młodych graczy uczących się gry po doświadczonych trenerów prowadzących turniej. Żadna rejestracja nie jest wymagana. Żaden adres e-mail. Żadne dane osobowe nie są zbierane. Otwórz stronę, rozpocznij mecz, dotknij gole. To wszystko.',
     },
   ],
   ui: {

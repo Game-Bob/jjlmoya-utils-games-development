@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'pencatat-skor-dart';
-const title = 'Pencatat Skor Dart Online : Pelacak Leg dan Set';
+const title = 'Pencatat Skor Dart Online: Pelacak Leg dan Set';
 const description = 'Lacak pertandingan dart dengan skor leg dan set. Pencatat skor dart online gratis untuk pertandingan 501 dan 301 dengan perhitungan checkout langsung dan statistik.';
 
 const faqData = [

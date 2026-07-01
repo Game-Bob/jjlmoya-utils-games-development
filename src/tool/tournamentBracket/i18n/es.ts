@@ -126,7 +126,7 @@ const seo = [
       },
       {
         title: 'Juegos de Mesa y Cartas',
-        description: 'Organiza partidas de Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh!, Catan, Ajedrez o Dominó.',
+        description: 'Organiza partidas de Magic: The Gathering, Pokémon TCG, Yu-Gi-Oh, Catan, Ajedrez o Dominó.',
         icon: 'mdi:cards-playing-outline',
         points: ['Hasta 64 jugadores', 'Historial de rondas', 'Gestión de Byes']
       },

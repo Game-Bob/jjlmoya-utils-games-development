@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'papan-skor-padel';
-const title = 'Papan Skor Padel : Poin Emas & Pelacak Rotasi';
+const title = 'Papan Skor Padel: Poin Emas & Pelacak Rotasi';
 const description = 'Lacak skor padel dengan aturan resmi Punto de Oro (Poin Emas), peringatan rotasi servis, tiebreak set, dan animasi pertukaran sisi lapangan yang dinamis.';
 
 const faq = [

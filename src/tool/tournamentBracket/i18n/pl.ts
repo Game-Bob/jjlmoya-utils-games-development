@@ -23,7 +23,7 @@ const ui: TournamentBracketUI = {
   clearAll: 'Wyczyść Wszystko',
   emptyList: 'Lista jest pusta',
   howItWorks: 'Jak to działa?',
-  howItWorksText: 'Dodaj uczestników, nadaj nazwę i wygeneruj. System automatycznie utworzy pary i obsłuży „Bye” (wolne losy), jeśli liczba uczestników jest nieparzysta.',
+  howItWorksText: 'Dodaj uczestników, nadaj nazwę i wygeneruj. System automatycznie utworzy pary i obsłuży "Bye" (wolne losy), jeśli liczba uczestników jest nieparzysta.',
   historyLabel: 'Historia',
   noHistory: 'Brak zapisanych turniejów',
   noOldTournaments: 'Brak poprzednich turniejów',
@@ -52,12 +52,12 @@ const ui: TournamentBracketUI = {
 
 const faqData = [
   { question: 'Jak działa system pucharowy (pojedyncza eliminacja)?', answer: 'To system rozgrywek, w którym uczestnik przegrywający mecz automatycznie odpada z turnieju. Zwycięzcy przechodzą do kolejnych rund (1/8 finału, ćwierćfinały, półfinały), aż do wielkiego finału, w którym zostaje tylko dwóch zawodników.' },
-  { question: 'Co się dzieje w przypadku nieparzystej liczby graczy?', answer: 'Nasze narzędzie automatycznie obsługuje „BYE” (wolne losy). Niektórzy gracze przejdą bezpośrednio do drugiej rundy bez grania w pierwszej, tak aby drabinka zawsze kończyła się potęgami dwójki (2, 4, 8, 16...).' },
+  { question: 'Co się dzieje w przypadku nieparzystej liczby graczy?', answer: 'Nasze narzędzie automatycznie obsługuje "BYE" (wolne losy). Niektórzy gracze przejdą bezpośrednio do drugiej rundy bez grania w pierwszej, tak aby drabinka zawsze kończyła się potęgami dwójki (2, 4, 8, 16...).' },
   { question: 'Czy mogę zapisać i udostępnić drabinkę turniejową?', answer: 'Tak, możesz udostępnić drabinkę za pomocą unikalnego, natychmiast wygenerowanego linku. Jako narzędzie niewymagające rejestracji, dane są przechowywane w przeglądarce tak długo, jak otwarta jest karta.' },
   { question: 'Czy to działa w przypadku turniejów e-sportowych, takich jak FIFA czy LoL?', answer: 'Absolutnie. Narzędzie jest szybkie i przejrzyste, idealne do zarządzania błyskawicznymi turniejami na konsolach, PC, a nawet w grach planszowych i karcianych.' },
   { question: 'Czy tworzenie turniejów jest darmowe?', answer: 'Tak, całkowicie darmowe i bez ograniczeń. Żadnych planów premium, limitów uczestników, znaków wodnych czy uciążliwych reklam. Wszystko działa offline w przeglądarce.' },
   { question: 'Czy moje dane zostaną usunięte po zamknięciu przeglądarki?', answer: 'Nie. Używamy LocalStorage, aby automatycznie zapisywać wszystkie turnieje na Twoim urządzeniu. Możesz zamknąć kartę, wyłączyć komputer i wrócić po kilku dniach: turniej nadal tam będzie.' },
-  { question: 'Jak działa przycisk „Następny Mecz”?', answer: 'System automatycznie wykrywa kolejną gotową parę (obaj uczestnicy potwierdzeni), która nie ma jeszcze wpisanego wyniku. Naciśnięcie „Następny Mecz” przenosi widok bezpośrednio do tego spotkania.' },
+  { question: 'Jak działa przycisk "Następny Mecz"?', answer: 'System automatycznie wykrywa kolejną gotową parę (obaj uczestnicy potwierdzeni), która nie ma jeszcze wpisanego wyniku. Naciśnięcie "Następny Mecz" przenosi widok bezpośrednio do tego spotkania.' },
 ];
 
 const howTo = [
@@ -84,7 +84,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: '<strong>Nadaj nazwę turniejowi</strong>, dodaj uczestników (pojedynczo lub wklejając listę oddzieloną przecinkami), losuj pary, jeśli chcesz, wygeneruj drabinkę, zarządzaj wynikami, klikając zwycięzcę każdego meczu, i używaj przycisku „Następny Mecz”, aby poruszać się między nierozstrzygniętymi spotkaniami.'
+    html: '<strong>Nadaj nazwę turniejowi</strong>, dodaj uczestników (pojedynczo lub wklejając listę oddzieloną przecinkami), losuj pary, jeśli chcesz, wygeneruj drabinkę, zarządzaj wynikami, klikając zwycięzcę każdego meczu, i używaj przycisku "Następny Mecz", aby poruszać się między nierozstrzygniętymi spotkaniami.'
   },
   {
     type: 'title' as const,
@@ -96,10 +96,10 @@ const seo = [
     items: [
       '<strong>Wprowadzanie zbiorcze:</strong> Dodawaj wielu uczestników naraz oddzielonych przecinkami.',
       '<strong>Dokładne wyniki:</strong> System punktacji z wynikami takimi jak 3-1 lub 21-19.',
-      '<strong>Inteligentna nawigacja:</strong> Przycisk „Następny Mecz” przenosi do kolejnej oczekującej pary.',
+      '<strong>Inteligentna nawigacja:</strong> Przycisk "Następny Mecz" przenosi do kolejnej oczekującej pary.',
       '<strong>Przesuwalna drabinka:</strong> Widok na komputer z wolnym przewijaniem dla dużych turniejów.',
       '<strong>Trwała historia:</strong> Wszystkie turnieje zapisywane automatycznie w Twojej przeglądarce.',
-      '<strong>Automatyczne wolne losy:</strong> „Bye” i bezpośrednie awanse rozwiązywane bez ręcznej ingerencji.',
+      '<strong>Automatyczne wolne losy:</strong> "Bye" i bezpośrednie awanse rozwiązywane bez ręcznej ingerencji.',
       '<strong>Udostępnianie przez URL:</strong> Generuj skompresowany link, aby wysłać drabinkę komukolwiek.',
     ]
   },
@@ -134,12 +134,12 @@ const seo = [
   },
   {
     type: 'title' as const,
-    text: 'Czym są „Bye” lub Wolne Losy?',
+    text: 'Czym są "Bye" lub Wolne Losy?',
     level: 2 as const
   },
   {
     type: 'paragraph' as const,
-    html: 'W idealnym turnieju pucharowym liczba uczestników musi być potęgą liczby 2 (4, 8, 16, 32...). Kiedy masz nieparzystą liczbę lub niebędącą potęgą 2 , na przykład 7, 10 lub 13 graczy, system automatycznie przypisuje <strong>„Byes”</strong> (wolne losy) w pierwszej rundzie. Wolny los oznacza, że uczestnik przechodzi bezpośrednio do następnej fazy bez grania meczu. Nasz algorytm sprawiedliwie i automatycznie oblicza oraz przydziela te awanse.'
+    html: 'W idealnym turnieju pucharowym liczba uczestników musi być potęgą liczby 2 (4, 8, 16, 32...). Kiedy masz nieparzystą liczbę lub niebędącą potęgą 2 , na przykład 7, 10 lub 13 graczy, system automatycznie przypisuje <strong>"Byes"</strong> (wolne losy) w pierwszej rundzie. Wolny los oznacza, że uczestnik przechodzi bezpośrednio do następnej fazy bez grania meczu. Nasz algorytm sprawiedliwie i automatycznie oblicza oraz przydziela te awanse.'
   },
   {
     type: 'title' as const,

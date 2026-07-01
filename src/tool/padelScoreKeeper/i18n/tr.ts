@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'padel-skor-takipcisi';
-const title = 'Padel Skor Takipçisi : Altın Puan & Rotasyon Takibi';
+const title = 'Padel Skor Takipçisi: Altın Puan & Rotasyon Takibi';
 const description = 'Resmi Punto de Oro (Altın Puan) kuralı, servis rotasyon uyarıları, tiebreak\'ler ve dinamik saha değiştirme animasyonu ile padel skorlarını takip edin.';
 
 const faq = [

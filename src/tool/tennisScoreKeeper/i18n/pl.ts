@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'licznik-tenisa';
-const title = 'Licznik Tenisa Online : Darmowy Tracker Meczów';
+const title = 'Licznik Tenisa Online: Darmowy Tracker Meczów';
 const description = 'Śledź mecze tenisa z punktacją setów i gier. Darmowy licznik tenisa online do meczów i turniejów. Bez rejestracji.';
 
 const faqData = [

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'basketbol-skor-tablosu';
-const title = 'Basketbol Skor Tablosu Çevrimiçi : Ücretsiz Skor Takip';
+const title = 'Basketbol Skor Tablosu Çevrimiçi: Ücretsiz Skor Takip';
 const description =
   '+1, +2 ve +3 butonlarıyla ücretsiz çevrimiçi basketbol skor tablosu. Sokak basketbolu, okul maçları ve yerel lig karşılaşmalarında skor tutun. Kayıt yok, indirme yok, çevrimdışı çalışır.';
 
@@ -122,12 +122,12 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Ücretsiz Çevrimiçi Basketbol Skor Tablosu : Kayıt Yok, İndirme Yok',
+      text: 'Ücretsiz Çevrimiçi Basketbol Skor Tablosu: Kayıt Yok, İndirme Yok',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Basketbolda skor tutmak basit olmalı. Serbest atış +1\'dir. Saha içi sayı +2\'dir. Üç sayılık atış +3\'tür. Bu skor tablosu size her değer için özel bir buton sunar, böylece dokunup oynamaya devam edebilirsiniz. Menü yok, mod yok, yapılandırma yok. Sadece takımlarınızı adlandırın ve skor yapmaya başlayın. Skor otomatik olarak tarayıcınıza kaydedilir, böylece sayfayı yeniden yükleyebilir, telefonunuzu kapatabilir veya daha sonra geri dönebilirsiniz : oyun kaybolmaz.',
+      html: 'Basketbolda skor tutmak basit olmalı. Serbest atış +1\'dir. Saha içi sayı +2\'dir. Üç sayılık atış +3\'tür. Bu skor tablosu size her değer için özel bir buton sunar, böylece dokunup oynamaya devam edebilirsiniz. Menü yok, mod yok, yapılandırma yok. Sadece takımlarınızı adlandırın ve skor yapmaya başlayın. Skor otomatik olarak tarayıcınıza kaydedilir, böylece sayfayı yeniden yükleyebilir, telefonunuzu kapatabilir veya daha sonra geri dönebilirsiniz: oyun kaybolmaz.',
     },
     {
       type: 'title',
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Çoğu skor takip uygulaması, iki veya üç sayı eklemek için aynı butona birden çok kez basmanızı zorunlu kılar. Bu fazladan dokunuşlar 40 dakikalık bir maçta birikir ve hızlı hücum veya ani oyuncu değişikliği sırasında sayıyı kaybetme riskini artırır. Bu skor tablosunda <strong>üç ayrı buton</strong> bulunur : her skor değeri için bir tane : böylece her skor eyleminde tam olarak bir kez dokunursunuz. +3 butonu kırmızı yanar ve üç sayılık atışın heyecanına uygun patlayıcı bir animasyon başlatır.',
+      html: 'Çoğu skor takip uygulaması, iki veya üç sayı eklemek için aynı butona birden çok kez basmanızı zorunlu kılar. Bu fazladan dokunuşlar 40 dakikalık bir maçta birikir ve hızlı hücum veya ani oyuncu değişikliği sırasında sayıyı kaybetme riskini artırır. Bu skor tablosunda <strong>üç ayrı buton</strong> bulunur: her skor değeri için bir tane: böylece her skor eyleminde tam olarak bir kez dokunursunuz. +3 butonu kırmızı yanar ve üç sayılık atışın heyecanına uygun patlayıcı bir animasyon başlatır.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Basketbolda sabit bir skor sınırı yoktur : oyun süre bittiğinde sona erer. Ancak pickup basketbolunda genellikle ilk 16, 21 veya 11\'e (2 farkla kazanma) gibi hedef skorlar kullanılır. Bu skor tablosu bir kazanma koşulu dayatmaz çünkü basketbol skorla bitmez. Oyunun ne zaman bittiğine siz karar verirsiniz ve sıfırlama butonu bir sonraki oyun için tahtayı temizler. Takım adları korunur, böylece yeniden yazmadan art arda oyunlar oynayabilirsiniz.',
+      html: 'Basketbolda sabit bir skor sınırı yoktur: oyun süre bittiğinde sona erer. Ancak pickup basketbolunda genellikle ilk 16, 21 veya 11\'e (2 farkla kazanma) gibi hedef skorlar kullanılır. Bu skor tablosu bir kazanma koşulu dayatmaz çünkü basketbol skorla bitmez. Oyunun ne zaman bittiğine siz karar verirsiniz ve sıfırlama butonu bir sonraki oyun için tahtayı temizler. Takım adları korunur, böylece yeniden yazmadan art arda oyunlar oynayabilirsiniz.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Üç özel buton</strong> : +1, +2 ve +3. Değerler arasında geçiş yok, uzun basma yok, fazladan dokunuş yok.',
-        '<strong>Düzenlenebilir takım adları</strong> : adı değiştirmek için üzerine dokunun. Adlar tarayıcınızda kaydedilir ve sayfa yenilemelerinde kalıcı olur.',
-        '<strong>Ekran uyku kilidi</strong> : tam ekrana geçtiğinizde, skor tablosu telefon ekranınızın kapanmasını önler. Sadece ekranı canlı tutmak için artık ekrana dokunmanız gerekmez.',
-        '<strong>Tam ekran modu</strong> : tarayıcı sekmelerini ve adres çubuğunu gizler, böylece skor tablosu tüm ekranı kaplar. Tam ekran butonuna bir kez basın ve araç genişler.',
-        '<strong>Öncelik çevrimdışı</strong> : ilk yüklemeden sonra skor tablosu internet bağlantısı olmadan çalışır. Reklam yok, izleyici yok, veri toplama yok.',
-        '<strong>Tatmin edici geri bildirim</strong> : her dokunuş bir skor animasyonu, uçuşan parçacıklar ve desteklenen cihazlarda hafif bir titreşim tetikler. +3 ekstra bir patlama efekti alır.',
-        '<strong>Oyun durumu kaydedilir</strong> : sayfayı yeniden yükleyin, tarayıcıyı kapatın veya yarın geri gelin. Skorlar ve takım adları yerel olarak saklanır.',
+        '<strong>Üç özel buton</strong>: +1, +2 ve +3. Değerler arasında geçiş yok, uzun basma yok, fazladan dokunuş yok.',
+        '<strong>Düzenlenebilir takım adları</strong>: adı değiştirmek için üzerine dokunun. Adlar tarayıcınızda kaydedilir ve sayfa yenilemelerinde kalıcı olur.',
+        '<strong>Ekran uyku kilidi</strong>: tam ekrana geçtiğinizde, skor tablosu telefon ekranınızın kapanmasını önler. Sadece ekranı canlı tutmak için artık ekrana dokunmanız gerekmez.',
+        '<strong>Tam ekran modu</strong>: tarayıcı sekmelerini ve adres çubuğunu gizler, böylece skor tablosu tüm ekranı kaplar. Tam ekran butonuna bir kez basın ve araç genişler.',
+        '<strong>Öncelik çevrimdışı</strong>: ilk yüklemeden sonra skor tablosu internet bağlantısı olmadan çalışır. Reklam yok, izleyici yok, veri toplama yok.',
+        '<strong>Tatmin edici geri bildirim</strong>: her dokunuş bir skor animasyonu, uçuşan parçacıklar ve desteklenen cihazlarda hafif bir titreşim tetikler. +3 ekstra bir patlama efekti alır.',
+        '<strong>Oyun durumu kaydedilir</strong>: sayfayı yeniden yükleyin, tarayıcıyı kapatın veya yarın geri gelin. Skorlar ve takım adları yerel olarak saklanır.',
       ],
     },
     {

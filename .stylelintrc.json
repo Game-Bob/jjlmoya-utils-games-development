@@ -1,12 +1,20 @@
 {
-    "extends": ["stylelint-config-standard"],
+    "extends": [
+        "stylelint-config-standard"
+    ],
     "overrides": [
         {
-            "files": ["**/*.astro"],
+            "files": [
+                "**/*.astro"
+            ],
             "customSyntax": "postcss-html"
         },
         {
-            "files": ["src/tool/**/*.css", "src/tool/**/*.astro", "src/pages/**/*.astro"],
+            "files": [
+                "src/tool/**/*.css",
+                "src/tool/**/*.astro",
+                "src/pages/**/*.astro"
+            ],
             "rules": {
                 "scale-unlimited/declaration-strict-value": null,
                 "color-named": null,
@@ -17,14 +25,34 @@
                 "import-notation": null,
                 "block-no-empty": null
             }
+        },
+        {
+            "files": [
+                "src/layouts/**/*.astro"
+            ],
+            "rules": {
+                "property-disallowed-list": null
+            }
         }
     ],
-    "plugins": ["stylelint-declaration-strict-value"],
+    "plugins": [
+        "stylelint-declaration-strict-value"
+    ],
     "rules": {
         "scale-unlimited/declaration-strict-value": [
-            ["color", "fill", "stroke"],
+            [
+                "color",
+                "fill",
+                "stroke"
+            ],
             {
-                "ignoreValues": ["transparent", "none", "inherit", "currentColor", "initial"]
+                "ignoreValues": [
+                    "transparent",
+                    "none",
+                    "inherit",
+                    "currentColor",
+                    "initial"
+                ]
             }
         ],
         "color-no-invalid-hex": true,
@@ -32,19 +60,40 @@
         "declaration-block-no-duplicate-properties": true,
         "no-duplicate-selectors": true,
         "color-named": "never",
-        "unit-allowed-list": ["px", "rem", "em", "%", "vw", "vh", "svh", "svw", "fr", "deg", "s", "ms", "ch"],
+        "unit-allowed-list": [
+            "px",
+            "rem",
+            "em",
+            "%",
+            "vw",
+            "vh",
+            "svh",
+            "svw",
+            "fr",
+            "deg",
+            "s",
+            "ms",
+            "ch"
+        ],
         "declaration-no-important": true,
         "alpha-value-notation": "number",
         "comment-empty-line-before": null,
         "no-descending-specificity": null,
-        "selector-pseudo-class-no-unknown": [true, {
-            "ignorePseudoClasses": ["global", "local"]
-        }],
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                "ignorePseudoClasses": [
+                    "global",
+                    "local"
+                ]
+            }
+        ],
         "media-feature-range-notation": null,
         "color-function-notation": "legacy",
         "color-function-alias-notation": null,
         "custom-property-pattern": null,
-        "property-disallowed-list": ["font-family"]
+        "property-disallowed-list": [
+            "font-family"
+        ]
     }
 }
-

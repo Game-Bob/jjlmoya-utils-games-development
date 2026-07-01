@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'fussball-spielstand';
-const title = 'Fußball Spielstand Online : Kostenloser Spielstandsanzeiger';
+const title = 'Fußball Spielstand Online: Kostenloser Spielstandsanzeiger';
 const description =
   'Fußballspielstände kostenlos online verfolgen. Einfacher Torezähler für Freundschaftsspiele, Turniere und den Ligaalltag. Keine Anmeldung nötig.';
 
@@ -12,7 +12,7 @@ const faqData = [
   {
     question: 'Wie benutze ich diesen Fußball-Spielstandsanzeiger?',
     answer:
-      'Tippe auf den +-Button unter jeder Mannschaft, um ein Tor zu notieren. Der Spielstand aktualisiert sich sofort mit einer Jubel-Animation. Mit dem Minus-Button kannst du einen Fehler rückgängig machen. Die Mannschaftsnamen sind editierbar : tippe einfach auf den Standardnamen und gib deinen eigenen ein. Alles wird automatisch in deinem Browser gespeichert, sodass du die Seite schließen und später weitermachen kannst.',
+      'Tippe auf den +-Button unter jeder Mannschaft, um ein Tor zu notieren. Der Spielstand aktualisiert sich sofort mit einer Jubel-Animation. Mit dem Minus-Button kannst du einen Fehler rückgängig machen. Die Mannschaftsnamen sind editierbar: tippe einfach auf den Standardnamen und gib deinen eigenen ein. Alles wird automatisch in deinem Browser gespeichert, sodass du die Seite schließen und später weitermachen kannst.',
   },
   {
     question: 'Kann ich das Tool während eines Spiels auf dem Handy nutzen?',
@@ -22,12 +22,12 @@ const faqData = [
   {
     question: 'Werden meine Spieldaten gespeichert?',
     answer:
-      'Ja. Der aktuelle Spielstand und die Mannschaftsnamen werden automatisch in deinem Browser gespeichert. Du kannst die Seite neu laden, den Browser schließen oder am nächsten Tag wiederkommen : deine Daten sind immer noch da.',
+      'Ja. Der aktuelle Spielstand und die Mannschaftsnamen werden automatisch in deinem Browser gespeichert. Du kannst die Seite neu laden, den Browser schließen oder am nächsten Tag wiederkommen: deine Daten sind immer noch da.',
   },
   {
     question: 'Kann ich Verlängerung oder Elfmeterschießen erfassen?',
     answer:
-      'Ja. Der Spielstandsanzeiger funktioniert für jedes Spielformat gleich. Drücke einfach weiter die +-Buttons während der Verlängerung oder des Elfmeterschießens. Wenn das Spiel vorbei ist, tippe auf „Spiel beenden", um das Endergebnis zu sehen.',
+      'Ja. Der Spielstandsanzeiger funktioniert für jedes Spielformat gleich. Drücke einfach weiter die +-Buttons während der Verlängerung oder des Elfmeterschießens. Wenn das Spiel vorbei ist, tippe auf "Spiel beenden", um das Endergebnis zu sehen.',
   },
   {
     question: 'Ist das Tool wirklich kostenlos ohne versteckte Einschränkungen?',
@@ -51,7 +51,7 @@ const howToData = [
   },
   {
     name: 'Spiel beenden',
-    text: 'Tippe unten auf „Spiel beenden", um den Sieger mit Trophäe und Konfetti zu sehen. Schließe die Feier durch Antippen außerhalb der Anzeige.',
+    text: 'Tippe unten auf "Spiel beenden", um den Sieger mit Trophäe und Konfetti zu sehen. Schließe die Feier durch Antippen außerhalb der Anzeige.',
   },
   {
     name: 'Spiel zurücksetzen',
@@ -104,12 +104,12 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Kostenloser Online Fußball Spielstand : Live Spielstandsanzeige',
+      text: 'Kostenloser Online Fußball Spielstand: Live Spielstandsanzeige',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Den Spielstand während eines Fußballspiels zu notieren, sollte der einfachste Teil des Spiels sein. Dieser Online-Spielstandsanzeiger erfasst Tore für zwei Mannschaften in Echtzeit mit nur einem Fingertipp. Keine Anmeldung, kein Download, keine komplizierten Menüs. Öffne die Seite, benenne deine Mannschaften und schon kannst du Tore zählen. Ob du am Spielfeldrand Jugendfußball coachst, ein Freundschaftsspiel leitest oder bei einem lokalen Ligaspiel den Spielstand notierst : dieses Tool ist auf Geschwindigkeit und Einfachheit ausgelegt. Jede Mannschaft bekommt einen farblich gekennzeichneten Bereich mit einer großen Spielstandsanzeige und einem eigenen +1-Button. Tippe, um ein Tor hinzuzufügen, tippe auf den Minus-Button, um einen Fehler zu korrigieren. Der gesamte Spielverlauf bleibt auf dem Bildschirm sichtbar, sodass du immer genau weißt, was passiert ist.',
+      html: 'Den Spielstand während eines Fußballspiels zu notieren, sollte der einfachste Teil des Spiels sein. Dieser Online-Spielstandsanzeiger erfasst Tore für zwei Mannschaften in Echtzeit mit nur einem Fingertipp. Keine Anmeldung, kein Download, keine komplizierten Menüs. Öffne die Seite, benenne deine Mannschaften und schon kannst du Tore zählen. Ob du am Spielfeldrand Jugendfußball coachst, ein Freundschaftsspiel leitest oder bei einem lokalen Ligaspiel den Spielstand notierst: dieses Tool ist auf Geschwindigkeit und Einfachheit ausgelegt. Jede Mannschaft bekommt einen farblich gekennzeichneten Bereich mit einer großen Spielstandsanzeige und einem eigenen +1-Button. Tippe, um ein Tor hinzuzufügen, tippe auf den Minus-Button, um einen Fehler zu korrigieren. Der gesamte Spielverlauf bleibt auf dem Bildschirm sichtbar, sodass du immer genau weißt, was passiert ist.',
     },
     {
       type: 'title',
@@ -118,7 +118,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Ein generischer Zahlenzähler funktioniert für alles, aber ein spezieller Fußball-Spielstandsanzeiger versteht, wie das Spiel funktioniert. Er trennt die beiden Mannschaften optisch mit unterschiedlichen Farben, sodass du nie auf die falsche Seite tippst. Der Tor-Button ist groß und befriedigend zu drücken, selbst wenn du das Telefon in einer Hand hältst. Der Minus-Button erlaubt es dir, Fehler sofort zu korrigieren, ohne das ganze Spiel zurücksetzen zu müssen. Und wenn das Spiel vorbei ist, löst der „Spiel beenden"-Button eine Feier aus, die das Endergebnis mit Konfetti und einer Trophäe zeigt. Generische Zähler können nichts davon. Sie behandeln jeden Punkt gleich. Fußball ist nicht generisch und dein Spielstandsanzeiger sollte es auch nicht sein.',
+      html: 'Ein generischer Zahlenzähler funktioniert für alles, aber ein spezieller Fußball-Spielstandsanzeiger versteht, wie das Spiel funktioniert. Er trennt die beiden Mannschaften optisch mit unterschiedlichen Farben, sodass du nie auf die falsche Seite tippst. Der Tor-Button ist groß und befriedigend zu drücken, selbst wenn du das Telefon in einer Hand hältst. Der Minus-Button erlaubt es dir, Fehler sofort zu korrigieren, ohne das ganze Spiel zurücksetzen zu müssen. Und wenn das Spiel vorbei ist, löst der "Spiel beenden"-Button eine Feier aus, die das Endergebnis mit Konfetti und einer Trophäe zeigt. Generische Zähler können nichts davon. Sie behandeln jeden Punkt gleich. Fußball ist nicht generisch und dein Spielstandsanzeiger sollte es auch nicht sein.',
     },
     {
       type: 'comparative',
@@ -151,7 +151,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Die Bedienung dieser Fußball-Anzeige ist unkompliziert. Wenn du die Seite öffnest, siehst du zwei Mannschaftsbereiche. Die Heimmannschaft wird in Rot und die Gastmannschaft in Blau dargestellt. Jeder Bereich hat eine große Spielstandszahl in der Mitte, ein Mannschaftsnamenfeld oben und zwei Buttons darunter. Tippe auf den großen runden +-Button, um ein Tor für diese Mannschaft zu notieren. Die Zahl animiert jedes Mal mit einem Jubel-Effekt. Acht verschiedene Tor-Animationen wechseln sich zufällig ab, sodass sich jedes Tor einzigartig anfühlt. Fliegende Partikel mit Texten wie TOR und SIUUU erscheinen. Der Bildschirm blinkt kurz auf, um den Moment zu markieren. Bei einem Fehler tippe auf den kleinen Minus-Button, um das letzte Tor zu entfernen. Die Mannschaftsnamenfelder sind editierbar. Tippe auf den Standardnamen, um deinen eigenen einzugeben. Namen werden automatisch in deinem Browser gespeichert, zusammen mit dem aktuellen Spielstand. Du kannst die Seite schließen und später wiederkommen : deine Daten sind noch da. Am Ende des Spiels tippe auf „Spiel beenden", um den Sieger mit Trophäen-Animation und Konfetti zu sehen. Du kannst die Feier schließen und der Spielstand bleibt angezeigt.',
+      html: 'Die Bedienung dieser Fußball-Anzeige ist unkompliziert. Wenn du die Seite öffnest, siehst du zwei Mannschaftsbereiche. Die Heimmannschaft wird in Rot und die Gastmannschaft in Blau dargestellt. Jeder Bereich hat eine große Spielstandszahl in der Mitte, ein Mannschaftsnamenfeld oben und zwei Buttons darunter. Tippe auf den großen runden +-Button, um ein Tor für diese Mannschaft zu notieren. Die Zahl animiert jedes Mal mit einem Jubel-Effekt. Acht verschiedene Tor-Animationen wechseln sich zufällig ab, sodass sich jedes Tor einzigartig anfühlt. Fliegende Partikel mit Texten wie TOR und SIUUU erscheinen. Der Bildschirm blinkt kurz auf, um den Moment zu markieren. Bei einem Fehler tippe auf den kleinen Minus-Button, um das letzte Tor zu entfernen. Die Mannschaftsnamenfelder sind editierbar. Tippe auf den Standardnamen, um deinen eigenen einzugeben. Namen werden automatisch in deinem Browser gespeichert, zusammen mit dem aktuellen Spielstand. Du kannst die Seite schließen und später wiederkommen: deine Daten sind noch da. Am Ende des Spiels tippe auf "Spiel beenden", um den Sieger mit Trophäen-Animation und Konfetti zu sehen. Du kannst die Feier schließen und der Spielstand bleibt angezeigt.',
     },
     {
       type: 'title',
@@ -173,23 +173,23 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
         '<strong>Farbcodierte Mannschaften</strong> rot für Heim, blau für Auswärts. Du erkennst sofort, welche Seite welche ist, ohne Text lesen zu müssen.',
         '<strong>Tor-Jubel-Animationen</strong> jedes Tor löst eine zufällige Feier aus. Acht verschiedene Animationen wie Boom, Rise, Glow und Ball Bounce.',
         '<strong>Fliegende Partikel</strong> jedes Tor erzeugt schwebende Texte mit Meldungen wie TOR und SIUUU. Jede Feier fühlt sich einzigartig an.',
-        '<strong>Spielende-Zeremonie</strong> tippe auf „Spiel beenden", um eine Siegerverkündung mit Trophäen-Animation, Mannschaftsnamen und Konfetti auszulösen.',
+        '<strong>Spielende-Zeremonie</strong> tippe auf "Spiel beenden", um eine Siegerverkündung mit Trophäen-Animation, Mannschaftsnamen und Konfetti auszulösen.',
         '<strong>Editierbare Mannschaftsnamen</strong> tippe auf das Namensfeld, um deine Mannschaften umzubenennen. Namen werden lokal in deinem Browser gespeichert.',
         '<strong>Bildschirm-Wachhaltesperre</strong> der Vollbildmodus verhindert, dass dein Telefonbildschirm während des Spiels ausgeht.',
-        '<strong>Vollbildmodus</strong> blendet die Browser-Oberfläche aus, sodass die Anzeige den gesamten Bildschirm ausfüllt : ohne Ablenkungen.',
+        '<strong>Vollbildmodus</strong> blendet die Browser-Oberfläche aus, sodass die Anzeige den gesamten Bildschirm ausfüllt: ohne Ablenkungen.',
         '<strong>Offline first</strong> funktioniert ohne Internet nach dem ersten Besuch. Keine Werbung, kein Tracking, keine Datensammlung.',
-        '<strong>Sofortige Datenspeicherung</strong> Spielstände und Mannschaftsnamen werden automatisch gespeichert. Lade die Seite neu oder schließe den Browser : deine Daten bleiben erhalten.',
+        '<strong>Sofortige Datenspeicherung</strong> Spielstände und Mannschaftsnamen werden automatisch gespeichert. Lade die Seite neu oder schließe den Browser: deine Daten bleiben erhalten.',
         '<strong>Zurücksetzen mit Bestätigung</strong> der Reset-Button fragt vor dem Löschen der Spielstände nach einer Bestätigung. Verhindert versehentlichen Datenverlust.',
       ],
     },
     {
       type: 'title',
-      text: 'Fußball-Spielstandsanzeiger vs. Papier-Spielberichtsbogen : warum digital besser ist',
+      text: 'Fußball-Spielstandsanzeiger vs. Papier-Spielberichtsbogen: warum digital besser ist',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Papier-Spielberichtsbögen werden seit Jahrzehnten verwendet, aber sie haben echte Probleme. Du brauchst einen funktionierenden Stift, eine ebene Fläche zum Schreiben und genug Aufmerksamkeit, um während des Spiels zu schreiben. Eine einzige Ablenkung kann dazu führen, dass du ein Tor verpasst oder die falsche Zahl notierst. Einmal auf Papier geschrieben, kann der Spielstand nicht sauber korrigiert werden. Durchgestrichene Zahlen machen das Blatt schwer lesbar. Papier kann im Regen nass werden, vom Wind weggeweht werden oder zwischen den Spielen verloren gehen. Ein digitaler Spielstandsanzeiger löst jedes dieser Probleme. Die Buttons sind groß genug, um sie blind zu treffen. Zahlen werden in einer großen Schrift dargestellt, die von der anderen Seite des Platzes lesbar ist. Fehler werden sofort mit dem Minus-Button behoben. Der Spielstand wird automatisch gespeichert und geht nie verloren. Und anders als Papier bietet der Anzeiger Jubel-Animationen und visuelles Feedback, die das Notieren des Spielstands angenehmer machen. Egal ob du eine Jugendmannschaft coachst, eine Sonntagsliga leitest oder einfach mit Freunden spielst : dieser kostenlose Online-Spielstandsanzeiger gibt dir alles, was du brauchst, und nichts, was du nicht brauchst.',
+      html: 'Papier-Spielberichtsbögen werden seit Jahrzehnten verwendet, aber sie haben echte Probleme. Du brauchst einen funktionierenden Stift, eine ebene Fläche zum Schreiben und genug Aufmerksamkeit, um während des Spiels zu schreiben. Eine einzige Ablenkung kann dazu führen, dass du ein Tor verpasst oder die falsche Zahl notierst. Einmal auf Papier geschrieben, kann der Spielstand nicht sauber korrigiert werden. Durchgestrichene Zahlen machen das Blatt schwer lesbar. Papier kann im Regen nass werden, vom Wind weggeweht werden oder zwischen den Spielen verloren gehen. Ein digitaler Spielstandsanzeiger löst jedes dieser Probleme. Die Buttons sind groß genug, um sie blind zu treffen. Zahlen werden in einer großen Schrift dargestellt, die von der anderen Seite des Platzes lesbar ist. Fehler werden sofort mit dem Minus-Button behoben. Der Spielstand wird automatisch gespeichert und geht nie verloren. Und anders als Papier bietet der Anzeiger Jubel-Animationen und visuelles Feedback, die das Notieren des Spielstands angenehmer machen. Egal ob du eine Jugendmannschaft coachst, eine Sonntagsliga leitest oder einfach mit Freunden spielst: dieser kostenlose Online-Spielstandsanzeiger gibt dir alles, was du brauchst, und nichts, was du nicht brauchst.',
     },
     {
       type: 'title',
@@ -198,7 +198,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Dieses Tool ist komplett kostenlos und ohne Einschränkungen nutzbar. Es gibt keine -Stufen, keine versteckten Funktionen hinter einer Bezahlschranke und keine Wasserzeichen auf dem Bildschirm. Es funktioniert für jedes Fußballniveau : vom lockeren Kick mit Freunden bis zu organisierten Ligaspielen. Die einfache Oberfläche bedeutet, dass jeder es nutzen kann, von jungen Spielern, die das Spiel lernen, bis zu erfahrenen Trainern, die ein Turnier leiten. Keine Registrierung erforderlich. Keine E-Mail-Adresse. Keine persönlichen Daten. Öffne die Seite, starte das Spiel, tippe die Tore. Das ist alles.',
+      html: 'Dieses Tool ist komplett kostenlos und ohne Einschränkungen nutzbar. Es gibt keine -Stufen, keine versteckten Funktionen hinter einer Bezahlschranke und keine Wasserzeichen auf dem Bildschirm. Es funktioniert für jedes Fußballniveau: vom lockeren Kick mit Freunden bis zu organisierten Ligaspielen. Die einfache Oberfläche bedeutet, dass jeder es nutzen kann, von jungen Spielern, die das Spiel lernen, bis zu erfahrenen Trainern, die ein Turnier leiten. Keine Registrierung erforderlich. Keine E-Mail-Adresse. Keine persönlichen Daten. Öffne die Seite, starte das Spiel, tippe die Tore. Das ist alles.',
     },
   ],
   ui: {

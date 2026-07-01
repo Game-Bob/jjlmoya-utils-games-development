@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'darts-scorekeeper';
-const title = '온라인 다트 스코어키퍼 : 레그 및 세트 트래커';
+const title = '온라인 다트 스코어키퍼: 레그 및 세트 트래커';
 const description = '레그와 세트 점수로 다트 경기를 추적하세요. 라이브 체크아웃 계산 및 통계가 포함된 501 및 301 경기용 무료 온라인 다트 스코어키퍼.';
 
 const faqData = [

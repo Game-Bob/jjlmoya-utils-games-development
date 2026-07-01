@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'pontuacao-de-dardos';
-const title = 'Marcador de Dardos Online : Monitor de Legs e Sets';
+const title = 'Marcador de Dardos Online: Monitor de Legs e Sets';
 const description = 'Acompanhe partidas de dardos com pontuação de legs e sets. Marcador de dardos online grátis para partidas de 501 e 301 com cálculos de fecho ao vivo e estatísticas.';
 
 const faqData = [

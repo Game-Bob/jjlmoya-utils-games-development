@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'schetchik-dartsa';
-const title = 'Счетчик дартс онлайн : Трекер легов и сетов';
+const title = 'Счетчик дартс онлайн: Трекер легов и сетов';
 const description = 'Отслеживайте матчи по дартс с подсчетом легов и сетов. Бесплатный онлайн-счетчик дартс для матчей 501 и 301 с расчетами закрытия в реальном времени и статистикой.';
 
 const faqData = [

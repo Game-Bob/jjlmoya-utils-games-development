@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'pinpon-skor-takipcisi';
-const title = 'Çevrimiçi Pinpon Skor Takipçisi : Ücretsiz Masa Tenisi Takipçisi';
+const title = 'Çevrimiçi Pinpon Skor Takipçisi: Ücretsiz Masa Tenisi Takipçisi';
 const description =
   'Oyun ve set puanlamasıyla masa tenisi maçlarını takip edin. Dostluk maçları ve turnuvalar için ücretsiz çevrimiçi pinpon skor takipçisi. Kayıt gerekmez.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Ücretsiz Çevrimiçi Pinpon Skor Takipçisi : Masa Tenisi Maç Takipçisi',
+      text: 'Ücretsiz Çevrimiçi Pinpon Skor Takipçisi: Masa Tenisi Maç Takipçisi',
       level: 2,
     },
     {

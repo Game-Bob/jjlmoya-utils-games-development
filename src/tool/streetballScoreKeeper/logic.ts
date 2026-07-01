@@ -35,8 +35,7 @@ class StreetballController {
   }
 
   handleCourtClick(target: HTMLElement, e: MouseEvent): void {
-    const isTeamB = !!target.closest('.tn-court-half-b');
-    const team: 'a' | 'b' = isTeamB ? 'b' : 'a';
+    const team = this.ctx.state.possession;
     const isOutside = target.classList.contains('tn-court-arc-inner');
     const points = isOutside ? 2 : 1;
     this.handlePoint(team, points, e);

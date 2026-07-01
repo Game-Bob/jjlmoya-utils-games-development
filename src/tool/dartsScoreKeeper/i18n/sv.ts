@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'darts-poangraknare';
-const title = 'Darts Poangraknare Online : Leg och Set Spårare';
+const title = 'Darts Poangraknare Online: Leg och Set Spårare';
 const description = 'Följ dartsmatcher med leg- och set-poäng. Gratis online-darts-poängräknare för 501 och 301 matcher med live checkout-beräkningar och statistik.';
 
 const faqData = [

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'basketball-scoreboard';
-const title = 'Basketball Scoreboard Online : Free Score Keeper';
+const title = 'Basketball Scoreboard Online: Free Score Keeper';
 const description =
   'Free online basketball scoreboard with +1, +2 and +3 buttons. Keep score for pickup games, streetball, high school and local league matches. No signup, no download, works offline.';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Free Online Basketball Scoreboard : No Signup, No Download',
+      text: 'Free Online Basketball Scoreboard: No Signup, No Download',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Most scoreboard apps force you to tap the same button multiple times to add two or three points. That extra tap adds up over a 40-minute game and increases the chance of losing count during a fast break or a quick substitution. This scoreboard has <strong>three separate buttons</strong> : one for each scoring value : so you tap exactly once per scoring play. The +3 button lights up in red and triggers an explosive animation to match the excitement of a three-pointer going in.',
+      html: 'Most scoreboard apps force you to tap the same button multiple times to add two or three points. That extra tap adds up over a 40-minute game and increases the chance of losing count during a fast break or a quick substitution. This scoreboard has <strong>three separate buttons</strong>: one for each scoring value: so you tap exactly once per scoring play. The +3 button lights up in red and triggers an explosive animation to match the excitement of a three-pointer going in.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Basketball does not have a fixed scoring limit : the game ends when the clock runs out. But pickup basketball often uses target scores like first to 16, 21, or 11 (win by 2). This scoreboard does not enforce a win condition because basketball does not end on a score. You decide when the game is over, and the reset button clears the board for the next game. The team names are preserved so you can play consecutive games without retyping.',
+      html: 'Basketball does not have a fixed scoring limit: the game ends when the clock runs out. But pickup basketball often uses target scores like first to 16, 21, or 11 (win by 2). This scoreboard does not enforce a win condition because basketball does not end on a score. You decide when the game is over, and the reset button clears the board for the next game. The team names are preserved so you can play consecutive games without retyping.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Three dedicated buttons</strong> : +1, +2, and +3. No cycling through values, no long press, no extra taps.',
-        '<strong>Editable team names</strong> : tap the name to change it. Names are saved in your browser and persist across page reloads.',
-        '<strong>Screen wake lock</strong> : when you go fullscreen, the scoreboard prevents your phone screen from turning off. No more tapping the screen just to keep it alive.',
-        '<strong>Fullscreen mode</strong> : hides browser tabs and address bar so the scoreboard takes the entire screen. Tap the fullscreen button once and the tool expands.',
-        '<strong>Offline first</strong> : the entire scoreboard works without an internet connection after the first load. No ads, no trackers, no data collection.',
-        '<strong>Satisfying feedback</strong> : each tap triggers a score animation, floating particles, and a subtle vibration on supported devices. The +3 gets an extra explosion effect.',
-        '<strong>Game state is saved</strong> : reload the page, close the browser, or come back tomorrow. The scores and team names are stored locally.',
+        '<strong>Three dedicated buttons</strong>: +1, +2, and +3. No cycling through values, no long press, no extra taps.',
+        '<strong>Editable team names</strong>: tap the name to change it. Names are saved in your browser and persist across page reloads.',
+        '<strong>Screen wake lock</strong>: when you go fullscreen, the scoreboard prevents your phone screen from turning off. No more tapping the screen just to keep it alive.',
+        '<strong>Fullscreen mode</strong>: hides browser tabs and address bar so the scoreboard takes the entire screen. Tap the fullscreen button once and the tool expands.',
+        '<strong>Offline first</strong>: the entire scoreboard works without an internet connection after the first load. No ads, no trackers, no data collection.',
+        '<strong>Satisfying feedback</strong>: each tap triggers a score animation, floating particles, and a subtle vibration on supported devices. The +3 gets an extra explosion effect.',
+        '<strong>Game state is saved</strong>: reload the page, close the browser, or come back tomorrow. The scores and team names are stored locally.',
       ],
     },
     {

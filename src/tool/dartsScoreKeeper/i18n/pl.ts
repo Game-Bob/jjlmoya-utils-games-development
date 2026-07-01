@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'licznik-darta';
-const title = 'Licznik Darta Online : Tracker Legów i Setów';
+const title = 'Licznik Darta Online: Tracker Legów i Setów';
 const description = 'Śledź mecze darta z punktacją legów i setów. Darmowy licznik darta online do meczów 501 i 301 z obliczeniami checkout na żywo i statystykami.';
 
 const faqData = [

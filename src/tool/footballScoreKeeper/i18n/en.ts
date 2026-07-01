@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'football-scorekeeper';
-const title = 'Football Scorekeeper Online : Free Soccer Match Tracker';
+const title = 'Football Scorekeeper Online: Free Soccer Match Tracker';
 const description =
   'Track football match scores online for free. Simple goal counter for soccer games, friendly matches, and tournaments. No registration needed.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Free Online Football Scorekeeper : Live Soccer Match Tracker',
+      text: 'Free Online Football Scorekeeper: Live Soccer Match Tracker',
       level: 2,
     },
     {
@@ -184,7 +184,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: 'Football Scorekeeper vs Paper Scoresheet : why digital is better',
+      text: 'Football Scorekeeper vs Paper Scoresheet: why digital is better',
       level: 2,
     },
     {

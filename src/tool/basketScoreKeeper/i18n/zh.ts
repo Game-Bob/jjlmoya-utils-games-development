@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'basketball-scoreboard';
-const title = '篮球记分板在线 : 免费计分器';
+const title = '篮球记分板在线: 免费计分器';
 const description =
   '免费在线篮球记分板，支持 +1、+2 和 +3 按钮。为街头篮球、高中比赛和地方联赛计分。无需注册、无需下载、离线可用。';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: '免费在线篮球记分板 : 无需注册、无需下载',
+      text: '免费在线篮球记分板: 无需注册、无需下载',
       level: 2,
     },
     {

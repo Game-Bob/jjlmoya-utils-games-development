@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'marcador-futebol';
-const title = 'Marcador de Futebol Online Grátis : Contador de Gols ao Vivo';
+const title = 'Marcador de Futebol Online Grátis: Contador de Gols ao Vivo';
 const description =
   'Acompanhe o placar dos seus jogos de futebol online grátis. Contador de gols simples para partidas, amistosos e torneios. Sem cadastro.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Marcador de Futebol Online Grátis : Placar ao Vivo',
+      text: 'Marcador de Futebol Online Grátis: Placar ao Vivo',
       level: 2,
     },
     {
@@ -184,7 +184,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: 'Marcador de Futebol vs Planilha de Papel : por que o digital é melhor',
+      text: 'Marcador de Futebol vs Planilha de Papel: por que o digital é melhor',
       level: 2,
     },
     {

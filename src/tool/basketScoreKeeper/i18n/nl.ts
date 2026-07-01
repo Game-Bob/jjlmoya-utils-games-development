@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'basketbal-scorebord';
-const title = 'Online Basketbalscorebord : Gratis Score Bijhouder';
+const title = 'Online Basketbalscorebord: Gratis Score Bijhouder';
 const description =
   'Gratis online basketbalscorebord met +1, +2 en +3 knoppen. Houd de score bij voor potjes basketballen, straatbasketbal, middelbare school en lokale competitiewedstrijden. Geen aanmelding, geen download, werkt offline.';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Gratis Online Basketbalscorebord : Geen Aanmelding, Geen Download',
+      text: 'Gratis Online Basketbalscorebord: Geen Aanmelding, Geen Download',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'De meeste scorebord-apps dwingen je om meerdere keren op dezelfde knop te tikken om twee of drie punten toe te voegen. Dat extra tikken stapelt zich op tijdens een wedstrijd van 40 minuten en vergroot de kans dat je de tel kwijtraakt tijdens een snelle aanval of wissel. Dit scorebord heeft <strong>drie aparte knoppen</strong> : één voor elke scoringswaarde : zodat je precies één keer tikt per scorende actie. De +3 knop licht rood op en geeft een explosieve animatie die past bij de opwinding van een driepunter.',
+      html: 'De meeste scorebord-apps dwingen je om meerdere keren op dezelfde knop te tikken om twee of drie punten toe te voegen. Dat extra tikken stapelt zich op tijdens een wedstrijd van 40 minuten en vergroot de kans dat je de tel kwijtraakt tijdens een snelle aanval of wissel. Dit scorebord heeft <strong>drie aparte knoppen</strong>: één voor elke scoringswaarde: zodat je precies één keer tikt per scorende actie. De +3 knop licht rood op en geeft een explosieve animatie die past bij de opwinding van een driepunter.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Basketbal heeft geen vaste scorelimiet : de wedstrijd eindigt wanneer de klok op nul staat. Maar potjes basketballen gebruiken vaak streefscores zoals eerste aan 16, 21 of 11 (winst met 2 verschil). Dit scorebord dwingt geen winvoorwaarde af, omdat basketbal niet eindigt op een score. Jij bepaalt wanneer de wedstrijd voorbij is en met de resetknop wis je het bord voor de volgende wedstrijd. De teamnamen blijven behouden, zodat je opeenvolgende wedstrijden kunt spelen zonder opnieuw te typen.',
+      html: 'Basketbal heeft geen vaste scorelimiet: de wedstrijd eindigt wanneer de klok op nul staat. Maar potjes basketballen gebruiken vaak streefscores zoals eerste aan 16, 21 of 11 (winst met 2 verschil). Dit scorebord dwingt geen winvoorwaarde af, omdat basketbal niet eindigt op een score. Jij bepaalt wanneer de wedstrijd voorbij is en met de resetknop wis je het bord voor de volgende wedstrijd. De teamnamen blijven behouden, zodat je opeenvolgende wedstrijden kunt spelen zonder opnieuw te typen.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Drie speciale knoppen</strong> : +1, +2 en +3. Geen doorlussen van waarden, geen lang indrukken, geen extra tikken.',
-        '<strong>Bewerkbare teamnamen</strong> : tik op de naam om deze te wijzigen. Namen worden opgeslagen in je browser en blijven behouden bij het herladen van de pagina.',
-        '<strong>Schermvergrendeling</strong> : wanneer je volledig scherm gebruikt, voorkomt het scorebord dat je telefoonscherm uitgaat. Niet meer tikken om het scherm aan te houden.',
-        '<strong>Volledig-schermmodus</strong> : verbergt browsertabbladen en adresbalk, zodat het scorebord het hele scherm vult. Tik één keer op de volledig-schermknop en de tool wordt groter.',
-        '<strong>Offline eerst</strong> : het hele scorebord werkt zonder internetverbinding na de eerste keer laden. Geen advertenties, geen trackers, geen gegevensverzameling.',
-        '<strong>Bevredigende feedback</strong> : elke tik activeert een score-animatie, zwevende deeltjes en een subtiele trilling op ondersteunde apparaten. De +3 krijgt een extra explosie-effect.',
-        '<strong>Wedstrijdstatus wordt opgeslagen</strong> : herlaad de pagina, sluit de browser of kom morgen terug. De scores en teamnamen worden lokaal opgeslagen.',
+        '<strong>Drie speciale knoppen</strong>: +1, +2 en +3. Geen doorlussen van waarden, geen lang indrukken, geen extra tikken.',
+        '<strong>Bewerkbare teamnamen</strong>: tik op de naam om deze te wijzigen. Namen worden opgeslagen in je browser en blijven behouden bij het herladen van de pagina.',
+        '<strong>Schermvergrendeling</strong>: wanneer je volledig scherm gebruikt, voorkomt het scorebord dat je telefoonscherm uitgaat. Niet meer tikken om het scherm aan te houden.',
+        '<strong>Volledig-schermmodus</strong>: verbergt browsertabbladen en adresbalk, zodat het scorebord het hele scherm vult. Tik één keer op de volledig-schermknop en de tool wordt groter.',
+        '<strong>Offline eerst</strong>: het hele scorebord werkt zonder internetverbinding na de eerste keer laden. Geen advertenties, geen trackers, geen gegevensverzameling.',
+        '<strong>Bevredigende feedback</strong>: elke tik activeert een score-animatie, zwevende deeltjes en een subtiele trilling op ondersteunde apparaten. De +3 krijgt een extra explosie-effect.',
+        '<strong>Wedstrijdstatus wordt opgeslagen</strong>: herlaad de pagina, sluit de browser of kom morgen terug. De scores en teamnamen worden lokaal opgeslagen.',
       ],
     },
     {

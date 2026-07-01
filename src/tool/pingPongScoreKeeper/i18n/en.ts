@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'ping-pong-scorekeeper';
-const title = 'Ping Pong Scorekeeper Online : Free Table Tennis Tracker';
+const title = 'Ping Pong Scorekeeper Online: Free Table Tennis Tracker';
 const description =
   'Track table tennis matches with game and set scoring. Free online ping pong scorekeeper for friendly games and tournaments. No registration needed.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Free Online Ping Pong Scorekeeper : Table Tennis Match Tracker',
+      text: 'Free Online Ping Pong Scorekeeper: Table Tennis Match Tracker',
       level: 2,
     },
     {

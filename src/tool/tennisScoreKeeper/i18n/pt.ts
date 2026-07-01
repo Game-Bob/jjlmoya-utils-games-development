@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'pontuacao-de-tenis';
-const title = 'Marcador de Ténis Online : Monitor de Partidas Grátis';
+const title = 'Marcador de Ténis Online: Monitor de Partidas Grátis';
 const description = 'Acompanhe partidas de ténis com pontuação de sets e jogos. Marcador de ténis online grátis para partidas e torneios. Sem registo necessário.';
 
 const faqData = [

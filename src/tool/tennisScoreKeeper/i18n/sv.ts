@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'tennis-poangraknare';
-const title = 'Tennis Poängräknare Online : Gratis Matchspårare';
+const title = 'Tennis Poängräknare Online: Gratis Matchspårare';
 const description = 'Följ tennismatcher med set- och game-poäng. Gratis online-poängräknare för tennis för matcher och turneringar. Ingen registrering behövs.';
 
 const faqData = [

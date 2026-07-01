@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'marcador-de-ping-pong';
-const title = 'Marcador de Ping Pong Online : Contador de Tenis de Mesa Gratis';
+const title = 'Marcador de Ping Pong Online: Contador de Tenis de Mesa Gratis';
 const description =
   'Sigue partidos de tenis de mesa con puntuación de juegos y sets. Marcador de ping pong online gratis para partidos amistosos y torneos. Sin registro necesario.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Marcador de Ping Pong Online Gratis : Seguimiento de Partidos de Tenis de Mesa',
+      text: 'Marcador de Ping Pong Online Gratis: Seguimiento de Partidos de Tenis de Mesa',
       level: 2,
     },
     {

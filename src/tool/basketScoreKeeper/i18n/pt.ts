@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'placar-de-basquete';
-const title = 'Placar de Basquete Online : Mantenedor de Pontos Grátis';
+const title = 'Placar de Basquete Online: Mantenedor de Pontos Grátis';
 const description =
   'Placar de basquete online grátis com botões +1, +2 e +3. Mantenha a pontuação em partidas de racha, basquete de rua, ensino médio e ligas locais. Sem cadastro, sem download, funciona offline.';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Placar de Basquete Online Grátis : Sem Cadastro, Sem Download',
+      text: 'Placar de Basquete Online Grátis: Sem Cadastro, Sem Download',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'A maioria dos aplicativos de placar força você a tocar no mesmo botão várias vezes para adicionar dois ou três pontos. Esses toques extras se acumulam durante uma partida de 40 minutos e aumentam a chance de perder a conta durante um contra-ataque ou substituição rápida. Este placar tem <strong>três botões separados</strong> : um para cada valor de pontuação : então você toca exatamente uma vez por jogada de pontuação. O botão +3 acende em vermelho e dispara uma animação explosiva para combinar com a emoção de uma cesta de três pontos.',
+      html: 'A maioria dos aplicativos de placar força você a tocar no mesmo botão várias vezes para adicionar dois ou três pontos. Esses toques extras se acumulam durante uma partida de 40 minutos e aumentam a chance de perder a conta durante um contra-ataque ou substituição rápida. Este placar tem <strong>três botões separados</strong>: um para cada valor de pontuação: então você toca exatamente uma vez por jogada de pontuação. O botão +3 acende em vermelho e dispara uma animação explosiva para combinar com a emoção de uma cesta de três pontos.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'O basquete não tem um limite fixo de pontuação : o jogo termina quando o cronômetro zerar. Mas o basquete de rua geralmente usa pontuações alvo como primeiro a 16, 21 ou 11 (vitória por 2). Este placar não impõe uma condição de vitória porque o basquete não termina em uma pontuação. Você decide quando o jogo acaba, e o botão de reset limpa o placar para o próximo jogo. Os nomes das equipes são preservados para que você possa jogar partidas consecutivas sem redigitá-los.',
+      html: 'O basquete não tem um limite fixo de pontuação: o jogo termina quando o cronômetro zerar. Mas o basquete de rua geralmente usa pontuações alvo como primeiro a 16, 21 ou 11 (vitória por 2). Este placar não impõe uma condição de vitória porque o basquete não termina em uma pontuação. Você decide quando o jogo acaba, e o botão de reset limpa o placar para o próximo jogo. Os nomes das equipes são preservados para que você possa jogar partidas consecutivas sem redigitá-los.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Três botões dedicados</strong> : +1, +2 e +3. Sem alternar entre valores, sem pressionar longo, sem toques extras.',
-        '<strong>Nomes de equipe editáveis</strong> : toque no nome para alterá-lo. Os nomes são salvos no navegador e persistem entre recarregamentos de página.',
-        '<strong>Bloqueio de suspensão de tela</strong> : quando você entra em tela cheia, o placar impede que a tela do celular desligue. Chega de ficar tocando na tela só para mantê-la acesa.',
-        '<strong>Modo tela cheia</strong> : esconde as abas do navegador e a barra de endereços para que o placar ocupe a tela inteira. Toque no botão de tela cheia uma vez e a ferramenta se expande.',
-        '<strong>Offline primeiro</strong> : o placar inteiro funciona sem conexão com a internet após o primeiro carregamento. Sem anúncios, sem rastreadores, sem coleta de dados.',
-        '<strong>Feedback satisfatório</strong> : cada toque dispara uma animação de pontuação, partículas flutuantes e uma vibração sutil em dispositivos compatíveis. O +3 ganha um efeito de explosão extra.',
-        '<strong>Estado do jogo é salvo</strong> : recarregue a página, feche o navegador ou volte amanhã. As pontuações e nomes das equipes são armazenados localmente.',
+        '<strong>Três botões dedicados</strong>: +1, +2 e +3. Sem alternar entre valores, sem pressionar longo, sem toques extras.',
+        '<strong>Nomes de equipe editáveis</strong>: toque no nome para alterá-lo. Os nomes são salvos no navegador e persistem entre recarregamentos de página.',
+        '<strong>Bloqueio de suspensão de tela</strong>: quando você entra em tela cheia, o placar impede que a tela do celular desligue. Chega de ficar tocando na tela só para mantê-la acesa.',
+        '<strong>Modo tela cheia</strong>: esconde as abas do navegador e a barra de endereços para que o placar ocupe a tela inteira. Toque no botão de tela cheia uma vez e a ferramenta se expande.',
+        '<strong>Offline primeiro</strong>: o placar inteiro funciona sem conexão com a internet após o primeiro carregamento. Sem anúncios, sem rastreadores, sem coleta de dados.',
+        '<strong>Feedback satisfatório</strong>: cada toque dispara uma animação de pontuação, partículas flutuantes e uma vibração sutil em dispositivos compatíveis. O +3 ganha um efeito de explosão extra.',
+        '<strong>Estado do jogo é salvo</strong>: recarregue a página, feche o navegador ou volte amanhã. As pontuações e nomes das equipes são armazenados localmente.',
       ],
     },
     {

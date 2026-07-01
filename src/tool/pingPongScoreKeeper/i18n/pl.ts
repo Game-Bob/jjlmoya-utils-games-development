@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'licznik-ping-ponga';
-const title = 'Licznik Ping Ponga Online : Darmowy Tracker Tenisa Stołowego';
+const title = 'Licznik Ping Ponga Online: Darmowy Tracker Tenisa Stołowego';
 const description =
   'Śledź mecze tenisa stołowego z punktacją gier i setów. Darmowy licznik ping ponga online do gier towarzyskich i turniejów. Bez rejestracji.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Darmowy Licznik Ping Ponga Online : Tracker Meczów Tenisa Stołowego',
+      text: 'Darmowy Licznik Ping Ponga Online: Tracker Meczów Tenisa Stołowego',
       level: 2,
     },
     {

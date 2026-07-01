@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'scoreur-de-tennis';
-const title = 'Scoreur de Tennis en Ligne : Suivi de Matchs Gratuit';
+const title = 'Scoreur de Tennis en Ligne: Suivi de Matchs Gratuit';
 const description = 'Suivez les matchs de tennis avec le score des sets et des jeux. Scoreur de tennis en ligne gratuit pour les matchs et les tournois. Aucune inscription requise.';
 
 const faqData = [

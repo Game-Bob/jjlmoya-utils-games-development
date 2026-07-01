@@ -4,20 +4,20 @@ import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'placar-baseball-softball';
 const title = 'Placar de Baseball e Softbol com Rastreador de Diamante';
-const description = 'Acompanhe pontuacoes ao vivo de baseball com corridas, rebatidas e erros. Diamante visual com posicoes dos corredores, contagem de bolas e strikes e grade historica inning por inning.';
+const description = 'Acompanhe pontuações ao vivo de baseball com corridas, rebatidas e erros. Diamante visual com posições dos corredores, contagem de bolas e strikes e grade histórica inning por inning.';
 
 const faqData = [
   {
     question: 'Como funciona a contagem no baseball?',
-    answer: 'A contagem mostra o numero de bolas e strikes no rebatedor atual. Bolas vao ate 4 para um walk. Strikes vao ate 3 para um strikeout. Limites ajustaveis para ligas juvenis.',
+    answer: 'A contagem mostra o número de bolas e strikes no rebatedor atual. Bolas vão até 4 para um walk. Strikes vão até 3 para um strikeout. Limites ajustáveis para ligas juvenis.',
   },
   {
     question: 'O que o diamante interativo de baseball mostra?',
-    answer: 'O diamante mostra primeira, segunda e terceira base. Tocar em uma base a destaca em laranja para indicar que ha um corredor na base. Corredores avancam automaticamente em rebatidas.',
+    answer: 'O diamante mostra primeira, segunda e terceira base. Tocar em uma base a destaca em laranja para indicar que há um corredor na base. Corredores avançam automaticamente em rebatidas.',
   },
   {
-    question: 'Como corridas, rebatidas e erros sao registrados?',
-    answer: 'A matriz R H E exibe corridas, rebatidas e erros para ambos os times. O historico inning por inning mostra como a pontuacao foi construida ao longo de todos os innings.',
+    question: 'Como corridas, rebatidas e erros são registrados?',
+    answer: 'A matriz R H E exibe corridas, rebatidas e erros para ambos os times. O histórico inning por inning mostra como a pontuação foi construída ao longo de todos os innings.',
   },
 ];
 
@@ -28,15 +28,15 @@ const howToData = [
   },
   {
     name: 'Gerencie os Corredores',
-    text: 'Toque nas bases no diamante para colocar ou remover corredores. Em uma rebatida, os corredores avancam automaticamente.',
+    text: 'Toque nas bases no diamante para colocar ou remover corredores. Em uma rebatida, os corredores avançam automaticamente.',
   },
   {
     name: 'Acompanhe o Progresso do Inning',
-    text: 'O display do inning mostra a metade atual. Apos tres outs o jogo alterna automaticamente entre as metades superior e inferior.',
+    text: 'O display do inning mostra a metade atual. Após três outs o jogo alterna automaticamente entre as metades superior e inferior.',
   },
   {
     name: 'Revise o Box Score',
-    text: 'Confira o resumo R H E e a grade rolavel do historico de innings para ver a progressao completa da pontuacao.',
+    text: 'Confira o resumo R H E e a grade rolável do histórico de innings para ver a progressão completa da pontuação.',
   },
 ];
 
@@ -92,7 +92,7 @@ export const content: BaseballScoreKeeperLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'Precisa de um placar de baseball confiavel para seu proximo jogo? Esta ferramenta online gratuita registra corridas, rebatidas e erros enquanto exibe um diamante interativo ao vivo com posicoes dos corredores em tempo real. Cada arremesso importa e nosso placar digital garante que voce nunca perca a contagem, os outs ou o inning. Quer voce esteja treinando uma liga juvenil, marcando pontos para um torneio de softbol ou gerenciando um jogo do ensino medio, esta ferramenta cuida de todo o box score automaticamente para que voce possa focar na acao em campo.',
+      html: 'Precisa de um placar de baseball confiável para seu próximo jogo? Esta ferramenta online gratuita registra corridas, rebatidas e erros enquanto exibe um diamante interativo ao vivo com posições dos corredores em tempo real. Cada arremesso importa e nosso placar digital garante que você nunca perca a contagem, os outs ou o inning. Quer você esteja treinando uma liga juvenil, marcando pontos para um torneio de softbol ou gerenciando um jogo do ensino médio, esta ferramenta cuida de todo o box score automaticamente para que você possa focar na ação em campo.',
     },
     {
       type: 'title',
@@ -101,7 +101,7 @@ export const content: BaseballScoreKeeperLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'A marcacao manual esta sujeita a erros, especialmente durante jogos acelerados. Um strike perdido ou um corredor esquecido pode comprometer todo o box score. Este placar digital automatiza as partes tediosas. Toque em Strike, Bola, Fouled, Rebatida ou Out e o quadro atualiza a contagem instantaneamente. Quando um rebatedor anda ou e eliminado, a ferramenta reseta a contagem automaticamente. Apos tres outs, ela inverte o inning de cima para baixo e registra as corridas. A matriz R H E e a grade do historico inning por inning fornecem uma visao completa do jogo em relance.',
+      html: 'A marcação manual está sujeita a erros, especialmente durante jogos acelerados. Um strike perdido ou um corredor esquecido pode comprometer todo o box score. Este placar digital automatiza as partes tediosas. Toque em Strike, Bola, Fouled, Rebatida ou Out e o quadro atualiza a contagem instantaneamente. Quando um rebatedor anda ou é eliminado, a ferramenta reseta a contagem automaticamente. Após três outs, ela inverte o inning de cima para baixo e registra as corridas. A matriz R H E e a grade do histórico inning por inning fornecem uma visão completa do jogo em relance.',
     },
     {
       type: 'comparative',
@@ -109,19 +109,19 @@ export const content: BaseballScoreKeeperLocaleContent = {
       items: [
         {
           title: 'Contagem de Arremessos ao Vivo',
-          description: 'Rastreamento automatico de bolas e strikes com deteccao de walk e strikeout para cada vez ao bastao.',
+          description: 'Rastreamento automático de bolas e strikes com detecção de walk e strikeout para cada vez ao bastão.',
           icon: 'mdi:baseball',
-          points: ['Bolas ate 4', 'Strikes ate 3', 'Reset automatico na decisao'],
+          points: ['Bolas até 4', 'Strikes até 3', 'Reset automático na decisão'],
         },
         {
           title: 'Gerenciamento de Corredores',
-          description: 'Diamante interativo mostra exatamente quem esta na primeira, segunda ou terceira base.',
+          description: 'Diamante interativo mostra exatamente quem está na primeira, segunda ou terceira base.',
           icon: 'mdi:diamond-stone',
-          points: ['Toque nas bases para colocar', 'Destaque visual quando ocupado', 'Limpeza na mudanca de inning'],
+          points: ['Toque nas bases para colocar', 'Destaque visual quando ocupado', 'Limpeza na mudança de inning'],
         },
         {
           title: 'Box Score Completo',
-          description: 'Estatisticas R H E completas com historico de pontuacao inning por inning rolavel.',
+          description: 'Estatísticas R H E completas com histórico de pontuação inning por inning rolável.',
           icon: 'mdi:scoreboard-outline',
           points: ['Corridas rebatidas e erros', 'Grade inning por inning', 'Totais atualizados para ambos os times'],
         },
@@ -129,38 +129,38 @@ export const content: BaseballScoreKeeperLocaleContent = {
     },
     {
       type: 'title',
-      text: 'Quem Precisa Deste Rastreador de Pontuacao de Baseball',
+      text: 'Quem Precisa Deste Rastreador de Pontuação de Baseball',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Esta ferramenta foi criada para qualquer pessoa que precise marcar pontos: treinadores de baseball juvenil que querem um display digital claro para seus jogadores, voluntarios de ligas de softbol que gerenciam jogos sem um marcador dedicado, pais acompanhando os jogos dos filhos das arquibancadas e arbitros que desejam um sistema secundario de verificacao. A interface funciona em qualquer dispositivo, de smartphones no dugout a tablets montados na cerca ou laptops no banco. Sem necessidade de instalacao, basta abrir o navegador e comecar a marcar.',
+      html: 'Esta ferramenta foi criada para qualquer pessoa que precise marcar pontos: treinadores de baseball juvenil que querem um display digital claro para seus jogadores, voluntários de ligas de softbol que gerenciam jogos sem um marcador dedicado, pais acompanhando os jogos dos filhos das arquibancadas e árbitros que desejam um sistema secundário de verificação. A interface funciona em qualquer dispositivo, de smartphones no dugout a tablets montados na cerca ou laptops no banco. Sem necessidade de instalação, basta abrir o navegador e começar a marcar.',
     },
     {
       type: 'list',
       items: [
-        '<strong>Gerenciamento Automatico de Contagem:</strong> Bolas e strikes resetam automaticamente apos walks, strikeouts, rebatidas e outs. Sem resets manuais necessarios.',
+        '<strong>Gerenciamento Automático de Contagem:</strong> Bolas e strikes resetam automaticamente após walks, strikeouts, rebatidas e outs. Sem resets manuais necessários.',
         '<strong>Diamante com Toque:</strong> Toque na primeira, segunda ou terceira base para colocar ou remover corredores. O diamante acende em dourado para mostrar bases ocupadas.',
-        '<strong>Pontuacoes Inning por Inning:</strong> Cada metade de inning e registrada na grade rolavel. Veja exatamente como cada time pontuou ao longo de todos os nove innings.',
-        '<strong>Zero Configuracao Necessaria:</strong> Abra a pagina e comece a marcar imediatamente. Personalize nomes dos times tocando nos rotulos acima das pontuacoes.',
+        '<strong>Pontuações Inning por Inning:</strong> Cada metade de inning é registrada na grade rolável. Veja exatamente como cada time pontuou ao longo de todos os nove innings.',
+        '<strong>Zero Configuração Necessária:</strong> Abra a página e comece a marcar imediatamente. Personalize nomes dos times tocando nos rótulos acima das pontuações.',
       ],
     },
     {
       type: 'title',
-      text: 'Marcacao de Baseball Simplificada: Contagem, Diamante e Box Score em Um So Lugar',
+      text: 'Marcação de Baseball Simplificada: Contagem, Diamante e Box Score em Um Só Lugar',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Marcar pontos no baseball exige acompanhar varias coisas ao mesmo tempo: a contagem de bolas e strikes, o numero de outs, quais bases tem corredores, as corridas de cada time e o inning atual. Perder o controle de qualquer um desses elementos gera confusao e registros imprecisos. Esta ferramenta consolida tudo em uma unica tela. Os pontos de contagem mostram bolas e strikes em relance. O diamante mostra as posicoes dos corredores. A tabela R H E exibe o box score completo. E a grade de innings rola horizontalmente para mostrar o historico completo de pontuacao. Tudo atualiza em tempo real a cada toque.',
+      html: 'Marcar pontos no baseball exige acompanhar várias coisas ao mesmo tempo: a contagem de bolas e strikes, o número de outs, quais bases têm corredores, as corridas de cada time e o inning atual. Perder o controle de qualquer um desses elementos gera confusão e registros imprecisos. Esta ferramenta consolida tudo em uma única tela. Os pontos de contagem mostram bolas e strikes em relance. O diamante mostra as posições dos corredores. A tabela R H E exibe o box score completo. E a grade de innings rola horizontalmente para mostrar o histórico completo de pontuação. Tudo atualiza em tempo real a cada toque.',
     },
     {
       type: 'grid',
       columns: [
-        { type: 'card', title: 'Tecnicos', html: '<p>Mantenha um placar digital claro visivel para todo o time a partir do dugout.</p>' },
-        { type: 'card', title: 'Voluntarios', html: '<p>Sem experiencia em marcacao necessaria. A ferramenta lida com todo o rastreamento complexo automaticamente.</p>' },
-        { type: 'card', title: 'Pais', html: '<p>Acompanhe o jogo das arquibancadas com um display confiavel de pontuacao em tempo real no seu celular.</p>' },
-        { type: 'card', title: 'Jogadores', html: '<p>Revise as pontuacoes inning por inning apos o jogo para analisar o desempenho.</p>' },
+        { type: 'card', title: 'Técnicos', html: '<p>Mantenha um placar digital claro visível para todo o time a partir do dugout.</p>' },
+        { type: 'card', title: 'Voluntários', html: '<p>Sem experiência em marcação necessária. A ferramenta lida com todo o rastreamento complexo automaticamente.</p>' },
+        { type: 'card', title: 'Pais', html: '<p>Acompanhe o jogo das arquibancadas com um display confiável de pontuação em tempo real no seu celular.</p>' },
+        { type: 'card', title: 'Jogadores', html: '<p>Revise as pontuações inning por inning após o jogo para analisar o desempenho.</p>' },
       ],
     },
   ],
@@ -188,7 +188,7 @@ export const content: BaseballScoreKeeperLocaleContent = {
     errorBtn: 'Erro',
     newBatter: 'Novo Rebatedor',
     resetMatch: 'Reiniciar Jogo',
-    resetConfirm: 'Reiniciar o jogo atual? Todas as pontuacoes serao perdidas.',
+    resetConfirm: 'Reiniciar o jogo atual? Todas as pontuações serão perdidas.',
     cancel: 'Cancelar',
     confirm: 'Confirmar',
     total: 'Total',

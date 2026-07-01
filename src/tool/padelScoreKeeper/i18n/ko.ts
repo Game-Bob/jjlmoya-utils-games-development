@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'padel-scorekeeper';
-const title = '프리미엄 파델 스코어키퍼 : 골드 포인트 & 로테이션 트래커';
+const title = '프리미엄 파델 스코어키퍼: 골드 포인트 & 로테이션 트래커';
 const description = '공식 Punto de Oro(골드 포인트) 규칙, 서브 로테이션 알림, 타이브레이크, 동적 코트 체인지 애니메이션으로 파델 점수를 추적하세요.';
 
 const faq = [

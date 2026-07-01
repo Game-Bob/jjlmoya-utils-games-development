@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'futbol-skor';
-const title = 'Futbol Skor Tahtası : Ücretsiz Çevrimiçi Maç Gol Takipçisi';
+const title = 'Futbol Skor Tahtası: Ücretsiz Çevrimiçi Maç Gol Takipçisi';
 const description =
   'Futbol maç skorlarını ücretsiz çevrimiçi takip edin. Dostluk maçları ve turnuvalar için basit gol sayacı. Kayıt gerekmez.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Ücretsiz Çevrimiçi Futbol Skor Tahtası : Canlı Maç Skor Takibi',
+      text: 'Ücretsiz Çevrimiçi Futbol Skor Tahtası: Canlı Maç Skor Takibi',
       level: 2,
     },
     {
@@ -184,7 +184,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: 'Futbol Skor Tahtası vs Kağıt Skor Kağıdı : neden dijital daha iyi',
+      text: 'Futbol Skor Tahtası vs Kağıt Skor Kağıdı: neden dijital daha iyi',
       level: 2,
     },
     {

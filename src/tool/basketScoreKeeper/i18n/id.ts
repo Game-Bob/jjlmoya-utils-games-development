@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'papan-skor-basket';
-const title = 'Papan Skor Basket Online : Penghitung Skor Gratis';
+const title = 'Papan Skor Basket Online: Penghitung Skor Gratis';
 const description =
   'Papan skor basket online gratis dengan tombol +1, +2, dan +3. Catat skor untuk pertandingan jalanan, basket sekolah, dan liga lokal. Tanpa daftar, tanpa unduh, bisa offline.';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Papan Skor Basket Online Gratis : Tanpa Daftar, Tanpa Unduh',
+      text: 'Papan Skor Basket Online Gratis: Tanpa Daftar, Tanpa Unduh',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Kebanyakan aplikasi papan skor memaksa Anda mengetuk tombol yang sama berkali-kali untuk menambahkan dua atau tiga poin. Ketukan ekstra itu bertambah selama pertandingan 40 menit dan meningkatkan risiko kehilangan hitungan saat serangan cepat atau pergantian pemain. Papan skor ini memiliki <strong>tiga tombol terpisah</strong> : satu untuk setiap nilai skor : sehingga Anda mengetuk tepat sekali per aksi mencetak skor. Tombol +3 menyala merah dan memicu animasi ledakan yang sesuai dengan kegembiraan saat three-pointer masuk.',
+      html: 'Kebanyakan aplikasi papan skor memaksa Anda mengetuk tombol yang sama berkali-kali untuk menambahkan dua atau tiga poin. Ketukan ekstra itu bertambah selama pertandingan 40 menit dan meningkatkan risiko kehilangan hitungan saat serangan cepat atau pergantian pemain. Papan skor ini memiliki <strong>tiga tombol terpisah</strong>: satu untuk setiap nilai skor: sehingga Anda mengetuk tepat sekali per aksi mencetak skor. Tombol +3 menyala merah dan memicu animasi ledakan yang sesuai dengan kegembiraan saat three-pointer masuk.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Basket tidak memiliki batas skor tetap : pertandingan berakhir saat waktu habis. Tapi basket jalanan sering menggunakan skor target seperti pertama mencapai 16, 21, atau 11 (menang dengan selisih 2). Papan skor ini tidak memberlakukan kondisi kemenangan karena basket tidak berakhir berdasarkan skor. Anda yang memutuskan kapan pertandingan selesai, dan tombol reset membersihkan papan untuk pertandingan berikutnya. Nama tim tetap tersimpan sehingga Anda bisa bermain beberapa pertandingan berturut-turut tanpa mengetik ulang.',
+      html: 'Basket tidak memiliki batas skor tetap: pertandingan berakhir saat waktu habis. Tapi basket jalanan sering menggunakan skor target seperti pertama mencapai 16, 21, atau 11 (menang dengan selisih 2). Papan skor ini tidak memberlakukan kondisi kemenangan karena basket tidak berakhir berdasarkan skor. Anda yang memutuskan kapan pertandingan selesai, dan tombol reset membersihkan papan untuk pertandingan berikutnya. Nama tim tetap tersimpan sehingga Anda bisa bermain beberapa pertandingan berturut-turut tanpa mengetik ulang.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Tiga tombol khusus</strong> : +1, +2, dan +3. Tidak perlu memutar-mutar nilai, tidak perlu tekan lama, tidak perlu ketukan ekstra.',
-        '<strong>Nama tim dapat diedit</strong> : ketuk nama untuk mengubahnya. Nama disimpan di peramban dan tetap ada saat halaman dimuat ulang.',
-        '<strong>Kunci layar aktif</strong> : saat Anda masuk layar penuh, papan skor mencegah layar ponsel Anda mati. Tidak perlu lagi mengetuk layar hanya untuk menjaganya tetap menyala.',
-        '<strong>Mode layar penuh</strong> : menyembunyikan tab peramban dan bilah alamat sehingga papan skor memenuhi seluruh layar. Ketuk tombol layar penuh sekali dan alat ini melebar.',
-        '<strong>Prioritas offline</strong> : seluruh papan skor berfungsi tanpa koneksi internet setelah pemuatan pertama. Tanpa iklan, tanpa pelacak, tanpa pengumpulan data.',
-        '<strong>Umpan balik yang memuaskan</strong> : setiap ketukan memicu animasi skor, partikel melayang, dan getaran halus pada perangkat yang mendukung. Tombol +3 mendapatkan efek ledakan ekstra.',
-        '<strong>Keadaan pertandingan tersimpan</strong> : muat ulang halaman, tutup peramban, atau kembali besok. Skor dan nama tim disimpan secara lokal.',
+        '<strong>Tiga tombol khusus</strong>: +1, +2, dan +3. Tidak perlu memutar-mutar nilai, tidak perlu tekan lama, tidak perlu ketukan ekstra.',
+        '<strong>Nama tim dapat diedit</strong>: ketuk nama untuk mengubahnya. Nama disimpan di peramban dan tetap ada saat halaman dimuat ulang.',
+        '<strong>Kunci layar aktif</strong>: saat Anda masuk layar penuh, papan skor mencegah layar ponsel Anda mati. Tidak perlu lagi mengetuk layar hanya untuk menjaganya tetap menyala.',
+        '<strong>Mode layar penuh</strong>: menyembunyikan tab peramban dan bilah alamat sehingga papan skor memenuhi seluruh layar. Ketuk tombol layar penuh sekali dan alat ini melebar.',
+        '<strong>Prioritas offline</strong>: seluruh papan skor berfungsi tanpa koneksi internet setelah pemuatan pertama. Tanpa iklan, tanpa pelacak, tanpa pengumpulan data.',
+        '<strong>Umpan balik yang memuaskan</strong>: setiap ketukan memicu animasi skor, partikel melayang, dan getaran halus pada perangkat yang mendukung. Tombol +3 mendapatkan efek ledakan ekstra.',
+        '<strong>Keadaan pertandingan tersimpan</strong>: muat ulang halaman, tutup peramban, atau kembali besok. Skor dan nama tim disimpan secara lokal.',
       ],
     },
     {

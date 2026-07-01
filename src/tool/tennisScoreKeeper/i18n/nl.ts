@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'tennis-scorebord';
-const title = 'Tennis Scorebord Online : Gratis Wedstrijd Tracker';
+const title = 'Tennis Scorebord Online: Gratis Wedstrijd Tracker';
 const description = 'Volg tenniswedstrijden met set- en game-scores. Gratis online tennis-scorebord voor wedstrijden en toernooien. Geen registratie nodig.';
 
 const faqData = [

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'voetbal-score';
-const title = 'Voetbal Score Bijhouden Online : Gratis Wedstrijdscore Volger';
+const title = 'Voetbal Score Bijhouden Online: Gratis Wedstrijdscore Volger';
 const description =
   'Volg voetbaluitslagen gratis online. Eenvoudige doelpunten teller voor vriendschappelijke wedstrijden, competities en toernooien. Geen registratie nodig.';
 
@@ -27,7 +27,7 @@ const faqData = [
   {
     question: 'Kan ik verlenging of strafschoppen bijhouden?',
     answer:
-      'Ja. De scoreteller werkt hetzelfde voor elk wedstrijdformaat. Blijf de + knoppen gebruiken tijdens verlenging of strafschoppen. Tik op „Wedstrijd beëindigen" wanneer de wedstrijd voorbij is om de eindstand te zien.',
+      'Ja. De scoreteller werkt hetzelfde voor elk wedstrijdformaat. Blijf de + knoppen gebruiken tijdens verlenging of strafschoppen. Tik op "Wedstrijd beëindigen" wanneer de wedstrijd voorbij is om de eindstand te zien.',
   },
   {
     question: 'Is het echt gratis zonder verborgen limieten?',
@@ -51,7 +51,7 @@ const howToData = [
   },
   {
     name: 'Wedstrijd beëindigen',
-    text: 'Tik onderaan op „Wedstrijd beëindigen" om de winnaar te zien met een trofee en confetti. Sluit de viering door buiten het venster te tikken.',
+    text: 'Tik onderaan op "Wedstrijd beëindigen" om de winnaar te zien met een trofee en confetti. Sluit de viering door buiten het venster te tikken.',
   },
   {
     name: 'Wedstrijd resetten',
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Gratis Online Voetbalscore Bijhouden : Live Wedstrijdscore Volger',
+      text: 'Gratis Online Voetbalscore Bijhouden: Live Wedstrijdscore Volger',
       level: 2,
     },
     {
@@ -118,7 +118,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Een generieke teller werkt voor alles tellen, maar een speciale voetbalscore begrijpt hoe het spel werkt. Het scheidt de twee teams visueel met duidelijke kleuren, zodat je nooit op de verkeerde kant tikt. De doelpuntknop is groot en bevredigend om in te drukken, zelfs als je een telefoon in één hand vasthoudt. Met de min-knop kun je fouten direct corrigeren zonder de hele wedstrijd te resetten. En wanneer de wedstrijd voorbij is, activeert de knop „Wedstrijd beëindigen" een feestelijk scherm dat de eindstand toont met confetti en een trofee. Generieke tellers kunnen dat allemaal niet. Ze behandelen elk punt hetzelfde. Voetbal is niet generiek en jouw scoreteller zou dat ook niet moeten zijn.',
+      html: 'Een generieke teller werkt voor alles tellen, maar een speciale voetbalscore begrijpt hoe het spel werkt. Het scheidt de twee teams visueel met duidelijke kleuren, zodat je nooit op de verkeerde kant tikt. De doelpuntknop is groot en bevredigend om in te drukken, zelfs als je een telefoon in één hand vasthoudt. Met de min-knop kun je fouten direct corrigeren zonder de hele wedstrijd te resetten. En wanneer de wedstrijd voorbij is, activeert de knop "Wedstrijd beëindigen" een feestelijk scherm dat de eindstand toont met confetti en een trofee. Generieke tellers kunnen dat allemaal niet. Ze behandelen elk punt hetzelfde. Voetbal is niet generiek en jouw scoreteller zou dat ook niet moeten zijn.',
     },
     {
       type: 'comparative',
@@ -151,7 +151,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Het gebruik van deze voetbalscore is eenvoudig. Wanneer je de pagina opent, zie je twee teamgedeelten. Het thuis team wordt in rood weergegeven en het uitteam in blauw. Elk gedeelte heeft een groot scorenummer in het midden, een teamnaamveld bovenaan en twee knoppen eronder. Tik op de grote ronde + knop om een doelpunt voor dat team toe te voegen. Het scorenummer animeert elke keer met een feestelijk effect. Acht verschillende doelpuntanimaties wisselen willekeurig, zodat elk doelpunt uniek aanvoelt. Zwevende deeltjes barsten los uit het knopgebied met tekst zoals GOAL en SIUUU. Het scherm flitst kort om het moment te markeren. Als je een fout maakt, tik dan op de kleine min-knop om het laatste doelpunt te verwijderen. De teamnaamvelden zijn bewerkbaar. Tik op de standaardnaam om je eigen teamnaam in te typen. Namen worden automatisch opgeslagen in je browser, samen met de huidige score. Dit betekent dat je de pagina kunt sluiten, later terug kunt komen en je wedstrijdgegevens zijn er nog steeds. Aan het einde van de wedstrijd tik je op „Wedstrijd beëindigen" om de winnaar te zien met een trofee-animatie en vallende confetti. Je kunt de viering sluiten en de score blijft zichtbaar.',
+      html: 'Het gebruik van deze voetbalscore is eenvoudig. Wanneer je de pagina opent, zie je twee teamgedeelten. Het thuis team wordt in rood weergegeven en het uitteam in blauw. Elk gedeelte heeft een groot scorenummer in het midden, een teamnaamveld bovenaan en twee knoppen eronder. Tik op de grote ronde + knop om een doelpunt voor dat team toe te voegen. Het scorenummer animeert elke keer met een feestelijk effect. Acht verschillende doelpuntanimaties wisselen willekeurig, zodat elk doelpunt uniek aanvoelt. Zwevende deeltjes barsten los uit het knopgebied met tekst zoals GOAL en SIUUU. Het scherm flitst kort om het moment te markeren. Als je een fout maakt, tik dan op de kleine min-knop om het laatste doelpunt te verwijderen. De teamnaamvelden zijn bewerkbaar. Tik op de standaardnaam om je eigen teamnaam in te typen. Namen worden automatisch opgeslagen in je browser, samen met de huidige score. Dit betekent dat je de pagina kunt sluiten, later terug kunt komen en je wedstrijdgegevens zijn er nog steeds. Aan het einde van de wedstrijd tik je op "Wedstrijd beëindigen" om de winnaar te zien met een trofee-animatie en vallende confetti. Je kunt de viering sluiten en de score blijft zichtbaar.',
     },
     {
       type: 'title',
@@ -173,7 +173,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
         '<strong>Kleurgecodeerde teams</strong> rood voor thuis en blauw voor uit. Je ziet direct welke kant welke is zonder tekst te lezen.',
         '<strong>Doelpunt vieringsanimaties</strong> elk doelpunt activeert een willekeurige viering. Acht verschillende animaties waaronder boom, rise, glow en ball bounce.',
         '<strong>Zwevende deeltjes</strong> elk doelpunt produceert zwevende tekst met berichten zoals GOAL en SIUUU. Elke viering voelt uniek.',
-        '<strong>Wedstrijdbeëindigingsceremonie</strong> tik op „Wedstrijd beëindigen" voor een winnaarsaankondiging met trofee-animatie, teamnaam en confettiregen.',
+        '<strong>Wedstrijdbeëindigingsceremonie</strong> tik op "Wedstrijd beëindigen" voor een winnaarsaankondiging met trofee-animatie, teamnaam en confettiregen.',
         '<strong>Bewerkbare teamnamen</strong> tik op het naamveld om je teams een andere naam te geven. Namen worden lokaal opgeslagen in je browser.',
         '<strong>Scherm vergrendeling</strong> volledige schermmodus voorkomt dat je telefoonscherm uitgaat tijdens de wedstrijd.',
         '<strong>Volledige schermmodus</strong> verbergt de browserinterface zodat de score het hele scherm vult zonder afleiding.',
@@ -184,7 +184,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: 'Voetbalscore vs. Papieren Scoresheet : waarom digitaal beter is',
+      text: 'Voetbalscore vs. Papieren Scoresheet: waarom digitaal beter is',
       level: 2,
     },
     {

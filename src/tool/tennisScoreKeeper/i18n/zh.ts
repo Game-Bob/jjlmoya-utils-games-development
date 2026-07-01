@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'tennis-scorekeeper';
-const title = '在线网球记分员 : 免费比赛追踪器';
+const title = '在线网球记分员: 免费比赛追踪器';
 const description = '使用盘和局比分追踪网球比赛。适用于比赛和锦标赛的免费在线网球记分员。无需注册。';
 
 const faqData = [

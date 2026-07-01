@@ -4,35 +4,35 @@ import type { BeachVolleyballLocaleContent } from '../entry';
 
 const slug = 'beachvolleyball-spielstand';
 const title = 'Beachvolleyball Spielstand und Aufschlagreihenfolge';
-const description = 'Verfolge Beachvolleyball Punkte, Aufschlagreihenfolge, Seitenwechsel durch Wind und Satze mit einer interaktiven Sandplatzvisualisierung von oben.';
+const description = 'Verfolge Beachvolleyball Punkte, Aufschlagreihenfolge, Seitenwechsel durch Wind und Sätze mit einer interaktiven Sandplatzvisualisierung von oben.';
 
 const faq = [
   {
     question: 'Wann wechseln Teams im Beachvolleyball die Seiten?',
-    answer: 'Um Fairness unter Freiluftbedingungen (Wind, Sonne, Sand) zu gewahrleisten, wechseln Teams alle 7 Punkte in den ersten beiden Satzen und alle 5 Punkte im entscheidenden dritten Satz die Seiten.',
+    answer: 'Um Fairness unter Freiluftbedingungen (Wind, Sonne, Sand) zu gewährleisten, wechseln Teams alle 7 Punkte in den ersten beiden Sätzen und alle 5 Punkte im entscheidenden dritten Satz die Seiten.',
   },
   {
     question: 'Wie funktioniert die Aufschlagreihenfolge im Beachvolleyball?',
-    answer: 'Jedes Team hat 2 Spieler, die sich beim Aufschlag abwechseln mussen. Wenn ein Team einen Aufschlagbruch (Side-out) gewinnt, muss der Aufschlag wechseln, sodass der Spieler, der beim letzten Aufschlag des Teams nicht aufgeschlagen hat, als nachster aufschlagt.',
+    answer: 'Jedes Team hat 2 Spieler, die sich beim Aufschlag abwechseln müssen. Wenn ein Team einen Aufschlagbruch (Side-out) gewinnt, muss der Aufschlag wechseln, sodass der Spieler, der beim letzten Aufschlag des Teams nicht aufgeschlagen hat, als Nächster aufschlägt.',
   },
   {
-    question: 'Wie viele Punkte werden benotigt, um einen Beachvolleyball-Satz zu gewinnen?',
-    answer: 'Satz 1 und 2 werden bis 21 Punkte gespielt. Wenn ein dritter Satz erforderlich ist, wird er bis 15 Punkte gespielt. In allen Fallen muss ein Team mit mindestens 2 Punkten Vorsprung gewinnen.',
+    question: 'Wie viele Punkte werden benötigt, um einen Beachvolleyball-Satz zu gewinnen?',
+    answer: 'Satz 1 und 2 werden bis 21 Punkte gespielt. Wenn ein dritter Satz erforderlich ist, wird er bis 15 Punkte gespielt. In allen Fällen muss ein Team mit mindestens 2 Punkten Vorsprung gewinnen.',
   },
 ];
 
 const howTo = [
   {
     name: 'Aufstellung Konfigurieren',
-    text: 'Gib benutzerdefinierte Namen fur die beiden Spieler von Team A und Team B ein.',
+    text: 'Gib benutzerdefinierte Namen für die beiden Spieler von Team A und Team B ein.',
   },
   {
     name: 'Punkte Aufzeichnen',
-    text: 'Tippe auf die Teamkarte oder klicke auf den interaktiven Sandplatz, um Punkte hinzuzufugen. Die Aufstellung und Rotation werden automatisch aktualisiert.',
+    text: 'Tippe auf die Teamkarte oder klicke auf den interaktiven Sandplatz, um Punkte hinzuzufügen. Die Aufstellung und Rotation werden automatisch aktualisiert.',
   },
   {
     name: 'Seitenwechsel Warnungen Beachten',
-    text: 'Wenn das Wechselbanner nach unten rutscht, fuhre einen physischen Seitenwechsel durch und klicke auf die Wechseltaste, um die Platzausrichtung zu invertieren.',
+    text: 'Wenn das Wechselbanner nach unten rutscht, führe einen physischen Seitenwechsel durch und klicke auf die Wechseltaste, um die Platzausrichtung zu invertieren.',
   },
 ];
 
@@ -86,7 +86,7 @@ export const content: BeachVolleyballLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'Den Uberblick uber die Aufschlagreihenfolge und Teampositionen in der heissen Sonne zu behalten, kann schwierig sein. Dieser professionelle Beachvolleyball-Spielstandsanzeiger verfugt uber ein sandtexturiertes, kontrastreiches digitales Platzlayout, das fur die Sichtbarkeit im Freien optimiert ist. Es verhindert Blendungsprobleme beim Ablesen, automatisiert die Seitenwechselregeln und verfolgt, welcher der beiden Spieler nach jedem Side-out Punkt aufschlagen muss.',
+      html: 'Den Überblick über die Aufschlagreihenfolge und Teampositionen in der heißen Sonne zu behalten, kann schwierig sein. Dieser professionelle Beachvolleyball-Spielstandsanzeiger verfügt über ein sandtexturiertes, kontrastreiches digitales Platzlayout, das für die Sichtbarkeit im Freien optimiert ist. Es verhindert Blendungsprobleme beim Ablesen, automatisiert die Seitenwechselregeln und verfolgt, welcher der beiden Spieler nach jedem Side-out Punkt aufschlagen muss.',
     },
     {
       type: 'title',
@@ -95,7 +95,7 @@ export const content: BeachVolleyballLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'Obwohl es im 2v2 Beachvolleyball keine festen Positionen oder Rotationsfehler basierend auf der Platzposition gibt, mussen die Spieler den Aufschlag streng abwechseln. Immer wenn das annehmende Team einen Ballwechsel gewinnt (Side-out), erhalt es das Aufschlagsrecht. Der Spieler, der beim letzten Aufschlag seines Teams nicht aufgeschlagen hat, muss der neue Aufschlagende sein. Das Aufschlagen in falscher Reihenfolge ist ein Fehler und fuhrt zu einem Punkt fur die Gegner. Diese digitale Anzeige verfugt uber aktive Aufschlagpunkte und springende Ballindikatoren neben den Spielerkreisen, um Rotationsfehler zu vermeiden.',
+      html: 'Obwohl es im 2v2 Beachvolleyball keine festen Positionen oder Rotationsfehler basierend auf der Platzposition gibt, müssen die Spieler den Aufschlag streng abwechseln. Immer wenn das annehmende Team einen Ballwechsel gewinnt (Side-out), erhält es das Aufschlagsrecht. Der Spieler, der beim letzten Aufschlag seines Teams nicht aufgeschlagen hat, muss der neue Aufschlagende sein. Das Aufschlagen in falscher Reihenfolge ist ein Fehler und führt zu einem Punkt für die Gegner. Diese digitale Anzeige verfügt über aktive Aufschlagpunkte und springende Ballindikatoren neben den Spielerkreisen, um Rotationsfehler zu vermeiden.',
     },
     {
       type: 'comparative',
@@ -103,9 +103,9 @@ export const content: BeachVolleyballLocaleContent = {
       items: [
         {
           title: 'Offizielle FIVB Regeln',
-          description: 'Erfulle die offiziellen Bewertungsrichtlinien, einschliesslich Satzgrenzen und Seitenwechsel.',
+          description: 'Erfülle die offiziellen Bewertungsrichtlinien, einschließlich Satzgrenzen und Seitenwechsel.',
           icon: 'mdi:volleyball',
-          points: ['Satze bis 21 (Tiebreak bis 15)', 'Strenger 2-Punkte Vorsprung', 'Automatisierte Seitenwechsel'],
+          points: ['Sätze bis 21 (Tiebreak bis 15)', 'Strenger 2-Punkte Vorsprung', 'Automatisierte Seitenwechsel'],
         },
         {
           title: 'Aufschlagverfolgung',
@@ -114,10 +114,10 @@ export const content: BeachVolleyballLocaleContent = {
           points: ['Leuchtende Aufschlaganzeigen', 'Initialen auf dem Sand', 'Aufstellungsoverlay Modal'],
         },
         {
-          title: 'Fur Aussen Optimiert',
-          description: 'Entwickelt fur das Spielen auf Sandplatzen bei direktem Sonnenlicht.',
+          title: 'Für Außen Optimiert',
+          description: 'Entwickelt für das Spielen auf Sandplätzen bei direktem Sonnenlicht.',
           icon: 'mdi:weather-sunny',
-          points: ['Kontrastreiches gelbes Design', 'Wake Lock Bildschirmpersistenz', 'Wischgeste zum Ruckgangig machen'],
+          points: ['Kontrastreiches gelbes Design', 'Wake Lock Bildschirmpersistenz', 'Wischgeste zum Rückgängig machen'],
         },
       ],
     },
@@ -129,11 +129,11 @@ export const content: BeachVolleyballLocaleContent = {
     {
       type: 'list',
       items: [
-        '<strong>Goldener Sand SVG Platz:</strong> Zeigt den Spielstand visuell an. Tippe direkt auf eine der beiden Spielfeldhalfen, um diesem Team einen Punkt zu geben.',
-        '<strong>Platzrotationsanimation:</strong> Wenn die Seitenwechselwarnung ausgelost wird, dreht ein Klick auf die Wechseltaste den gesamten SVG Platz um 180 Grad, sodass die Anzeige mit euren physischen Positionen ubereinstimmt.',
-        '<strong>FIVB Seitenwechselalarme:</strong> Zeigt ein gut sichtbares Warnbanner an, wenn die Gesamtpunktzahl ein Vielfaches von 7 (in Satz 1 und 2) oder ein Vielfaches von 5 (im letzten Satz) betragt.',
-        '<strong>Sandspritzer Partikel:</strong> Fugt bei Punkteanderungen visuelles Feedback mit animierten Sandpartikeln hinzu, die von den Tippkoordinaten aufwirbeln.',
-        '<strong>Ruckgangig Geste:</strong> Wische auf der Karte nach unten, um den letzten aufgezeichneten Punkt sofort ruckgangig zu machen.',
+        '<strong>Goldener Sand SVG Platz:</strong> Zeigt den Spielstand visuell an. Tippe direkt auf eine der beiden Spielfeldhälften, um diesem Team einen Punkt zu geben.',
+        '<strong>Platzrotationsanimation:</strong> Wenn die Seitenwechselwarnung ausgelöst wird, dreht ein Klick auf die Wechseltaste den gesamten SVG Platz um 180 Grad, sodass die Anzeige mit euren physischen Positionen übereinstimmt.',
+        '<strong>FIVB Seitenwechselalarme:</strong> Zeigt ein gut sichtbares Warnbanner an, wenn die Gesamtpunktzahl ein Vielfaches von 7 (in Satz 1 und 2) oder ein Vielfaches von 5 (im letzten Satz) beträgt.',
+        '<strong>Sandspritzer Partikel:</strong> Fügt bei Punkteänderungen visuelles Feedback mit animierten Sandpartikeln hinzu, die von den Tippkoordinaten aufwirbeln.',
+        '<strong>Rückgängig Geste:</strong> Wische auf der Karte nach unten, um den letzten aufgezeichneten Punkt sofort rückgängig zu machen.',
       ],
     },
     {
@@ -143,16 +143,16 @@ export const content: BeachVolleyballLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'Im Gegensatz zum Hallenvolleyball werden Beachvolleyballspiele stark von Umwelteinflussen wie Sonnenblendung, Hitze, Windstarke und Sandbeschaffenheit beeinflusst. Haufige Seitenwechsel stellen sicher, dass kein Team einen unfairen Vorteil durch eine gunstige Windrichtung oder die Sonne in den Augen erhalt. Die Regeln schreiben vor, dass die Seiten in den ersten beiden Satzen alle 7 Punkte und im dritten Satz alle 5 Punkte gewechselt werden.',
+      html: 'Im Gegensatz zum Hallenvolleyball werden Beachvolleyballspiele stark von Umwelteinflüssen wie Sonnenblendung, Hitze, Windstärke und Sandbeschaffenheit beeinflusst. Häufige Seitenwechsel stellen sicher, dass kein Team einen unfairen Vorteil durch eine günstige Windrichtung oder die Sonne in den Augen erhält. Die Regeln schreiben vor, dass die Seiten in den ersten beiden Sätzen alle 7 Punkte und im dritten Satz alle 5 Punkte gewechselt werden.',
     },
   ],
   ui: {
     teamA: 'Team 1',
     teamB: 'Team 2',
     points: 'Punkte',
-    sets: 'Satze',
-    reset: 'Zurucksetzen',
-    resetConfirm: 'Spiel zurucksetzen? Alle Punkte und Aufstellungen gehen verloren.',
+    sets: 'Sätze',
+    reset: 'Zurücksetzen',
+    resetConfirm: 'Spiel zurücksetzen? Alle Punkte und Aufstellungen gehen verloren.',
     cancel: 'Abbrechen',
     switchSides: 'Seiten Wechseln',
     switchSidesDesc: 'Gesamtpunktzahl hat Wechselschwelle erreicht!',
@@ -162,6 +162,7 @@ export const content: BeachVolleyballLocaleContent = {
     player2: 'Spieler 2',
     serving: 'Aufschlag',
     winner: 'Gewinner',
-    undo: 'Ruckgangig',
+    undo: 'Rückgängig',
   },
 };
+

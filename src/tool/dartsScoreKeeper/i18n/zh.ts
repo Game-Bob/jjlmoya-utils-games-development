@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'darts-scorekeeper';
-const title = '在线飞镖记分员 : 回合和盘次追踪器';
+const title = '在线飞镖记分员: 回合和盘次追踪器';
 const description = '使用回合和盘次比分追踪飞镖比赛。适用于501和301比赛的免费在线飞镖记分员，带有实时结算计算和统计数据。';
 
 const faqData = [

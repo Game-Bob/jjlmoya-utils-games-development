@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'licznik-punktow-padla';
-const title = 'Profesjonalny Licznik Punktów w Padelu : Złoty Punkt i Rotacja Serwisu';
+const title = 'Profesjonalny Licznik Punktów w Padelu: Złoty Punkt i Rotacja Serwisu';
 const description = 'Śledź wyniki w padelu z oficjalną zasadą Punto de Oro (Złoty Punkt), alertami rotacji serwisu, tie-breakami i dynamiczną animacją zmiany stron.';
 
 const faq = [

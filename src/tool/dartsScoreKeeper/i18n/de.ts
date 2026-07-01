@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'darts-punktestand';
-const title = 'Darts Punktestand Online : Leg und Set Tracker';
+const title = 'Darts Punktestand Online: Leg und Set Tracker';
 const description = 'Verfolge Darts-Matches mit Leg- und Set-Punktzählung. Kostenloser Online-Darts-Punktestand für 501 und 301 Matches mit live Checkout-Berechnungen und Statistiken.';
 
 const faqData = [

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'tablica-wynikow-koszykowka';
-const title = 'Tablica Wyników Koszykówki Online : Darmowy Licznik Punktów';
+const title = 'Tablica Wyników Koszykówki Online: Darmowy Licznik Punktów';
 const description =
   'Darmowa tablica wyników koszykówki online z przyciskami +1, +2 i +3. Zapisuj punkty w meczach towarzyskich, streetballu, na poziomie szkoły średniej i w lokalnych ligach. Bez rejestracji, bez pobierania, działa offline.';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Darmowa Tablica Wyników Koszykówki Online : Bez Rejestracji, Bez Pobierania',
+      text: 'Darmowa Tablica Wyników Koszykówki Online: Bez Rejestracji, Bez Pobierania',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Większość aplikacji do tablic wyników wymaga wielokrotnego naciskania tego samego przycisku, aby dodać dwa lub trzy punkty. Te dodatkowe naciśnięcia kumulują się podczas 40-minutowego meczu i zwiększają ryzyko pomyłki podczas szybkiej kontry lub zmiany. Ta tablica wyników ma <strong>trzy osobne przyciski</strong> : jeden dla każdej wartości punktowej : więc naciskasz dokładnie raz na każdą akcję punktową. Przycisk +3 świeci na czerwono i wyzwala eksplozywną animację, która oddaje emocje towarzyszące celowemu rzutowi za trzy punkty.',
+      html: 'Większość aplikacji do tablic wyników wymaga wielokrotnego naciskania tego samego przycisku, aby dodać dwa lub trzy punkty. Te dodatkowe naciśnięcia kumulują się podczas 40-minutowego meczu i zwiększają ryzyko pomyłki podczas szybkiej kontry lub zmiany. Ta tablica wyników ma <strong>trzy osobne przyciski</strong>: jeden dla każdej wartości punktowej: więc naciskasz dokładnie raz na każdą akcję punktową. Przycisk +3 świeci na czerwono i wyzwala eksplozywną animację, która oddaje emocje towarzyszące celowemu rzutowi za trzy punkty.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Koszykówka nie ma ustalonego limitu punktów : mecz kończy się, gdy zegar wybije zero. Ale koszykówka towarzyska często używa docelowych wyników, jak pierwszy do 16, 21 lub 11 (wygrana różnicą 2). Ta tablica wyników nie narzuca warunku zwycięstwa, ponieważ koszykówka nie kończy się na wyniku. To ty decydujesz, kiedy mecz się kończy, a przycisk resetowania czyści tablicę na następną grę. Nazwy drużyn są zachowywane, więc możesz grać kolejne mecze bez ponownego wpisywania.',
+      html: 'Koszykówka nie ma ustalonego limitu punktów: mecz kończy się, gdy zegar wybije zero. Ale koszykówka towarzyska często używa docelowych wyników, jak pierwszy do 16, 21 lub 11 (wygrana różnicą 2). Ta tablica wyników nie narzuca warunku zwycięstwa, ponieważ koszykówka nie kończy się na wyniku. To ty decydujesz, kiedy mecz się kończy, a przycisk resetowania czyści tablicę na następną grę. Nazwy drużyn są zachowywane, więc możesz grać kolejne mecze bez ponownego wpisywania.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Trzy dedykowane przyciski</strong> : +1, +2 i +3. Bez przełączania wartości, bez długiego przytrzymywania, bez dodatkowych naciśnięć.',
-        '<strong>Edytowalne nazwy drużyn</strong> : naciśnij nazwę, aby ją zmienić. Nazwy są zapisywane w przeglądarce i pozostają po odświeżeniu strony.',
-        '<strong>Blokada uśpienia ekranu</strong> : w trybie pełnoekranowym tablica wyników zapobiega wyłączaniu się ekranu telefonu. Koniec z ciągłym naciskaniem ekranu, aby go utrzymać włączonym.',
-        '<strong>Tryb pełnoekranowy</strong> : ukrywa karty przeglądarki i pasek adresu, dzięki czemu tablica wyników zajmuje cały ekran. Naciśnij przycisk pełnego ekranu raz, a narzędzie się rozszerzy.',
-        '<strong>Offline najpierw</strong> : cała tablica wyników działa bez połączenia z internetem po pierwszym załadowaniu. Żadnych reklam, żadnych trackerów, żadnego zbierania danych.',
-        '<strong>Satysfakcjonujące informacje zwrotne</strong> : każde naciśnięcie wyzwala animację punktów, unoszące się cząsteczki i subtelne wibracje na obsługiwanych urządzeniach. Przycisk +3 ma dodatkowy efekt eksplozji.',
-        '<strong>Stan gry jest zapisywany</strong> : odśwież stronę, zamknij przeglądarkę lub wróć jutro. Wyniki i nazwy drużyn są przechowywane lokalnie.',
+        '<strong>Trzy dedykowane przyciski</strong>: +1, +2 i +3. Bez przełączania wartości, bez długiego przytrzymywania, bez dodatkowych naciśnięć.',
+        '<strong>Edytowalne nazwy drużyn</strong>: naciśnij nazwę, aby ją zmienić. Nazwy są zapisywane w przeglądarce i pozostają po odświeżeniu strony.',
+        '<strong>Blokada uśpienia ekranu</strong>: w trybie pełnoekranowym tablica wyników zapobiega wyłączaniu się ekranu telefonu. Koniec z ciągłym naciskaniem ekranu, aby go utrzymać włączonym.',
+        '<strong>Tryb pełnoekranowy</strong>: ukrywa karty przeglądarki i pasek adresu, dzięki czemu tablica wyników zajmuje cały ekran. Naciśnij przycisk pełnego ekranu raz, a narzędzie się rozszerzy.',
+        '<strong>Offline najpierw</strong>: cała tablica wyników działa bez połączenia z internetem po pierwszym załadowaniu. Żadnych reklam, żadnych trackerów, żadnego zbierania danych.',
+        '<strong>Satysfakcjonujące informacje zwrotne</strong>: każde naciśnięcie wyzwala animację punktów, unoszące się cząsteczki i subtelne wibracje na obsługiwanych urządzeniach. Przycisk +3 ma dodatkowy efekt eksplozji.',
+        '<strong>Stan gry jest zapisywany</strong>: odśwież stronę, zamknij przeglądarkę lub wróć jutro. Wyniki i nazwy drużyn są przechowywane lokalnie.',
       ],
     },
     {

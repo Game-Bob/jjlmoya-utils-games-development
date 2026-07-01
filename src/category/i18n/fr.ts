@@ -8,7 +8,7 @@ export const content: CategoryLocaleContent = {
   seo: [
     {
       type: 'title',
-      text: 'Science de la Performance Sportive : Les Données pour Gagner',
+      text: 'Science de la Performance Sportive: Les Données pour Gagner',
       level: 2,
     },
     {
@@ -17,11 +17,11 @@ export const content: CategoryLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'De la mesure de la vitesse de réaction neuromusculaire à la gestion des tableaux d\'élimination de tournois, nos calculateurs appliquent une logique algorithmique et statistique pour que vous vous concentriez sur l\'essentiel : dépasser vos limites.',
+      html: 'De la mesure de la vitesse de réaction neuromusculaire à la gestion des tableaux d\'élimination de tournois, nos calculateurs appliquent une logique algorithmique et statistique pour que vous vous concentriez sur l\'essentiel: dépasser vos limites.',
     },
     {
       type: 'title',
-      text: 'Logistique Compétitive : Tableaux de Score et Organisateurs',
+      text: 'Logistique Compétitive: Tableaux de Score et Organisateurs',
       level: 2,
     },
     {
@@ -34,7 +34,7 @@ export const content: CategoryLocaleContent = {
     },
     {
       type: 'title',
-      text: 'Entraînement en Force : Suivi Basé sur la Progression',
+      text: 'Entraînement en Force: Suivi Basé sur la Progression',
       level: 2,
     },
     {
@@ -43,7 +43,7 @@ export const content: CategoryLocaleContent = {
     },
     {
       type: 'title',
-      text: 'Neurologie et Réflexes : Vitesse de Réaction',
+      text: 'Neurologie et Réflexes: Vitesse de Réaction',
       level: 2,
     },
     {
@@ -66,12 +66,12 @@ export const content: CategoryLocaleContent = {
     },
     {
       type: 'title',
-      text: 'Physiologie de l\'Entraînement : Zones de Fréquence Cardiaque',
+      text: 'Physiologie de l\'Entraînement: Zones de Fréquence Cardiaque',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Votre cœur est l\'indicateur le plus précis de l\'effort. La fréquence cardiaque maximale (FCM) varie selon l\'âge, la génétique et la capacité cardiovasculaire. La calculer correctement permet de s\'entraîner dans des zones spécifiques : zone aérobie (60-70% FCM) pour l\'endurance de base, zone anaérobie (80-90% FCM) pour l\'explosivité, zone VO2 max (95-100%) pour la capacité cardio-respiratoire.',
+      html: 'Votre cœur est l\'indicateur le plus précis de l\'effort. La fréquence cardiaque maximale (FCM) varie selon l\'âge, la génétique et la capacité cardiovasculaire. La calculer correctement permet de s\'entraîner dans des zones spécifiques: zone aérobie (60-70% FCM) pour l\'endurance de base, zone anaérobie (80-90% FCM) pour l\'explosivité, zone VO2 max (95-100%) pour la capacité cardio-respiratoire.',
     },
     {
       type: 'title',

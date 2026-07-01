@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'ping-pong-scorekeeper';
-const title = '온라인 핑퐁 스코어키퍼 : 무료 탁구 트래커';
+const title = '온라인 핑퐁 스코어키퍼: 무료 탁구 트래커';
 const description =
   '게임 및 세트 스코어링으로 탁구 경기를 추적하세요. 친선 경기 및 토너먼트를 위한 무료 온라인 핑퐁 스코어키퍼. 등록 불필요.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: '무료 온라인 핑퐁 스코어키퍼 : 탁구 경기 트래커',
+      text: '무료 온라인 핑퐁 스코어키퍼: 탁구 경기 트래커',
       level: 2,
     },
     {

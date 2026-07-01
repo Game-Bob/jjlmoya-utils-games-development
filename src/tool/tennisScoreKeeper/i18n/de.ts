@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'tennis-spielstand';
-const title = 'Tennis Punktestand Online : Kostenloser Match Tracker';
+const title = 'Tennis Punktestand Online: Kostenloser Match Tracker';
 const description = 'Verfolge Tennis-Matches mit Satz- und Spiel-Punktzählung. Kostenloser Online-Tennis-Punktestand für Matches und Turniere. Keine Registrierung nötig.';
 
 const faqData = [

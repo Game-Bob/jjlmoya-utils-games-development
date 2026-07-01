@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'schetchik-nastolnogo-tennisa';
-const title = 'Счетчик пинг понга онлайн : Бесплатный трекер настольного тенниса';
+const title = 'Счетчик пинг понга онлайн: Бесплатный трекер настольного тенниса';
 const description =
   'Отслеживайте матчи по настольному теннису с подсчетом очков в играх и сетах. Бесплатный онлайн-счетчик пинг-понга для товарищеских игр и турниров. Регистрация не требуется.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Бесплатный онлайн-счетчик пинг-понга : Трекер матчей по настольному теннису',
+      text: 'Бесплатный онлайн-счетчик пинг-понга: Трекер матчей по настольному теннису',
       level: 2,
     },
     {

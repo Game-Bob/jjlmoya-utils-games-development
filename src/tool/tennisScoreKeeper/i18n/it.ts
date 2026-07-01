@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'segnapunti-tennis';
-const title = 'Segnapunti Tennis Online : Tracker Partite Gratuito';
+const title = 'Segnapunti Tennis Online: Tracker Partite Gratuito';
 const description = 'Segui le partite di tennis con punteggio di set e game. Segnapunti tennis online gratuito per partite e tornei. Nessuna registrazione necessaria.';
 
 const faqData = [

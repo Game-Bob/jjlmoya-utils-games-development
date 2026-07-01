@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'padel-scorekeeper';
-const title = '高级板式网球记分器 : 金球制与轮转追踪';
+const title = '高级板式网球记分器: 金球制与轮转追踪';
 const description = '使用官方 Punto de Oro（金球制）规则、发球轮转提醒、抢七局和动态换边动画来追踪板式网球比分。';
 
 const faq = [

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'darts-scorebord';
-const title = 'Darts Scorebord Online : Leg en Set Tracker';
+const title = 'Darts Scorebord Online: Leg en Set Tracker';
 const description = 'Volg darts-wedstrijden met leg- en set-scores. Gratis online darts-scorebord voor 501 en 301 wedstrijden met live checkout-berekeningen en statistieken.';
 
 const faqData = [

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'pencatat-skor-sepakbola';
-const title = 'Pencatat Skor Sepak Bola Online : Penghitung Gol Pertandingan Gratis';
+const title = 'Pencatat Skor Sepak Bola Online: Penghitung Gol Pertandingan Gratis';
 const description =
   'Catat skor pertandingan sepak bola online secara gratis. Penghitung gol sederhana untuk pertandingan persahabatan dan turnamen. Tanpa perlu daftar.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Pencatat Skor Sepak Bola Online Gratis : Pelacak Skor Pertandingan Langsung',
+      text: 'Pencatat Skor Sepak Bola Online Gratis: Pelacak Skor Pertandingan Langsung',
       level: 2,
     },
     {
@@ -184,7 +184,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: 'Pencatat Skor Sepak Bola vs Lembar Skor Kertas : mengapa digital lebih baik',
+      text: 'Pencatat Skor Sepak Bola vs Lembar Skor Kertas: mengapa digital lebih baik',
       level: 2,
     },
     {

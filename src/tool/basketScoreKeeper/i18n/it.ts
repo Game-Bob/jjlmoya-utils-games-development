@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'punteggio-basket';
-const title = 'Punteggio basket online : Segnapunti gratuito';
+const title = 'Punteggio basket online: Segnapunti gratuito';
 const description =
   'Punteggio basket online gratuito con pulsanti +1, +2 e +3. Tieni il punteggio per partite all\'aperto, basket scolastico e leghe locali. Nessuna registrazione, nessun download, funziona offline.';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Punteggio basket online gratuito : Nessuna registrazione, nessun download',
+      text: 'Punteggio basket online gratuito: Nessuna registrazione, nessun download',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'La maggior parte delle app per tabellone ti costringe a premere lo stesso pulsante più volte per aggiungere due o tre punti. Quel tocco in più si accumula in una partita di 40 minuti e aumenta la probabilità di perdere il conto durante un contropiede o un cambio rapido. Questo tabellone ha <strong>tre pulsanti separati</strong> : uno per ogni valore di punteggio : così premi esattamente una volta per azione. Il pulsante +3 si illumina di rosso e attiva un\'animazione esplosiva per accompagnare l\'emozione di una tripla realizzata.',
+      html: 'La maggior parte delle app per tabellone ti costringe a premere lo stesso pulsante più volte per aggiungere due o tre punti. Quel tocco in più si accumula in una partita di 40 minuti e aumenta la probabilità di perdere il conto durante un contropiede o un cambio rapido. Questo tabellone ha <strong>tre pulsanti separati</strong>: uno per ogni valore di punteggio: così premi esattamente una volta per azione. Il pulsante +3 si illumina di rosso e attiva un\'animazione esplosiva per accompagnare l\'emozione di una tripla realizzata.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Il basket non ha un limite di punteggio fisso : la partita finisce quando il cronometro arriva a zero. Ma il basket da strada usa spesso punteggi obiettivo come primo a 16, 21 o 11 (vincere con 2 punti di scarto). Questo tabellone non impone una condizione di vittoria perché il basket non termina su un punteggio. Decidi tu quando la partita è finita, e il pulsante di reset cancella il tabellone per la partita successiva. I nomi delle squadre vengono conservati in modo da poter giocare partite consecutive senza riscriverli.',
+      html: 'Il basket non ha un limite di punteggio fisso: la partita finisce quando il cronometro arriva a zero. Ma il basket da strada usa spesso punteggi obiettivo come primo a 16, 21 o 11 (vincere con 2 punti di scarto). Questo tabellone non impone una condizione di vittoria perché il basket non termina su un punteggio. Decidi tu quando la partita è finita, e il pulsante di reset cancella il tabellone per la partita successiva. I nomi delle squadre vengono conservati in modo da poter giocare partite consecutive senza riscriverli.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Tre pulsanti dedicati</strong> : +1, +2 e +3. Nessun ciclo tra valori, nessuna pressione prolungata, nessun tocco extra.',
-        '<strong>Nomi squadra modificabili</strong> : premi sul nome per cambiarlo. I nomi vengono salvati nel browser e persistono tra un ricaricamento e l\'altro della pagina.',
-        '<strong>Blocco schermo attivo</strong> : quando vai a schermo intero, il tabellone impedisce allo schermo del telefono di spegnersi. Niente più tocchi sullo schermo solo per tenerlo acceso.',
-        '<strong>Modalità schermo intero</strong> : nasconde le schede del browser e la barra degli indirizzi così il tabellone occupa tutto lo schermo. Premi il pulsante schermo intero una volta e lo strumento si espande.',
-        '<strong>Priorità offline</strong> : l\'intero tabellone funziona senza connessione internet dopo il primo caricamento. Niente pubblicità, niente tracker, niente raccolta dati.',
-        '<strong>Feedback soddisfacente</strong> : ogni tocco attiva un\'animazione di punteggio, particelle fluttuanti e una leggera vibrazione sui dispositivi supportati. Il +3 ha un effetto esplosivo extra.',
-        '<strong>Stato della partita salvato</strong> : ricarica la pagina, chiudi il browser o torna domani. I punteggi e i nomi delle squadre vengono memorizzati localmente.',
+        '<strong>Tre pulsanti dedicati</strong>: +1, +2 e +3. Nessun ciclo tra valori, nessuna pressione prolungata, nessun tocco extra.',
+        '<strong>Nomi squadra modificabili</strong>: premi sul nome per cambiarlo. I nomi vengono salvati nel browser e persistono tra un ricaricamento e l\'altro della pagina.',
+        '<strong>Blocco schermo attivo</strong>: quando vai a schermo intero, il tabellone impedisce allo schermo del telefono di spegnersi. Niente più tocchi sullo schermo solo per tenerlo acceso.',
+        '<strong>Modalità schermo intero</strong>: nasconde le schede del browser e la barra degli indirizzi così il tabellone occupa tutto lo schermo. Premi il pulsante schermo intero una volta e lo strumento si espande.',
+        '<strong>Priorità offline</strong>: l\'intero tabellone funziona senza connessione internet dopo il primo caricamento. Niente pubblicità, niente tracker, niente raccolta dati.',
+        '<strong>Feedback soddisfacente</strong>: ogni tocco attiva un\'animazione di punteggio, particelle fluttuanti e una leggera vibrazione sui dispositivi supportati. Il +3 ha un effetto esplosivo extra.',
+        '<strong>Stato della partita salvato</strong>: ricarica la pagina, chiudi il browser o torna domani. I punteggi e i nomi delle squadre vengono memorizzati localmente.',
       ],
     },
     {

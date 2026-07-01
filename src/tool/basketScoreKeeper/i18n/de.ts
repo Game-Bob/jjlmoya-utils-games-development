@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'basketball-anzeigetafel';
-const title = 'Basketball Anzeigetafel online : Kostenloser Punktezähler';
+const title = 'Basketball Anzeigetafel online: Kostenloser Punktezähler';
 const description =
   'Kostenlose Online-Basketball-Anzeigetafel mit +1-, +2- und +3-Tasten. Punkte zählen für Straßenball, Highschool- und lokale Ligaspiele. Keine Anmeldung, kein Download, funktioniert offline.';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Kostenlose Online-Basketball-Anzeigetafel : Keine Anmeldung, kein Download',
+      text: 'Kostenlose Online-Basketball-Anzeigetafel: Keine Anmeldung, kein Download',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Die meisten Punktezähler-Apps zwingen dich, mehrmals auf dieselbe Taste zu drücken, um zwei oder drei Punkte zu addieren. Das extra Tippen summiert sich über ein 40-minütiges Spiel und erhöht das Risiko, bei einem Fastbreak oder einer schnellen Auswechslung den Überblick zu verlieren. Diese Anzeigetafel hat <strong>drei separate Tasten</strong> : eine für jeden Punktwert : sodass du genau einmal pro Spielzug tippst. Die +3-Taste leuchtet rot und löst eine explosive Animation aus, die die Spannung eines verwandelten Dreipunktwurfs unterstreicht.',
+      html: 'Die meisten Punktezähler-Apps zwingen dich, mehrmals auf dieselbe Taste zu drücken, um zwei oder drei Punkte zu addieren. Das extra Tippen summiert sich über ein 40-minütiges Spiel und erhöht das Risiko, bei einem Fastbreak oder einer schnellen Auswechslung den Überblick zu verlieren. Diese Anzeigetafel hat <strong>drei separate Tasten</strong>: eine für jeden Punktwert: sodass du genau einmal pro Spielzug tippst. Die +3-Taste leuchtet rot und löst eine explosive Animation aus, die die Spannung eines verwandelten Dreipunktwurfs unterstreicht.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Basketball hat keine feste Punktgrenze : das Spiel endet, wenn die Uhr abläuft. Straßenbasketball verwendet aber oft Zielpunktzahlen wie als Erster 16, 21 oder 11 (mit zwei Punkten Vorsprung). Diese Anzeigetafel erzwingt keine Gewinnbedingung, weil Basketball nicht mit einem bestimmten Punktestand endet. Du entscheidest, wann das Spiel vorbei ist, und die Reset-Taste löscht die Anzeige für das nächste Spiel. Die Teamnamen bleiben erhalten, sodass du mehrere Spiele hintereinander spielen kannst, ohne sie neu einzugeben.',
+      html: 'Basketball hat keine feste Punktgrenze: das Spiel endet, wenn die Uhr abläuft. Straßenbasketball verwendet aber oft Zielpunktzahlen wie als Erster 16, 21 oder 11 (mit zwei Punkten Vorsprung). Diese Anzeigetafel erzwingt keine Gewinnbedingung, weil Basketball nicht mit einem bestimmten Punktestand endet. Du entscheidest, wann das Spiel vorbei ist, und die Reset-Taste löscht die Anzeige für das nächste Spiel. Die Teamnamen bleiben erhalten, sodass du mehrere Spiele hintereinander spielen kannst, ohne sie neu einzugeben.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Drei eigene Tasten</strong> : +1, +2 und +3. Kein Durchschalten von Werten, kein langes Drücken, keine extra Tippser.',
-        '<strong>Bearbeitbare Teamnamen</strong> : tippe auf den Namen, um ihn zu ändern. Namen werden im Browser gespeichert und bleiben über Seitenneuladungen hinweg erhalten.',
-        '<strong>Bildschirmsperre verhindern</strong> : im Vollbildmodus verhindert die Anzeigetafel, dass sich der Handy-Bildschirm ausschaltet. Kein ständiges Antippen mehr, um den Bildschirm aktiv zu halten.',
-        '<strong>Vollbildmodus</strong> : blendet Browser-Tabs und Adressleiste aus, sodass die Anzeigetafel den gesamten Bildschirm einnimmt. Einmal auf die Vollbild-Taste tippen und das Tool vergrößert sich.',
-        '<strong>Offline zuerst</strong> : die gesamte Anzeigetafel funktioniert nach dem ersten Laden ohne Internetverbindung. Keine Werbung, keine Tracker, keine Datensammlung.',
-        '<strong>Befriedigendes Feedback</strong> : jedes Antippen löst eine Punkte-Animation, schwebende Partikel und eine leichte Vibration auf unterstützten Geräten aus. Die +3 erhält einen extra Explosionseffekt.',
-        '<strong>Spielstand wird gespeichert</strong> : lade die Seite neu, schließe den Browser oder komme morgen wieder. Die Punktestände und Teamnamen werden lokal gespeichert.',
+        '<strong>Drei eigene Tasten</strong>: +1, +2 und +3. Kein Durchschalten von Werten, kein langes Drücken, keine extra Tippser.',
+        '<strong>Bearbeitbare Teamnamen</strong>: tippe auf den Namen, um ihn zu ändern. Namen werden im Browser gespeichert und bleiben über Seitenneuladungen hinweg erhalten.',
+        '<strong>Bildschirmsperre verhindern</strong>: im Vollbildmodus verhindert die Anzeigetafel, dass sich der Handy-Bildschirm ausschaltet. Kein ständiges Antippen mehr, um den Bildschirm aktiv zu halten.',
+        '<strong>Vollbildmodus</strong>: blendet Browser-Tabs und Adressleiste aus, sodass die Anzeigetafel den gesamten Bildschirm einnimmt. Einmal auf die Vollbild-Taste tippen und das Tool vergrößert sich.',
+        '<strong>Offline zuerst</strong>: die gesamte Anzeigetafel funktioniert nach dem ersten Laden ohne Internetverbindung. Keine Werbung, keine Tracker, keine Datensammlung.',
+        '<strong>Befriedigendes Feedback</strong>: jedes Antippen löst eine Punkte-Animation, schwebende Partikel und eine leichte Vibration auf unterstützten Geräten aus. Die +3 erhält einen extra Explosionseffekt.',
+        '<strong>Spielstand wird gespeichert</strong>: lade die Seite neu, schließe den Browser oder komme morgen wieder. Die Punktestände und Teamnamen werden lokal gespeichert.',
       ],
     },
     {

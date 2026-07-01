@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'segnapunti-calcio';
-const title = 'Segnapunti Calcio Online Gratuito : Contatore Gol in Diretta';
+const title = 'Segnapunti Calcio Online Gratuito: Contatore Gol in Diretta';
 const description =
   'Tieni il punteggio delle tue partite di calcio online gratuitamente. Semplice contatore gol per partite, amichevoli e tornei. Nessuna registrazione necessaria.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Segnapunti Calcio Online Gratuito : Conta Gol in Tempo Reale',
+      text: 'Segnapunti Calcio Online Gratuito: Conta Gol in Tempo Reale',
       level: 2,
     },
     {
@@ -184,7 +184,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: 'Segnapunti Calcio vs Foglio di Carta : perché il digitale è meglio',
+      text: 'Segnapunti Calcio vs Foglio di Carta: perché il digitale è meglio',
       level: 2,
     },
     {

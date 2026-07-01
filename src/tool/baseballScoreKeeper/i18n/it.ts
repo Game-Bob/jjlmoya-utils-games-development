@@ -17,14 +17,14 @@ const faqData = [
   },
   {
     question: 'Come vengono monitorati runs, hits ed errori?',
-    answer: 'La matrice R H E mostra runs, hits ed errori per entrambe le squadre. La cronologia inning per inning mostra come si e sviluppato il punteggio attraverso tutti gli inning.',
+    answer: 'La matrice R H E mostra runs, hits ed errori per entrambe le squadre. La cronologia inning per inning mostra come si è sviluppato il punteggio attraverso tutti gli inning.',
   },
 ];
 
 const howToData = [
   {
     name: 'Registra Ogni Lancio',
-    text: 'Tocca Strike, Ball, Foul, Hit o Out per registrare ogni lancio. Il conteggio si aggiorna automaticamente in base allesito.',
+    text: 'Tocca Strike, Ball, Foul, Hit o Out per registrare ogni lancio. Il conteggio si aggiorna automaticamente in base all\'esito.',
   },
   {
     name: 'Gestisci i Corridori in Base',
@@ -32,7 +32,7 @@ const howToData = [
   },
   {
     name: 'Segui la Progressione degli Inning',
-    text: 'Il display dellinning mostra la semifrazione corrente. Dopo tre out la partita passa automaticamente tra la parte alta e quella bassa.',
+    text: 'Il display dell\'inning mostra la semifrazione corrente. Dopo tre out la partita passa automaticamente tra la parte alta e quella bassa.',
   },
   {
     name: 'Consulta il Box Score',
@@ -92,7 +92,7 @@ export const content: BaseballScoreKeeperLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'Hai bisogno di un segnapunti baseball affidabile per la tua prossima partita? Questo strumento online gratuito tiene traccia di runs, hits ed errori mostrando un diamante interattivo live con le posizioni in tempo reale dei corridori. Ogni lancio conta, e il nostro tabellone digitale fa in modo che tu non perda mai traccia del conteggio, degli out o dellinning. Che tu stia allenando una squadra giovanile, segnando per un torneo di softball o gestendo una partita di high school, questo strumento gestisce automaticamente lintero box score cosi puoi concentrarti sullazione in campo.',
+      html: 'Hai bisogno di un segnapunti baseball affidabile per la tua prossima partita? Questo strumento online gratuito tiene traccia di runs, hits ed errori mostrando un diamante interattivo live con le posizioni in tempo reale dei corridori. Ogni lancio conta, e il nostro tabellone digitale fa in modo che tu non perda mai traccia del conteggio, degli out o dell\'inning. Che tu stia allenando una squadra giovanile, segnando per un torneo di softball o gestendo una partita di high school, questo strumento gestisce automaticamente l\'intero box score così puoi concentrarti sull\'azione in campo.',
     },
     {
       type: 'title',
@@ -101,7 +101,7 @@ export const content: BaseballScoreKeeperLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'La segnatura manuale e soggetta a errori, soprattutto durante partite veloci. Uno strike mancato o un corridore trascurato possono alterare lintero box score. Questo segnapunti digitale automatizza le parti noiose. Tocca Strike, Ball, Foul, Hit o Out e il tabellone aggiorna il conteggio allistante. Quando un battitore ottiene un walk o viene eliminato, lo strumento resetta automaticamente il conteggio. Dopo tre out, inverte linning dallalto al basso e registra i runs. La matrice R H E e la griglia della cronologia inning per inning ti danno un quadro completo della partita in un colpo docchio.',
+      html: 'La segnatura manuale è soggetta a errori, soprattutto durante partite veloci. Uno strike mancato o un corridore trascurato possono alterare l\'intero box score. Questo segnapunti digitale automatizza le parti noiose. Tocca Strike, Ball, Foul, Hit o Out e il tabellone aggiorna il conteggio all\'istante. Quando un battitore ottiene un walk o viene eliminato, lo strumento resetta automaticamente il conteggio. Dopo tre out, inverte l\'inning dall\'alto al basso e registra i runs. La matrice R H E e la griglia della cronologia inning per inning ti danno un quadro completo della partita in un colpo d\'occhio.',
     },
     {
       type: 'comparative',
@@ -115,7 +115,7 @@ export const content: BaseballScoreKeeperLocaleContent = {
         },
         {
           title: 'Gestione dei Corridori',
-          description: 'Diamante interattivo mostra esattamente chi e in prima, seconda o terza base.',
+          description: 'Diamante interattivo mostra esattamente chi è in prima, seconda o terza base.',
           icon: 'mdi:diamond-stone',
           points: ['Tocca le basi per posizionare', 'Evidenziazione visiva se occupata', 'Cancellazione al cambio inning'],
         },
@@ -134,7 +134,7 @@ export const content: BaseballScoreKeeperLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'Questo strumento e pensato per chiunque debba tenere il punteggio: allenatori di baseball giovanile che vogliono un display digitale chiaro per i loro giocatori, volontari di leghe di softball che gestiscono partite senza un segnapunti dedicato, genitori che seguono le partite dei propri figli dagli spalti e arbitri che desiderano un sistema di verifica secondario. Linterfaccia funziona su qualsiasi dispositivo, dagli smartphone usati in panchina ai tablet montati sulla recinzione o ai laptop in panchina. Nessuna installazione necessaria, basta aprire il browser e iniziare a segnare.',
+      html: 'Questo strumento è pensato per chiunque debba tenere il punteggio: allenatori di baseball giovanile che vogliono un display digitale chiaro per i loro giocatori, volontari di leghe di softball che gestiscono partite senza un segnapunti dedicato, genitori che seguono le partite dei propri figli dagli spalti e arbitri che desiderano un sistema di verifica secondario. L\'interfaccia funziona su qualsiasi dispositivo, dagli smartphone usati in panchina ai tablet montati sulla recinzione o ai laptop in panchina. Nessuna installazione necessaria, basta aprire il browser e iniziare a segnare.',
     },
     {
       type: 'list',
@@ -152,7 +152,7 @@ export const content: BaseballScoreKeeperLocaleContent = {
     },
     {
       type: 'paragraph',
-      html: 'Tenere il punteggio nel baseball richiede di monitorare piu cose contemporaneamente: il conteggio di palle e strike, il numero di out, quali basi hanno corridori, i runs per ogni squadra e linning corrente. Perdere traccia di uno solo di questi elementi crea confusione e registrazioni inaccurate. Questo strumento consolida tutto in ununica schermata. I punti del conteggio mostrano palle e strike a colpo docchio. Il diamante mostra le posizioni dei corridori. La tabella R H E visualizza il box score completo. E la griglia degli inning scorre orizzontalmente per mostrare la cronologia completa dei punteggi. Tutto si aggiorna in tempo reale ad ogni tocco.',
+      html: 'Tenere il punteggio nel baseball richiede di monitorare più cose contemporaneamente: il conteggio di palle e strike, il numero di out, quali basi hanno corridori, i runs per ogni squadra e l\'inning corrente. Perdere traccia di uno solo di questi elementi crea confusione e registrazioni inaccurate. Questo strumento consolida tutto in un\'unica schermata. I punti del conteggio mostrano palle e strike a colpo d\'occhio. Il diamante mostra le posizioni dei corridori. La tabella R H E visualizza il box score completo. E la griglia degli inning scorre orizzontalmente per mostrare la cronologia completa dei punteggi. Tutto si aggiorna in tempo reale ad ogni tocco.',
     },
     {
       type: 'grid',

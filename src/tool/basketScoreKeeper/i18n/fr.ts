@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'tableau-de-basket';
-const title = 'Tableau de basket en ligne : Compteur de points gratuit';
+const title = 'Tableau de basket en ligne: Compteur de points gratuit';
 const description =
   'Tableau de basket en ligne gratuit avec boutons +1, +2 et +3. Comptez les points pour le streetball, les matchs scolaires et les ligues locales. Sans inscription, sans téléchargement, fonctionne hors connexion.';
 
@@ -12,7 +12,7 @@ const faqData = [
   {
     question: 'Comment compter les points dans un match de basket ?',
     answer:
-      'Le basket utilise trois valeurs de score : lancer franc (+1 point), panier (+2 points) et panier à trois points (+3 points). Appuyez sur le bouton correspondant à chaque fois qu\'une équipe marque. Le tableau totalise automatiquement les points. Pour corriger une erreur, utilisez le bouton moins à côté du score.',
+      'Le basket utilise trois valeurs de score: lancer franc (+1 point), panier (+2 points) et panier à trois points (+3 points). Appuyez sur le bouton correspondant à chaque fois qu\'une équipe marque. Le tableau totalise automatiquement les points. Pour corriger une erreur, utilisez le bouton moins à côté du score.',
   },
   {
     question: 'Quelle est la différence entre +1, +2 et +3 au basket ?',
@@ -22,7 +22,7 @@ const faqData = [
   {
     question: 'Puis-je utiliser ce tableau pour un vrai match de basket ?',
     answer:
-      'Oui. Le tableau est conçu pour de vrais matchs : streetball, matchs scolaires, ligues locales et entraînements. Il enregistre le score dans votre navigateur pour que vous puissiez recharger la page sans perdre l\'état du match.',
+      'Oui. Le tableau est conçu pour de vrais matchs: streetball, matchs scolaires, ligues locales et entraînements. Il enregistre le score dans votre navigateur pour que vous puissiez recharger la page sans perdre l\'état du match.',
   },
   {
     question: 'Comment compter les points pour le streetball ou les matchs improvisés ?',
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Tableau de basket en ligne gratuit : Sans inscription, sans téléchargement',
+      text: 'Tableau de basket en ligne gratuit: Sans inscription, sans téléchargement',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'La plupart des applications de tableau de score vous obligent à appuyer plusieurs fois sur le même bouton pour ajouter deux ou trois points. Ces appuis supplémentaires s\'accumulent sur un match de 40 minutes et augmentent le risque de perdre le compte pendant un contre-attaque ou un changement rapide. Ce tableau a <strong>trois boutons séparés</strong> : un pour chaque valeur de score : pour que vous tapiez exactement une fois par action. Le bouton +3 s\'allume en rouge et déclenche une animation explosive pour accompagner l\'excitation d\'un panier à trois points réussi.',
+      html: 'La plupart des applications de tableau de score vous obligent à appuyer plusieurs fois sur le même bouton pour ajouter deux ou trois points. Ces appuis supplémentaires s\'accumulent sur un match de 40 minutes et augmentent le risque de perdre le compte pendant un contre-attaque ou un changement rapide. Ce tableau a <strong>trois boutons séparés</strong>: un pour chaque valeur de score: pour que vous tapiez exactement une fois par action. Le bouton +3 s\'allume en rouge et déclenche une animation explosive pour accompagner l\'excitation d\'un panier à trois points réussi.',
     },
     {
       type: 'comparative',
@@ -176,12 +176,12 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: 'Jouez dans tous les formats : gagner au score, au temps ou au premier atteint',
+      text: 'Jouez dans tous les formats: gagner au score, au temps ou au premier atteint',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Le basket n\'a pas de limite de score fixe : le match se termine quand le chronomètre arrive à zéro. Mais le streetball utilise souvent des scores cibles comme le premier à 16, 21 ou 11 (gagner par 2). Ce tableau n\'impose pas de condition de victoire car le basket ne se termine pas sur un score. C\'est vous qui décidez quand le match est fini, et le bouton de réinitialisation efface le tableau pour le match suivant. Les noms d\'équipe sont conservés pour que vous puissiez enchaîner les matchs sans les retaper.',
+      html: 'Le basket n\'a pas de limite de score fixe: le match se termine quand le chronomètre arrive à zéro. Mais le streetball utilise souvent des scores cibles comme le premier à 16, 21 ou 11 (gagner par 2). Ce tableau n\'impose pas de condition de victoire car le basket ne se termine pas sur un score. C\'est vous qui décidez quand le match est fini, et le bouton de réinitialisation efface le tableau pour le match suivant. Les noms d\'équipe sont conservés pour que vous puissiez enchaîner les matchs sans les retaper.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Trois boutons dédiés</strong> : +1, +2 et +3. Pas de changement de valeur, pas d\'appui long, pas de touches supplémentaires.',
-        '<strong>Noms d\'équipe modifiables</strong> : appuyez sur le nom pour le changer. Les noms sont stockés dans votre navigateur et persistent après un rechargement.',
-        '<strong>Verrouillage d\'écran actif</strong> : en plein écran, le tableau empêche l\'écran de votre téléphone de s\'éteindre. Fini de taper sur l\'écran juste pour le garder allumé.',
-        '<strong>Mode plein écran</strong> : masque les onglets et la barre d\'adresse du navigateur pour que le tableau occupe tout l\'écran. Appuyez une fois sur le bouton plein écran et l\'outil se déploie.',
-        '<strong>Hors connexion d\'abord</strong> : tout le tableau fonctionne sans connexion internet après le premier chargement. Pas de pub, pas de traqueurs, pas de collecte de données.',
-        '<strong>Réponses satisfaisantes</strong> : chaque appui déclenche une animation de score, des particules flottantes et une légère vibration sur les appareils compatibles. Le +3 bénéficie d\'un effet d\'explosion supplémentaire.',
-        '<strong>L\'état du match est sauvegardé</strong> : rechargez la page, fermez le navigateur ou revenez demain. Les scores et les noms d\'équipe sont stockés localement.',
+        '<strong>Trois boutons dédiés</strong>: +1, +2 et +3. Pas de changement de valeur, pas d\'appui long, pas de touches supplémentaires.',
+        '<strong>Noms d\'équipe modifiables</strong>: appuyez sur le nom pour le changer. Les noms sont stockés dans votre navigateur et persistent après un rechargement.',
+        '<strong>Verrouillage d\'écran actif</strong>: en plein écran, le tableau empêche l\'écran de votre téléphone de s\'éteindre. Fini de taper sur l\'écran juste pour le garder allumé.',
+        '<strong>Mode plein écran</strong>: masque les onglets et la barre d\'adresse du navigateur pour que le tableau occupe tout l\'écran. Appuyez une fois sur le bouton plein écran et l\'outil se déploie.',
+        '<strong>Hors connexion d\'abord</strong>: tout le tableau fonctionne sans connexion internet après le premier chargement. Pas de pub, pas de traqueurs, pas de collecte de données.',
+        '<strong>Réponses satisfaisantes</strong>: chaque appui déclenche une animation de score, des particules flottantes et une légère vibration sur les appareils compatibles. Le +3 bénéficie d\'un effet d\'explosion supplémentaire.',
+        '<strong>L\'état du match est sauvegardé</strong>: rechargez la page, fermez le navigateur ou revenez demain. Les scores et les noms d\'équipe sont stockés localement.',
       ],
     },
     {

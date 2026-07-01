@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'scoreur-de-padel';
-const title = 'Scoreur de Padel : Point d\'Or et Rotation du Service';
+const title = 'Scoreur de Padel: Point d\'Or et Rotation du Service';
 const description = 'Suivez les scores au padel avec la règle officielle du Point d\'Or (Punto de Oro), les alertes de rotation du service, les tie-breaks et une animation dynamique de changement de côté.';
 
 const faq = [
@@ -142,7 +142,7 @@ export const content: PadelScoreKeeperLocaleContent = {
     },
     {
       type: 'title',
-      text: 'Règles du Tie-Break au Padel : Standard vs Super Tie-Break',
+      text: 'Règles du Tie-Break au Padel: Standard vs Super Tie-Break',
       level: 2,
     },
     {
@@ -151,7 +151,7 @@ export const content: PadelScoreKeeperLocaleContent = {
     },
     {
       type: 'title',
-      text: 'Changement de Côté et Rotations : Pour l\'Équité au Padel',
+      text: 'Changement de Côté et Rotations: Pour l\'Équité au Padel',
       level: 2,
     },
     {

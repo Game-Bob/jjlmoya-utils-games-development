@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'score-football';
-const title = 'Scoreur de Football en Ligne Gratuit : Suivez les Buts en Direct';
+const title = 'Scoreur de Football en Ligne Gratuit: Suivez les Buts en Direct';
 const description =
   'Suivez le score de vos matchs de football en ligne gratuitement. Compteur de buts simple pour rencontres amicales et tournois. Sans inscription.';
 
@@ -12,7 +12,7 @@ const faqData = [
   {
     question: 'Comment utiliser ce scoreur de football ?',
     answer:
-      'Appuyez sur le bouton + sous chaque équipe pour ajouter un but. Le score se met à jour instantanément avec une animation de célébration. Utilisez le bouton moins pour annuler une erreur. Les noms des équipes sont modifiables : appuyez sur le nom par défaut et saisissez le vôtre. Tout est sauvegardé automatiquement dans votre navigateur pour que vous puissiez fermer la page et revenir plus tard.',
+      'Appuyez sur le bouton + sous chaque équipe pour ajouter un but. Le score se met à jour instantanément avec une animation de célébration. Utilisez le bouton moins pour annuler une erreur. Les noms des équipes sont modifiables: appuyez sur le nom par défaut et saisissez le vôtre. Tout est sauvegardé automatiquement dans votre navigateur pour que vous puissiez fermer la page et revenir plus tard.',
   },
   {
     question: 'Puis-je l\'utiliser sur mon téléphone pendant un match ?',
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Scoreur de Football en Ligne Gratuit : Compteur de Buts en Direct',
+      text: 'Scoreur de Football en Ligne Gratuit: Compteur de Buts en Direct',
       level: 2,
     },
     {
@@ -171,7 +171,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
       type: 'list',
       items: [
         '<strong>Équipes colorées</strong> rouge pour les locaux, bleu pour les visiteurs. Vous savez immédiatement quelle équipe est laquelle sans lire de texte.',
-        '<strong>Animations de célébration</strong> chaque but déclenche une célébration aléatoire. Huit animations différentes : boom, rise, glow, ball bounce et plus.',
+        '<strong>Animations de célébration</strong> chaque but déclenche une célébration aléatoire. Huit animations différentes: boom, rise, glow, ball bounce et plus.',
         '<strong>Particules flottantes</strong> chaque but génère du texte flottant avec des messages comme GOAL et SIUUU. Chaque célébration est unique.',
         '<strong>Cérémonie de fin de match</strong> appuyez sur Terminer le Match pour déclencher l\'annonce du vainqueur avec animation de trophée, nom d\'équipe et pluie de confettis.',
         '<strong>Noms d\'équipe modifiables</strong> appuyez sur le champ du nom pour renommer vos équipes. Les noms sont sauvegardés localement dans votre navigateur.',
@@ -184,7 +184,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: 'Scoreur de Football vs Feuille de Papier : pourquoi le numérique est meilleur',
+      text: 'Scoreur de Football vs Feuille de Papier: pourquoi le numérique est meilleur',
       level: 2,
     },
     {

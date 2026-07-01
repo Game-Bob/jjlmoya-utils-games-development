@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { BasketScoreKeeperUI } from '../ui';
 
 const slug = 'basketball-resultattavla';
-const title = 'Basketball Resultattavla Online : Gratis Poängräknare';
+const title = 'Basketball Resultattavla Online: Gratis Poängräknare';
 const description =
   'Gratis online resultattavla för basket med +1, +2 och +3-knappar. Håll poäng i pickup-spel, streetbasket, high school och lokala seriematcher. Ingen registrering, ingen nedladdning, fungerar offline.';
 
@@ -122,7 +122,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Gratis online resultattavla för basket : ingen registrering, ingen nedladdning',
+      text: 'Gratis online resultattavla för basket: ingen registrering, ingen nedladdning',
       level: 2,
     },
     {
@@ -136,7 +136,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'De flesta poängräknare tvingar dig att trycka på samma knapp flera gånger för att lägga till två eller tre poäng. De extra trycken summeras under en 40-minutersmatch och ökar risken att tappa räkningen under en snabb kontring eller ett snabbt byte. Denna resultattavla har <strong>tre separata knappar</strong> : en för varje poängvärde : så du trycker exakt en gång per poänggivande aktion. +3-knappen lyser rött och utlöser en explosiv animation som matchar spänningen av en trepoängare.',
+      html: 'De flesta poängräknare tvingar dig att trycka på samma knapp flera gånger för att lägga till två eller tre poäng. De extra trycken summeras under en 40-minutersmatch och ökar risken att tappa räkningen under en snabb kontring eller ett snabbt byte. Denna resultattavla har <strong>tre separata knappar</strong>: en för varje poängvärde: så du trycker exakt en gång per poänggivande aktion. +3-knappen lyser rött och utlöser en explosiv animation som matchar spänningen av en trepoängare.',
     },
     {
       type: 'comparative',
@@ -181,7 +181,7 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     },
     {
       type: 'paragraph',
-      html: 'Basket har ingen fast poänggräns : matchen slutar när klockan rinner ut. Men pickup-basket använder ofta målpoäng som först till 16, 21 eller 11 (vinst med 2). Denna resultattavla tvingar inte på något vinstvillkor eftersom basket inte avgörs på poäng. Du bestämmer när matchen är över, och återställningsknappen rensar tavlan för nästa match. Lagnamnen bevaras så att du kan spela flera matcher i rad utan att skriva om dem.',
+      html: 'Basket har ingen fast poänggräns: matchen slutar när klockan rinner ut. Men pickup-basket använder ofta målpoäng som först till 16, 21 eller 11 (vinst med 2). Denna resultattavla tvingar inte på något vinstvillkor eftersom basket inte avgörs på poäng. Du bestämmer när matchen är över, och återställningsknappen rensar tavlan för nästa match. Lagnamnen bevaras så att du kan spela flera matcher i rad utan att skriva om dem.',
     },
     {
       type: 'title',
@@ -191,13 +191,13 @@ export const content: ToolLocaleContent<BasketScoreKeeperUI> = {
     {
       type: 'list',
       items: [
-        '<strong>Tre dedikerade knappar</strong> : +1, +2 och +3. Inget cyklande mellan värden, ingen lång tryckning, inga extra tryck.',
-        '<strong>Redigerbara lagnamn</strong> : tryck på namnet för att ändra det. Namnen sparas i din webbläsare och finns kvar efter sidomladdning.',
-        '<strong>Skärmvakt</strong> : när du går i fullskärmsläge förhindrar resultattavlan att din telefon skärm släcks. Inget mer tryckande på skärmen bara för att hålla den vid liv.',
-        '<strong>Fullskärmsläge</strong> : döljer webbläsarens flikar och adressfält så att resultattavlan tar upp hela skärmen. Tryck på fullskärmsknappen en gång så expanderar verktyget.',
-        '<strong>Offline först</strong> : hela resultattavlan fungerar utan internetanslutning efter första laddningen. Inga annonser, inga spårare, ingen datainsamling.',
-        '<strong>Tillfredsställande feedback</strong> : varje tryck utlöser en poänganimation, flygande partiklar och en subtil vibration på enheter som stöder det. +3 får en extra explosionseffekt.',
-        '<strong>Matchstatus sparas</strong> : ladda om sidan, stäng webbläsaren eller kom tillbaka imorgon. Poängen och lagnamnen lagras lokalt.',
+        '<strong>Tre dedikerade knappar</strong>: +1, +2 och +3. Inget cyklande mellan värden, ingen lång tryckning, inga extra tryck.',
+        '<strong>Redigerbara lagnamn</strong>: tryck på namnet för att ändra det. Namnen sparas i din webbläsare och finns kvar efter sidomladdning.',
+        '<strong>Skärmvakt</strong>: när du går i fullskärmsläge förhindrar resultattavlan att din telefon skärm släcks. Inget mer tryckande på skärmen bara för att hålla den vid liv.',
+        '<strong>Fullskärmsläge</strong>: döljer webbläsarens flikar och adressfält så att resultattavlan tar upp hela skärmen. Tryck på fullskärmsknappen en gång så expanderar verktyget.',
+        '<strong>Offline först</strong>: hela resultattavlan fungerar utan internetanslutning efter första laddningen. Inga annonser, inga spårare, ingen datainsamling.',
+        '<strong>Tillfredsställande feedback</strong>: varje tryck utlöser en poänganimation, flygande partiklar och en subtil vibration på enheter som stöder det. +3 får en extra explosionseffekt.',
+        '<strong>Matchstatus sparas</strong>: ladda om sidan, stäng webbläsaren eller kom tillbaka imorgon. Poängen och lagnamnen lagras lokalt.',
       ],
     },
     {

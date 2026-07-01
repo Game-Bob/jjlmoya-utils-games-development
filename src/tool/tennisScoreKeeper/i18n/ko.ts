@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'tennis-scorekeeper';
-const title = '온라인 테니스 스코어키퍼 : 무료 매치 트래커';
+const title = '온라인 테니스 스코어키퍼: 무료 매치 트래커';
 const description = '세트 및 게임 점수로 테니스 경기를 추적하세요. 경기 및 토너먼트를 위한 무료 온라인 테니스 스코어키퍼. 등록 불필요.';
 
 const faqData = [

@@ -5,7 +5,7 @@ import type { ReactionTesterUI } from '../ui';
 
 const slug = 'reaktionstest';
 const title = 'Reaktionsgeschwindigkeitstest (Reflexe): Online Benchmark';
-const description = 'Messen Sie Ihre Reflexe in Millisekunden mit unserem professionellen Reaktionstest. Konkurrieren Sie um Ränge von „Schildkröte" bis „Cyberatlet" und analysieren Sie Ihre Leistung.';
+const description = 'Messen Sie Ihre Reflexe in Millisekunden mit unserem professionellen Reaktionstest. Konkurrieren Sie um Ränge von "Schildkröte" bis "Cyberatlet" und analysieren Sie Ihre Leistung.';
 
 const ui: ReactionTesterUI = {
   title: 'Reaktionstest',
@@ -54,7 +54,7 @@ const ui: ReactionTesterUI = {
 const faqData = [
   { question: 'Wie schnell ist die durchschnittliche menschliche Reaktion?', answer: 'Die durchschnittliche Reaktionszeit auf einen visuellen Reiz beträgt etwa 250 bis 270 Millisekunden. Hochleistungsathleten und Pro-Gamer sind normalerweise unter 200 ms.' },
   { question: 'Wie kann ich meine Reflexe verbessern?', answer: 'Der Schlüssel liegt in konsistenter Übung und Ruhe. Action-Videospiele (FPS), schnelle Sportarten wie Tischtennis und ausreichend Flüssigkeitszufuhr helfen, das Nervensystem wach zu halten.' },
-  { question: 'Beeinflusst der Bildschirm mein Ergebnis?', answer: 'Ja. Es gibt etwas namens „Input Lag". Bildschirme mit niedriger Bildwiederholfrequenz (60 Hz) oder alte kabellose Mäuse können 15 bis 50 ms zu Ihrer tatsächlichen Reaktionszeit hinzufügen.' },
+  { question: 'Beeinflusst der Bildschirm mein Ergebnis?', answer: 'Ja. Es gibt etwas namens "Input Lag". Bildschirme mit niedriger Bildwiederholfrequenz (60 Hz) oder alte kabellose Mäuse können 15 bis 50 ms zu Ihrer tatsächlichen Reaktionszeit hinzufügen.' },
   { question: 'In welchem Alter beginnen wir, Reflexe zu verlieren?', answer: 'Physiologisch gesehen sind menschliche Reflexe zwischen 20 und 24 Jahren am stärksten. Danach gibt es einen sehr langsamen Rückgang (ca. 2-6 ms pro Jahrzehnt), wenn nicht trainiert.' },
 ];
 
@@ -62,7 +62,7 @@ const howTo = [
   { name: 'Auf Rot warten', text: 'Klicken Sie auf den Start-Bereich und warten Sie geduldig, bis sich die Bildschirmfarbe ändert.' },
   { name: 'Auf Grün reagieren', text: 'Sobald Sie Grün sehen, klicken oder tippen Sie so schnell wie möglich auf den Bildschirm.' },
   { name: 'Ihr Ergebnis sehen', text: 'Das System berechnet die genaue Differenz in Millisekunden zwischen der Farbveränderung und Ihrem Tippen.' },
-  { name: 'Ihren Rang analysieren', text: 'Wiederholen Sie den Test 5-mal, um einen zuverlässigen Durchschnitt zu erhalten und herauszufinden, ob Sie eine „Schildkröte" oder ein „Cyberatlet" sind.' },
+  { name: 'Ihren Rang analysieren', text: 'Wiederholen Sie den Test 5-mal, um einen zuverlässigen Durchschnitt zu erhalten und herauszufinden, ob Sie eine "Schildkröte" oder ein "Cyberatlet" sind.' },
 ];
 
 const seo = [
@@ -74,7 +74,7 @@ const seo = [
   {
     type: 'list' as const,
     items: [
-      '<strong>Durchschnitt von 5 Versuchen:</strong> Wir eliminieren den „Glücksfaktor", indem wir Konsistenz erfordern. Ein einziger glücklicher Klick macht Sie nicht zu einem Cyberatleten.',
+      '<strong>Durchschnitt von 5 Versuchen:</strong> Wir eliminieren den "Glücksfaktor", indem wir Konsistenz erfordern. Ein einziger glücklicher Klick macht Sie nicht zu einem Cyberatleten.',
       '<strong>Anti-Cheat-System:</strong> Zufällige Wartezeiten (1,5 s - 4,5 s) und Erkennung von Frühanschlägen zur Verhütung von Vorhersagen.',
       '<strong>Echte Wissenschaft:</strong> Gehirnverarbeitung ~180-200 ms + motorische Reaktion +20-40 ms = Ihre gesamte Reaktionszeit.',
     ]

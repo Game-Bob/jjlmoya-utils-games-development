@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'tenis-skor-takipcisi';
-const title = 'Çevrimiçi Tenis Skor Takipçisi : Ücretsiz Maç Takipçisi';
+const title = 'Çevrimiçi Tenis Skor Takipçisi: Ücretsiz Maç Takipçisi';
 const description = 'Set ve oyun puanlamasıyla tenis maçlarını takip edin. Maçlar ve turnuvalar için ücretsiz çevrimiçi tenis skor takipçisi. Kayıt gerekmez.';
 
 const faqData = [

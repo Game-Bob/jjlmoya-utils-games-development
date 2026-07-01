@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'pingpong-scorebord';
-const title = 'Pingpong Scorebord Online : Gratis Tafeltennis Tracker';
+const title = 'Pingpong Scorebord Online: Gratis Tafeltennis Tracker';
 const description =
   'Volg tafeltenniswedstrijden met game- en set-scores. Gratis online pingpong-scorebord voor vriendschappelijke wedstrijden en toernooien. Geen registratie nodig.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Gratis Online Pingpong Scorebord : Tafeltennis Wedstrijd Tracker',
+      text: 'Gratis Online Pingpong Scorebord: Tafeltennis Wedstrijd Tracker',
       level: 2,
     },
     {

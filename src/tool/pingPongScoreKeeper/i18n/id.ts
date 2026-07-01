@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'pencatat-skor-ping-pong';
-const title = 'Pencatat Skor Ping Pong Online : Pelacak Tenis Meja Gratis';
+const title = 'Pencatat Skor Ping Pong Online: Pelacak Tenis Meja Gratis';
 const description =
   'Lacak pertandingan tenis meja dengan skor game dan set. Pencatat skor ping pong online gratis untuk pertandingan persahabatan dan turnamen. Tidak perlu registrasi.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Pencatat Skor Ping Pong Online Gratis : Pelacak Pertandingan Tenis Meja',
+      text: 'Pencatat Skor Ping Pong Online Gratis: Pelacak Pertandingan Tenis Meja',
       level: 2,
     },
     {

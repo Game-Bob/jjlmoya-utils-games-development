@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { PingPongScoreKeeperUI } from '../ui';
 
 const slug = 'pingis-poangraknare';
-const title = 'Pingis Poängräknare Online : Gratis Bordtennisspårare';
+const title = 'Pingis Poängräknare Online: Gratis Bordtennisspårare';
 const description =
   'Följ bordtennismatcher med poängräkning för game och set. Gratis online-poängräknare för pingis för vänskapsmatcher och turneringar. Ingen registrering behövs.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<PingPongScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: 'Gratis Online Pingis Poängräknare : Bordtennismatch-spårare',
+      text: 'Gratis Online Pingis Poängräknare: Bordtennismatch-spårare',
       level: 2,
     },
     {

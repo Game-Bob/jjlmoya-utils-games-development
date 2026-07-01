@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'segnapunti-freccette';
-const title = 'Segnapunti Freccette Online : Tracker Leg e Set';
+const title = 'Segnapunti Freccette Online: Tracker Leg e Set';
 const description = 'Segui le partite di freccette con punteggio di leg e set. Segnapunti freccette online gratuito per partite 501 e 301 con calcoli di chiusura in tempo reale e statistiche.';
 
 const faqData = [

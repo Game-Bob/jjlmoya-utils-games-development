@@ -3,40 +3,40 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { BaseballScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'licznik-punktow-baseball';
-const title = 'Profesjonalny Licznik Punktow w Baseballu i Softballu z Wizualizacja Diamentu';
-const description = 'Sledz na zywo wyniki baseballu z punktami, uderzeniami i bledami. Wizualny diament z pozycjami biegaczy, licznikiem pilek i strikeow oraz historia inning po inningu.';
+const title = 'Profesjonalny Licznik Punktów w Baseballu i Softballu z Wizualizacją Diamentu';
+const description = 'Śledź na żywo wyniki baseballu z punktami, uderzeniami i błędami. Wizualny diament z pozycjami biegaczy, licznikiem piłek i strike\'ów oraz historią inning po inningu.';
 
 const faqData = [
   {
-    question: 'Jak dziala licznik w baseballu?',
-    answer: 'Licznik pokazuje liczbe pilek i strikeow u aktualnego odbijajacego. Pilki moga isc do 4 dla spaceru. Strikei do 3 dla strikeoutu. Regulowane limity dla lig mlodziezowych.',
+    question: 'Jak działa licznik w baseballu?',
+    answer: 'Licznik pokazuje liczbę piłek i strike\'ów u aktualnego odbijającego. Piłki mogą iść do 4 dla spaceru. Strike\'i do 3 dla strikeoutu. Regulowane limity dla lig młodzieżowych.',
   },
   {
     question: 'Co pokazuje interaktywny diament baseballowy?',
-    answer: 'Diament pokazuje pierwsza, druga i trzecia baze. Dotkniecie bazy podswietla ja na pomaranczowo, wskazujac biegacza na tej bazie. Biegacze przesuwaja sie automatycznie po uderzeniach.',
+    answer: 'Diament pokazuje pierwszą, drugą i trzecią bazę. Dotknięcie bazy podświetla ją na pomarańczowo, wskazując biegacza na tej bazie. Biegacze przesuwają się automatycznie po uderzeniach.',
   },
   {
-    question: 'Jak sledzone sa punkty, uderzenia i bledy?',
-    answer: 'Macierz R H E wyswietla punkty, uderzenia i bledy dla obu druzyn. Historia inning po inningu pokazuje jak wynik budowal sie w calym meczu.',
+    question: 'Jak śledzone są punkty, uderzenia i błędy?',
+    answer: 'Macierz R H E wyświetla punkty, uderzenia i błędy dla obu drużyn. Historia inning po inningu pokazuje jak wynik budował się w całym meczu.',
   },
 ];
 
 const howToData = [
   {
-    name: 'Rejestruj Kazdy Rzut',
-    text: 'Kliknij Strike, Pilka, Foul, Uderzenie lub Aut aby zarejestrowac kazdy rzut. Licznik aktualizuje sie automatycznie na podstawie wyniku.',
+    name: 'Rejestruj Każdy Rzut',
+    text: 'Kliknij Strike, Piłka, Foul, Uderzenie lub Aut aby zarejestrować każdy rzut. Licznik aktualizuje się automatycznie na podstawie wyniku.',
   },
   {
-    name: 'Zarzadzaj Biegaczami na Bazach',
-    text: 'Kliknij bazy na diamencie aby ustawic lub usunac biegaczy. Po uderzeniu biegacze przesuwaja sie automatycznie.',
+    name: 'Zarządzaj Biegaczami na Bazach',
+    text: 'Kliknij bazy na diamencie aby ustawić lub usunąć biegaczy. Po uderzeniu biegacze przesuwają się automatycznie.',
   },
   {
-    name: 'Sledz Postep Inningu',
-    text: 'Wyswietlacz inningu pokazuje aktualna polowe inningu. Po trzech autach gra automatycznie przelacza sie miedzy gorna i dolna polowa.',
+    name: 'Śledź Postęp Inningu',
+    text: 'Wyświetlacz inningu pokazuje aktualną połowę inningu. Po trzech autach gra automatycznie przełącza się między górną i dolną połową.',
   },
   {
-    name: 'Przegladaj Tabele Wynikowa',
-    text: 'Sprawdz podsumowanie R H E oraz przewijana siatke historii inningow, aby zobaczyc pelny przebieg wynikow.',
+    name: 'Przeglądaj Tabelę Wynikową',
+    text: 'Sprawdź podsumowanie R H E oraz przewijaną siatkę historii inningów, aby zobaczyć pełny przebieg wyników.',
   },
 ];
 
@@ -87,112 +87,112 @@ export const content: BaseballScoreKeeperLocaleContent = {
   seo: [
     {
       type: 'title',
-      text: 'Licznik Punktow Baseball Online: Sledz Punkty, Uderzenia i Bledy z Diamentem',
+      text: 'Licznik Punktów Baseball Online: Śledź Punkty, Uderzenia i Błędy z Diamentem',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Potrzebujesz niezawodnego licznika punktow baseball na swoj nastepny mecz? To bezplatne narzedzie online sledzi punkty, uderzenia i bledy, wyswietlajac interaktywny diament z pozycjami biegaczy w czasie rzeczywistym. Kazdy rzut ma znaczenie, a nasza cyfrowa tablica wynikow zapewnia, ze nigdy nie stracisz licznika, autow ani inningu. Bez wzgledu na to, czy trenujesz lige mlodziezowa, prowadzisz wynik w turnieju softballu, czy zarzadzasz meczem szkolnej druzyny, to narzedzie automatycznie obsluzy cala statystyke meczu, abys mogl skupic sie na grze na boisku.',
+      html: 'Potrzebujesz niezawodnego licznika punktów baseball na swój następny mecz? To bezpłatne narzędzie online śledzi punkty, uderzenia i błędy, wyświetlając interaktywny diament z pozycjami biegaczy w czasie rzeczywistym. Każdy rzut ma znaczenie, a nasza cyfrowa tablica wyników zapewnia, że nigdy nie stracisz licznika, autów ani inningu. Bez względu na to, czy trenujesz ligę młodzieżową, prowadzisz wynik w turnieju softballu, czy zarządzasz meczem szkolnej drużyny, to narzędzie automatycznie obsłuży całą statystykę meczu, abyś mógł skupić się na grze na boisku.',
     },
     {
       type: 'title',
-      text: 'Jak Ta Tablica Wynikow Baseballu Oszczedza Ci Czas i Zapobiega Bledom',
+      text: 'Jak Ta Tablica Wyników Baseballu Oszczędza Ci Czas i Zapobiega Błędom',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Reczne prowadzenie wynikow jest podatne na bledy, szczegolnie podczas szybkich meczow. Jeden przegapiony strike lub pominiety biegacz moze zaburzyc cala statystyke. Ten cyfrowy licznik automatyzuje nudne czesci. Kliknij Strike, Pilka, Foul, Uderzenie lub Aut, a tablica natychmiast aktualizuje licznik. Gdy odbijajacy otrzyma spacer lub zostanie wyautowany przez strikeout, narzedzie automatycznie resetuje licznik. Po trzech autach przelacza inning z gornej na dolna polowe i rejestruje punkty. Macierz R H E i siatka historii inning po inningu daja pelny obraz gry na pierwszy rzut oka.',
+      html: 'Ręczne prowadzenie wyników jest podatne na błędy, szczególnie podczas szybkich meczów. Jeden przegapiony strike lub pominięty biegacz może zaburzyć całą statystykę. Ten cyfrowy licznik automatyzuje nudne części. Kliknij Strike, Piłka, Foul, Uderzenie lub Aut, a tablica natychmiast aktualizuje licznik. Gdy odbijający otrzyma spacer lub zostanie wyautowany przez strikeout, narzędzie automatycznie resetuje licznik. Po trzech autach przełącza inning z górnej na dolną połowę i rejestruje punkty. Macierz R H E i siatka historii inning po inningu dają pełny obraz gry na pierwszy rzut oka.',
     },
     {
       type: 'comparative',
       columns: 3,
       items: [
         {
-          title: 'Licznik Rzutow na Zywo',
-          description: 'Automatyczne sledzenie pilek i strikeow z wykrywaniem spaceru i strikeoutu dla kazdego podejscia.',
+          title: 'Licznik Rzutów na Żywo',
+          description: 'Automatyczne śledzenie piłek i strike\'ów z wykrywaniem spaceru i strikeoutu dla każdego podejścia.',
           icon: 'mdi:baseball',
-          points: ['Pilki liczone do 4', 'Strikei liczone do 3', 'Auto reset po decyzji'],
+          points: ['Piłki liczone do 4', 'Strike\'i liczone do 3', 'Auto reset po decyzji'],
         },
         {
-          title: 'Zarzadzanie Biegaczami',
-          description: 'Interaktywny diament pokazuje dokladnie kto jest na pierwszej, drugiej lub trzeciej bazie.',
+          title: 'Zarządzanie Biegaczami',
+          description: 'Interaktywny diament pokazuje dokładnie kto jest na pierwszej, drugiej lub trzeciej bazie.',
           icon: 'mdi:diamond-stone',
-          points: ['Kliknij baze aby ustawic biegacza', 'Wizualne podswietlenie gdy zajeta', 'Czyszczenie przy zmianie inningu'],
+          points: ['Kliknij bazę aby ustawić biegacza', 'Wizualne podświetlenie gdy zajęta', 'Czyszczenie przy zmianie inningu'],
         },
         {
-          title: 'Pelna Statystyka Meczu',
-          description: 'Pelne statystyki R H E z przewijana historia wynikow inning po inningu.',
+          title: 'Pełna Statystyka Meczu',
+          description: 'Pełne statystyki R H E z przewijaną historią wyników inning po inningu.',
           icon: 'mdi:scoreboard-outline',
-          points: ['Punkty, uderzenia i bledy', 'Siatka inning po inningu', 'Laczne sumy dla obu druzyn'],
+          points: ['Punkty, uderzenia i błędy', 'Siatka inning po inningu', 'Łączne sumy dla obu drużyn'],
         },
       ],
     },
     {
       type: 'title',
-      text: 'Kto Potrzebuje Tego Licznika Wynikow Baseballu',
+      text: 'Kto Potrzebuje Tego Licznika Wyników Baseballu',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'To narzedzie jest stworzone dla kazdego, kto musi prowadzic wynik: trenerow baseballu mlodziezowego, ktorzy chca przejrzysty cyfrowy wyswietlacz dla swoich zawodnikow, wolontariuszy lig softballu, ktorzy prowadza mecze bez dedykowanego osobowego, rodzicow sledzacych gry swoich dzieci z trybun oraz sedziow poszukujacych pomocniczego systemu weryfikacji. Interfejs dziala na kazdym urzadzeniu, od smartfonow trzymanych w dugout po tablety na plotkach i laptopy na lawce. Bez instalacji, po prostu otworz przegladarke i zaczynaj punktowac.',
+      html: 'To narzędzie jest stworzone dla każdego, kto musi prowadzić wynik: trenerów baseballu młodzieżowego, którzy chcą przejrzysty cyfrowy wyświetlacz dla swoich zawodników, wolontariuszy lig softballu, którzy prowadzą mecze bez dedykowanego osobowego, rodziców śledzących gry swoich dzieci z trybun oraz sędziów poszukujących pomocniczego systemu weryfikacji. Interfejs działa na każdym urządzeniu, od smartfonów trzymanych w dugout po tablety na płotkach i laptopy na ławce. Bez instalacji, po prostu otwórz przeglądarkę i zaczynaj punktować.',
     },
     {
       type: 'list',
       items: [
-        '<strong>Automatyczne Zarzadzanie Licznikiem:</strong> Pilki i strikei resetuja sie automatycznie po spacerach, strikeoutach, uderzeniach i autach. Reczne resetowanie nie jest potrzebne.',
-        '<strong>Diament z Obsluga Dotykowa:</strong> Kliknij pierwsza, druga lub trzecia baze aby ustawic lub usunac biegaczy. Diament podswietla sie na zloto aby pokazac zajete bazy.',
-        '<strong>Wyniki Inning po Inningu:</strong> Kazda polowa inningu jest rejestrowana w przewijanej siatce. Zobacz dokladnie jak kazda druzyna zdobywala punkty we wszystkich dziewieciu inningach.',
-        '<strong>Zero Konfiguracji:</strong> Otworz strone i zaczynaj punktowac natychmiast. Zmieniaj nazwy druzyn dotykajac etykiety nad wynikami.',
+        '<strong>Automatyczne Zarządzanie Licznikiem:</strong> Piłki i strike\'i resetują się automatycznie po spacerach, strikeoutach, uderzeniach i autach. Ręczne resetowanie nie jest potrzebne.',
+        '<strong>Diament z Obsługą Dotykową:</strong> Kliknij pierwszą, drugą lub trzecią bazę aby ustawić lub usunąć biegaczy. Diament podświetla się na złoto aby pokazać zajęte bazy.',
+        '<strong>Wyniki Inning po Inningu:</strong> Każda połowa inningu jest rejestrowana w przewijanej siatce. Zobacz dokładnie jak każda drużyna zdobywała punkty we wszystkich dziewięciu inningach.',
+        '<strong>Zero Konfiguracji:</strong> Otwórz stronę i zaczynaj punktować natychmiast. Zmieniaj nazwy drużyn dotykając etykiety nad wynikami.',
       ],
     },
     {
       type: 'title',
-      text: 'Prowadzenie Wynikow Baseballu Proste: Licznik, Diament i Statystyka w Jednym Miejscu',
+      text: 'Prowadzenie Wyników Baseballu Proste: Licznik, Diament i Statystyka w Jednym Miejscu',
       level: 2,
     },
     {
       type: 'paragraph',
-      html: 'Prowadzenie wynikow w baseballu wymaga sledzenia wielu rzeczy jednoczesnie: licznika pilek i strikeow, liczby autow, ktore bazy maja biegaczy, punktow dla kazdej druzyny oraz biezacego inningu. Utracenie ktorejkolwiek z tych informacji powoduje zamieszanie i niepoprawne zapisy. To narzedzie laczy wszystko w jednym ekranie. Kropki licznika pokazuja pilki i strikei na pierwszy rzut oka. Diament pokazuje pozycje biegaczy. Tabela R H E wyswietla pelna statystyke meczu. A siatka inningow przewija sie poziomo, pokazujac pelna historie wynikow. Wszystko aktualizuje sie w czasie rzeczywistym z kazdym dotknieciem.',
+      html: 'Prowadzenie wyników w baseballu wymaga śledzenia wielu rzeczy jednocześnie: licznika piłek i strike\'ów, liczby autów, które bazy mają biegaczy, punktów dla każdej drużyny oraz bieżącego inningu. Utracenie którejkolwiek z tych informacji powoduje zamieszanie i niepoprawne zapisy. To narzędzie łączy wszystko w jednym ekranie. Kropki licznika pokazują piłki i strike\'i na pierwszy rzut oka. Diament pokazuje pozycje biegaczy. Tabela R H E wyświetla pełną statystykę meczu. A siatka inningów przewija się poziomo, pokazując pełną historię wyników. Wszystko aktualizuje się w czasie rzeczywistym z każdym dotknięciem.',
     },
     {
       type: 'grid',
       columns: [
-        { type: 'card', title: 'Trenerzy', html: '<p>Miej przejrzysta cyfrowa tablice wynikow widoczna dla calej druzyny z dugoutu.</p>' },
-        { type: 'card', title: 'Wolontariusze', html: '<p>Nie potrzebujesz doswiadczenia w prowadzeniu wynikow. Narzedzie automatycznie obsluguje wszystkie skomplikowane sledzenie.</p>' },
-        { type: 'card', title: 'Rodzice', html: '<p>Sledz gre z trybun dzieki niezawodnemu wyswietlaniu wynikow na telefonie w czasie rzeczywistym.</p>' },
-        { type: 'card', title: 'Zawodnicy', html: '<p>Przegladaj wyniki inning po inningu po meczu, aby analizowac wydajnosc.</p>' },
+        { type: 'card', title: 'Trenerzy', html: '<p>Miej przejrzystą cyfrową tablicę wyników widoczną dla całej drużyny z dugoutu.</p>' },
+        { type: 'card', title: 'Wolontariusze', html: '<p>Nie potrzebujesz doświadczenia w prowadzeniu wyników. Narzędzie automatycznie obsługuje wszystkie skomplikowane śledzenie.</p>' },
+        { type: 'card', title: 'Rodzice', html: '<p>Śledź grę z trybun dzięki niezawodnemu wyświetlaniu wyników na telefonie w czasie rzeczywistym.</p>' },
+        { type: 'card', title: 'Zawodnicy', html: '<p>Przeglądaj wyniki inning po inningu po meczu, aby analizować wydajność.</p>' },
       ],
     },
   ],
   ui: {
-    title: 'Licznik Punktow Baseballu',
-    description: 'Sledz punkty, uderzenia i bledy z widokiem diamentu.',
-    away: 'Goscie',
+    title: 'Licznik Punktów Baseballu',
+    description: 'Śledź punkty, uderzenia i błędy z widokiem diamentu.',
+    away: 'Goście',
     home: 'Gospodarze',
     runs: 'P',
     hits: 'U',
     errors: 'B',
     inning: 'Inning',
-    topInning: 'Gora',
-    bottomInning: 'Dol',
-    balls: 'Pilki',
-    strikes: 'Strikei',
+    topInning: 'Góra',
+    bottomInning: 'Dół',
+    balls: 'Piłki',
+    strikes: 'Strike\'i',
     outs: 'Auty',
     strikeBtn: 'Strike',
-    ballBtn: 'Pilka',
+    ballBtn: 'Piłka',
     foulBtn: 'Foul',
     hitBtn: 'Uderzenie',
     outBtn: 'Aut',
     walkBtn: 'Spacer',
     runBtn: '+1 Punkt',
-    errorBtn: 'Blad',
-    newBatter: 'Nowy Odbijajacy',
+    errorBtn: 'Błąd',
+    newBatter: 'Nowy Odbijający',
     resetMatch: 'Resetuj Mecz',
-    resetConfirm: 'Zresetowac biezacy mecz? Wszystkie wyniki zostana utracone.',
+    resetConfirm: 'Zresetować bieżący mecz? Wszystkie wyniki zostaną utracone.',
     cancel: 'Anuluj',
-    confirm: 'Potwierdz',
+    confirm: 'Potwierdź',
     total: 'Razem',
-    fullscreen: 'Pelny Ekran',
-    toggleSound: 'Wlacz Wylacz Dzwiek',
+    fullscreen: 'Pełny Ekran',
+    toggleSound: 'Włącz Wyłącz Dźwięk',
   },
 };

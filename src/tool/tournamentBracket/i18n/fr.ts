@@ -56,7 +56,7 @@ const faqData = [
   { question: 'Puis-je sauvegarder et partager le tableau du tournoi ?', answer: 'Oui, vous pouvez partager le bracket via un lien unique généré instantanément. En tant qu\'outil sans inscription, les données sont conservées dans votre navigateur tant que l\'onglet est ouvert.' },
   { question: 'Ça marche pour des tournois eSports comme FIFA ou LoL ?', answer: 'Absolument. Il est conçu pour être rapide et visuel, idéal pour gérer des tournois rapides de console, jeux PC ou même des compétitions de jeux de société et de cartes.' },
   { question: 'La création de tournois est-elle gratuite ?', answer: 'Oui, complètement gratuit et sans restrictions. Pas de plans premium, de limites de participants, de filigranes, ni de publicités intrusives. Tout fonctionne hors ligne dans votre navigateur.' },
-  { question: 'Mes données sont-elles supprimées si je ferme le navigateur ?', answer: 'Non. Nous utilisons le LocalStorage pour sauvegarder automatiquement tous vos tournois sur votre appareil. Vous pouvez fermer l\'onglet, éteindre l\'ordinateur et revenir des jours plus tard : votre tournoi sera toujours là.' },
+  { question: 'Mes données sont-elles supprimées si je ferme le navigateur ?', answer: 'Non. Nous utilisons le LocalStorage pour sauvegarder automatiquement tous vos tournois sur votre appareil. Vous pouvez fermer l\'onglet, éteindre l\'ordinateur et revenir des jours plus tard: votre tournoi sera toujours là.' },
   { question: 'Comment fonctionne le bouton "Match suivant" ?', answer: 'Le système détecte automatiquement la prochaine confrontation prête à être jouée (les deux participants confirmés) mais sans résultat. En appuyant sur "Match suivant", la vue saute directement à ce match.' },
 ];
 
@@ -148,7 +148,7 @@ const seo = [
   },
   {
     type: 'paragraph' as const,
-    html: 'Zéro friction. Sans comptes, sans installations, sans attente. Ajoutez des participants et générez votre tournoi instantanément. Tout est sauvegardé automatiquement dans votre navigateur via <strong>LocalStorage</strong> : fermez l\'onglet, éteignez l\'ordinateur et revenez des jours plus tard. Votre tournoi et l\'historique complet seront toujours là.'
+    html: 'Zéro friction. Sans comptes, sans installations, sans attente. Ajoutez des participants et générez votre tournoi instantanément. Tout est sauvegardé automatiquement dans votre navigateur via <strong>LocalStorage</strong>: fermez l\'onglet, éteignez l\'ordinateur et revenez des jours plus tard. Votre tournoi et l\'historique complet seront toujours là.'
   },
 ];
 

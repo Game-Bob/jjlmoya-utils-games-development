@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { DartsScoreKeeperUI } from '../ui';
 
 const slug = 'scoreur-de-dards';
-const title = 'Scoreur de Fléchettes en Ligne : Suivi de Legs et Sets';
+const title = 'Scoreur de Fléchettes en Ligne: Suivi de Legs et Sets';
 const description = 'Suivez les matchs de fléchettes avec le score des legs et des sets. Scoreur de fléchettes en ligne gratuit pour les matchs en 501 et 301 avec calculs de fermeture en direct et statistiques.';
 
 const faqData = [

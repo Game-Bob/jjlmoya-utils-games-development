@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { TennisScoreKeeperUI } from '../ui';
 
 const slug = 'marcador-de-tenis';
-const title = 'Marcador de Tenis Online : Seguimiento de Partidos Gratis';
+const title = 'Marcador de Tenis Online: Seguimiento de Partidos Gratis';
 const description = 'Sigue partidos de tenis con puntuación de sets y juegos. Marcador de tenis online gratis para partidos y torneos. Sin registro necesario.';
 
 const faqData = [

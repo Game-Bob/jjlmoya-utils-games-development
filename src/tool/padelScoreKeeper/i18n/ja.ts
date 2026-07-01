@@ -3,7 +3,7 @@ import type { WithContext, FAQPage, HowTo, SoftwareApplication } from 'schema-dt
 import type { PadelScoreKeeperLocaleContent } from '../entry';
 
 const slug = 'padel-scorekeeper';
-const title = 'プレミアムパデルスコアキーパー : ゴールドポイント＆ローテーション管理';
+const title = 'プレミアムパデルスコアキーパー: ゴールドポイント＆ローテーション管理';
 const description = '公式のPunto de Oro（ゴールドポイント）ルール、サーブローテーションアラート、タイブレーク、動的なコートチェンジアニメーションでパデルのスコアを記録します。';
 
 const faq = [

@@ -4,7 +4,7 @@ import type { ToolLocaleContent } from '../../../types';
 import type { FootballScoreKeeperUI } from '../ui';
 
 const slug = 'football-scorekeeper';
-const title = '축구 스코어키퍼 : 무료 온라인 경기 득점 기록 도구';
+const title = '축구 스코어키퍼: 무료 온라인 경기 득점 기록 도구';
 const description =
   '축구 경기 점수를 무료로 온라인 기록하세요. 친선 경기, 토너먼트를 위한 간편한 득점 카운터. 회원가입 불필요.';
 
@@ -104,7 +104,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
   seo: [
     {
       type: 'title',
-      text: '무료 온라인 축구 스코어키퍼 : 실시간 경기 점수 트래커',
+      text: '무료 온라인 축구 스코어키퍼: 실시간 경기 점수 트래커',
       level: 2,
     },
     {
@@ -184,7 +184,7 @@ export const content: ToolLocaleContent<FootballScoreKeeperUI> = {
     },
     {
       type: 'title',
-      text: '축구 스코어키퍼 vs 종이 스코어시트 : 디지털이 더 나은 이유',
+      text: '축구 스코어키퍼 vs 종이 스코어시트: 디지털이 더 나은 이유',
       level: 2,
     },
     {
