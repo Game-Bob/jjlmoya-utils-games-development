@@ -17,6 +17,25 @@ export class DesktopBracketRenderer {
     this.container = document.querySelector('.desktop-bracket-container');
   }
 
+  private enableDragScroll(el: HTMLElement) {
+    const _sl = (): number => el.scrollLeft;
+    const _st = (): number => el.scrollTop;
+    let pos = { top: 0, left: 0, x: 0, y: 0 };
+    const onMove = (e: MouseEvent) => {
+      requestAnimationFrame(() => {
+        el.scrollTo({ left: pos.left - (e.clientX - pos.x), top: pos.top - (e.clientY - pos.y) });
+      });
+    };
+    const onUp = () => { el.classList.remove('tb-cursor-grabbing'); el.classList.add('tb-cursor-grab'); document.removeEventListener('mousemove', onMove); document.removeEventListener('mouseup', onUp); };
+    el.onmousedown = (e: MouseEvent) => {
+      pos = { left: _sl(), top: _st(), x: e.clientX, y: e.clientY };
+      el.classList.add('tb-cursor-grabbing');
+      el.classList.remove('tb-cursor-grab');
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    };
+  }
+
   public render(data: TournamentData) {
     if (!this.container) return;
     this.container.innerHTML = '';
@@ -126,18 +145,5 @@ export class DesktopBracketRenderer {
     const row1 = this.buildDesktopPlayerRow(match, 1, scoreEnabled);
     const row2 = this.buildDesktopPlayerRow(match, 2, scoreEnabled);
     return `<div class="tb-desktop-card"><div class="tb-connector-dot-left"></div><div class="tb-connector-dot-right"></div>${row1}<div class="tb-match-divider"></div>${row2}</div>`;
-  }
-
-  private enableDragScroll(el: HTMLElement) {
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
-    const onMove = (e: MouseEvent) => { el.scrollLeft = pos.left - (e.clientX - pos.x); el.scrollTop = pos.top - (e.clientY - pos.y); };
-    const onUp = () => { el.classList.remove('tb-cursor-grabbing'); el.classList.add('tb-cursor-grab'); document.removeEventListener('mousemove', onMove); document.removeEventListener('mouseup', onUp); };
-    el.onmousedown = (e: MouseEvent) => {
-      el.classList.add('tb-cursor-grabbing');
-      el.classList.remove('tb-cursor-grab');
-      pos = { left: el.scrollLeft, top: el.scrollTop, x: e.clientX, y: e.clientY };
-      document.addEventListener('mousemove', onMove);
-      document.addEventListener('mouseup', onUp);
-    };
   }
 }

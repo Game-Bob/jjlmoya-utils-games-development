@@ -60,7 +60,7 @@ const t = (ui ?? {}) as TennisScoreKeeperUI;
               <path d="M9 8h6M10 5h4M10 11h4M12 2v12M10 3v10M14 3v10" stroke-width="0.8" opacity="0.6"/>
               <path d="M9.5 13.5L12 16.5L14.5 13.5M11 16.5h2v6.5h-2z" />
             </svg>
-            <input type="text" value={t.playerA} class="tn-player-input" id="tn-name-a" list="tn-names-a" />
+            <input type="text" value={t.playerA} class="tn-player-input" id="tn-name-a" list="tn-names-a" aria-label={t.playerA} />
             <datalist id="tn-names-a"></datalist>
           </div>
           <div class="tn-hud-sets" id="tn-sets-a"></div>
@@ -85,7 +85,7 @@ const t = (ui ?? {}) as TennisScoreKeeperUI;
               <path d="M9 8h6M10 5h4M10 11h4M12 2v12M10 3v10M14 3v10" stroke-width="0.8" opacity="0.6"/>
               <path d="M9.5 13.5L12 16.5L14.5 13.5M11 16.5h2v6.5h-2z" />
             </svg>
-            <input type="text" value={t.playerB} class="tn-player-input" id="tn-name-b" list="tn-names-b" />
+            <input type="text" value={t.playerB} class="tn-player-input" id="tn-name-b" list="tn-names-b" aria-label={t.playerB} />
             <datalist id="tn-names-b"></datalist>
           </div>
           <div class="tn-hud-sets" id="tn-sets-b"></div>

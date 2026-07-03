@@ -17,8 +17,7 @@ export function triggerScreenShake(): void {
   const card = el('tn-card');
   if (card) {
     card.classList.remove('tn-shaking');
-    void card.offsetWidth;
-    card.classList.add('tn-shaking');
+    requestAnimationFrame(() => card.classList.add('tn-shaking'));
     setTimeout(() => card.classList.remove('tn-shaking'), 300);
   }
 }
@@ -53,8 +52,7 @@ function triggerShotClockAudioAlert(state: StreetballMatchState, currentSecs: nu
 function triggerShotClockPopAnimation(sEl: HTMLElement, state: StreetballMatchState): void {
   if (Math.abs(state.shotClockMs - lastShotClockMs) > 200) {
     sEl.classList.remove('tn-shot-clock-pop-anim');
-    void sEl.offsetWidth;
-    sEl.classList.add('tn-shot-clock-pop-anim');
+    requestAnimationFrame(() => sEl.classList.add('tn-shot-clock-pop-anim'));
     setTimeout(() => sEl.classList.remove('tn-shot-clock-pop-anim'), 300);
   }
 }
@@ -95,8 +93,7 @@ function updateFouls(key: 'a' | 'b', state: StreetballMatchState): void {
     fEl.classList.toggle('tn-fouls-critical', fouls >= 10);
     if (fouls !== prevFouls) {
       fEl.classList.remove('tn-foul-pop-anim');
-      void fEl.offsetWidth;
-      fEl.classList.add('tn-foul-pop-anim');
+      requestAnimationFrame(() => fEl.classList.add('tn-foul-pop-anim'));
       setTimeout(() => fEl.classList.remove('tn-foul-pop-anim'), 400);
     }
   }
@@ -110,8 +107,7 @@ function updateTeamHUD(key: 'a' | 'b', state: StreetballMatchState): void {
     sEl.textContent = team.score.toString();
     if (team.score !== prevScore) {
       sEl.classList.remove('tn-score-pop-anim');
-      void sEl.offsetWidth;
-      sEl.classList.add('tn-score-pop-anim');
+      requestAnimationFrame(() => sEl.classList.add('tn-score-pop-anim'));
       setTimeout(() => sEl.classList.remove('tn-score-pop-anim'), 300);
       triggerScreenShake();
     }
@@ -182,8 +178,7 @@ function updateTimeoutOverlay(state: StreetballMatchState): void {
     ov.style.display = state.timeoutActive ? 'flex' : 'none';
     if (state.timeoutActive && wasHidden) {
       ov.classList.remove('tn-timeout-in-anim');
-      void ov.offsetWidth;
-      ov.classList.add('tn-timeout-in-anim');
+      requestAnimationFrame(() => ov.classList.add('tn-timeout-in-anim'));
     }
     timer.textContent = (state.timeoutTimeMs / 1000).toFixed(1);
     if (state.timeoutActive) {

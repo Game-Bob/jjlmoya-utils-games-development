@@ -17,7 +17,7 @@ const t = (ui ?? {}) as RugbyScoreKeeperUI;
 
   <div class="rg-strip">
     <div class="rg-team">
-      <input type="text" class="rg-name" id="rg-name-home" value={t.home} />
+      <input type="text" class="rg-name" id="rg-name-home" value={t.home} aria-label={t.home} />
       <div class="rg-score" id="rg-score-home">0</div>
       <div class="rg-bonus" id="rg-bonus-home"></div>
     </div>
@@ -26,7 +26,7 @@ const t = (ui ?? {}) as RugbyScoreKeeperUI;
       <div class="rg-half-badge" id="rg-half-badge">{t.half1}</div>
     </div>
     <div class="rg-team">
-      <input type="text" class="rg-name" id="rg-name-away" value={t.away} />
+      <input type="text" class="rg-name" id="rg-name-away" value={t.away} aria-label={t.away} />
       <div class="rg-score" id="rg-score-away">0</div>
       <div class="rg-bonus" id="rg-bonus-away"></div>
     </div>
@@ -66,8 +66,8 @@ const t = (ui ?? {}) as RugbyScoreKeeperUI;
     <div class="rg-sinbin-panel">
       <div class="rg-panel-header">{t.sinBin}</div>
       <div class="rg-sinbin-form">
-        <input type="text" class="rg-input" id="rg-sinbin-input" placeholder={t.sinBinPlayer} />
-        <select class="rg-select" id="rg-sinbin-duration">
+        <input type="text" class="rg-input" id="rg-sinbin-input" placeholder={t.sinBinPlayer} aria-label={t.sinBinPlayer} />
+        <select class="rg-select" id="rg-sinbin-duration" aria-label={t.sinBin + " duration"}>
           <option value="600">10 min</option>
           <option value="300">5 min</option>
         </select>

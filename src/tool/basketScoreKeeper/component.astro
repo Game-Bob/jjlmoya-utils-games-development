@@ -33,7 +33,7 @@ const t = (ui ?? {}) as BasketScoreKeeperUI;
 
   <div class="bk-team" id="bk-team-a">
     <div class="bk-team-top">
-      <input type="text" value={t.playerA} class="bk-name" />
+      <input type="text" value={t.playerA} class="bk-name" aria-label={t.playerA} />
       <div id="bk-fire-a" class="bk-fire"></div>
       <div id="bk-streak-a" class="bk-streak"><span id="bk-streak-val-a" class="bk-streak-val"></span></div>
     </div>
@@ -59,7 +59,7 @@ const t = (ui ?? {}) as BasketScoreKeeperUI;
     <div class="bk-team-top bk-team-top-right">
       <div id="bk-streak-b" class="bk-streak"><span id="bk-streak-val-b" class="bk-streak-val"></span></div>
       <div id="bk-fire-b" class="bk-fire"></div>
-      <input type="text" value={t.playerB} class="bk-name bk-name-right" />
+      <input type="text" value={t.playerB} class="bk-name bk-name-right" aria-label={t.playerB} />
     </div>
     <div id="bk-particles-b" class="bk-particles"></div>
     <div class="bk-score-stack" id="bk-stack-b">

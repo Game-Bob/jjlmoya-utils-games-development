@@ -137,8 +137,7 @@ function setupUndoAction(ctx: MatchContext, t: StreetballScoreKeeperUI): void {
       const card = el('tn-card');
       if (card) {
         card.classList.remove('tn-undo-anim');
-        void card.offsetWidth;
-        card.classList.add('tn-undo-anim');
+        requestAnimationFrame(() => card.classList.add('tn-undo-anim'));
         setTimeout(() => card.classList.remove('tn-undo-anim'), 300);
       }
     }
@@ -173,8 +172,7 @@ function handleButtonPressFeedback(target: HTMLElement): void {
   const btn = target.closest('button, .tn-clock-box, .tn-stat-box');
   if (btn) {
     btn.classList.remove('tn-btn-press-anim');
-    void (btn as HTMLElement).offsetWidth;
-    btn.classList.add('tn-btn-press-anim');
+    requestAnimationFrame(() => btn.classList.add('tn-btn-press-anim'));
     setTimeout(() => btn.classList.remove('tn-btn-press-anim'), 150);
   }
 }

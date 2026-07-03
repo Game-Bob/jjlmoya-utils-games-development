@@ -171,8 +171,7 @@ function setupPressAnimation(): void {
     const btn = target.closest('button, .sn-action-btn');
     if (btn) {
       btn.classList.remove('sn-btn-press-anim');
-      void (btn as HTMLElement).offsetWidth;
-      btn.classList.add('sn-btn-press-anim');
+      requestAnimationFrame(() => btn.classList.add('sn-btn-press-anim'));
       setTimeout(() => btn.classList.remove('sn-btn-press-anim'), 150);
     }
   });

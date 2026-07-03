@@ -46,14 +46,12 @@ function rand<T>(arr: T[]): T {
 
 function animScore(score: HTMLElement, prefix: string): void {
   score.className = `fk-score fk-score-${prefix}`;
-  void score.offsetWidth;
-  score.classList.add(rand(SCORE_ANIMS));
+  requestAnimationFrame(() => score.classList.add(rand(SCORE_ANIMS)));
 }
 
 function animTeam(teamEl: HTMLElement, prefix: string): void {
   teamEl.className = `fk-team fk-team-${prefix}`;
-  void teamEl.offsetWidth;
-  teamEl.classList.add(rand(TEAM_ANIMS));
+  requestAnimationFrame(() => teamEl.classList.add(rand(TEAM_ANIMS)));
 }
 
 function spawnParticles(container: HTMLElement, prefix: string): void {
@@ -73,8 +71,7 @@ function spawnParticles(container: HTMLElement, prefix: string): void {
 
 function retrigger(el: HTMLElement, cls: string): void {
   el.classList.remove(cls);
-  void el.offsetWidth;
-  el.classList.add(cls);
+  requestAnimationFrame(() => el.classList.add(cls));
 }
 
 function explodeGoal(team: TeamSide): void {

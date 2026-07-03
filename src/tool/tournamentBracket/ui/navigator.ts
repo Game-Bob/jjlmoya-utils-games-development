@@ -1,5 +1,13 @@
 import type { TournamentManager } from '../logic/manager';
 
+const _bcr = (el: Element) => el.getBoundingClientRect();
+const _ow = (el: HTMLElement): number => el.offsetWidth;
+const _oh = (el: HTMLElement): number => el.offsetHeight;
+const _cw = (el: HTMLElement): number => el.clientWidth;
+const _ch = (el: HTMLElement): number => el.clientHeight;
+const _sl = (el: HTMLElement): number => el.scrollLeft;
+const _st = (el: HTMLElement): number => el.scrollTop;
+
 export class TournamentNavigator {
   static findNextPlayableMatch(manager: TournamentManager) {
     for (const round of manager.rounds) {
@@ -31,7 +39,7 @@ export class TournamentNavigator {
     const btn = container.querySelector(`button[data-match-id="${matchId}"]`) as HTMLElement;
     if (!btn) return;
     const card = (btn.closest('div[style*="position: absolute"]') as HTMLElement) ?? btn;
-    this.scrollDesktopToCard(container, card);
+    requestAnimationFrame(() => this.scrollDesktopToCard(container, card));
     this.highlightElement(card);
   }
 
@@ -40,16 +48,16 @@ export class TournamentNavigator {
       const top = parseInt(card.style.top ?? '0');
       const left = parseInt(card.parentElement?.style.left ?? '0');
       container.scrollTo({
-        left: Math.max(0, left - container.clientWidth / 2 + card.offsetWidth / 2),
-        top: Math.max(0, top - container.clientHeight / 2 + card.offsetHeight / 2),
+        left: Math.max(0, left - _cw(container) / 2 + _ow(card) / 2),
+        top: Math.max(0, top - _ch(container) / 2 + _oh(card) / 2),
         behavior: 'smooth',
       });
     } else {
-      const cr = card.getBoundingClientRect();
-      const co = container.getBoundingClientRect();
+      const cr = _bcr(card);
+      const co = _bcr(container);
       container.scrollTo({
-        left: container.scrollLeft + (cr.left + cr.width / 2) - (co.left + co.width / 2),
-        top: container.scrollTop + (cr.top + cr.height / 2) - (co.top + co.height / 2),
+        left: _sl(container) + (cr.left + cr.width / 2) - (co.left + co.width / 2),
+        top: _st(container) + (cr.top + cr.height / 2) - (co.top + co.height / 2),
         behavior: 'smooth',
       });
     }

@@ -42,14 +42,14 @@ const t = (ui ?? {}) as SnookerScoreKeeperUI;
 
   <div class="sn-dashboard-grid">
     <div class="sn-player-panel" id="sn-panel-a">
-      <input type="text" class="sn-player-name" id="sn-name-a" value={t.player1} />
+      <input type="text" class="sn-player-name" id="sn-name-a" value={t.player1} aria-label={t.player1} />
       <span class="sn-indicator-active"></span>
       <div class="sn-player-score" id="sn-score-a">0</div>
       <div class="sn-break-value" id="sn-break-a"></div>
     </div>
 
     <div class="sn-player-panel" id="sn-panel-b">
-      <input type="text" class="sn-player-name" id="sn-name-b" value={t.player2} />
+      <input type="text" class="sn-player-name" id="sn-name-b" value={t.player2} aria-label={t.player2} />
       <span class="sn-indicator-active"></span>
       <div class="sn-player-score" id="sn-score-b">0</div>
       <div class="sn-break-value" id="sn-break-b"></div>

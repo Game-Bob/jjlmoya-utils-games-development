@@ -21,7 +21,7 @@ const t = (ui ?? {}) as ScoreKeeperUI;
           <path d="M2 12h20"></path>
         </svg>
       </div>
-      <select id="sport-select" class="sk-select"></select>
+      <select id="sport-select" class="sk-select" aria-label="Select sport"></select>
       <div class="sk-select-arrow">
         <svg class="sk-icon-sm sk-icon-muted" fill="none" stroke="currentcolor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -47,7 +47,7 @@ const t = (ui ?? {}) as ScoreKeeperUI;
   <div class="sk-grid">
     <div class="sk-widget sk-widget-a">
       <div class="sk-widget-header">
-        <input type="text" value={t.playerA} class="sk-player-name sk-player-name-a" />
+        <input type="text" value={t.playerA} class="sk-player-name sk-player-name-a" aria-label={t.playerA} />
         <div id="serve-a" class="sk-serve-indicator sk-serve-hidden"></div>
       </div>
       <div class="sk-score-area">
@@ -84,7 +84,7 @@ const t = (ui ?? {}) as ScoreKeeperUI;
     <div class="sk-widget sk-widget-b">
       <div class="sk-widget-header">
         <div class="sk-flex-fill"></div>
-        <input type="text" value={t.playerB} class="sk-player-name sk-player-name-b" />
+        <input type="text" value={t.playerB} class="sk-player-name sk-player-name-b" aria-label={t.playerB} />
         <div id="serve-b" class="sk-serve-indicator sk-serve-indicator-b sk-serve-hidden"></div>
       </div>
       <div class="sk-score-area">

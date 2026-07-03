@@ -27,7 +27,7 @@ const t = (ui ?? {}) as FootballScoreKeeperUI;
     <div id="fk-particles-a" class="fk-particles"></div>
     <div id="fk-flash-a" class="fk-goal-flash fk-goal-flash-a"></div>
     <div id="fk-goal-text-a" class="fk-goal-text fk-goal-text-a">GOOOL!</div>
-    <input type="text" value={t.playerA} class="fk-name" id="fk-name-a" placeholder="Local" />
+    <input type="text" value={t.playerA} class="fk-name" id="fk-name-a" placeholder="Local" aria-label={t.playerA} />
     <div class="fk-score fk-score-a" id="fk-score-a">0</div>
     <button class="fk-btn-plus fk-btn-plus-a" data-goal-a>+</button>
     <button class="fk-btn-minus fk-btn-minus-a" data-minus-a>&minus;</button>
@@ -37,7 +37,7 @@ const t = (ui ?? {}) as FootballScoreKeeperUI;
     <div id="fk-particles-b" class="fk-particles"></div>
     <div id="fk-flash-b" class="fk-goal-flash fk-goal-flash-b"></div>
     <div id="fk-goal-text-b" class="fk-goal-text fk-goal-text-b">GOOOL!</div>
-    <input type="text" value={t.playerB} class="fk-name" id="fk-name-b" placeholder="Visitante" />
+    <input type="text" value={t.playerB} class="fk-name" id="fk-name-b" placeholder="Visitante" aria-label={t.playerB} />
     <div class="fk-score fk-score-b" id="fk-score-b">0</div>
     <button class="fk-btn-plus fk-btn-plus-b" data-goal-b>+</button>
     <button class="fk-btn-minus fk-btn-minus-b" data-minus-b>&minus;</button>

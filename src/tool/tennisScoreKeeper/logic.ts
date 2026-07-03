@@ -17,9 +17,11 @@ import {
   render,
   showWinner,
   restoreDomOrder,
+} from './render';
+import {
   spawnParticles,
   spawnRipple,
-} from './render';
+} from './effects';
 import {
   type TennisAPI,
   recordMatchOutcome,
@@ -88,8 +90,7 @@ function handleAddPointRipple(e: MouseEvent | undefined, side: PlayerSide): void
   const scoreEl = el(`tn-score-val-${side}`);
   if (scoreEl) {
     scoreEl.classList.remove('tn-court-score-pop');
-    void scoreEl.offsetWidth;
-    scoreEl.classList.add('tn-court-score-pop');
+    requestAnimationFrame(() => scoreEl.classList.add('tn-court-score-pop'));
     spawnParticles(scoreEl);
   }
 }

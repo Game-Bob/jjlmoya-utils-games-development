@@ -38,7 +38,7 @@ const t = (ui ?? {}) as PingPongScoreKeeperUI;
         <path d="M12 48 Q30 10 48 12" stroke="currentcolor" stroke-width="0.8" opacity="0.08" fill="none"/>
       </svg>
       <div class="pp-name-wrap">
-        <input type="text" value={t.playerA} class="pp-name" id="pp-name-a" list="pp-names-a" />
+        <input type="text" value={t.playerA} class="pp-name" id="pp-name-a" list="pp-names-a" aria-label={t.playerA} />
         <datalist id="pp-names-a"></datalist>
         <svg class="pp-pencil" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
       </div>
@@ -55,7 +55,7 @@ const t = (ui ?? {}) as PingPongScoreKeeperUI;
         <path d="M12 48 Q30 10 48 12" stroke="currentcolor" stroke-width="0.8" opacity="0.08" fill="none"/>
       </svg>
       <div class="pp-name-wrap">
-        <input type="text" value={t.playerB} class="pp-name" id="pp-name-b" list="pp-names-b" />
+        <input type="text" value={t.playerB} class="pp-name" id="pp-name-b" list="pp-names-b" aria-label={t.playerB} />
         <datalist id="pp-names-b"></datalist>
         <svg class="pp-pencil" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
       </div>

@@ -47,7 +47,7 @@ const t = (ui ?? {}) as StreetballScoreKeeperUI;
   <div class="tn-scoreboard">
     <div class="tn-player-card tn-player-card-a">
       <div class="tn-name-section">
-        <input type="text" value={t.teamA} class="tn-player-input" id="tn-name-a" />
+        <input type="text" value={t.teamA} class="tn-player-input" id="tn-name-a" aria-label={t.teamA} />
         <span class="tn-poss-indicator" id="tn-poss-a"></span>
       </div>
       <div class="tn-big-score" id="tn-score-a">0</div>
@@ -69,7 +69,7 @@ const t = (ui ?? {}) as StreetballScoreKeeperUI;
 
     <div class="tn-player-card tn-player-card-b">
       <div class="tn-name-section">
-        <input type="text" value={t.teamB} class="tn-player-input" id="tn-name-b" />
+        <input type="text" value={t.teamB} class="tn-player-input" id="tn-name-b" aria-label={t.teamB} />
         <span class="tn-poss-indicator" id="tn-poss-b"></span>
       </div>
       <div class="tn-big-score" id="tn-score-b">0</div>

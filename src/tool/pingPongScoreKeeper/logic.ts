@@ -100,8 +100,7 @@ function handleGameWinner(winner: PlayerSide): void {
     const board = el('pp-board');
     if (board) {
       board.classList.remove('pp-board-swap');
-      void board.offsetWidth;
-      board.classList.add('pp-board-swap');
+      requestAnimationFrame(() => board.classList.add('pp-board-swap'));
     }
   }
 }
@@ -115,7 +114,7 @@ const api: PingPongAPI = {
     const pe = el(`pp-particles-${side}`);
     if (pe) spawnParticles(pe);
     const sd = el(`pp-score-${side}`);
-    if (sd) { sd.classList.remove('pp-score-pop'); void sd.offsetWidth; sd.classList.add('pp-score-pop'); }
+    if (sd) { sd.classList.remove('pp-score-pop'); requestAnimationFrame(() => sd.classList.add('pp-score-pop')); }
     const gw = checkGameOver(after);
     if (gw) setTimeout(() => handleGameWinner(gw), 600);
   },
@@ -136,8 +135,7 @@ const api: PingPongAPI = {
     const second = first?.nextElementSibling;
     if (!first || !second) return;
     board.classList.remove('pp-board-swap');
-    void board.offsetWidth;
-    board.classList.add('pp-board-swap');
+    requestAnimationFrame(() => board.classList.add('pp-board-swap'));
     el('pp-swap')?.classList.remove('pp-swap-on');
     setTimeout(() => {
       board.classList.remove('pp-board-swap');

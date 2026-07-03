@@ -1,5 +1,6 @@
 import type { BasketScoreKeeperUI } from './ui';
 const g = (id: string) => document.getElementById(id);
+const _bcr = (el: Element) => el.getBoundingClientRect();
 const COLORS: Record<number, string> = { 1: '#22c55e', 2: '#f97316', 3: '#ef4444' };
 const MIX = ['#facc15', '#a78bfa', '#22d3ee', '#f472b6'];
 const ANIMS = ['split', 'boom', 'spin', 'stretch', 'drop'];
@@ -25,10 +26,8 @@ function addDot(container: HTMLElement, cx: number, cy: number, color: string) {
   container.appendChild(d); setTimeout(() => d.remove(), 1200);
 }
 
-function burst(container: HTMLElement | null, val: number, e?: PointerEvent) {
+function burst(container: HTMLElement | null, val: number, cx: number, cy: number) {
   if (!container) return;
-  let cx = 50, cy = 50;
-  if (e) { const r = container.getBoundingClientRect(); cx = ((e.clientX - r.left) / r.width) * 100; cy = ((e.clientY - r.top) / r.height) * 100; }
   const color = COLORS[val] ?? '#fff';
   const count = 6 + val * 2;
   for (let i = 0; i < count; i++) {
@@ -72,7 +71,7 @@ class BasketGame {
   private setText(el: HTMLElement | null, v: string) { if (el) el.innerText = v; }
 
   private re(el: HTMLElement | null, cls: string) {
-    if (!el) return; el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls);
+    if (!el) return; el.classList.remove(cls); requestAnimationFrame(() => el.classList.add(cls));
   }
 
   private bind() {
@@ -116,10 +115,17 @@ class BasketGame {
   }
 
   addScore(team: 'A' | 'B', val: number, e?: Event) {
-    this.score(team, val); this.streak(team, val);
     const isA = team === 'A';
-    this.flip(isA ? this.u.sA : this.u.sB, isA ? this.u.stA : this.u.stB, String(this.sVal(team)));
-    burst(isA ? this.u.pA : this.u.pB, val, e as PointerEvent);
+    const particlesContainer = isA ? this.u.pA : this.u.pB;
+    let cx = 50, cy = 50;
+    if (e && particlesContainer) {
+      const r = _bcr(particlesContainer);
+      cx = ((e.clientX - r.left) / r.width) * 100;
+      cy = ((e.clientY - r.top) / r.height) * 100;
+    }
+    this.score(team, val); this.streak(team, val);
+    this.flip(isA ? this.u.sA : this.u.stA, isA ? this.u.stA : this.u.stB, String(this.sVal(team)));
+    burst(particlesContainer, val, cx, cy);
     if (val >= 3) { this.re(isA ? this.u.tA : this.u.tB, 'bk-shake-card'); }
     this.screenFlash(val); this.vibe(val); this.render();
   }

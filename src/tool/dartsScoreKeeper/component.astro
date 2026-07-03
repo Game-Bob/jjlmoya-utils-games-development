@@ -39,7 +39,7 @@ const t = (ui ?? {}) as DartsScoreKeeperUI;
   <div class="tn-scoreboard">
     <div class="tn-player-card tn-player-card-active" id="tn-card-a">
       <div class="tn-player-name-section">
-        <input type="text" value={t.playerA} class="tn-player-input" id="tn-name-a" />
+        <input type="text" value={t.playerA} class="tn-player-input" id="tn-name-a" aria-label={t.playerA} />
       </div>
       <div class="tn-big-score" id="tn-score-a">501</div>
       <div class="tn-player-stats">
@@ -54,7 +54,7 @@ const t = (ui ?? {}) as DartsScoreKeeperUI;
 
     <div class="tn-player-card" id="tn-card-b">
       <div class="tn-player-name-section">
-        <input type="text" value={t.playerB} class="tn-player-input" id="tn-name-b" />
+        <input type="text" value={t.playerB} class="tn-player-input" id="tn-name-b" aria-label={t.playerB} />
       </div>
       <div class="tn-big-score" id="tn-score-b">501</div>
       <div class="tn-player-stats">

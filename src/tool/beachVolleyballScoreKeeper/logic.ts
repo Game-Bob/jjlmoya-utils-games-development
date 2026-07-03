@@ -48,8 +48,7 @@ function triggerUndoAnimation(): void {
   const card = el('tn-card');
   if (card) {
     card.classList.remove('tn-undo-anim');
-    void card.offsetWidth;
-    card.classList.add('tn-undo-anim');
+    requestAnimationFrame(() => card.classList.add('tn-undo-anim'));
     setTimeout(() => card.classList.remove('tn-undo-anim'), 300);
   }
 }
@@ -138,11 +137,9 @@ function handleBaseClicks(e: MouseEvent, ctrl: BeachController): void {
   const courtHalfB = target.closest('#tn-court-half-b');
 
   if (courtHalfA) {
-    const team = ctrl.ctx.state.swappedCourt ? 'b' : 'a';
-    ctrl.addPoint(team, e.clientX, e.clientY);
+    ctrl.addPoint('a', e.clientX, e.clientY);
   } else if (courtHalfB) {
-    const team = ctrl.ctx.state.swappedCourt ? 'a' : 'b';
-    ctrl.addPoint(team, e.clientX, e.clientY);
+    ctrl.addPoint('b', e.clientX, e.clientY);
   }
 }
 
@@ -161,6 +158,7 @@ function bindInteractions(ctrl: BeachController): void {
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
     handleBaseClicks(e, ctrl);
+    if (target.closest('#tn-court-half-a') || target.closest('#tn-court-half-b')) return;
     handleActionClicks(target, ctrl);
   });
 }

@@ -25,38 +25,39 @@ export function releaseWakeLock(): void {
   }
 }
 
+export function spawnSandSplash(x: number, y: number): void {
+  const container = el('tn-particle-container');
+  if (!container) return;
+  requestAnimationFrame(() => {
+    const rect = container.getBoundingClientRect();
+    const relX = x - rect.left;
+    const relY = y - rect.top;
+
+    const colors = ['#f4d06f', '#f7d684', '#e9c46a', '#e0b54d', '#f8dd95'];
+    for (let i = 0; i < 12; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'tn-sand-particle';
+      dot.style.left = `${relX}px`;
+      dot.style.top = `${relY}px`;
+      dot.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 20 + Math.random() * 40;
+      const tx = Math.cos(angle) * distance;
+      const ty = -30 - Math.random() * 50;
+      dot.style.setProperty('--tx', `${tx}px`);
+      dot.style.setProperty('--ty', `${ty}px`);
+      container.appendChild(dot);
+      setTimeout(() => dot.remove(), 800);
+    }
+  });
+}
+
 export function triggerScreenShake(): void {
   const card = el('tn-card');
   if (card) {
     card.classList.remove('tn-shaking');
-    void card.offsetWidth;
-    card.classList.add('tn-shaking');
+    requestAnimationFrame(() => card.classList.add('tn-shaking'));
     setTimeout(() => card.classList.remove('tn-shaking'), 300);
-  }
-}
-
-export function spawnSandSplash(x: number, y: number): void {
-  const container = el('tn-particle-container');
-  if (!container) return;
-  const rect = container.getBoundingClientRect();
-  const relX = x - rect.left;
-  const relY = y - rect.top;
-
-  const colors = ['#f4d06f', '#f7d684', '#e9c46a', '#e0b54d', '#f8dd95'];
-  for (let i = 0; i < 12; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'tn-sand-particle';
-    dot.style.left = `${relX}px`;
-    dot.style.top = `${relY}px`;
-    dot.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 20 + Math.random() * 40;
-    const tx = Math.cos(angle) * distance;
-    const ty = -30 - Math.random() * 50;
-    dot.style.setProperty('--tx', `${tx}px`);
-    dot.style.setProperty('--ty', `${ty}px`);
-    container.appendChild(dot);
-    setTimeout(() => dot.remove(), 800);
   }
 }
 
@@ -104,8 +105,7 @@ function renderScores(state: BeachVolleyballState): void {
     scoreA.textContent = state.teamA.score.toString();
     if (state.teamA.score !== lastScoreA) {
       scoreA.classList.remove('tn-pop-anim');
-      void scoreA.offsetWidth;
-      scoreA.classList.add('tn-pop-anim');
+      requestAnimationFrame(() => scoreA.classList.add('tn-pop-anim'));
       setTimeout(() => scoreA.classList.remove('tn-pop-anim'), 300);
       triggerScreenShake();
     }
@@ -114,8 +114,7 @@ function renderScores(state: BeachVolleyballState): void {
     scoreB.textContent = state.teamB.score.toString();
     if (state.teamB.score !== lastScoreB) {
       scoreB.classList.remove('tn-pop-anim');
-      void scoreB.offsetWidth;
-      scoreB.classList.add('tn-pop-anim');
+      requestAnimationFrame(() => scoreB.classList.add('tn-pop-anim'));
       setTimeout(() => scoreB.classList.remove('tn-pop-anim'), 300);
       triggerScreenShake();
     }

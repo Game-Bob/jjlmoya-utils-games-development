@@ -36,12 +36,12 @@ const { ui: t } = Astro.props;
         </div>
         <div class="tb-field">
           <label class="tb-label">{t.tournamentNameLabel}</label>
-          <input type="text" id="tournament-name-input" placeholder={t.tournamentNamePlaceholder} class="tb-input" />
+          <input type="text" id="tournament-name-input" placeholder={t.tournamentNamePlaceholder} class="tb-input" aria-label={t.tournamentNameLabel} />
         </div>
         <div class="tb-field">
           <label class="tb-label">{t.addPlayersLabel}</label>
           <div class="tb-input-row">
-            <input type="text" id="new-player-input" placeholder={t.addPlayerPlaceholder} class="tb-input" />
+            <input type="text" id="new-player-input" placeholder={t.addPlayerPlaceholder} class="tb-input" aria-label={t.addPlayersLabel} />
             <button id="add-player-btn" class="tb-btn-add" aria-label={t.addPlayersLabel}>
               <svg xmlns="http://www.w3.org/2000/svg" class="tb-icon-lg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
             </button>

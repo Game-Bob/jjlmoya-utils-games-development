@@ -203,8 +203,7 @@ const { ui: t } = Astro.props;
     setBadge(output.advantage);
     if (save) {
       board.classList.remove('elo-burst');
-      void board.offsetWidth;
-      board.classList.add('elo-burst');
+      requestAnimationFrame(() => board.classList.add('elo-burst'));
       history.push({ player: clampRating(Number(player.value)), opponent: clampRating(Number(opponent.value)), result, delta: output.ratingDelta, next: output.newRating, expected: percent });
       history = history.slice(-20);
       localStorage.setItem('elo_history', JSON.stringify(history));

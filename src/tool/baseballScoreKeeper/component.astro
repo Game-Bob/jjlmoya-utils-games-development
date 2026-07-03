@@ -17,14 +17,14 @@ const t = (ui ?? {}) as BaseballScoreKeeperUI;
 
     <div class="bb-strip">
       <div class="bb-team">
-        <input type="text" class="bb-name" id="bb-name-away" value={t.away} />
+        <input type="text" class="bb-name" id="bb-name-away" value={t.away} aria-label={t.away} />
         <div class="bb-score" id="bb-score-away">0</div>
       </div>
       <div class="bb-divider">
         <span class="bb-inning-badge" id="bb-inning-label">Top 1</span>
       </div>
       <div class="bb-team">
-        <input type="text" class="bb-name" id="bb-name-home" value={t.home} />
+        <input type="text" class="bb-name" id="bb-name-home" value={t.home} aria-label={t.home} />
         <div class="bb-score" id="bb-score-home">0</div>
       </div>
     </div>

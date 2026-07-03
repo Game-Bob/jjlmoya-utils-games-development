@@ -130,13 +130,13 @@ const t = (ui ?? {}) as BeachVolleyballUI;
         <div class="tn-lineup-grid">
           <div class="tn-lineup-team-section">
             <span class="tn-team-name-hdr">{t.teamA}</span>
-            <input type="text" class="tn-beach-input" id="tn-name-a1" placeholder={t.player1} />
-            <input type="text" class="tn-beach-input" id="tn-name-a2" placeholder={t.player2} />
+            <input type="text" class="tn-beach-input" id="tn-name-a1" placeholder={t.player1} aria-label={`${t.teamA} ${t.player1}`} />
+            <input type="text" class="tn-beach-input" id="tn-name-a2" placeholder={t.player2} aria-label={`${t.teamA} ${t.player2}`} />
           </div>
           <div class="tn-lineup-team-section">
             <span class="tn-team-name-hdr">{t.teamB}</span>
-            <input type="text" class="tn-beach-input" id="tn-name-b1" placeholder={t.player1} />
-            <input type="text" class="tn-beach-input" id="tn-name-b2" placeholder={t.player2} />
+            <input type="text" class="tn-beach-input" id="tn-name-b1" placeholder={t.player1} aria-label={`${t.teamB} ${t.player1}`} />
+            <input type="text" class="tn-beach-input" id="tn-name-b2" placeholder={t.player2} aria-label={`${t.teamB} ${t.player2}`} />
           </div>
         </div>
         <button class="tn-btn-control" id="tn-close-lineup-btn">Done</button>

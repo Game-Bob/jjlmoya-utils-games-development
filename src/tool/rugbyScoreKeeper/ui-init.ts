@@ -62,7 +62,7 @@ function renderHistory(s: MatchState) {
     const cls = e.team === 'home' ? 'rg-ev-home' : 'rg-ev-away';
     return `<div class="rg-history-event ${cls}"><span class="rg-ev-min">${e.minute}</span><span class="rg-ev-label">${e.label}</span></div>`;
   }).join('');
-  list.scrollTop = list.scrollHeight;
+  requestAnimationFrame(() => { list.scrollTo(0, 1e9); });
 }
 
 function renderBonuses(s: MatchState) {
@@ -123,8 +123,7 @@ function showBanner(html: string, isPeak: boolean) {
   bn.className = `rg-banner ${isPeak ? 'rg-banner-peak' : 'rg-banner-warn'}`;
   bn.style.display = 'flex';
   bn.classList.remove('rg-banner-hide');
-  void bn.offsetWidth;
-  bn.classList.add('rg-banner-show');
+  requestAnimationFrame(() => bn.classList.add('rg-banner-show'));
   setTimeout(() => {
     bn.classList.add('rg-banner-hide');
     setTimeout(() => { bn.style.display = 'none'; }, 400);

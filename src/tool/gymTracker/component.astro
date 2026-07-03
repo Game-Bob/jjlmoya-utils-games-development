@@ -89,7 +89,7 @@ const t = (ui ?? {}) as GymTrackerUI & Record<string, string>;
                     <button class="gt-preset-btn preset-btn" data-seconds="120">120s</button>
                 </div>
                 <div class="gt-custom-timer">
-                    <input type="number" id="customTimerInput" placeholder="s" min="1" max="999" class="gt-input-timer" />
+                    <input type="number" id="customTimerInput" placeholder="s" min="1" max="999" class="gt-input-timer" aria-label="Custom timer seconds" />
                     <button id="setCustomTimerBtn" class="gt-btn-ok">{t.okBtn}</button>
                 </div>
             </div>
