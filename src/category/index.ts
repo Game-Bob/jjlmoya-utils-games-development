@@ -5,6 +5,7 @@ import { scoreKeeper } from '../tool/scoreKeeper/index';
 import { tournamentBracket } from '../tool/tournamentBracket/index';
 import { gymTracker } from '../tool/gymTracker/index';
 import { reactionTester } from '../tool/reactionTester/index';
+import { eloRatingCalculator } from '../tool/eloRatingCalculator/index';
 import { pingPongScoreKeeper } from '../tool/pingPongScoreKeeper/index';
 import { rugbyScoreKeeper } from '../tool/rugbyScoreKeeper/index';
 import { baseballScoreKeeper } from '../tool/baseballScoreKeeper/index';
@@ -18,6 +19,7 @@ export const sportsCategory: SportsCategoryEntry = {
     tournamentBracket,
     gymTracker,
     reactionTester,
+    eloRatingCalculator,
     pingPongScoreKeeper,
     rugbyScoreKeeper,
     baseballScoreKeeper,

@@ -1,0 +1,271 @@
+---
+import type { EloRatingCalculatorUI } from './ui';
+
+interface Props {
+  ui: EloRatingCalculatorUI;
+}
+
+const { ui: t } = Astro.props;
+---
+
+<div class="elo-board" id="elo-board" data-elo-ui={JSON.stringify(t)}>
+  <div class="elo-topline">
+    <div id="elo-badge" class="elo-badge">{t.balancedLabel}</div>
+    <div class="elo-k-readout">
+      <span>{t.kFactorLabel}</span>
+      <strong id="elo-k-output">32</strong>
+    </div>
+  </div>
+
+  <div class="elo-grid">
+    <section class="elo-input-panel">
+      <label class="elo-field">
+        <span>{t.playerLabel}</span>
+        <input id="elo-player" type="number" min="100" max="3000" value="1500" />
+      </label>
+      <label class="elo-field">
+        <span>{t.opponentLabel}</span>
+        <input id="elo-opponent" type="number" min="100" max="3000" value="1600" />
+      </label>
+      <label class="elo-field">
+        <span>{t.kFactorLabel}</span>
+        <input id="elo-k" type="range" min="4" max="80" value="32" />
+      </label>
+      <div class="elo-k-help">
+        <strong>{t.kFactorHelpTitle}</strong>
+        <p>{t.kFactorHelpText}</p>
+        <div class="elo-k-scale">
+          <span>{t.kFactorLowText}</span>
+          <span>{t.kFactorHighText}</span>
+        </div>
+      </div>
+      <div class="elo-result-switch" aria-label={t.resultLabel}>
+        <button class="elo-result-btn" data-result="win">{t.winLabel}</button>
+        <button class="elo-result-btn elo-active" data-result="draw">{t.drawLabel}</button>
+        <button class="elo-result-btn" data-result="loss">{t.lossLabel}</button>
+      </div>
+      <div class="elo-actions">
+        <button id="elo-calculate" class="elo-primary">{t.calculateLabel}</button>
+        <button id="elo-reset" class="elo-secondary">{t.resetLabel}</button>
+      </div>
+    </section>
+
+    <section class="elo-output-panel" aria-live="polite">
+      <div class="elo-scoreline">
+        <span class="elo-score-cell">
+          <small>{t.playerLabel}</small>
+          <b id="elo-old-rating">1500</b>
+        </span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 12h14M13 5l7 7-7 7" />
+        </svg>
+        <span class="elo-score-cell elo-score-next">
+          <small>{t.newRatingLabel}</small>
+          <b id="elo-new-rating">1500</b>
+        </span>
+      </div>
+      <div class="elo-meter">
+        <div id="elo-meter-fill" class="elo-meter-fill"></div>
+      </div>
+      <div class="elo-impact">
+        <span>{t.resultSummaryLabel}</span>
+        <strong id="elo-impact-text">{t.initialImpactText}</strong>
+      </div>
+      <div class="elo-stats">
+        <div>
+          <span>{t.expectedLabel}</span>
+          <strong id="elo-expected">36%</strong>
+        </div>
+        <div>
+          <span>{t.deltaLabel}</span>
+          <strong id="elo-delta">0</strong>
+        </div>
+        <div>
+          <span>{t.newRatingLabel}</span>
+          <strong id="elo-new-summary">1500</strong>
+        </div>
+        <div>
+          <span>{t.opponentNewRatingLabel}</span>
+          <strong id="elo-opponent-new">1600</strong>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="elo-history">
+    <div class="elo-history-head">
+      <h2>{t.historyLabel}</h2>
+      <div class="elo-history-actions">
+        <button id="elo-copy" class="elo-mini">{t.copyLabel}</button>
+        <button id="elo-clear" class="elo-mini">{t.clearLabel}</button>
+      </div>
+    </div>
+    <ol id="elo-history-list" class="elo-history-list">
+      <li>{t.noHistoryLabel}</li>
+    </ol>
+  </section>
+</div>
+
+<script>
+  import { calculateElo, clampKFactor, clampRating, type EloResult } from './logic';
+
+  interface ELOUI {
+    upsetLabel: string;
+    favoriteLabel: string;
+    balancedLabel: string;
+    winLabel: string;
+    drawLabel: string;
+    lossLabel: string;
+    historyVersusLabel: string;
+    historyToLabel: string;
+    playerPointsLabel: string;
+    opponentEloLabel: string;
+    particleEloLabel: string;
+    particleRatingLabel: string;
+    noHistoryLabel: string;
+    copiedLabel: string;
+    copyLabel: string;
+  }
+
+  interface HistoryItem {
+    player: number;
+    opponent: number;
+    result: EloResult;
+    delta: number;
+    next: number;
+    expected: number;
+  }
+
+  const board = document.getElementById('elo-board') as HTMLElement;
+  const ui = JSON.parse(board?.dataset.eloUi ?? '{}') as ELOUI;
+  const player = document.getElementById('elo-player') as HTMLInputElement;
+  const opponent = document.getElementById('elo-opponent') as HTMLInputElement;
+  const k = document.getElementById('elo-k') as HTMLInputElement;
+  const kOutput = document.getElementById('elo-k-output') as HTMLOutputElement;
+  const resultButtons = [...document.querySelectorAll<HTMLButtonElement>('.elo-result-btn')];
+  const historyList = document.getElementById('elo-history-list') as HTMLOListElement;
+  let result: EloResult = 'draw';
+  let history: HistoryItem[] = JSON.parse(localStorage.getItem('elo_history') ?? '[]');
+
+  function els(id: string) {
+    return document.getElementById(id) as HTMLElement;
+  }
+
+  function getOutput() {
+    return calculateElo({
+      playerRating: clampRating(Number(player.value)),
+      opponentRating: clampRating(Number(opponent.value)),
+      kFactor: clampKFactor(Number(k.value)),
+      result,
+    });
+  }
+
+  function renderHistory() {
+    if (!history.length) {
+      historyList.innerHTML = `<li>${ui.noHistoryLabel}</li>`;
+      return;
+    }
+    historyList.innerHTML = history.slice(-6).reverse().map((item) => {
+      const sign = item.delta > 0 ? '+' : '';
+      return `<li><span>${item.player} ${ui.historyVersusLabel} ${item.opponent}</span><strong>${sign}${item.delta} ${ui.historyToLabel} ${item.next}</strong></li>`;
+    }).join('');
+  }
+
+  function setBadge(advantage: number) {
+    const badge = els('elo-badge');
+    badge.className = 'elo-badge';
+    if (advantage < -120) {
+      badge.textContent = ui.upsetLabel;
+      badge.classList.add('elo-upset');
+      return;
+    }
+    if (advantage > 120) {
+      badge.textContent = ui.favoriteLabel;
+      badge.classList.add('elo-favorite');
+      return;
+    }
+    badge.textContent = ui.balancedLabel;
+  }
+
+  function render(save: boolean) {
+    const output = getOutput();
+    const percent = Math.round(output.expectedScore * 100);
+    const sign = output.ratingDelta > 0 ? '+' : '';
+    const resultText = { win: ui.winLabel, draw: ui.drawLabel, loss: ui.lossLabel }[result];
+    els('elo-old-rating').textContent = String(clampRating(Number(player.value)));
+    els('elo-new-rating').textContent = String(output.newRating);
+    els('elo-expected').textContent = `${percent}%`;
+    els('elo-delta').textContent = `${sign}${output.ratingDelta}`;
+    els('elo-new-summary').textContent = String(output.newRating);
+    els('elo-opponent-new').textContent = String(output.opponentNewRating);
+    els('elo-impact-text').textContent = `${resultText}: ${sign}${output.ratingDelta} ${ui.playerPointsLabel}, ${output.opponentNewRating} ${ui.opponentEloLabel}`;
+    els('elo-meter-fill').style.width = `${percent}%`;
+    setBadge(output.advantage);
+    if (save) {
+      board.classList.remove('elo-burst');
+      void board.offsetWidth;
+      board.classList.add('elo-burst');
+      history.push({ player: clampRating(Number(player.value)), opponent: clampRating(Number(opponent.value)), result, delta: output.ratingDelta, next: output.newRating, expected: percent });
+      history = history.slice(-20);
+      localStorage.setItem('elo_history', JSON.stringify(history));
+      renderHistory();
+    }
+  }
+
+  function pulse(e: MouseEvent, text: string) {
+    [ui.particleEloLabel, text, ui.particleRatingLabel].forEach((label, index) => {
+      const particle = document.createElement('span');
+      particle.className = 'elo-particle';
+      particle.textContent = label;
+      particle.style.left = `${e.clientX}px`;
+      particle.style.top = `${e.clientY}px`;
+      particle.style.setProperty('--elo-float-x', `${(index - 1) * 1.2}rem`);
+      document.body.appendChild(particle);
+      setTimeout(() => particle.remove(), 950);
+    });
+  }
+
+  resultButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      result = button.dataset.result as EloResult;
+      resultButtons.forEach((item) => item.classList.toggle('elo-active', item === button));
+      render(false);
+    });
+  });
+
+  [player, opponent, k].forEach((input) => input.addEventListener('input', () => {
+    kOutput.textContent = String(clampKFactor(Number(k.value)));
+    render(false);
+  }));
+
+  document.getElementById('elo-calculate')?.addEventListener('click', (e) => {
+    render(true);
+    pulse(e as MouseEvent, els('elo-delta').textContent ?? '0');
+  });
+
+  document.getElementById('elo-reset')?.addEventListener('click', () => {
+    player.value = '1500';
+    opponent.value = '1600';
+    k.value = '32';
+    kOutput.textContent = '32';
+    result = 'draw';
+    resultButtons.forEach((item) => item.classList.toggle('elo-active', item.dataset.result === result));
+    render(false);
+  });
+
+  document.getElementById('elo-copy')?.addEventListener('click', () => {
+    void navigator.clipboard.writeText(historyList.innerText);
+    const copy = document.getElementById('elo-copy') as HTMLButtonElement;
+    copy.textContent = ui.copiedLabel;
+    setTimeout(() => { copy.textContent = ui.copyLabel; }, 1400);
+  });
+
+  document.getElementById('elo-clear')?.addEventListener('click', () => {
+    history = [];
+    localStorage.removeItem('elo_history');
+    renderHistory();
+  });
+
+  render(false);
+  renderHistory();
+</script>

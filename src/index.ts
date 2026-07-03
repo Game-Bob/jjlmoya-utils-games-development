@@ -29,3 +29,5 @@ export type { GymTrackerUI, GymTrackerLocaleContent } from './tool/gymTracker/in
 export { REACTION_TESTER_TOOL, reactionTester } from './tool/reactionTester/index';
 export type { ReactionTesterUI, ReactionTesterLocaleContent } from './tool/reactionTester/index';
 
+export { ELO_RATING_CALCULATOR_TOOL, eloRatingCalculator } from './tool/eloRatingCalculator/index';
+export type { EloRatingCalculatorUI, EloRatingCalculatorLocaleContent } from './tool/eloRatingCalculator/index';

@@ -8,6 +8,8 @@ export { pingPongScoreKeeper } from './tool/pingPongScoreKeeper/entry';
 export type { PingPongScoreKeeperLocaleContent } from './tool/pingPongScoreKeeper/entry';
 export { reactionTester } from './tool/reactionTester/entry';
 export type { ReactionTesterLocaleContent } from './tool/reactionTester/entry';
+export { eloRatingCalculator } from './tool/eloRatingCalculator/entry';
+export type { EloRatingCalculatorLocaleContent } from './tool/eloRatingCalculator/entry';
 export { scoreKeeper } from './tool/scoreKeeper/entry';
 export type { ScoreKeeperLocaleContent } from './tool/scoreKeeper/entry';
 export { tournamentBracket } from './tool/tournamentBracket/entry';
@@ -34,6 +36,7 @@ import { footballScoreKeeper } from './tool/footballScoreKeeper/entry';
 import { gymTracker } from './tool/gymTracker/entry';
 import { pingPongScoreKeeper } from './tool/pingPongScoreKeeper/entry';
 import { reactionTester } from './tool/reactionTester/entry';
+import { eloRatingCalculator } from './tool/eloRatingCalculator/entry';
 import { scoreKeeper } from './tool/scoreKeeper/entry';
 import { tournamentBracket } from './tool/tournamentBracket/entry';
 import { tennisScoreKeeper } from './tool/tennisScoreKeeper/entry';
@@ -44,5 +47,5 @@ import { beachVolleyballScoreKeeper } from './tool/beachVolleyballScoreKeeper/en
 import { snookerScoreKeeper } from './tool/snookerScoreKeeper/entry';
 import { rugbyScoreKeeper } from './tool/rugbyScoreKeeper/entry';
 import { baseballScoreKeeper } from './tool/baseballScoreKeeper/entry';
-export const ALL_ENTRIES = [basketScoreKeeper, footballScoreKeeper, gymTracker, pingPongScoreKeeper, reactionTester, scoreKeeper, tournamentBracket, tennisScoreKeeper, dartsScoreKeeper, padelScoreKeeper, streetballScoreKeeper, beachVolleyballScoreKeeper, snookerScoreKeeper, rugbyScoreKeeper, baseballScoreKeeper];
+export const ALL_ENTRIES = [basketScoreKeeper, footballScoreKeeper, gymTracker, pingPongScoreKeeper, reactionTester, eloRatingCalculator, scoreKeeper, tournamentBracket, tennisScoreKeeper, dartsScoreKeeper, padelScoreKeeper, streetballScoreKeeper, beachVolleyballScoreKeeper, snookerScoreKeeper, rugbyScoreKeeper, baseballScoreKeeper];
 

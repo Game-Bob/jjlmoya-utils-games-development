@@ -5,6 +5,7 @@ import { SCORE_KEEPER_TOOL } from './tool/scoreKeeper/index';
 import { TOURNAMENT_BRACKET_TOOL } from './tool/tournamentBracket/index';
 import { GYM_TRACKER_TOOL } from './tool/gymTracker/index';
 import { REACTION_TESTER_TOOL } from './tool/reactionTester/index';
+import { ELO_RATING_CALCULATOR_TOOL } from './tool/eloRatingCalculator/index';
 import { FOOTBALL_SCORE_KEEPER_TOOL } from './tool/footballScoreKeeper/index';
 import { PING_PONG_SCORE_KEEPER_TOOL } from './tool/pingPongScoreKeeper/index';
 import { TENNIS_SCORE_KEEPER_TOOL } from './tool/tennisScoreKeeper/index';
@@ -22,6 +23,7 @@ export const ALL_TOOLS: ToolDefinition[] = [
   TOURNAMENT_BRACKET_TOOL,
   GYM_TRACKER_TOOL,
   REACTION_TESTER_TOOL,
+  ELO_RATING_CALCULATOR_TOOL,
   FOOTBALL_SCORE_KEEPER_TOOL,
   PING_PONG_SCORE_KEEPER_TOOL,
   TENNIS_SCORE_KEEPER_TOOL,
