@@ -2,11 +2,15 @@ export function el(id: string): HTMLElement | null {
   return document.getElementById(id);
 }
 
+function measure(element: HTMLElement): DOMRect {
+  return element.getBoundingClientRect();
+}
+
 export function spawnParticles(container: HTMLElement): void {
-  const rect = container.getBoundingClientRect();
+  const rect = measure(container);
   const parent = el('tn-card');
   if (!parent) return;
-  const parentRect = parent.getBoundingClientRect();
+  const parentRect = measure(parent);
   const x = rect.left - parentRect.left + rect.width / 2;
   const y = rect.top - parentRect.top + rect.height / 2;
 
@@ -30,7 +34,7 @@ export function spawnParticles(container: HTMLElement): void {
 export function spawnRipple(e: MouseEvent): void {
   const container = el('tn-ripples');
   if (!container) return;
-  const rect = container.getBoundingClientRect();
+  const rect = measure(container);
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
