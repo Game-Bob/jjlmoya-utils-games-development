@@ -1,14 +1,14 @@
 import type { SportsCategoryEntry, SportsToolEntry } from '../types';
-import { basketScoreKeeper } from '../tool/basketScoreKeeper/index';
-import { footballScoreKeeper } from '../tool/footballScoreKeeper/index';
-import { scoreKeeper } from '../tool/scoreKeeper/index';
-import { tournamentBracket } from '../tool/tournamentBracket/index';
-import { gymTracker } from '../tool/gymTracker/index';
-import { reactionTester } from '../tool/reactionTester/index';
-import { eloRatingCalculator } from '../tool/eloRatingCalculator/index';
-import { pingPongScoreKeeper } from '../tool/pingPongScoreKeeper/index';
-import { rugbyScoreKeeper } from '../tool/rugbyScoreKeeper/index';
-import { baseballScoreKeeper } from '../tool/baseballScoreKeeper/index';
+import { basketScoreKeeper } from '../tool/basketScoreKeeper/entry';
+import { footballScoreKeeper } from '../tool/footballScoreKeeper/entry';
+import { scoreKeeper } from '../tool/scoreKeeper/entry';
+import { tournamentBracket } from '../tool/tournamentBracket/entry';
+import { gymTracker } from '../tool/gymTracker/entry';
+import { reactionTester } from '../tool/reactionTester/entry';
+import { eloRatingCalculator } from '../tool/eloRatingCalculator/entry';
+import { pingPongScoreKeeper } from '../tool/pingPongScoreKeeper/entry';
+import { rugbyScoreKeeper } from '../tool/rugbyScoreKeeper/entry';
+import { baseballScoreKeeper } from '../tool/baseballScoreKeeper/entry';
 
 export const sportsCategory: SportsCategoryEntry = {
   icon: 'mdi:soccer',
