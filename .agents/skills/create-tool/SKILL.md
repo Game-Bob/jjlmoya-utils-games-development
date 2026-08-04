@@ -83,7 +83,8 @@ When the user explicitly says **`OKQA`**, it means:
    - `npm run test` (Must pass 100% of test suites, including full i18n coverage tests)
    - `npm run build` (Must complete with 0 errors — this catches Vite bundling and Astro SSG runtime errors that type-check and lint cannot detect)
 6. **Automatic Git Commit & Release**:
-   - If ALL verification checks pass successfully, execute git commit, git push, and `npm run minor` to bump the release version automatically.
+   - If ALL verification checks pass successfully, execute `git add -A`, `git commit`, `git push`, and then `npm run minor`.
+   - `npm run minor` automatically triggers the `preversion` hook defined in `package.json`, which runs `lint + test + build` in sequence before bumping the version. If any of these fail, the version bump is aborted. This is enforced at the tooling level and cannot be bypassed.
 
 ---
 
