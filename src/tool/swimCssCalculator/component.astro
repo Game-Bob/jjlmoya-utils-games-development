@@ -1,0 +1,350 @@
+---
+import type { SwimCssCalculatorUI } from './ui';
+import './swim-css-calculator.css';
+
+interface Props {
+  ui: SwimCssCalculatorUI;
+}
+
+const { ui: t } = Astro.props;
+---
+
+<div class="css-tool-card" id="css-swim-app">
+  <div class="css-unit-selector">
+    <span class="css-input-label">{t.unitLabel}:</span>
+    <button type="button" class="css-unit-btn active" id="unit-metric-btn" data-unit="metric">
+      {t.unitMeters}
+    </button>
+    <button type="button" class="css-unit-btn" id="unit-imperial-btn" data-unit="imperial">
+      {t.unitYards}
+    </button>
+  </div>
+
+  <div class="css-inputs-grid">
+    <div class="css-input-box">
+      <div class="css-input-header">
+        <label class="css-input-label" for="t400-min">{t.t400Label}</label>
+      </div>
+      <div class="css-chips-row">
+        <button type="button" class="css-chip" data-min="5" data-sec="30">5:30</button>
+        <button type="button" class="css-chip" data-min="6" data-sec="0">6:00</button>
+        <button type="button" class="css-chip" data-min="6" data-sec="30">6:30</button>
+        <button type="button" class="css-chip" data-min="7" data-sec="0">7:00</button>
+      </div>
+      <div class="css-time-inputs">
+        <input type="number" id="t400-min" class="css-number-field" min="0" max="59" value="6" placeholder={t.minutesLabel} aria-label={`${t.t400Label} ${t.minutesLabel}`} />
+        <span class="css-time-colon">:</span>
+        <input type="number" id="t400-sec" class="css-number-field" min="0" max="59" value="0" placeholder={t.secondsLabel} aria-label={`${t.t400Label} ${t.secondsLabel}`} />
+      </div>
+    </div>
+
+    <div class="css-input-box">
+      <div class="css-input-header">
+        <label class="css-input-label" for="t200-min">{t.t200Label}</label>
+      </div>
+      <div class="css-chips-row">
+        <button type="button" class="css-chip" data-min="2" data-sec="30">2:30</button>
+        <button type="button" class="css-chip" data-min="2" data-sec="45">2:45</button>
+        <button type="button" class="css-chip" data-min="2" data-sec="50">2:50</button>
+        <button type="button" class="css-chip" data-min="3" data-sec="0">3:00</button>
+      </div>
+      <div class="css-time-inputs">
+        <input type="number" id="t200-min" class="css-number-field" min="0" max="29" value="2" placeholder={t.minutesLabel} aria-label={`${t.t200Label} ${t.minutesLabel}`} />
+        <span class="css-time-colon">:</span>
+        <input type="number" id="t200-sec" class="css-number-field" min="0" max="59" value="50" placeholder={t.secondsLabel} aria-label={`${t.t200Label} ${t.secondsLabel}`} />
+      </div>
+    </div>
+  </div>
+
+  <div class="css-actions">
+    <button type="button" class="css-btn-primary" id="css-calc-btn">
+      {t.calculateButton}
+    </button>
+    <button type="button" class="css-btn-secondary" id="css-reset-btn">
+      {t.resetButton}
+    </button>
+  </div>
+
+  <div id="css-error-container" class="css-error-box" style="display: none;">
+    {t.invalidNotice}
+  </div>
+
+  <div class="css-results-hero" id="css-results-box">
+    <div class="css-result-stat">
+      <span class="css-stat-header">{t.cssSpeedLabel}</span>
+      <span class="css-stat-value" id="css-val-speed">1.05 <small id="css-unit-speed" class="css-stat-unit">{t.unitMeterPerSec}</small></span>
+    </div>
+    <div class="css-result-stat">
+      <span class="css-stat-header">{t.cssPace100Label}</span>
+      <span class="css-stat-value" id="css-val-pace">1:35 <small id="css-unit-pace" class="css-stat-unit">{t.pace100mUnit}</small></span>
+    </div>
+    <div class="css-result-stat">
+      <span class="css-stat-header">{t.lapPaceLabel}</span>
+      <span class="css-stat-value" id="css-val-lap">23.8 <small id="css-unit-lap" class="css-stat-unit">s/25m</small></span>
+    </div>
+    <div class="css-gauge-bar">
+      <div class="css-gauge-fill" id="css-gauge-fill"></div>
+    </div>
+  </div>
+
+  <div class="css-matrix-section">
+    <div class="css-matrix-header">
+      <span class="css-matrix-title">{t.trainingZonesTitle}</span>
+      <button type="button" class="css-btn-secondary css-copy-btn" id="css-copy-btn">
+        {t.copySplitsButton}
+      </button>
+    </div>
+
+    <div class="css-zones-grid">
+      <div class="css-zone-card aerobic">
+        <span class="css-zone-badge">{t.zoneAerobic}</span>
+        <span class="css-zone-desc">{t.zoneAerobicDesc}</span>
+        <span class="css-rest-tag">{t.zoneAerobicRest}</span>
+        <div class="css-zone-pace-display" id="zone-aerobic-pace">1:39</div>
+        <div class="css-splits-mini-grid">
+          <div class="css-split-item">
+            <span class="css-split-label">50</span>
+            <span class="css-split-val" id="zone-aerobic-50">0:49</span>
+          </div>
+          <div class="css-split-item">
+            <span class="css-split-label">100</span>
+            <span class="css-split-val" id="zone-aerobic-100">1:39</span>
+          </div>
+          <div class="css-split-item">
+            <span class="css-split-label">200</span>
+            <span class="css-split-val" id="zone-aerobic-200">3:18</span>
+          </div>
+          <div class="css-split-item">
+            <span class="css-split-label">400</span>
+            <span class="css-split-val" id="zone-aerobic-400">6:35</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="css-zone-card css-threshold">
+        <span class="css-zone-badge">{t.zoneCss}</span>
+        <span class="css-zone-desc">{t.zoneCssDesc}</span>
+        <span class="css-rest-tag">{t.zoneCssRest}</span>
+        <div class="css-zone-pace-display" id="zone-css-pace">1:35</div>
+        <div class="css-splits-mini-grid">
+          <div class="css-split-item">
+            <span class="css-split-label">50</span>
+            <span class="css-split-val" id="zone-css-50">0:47</span>
+          </div>
+          <div class="css-split-item">
+            <span class="css-split-label">100</span>
+            <span class="css-split-val" id="zone-css-100">1:35</span>
+          </div>
+          <div class="css-split-item">
+            <span class="css-split-label">200</span>
+            <span class="css-split-val" id="zone-css-200">3:10</span>
+          </div>
+          <div class="css-split-item">
+            <span class="css-split-label">400</span>
+            <span class="css-split-val" id="zone-css-400">6:20</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="css-zone-card vo2max">
+        <span class="css-zone-badge">{t.zoneVo2Max}</span>
+        <span class="css-zone-desc">{t.zoneVo2MaxDesc}</span>
+        <span class="css-rest-tag">{t.zoneVo2MaxRest}</span>
+        <div class="css-zone-pace-display" id="zone-vo2-pace">1:31</div>
+        <div class="css-splits-mini-grid">
+          <div class="css-split-item">
+            <span class="css-split-label">50</span>
+            <span class="css-split-val" id="zone-vo2-50">0:45</span>
+          </div>
+          <div class="css-split-item">
+            <span class="css-split-label">100</span>
+            <span class="css-split-val" id="zone-vo2-100">1:31</span>
+          </div>
+          <div class="css-split-item">
+            <span class="css-split-label">200</span>
+            <span class="css-split-val" id="zone-vo2-200">3:02</span>
+          </div>
+          <div class="css-split-item">
+            <span class="css-split-label">400</span>
+            <span class="css-split-val" id="zone-vo2-400">6:05</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { calculateSwimCss, saveSwimCssState, loadSwimCssState } from './logic';
+  import type { DistanceUnit, SwimCssResult, IntensityZone } from './logic';
+
+  function triggerHeroPulse() {
+    const hero = document.getElementById('css-results-box');
+    if (!hero) return;
+    hero.classList.remove('glow-pulse');
+    requestAnimationFrame(() => {
+      hero.classList.add('glow-pulse');
+    });
+  }
+
+  function updateZoneUI(prefix: string, zone?: IntensityZone) {
+    if (!zone) return;
+    const paceEl = document.getElementById(`zone-${prefix}-pace`);
+    if (paceEl) paceEl.innerText = zone.formattedPace100;
+    zone.splits.forEach((s) => {
+      const el = document.getElementById(`zone-${prefix}-${s.distance}`);
+      if (el) el.innerText = s.formattedTime;
+    });
+  }
+
+  function updateStatElement(valId: string, unitId: string, valueText: string, unitText: string) {
+    const valEl = document.getElementById(valId);
+    const unitEl = document.getElementById(unitId);
+    if (valEl && unitEl) {
+      valEl.childNodes[0].nodeValue = valueText;
+      unitEl.innerText = unitText;
+    }
+  }
+
+  function renderResultValues(res: SwimCssResult, unit: DistanceUnit) {
+    const isMetric = unit === 'metric';
+    updateStatElement('css-val-speed', 'css-unit-speed', `${res.cssSpeed.toFixed(2)} `, isMetric ? 'm/s' : 'yd/s');
+    updateStatElement('css-val-pace', 'css-unit-pace', `${res.formattedPace100} `, isMetric ? '/100m' : '/100yd');
+    updateStatElement('css-val-lap', 'css-unit-lap', `${(res.pace100Seconds / 4).toFixed(1)} `, isMetric ? 's/25m' : 's/25yd');
+
+    const fill = document.getElementById('css-gauge-fill');
+    if (fill) {
+      fill.style.width = `${Math.min(100, Math.max(20, (res.cssSpeed / 2.0) * 100))}%`;
+    }
+
+    updateZoneUI('aerobic', res.zones.find((z) => z.key === 'aerobic'));
+    updateZoneUI('css', res.zones.find((z) => z.key === 'css'));
+    updateZoneUI('vo2', res.zones.find((z) => z.key === 'vo2max'));
+  }
+
+  interface CssDomElements {
+    t400Min: HTMLInputElement;
+    t400Sec: HTMLInputElement;
+    t200Min: HTMLInputElement;
+    t200Sec: HTMLInputElement;
+    errorBox: HTMLElement | null;
+  }
+
+  function getDomElements(): CssDomElements | null {
+    const t400Min = document.getElementById('t400-min') as HTMLInputElement;
+    const t400Sec = document.getElementById('t400-sec') as HTMLInputElement;
+    const t200Min = document.getElementById('t200-min') as HTMLInputElement;
+    const t200Sec = document.getElementById('t200-sec') as HTMLInputElement;
+    if (!t400Min || !t400Sec || !t200Min || !t200Sec) return null;
+    return {
+      t400Min,
+      t400Sec,
+      t200Min,
+      t200Sec,
+      errorBox: document.getElementById('css-error-container'),
+    };
+  }
+
+  function updateSwimUi(elems: CssDomElements, currentUnit: DistanceUnit) {
+    const input = {
+      t400Min: parseInt(elems.t400Min.value, 10) || 0,
+      t400Sec: parseInt(elems.t400Sec.value, 10) || 0,
+      t200Min: parseInt(elems.t200Min.value, 10) || 0,
+      t200Sec: parseInt(elems.t200Sec.value, 10) || 0,
+      unit: currentUnit,
+    };
+
+    saveSwimCssState(input);
+    const res = calculateSwimCss(input);
+    if (!res) {
+      if (elems.errorBox) elems.errorBox.style.display = 'block';
+      return;
+    }
+
+    if (elems.errorBox) elems.errorBox.style.display = 'none';
+    renderResultValues(res, currentUnit);
+  }
+
+  function setUnitToggleState(unit: DistanceUnit, metricBtn: HTMLElement | null, imperialBtn: HTMLElement | null) {
+    if (unit === 'imperial') {
+      metricBtn?.classList.remove('active');
+      imperialBtn?.classList.add('active');
+    } else {
+      metricBtn?.classList.add('active');
+      imperialBtn?.classList.remove('active');
+    }
+  }
+
+  function bindChipsEvents(elems: CssDomElements, refresh: () => void) {
+    document.querySelectorAll('.css-chip').forEach((chip) => {
+      chip.addEventListener('click', (e) => {
+        const btn = e.currentTarget as HTMLButtonElement;
+        const target = btn.closest('.css-input-box');
+        const isT400 = target?.querySelector('#t400-min') !== null;
+        if (isT400) {
+          elems.t400Min.value = btn.dataset.min || '6';
+          elems.t400Sec.value = btn.dataset.sec || '0';
+        } else {
+          elems.t200Min.value = btn.dataset.min || '2';
+          elems.t200Sec.value = btn.dataset.sec || '50';
+        }
+        refresh();
+        triggerHeroPulse();
+      });
+    });
+  }
+
+  function handleCopyButtonClick(btn: HTMLButtonElement) {
+    const valPace = document.getElementById('css-val-pace');
+    const originalText = btn.innerText;
+    navigator.clipboard.writeText(`CSS Pace: ${valPace?.innerText || ''}`);
+    btn.innerText = 'Copied to Clipboard!';
+    btn.classList.add('copied-active');
+    setTimeout(() => {
+      btn.innerText = originalText;
+      btn.classList.remove('copied-active');
+    }, 1500);
+  }
+
+  function bindActionButtons(elems: CssDomElements, refresh: () => void, resetCb: () => void) {
+    document.getElementById('css-calc-btn')?.addEventListener('click', () => {
+      refresh();
+      triggerHeroPulse();
+    });
+    document.getElementById('css-reset-btn')?.addEventListener('click', resetCb);
+    document.getElementById('css-copy-btn')?.addEventListener('click', (e) => {
+      handleCopyButtonClick(e.currentTarget as HTMLButtonElement);
+    });
+  }
+
+  function initSwimCss() {
+    const elems = getDomElements();
+    if (!elems) return;
+    const metricBtn = document.getElementById('unit-metric-btn');
+    const imperialBtn = document.getElementById('unit-imperial-btn');
+    let currentUnit: DistanceUnit = 'metric';
+
+    const refresh = () => updateSwimUi(elems, currentUnit);
+    const saved = loadSwimCssState();
+    elems.t400Min.value = String(saved.t400Min);
+    elems.t400Sec.value = String(saved.t400Sec);
+    elems.t200Min.value = String(saved.t200Min);
+    elems.t200Sec.value = String(saved.t200Sec);
+    currentUnit = saved.unit;
+    setUnitToggleState(currentUnit, metricBtn, imperialBtn);
+
+    metricBtn?.addEventListener('click', () => { currentUnit = 'metric'; setUnitToggleState('metric', metricBtn, imperialBtn); refresh(); });
+    imperialBtn?.addEventListener('click', () => { currentUnit = 'imperial'; setUnitToggleState('imperial', metricBtn, imperialBtn); refresh(); });
+    [elems.t400Min, elems.t400Sec, elems.t200Min, elems.t200Sec].forEach((input) => input.addEventListener('input', refresh));
+
+    bindActionButtons(elems, refresh, () => {
+      elems.t400Min.value = '6'; elems.t400Sec.value = '0'; elems.t200Min.value = '2'; elems.t200Sec.value = '50';
+      currentUnit = 'metric'; setUnitToggleState('metric', metricBtn, imperialBtn); refresh();
+    });
+
+    bindChipsEvents(elems, refresh);
+    refresh();
+  }
+
+  document.addEventListener('DOMContentLoaded', initSwimCss);
+</script>

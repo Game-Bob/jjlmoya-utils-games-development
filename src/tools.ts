@@ -17,6 +17,7 @@ import { RUGBY_SCOREKEEPER_TOOL } from './tool/rugbyScoreKeeper/index';
 import { BASEBALL_SCOREKEEPER_TOOL } from './tool/baseballScoreKeeper/index';
 import { PENALTY_SHOOTOUT_TOOL } from './tool/penaltyShootout/index';
 import { RUNNING_PACE_PREDICTOR_TOOL } from './tool/runningPacePredictor/index';
+import { SWIM_CSS_CALCULATOR_TOOL } from './tool/swimCssCalculator/index';
 
 export const ALL_TOOLS = [
   BASKET_SCORE_KEEPER_TOOL,
@@ -37,4 +38,5 @@ export const ALL_TOOLS = [
   BASEBALL_SCOREKEEPER_TOOL,
   PENALTY_SHOOTOUT_TOOL,
   RUNNING_PACE_PREDICTOR_TOOL,
+  SWIM_CSS_CALCULATOR_TOOL,
 ];

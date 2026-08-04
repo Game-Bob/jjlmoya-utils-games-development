@@ -1,0 +1,224 @@
+---
+import type { SwimCssCalculatorUI } from './ui';
+
+interface Props {
+  ui: SwimCssCalculatorUI;
+}
+
+const { ui } = Astro.props;
+const { seo } = ui;
+---
+
+<section class="swim-css-seo-container">
+  <header class="swim-css-seo-header">
+    <h2 class="swim-css-seo-h1">{seo.h1}</h2>
+    <p class="swim-css-seo-intro">{seo.intro}</p>
+  </header>
+
+  <div class="swim-css-stats-grid">
+    <div class="swim-css-stat-card">
+      <span class="swim-css-stat-value">{seo.stat1Value}</span>
+      <span class="swim-css-stat-label">{seo.stat1Label}</span>
+    </div>
+    <div class="swim-css-stat-card">
+      <span class="swim-css-stat-value">{seo.stat2Value}</span>
+      <span class="swim-css-stat-label">{seo.stat2Label}</span>
+    </div>
+    <div class="swim-css-stat-card">
+      <span class="swim-css-stat-value">{seo.stat3Value}</span>
+      <span class="swim-css-stat-label">{seo.stat3Label}</span>
+    </div>
+    <div class="swim-css-stat-card">
+      <span class="swim-css-stat-value">{seo.stat4Value}</span>
+      <span class="swim-css-stat-label">{seo.stat4Label}</span>
+    </div>
+  </div>
+
+  <div class="swim-css-comparative-block">
+    <h2 class="swim-css-seo-h2">{seo.comparativeTitle}</h2>
+    <div class="swim-css-comparative-grid">
+      <div class="swim-css-comparative-card">
+        <h3>{seo.comparativeItem1Title}</h3>
+        <p>{seo.comparativeItem1Desc}</p>
+      </div>
+      <div class="swim-css-comparative-card">
+        <h3>{seo.comparativeItem2Title}</h3>
+        <p>{seo.comparativeItem2Desc}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="swim-css-table-block">
+    <h2 class="swim-css-seo-h2">{seo.tableTitle}</h2>
+    <div class="swim-css-table-wrapper">
+      <table class="swim-css-seo-table">
+        <thead>
+          <tr>
+            <th>{seo.tableCol1}</th>
+            <th>{seo.tableCol2}</th>
+            <th>{seo.tableCol3}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{seo.tableRow1Col1}</td>
+            <td>{seo.tableRow1Col2}</td>
+            <td>{seo.tableRow1Col3}</td>
+          </tr>
+          <tr>
+            <td>{seo.tableRow2Col1}</td>
+            <td>{seo.tableRow2Col2}</td>
+            <td>{seo.tableRow2Col3}</td>
+          </tr>
+          <tr>
+            <td>{seo.tableRow3Col1}</td>
+            <td>{seo.tableRow3Col2}</td>
+            <td>{seo.tableRow3Col3}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="swim-css-tip-card">
+    <h3 class="swim-css-tip-title">{seo.tipTitle}</h3>
+    <p class="swim-css-tip-text">{seo.tipText}</p>
+  </div>
+
+  <div class="swim-css-faq-block">
+    <h2 class="swim-css-seo-h2">{seo.faqTitle}</h2>
+    <div class="swim-css-faq-item">
+      <h4>{seo.faq1Q}</h4>
+      <p>{seo.faq1A}</p>
+    </div>
+    <div class="swim-css-faq-item">
+      <h4>{seo.faq2Q}</h4>
+      <p>{seo.faq2A}</p>
+    </div>
+  </div>
+
+  <div class="swim-css-glossary-block">
+    <h2 class="swim-css-seo-h2">{seo.glossaryTitle}</h2>
+    <dl class="swim-css-glossary-list">
+      <dt>{seo.term1Name}</dt>
+      <dd>{seo.term1Def}</dd>
+      <dt>{seo.term2Name}</dt>
+      <dd>{seo.term2Def}</dd>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .swim-css-seo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .swim-css-seo-h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-base, #0f172a);
+    margin-bottom: 0.5rem;
+  }
+  .swim-css-seo-h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-base, #0f172a);
+    margin-bottom: 1rem;
+  }
+  .swim-css-seo-intro {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-muted, #475569);
+  }
+  .swim-css-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+  .swim-css-stat-card {
+    background: var(--bg-surface, #fff);
+    border: 1px solid var(--border-base, #e2e8f0);
+    padding: 1.25rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  }
+  .swim-css-stat-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary, #0284c7);
+  }
+  .swim-css-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted, #64748b);
+    font-weight: 600;
+  }
+  .swim-css-comparative-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .swim-css-comparative-card {
+    background: var(--bg-surface, #fff);
+    border: 1px solid var(--border-base, #e2e8f0);
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  .swim-css-comparative-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .swim-css-table-wrapper {
+    overflow-x: auto;
+  }
+  .swim-css-seo-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-surface, #fff);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-base, #e2e8f0);
+  }
+  .swim-css-seo-table th,
+  .swim-css-seo-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-base, #e2e8f0);
+  }
+  .swim-css-seo-table th {
+    background: var(--bg-surface-elevated, #f8fafc);
+    font-weight: 700;
+  }
+  .swim-css-tip-card {
+    background: rgba(2, 132, 199, 0.05);
+    border-left: 4px solid var(--color-primary, #0284c7);
+    padding: 1.25rem;
+    border-radius: 8px;
+  }
+  .swim-css-tip-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    color: var(--color-primary, #0284c7);
+  }
+  .swim-css-faq-item {
+    margin-bottom: 1rem;
+  }
+  .swim-css-faq-item h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  .swim-css-glossary-list dt {
+    font-weight: 700;
+    margin-top: 0.75rem;
+  }
+  .swim-css-glossary-list dd {
+    margin-left: 0;
+    color: var(--text-muted, #64748b);
+  }
+</style>

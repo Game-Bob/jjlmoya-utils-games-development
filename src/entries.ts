@@ -34,6 +34,8 @@ export { penaltyShootout } from './tool/penaltyShootout/entry';
 export type { PenaltyShootoutLocaleContent } from './tool/penaltyShootout/entry';
 export { runningPacePredictor } from './tool/runningPacePredictor/entry';
 export type { RunningPacePredictorLocaleContent } from './tool/runningPacePredictor/entry';
+export { swimCssCalculator } from './tool/swimCssCalculator/entry';
+export type { SwimCssCalculatorLocaleContent } from './tool/swimCssCalculator/entry';
 
 export { sportsCategory } from './category';
 
@@ -55,6 +57,7 @@ import { rugbyScoreKeeper } from './tool/rugbyScoreKeeper/entry';
 import { baseballScoreKeeper } from './tool/baseballScoreKeeper/entry';
 import { penaltyShootout } from './tool/penaltyShootout/entry';
 import { runningPacePredictor } from './tool/runningPacePredictor/entry';
+import { swimCssCalculator } from './tool/swimCssCalculator/entry';
 
 export const ALL_ENTRIES = [
   basketScoreKeeper,
@@ -75,4 +78,5 @@ export const ALL_ENTRIES = [
   baseballScoreKeeper,
   penaltyShootout,
   runningPacePredictor,
+  swimCssCalculator,
 ];

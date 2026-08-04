@@ -13,6 +13,8 @@ Follow this skill workflow when scaffolding, building, or refactoring tools in `
 
 ### Code Architecture & Quality Standards
 - **SOLID Principles**: Strict separation between core business logic (`logic.ts`), metadata & routing (`entry.ts`), visual presentation (`component.astro`), SEO content (`seo.astro`), references (`bibliography.ts`), and dictionaries (`i18n/en.ts`).
+- **Strict `ToolLocaleContent` Export Structure**: Every locale file `i18n/<locale>.ts` MUST export `export const content: ToolLocaleContent<ToolUI> = { slug, title, description, ui, seo, faq, howTo, schemas, bibliography }`. NEVER export only the UI dictionary. In `entry.ts`, every locale loader MUST load `m.content` via `() => import('./i18n/<locale>').then((m) => m.content)`. Returning raw UI dictionaries instead of `ToolLocaleContent` causes `slug` to be `undefined` when clicking links in category listings!
+- **Accessibility & PageSpeed Labeling**: Every `<input>` or control element in `component.astro` MUST have a matching `<label for="...">` or explicit `aria-label="..."` attribute to pass PageSpeed audit tests.
 - **Excellence Over Speed**: Quality and completeness are mandatory. Never rush or leave empty arrays/placeholders (`faq`, `howTo`, `schemas`, `bibliography`) under any circumstances. Everything must be fully populated with real, meaningful data.
 - **NO Comments in Code**: Do not write any comments (`//` or `/* */`) in TypeScript, Astro components, CSS, or JSON files.
 - **NO Emojis**: Do not use emojis in code, UI text, logs, titles, metadata, or translations.
@@ -125,10 +127,11 @@ src/tool/<toolId>/
 ### Step 1: Baseline Implementation (English-First)
 1. Define pure state management and calculation logic in `logic.ts`.
 2. Write unit tests covering normal flow, edge cases, and completion states in `logic.test.ts`.
-3. Create `i18n/en.ts` with structured SEO sections and UI dictionary.
+3. Create `i18n/en.ts` exporting `content: ToolLocaleContent<ToolUI>` with full 300+ words SEO sections (including mandatory `stats`, `comparative`, `table`, `tip` components) and UI dictionary.
 4. Build `component.astro` taking `{ ui: t }` as Astro props and `<slug>.css` with dark mode support.
-5. Temporarily register ONLY `en` in `entry.ts`, export and register the tool entry in `src/entries.ts` and `src/tools.ts`, and present the baseline tool to the user.
-6. Stop and wait for the user to review and issue **`OKQA`**.
+5. Temporarily register ONLY `en` in `entry.ts`, export and register the tool entry in `src/entries.ts` and `src/tools.ts`.
+6. **MANDATORY Baseline Verification**: Run `npx vitest run src/tests/seo_length.test.ts` and `npm run lint` to verify that SEO word count (>300 words), rich components, accessibility labels, and typescript exports pass 100% BEFORE presenting to the user.
+7. Present the baseline tool to the user, and wait for review / **`OKQA`**.
 
 ### Step 2: Production Localization & Verification (After OKQA)
 Once the user says **`OKQA`**:
@@ -164,3 +167,16 @@ Before declaring the task finished, pause and perform a **Double-Check Audit** a
   npm run lint
   npm run test
   ```
+
+---
+
+## 6. Mandatory Post-Skill Self-Reflection Questions
+
+AL ALWAYS and WITHOUT EXCEPTION, after completing any tool implementation, you MUST explicitly ask yourself and evaluate the following 6 core reflection questions before finishing:
+
+1. **¿Esto puede ser más bonito?** (Is the UI visually striking, sports themed, glassmorphic, dynamic, and premium?)
+2. **¿Esto puede ser más útil para el usuario?** (Does it add immediate value, visual chips, tactile sliders, or instant presets?)
+3. **¿Esto podría simplificarse?** (Can we reduce input fatigue or simplify controls without losing power?)
+4. **¿Podría hacer algo para que el usuario lo disfrute más?** (Are there micro-interactions, particles, animations, or dynamic feedback?)
+5. **¿Son los resultados suficientemente visuales?** (Are results presented as rich visual cards, progress bars, gauges, or stat badges instead of raw tables/text?)
+6. **¿Puedo aportar algo más al usuario?** (Can we offer extra insights, split target matrix, zone guides, or copy helpers?)
