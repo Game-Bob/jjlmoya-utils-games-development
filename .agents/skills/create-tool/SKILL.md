@@ -158,7 +158,8 @@ Before declaring the task finished, pause and perform a **Double-Check Audit** a
 - [ ] **15 Production Locales Real Translations**: Verify that all 15 locale files are properly translated into their target language (NO copy-pasted English text).
 - [ ] **15 Production Locales Registered**: Verify that all 15 locale loaders exist and are registered in `entry.ts`.
 - [ ] **Localized Slugs**: Verify that non-logographic script locales have translated URL slugs.
-- [ ] **Proportional Bibliography**: Verify that references match tool scope (avoiding unnecessary links when 1 official link suffices).
+- [ ] **Bibliography Contract**: `bibliography.astro` uses `import { Bibliography as SharedBibliography }` (aliased import).
+- [ ] **SEO Renderer Contract**: `seo.astro` uses `SEORenderer` from `@jjlmoya/utils-shared` with dynamic locale loader (NEVER destructure `ui.seo`).
 - [ ] **Title Non-Redundancy**: Verify that the main title does not repeat words or contain awkward duplicated prefixes.
 - [ ] **Zero 404 Links in Bibliography**: Verify that every URL in `bibliography.ts` points to a real, live official domain with zero 404 risk.
 - [ ] **Zero Dev Jargon in SEO**: Verify that no programming framework or developer terms appear in SEO text.
