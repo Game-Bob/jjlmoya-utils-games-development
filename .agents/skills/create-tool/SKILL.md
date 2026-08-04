@@ -13,12 +13,21 @@ Follow this skill workflow when scaffolding, building, or refactoring tools in `
 
 ### Code Architecture & Quality Standards
 - **SOLID Principles**: Strict separation between core business logic (`logic.ts`), metadata & routing (`entry.ts`), visual presentation (`component.astro`), SEO content (`seo.astro`), references (`bibliography.ts`), and dictionaries (`i18n/en.ts`).
+- **Excellence Over Speed**: Quality and completeness are mandatory. Never rush or leave empty arrays/placeholders (`faq`, `howTo`, `schemas`, `bibliography`) under any circumstances. Everything must be fully populated with real, meaningful data.
 - **NO Comments in Code**: Do not write any comments (`//` or `/* */`) in TypeScript, Astro components, CSS, or JSON files.
 - **NO Emojis**: Do not use emojis in code, UI text, logs, titles, metadata, or translations.
 - **NO Redundant Titles**: Never repeat keywords or domain terms in titles or headers (e.g. AVOID combining "Penalty Penalty" or duplicating title words).
+- **NO Embedded Page Title/Description in Tool Component**: NEVER render page titles (`<h1>`, `<h2>` main titles) or introductory description paragraphs inside `component.astro`. The parent layout/page already renders the page header. `component.astro` must contain ONLY the interactive tool card/interface itself.
+- **Mandatory Metric & Imperial Toggle Switch**: If a tool makes reference to distances, weights, speeds, or units from either the Metric or Imperial system (e.g. km/mi, kg/lb, m/ft), it is MANDATORY to include an interactive toggle switch or selector allowing the user to seamlessly switch between Metric and Imperial units throughout the UI.
 
-### High-Dopamine Visual Design & UX
-- **Vibrant & Tactile UI**: Never build simple or minimal MVPs. Interfaces must feature rich gradients, smooth drop shadows, clean borders, and high contrast.
+### High-Dopamine Visual Design & UX ("We Do Not Build Excels, We Build ART")
+- **ART Manifesto & Ergonomic Questions**: We do NOT build dry, grid-like Excels. We build ART. Always ask yourself:
+  1. *Can this be done with fewer inputs?*
+  2. *Can the remaining inputs be made substantially more comfortable, tactile, and natural (sliders, visual chips, quick toggles)?*
+  3. *Could this interface look significantly more beautiful, visual, and alive?* If the answer is yes, improve it immediately!
+  4. *Can I make the user's life easier?* If YES -> do it immediately!
+- **Mandatory LocalStorage State Persistence**: If a tool provides recurring value (calculators, scorekeepers, trackers), its last interaction state (selected units, inputs, custom parameters, timer values) MUST be automatically persisted to `localStorage` and restored upon subsequent visits so returning users never lose their context.
+- **Vibrant & Tactile UI**: Never build simple or minimal MVPs. Interfaces must feature rich gradients, smooth drop shadows, clean borders, dynamic visual indicators, and high contrast.
 - **Full Light & Dark Theme Support**: CSS must use design tokens (`var(--bg-surface)`, `var(--text-base)`, `var(--border-base)`) and explicitly include `.theme-dark` container rules.
 - **Click & Interaction Feedback**:
   - Spawn floating micro-feedback particles (`GOAL!`, `MISS!`, `+1`) at coordinate offsets on user actions.
@@ -27,7 +36,8 @@ Follow this skill workflow when scaffolding, building, or refactoring tools in `
 - **Epic Finish & Victory Celebrations**: When a match or calculation completes, display a full-screen, high-impact modal overlay (`ps-winner-overlay`) with glassmorphism backdrop, trophy animations, winner highlight, and score breakdown.
 
 ### Strict SEO Standards & Rich Predefined Components
-- **Balanced Length & Real Value**: SEO text must NOT be excessively long or artificially padded with editorial fluff, nor excessively brief. It must directly answer real user search intents related to the tool.
+- **Minimum 300 Words SEO Standard**: SEO text MUST contain a MINIMUM of 300 high-value words across its sections. Less than 300 words is unacceptable. The content volume must match the tool's real-world importance and provide true educational/practical depth.
+- **Rich, Engaging & Readable Content**: Text must be genuinely engaging and valuable to read so users gain deep domain insights (biomechanical principles, tactical rules, pacing math, etc.), while simultaneously fulfilling search engine ranking criteria.
 - **Hyper-Relevant Content Only**: Zero generic filler text. Every paragraph must provide concrete rules, official standards, operational steps, or practical criteria for the tool's specific domain.
 - **Mandatory Rich Visual Components**: Build the SEO architecture using a minimum of 4 distinct visually attractive predefined components:
   1. `stats`: Numerical highlights and impact metrics.
@@ -42,6 +52,9 @@ Follow this skill workflow when scaffolding, building, or refactoring tools in `
 
 ### Proportional & High-Authority Bibliography Rules
 - **Proportional Bibliography Quantity**: Do NOT artificially inflate the bibliography count. Adapt the number of sources to the complexity and scope of the tool (e.g., 1 single official IFAB link is sufficient for a penalty shootout scorekeeper; multi-domain calculators like Elo or Snooker frame metrics may require 2-3 links).
+- **Mandatory Bibliography Contract**:
+  - `bibliography.ts` MUST export `bibliographyEntries: BibliographyEntry[]` array (each object having `name` and `url`).
+  - `bibliography.astro` MUST import `SharedBibliography` from `@jjlmoya/utils-shared` and render `<SharedBibliography links={bibliographyEntries} />`.
 - **Direct Domain Relevance Only**: Bibliography entries must strictly relate to the real-world subject matter, official regulations, or science of the tool (e.g. IFAB rules, FIFA protocols, sports biomechanics).
 - **NO Programming or Framework Links**: Absolutely NO links to React, TypeScript, Astro, MDN Web Docs, npm, Node.js, or software development tutorials.
 - **100% Real Working URLs (Zero 404s)**: Every URL must be a valid, live, high-authority domain link (Wikipedia, IFAB, FIFA, UEFA, IEEE, ISO, etc.). Never invent fake or broken deep links that lead to 404 errors.
@@ -66,6 +79,8 @@ When the user explicitly says **`OKQA`**, it means:
    - `npm run type-check` (Must be 0 errors)
    - `npm run lint` (Must pass ESLint and Stylelint)
    - `npm run test` (Must pass 100% of test suites, including full i18n coverage tests)
+6. **Automatic Git Commit & Release**:
+   - If ALL verification checks pass successfully, execute git commit, git push, and `npm run minor` to bump the release version automatically.
 
 ---
 
@@ -112,7 +127,7 @@ src/tool/<toolId>/
 2. Write unit tests covering normal flow, edge cases, and completion states in `logic.test.ts`.
 3. Create `i18n/en.ts` with structured SEO sections and UI dictionary.
 4. Build `component.astro` taking `{ ui: t }` as Astro props and `<slug>.css` with dark mode support.
-5. Temporarily register ONLY `en` in `entry.ts` and present the baseline tool to the user.
+5. Temporarily register ONLY `en` in `entry.ts`, export and register the tool entry in `src/entries.ts` and `src/tools.ts`, and present the baseline tool to the user.
 6. Stop and wait for the user to review and issue **`OKQA`**.
 
 ### Step 2: Production Localization & Verification (After OKQA)
@@ -125,7 +140,8 @@ Once the user says **`OKQA`**:
    npm run lint
    npm run test
    ```
-4. Verify zero failures before confirming production readiness to the user.
+4. **Automatic Git Commit & Release Deployment**:
+   - Once all test suites and type checks pass 100%, commit all changes, push to remote repository, and execute `npm run minor` to perform the automatic minor release bump.
 
 ---
 

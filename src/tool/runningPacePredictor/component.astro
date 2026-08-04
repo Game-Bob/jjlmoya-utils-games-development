@@ -1,0 +1,298 @@
+---
+import type { RunningPacePredictorUI } from './ui';
+import './running-pace-predictor.css';
+
+interface Props {
+  ui: RunningPacePredictorUI;
+}
+
+const { ui } = Astro.props;
+---
+
+<div class="rpp-card" id="rpp-app">
+  <div class="rpp-unit-toggle" id="rpp-unit-toggle">
+    <button type="button" class="rpp-btn-unit active" data-unit="km">Metric (km, min/km)</button>
+    <button type="button" class="rpp-btn-unit" data-unit="mi">Imperial (miles, min/mile)</button>
+  </div>
+
+  <div class="rpp-grid">
+    <div class="rpp-section">
+      <h3 class="rpp-section-title">{ui.paceCalculatorTitle}</h3>
+
+      <div class="rpp-form-group">
+        <label class="rpp-stepper-title">{ui.presetsTitle}</label>
+        <div class="rpp-presets-grid" style="margin-top: 0.5rem;">
+          <button type="button" class="rpp-btn-preset" data-dist="5">5K</button>
+          <button type="button" class="rpp-btn-preset active" data-dist="10">10K</button>
+          <button type="button" class="rpp-btn-preset" data-dist="21.0975">HM</button>
+          <button type="button" class="rpp-btn-preset" data-dist="42.195">42K</button>
+        </div>
+      </div>
+
+      <div class="rpp-custom-dist-container">
+        <div style="flex:1;">
+          <div class="rpp-stepper-title">{ui.distanceLabel}</div>
+          <input type="number" id="rpp-distance" class="rpp-custom-dist-input" value="10" step="0.01" min="0.1" aria-label={ui.distanceLabel} />
+        </div>
+        <span class="rpp-custom-dist-unit" id="rpp-dist-unit-label">km</span>
+      </div>
+
+      <div class="rpp-stepper-control">
+        <div class="rpp-stepper-header">
+          <span class="rpp-stepper-title">{ui.timeLabel}</span>
+          <span class="rpp-stepper-display" id="rpp-time-display">00:50:00</span>
+        </div>
+
+        <div class="rpp-stepper-btns">
+          <button type="button" class="rpp-btn-step" data-step="-300">-5m</button>
+          <button type="button" class="rpp-btn-step" data-step="-60">-1m</button>
+          <button type="button" class="rpp-btn-step" data-step="60">+1m</button>
+          <button type="button" class="rpp-btn-step" data-step="300">+5m</button>
+        </div>
+        <input type="hidden" id="rpp-total-seconds" value="3000" />
+      </div>
+
+      <div class="rpp-hero-pace">
+        <span class="rpp-hero-pace-label">{ui.paceLabel}</span>
+        <div class="rpp-hero-pace-val" id="rpp-hero-pace-display">5:00 min/km</div>
+      </div>
+    </div>
+
+    <div class="rpp-section">
+      <h3 class="rpp-section-title">{ui.predictedTimesTitle}</h3>
+      <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 1.25rem; line-height: 1.5;">
+        {ui.riegelExplanation}
+      </p>
+
+      <div class="rpp-cards-list" id="rpp-predictions-cards">
+      </div>
+    </div>
+  </div>
+
+  <div class="rpp-section" style="margin-top: 2rem;">
+    <h3 class="rpp-section-title">{ui.trainingZonesTitle}</h3>
+    <div class="rpp-cards-list" id="rpp-zones-cards">
+    </div>
+  </div>
+</div>
+
+<script>
+  import {
+    calculatePaceFromTimeAndDistance,
+    generateAllRacePredictions,
+    calculateTrainingZones,
+    formatPace,
+    formatTimeHMS,
+  } from './logic';
+
+  let currentUnit = 'km';
+
+  function updateApp() {
+    const distInput = document.getElementById('rpp-distance') as HTMLInputElement;
+    const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement;
+    const timeDisplay = document.getElementById('rpp-time-display');
+    const heroPaceDisplay = document.getElementById('rpp-hero-pace-display');
+    const predCards = document.getElementById('rpp-predictions-cards');
+    const zonesCards = document.getElementById('rpp-zones-cards');
+    const distUnitLabel = document.getElementById('rpp-dist-unit-label');
+
+    if (!distInput || !secInput || !timeDisplay || !heroPaceDisplay || !predCards || !zonesCards || !distUnitLabel) return;
+
+    let dist = parseFloat(distInput.value) || 0;
+    const isMiles = currentUnit === 'mi';
+    const distKm = isMiles ? dist * 1.609344 : dist;
+    distUnitLabel.textContent = isMiles ? 'miles' : 'km';
+
+    const totalSec = Math.max(0, parseInt(secInput.value) || 0);
+    timeDisplay.textContent = formatTimeHMS(totalSec);
+
+    const pace = calculatePaceFromTimeAndDistance(totalSec, distKm);
+    const mainPaceFormatted = isMiles ? formatPace(pace.secPerMile) : formatPace(pace.secPerKm);
+    const unitStr = isMiles ? 'min/mile' : 'min/km';
+    heroPaceDisplay.textContent = `${mainPaceFormatted} ${unitStr}`;
+
+    const predictions = generateAllRacePredictions(distKm, totalSec);
+    const maxDist = 42.195;
+
+    predCards.innerHTML = predictions
+      .map((p) => {
+        const pDistStr = isMiles ? `${p.distanceMiles.toFixed(2)} mi` : `${p.distanceKm.toFixed(2)} km`;
+        const pPace = isMiles ? formatPace(p.paceSecPerMile) : formatPace(p.paceSecPerKm);
+        const percent = Math.min(100, Math.round((p.distanceKm / maxDist) * 100));
+
+        return `
+          <div class="rpp-pred-card">
+            <div class="rpp-pred-card-top">
+              <div>
+                <div class="rpp-pred-dist">${p.id.toUpperCase()} <span style="font-size:0.8rem; color:#94a3b8; font-weight:600;">(${pDistStr})</span></div>
+                <div style="font-size:0.85rem; color:#94a3b8; font-weight:700; margin-top:0.1rem;">${pPace} ${unitStr}</div>
+              </div>
+              <div class="rpp-pred-time">${formatTimeHMS(p.timeSeconds)}</div>
+            </div>
+            <div class="rpp-pred-bar-bg">
+              <div class="rpp-pred-bar-fill" style="width: ${percent}%;"></div>
+            </div>
+          </div>
+        `;
+      })
+      .join('');
+
+    const fiveKPred = predictions.find((p) => p.id === '5k');
+    const fiveKPace = fiveKPred ? fiveKPred.paceSecPerKm : pace.secPerKm;
+    const zones = calculateTrainingZones(fiveKPace);
+
+    zonesCards.innerHTML = zones
+      .map((z) => {
+        const minP = isMiles ? formatPace(z.minPaceSecPerMile) : formatPace(z.minPaceSecPerKm);
+        const maxP = isMiles ? formatPace(z.maxPaceSecPerMile) : formatPace(z.maxPaceSecPerKm);
+        const pillClass = `rpp-zone-pill-${z.id}`;
+        const barClass = `rpp-zone-bar-${z.id}`;
+        return `
+          <div class="rpp-zone-card">
+            <div class="rpp-zone-header">
+              <span class="rpp-zone-pill ${pillClass}">${z.id.toUpperCase()}</span>
+              <span class="rpp-zone-range">${minP} - ${maxP} ${unitStr}</span>
+            </div>
+            <div class="rpp-zone-bar-bg">
+              <div class="${barClass}"></div>
+            </div>
+          </div>
+        `;
+      })
+      .join('');
+  }
+
+  const STORAGE_KEY = 'rpp_user_state';
+
+  function saveState() {
+    try {
+      const distInput = document.getElementById('rpp-distance') as HTMLInputElement;
+      const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement;
+      const activePreset = document.querySelector('.rpp-btn-preset.active')?.getAttribute('data-dist') || null;
+
+      const state = {
+        unit: currentUnit,
+        distance: distInput ? distInput.value : '10',
+        totalSeconds: secInput ? secInput.value : '3000',
+        activePreset,
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (_) {}
+  }
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const state = JSON.parse(raw);
+
+      if (state.unit) {
+        currentUnit = state.unit;
+        const unitBtns = document.querySelectorAll('.rpp-btn-unit');
+        unitBtns.forEach((b) => {
+          if (b.getAttribute('data-unit') === currentUnit) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+      }
+
+      if (state.distance) {
+        const distIn = document.getElementById('rpp-distance') as HTMLInputElement;
+        if (distIn) distIn.value = state.distance;
+      }
+
+      if (state.totalSeconds) {
+        const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement;
+        if (secInput) secInput.value = state.totalSeconds;
+      }
+
+      if (state.activePreset) {
+        const presets = document.querySelectorAll('.rpp-btn-preset');
+        presets.forEach((b) => {
+          if (b.getAttribute('data-dist') === state.activePreset) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+      }
+    } catch (_) {}
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadState();
+
+    const distInput = document.getElementById('rpp-distance');
+    if (distInput) {
+      distInput.addEventListener('input', () => {
+        updateApp();
+        saveState();
+      });
+      distInput.addEventListener('change', () => {
+        updateApp();
+        saveState();
+      });
+    }
+
+    const stepBtns = document.querySelectorAll('.rpp-btn-step');
+    stepBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const delta = parseInt((e.currentTarget as HTMLElement).getAttribute('data-step') || '0');
+        const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement;
+        if (secInput) {
+          const val = Math.max(0, (parseInt(secInput.value) || 0) + delta);
+          secInput.value = val.toString();
+          updateApp();
+          saveState();
+        }
+      });
+    });
+
+    const unitBtns = document.querySelectorAll('.rpp-btn-unit');
+    unitBtns.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const selectedUnit = target.getAttribute('data-unit') || 'km';
+        if (selectedUnit === currentUnit) return;
+
+        unitBtns.forEach((b) => b.classList.remove('active'));
+        target.classList.add('active');
+
+        const distIn = document.getElementById('rpp-distance') as HTMLInputElement;
+        if (distIn) {
+          const currentVal = parseFloat(distIn.value) || 0;
+          if (selectedUnit === 'mi') {
+            distIn.value = (currentVal / 1.609344).toFixed(2);
+          } else {
+            distIn.value = (currentVal * 1.609344).toFixed(2);
+          }
+        }
+
+        currentUnit = selectedUnit;
+        updateApp();
+        saveState();
+      });
+    });
+
+    const presets = document.querySelectorAll('.rpp-btn-preset');
+    presets.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        presets.forEach((b) => b.classList.remove('active'));
+        target.classList.add('active');
+
+        const distKm = parseFloat(target.getAttribute('data-dist') || '0');
+        const distIn = document.getElementById('rpp-distance') as HTMLInputElement;
+        if (distIn && distKm > 0) {
+          distIn.value = currentUnit === 'mi' ? (distKm / 1.609344).toFixed(2) : distKm.toString();
+          updateApp();
+          saveState();
+        }
+      });
+    });
+
+    updateApp();
+  });
+</script>

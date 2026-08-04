@@ -17,8 +17,9 @@ import { SNOOKER_SCOREKEEPER_TOOL } from './tool/snookerScoreKeeper/index';
 import { RUGBY_SCOREKEEPER_TOOL } from './tool/rugbyScoreKeeper/index';
 import { BASEBALL_SCOREKEEPER_TOOL } from './tool/baseballScoreKeeper/index';
 import { PENALTY_SHOOTOUT_TOOL } from './tool/penaltyShootout/index';
+import { RUNNING_PACE_PREDICTOR_TOOL } from './tool/runningPacePredictor/index';
 
-export const ALL_TOOLS: ToolDefinition[] = [
+export const ALL_TOOLS = [
   BASKET_SCORE_KEEPER_TOOL,
   SCORE_KEEPER_TOOL,
   TOURNAMENT_BRACKET_TOOL,
@@ -36,4 +37,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   RUGBY_SCOREKEEPER_TOOL,
   BASEBALL_SCOREKEEPER_TOOL,
   PENALTY_SHOOTOUT_TOOL,
+  RUNNING_PACE_PREDICTOR_TOOL,
 ];
