@@ -133,43 +133,52 @@ const { ui } = Astro.props;
       .join('');
   }
 
-  function getCoreInputs() {
+  function getRequiredElements() {
     const distInput = document.getElementById('rpp-distance') as HTMLInputElement | null;
     const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement | null;
-    if (!distInput || !secInput) return null;
+    const timeDisplay = document.getElementById('rpp-time-display');
+    const heroPaceDisplay = document.getElementById('rpp-hero-pace-display');
+    const distUnitLabel = document.getElementById('rpp-dist-unit-label');
+
+    const hasAll = Boolean(distInput && secInput && timeDisplay && heroPaceDisplay && distUnitLabel);
+    return hasAll ? { distInput: distInput!, secInput: secInput!, timeDisplay: timeDisplay!, heroPaceDisplay: heroPaceDisplay!, distUnitLabel: distUnitLabel! } : null;
+  }
+
+  function getCoreInputs() {
+    const els = getRequiredElements();
+    if (!els) return null;
 
     const isMiles = currentUnit === 'mi';
-    const rawDist = parseFloat(distInput.value) || 0;
-    const totalSec = Math.max(0, parseInt(secInput.value) || 0);
+    const rawDist = parseFloat(els.distInput.value) || 0;
+    const totalSec = Math.max(0, parseInt(els.secInput.value) || 0);
 
     return {
       distKm: isMiles ? rawDist * 1.609344 : rawDist,
       totalSec,
       isMiles,
+      timeDisplay: els.timeDisplay,
+      heroPaceDisplay: els.heroPaceDisplay,
+      distUnitLabel: els.distUnitLabel,
     };
   }
 
   function updateApp() {
-    const inputs = getCoreInputs();
-    const timeDisplay = document.getElementById('rpp-time-display');
-    const heroPaceDisplay = document.getElementById('rpp-hero-pace-display');
-    const distUnitLabel = document.getElementById('rpp-dist-unit-label');
+    const ctx = getCoreInputs();
+    if (!ctx) return;
 
-    if (!inputs || !timeDisplay || !heroPaceDisplay || !distUnitLabel) return;
+    ctx.distUnitLabel.textContent = ctx.isMiles ? 'miles' : 'km';
+    ctx.timeDisplay.textContent = formatTimeHMS(ctx.totalSec);
 
-    distUnitLabel.textContent = inputs.isMiles ? 'miles' : 'km';
-    timeDisplay.textContent = formatTimeHMS(inputs.totalSec);
+    const pace = calculatePaceFromTimeAndDistance(ctx.totalSec, ctx.distKm);
+    const mainPaceFormatted = ctx.isMiles ? formatPace(pace.secPerMile) : formatPace(pace.secPerKm);
+    const unitStr = ctx.isMiles ? 'min/mile' : 'min/km';
+    ctx.heroPaceDisplay.textContent = `${mainPaceFormatted} ${unitStr}`;
 
-    const pace = calculatePaceFromTimeAndDistance(inputs.totalSec, inputs.distKm);
-    const mainPaceFormatted = inputs.isMiles ? formatPace(pace.secPerMile) : formatPace(pace.secPerKm);
-    const unitStr = inputs.isMiles ? 'min/mile' : 'min/km';
-    heroPaceDisplay.textContent = `${mainPaceFormatted} ${unitStr}`;
-
-    const predictions = generateAllRacePredictions(inputs.distKm, inputs.totalSec);
-    renderPredictions(predictions, inputs.isMiles, unitStr);
+    const predictions = generateAllRacePredictions(ctx.distKm, ctx.totalSec);
+    renderPredictions(predictions, ctx.isMiles, unitStr);
 
     const fiveKPred = predictions.find((p) => p.id === '5k');
-    renderZones(fiveKPred ? fiveKPred.paceSecPerKm : pace.secPerKm, inputs.isMiles, unitStr);
+    renderZones(fiveKPred ? fiveKPred.paceSecPerKm : pace.secPerKm, ctx.isMiles, unitStr);
   }
 
   const STORAGE_KEY = 'rpp_user_state';
