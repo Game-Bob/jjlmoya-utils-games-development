@@ -1,5 +1,4 @@
 export { ALL_ENTRIES } from './entries';
-import type { ToolDefinition } from './types';
 import { BASKET_SCORE_KEEPER_TOOL } from './tool/basketScoreKeeper/index';
 import { SCORE_KEEPER_TOOL } from './tool/scoreKeeper/index';
 import { TOURNAMENT_BRACKET_TOOL } from './tool/tournamentBracket/index';

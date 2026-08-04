@@ -132,6 +132,18 @@ export function generateAllRacePredictions(
   });
 }
 
+function buildZone(id: string, minMult: number, maxMult: number, basePace: number): TrainingZone {
+  const minPace = basePace * minMult;
+  const maxPace = basePace * maxMult;
+  return {
+    id,
+    minPaceSecPerKm: minPace,
+    maxPaceSecPerKm: maxPace,
+    minPaceSecPerMile: minPace * 1.609344,
+    maxPaceSecPerMile: maxPace * 1.609344,
+  };
+}
+
 export function calculateTrainingZones(fiveKPaceSecPerKm: number): TrainingZone[] {
   if (fiveKPaceSecPerKm <= 0) {
     return [
@@ -141,36 +153,9 @@ export function calculateTrainingZones(fiveKPaceSecPerKm: number): TrainingZone[
     ];
   }
 
-  const easyMin = fiveKPaceSecPerKm * 1.25;
-  const easyMax = fiveKPaceSecPerKm * 1.45;
-
-  const tempoMin = fiveKPaceSecPerKm * 1.10;
-  const tempoMax = fiveKPaceSecPerKm * 1.20;
-
-  const intervalsMin = fiveKPaceSecPerKm * 0.95;
-  const intervalsMax = fiveKPaceSecPerKm * 1.05;
-
   return [
-    {
-      id: 'easy',
-      minPaceSecPerKm: easyMin,
-      maxPaceSecPerKm: easyMax,
-      minPaceSecPerMile: easyMin * 1.609344,
-      maxPaceSecPerMile: easyMax * 1.609344,
-    },
-    {
-      id: 'tempo',
-      minPaceSecPerKm: tempoMin,
-      maxPaceSecPerKm: tempoMax,
-      minPaceSecPerMile: tempoMin * 1.609344,
-      maxPaceSecPerMile: tempoMax * 1.609344,
-    },
-    {
-      id: 'intervals',
-      minPaceSecPerKm: intervalsMin,
-      maxPaceSecPerKm: intervalsMax,
-      minPaceSecPerMile: intervalsMin * 1.609344,
-      maxPaceSecPerMile: intervalsMax * 1.609344,
-    },
+    buildZone('easy', 1.25, 1.45, fiveKPaceSecPerKm),
+    buildZone('tempo', 1.10, 1.20, fiveKPaceSecPerKm),
+    buildZone('intervals', 0.95, 1.05, fiveKPaceSecPerKm),
   ];
 }
