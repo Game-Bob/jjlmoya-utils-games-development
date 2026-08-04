@@ -1,0 +1,15 @@
+---
+import { bibliographyEntries } from './bibliography';
+---
+
+<div class="ps-bibliography">
+  <ul>
+    {bibliographyEntries.map((item) => (
+      <li>
+        <a href={item.url} target="_blank" rel="noopener noreferrer">
+          {item.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>

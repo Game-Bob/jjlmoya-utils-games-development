@@ -9,6 +9,7 @@ import { eloRatingCalculator } from '../tool/eloRatingCalculator/entry';
 import { pingPongScoreKeeper } from '../tool/pingPongScoreKeeper/entry';
 import { rugbyScoreKeeper } from '../tool/rugbyScoreKeeper/entry';
 import { baseballScoreKeeper } from '../tool/baseballScoreKeeper/entry';
+import { penaltyShootout } from '../tool/penaltyShootout/entry';
 
 export const sportsCategory: SportsCategoryEntry = {
   icon: 'mdi:soccer',
@@ -23,6 +24,7 @@ export const sportsCategory: SportsCategoryEntry = {
     pingPongScoreKeeper,
     rugbyScoreKeeper,
     baseballScoreKeeper,
+    penaltyShootout,
   ] as unknown as SportsToolEntry<Record<string, string>>[],
   i18n: {
     es: () => import('./i18n/es').then((m) => m.content),
@@ -42,4 +44,3 @@ export const sportsCategory: SportsCategoryEntry = {
     zh: () => import('./i18n/zh').then((m) => m.content),
   },
 };
-

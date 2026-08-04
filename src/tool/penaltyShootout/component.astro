@@ -1,0 +1,228 @@
+---
+import type { PenaltyShootoutUI } from './ui';
+import './penalty-shootout.css';
+
+interface Props {
+  ui: PenaltyShootoutUI;
+}
+
+const { ui: t } = Astro.props;
+---
+
+<div class="penalty-shootout-card" id="penalty-shootout-app">
+  <div class="ps-bar">
+    <span class="ps-bar-title">{t.roundLabel} <span id="ps-round-num">1</span></span>
+    <span class="ps-bar-title" id="ps-phase-label">{t.regularRounds}</span>
+  </div>
+
+  <div class="ps-team ps-team-a ps-active-turn" id="ps-team-a-box">
+    <input type="text" class="ps-name" id="ps-team-a-name" value={t.teamALabel} aria-label={t.teamALabel} />
+    <div class="ps-score ps-score-a" id="ps-team-a-score">0</div>
+    <div class="ps-indicator-row" id="ps-team-a-indicators"></div>
+  </div>
+
+  <div class="ps-team ps-team-b" id="ps-team-b-box">
+    <input type="text" class="ps-name" id="ps-team-b-name" value={t.teamBLabel} aria-label={t.teamBLabel} />
+    <div class="ps-score ps-score-b" id="ps-team-b-score">0</div>
+    <div class="ps-indicator-row" id="ps-team-b-indicators"></div>
+  </div>
+
+  <div class="ps-status-banner" id="ps-status-banner">
+    <span id="ps-status-text">{t.turnLabel}: {t.teamALabel}</span>
+  </div>
+
+  <div class="ps-controls" id="ps-action-controls">
+    <button class="ps-btn-shoot ps-btn-goal" id="ps-btn-goal">{t.scoreGoal}</button>
+    <button class="ps-btn-shoot ps-btn-miss" id="ps-btn-miss">{t.scoreMiss}</button>
+  </div>
+
+  <div class="ps-secondary-row">
+    <button class="ps-btn-sub" id="ps-btn-undo">{t.undo}</button>
+    <button class="ps-btn-sub" id="ps-btn-reset">{t.reset}</button>
+  </div>
+
+  <div class="ps-particles" id="ps-particles"></div>
+
+  <div class="ps-winner-overlay" id="ps-winner-overlay">
+    <div class="ps-winner-backdrop"></div>
+    <div class="ps-winner-card">
+      <div class="ps-trophy">CHAMPION</div>
+      <div class="ps-winner-title">{t.winnerTitle}</div>
+      <div class="ps-winner-name" id="ps-winner-name">Team Name</div>
+      <div class="ps-winner-details" id="ps-winner-details">Score: 5 - 3</div>
+      <button class="ps-winner-close-btn" id="ps-winner-close-btn">{t.reset}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { createInitialState, recordShot, undoShot } from './logic';
+
+  let state = createInitialState();
+
+  const teamABox = document.getElementById('ps-team-a-box');
+  const teamBBox = document.getElementById('ps-team-b-box');
+  const teamANameInput = document.getElementById('ps-team-a-name') as HTMLInputElement | null;
+  const teamBNameInput = document.getElementById('ps-team-b-name') as HTMLInputElement | null;
+  const teamAScore = document.getElementById('ps-team-a-score');
+  const teamBScore = document.getElementById('ps-team-b-score');
+  const teamAIndicators = document.getElementById('ps-team-a-indicators');
+  const teamBIndicators = document.getElementById('ps-team-b-indicators');
+  const statusBanner = document.getElementById('ps-status-banner');
+  const statusText = document.getElementById('ps-status-text');
+  const roundNum = document.getElementById('ps-round-num');
+  const phaseLabel = document.getElementById('ps-phase-label');
+  const particlesContainer = document.getElementById('ps-particles');
+
+  const winnerOverlay = document.getElementById('ps-winner-overlay');
+  const winnerName = document.getElementById('ps-winner-name');
+  const winnerDetails = document.getElementById('ps-winner-details');
+  const winnerCloseBtn = document.getElementById('ps-winner-close-btn');
+
+  const btnGoal = document.getElementById('ps-btn-goal') as HTMLButtonElement | null;
+  const btnMiss = document.getElementById('ps-btn-miss') as HTMLButtonElement | null;
+  const btnUndo = document.getElementById('ps-btn-undo');
+  const btnReset = document.getElementById('ps-btn-reset');
+
+  teamANameInput?.addEventListener('input', (e) => {
+    state.teamAName = (e.target as HTMLInputElement).value || 'Home Team';
+    render();
+  });
+
+  teamBNameInput?.addEventListener('input', (e) => {
+    state.teamBName = (e.target as HTMLInputElement).value || 'Away Team';
+    render();
+  });
+
+  function spawnParticle(text: string, type: 'goal' | 'miss') {
+    if (!particlesContainer) return;
+    const p = document.createElement('div');
+    p.className = `ps-p ps-p-${type}`;
+    p.textContent = text;
+    p.style.left = `${30 + Math.random() * 40}%`;
+    p.style.top = `${40 + Math.random() * 20}%`;
+    particlesContainer.appendChild(p);
+    setTimeout(() => p.remove(), 800);
+  }
+
+  function updateScoreDisplay() {
+    if (!teamAScore || !teamBScore || !roundNum || !phaseLabel) return;
+    teamAScore.textContent = String(state.teamAScore);
+    teamBScore.textContent = String(state.teamBScore);
+    roundNum.textContent = String(state.currentRound);
+    phaseLabel.textContent = state.currentRound > 5 ? 'Sudden Death' : 'Regular Round';
+  }
+
+  function getShotSymbol(shot: string, index: number) {
+    if (shot === 'scored') return 'O';
+    if (shot === 'missed') return 'X';
+    return String(index + 1);
+  }
+
+  function renderIndicators() {
+    if (!teamAIndicators || !teamBIndicators) return;
+    teamAIndicators.innerHTML = '';
+    state.teamAShoots.forEach((shot, i) => {
+      const circle = document.createElement('div');
+      circle.className = `ps-circle ps-${shot}`;
+      circle.textContent = getShotSymbol(shot, i);
+      teamAIndicators.appendChild(circle);
+    });
+
+    teamBIndicators.innerHTML = '';
+    state.teamBShoots.forEach((shot, i) => {
+      const circle = document.createElement('div');
+      circle.className = `ps-circle ps-${shot}`;
+      circle.textContent = getShotSymbol(shot, i);
+      teamBIndicators.appendChild(circle);
+    });
+  }
+
+  function updateFinishedElements(winner: string) {
+    if (statusText) statusText.textContent = `${winner} Wins! (${state.winReason})`;
+    if (winnerName) winnerName.textContent = winner;
+    if (winnerDetails) winnerDetails.textContent = `Score: ${state.teamAScore} - ${state.teamBScore} (${state.winReason})`;
+    if (winnerOverlay) winnerOverlay.classList.add('ps-winner-show');
+  }
+
+  function renderFinishedState() {
+    teamABox?.classList.remove('ps-active-turn');
+    teamBBox?.classList.remove('ps-active-turn');
+    if (statusBanner) statusBanner.className = 'ps-status-banner ps-winner';
+    const winner = state.winner === 'A' ? state.teamAName : state.teamBName;
+    if (btnGoal) btnGoal.disabled = true;
+    if (btnMiss) btnMiss.disabled = true;
+
+    updateFinishedElements(winner);
+  }
+
+  function setActiveTurnBox(isTurnA: boolean) {
+    if (isTurnA) {
+      teamABox?.classList.add('ps-active-turn');
+      teamBBox?.classList.remove('ps-active-turn');
+    } else {
+      teamBBox?.classList.add('ps-active-turn');
+      teamABox?.classList.remove('ps-active-turn');
+    }
+  }
+
+  function renderActiveState() {
+    if (statusBanner) statusBanner.className = 'ps-status-banner';
+    if (btnGoal) btnGoal.disabled = false;
+    if (btnMiss) btnMiss.disabled = false;
+    winnerOverlay?.classList.remove('ps-winner-show');
+
+    const isTurnA = state.currentTurn === 'A';
+    setActiveTurnBox(isTurnA);
+    const activeName = isTurnA ? state.teamAName : state.teamBName;
+    if (statusText) statusText.textContent = `Turn: ${activeName}`;
+  }
+
+  function render() {
+    updateScoreDisplay();
+    renderIndicators();
+
+    if (state.isFinished) {
+      renderFinishedState();
+    } else {
+      renderActiveState();
+    }
+  }
+
+  btnGoal?.addEventListener('click', () => {
+    const turn = state.currentTurn;
+    state = recordShot(state, 'scored');
+    spawnParticle('GOAL!', 'goal');
+    const targetScore = turn === 'A' ? teamAScore : teamBScore;
+    targetScore?.classList.add('ps-score-boom');
+    setTimeout(() => targetScore?.classList.remove('ps-score-boom'), 500);
+    render();
+  });
+
+  btnMiss?.addEventListener('click', () => {
+    state = recordShot(state, 'missed');
+    spawnParticle('MISS!', 'miss');
+    render();
+  });
+
+  btnUndo?.addEventListener('click', () => {
+    state = undoShot(state);
+    render();
+  });
+
+  btnReset?.addEventListener('click', () => {
+    const nameA = teamANameInput?.value || 'Home Team';
+    const nameB = teamBNameInput?.value || 'Away Team';
+    state = createInitialState(nameA, nameB);
+    render();
+  });
+
+  winnerCloseBtn?.addEventListener('click', () => {
+    const nameA = teamANameInput?.value || 'Home Team';
+    const nameB = teamBNameInput?.value || 'Away Team';
+    state = createInitialState(nameA, nameB);
+    render();
+  });
+
+  render();
+</script>

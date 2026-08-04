@@ -16,6 +16,7 @@ import { BEACH_VOLLEYBALL_SCOREKEEPER_TOOL } from './tool/beachVolleyballScoreKe
 import { SNOOKER_SCOREKEEPER_TOOL } from './tool/snookerScoreKeeper/index';
 import { RUGBY_SCOREKEEPER_TOOL } from './tool/rugbyScoreKeeper/index';
 import { BASEBALL_SCOREKEEPER_TOOL } from './tool/baseballScoreKeeper/index';
+import { PENALTY_SHOOTOUT_TOOL } from './tool/penaltyShootout/index';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   BASKET_SCORE_KEEPER_TOOL,
@@ -34,7 +35,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   SNOOKER_SCOREKEEPER_TOOL,
   RUGBY_SCOREKEEPER_TOOL,
   BASEBALL_SCOREKEEPER_TOOL,
+  PENALTY_SHOOTOUT_TOOL,
 ];
-
-
-

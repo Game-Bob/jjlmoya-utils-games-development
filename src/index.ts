@@ -31,3 +31,6 @@ export type { ReactionTesterUI, ReactionTesterLocaleContent } from './tool/react
 
 export { ELO_RATING_CALCULATOR_TOOL, eloRatingCalculator } from './tool/eloRatingCalculator/index';
 export type { EloRatingCalculatorUI, EloRatingCalculatorLocaleContent } from './tool/eloRatingCalculator/index';
+
+export { PENALTY_SHOOTOUT_TOOL, penaltyShootout } from './tool/penaltyShootout/index';
+export type { PenaltyShootoutUI, PenaltyShootoutLocaleContent } from './tool/penaltyShootout/index';
