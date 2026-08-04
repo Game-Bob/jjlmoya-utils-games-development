@@ -9,8 +9,9 @@ interface Props {
 const { ui } = Astro.props;
 ---
 
-<div class="rpp-container">
-  <div class="rpp-unit-switch-container">
+<div class="rpp-card">
+  <div class="rpp-container">
+    <div class="rpp-unit-switch-container">
     <button class="rpp-btn-unit active" data-unit="km">{ui.unitKm}</button>
     <button class="rpp-btn-unit" data-unit="mi">{ui.unitMiles}</button>
   </div>
@@ -70,6 +71,7 @@ const { ui } = Astro.props;
     <h3 class="rpp-section-title">{ui.trainingZonesTitle}</h3>
     <div class="rpp-zones-grid" id="rpp-zones-cards"></div>
   </div>
+</div>
 </div>
 
 <script>
