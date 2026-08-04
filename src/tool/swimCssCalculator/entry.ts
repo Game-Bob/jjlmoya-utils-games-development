@@ -3,6 +3,10 @@ import type { SwimCssCalculatorUI } from './ui';
 
 export const swimCssCalculatorEntry: SportsToolEntry<SwimCssCalculatorUI> = {
   id: 'css-swim-calculator',
+  icons: {
+    bg: 'mdi:swim',
+    fg: 'mdi:timer-outline',
+  },
   i18n: {
     de: () => import('./i18n/de').then((m) => m.content),
     en: () => import('./i18n/en').then((m) => m.content),

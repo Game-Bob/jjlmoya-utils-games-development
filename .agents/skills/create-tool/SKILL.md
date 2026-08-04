@@ -56,7 +56,7 @@ Follow this skill workflow when scaffolding, building, or refactoring tools in `
 - **Proportional Bibliography Quantity**: Do NOT artificially inflate the bibliography count. Adapt the number of sources to the complexity and scope of the tool (e.g., 1 single official IFAB link is sufficient for a penalty shootout scorekeeper; multi-domain calculators like Elo or Snooker frame metrics may require 2-3 links).
 - **Mandatory Bibliography Contract**:
   - `bibliography.ts` MUST export `bibliographyEntries: BibliographyEntry[]` array (each object having `name` and `url`).
-  - `bibliography.astro` MUST import `SharedBibliography` from `@jjlmoya/utils-shared` and render `<SharedBibliography links={bibliographyEntries} />`.
+  - `bibliography.astro` MUST use the aliased import `import { Bibliography as SharedBibliography } from '@jjlmoya/utils-shared';`. NEVER use `import { SharedBibliography }` — that named export does NOT exist and will crash the production build. The component renders as `<SharedBibliography links={bibliographyEntries} />`.
 - **Direct Domain Relevance Only**: Bibliography entries must strictly relate to the real-world subject matter, official regulations, or science of the tool (e.g. IFAB rules, FIFA protocols, sports biomechanics).
 - **NO Programming or Framework Links**: Absolutely NO links to React, TypeScript, Astro, MDN Web Docs, npm, Node.js, or software development tutorials.
 - **100% Real Working URLs (Zero 404s)**: Every URL must be a valid, live, high-authority domain link (Wikipedia, IFAB, FIFA, UEFA, IEEE, ISO, etc.). Never invent fake or broken deep links that lead to 404 errors.
@@ -81,6 +81,7 @@ When the user explicitly says **`OKQA`**, it means:
    - `npm run type-check` (Must be 0 errors)
    - `npm run lint` (Must pass ESLint and Stylelint)
    - `npm run test` (Must pass 100% of test suites, including full i18n coverage tests)
+   - `npm run build` (Must complete with 0 errors — this catches Vite bundling and Astro SSG runtime errors that type-check and lint cannot detect)
 6. **Automatic Git Commit & Release**:
    - If ALL verification checks pass successfully, execute git commit, git push, and `npm run minor` to bump the release version automatically.
 
@@ -129,7 +130,7 @@ src/tool/<toolId>/
 2. Write unit tests covering normal flow, edge cases, and completion states in `logic.test.ts`.
 3. Create `i18n/en.ts` exporting `content: ToolLocaleContent<ToolUI>` with full 300+ words SEO sections (including mandatory `stats`, `comparative`, `table`, `tip` components) and UI dictionary.
 4. Build `component.astro` taking `{ ui: t }` as Astro props and `<slug>.css` with dark mode support.
-5. Temporarily register ONLY `en` in `entry.ts`, export and register the tool entry in `src/entries.ts` and `src/tools.ts`.
+5. Register the tool in `entry.ts`. The `SportsToolEntry` object MUST include a mandatory `icons` field: `icons: { bg: 'mdi:<icon>', fg: 'mdi:<icon>' }`. Omitting `icons` causes a runtime crash at build time when the home page iterates all tools. Export and register the tool entry in `src/entries.ts` and `src/tools.ts`.
 6. **MANDATORY Baseline Verification**: Run `npx vitest run src/tests/seo_length.test.ts` and `npm run lint` to verify that SEO word count (>300 words), rich components, accessibility labels, and typescript exports pass 100% BEFORE presenting to the user.
 7. Present the baseline tool to the user, and wait for review / **`OKQA`**.
 
@@ -142,6 +143,7 @@ Once the user says **`OKQA`**:
    npm run type-check
    npm run lint
    npm run test
+   npm run build
    ```
 4. **Automatic Git Commit & Release Deployment**:
    - Once all test suites and type checks pass 100%, commit all changes, push to remote repository, and execute `npm run minor` to perform the automatic minor release bump.
@@ -166,6 +168,7 @@ Before declaring the task finished, pause and perform a **Double-Check Audit** a
   npm run type-check
   npm run lint
   npm run test
+  npm run build
   ```
 
 ---
