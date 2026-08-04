@@ -133,34 +133,43 @@ const { ui } = Astro.props;
       .join('');
   }
 
+  function getCoreInputs() {
+    const distInput = document.getElementById('rpp-distance') as HTMLInputElement | null;
+    const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement | null;
+    if (!distInput || !secInput) return null;
+
+    const isMiles = currentUnit === 'mi';
+    const rawDist = parseFloat(distInput.value) || 0;
+    const totalSec = Math.max(0, parseInt(secInput.value) || 0);
+
+    return {
+      distKm: isMiles ? rawDist * 1.609344 : rawDist,
+      totalSec,
+      isMiles,
+    };
+  }
+
   function updateApp() {
-    const distInput = document.getElementById('rpp-distance') as HTMLInputElement;
-    const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement;
+    const inputs = getCoreInputs();
     const timeDisplay = document.getElementById('rpp-time-display');
     const heroPaceDisplay = document.getElementById('rpp-hero-pace-display');
     const distUnitLabel = document.getElementById('rpp-dist-unit-label');
 
-    if (!distInput || !secInput || !timeDisplay || !heroPaceDisplay || !distUnitLabel) return;
+    if (!inputs || !timeDisplay || !heroPaceDisplay || !distUnitLabel) return;
 
-    const rawDist = parseFloat(distInput.value) || 0;
-    const isMiles = currentUnit === 'mi';
-    const distKm = isMiles ? rawDist * 1.609344 : rawDist;
-    distUnitLabel.textContent = isMiles ? 'miles' : 'km';
+    distUnitLabel.textContent = inputs.isMiles ? 'miles' : 'km';
+    timeDisplay.textContent = formatTimeHMS(inputs.totalSec);
 
-    const totalSec = Math.max(0, parseInt(secInput.value) || 0);
-    timeDisplay.textContent = formatTimeHMS(totalSec);
-
-    const pace = calculatePaceFromTimeAndDistance(totalSec, distKm);
-    const mainPaceFormatted = isMiles ? formatPace(pace.secPerMile) : formatPace(pace.secPerKm);
-    const unitStr = isMiles ? 'min/mile' : 'min/km';
+    const pace = calculatePaceFromTimeAndDistance(inputs.totalSec, inputs.distKm);
+    const mainPaceFormatted = inputs.isMiles ? formatPace(pace.secPerMile) : formatPace(pace.secPerKm);
+    const unitStr = inputs.isMiles ? 'min/mile' : 'min/km';
     heroPaceDisplay.textContent = `${mainPaceFormatted} ${unitStr}`;
 
-    const predictions = generateAllRacePredictions(distKm, totalSec);
-    renderPredictions(predictions, isMiles, unitStr);
+    const predictions = generateAllRacePredictions(inputs.distKm, inputs.totalSec);
+    renderPredictions(predictions, inputs.isMiles, unitStr);
 
     const fiveKPred = predictions.find((p) => p.id === '5k');
-    const fiveKPace = fiveKPred ? fiveKPred.paceSecPerKm : pace.secPerKm;
-    renderZones(fiveKPace, isMiles, unitStr);
+    renderZones(fiveKPred ? fiveKPred.paceSecPerKm : pace.secPerKm, inputs.isMiles, unitStr);
   }
 
   const STORAGE_KEY = 'rpp_user_state';
@@ -179,102 +188,100 @@ const { ui } = Astro.props;
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     } catch {
-      /* ignore storage errors */
+      return;
+    }
+  }
+
+  function applySavedInputs(state: { unit?: string; distance?: string; totalSeconds?: string; activePreset?: string }) {
+    if (state.unit) {
+      currentUnit = state.unit;
+      document.querySelectorAll('.rpp-btn-unit').forEach((b) => {
+        b.classList.toggle('active', b.getAttribute('data-unit') === currentUnit);
+      });
+    }
+    if (state.distance) {
+      const distIn = document.getElementById('rpp-distance') as HTMLInputElement;
+      if (distIn) distIn.value = state.distance;
+    }
+    if (state.totalSeconds) {
+      const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement;
+      if (secInput) secInput.value = state.totalSeconds;
+    }
+    if (state.activePreset) {
+      document.querySelectorAll('.rpp-btn-preset').forEach((b) => {
+        b.classList.toggle('active', b.getAttribute('data-dist') === state.activePreset);
+      });
     }
   }
 
   function loadState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      const state = JSON.parse(raw);
-
-      if (state.unit) {
-        currentUnit = state.unit;
-        document.querySelectorAll('.rpp-btn-unit').forEach((b) => {
-          b.classList.toggle('active', b.getAttribute('data-unit') === currentUnit);
-        });
-      }
-
-      if (state.distance) {
-        const distIn = document.getElementById('rpp-distance') as HTMLInputElement;
-        if (distIn) distIn.value = state.distance;
-      }
-
-      if (state.totalSeconds) {
-        const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement;
-        if (secInput) secInput.value = state.totalSeconds;
-      }
-
-      if (state.activePreset) {
-        document.querySelectorAll('.rpp-btn-preset').forEach((b) => {
-          b.classList.toggle('active', b.getAttribute('data-dist') === state.activePreset);
-        });
+      if (raw) {
+        applySavedInputs(JSON.parse(raw));
       }
     } catch {
-      /* ignore storage errors */
+      return;
     }
   }
 
-  function bindEventListeners() {
+  function bindDistAndStepEvents(onDistChange: () => void) {
     const distInput = document.getElementById('rpp-distance');
     if (distInput) {
-      const onDistChange = () => {
-        updateApp();
-        saveState();
-      };
       distInput.addEventListener('input', onDistChange);
       distInput.addEventListener('change', onDistChange);
     }
-
     document.querySelectorAll('.rpp-btn-step').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         const delta = parseInt((e.currentTarget as HTMLElement).getAttribute('data-step') || '0');
         const secInput = document.getElementById('rpp-total-seconds') as HTMLInputElement;
         if (secInput) {
           secInput.value = Math.max(0, (parseInt(secInput.value) || 0) + delta).toString();
-          updateApp();
-          saveState();
+          onDistChange();
         }
       });
     });
+  }
 
-    document.querySelectorAll('.rpp-btn-unit').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        const target = e.currentTarget as HTMLElement;
-        const selectedUnit = target.getAttribute('data-unit') || 'km';
-        if (selectedUnit === currentUnit) return;
+  function onUnitBtnClick(e: Event, onDistChange: () => void) {
+    const target = e.currentTarget as HTMLElement;
+    const selectedUnit = target.getAttribute('data-unit') || 'km';
+    if (selectedUnit === currentUnit) return;
 
-        document.querySelectorAll('.rpp-btn-unit').forEach((b) => b.classList.remove('active'));
-        target.classList.add('active');
+    document.querySelectorAll('.rpp-btn-unit').forEach((b) => b.classList.remove('active'));
+    target.classList.add('active');
 
-        const distIn = document.getElementById('rpp-distance') as HTMLInputElement;
-        if (distIn) {
-          const currentVal = parseFloat(distIn.value) || 0;
-          distIn.value = selectedUnit === 'mi' ? (currentVal / 1.609344).toFixed(2) : (currentVal * 1.609344).toFixed(2);
-        }
+    const distIn = document.getElementById('rpp-distance') as HTMLInputElement;
+    if (distIn) {
+      const currentVal = parseFloat(distIn.value) || 0;
+      distIn.value = selectedUnit === 'mi' ? (currentVal / 1.609344).toFixed(2) : (currentVal * 1.609344).toFixed(2);
+    }
 
-        currentUnit = selectedUnit;
-        updateApp();
-        saveState();
-      });
-    });
+    currentUnit = selectedUnit;
+    onDistChange();
+  }
 
-    document.querySelectorAll('.rpp-btn-preset').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        const target = e.currentTarget as HTMLElement;
-        document.querySelectorAll('.rpp-btn-preset').forEach((b) => b.classList.remove('active'));
-        target.classList.add('active');
+  function onPresetBtnClick(e: Event, onDistChange: () => void) {
+    const target = e.currentTarget as HTMLElement;
+    document.querySelectorAll('.rpp-btn-preset').forEach((b) => b.classList.remove('active'));
+    target.classList.add('active');
 
-        const distKm = parseFloat(target.getAttribute('data-dist') || '0');
-        const distIn = document.getElementById('rpp-distance') as HTMLInputElement;
-        if (distIn && distKm > 0) {
-          distIn.value = currentUnit === 'mi' ? (distKm / 1.609344).toFixed(2) : distKm.toString();
-          updateApp();
-          saveState();
-        }
-      });
-    });
+    const distKm = parseFloat(target.getAttribute('data-dist') || '0');
+    const distIn = document.getElementById('rpp-distance') as HTMLInputElement;
+    if (distIn && distKm > 0) {
+      distIn.value = currentUnit === 'mi' ? (distKm / 1.609344).toFixed(2) : distKm.toString();
+      onDistChange();
+    }
+  }
+
+  function bindEventListeners() {
+    const onDistChange = () => {
+      updateApp();
+      saveState();
+    };
+    bindDistAndStepEvents(onDistChange);
+    document.querySelectorAll('.rpp-btn-unit').forEach((b) => b.addEventListener('click', (e) => onUnitBtnClick(e, onDistChange)));
+    document.querySelectorAll('.rpp-btn-preset').forEach((b) => b.addEventListener('click', (e) => onPresetBtnClick(e, onDistChange)));
   }
 
   document.addEventListener('DOMContentLoaded', () => {
