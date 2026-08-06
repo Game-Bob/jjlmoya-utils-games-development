@@ -14,8 +14,6 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     compatibilityScore: 'Itch.io-Kompatibilitätsbewertung',
     viewportWidth: 'Viewport-Breite (px)',
     viewportHeight: 'Viewport-Höhe (px)',
-    aspectRatio: 'Seitenverhältnis',
-    lockAspectRatio: 'Seitenverhältnis sperren',
     presets: 'Schnelle Auflösungs-Presets',
     fitTest: 'Live-Layout- und Scrollbar-Test',
     copySettings: 'Itch.io Embed-Einstellungen kopieren',

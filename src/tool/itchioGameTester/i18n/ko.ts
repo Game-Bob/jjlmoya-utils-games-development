@@ -14,8 +14,6 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     compatibilityScore: 'Itch.io 호환성 점수',
     viewportWidth: '뷰포트 너비 (px)',
     viewportHeight: '뷰포트 높이 (px)',
-    aspectRatio: '화면 비율',
-    lockAspectRatio: '화면 비율 잠금',
     presets: '빠른 해상도 프리셋',
     fitTest: '라이브 레이아웃 및 스크롤바 테스트',
     copySettings: 'Itch.io 임베드 설정 복사',

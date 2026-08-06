@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import { validateGameFiles, calculateAspectRatio, generateItchioEmbedConfig, type WebGameFileInfo } from './logic';
+import { validateGameFiles, generateItchioEmbedConfig, type WebGameFileInfo } from './logic';
 import { displayAudit } from './audit';
 
 const STATE_KEY = 'jjl_itchio_game_tester_state';
@@ -50,28 +50,23 @@ function applyViewportStyle(w: number, h: number) {
   }
   const wInput = document.getElementById('igt-width-input') as HTMLInputElement;
   const hInput = document.getElementById('igt-height-input') as HTMLInputElement;
-  const rDisplay = document.getElementById('igt-ratio-display');
   if (wInput) wInput.value = w.toString();
   if (hInput) hInput.value = h.toString();
-  if (rDisplay) rDisplay.textContent = calculateAspectRatio(w, h);
   localStorage.setItem(STATE_KEY, JSON.stringify({ w, h }));
 }
 
-function bindInputEvents(currentRatio: { value: number }) {
+function bindInputEvents() {
   const widthInput = document.getElementById('igt-width-input') as HTMLInputElement;
   const heightInput = document.getElementById('igt-height-input') as HTMLInputElement;
-  const ratioLock = document.getElementById('igt-ratio-lock') as HTMLInputElement;
   const autoScale = document.getElementById('igt-auto-scale') as HTMLInputElement;
   widthInput?.addEventListener('input', () => {
     const w = parseInt(widthInput.value, 10) || 960;
-    const h = ratioLock?.checked ? Math.round(w / currentRatio.value) : (parseInt(heightInput.value, 10) || 540);
-    if (!ratioLock?.checked) currentRatio.value = w / h;
+    const h = parseInt(heightInput.value, 10) || 540;
     applyViewportStyle(w, h);
   });
   heightInput?.addEventListener('input', () => {
     const h = parseInt(heightInput.value, 10) || 540;
-    const w = ratioLock?.checked ? Math.round(h * currentRatio.value) : (parseInt(widthInput.value, 10) || 960);
-    if (!ratioLock?.checked) currentRatio.value = w / h;
+    const w = parseInt(widthInput.value, 10) || 960;
     applyViewportStyle(w, h);
   });
   autoScale?.addEventListener('change', () => {
@@ -79,7 +74,7 @@ function bindInputEvents(currentRatio: { value: number }) {
   });
 }
 
-function bindPresetEvents(currentRatio: { value: number }) {
+function bindPresetEvents() {
   const resetBtn = document.getElementById('igt-reset-btn');
   const presetsContainer = document.getElementById('igt-presets-container');
   presetsContainer?.addEventListener('click', (e) => {
@@ -87,19 +82,16 @@ function bindPresetEvents(currentRatio: { value: number }) {
     if (target.classList.contains('igt-chip')) {
       const w = parseInt(target.getAttribute('data-w') || '960', 10);
       const h = parseInt(target.getAttribute('data-h') || '540', 10);
-      currentRatio.value = w / h;
       applyViewportStyle(w, h);
       presetsContainer.querySelectorAll('.igt-chip').forEach((c) => c.classList.remove('active'));
       target.classList.add('active');
     }
   });
-  resetBtn?.addEventListener('click', () => { currentRatio.value = 960 / 540; applyViewportStyle(960, 540); });
+  resetBtn?.addEventListener('click', () => { applyViewportStyle(960, 540); });
 }
 
 interface DragState {
   iframe: HTMLElement | null;
-  ratioLock: HTMLInputElement | null;
-  currentRatio: { value: number };
   start: { x: number; y: number; w: number; h: number };
 }
 
@@ -109,8 +101,7 @@ function attachDragListeners(st: DragState) {
   const onMouseMove = (e: MouseEvent) => {
     if (!isResizing) return;
     const constW = Math.max(320, Math.min(1920, st.start.w + (e.clientX - st.start.x)));
-    const constH = st.ratioLock?.checked ? Math.round(constW / st.currentRatio.value) : Math.max(240, Math.min(1080, st.start.h + (e.clientY - st.start.y)));
-    if (!st.ratioLock?.checked) st.currentRatio.value = constW / constH;
+    const constH = Math.max(240, Math.min(1080, st.start.h + (e.clientY - st.start.y)));
     applyViewportStyle(constW, constH);
   };
   const onMouseUp = () => {
@@ -123,22 +114,20 @@ function attachDragListeners(st: DragState) {
   window.addEventListener('mouseup', onMouseUp);
 }
 
-function bindLiveDragResizer(currentRatio: { value: number }) {
+function bindLiveDragResizer() {
   const handle = document.getElementById('igt-resize-handle');
   const frame = document.getElementById('igt-emulator-frame');
   const iframe = document.getElementById('igt-iframe');
-  const ratioLock = document.getElementById('igt-ratio-lock') as HTMLInputElement;
   if (!handle || !frame) return;
   handle.addEventListener('mousedown', (e) => {
     e.preventDefault();
-    attachDragListeners({ iframe, ratioLock, currentRatio, start: { x: e.clientX, y: e.clientY, w: currentViewport.w, h: currentViewport.h } });
+    attachDragListeners({ iframe, start: { x: e.clientX, y: e.clientY, w: currentViewport.w, h: currentViewport.h } });
   });
 }
 
 function setupViewportController() {
   const widthInput = document.getElementById('igt-width-input') as HTMLInputElement;
   const heightInput = document.getElementById('igt-height-input') as HTMLInputElement;
-  const currentRatio = { value: 16 / 9 };
   const savedState = localStorage.getItem(STATE_KEY);
   if (savedState) {
     try {
@@ -148,9 +137,9 @@ function setupViewportController() {
       applyViewportStyle(parsed.w, parsed.h);
     } catch {}
   }
-  bindInputEvents(currentRatio);
-  bindPresetEvents(currentRatio);
-  bindLiveDragResizer(currentRatio);
+  bindInputEvents();
+  bindPresetEvents();
+  bindLiveDragResizer();
 }
 
 function getMimeType(filename: string): string {

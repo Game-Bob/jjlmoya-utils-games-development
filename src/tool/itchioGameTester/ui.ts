@@ -6,8 +6,6 @@ export interface ItchioGameTesterUI extends Record<string, string> {
   compatibilityScore: string;
   viewportWidth: string;
   viewportHeight: string;
-  aspectRatio: string;
-  lockAspectRatio: string;
   presets: string;
   fitTest: string;
   copySettings: string;

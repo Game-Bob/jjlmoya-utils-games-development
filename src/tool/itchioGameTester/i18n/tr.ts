@@ -14,8 +14,6 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     compatibilityScore: 'Itch.io Uyumluluk Puanı',
     viewportWidth: 'Görünüm Alanı Genişliği (px)',
     viewportHeight: 'Görünüm Alanı Yüksekliği (px)',
-    aspectRatio: 'En-Boy Oranı',
-    lockAspectRatio: 'En-Boy Oranını Kilitle',
     presets: 'Hızlı Çözünürlük Ön Ayarları',
     fitTest: 'Canlı Düzen ve Kaydırma Çubuğu Testi',
     copySettings: 'Itch.io Yerleştirme Ayarlarını Kopyala',
