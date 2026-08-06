@@ -1,0 +1,104 @@
+---
+import type { ItchioGameTesterUI } from './ui';
+import './itchio-game-tester.css';
+
+export interface Props {
+  ui: ItchioGameTesterUI;
+}
+
+const { ui } = Astro.props;
+---
+
+<div class="igt-container" id="igt-root"
+  data-engine-detected={ui.engineDetected}
+  data-compatibility-score={ui.compatibilityScore}
+  data-files-inspected={ui.filesInspected}
+  data-no-issues-found={ui.noIssuesFound}
+  data-copied={ui.copied}
+  data-copy-settings={ui.copySettings}
+>
+  <div class="igt-card">
+    <div id="igt-dropzone" class="igt-dropzone" role="region" aria-label={ui.dropzoneTitle}>
+      <p class="igt-label" style="font-size: 1.1rem; margin-bottom: 0.5rem;">{ui.dropzoneTitle}</p>
+      <p style="font-size: 0.875rem; opacity: 0.8; margin-bottom: 1.25rem;">{ui.dropzoneHint}</p>
+      <div style="display: flex; justify-content: center;">
+        <label for="igt-file-input" class="igt-btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+          <svg style="width:18px;height:18px;fill:var(--text-base,#fff);" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+          {ui.chooseFiles}
+          <input type="file" id="igt-file-input" multiple style="display: none;" aria-label={ui.chooseFiles} />
+        </label>
+      </div>
+    </div>
+
+    <div id="igt-results-panel" style="display: none; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-base, #334155);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span id="igt-engine-tag" class="igt-chip active" style="font-size: 0.9rem;">{ui.engineDetected}: Custom HTML5</span>
+          <span id="igt-score-badge" class="igt-audit-badge igt-badge-pass" style="margin-left: 0.5rem;">Score: 100%</span>
+        </div>
+        <div>
+          <span id="igt-files-count" style="font-size: 0.875rem; opacity: 0.8;">{ui.filesInspected}: 0</span>
+        </div>
+      </div>
+      <div id="igt-issues-list" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;"></div>
+    </div>
+
+    <div id="igt-preview-panel" style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-base, #334155);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+        <h3 class="igt-label" style="font-size: 1.1rem; margin: 0;">{ui.fitTest}</h3>
+        <div style="display: flex; gap: 0.5rem;">
+          <button type="button" id="igt-reset-btn" class="igt-chip" aria-label={ui.resetViewport}>{ui.resetViewport}</button>
+          <button type="button" id="igt-copy-btn" class="igt-btn-primary" style="padding: 0.4rem 0.875rem; font-size: 0.85rem;" aria-label={ui.copySettings}>{ui.copySettings}</button>
+        </div>
+      </div>
+
+      <div class="igt-controls-grid">
+        <div class="igt-input-group">
+          <label for="igt-width-input" class="igt-label">{ui.viewportWidth}</label>
+          <input type="number" id="igt-width-input" class="igt-input" min="320" max="1920" value="960" aria-label={ui.viewportWidth} />
+        </div>
+        <div class="igt-input-group">
+          <label for="igt-height-input" class="igt-label">{ui.viewportHeight}</label>
+          <input type="number" id="igt-height-input" class="igt-input" min="240" max="1080" value="540" aria-label={ui.viewportHeight} />
+        </div>
+        <div class="igt-input-group">
+          <label for="igt-ratio-lock" class="igt-label">{ui.aspectRatio}</label>
+          <div style="display: flex; align-items: center; gap: 0.5rem; height: 100%;">
+            <input type="checkbox" id="igt-ratio-lock" checked aria-label={ui.lockAspectRatio} />
+            <span style="font-size: 0.9rem;" id="igt-ratio-display">16:9</span>
+          </div>
+        </div>
+        <div class="igt-input-group" style="grid-column: 1 / -1;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <input type="checkbox" id="igt-auto-scale" checked aria-label={ui.autoScaleToggle} />
+            <label for="igt-auto-scale" class="igt-label" style="cursor: pointer; font-weight: 500;">{ui.autoScaleToggle}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="igt-preset-chips" id="igt-presets-container">
+        <button type="button" class="igt-chip active" data-w="960" data-h="540" aria-label="Preset 960x540">960 x 540 (16:9)</button>
+        <button type="button" class="igt-chip" data-w="1280" data-h="720" aria-label="Preset 1280x720">1280 x 720 (16:9 HD)</button>
+        <button type="button" class="igt-chip" data-w="800" data-h="600" aria-label="Preset 800x600">800 x 600 (4:3)</button>
+        <button type="button" class="igt-chip" data-w="1024" data-h="768" aria-label="Preset 1024x768">1024 x 768 (4:3)</button>
+        <button type="button" class="igt-chip" data-w="960" data-h="600" aria-label="Preset 960x600">960 x 600 (Itch Desktop)</button>
+        <button type="button" class="igt-chip" data-w="800" data-h="800" aria-label="Preset 800x800">800 x 800 (1:1 Square)</button>
+      </div>
+
+      <div id="igt-scale-notice" class="igt-scale-notice">
+        <strong>[Artificial Zoom-Out Active]</strong> {ui.scaledNotice}
+      </div>
+
+      <div id="igt-emulator-container" style="overflow: hidden; max-width: 100%; margin-top: 1.25rem;">
+        <div id="igt-emulator-frame" class="igt-emulator-frame" style="width: 960px; height: 540px; transform-origin: top left;">
+          <iframe id="igt-iframe" class="igt-iframe" title="Web Game Preview Frame"></iframe>
+          <div id="igt-resize-handle" class="igt-resize-handle" role="button" aria-label="Resize Viewport Handle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import './client';
+</script>
