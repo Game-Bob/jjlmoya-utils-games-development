@@ -1,14 +1,15 @@
 ---
 import { SEORenderer } from '@jjlmoya/utils-shared';
-import { steamCapsuleGenerator } from './index';
+import { steamCapsuleGenerator } from './entry';
 import type { KnownLocale } from '../../types';
 
 interface Props {
   locale?: KnownLocale;
 }
 
-const { locale = 'es' } = Astro.props;
-const content = await steamCapsuleGenerator.i18n[locale]?.();
+const { locale = 'en' } = Astro.props;
+const loader = steamCapsuleGenerator.i18n[locale] ?? steamCapsuleGenerator.i18n.en;
+const content = loader ? await loader() : null;
 ---
 
-{content && <SEORenderer content={{ locale, sections: content.seo }} />}
+{content && content.seo && content.seo.length > 0 && <SEORenderer content={{ locale, sections: content.seo }} />}

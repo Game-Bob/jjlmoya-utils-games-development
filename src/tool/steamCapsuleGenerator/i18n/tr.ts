@@ -1,29 +1,144 @@
-import { createSteamContent } from './shared';
+import type { ToolLocaleContent } from '../../../types';
+import type { SteamCapsuleGeneratorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
 
-export const content = createSteamContent({
-  slug: 'steam-kapsul-olusturucu',
-  title: 'Steam kapsül oluşturucu',
-  description: 'Tek bir ana görselden dört Steam ön izlemesi oluşturun, odak noktasını ayarlayın, güvenli alanları inceleyin ve PNG veya ZIP dosyalarını yerel olarak indirin.',
-  ui: { uploadTitle: 'Ana görselinizi bırakın', uploadHint: 'Yüksek çözünürlüklü tek görsel, tarayıcı içinde eksiksiz bir Steam ön izleme setine dönüşür.', chooseFile: 'Görsel seç', minimumSize: 'Minimum boyut', supportedFormats: 'PNG, JPEG veya WebP', invalidImage: 'En az 1920 x 1080 piksel bir görsel seçin.', sourcePreview: 'Ana görsel', focalPoint: 'Odak noktası', focalHint: 'Her kırpmada önemli konunun kalması için görsele tıklayın veya kaydırıcıları kullanın.', horizontalFocus: 'Yatay', verticalFocus: 'Dikey', resetFocus: 'Odağı ortala', outputPreview: 'Steam çıktı seti', safeZone: 'Güvenli alan', dimensions: 'piksel', downloadPng: 'PNG', downloadZip: 'ZIP indir', buildingZip: 'Yerel ZIP arşivi hazırlanıyor...', zipReady: 'Steam kapsül seti hazır', localOnly: 'Gizlilik varsayılan. Görseliniz bu tarayıcıda kalır.', headerCapsule: 'Header kapsülü', mainCapsule: 'Ana kapsül', verticalCapsule: 'Dikey kapsül', communityIcon: 'Topluluk simgesi', ready: 'Hazır', downloadError: 'Arşiv oluşturulamadı. PNG düğmelerini deneyin.', },
+export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
+  slug: 'steam-kapsul-generatoru',
+  title: 'Steam Kapsül ve Görsel Önizleme Oluşturucu',
+  description: 'Steam mağaza ve kütüphane kapsül görsellerini kırpın, önizleyin ve güvenli alan doğrulaması ile biçimlendirin.',
+  ui: {
+    uploadTitle: 'Oyun Görseli Yükle',
+    uploadHint: 'Yüksek çözünürlüklü bir ana görsel yükleyin (önerilen 3840x1240 px veya üzeri).',
+    chooseFile: 'Dosya Seç',
+    minimumSize: 'Önerilen minimum boyut: 1920x1080 px',
+    horizontalFocus: 'Yatay Odak (X)',
+    verticalFocus: 'Dikey Odak (Y)',
+    zoomLevel: 'Yakınlaştırma Seviyesi',
+    resetFocus: 'Odağı Sıfırla',
+    safeZone: 'Güvenli Alan',
+    downloadZip: 'Tüm Dosyaları İndir (ZIP)',
+    headerCapsule: 'Üst Bilgi Kapsülü (460x215 / HD 920x430)',
+    smallCapsule: 'Küçük Kapsül (231x87 / HD 462x174)',
+    mainCapsule: 'Ana Kapsül (616x353 / HD 1232x706)',
+    verticalCapsule: 'Dikey Kütüphane Kapsülü (300x450 / HD 600x900)',
+    libraryHero: 'Kütüphane Banner (1920x620 / HD 3840x1240)',
+    communityIcon: 'Topluluk Uygulama Simgesi (32x32 / HD 184x184)',
+    storePreviewTab: 'Steam Mağazası',
+    libraryPreviewTab: 'Steam Kütüphanesi',
+    allAssetsTab: 'Tüm Boyutlar',
+    toggleSafeZones: 'Güvenli Alan Çizgileri',
+    toggleSteamOverlay: 'Steam Arayüzü'
+  },
   seo: [
-    { type: 'title', text: 'Tek görselden tutarlı bir Steam kapsül seti oluşturun', level: 2 },
-    { type: 'paragraph', html: 'Bir çizim geniş formatta iyi görünebilir ancak dikey kırpmada karakteri kaybedebilir. Bu araç aynı ana görselden dört kırpma gösterir: header 460 x 215, ana 616 x 353, dikey 374 x 448 ve kare topluluk simgesi 184 x 184 piksel. Odak noktası, oran değiştiğinde kompozisyonun hangi bölümünün görünür kalacağını belirler.' },
-    { type: 'paragraph', html: 'Görsel canvas ile yerel olarak işlenir. Sunucuya gönderilmez ve hesap gerekmez. İşaretçiyi taşıdığınızda tüm ön izlemeler güncellenir; böylece logo, yüz, karakter ve kontrast dışa aktarmadan önce kontrol edilir.' },
-    { type: 'title', text: 'Oyun görselleri için pratik çalışma akışı', level: 2 },
-    { type: 'list', items: ['En az 1920 x 1080 piksellik bir ana görselle başlayın.', 'İşaretçiyi geometrik merkeze değil görsel konuya koyun.', 'Önce dikey ve kare ön izlemeleri kontrol edin.', 'Güvenli alanları boşluk rehberi olarak kullanın ve güncel Steamworks şablonlarını karşılaştırın.'] },
-    { type: 'paragraph', html: 'Güvenli alanlar kompozisyon rehberidir; Steam arayüzlerinin tamamı için garanti değildir. Logoları ve başlıkları kalabalık kenarlardan uzak tutun ve Valve\'ın kapsül metni kurallarını inceleyin.' },
-    { type: 'tip', html: 'Konunun etrafında boşluk bulunan bir ana dosya saklayın. Logo konumu değişecekse bitmiş kapsülü esnetmek yerine kaynağı düzenleyip seti yeniden oluşturun.' },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Steam Grafik Kapsül Özellikleri'
+    },
+    {
+      type: 'paragraph',
+      html: 'Steam mağaza sayfaları ve kütüphane görünümleri standart kapsül görselleri kullanır.'
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { label: 'Mağaza Üst Bilgi HD', value: '920 x 430 px' },
+        { label: 'Kütüphane Kapsül Oranı', value: '2:3 Dikey' },
+        { label: 'Kütüphane Banner Maks', value: '3840 x 1240 px' },
+        { label: 'Topluluk Simge Boyutu', value: '184 x 184 px' }
+      ]
+    },
+    {
+      type: 'table',
+      headers: ['Varlık Türü', 'Standart Boyut (px)', 'HD Hedef Boyut (px)', 'En Boy Oranı', 'Biçim'],
+      rows: [
+        ['Üst Bilgi Kapsülü', '460 x 215', '920 x 430', '2.14:1', 'JPG / PNG'],
+        ['Küçük Kapsül', '231 x 87', '462 x 174', '2.65:1', 'JPG / PNG'],
+        ['Ana Kapsül', '616 x 353', '1232 x 706', '1.74:1', 'JPG / PNG'],
+        ['Dikey Kapsül', '300 x 450', '600 x 900', '2:3', 'JPG / PNG'],
+        ['Kütüphane Banner', '1920 x 620', '3840 x 1240', '3.1:1', 'JPG / PNG'],
+        ['Kütüphane Logosu', '1280 x 720', '1280 x 720', '16:9', 'Şeffaf PNG'],
+        ['Topluluk Simgesi', '32 x 32', '184 x 184', '1:1', 'PNG']
+      ]
+    },
+    {
+      type: 'tip',
+      title: 'Güvenli Alan İpuçları',
+      html: 'Önemli logoları görselin sol üst üçte ikilik alanında tutun.'
+    },
+    {
+      type: 'proscons',
+      title: 'İş Akışı Değerlendirmesi',
+      items: [
+        {
+          pro: 'Tüm Steamworks boyutlarını anında oluşturma',
+          con: 'Karmaşık görseller ayrı katmanlar gerektirebilir'
+        }
+      ]
+    },
+    {
+      type: 'glossary',
+      items: [
+        {
+          term: 'Kapsül',
+          definition: 'Valve tarafından tanıtım görselleri için kullanılan standart terim.'
+        }
+      ]
+    }
   ],
+  faqTitle: 'Steam Görselleri Hakkında Sıkça Sorulan Sorular',
   faq: [
-    { question: 'Görsel cihazımdan çıkar mı?', answer: 'Hayır. Tarayıcıda okunur ve çizilir. Yükleme veya hesap yoktur.' },
-    { question: 'Hangi ana görsel kullanılmalı?', answer: 'En az 1920 x 1080 piksellik PNG, JPEG veya WebP kırpma için alan sağlar.' },
-    { question: 'Odak noktası neyi değiştirir?', answer: 'Tüm çıktılardaki kaynak kırpmayı kaydırır ve ana konuyu korur.' },
-    { question: 'Güvenli alanlar resmi mi?', answer: 'Pratik kılavuzlardır. Yayından önce güncel Steamworks şablonlarıyla karşılaştırın.' },
+    {
+      question: 'Hangi dosya biçimini kullanmalıyım?',
+      answer: 'Steam ana kapsüller için JPG veya PNG dosyalarını kabul eder.'
+    }
   ],
   howTo: [
-    { name: 'Ana görsel seçin', text: 'En az 1920 x 1080 piksellik PNG, JPEG veya WebP bırakın.' },
-    { name: 'Odağı ayarlayın', text: 'Ön izlemeye tıklayın veya yatay ve dikey kaydırıcıları hareket ettirin.' },
-    { name: 'Dört kırpmayı inceleyin', text: 'Header, ana, dikey ve kare simgeyi kontrol edin.' },
-    { name: 'Seti indirin', text: 'Ayrı PNG dosyaları veya yerel ZIP arşivi indirin.' },
+    {
+      name: 'Görsel Yükle',
+      text: 'Yüksek çözünürlüklü bir görsel seçin.'
+    }
   ],
-});
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Steam Kapsül ve Görsel Önizleme Oluşturucu',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'TRY'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Hangi dosya biçimini kullanmalıyım?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Steam ana kapsüller için JPG veya PNG dosyalarını kabul eder.'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Steam kapsülleri nasıl oluşturulur',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Görsel Yükle',
+          text: 'Yüksek çözünürlüklü bir görsel seçin.'
+        }
+      ]
+    }
+  ],
+  bibliography: bibliographyEntries
+};

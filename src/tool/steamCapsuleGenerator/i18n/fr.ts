@@ -1,31 +1,165 @@
-import { createSteamContent } from './shared';
+import type { ToolLocaleContent } from '../../../types';
+import type { SteamCapsuleGeneratorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
 
-export const content = createSteamContent({
+export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
   slug: 'generateur-de-capsules-steam',
-  title: 'Générateur de capsules Steam',
-  description: 'Créez quatre aperçus Steam à partir d\'une image maître, déplacez le point focal, vérifiez les zones sures et téléchargez un ensemble PNG ou ZIP local.',
+  title: 'Générateur et Prévisualisation de Capsules Steam',
+  description: 'Radrer, prévisualiser et traiter les capsules officielles du magasin et de la bibliothèque Steam avec vérification des zones de sécurité.',
   ui: {
-    uploadTitle: 'Déposez votre illustration maître', uploadHint: 'Une image haute résolution devient un ensemble de prévisualisations directement dans le navigateur.', chooseFile: 'Choisir une image', minimumSize: 'Taille minimale', supportedFormats: 'PNG, JPEG ou WebP', invalidImage: 'Choisissez une image d\'au moins 1920 par 1080 pixels.', sourcePreview: 'Illustration maître', focalPoint: 'Point focal', focalHint: 'Cliquez sur l\'image ou utilisez les curseurs pour garder le sujet important dans chaque recadrage.', horizontalFocus: 'Horizontal', verticalFocus: 'Vertical', resetFocus: 'Centrer le point focal', outputPreview: 'Ensemble des sorties Steam', safeZone: 'Zone sure', dimensions: 'pixels', downloadPng: 'PNG', downloadZip: 'Télécharger le ZIP', buildingZip: 'Création de votre archive locale...', zipReady: 'Ensemble de capsules prêt', localOnly: 'Confidentialité intégrée. Votre image reste dans ce navigateur.', headerCapsule: 'Capsule d\'en-tête', mainCapsule: 'Capsule principale', verticalCapsule: 'Capsule verticale', communityIcon: 'Icône de communauté', ready: 'Prêt', downloadError: 'L\'archive n\'a pas pu être créée. Essayez les boutons PNG.',
+    uploadTitle: 'Téléverser une Illustration',
+    uploadHint: 'Téléversez une illustration haute résolution (recommandé 3840x1240 px ou plus).',
+    chooseFile: 'Choisir un Fichier',
+    minimumSize: 'Taille minimale recommandée: 1920x1080 px',
+    horizontalFocus: 'Ajustement Horizontal (X)',
+    verticalFocus: 'Ajustement Vertical (Y)',
+    zoomLevel: 'Niveau de Zoom',
+    resetFocus: 'Réinitialiser le Point Focal',
+    safeZone: 'Zone de Sécurité',
+    downloadZip: 'Télécharger Tous les Fichiers (ZIP)',
+    headerCapsule: 'Capsule En Tete (460x215 / HD 920x430)',
+    smallCapsule: 'Petite Capsule (231x87 / HD 462x174)',
+    mainCapsule: 'Capsule Principale (616x353 / HD 1232x706)',
+    verticalCapsule: 'Capsule Verticale de Bibliothèque (300x450 / HD 600x900)',
+    libraryHero: 'Bannière de Bibliothèque (1920x620 / HD 3840x1240)',
+    communityIcon: 'Icône Application (32x32 / HD 184x184)',
+    storePreviewTab: 'Magasin Steam',
+    libraryPreviewTab: 'Bibliothèque Steam',
+    allAssetsTab: 'Toutes les Tailles',
+    toggleSafeZones: 'Guides de Sécurité',
+    toggleSteamOverlay: 'Interface Steam'
   },
   seo: [
-    { type: 'title', text: 'Préparez un ensemble cohérent de capsules Steam', level: 2 },
-    { type: 'paragraph', html: 'Une illustration peut être convaincante en format large et perdre son personnage dans une version verticale. Cet outil affiche quatre recadrages à partir d\'une seule image maître: en-tête 460 par 215, principale 616 par 353, verticale 374 par 448 et icône carrée 184 par 184 pixels. Le point focal permet de choisir la partie de la composition qui doit rester visible quand le ratio change.' },
-    { type: 'paragraph', html: 'Le fichier est traité localement avec canvas. Il n\'est pas envoyé à un serveur et aucun compte n\'est nécessaire. Le déplacement du marqueur met à jour les quatre aperçus afin de vérifier les logos, les visages et les silhouettes avant l\'export.' },
-    { type: 'title', text: 'Une méthode simple pour l\'art de jeu vidéo', level: 2 },
-    { type: 'list', items: ['Commencez avec une image maître d\'au moins 1920 par 1080 pixels.', 'Placez le marqueur sur le sujet visuel, pas toujours au centre mathématique.', 'Contrôlez d\'abord les aperçus vertical et carré, car ils retirent le plus de contexte.', 'Utilisez les zones sures comme marge et vérifiez les modèles Steamworks actuels.'] },
-    { type: 'paragraph', html: 'Les zones sures sont des repères de composition, pas une promesse sur chaque interface Steam. Gardez les logos et les titres loin des bords chargés et relisez les règles de Valve concernant le texte présent sur les capsules.' },
-    { type: 'tip', html: 'Conservez une image maître avec de l\'espace autour du sujet. Si un recadrage exige une autre position du logo, modifiez la source puis générez à nouveau l\'ensemble plutôt que d\'étirer une capsule finale.' },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Spécifications des Capsules Graphiques Steam'
+    },
+    {
+      type: 'paragraph',
+      html: 'Les pages du magasin Steam et la bibliothèque nécessitent des images capsules standardisées pour afficher votre jeu sur divers écrans.'
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { label: 'Résolution HD En Tete', value: '920 x 430 px' },
+        { label: 'Ratio Capsule Verticale', value: '2:3 Vertical' },
+        { label: 'Résolution Max Bannière', value: '3840 x 1240 px' },
+        { label: 'Taille Icône Communauté', value: '184 x 184 px' }
+      ]
+    },
+    {
+      type: 'comparative',
+      columns: 2,
+      items: [
+        {
+          title: 'Capsules Magasin En Tete et Principale',
+          description: 'Format paysage centré sur le titre et le visuel principal.',
+          points: [
+            'Format paysage centré sur le titre et le visuel principal',
+            'Coin inférieur droit réservé aux badges de réduction et prix'
+          ]
+        },
+        {
+          title: 'Éléments de Bibliothèque Bannière et Verticale',
+          description: 'La capsule verticale agit comme une pochette de jeu.',
+          points: [
+            'La capsule verticale agit comme une pochette de jeu'
+          ]
+        }
+      ]
+    },
+    {
+      type: 'table',
+      headers: ['Type Element', 'Taille Standard (px)', 'Taille HD Cible (px)', 'Ratio d Aspect', 'Format'],
+      rows: [
+        ['Capsule En Tete', '460 x 215', '920 x 430', '2.14:1', 'JPG / PNG'],
+        ['Petite Capsule', '231 x 87', '462 x 174', '2.65:1', 'JPG / PNG'],
+        ['Capsule Principale', '616 x 353', '1232 x 706', '1.74:1', 'JPG / PNG'],
+        ['Capsule Verticale', '300 x 450', '600 x 900', '2:3', 'JPG / PNG'],
+        ['Bannière Bibliothèque', '1920 x 620', '3840 x 1240', '3.1:1', 'JPG / PNG'],
+        ['Logo Bibliothèque', '1280 x 720', '1280 x 720', '16:9', 'PNG Transparent'],
+        ['Icône Communauté', '32 x 32', '184 x 184', '1:1', 'PNG']
+      ]
+    },
+    {
+      type: 'tip',
+      title: 'Optimisation des Zones de Sécurité',
+      html: 'Gardez les éléments importants dans les deux tiers supérieurs gauches de l image.'
+    },
+    {
+      type: 'proscons',
+      title: 'Évaluation du Processus',
+      items: [
+        {
+          pro: 'Génération instantanée de toutes les dimensions Steam',
+          con: 'Les visuels complexes peuvent nécessiter des calques séparés'
+        }
+      ]
+    },
+    {
+      type: 'glossary',
+      items: [
+        {
+          term: 'Capsule',
+          definition: 'Terme utilisé par Valve pour désigner les conteneurs d images.'
+        }
+      ]
+    }
   ],
+  faqTitle: 'Foire Aux Questions sur les Images Steam',
   faq: [
-    { question: 'Mon image quitte-t-elle mon appareil ?', answer: 'Non. Elle est décodée et dessinée dans votre navigateur. Aucun envoi ni compte ne sont nécessaires.' },
-    { question: 'Quelle image maître utiliser ?', answer: 'Utilisez un PNG, JPEG ou WebP d\'au moins 1920 par 1080 pixels pour conserver de la marge.' },
-    { question: 'Que change le point focal ?', answer: 'Il déplace le recadrage source pour toutes les sorties et protège le sujet important.' },
-    { question: 'Les zones sures sont-elles officielles ?', answer: 'Ce sont des guides pratiques. Comparez toujours avec les modèles Steamworks actuels.' },
+    {
+      question: 'Quel format de fichier utiliser pour les capsules Steam ?',
+      answer: 'Steam accepte les fichiers JPG ou PNG pour les capsules principales.'
+    }
   ],
   howTo: [
-    { name: 'Choisir une image maître', text: 'Déposez un fichier PNG, JPEG ou WebP d\'au moins 1920 par 1080 pixels.' },
-    { name: 'Régler le point focal', text: 'Cliquez sur l\'aperçu ou déplacez les curseurs horizontal et vertical.' },
-    { name: 'Vérifier les quatre recadrages', text: 'Inspectez l\'en-tête, la principale, la verticale et l\'icône carrée.' },
-    { name: 'Télécharger l\'ensemble', text: 'Téléchargez des PNG séparés ou créez une archive ZIP locale.' },
+    {
+      name: 'Téléverser l Illustration',
+      text: 'Sélectionnez une image haute résolution.'
+    }
   ],
-});
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Générateur et Prévisualisation de Capsules Steam',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'EUR'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Quel format de fichier utiliser pour les capsules Steam ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Steam accepte les fichiers JPG ou PNG.'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Comment générer des capsules Steam',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Téléverser l Illustration',
+          text: 'Sélectionnez une image haute résolution.'
+        }
+      ]
+    }
+  ],
+  bibliography: bibliographyEntries
+};

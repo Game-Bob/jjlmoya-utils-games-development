@@ -1,0 +1,64 @@
+---
+import type { SteamCapsuleGeneratorUI } from '../ui';
+
+interface Props {
+  ui: SteamCapsuleGeneratorUI;
+}
+
+const { ui: t } = Astro.props;
+---
+
+<div class="steam-library-mockup-frame">
+  <div class="steam-client-topbar">
+    <div class="steam-client-menu">
+      <span>Steam</span>
+      <span>View</span>
+      <span>Friends</span>
+      <span>Games</span>
+      <span>Help</span>
+    </div>
+    <div class="steam-client-window-controls">
+      <span>_</span>
+      <span>[ ]</span>
+      <span>X</span>
+    </div>
+  </div>
+
+  <div class="steam-library-hero-viewport diegetic-upload-trigger" id="library-hero-trigger" tabindex="0" role="button" aria-label="Click to upload library hero banner">
+    <canvas id="canvas-library-hero" width="3840" height="1240" aria-label={t.libraryHero}></canvas>
+    <div class="diegetic-overlay-hint">Click to Upload Library Hero Artwork</div>
+
+    <div class="steam-library-hero-gradient-overlay"></div>
+
+    <div class="steam-library-logo-container" id="library-logo-box">
+      <div class="steam-library-title-fallback" id="editable-library-title" contenteditable="true" aria-label="Library Title">Super Crunch Bros: GameBob Edition</div>
+      <div class="steam-safe-overlay" id="safe-library-hero" style="left: 0; top: 0; width: 100%; height: 100%;">
+        {t.safeZone}
+      </div>
+    </div>
+  </div>
+
+  <div class="steam-library-action-bar">
+    <button type="button" class="steam-play-button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+      <span>PLAY</span>
+    </button>
+
+    <div class="steam-library-stat-item">
+      <span class="stat-label">LAST PLAYED</span>
+      <span class="stat-value">Today</span>
+    </div>
+
+    <div class="steam-library-stat-item">
+      <span class="stat-label">TIME PLAYED</span>
+      <span class="stat-value">99.9 hrs</span>
+    </div>
+
+    <div class="steam-library-stat-item">
+      <span class="stat-label">ACHIEVEMENTS</span>
+      <span class="stat-value">42 / 42</span>
+    </div>
+  </div>
+</div>

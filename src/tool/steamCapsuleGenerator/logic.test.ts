@@ -1,48 +1,72 @@
 import { describe, expect, it } from 'vitest';
 import {
-  CAPSULE_PRESETS,
-  calculateCrop,
-  clamp,
-  formatFileName,
-  getPreset,
-  validateMasterImage,
+  calculateCropBounds,
+  getInitialState,
+  STEAM_ASSETS,
+  validateImageDimensions
 } from './logic';
 
-describe('Steam capsule generator logic', () => {
-  it('keeps the four requested Steam output sizes', () => {
-    expect(CAPSULE_PRESETS.map(({ width, height }) => [width, height])).toEqual([
-      [460, 215],
-      [616, 353],
-      [374, 448],
-      [184, 184],
-    ]);
+describe('Steam Capsule Generator Logic', () => {
+  it('contains mandatory Steam asset definitions', () => {
+    expect(STEAM_ASSETS.length).toBeGreaterThanOrEqual(7);
+    const header = STEAM_ASSETS.find((a) => a.id === 'header-capsule');
+    expect(header).toBeDefined();
+    expect(header?.hdWidth).toBe(920);
+    expect(header?.hdHeight).toBe(430);
   });
 
-  it('accepts the minimum master image and rejects smaller images', () => {
-    expect(validateMasterImage(1920, 1080).valid).toBe(true);
-    expect(validateMasterImage(1919, 1080).valid).toBe(false);
-    expect(validateMasterImage(1920, 1079).valid).toBe(false);
-    expect(validateMasterImage(Number.NaN, 1080).valid).toBe(false);
+  it('calculates crop bounds correctly with centered focal point', () => {
+    const crop = calculateCropBounds({
+      srcWidth: 1920,
+      srcHeight: 1080,
+      targetWidth: 460,
+      targetHeight: 215,
+      focusX: 0.5,
+      focusY: 0.5,
+      zoom: 1
+    });
+    expect(crop.sWidth).toBeGreaterThan(0);
+    expect(crop.sHeight).toBeGreaterThan(0);
+    expect(crop.sx).toBeGreaterThanOrEqual(0);
+    expect(crop.sy).toBeGreaterThanOrEqual(0);
   });
 
-  it('crops a wide source around the focal point', () => {
-    expect(calculateCrop({ width: 4000, height: 1200 }, { width: 460, height: 215 }, 0, 0)).toMatchObject({ x: 0, y: 0, width: 2567.441860465116 });
-    expect(calculateCrop({ width: 4000, height: 1200 }, { width: 460, height: 215 }, 1, 0).x).toBeCloseTo(1432.5581, 3);
+  it('calculates crop bounds with zoom factor', () => {
+    const unzoomed = calculateCropBounds({
+      srcWidth: 1920,
+      srcHeight: 1080,
+      targetWidth: 460,
+      targetHeight: 215,
+      focusX: 0.5,
+      focusY: 0.5,
+      zoom: 1
+    });
+    const zoomed = calculateCropBounds({
+      srcWidth: 1920,
+      srcHeight: 1080,
+      targetWidth: 460,
+      targetHeight: 215,
+      focusX: 0.5,
+      focusY: 0.5,
+      zoom: 2
+    });
+    expect(zoomed.sWidth).toBeLessThan(unzoomed.sWidth);
+    expect(zoomed.sHeight).toBeLessThan(unzoomed.sHeight);
   });
 
-  it('crops a tall source vertically and clamps invalid focal values', () => {
-    const crop = calculateCrop({ width: 1200, height: 2400 }, { width: 616, height: 353 }, 2, -1);
-    expect(crop.x).toBe(0);
-    expect(crop.width).toBe(1200);
-    expect(crop.y).toBe(0);
-    expect(clamp(3)).toBe(1);
-    expect(clamp(-2)).toBe(0);
-    expect(clamp(Number.POSITIVE_INFINITY)).toBe(0);
+  it('validates image resolution sufficiency against HD specs', () => {
+    const headerSpec = STEAM_ASSETS.find((a) => a.id === 'header-capsule')!;
+    const highRes = validateImageDimensions(1920, 1080, headerSpec);
+    expect(highRes.isSufficient).toBe(true);
+
+    const lowRes = validateImageDimensions(300, 200, headerSpec);
+    expect(lowRes.isSufficient).toBe(false);
   });
 
-  it('returns safe file names and lookup results', () => {
-    expect(formatFileName('main-capsule')).toBe('main-capsule.png');
-    expect(getPreset('community-icon')?.width).toBe(184);
-    expect(getPreset('unknown')).toBeUndefined();
+  it('provides default tool state', () => {
+    const state = getInitialState();
+    expect(state.focalPoint.x).toBe(0.5);
+    expect(state.focalPoint.y).toBe(0.5);
+    expect(state.showSafeZones).toBe(true);
   });
 });

@@ -1,29 +1,144 @@
-import { createSteamContent } from './shared';
+import type { ToolLocaleContent } from '../../../types';
+import type { SteamCapsuleGeneratorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
 
-export const content = createSteamContent({
-  slug: 'steam-kapselgenerator',
-  title: 'Steam kapselgenerator',
-  description: 'Skapa fyra Steam förhandsvisningar från en masterbild, justera fokuspunkten, kontrollera säkra zoner och ladda ner PNG eller ZIP lokalt.',
-  ui: { uploadTitle: 'Släpp din masterbild', uploadHint: 'En högupplöst bild blir ett komplett Steam set direkt i webbläsaren.', chooseFile: 'Välj bild', minimumSize: 'Minsta storlek', supportedFormats: 'PNG, JPEG eller WebP', invalidImage: 'Välj en bild på minst 1920 gånger 1080 pixlar.', sourcePreview: 'Masterbild', focalPoint: 'Fokuspunkt', focalHint: 'Klicka på bilden eller använd reglagen så att det viktiga motivet finns kvar i varje beskärning.', horizontalFocus: 'Horisontellt', verticalFocus: 'Vertikalt', resetFocus: 'Centrera fokus', outputPreview: 'Steam utdata', safeZone: 'Säker zon', dimensions: 'pixlar', downloadPng: 'PNG', downloadZip: 'Ladda ner ZIP', buildingZip: 'Skapar lokalt ZIP arkiv...', zipReady: 'Steam kapslar är klara', localOnly: 'Sekretess från början. Bilden stannar i webbläsaren.', headerCapsule: 'Headerkapsel', mainCapsule: 'Huvudkapsel', verticalCapsule: 'Vertikal kapsel', communityIcon: 'Communityikon', ready: 'Klar', downloadError: 'Arkivet kunde inte skapas. Prova PNG knapparna.', },
+export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
+  slug: 'steam-kapsel-skapare',
+  title: 'Steam Kapsel och Grafik Generator',
+  description: 'Beskär, förhandsgranska och formatera officiella Steam butiks och bibliotekskapslar med säkerhetszonskontroll.',
+  ui: {
+    uploadTitle: 'Ladda Upp Spelgrafik',
+    uploadHint: 'Ladda upp en högupplöst bild (rekommenderas 3840x1240 px eller större).',
+    chooseFile: 'Välj Fil',
+    minimumSize: 'Rekommenderad minsta storlek: 1920x1080 px',
+    horizontalFocus: 'Horisontellt Fokus (X)',
+    verticalFocus: 'Vertikalt Fokus (Y)',
+    zoomLevel: 'Zoomnivå',
+    resetFocus: 'Återställ Fokus',
+    safeZone: 'Säker Zon',
+    downloadZip: 'Ladda Ner Alla Filer (ZIP)',
+    headerCapsule: 'Headerkapsel (460x215 / HD 920x430)',
+    smallCapsule: 'Liten Kapsel (231x87 / HD 462x174)',
+    mainCapsule: 'Huvudkapsel (616x353 / HD 1232x706)',
+    verticalCapsule: 'Vertikal Bibliotekskapsel (300x450 / HD 600x900)',
+    libraryHero: 'Biblioteksbanner (1920x620 / HD 3840x1240)',
+    communityIcon: 'Community Appikon (32x32 / HD 184x184)',
+    storePreviewTab: 'Steam Butik',
+    libraryPreviewTab: 'Steam Bibliotek',
+    allAssetsTab: 'Alla Storlekar',
+    toggleSafeZones: 'Säkerhetszoner',
+    toggleSteamOverlay: 'Steam Gränssnitt'
+  },
   seo: [
-    { type: 'title', text: 'Skapa ett enhetligt Steam kapselset från en bild', level: 2 },
-    { type: 'paragraph', html: 'En illustration kan fungera i ett brett format och ändå förlora figuren i ett vertikalt utsnitt. Verktyget visar fyra utsnitt från samma masterbild: header 460 gånger 215, huvud 616 gånger 353, vertikalt 374 gånger 448 och en kvadratisk communityikon på 184 gånger 184 pixlar. Fokuspunkten bestämmer vilken del av bilden som ska vara synlig.' },
-    { type: 'paragraph', html: 'Bilden behandlas lokalt med canvas. Den skickas inte iväg och inget konto behövs. När markören flyttas uppdateras alla förhandsvisningar så att logotyp, ansikte, figur och kontrast kan kontrolleras före export.' },
-    { type: 'title', text: 'Ett praktiskt arbetssätt för spelgrafik', level: 2 },
-    { type: 'list', items: ['Börja med en masterbild på minst 1920 gånger 1080 pixlar.', 'Placera markören på motivet, inte alltid i bildens geometriska mitt.', 'Kontrollera det vertikala och kvadratiska formatet först.', 'Använd de säkra zonerna som marginal och jämför med aktuella Steamworks mallar.'] },
-    { type: 'paragraph', html: 'Säkra zoner är kompositionshjälpmedel och ingen garanti för varje Steam vy. Håll logotyper och titlar borta från röriga kanter och läs Valves regler för text på kapslar.' },
-    { type: 'tip', html: 'Spara en master med utrymme runt motivet. Om ett utsnitt kräver en annan logotyp placering ska du ändra källan och skapa om setet.' },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Steam Grafik Kapsel Specifikationer'
+    },
+    {
+      type: 'paragraph',
+      html: 'Steam butikssidor och bibliotek använder standardiserade kapselbilder.'
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { label: 'Butik Header HD Upplösning', value: '920 x 430 px' },
+        { label: 'Biblioteks Kapsel Proportion', value: '2:3 Vertikal' },
+        { label: 'Biblioteks Banner Max', value: '3840 x 1240 px' },
+        { label: 'Community Ikon Storlek', value: '184 x 184 px' }
+      ]
+    },
+    {
+      type: 'table',
+      headers: ['Grafiktyp', 'Standard (px)', 'HD Mål (px)', 'Proportion', 'Format'],
+      rows: [
+        ['Headerkapsel', '460 x 215', '920 x 430', '2.14:1', 'JPG / PNG'],
+        ['Liten Kapsel', '231 x 87', '462 x 174', '2.65:1', 'JPG / PNG'],
+        ['Huvudkapsel', '616 x 353', '1232 x 706', '1.74:1', 'JPG / PNG'],
+        ['Vertikal Kapsel', '300 x 450', '600 x 900', '2:3', 'JPG / PNG'],
+        ['Biblioteksbanner', '1920 x 620', '3840 x 1240', '3.1:1', 'JPG / PNG'],
+        ['Bibliotekslogotyp', '1280 x 720', '1280 x 720', '16:9', 'Transparent PNG'],
+        ['Community Ikon', '32 x 32', '184 x 184', '1:1', 'PNG']
+      ]
+    },
+    {
+      type: 'tip',
+      title: 'Optimering av Säkerhetszoner',
+      html: 'Håll alla viktiga logotyper i övre vänstra två tredjedelarna av bilden.'
+    },
+    {
+      type: 'proscons',
+      title: 'Arbetsflödesutvärdering',
+      items: [
+        {
+          pro: 'Direkt generering av alla erforderliga Steamworks storlekar',
+          con: 'Komplexa bilder kan kräva separata lager'
+        }
+      ]
+    },
+    {
+      type: 'glossary',
+      items: [
+        {
+          term: 'Kapsel',
+          definition: 'Valves standardterm för marknadsföringsbilder.'
+        }
+      ]
+    }
   ],
+  faqTitle: 'Vanliga Frågor om Steam Grafik',
   faq: [
-    { question: 'Lämnar bilden min enhet?', answer: 'Nej. Den läses och ritas i webbläsaren. Ingen uppladdning eller konto behövs.' },
-    { question: 'Vilken masterbild ska jag använda?', answer: 'PNG, JPEG eller WebP på minst 1920 gånger 1080 pixlar ger utrymme för beskärning.' },
-    { question: 'Vad ändrar fokuspunkten?', answer: 'Den flyttar källans beskärning i alla resultat och skyddar huvudmotivet.' },
-    { question: 'Är de säkra zonerna officiella?', answer: 'De är praktiska guider. Jämför alltid med de aktuella Steamworks mallarna.' },
+    {
+      question: 'Vilket filformat ska jag använda?',
+      answer: 'Steam accepterar JPG eller PNG filer för huvudkapslar.'
+    }
   ],
   howTo: [
-    { name: 'Välj en masterbild', text: 'Släpp en PNG, JPEG eller WebP på minst 1920 gånger 1080 pixlar.' },
-    { name: 'Ställ in fokus', text: 'Klicka i förhandsvisningen eller flytta de horisontella och vertikala reglagen.' },
-    { name: 'Kontrollera utsnitten', text: 'Granska header, huvud, vertikal och kvadratisk ikon.' },
-    { name: 'Ladda ner setet', text: 'Ladda ner separata PNG filer eller skapa ett lokalt ZIP arkiv.' },
+    {
+      name: 'Ladda Upp Bild',
+      text: 'Välj en högupplöst bild.'
+    }
   ],
-});
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Steam Kapsel och Grafik Generator',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'SEK'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Vilket filformat ska jag använda?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Steam accepterar JPG eller PNG filer.'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Hur man skapar Steam kapslar',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Ladda Upp Bild',
+          text: 'Välj en högupplöst bild.'
+        }
+      ]
+    }
+  ],
+  bibliography: bibliographyEntries
+};

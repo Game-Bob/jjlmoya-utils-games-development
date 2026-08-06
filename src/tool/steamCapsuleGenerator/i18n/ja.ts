@@ -1,29 +1,144 @@
-import { createSteamContent } from './shared';
+import type { ToolLocaleContent } from '../../../types';
+import type { SteamCapsuleGeneratorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
 
-export const content = createSteamContent({
+export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
   slug: 'steam-capsule-generator',
-  title: 'Steamカプセルジェネレーター',
-  description: '1枚のマスター画像からSteam用の4種類のプレビューを作成し、焦点位置と安全領域を確認してPNGまたはZIPをローカルで保存します。',
-  ui: { uploadTitle: 'マスター画像をドロップ', uploadHint: '高解像度の1枚の画像から、ブラウザ内でSteam用プレビューセットを作成します。', chooseFile: '画像を選択', minimumSize: '最小サイズ', supportedFormats: 'PNG、JPEG、WebP', invalidImage: '1920 × 1080ピクセル以上の画像を選択してください。', sourcePreview: 'マスター画像', focalPoint: '焦点位置', focalHint: '画像をクリックするかスライダーを使い、重要な被写体をすべての切り抜きに残します。', horizontalFocus: '横位置', verticalFocus: '縦位置', resetFocus: '焦点を中央に戻す', outputPreview: 'Steam出力セット', safeZone: '安全領域', dimensions: 'ピクセル', downloadPng: 'PNG', downloadZip: 'ZIPを保存', buildingZip: 'ローカルZIPを作成中...', zipReady: 'カプセルセットの準備完了', localOnly: 'プライバシー設計。画像はこのブラウザ内に留まります。', headerCapsule: 'ヘッダーカプセル', mainCapsule: 'メインカプセル', verticalCapsule: '縦型カプセル', communityIcon: 'コミュニティアイコン', ready: '準備完了', downloadError: 'アーカイブを作成できませんでした。PNGボタンをお試しください。', },
+  title: 'Steamカプセル＆アートプレビュージェネレーター',
+  description: 'Steamストアおよびライブラリ用の公式カプセル画像をトリミング、プレビュー、フォーマットし、セーフゾーンを検証します。',
+  ui: {
+    uploadTitle: 'ゲームアートワークをアップロード',
+    uploadHint: '高解像度のキービジュアルをアップロードしてください（推奨 3840x1240 px 以上）。',
+    chooseFile: 'ファイルを選択',
+    minimumSize: '推奨最小サイズ：1920x1080 px',
+    horizontalFocus: '水平フォーカス (X)',
+    verticalFocus: '垂直フォーカス (Y)',
+    zoomLevel: 'ズーム倍率',
+    resetFocus: 'フォーカスをリセット',
+    safeZone: 'セーフゾーン表示',
+    downloadZip: '全アセットをダウンロード (ZIP)',
+    headerCapsule: 'ヘッダーカプセル (460x215 / HD 920x430)',
+    smallCapsule: 'スモールカプセル (231x87 / HD 462x174)',
+    mainCapsule: 'メインカプセル (616x353 / HD 1232x706)',
+    verticalCapsule: 'ライブラリ縦型カプセル (300x450 / HD 600x900)',
+    libraryHero: 'ライブラリヒーロー (1920x620 / HD 3840x1240)',
+    communityIcon: 'コミュニティアプリアイコン (32x32 / HD 184x184)',
+    storePreviewTab: 'Steamストアプレビュー',
+    libraryPreviewTab: 'Steamライブラリプレビュー',
+    allAssetsTab: '全アセットサイズ',
+    toggleSafeZones: 'セーフゾーンガイド',
+    toggleSteamOverlay: 'Steam UI表示'
+  },
   seo: [
-    { type: 'title', text: '1枚の画像から統一感のあるSteamカプセルを作る', level: 2 },
-    { type: 'paragraph', html: '横長のイラストは印象的でも、縦型にするとキャラクターが切れてしまうことがあります。このツールは同じマスター画像から、460 × 215のヘッダー、616 × 353のメイン、374 × 448の縦型、184 × 184の正方形アイコンを表示します。焦点位置を動かすことで、比率が変わっても残したい構図を選べます。' },
-    { type: 'paragraph', html: '画像はcanvasを使ってブラウザ内で処理されます。サーバーへの送信やアカウントは不要です。マーカーを動かすと4つのプレビューが同時に更新され、ロゴや顔、キャラクターを保存前に確認できます。' },
-    { type: 'title', text: 'ゲームアートのための実用的な手順', level: 2 },
-    { type: 'list', items: ['1920 × 1080ピクセル以上のマスター画像を用意します。', 'マーカーは画像の中心ではなく、重要な被写体に置きます。', '最初に縦型と正方形のプレビューを確認します。', '安全領域を余白の目安として使い、最新のSteamworksテンプレートも確認します。'] },
-    { type: 'paragraph', html: '安全領域は構図確認のための目安であり、すべてのSteam画面を保証するものではありません。ロゴやタイトルを混雑した端から離し、カプセル内の文字に関するValveのルールも確認してください。' },
-    { type: 'tip', html: '被写体の周囲に余白を残したマスターを保存してください。ロゴ位置を変える必要がある場合は、元画像を調整して再生成します。' },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Steamグラフィックアセットの仕様とルール'
+    },
+    {
+      type: 'paragraph',
+      html: 'Steamストアページやライブラリ表示では、標準化されたカプセル画像を使用してゲームを表示します。'
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { label: 'ストアヘッダー HD解像度', value: '920 x 430 px' },
+        { label: 'ライブラリカプセル比率', value: '2:3 縦型' },
+        { label: 'ライブラリヒーロー最大解像度', value: '3840 x 1240 px' },
+        { label: 'コミュニティアイコンサイズ', value: '184 x 184 px' }
+      ]
+    },
+    {
+      type: 'table',
+      headers: ['アセットの種類', '標準サイズ (px)', 'HD目標サイズ (px)', 'アスペクト比', 'フォーマット'],
+      rows: [
+        ['ヘッダーカプセル', '460 x 215', '920 x 430', '2.14:1', 'JPG / PNG'],
+        ['スモールカプセル', '231 x 87', '462 x 174', '2.65:1', 'JPG / PNG'],
+        ['メインカプセル', '616 x 353', '1232 x 706', '1.74:1', 'JPG / PNG'],
+        ['縦型ライブラリカプセル', '300 x 450', '600 x 900', '2:3', 'JPG / PNG'],
+        ['ライブラリヒーロー', '1920 x 620', '3840 x 1240', '3.1:1', 'JPG / PNG'],
+        ['ライブラリロゴ', '1280 x 720', '1280 x 720', '16:9', '透過PNG'],
+        ['コミュニティアイコン', '32 x 32', '184 x 184', '1:1', 'PNG']
+      ]
+    },
+    {
+      type: 'tip',
+      title: 'セーフゾーンの最適化',
+      html: '重要なロゴやキャラクターの顔は画像全体の左上3分之2以内に配置してください。'
+    },
+    {
+      type: 'proscons',
+      title: 'ワークフローの評価',
+      items: [
+        {
+          pro: 'Steamworksに必要なアセットサイズを即座に一括生成',
+          con: '複雑なキービジュアルは個別レイヤーでの調整が必要な場合があります'
+        }
+      ]
+    },
+    {
+      type: 'glossary',
+      items: [
+        {
+          term: 'カプセル',
+          definition: 'Steamストアおよびライブラリで使用されるプロモーション画像の総称。'
+        }
+      ]
+    }
   ],
+  faqTitle: 'Steamアセットに関するよくある質問',
   faq: [
-    { question: '画像は端末の外へ送られますか？', answer: 'いいえ。ブラウザ内で読み込み、描画します。アップロードもアカウントも不要です。' },
-    { question: 'どのマスター画像を使いますか？', answer: '1920 × 1080ピクセル以上のPNG、JPEG、WebPが適しています。' },
-    { question: '焦点位置は何を変えますか？', answer: 'すべての出力の切り抜き位置を動かし、重要な被写体を守ります。' },
-    { question: '安全領域は公式ですか？', answer: '実用的な確認用ガイドです。公開前に最新のSteamworksテンプレートと比較してください。' },
+    {
+      question: 'どのファイル形式を使用すべきですか？',
+      answer: 'メインカプセルにはJPGまたはPNGファイルを使用できます。'
+    }
   ],
   howTo: [
-    { name: 'マスター画像を選ぶ', text: '1920 × 1080ピクセル以上のPNG、JPEG、WebPをドロップします。' },
-    { name: '焦点を調整する', text: 'プレビューをクリックするか、横と縦のスライダーを動かします。' },
-    { name: '4種類を確認する', text: 'ヘッダー、メイン、縦型、正方形アイコンを確認します。' },
-    { name: 'セットを保存する', text: '個別のPNGまたはローカルZIPを保存します。' },
+    {
+      name: '高解像度画像をアップロード',
+      text: 'キービジュアル画像を選択してください。'
+    }
   ],
-});
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Steamカプセル＆アートプレビュージェネレーター',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'JPY'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'どのファイル形式を使用すべきですか？',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'メインカプセルにはJPGまたはPNGファイルを使用できます。'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Steamカプセル画像の生成方法',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: '高解像度画像をアップロード',
+          text: 'キービジュアル画像を選択してください。'
+        }
+      ]
+    }
+  ],
+  bibliography: bibliographyEntries
+};

@@ -1,314 +1,289 @@
 ---
-import { CAPSULE_PRESETS, MASTER_MIN_HEIGHT, MASTER_MIN_WIDTH } from './logic';
-import type { SteamCapsuleGeneratorUI } from './entry';
+import type { SteamCapsuleGeneratorUI } from './ui';
+import SteamStoreMockup from './components/SteamStoreMockup.astro';
+import SteamLibraryMockup from './components/SteamLibraryMockup.astro';
+import SteamLibraryGridMockup from './components/SteamLibraryGridMockup.astro';
+import './steam-capsule-generator.css';
 
 interface Props {
   ui: SteamCapsuleGeneratorUI;
 }
 
-const { ui } = Astro.props;
-const presetLabels = {
-  'header-capsule': ui.headerCapsule,
-  'main-capsule': ui.mainCapsule,
-  'vertical-capsule': ui.verticalCapsule,
-  'community-icon': ui.communityIcon,
-};
-const presetData = CAPSULE_PRESETS.map((preset) => ({
-  ...preset,
-  label: presetLabels[preset.id as keyof typeof presetLabels],
-}));
+const { ui: t } = Astro.props;
 ---
 
-<div class="capsule-tool" data-capsule-tool>
-  <section class="capsule-upload" id="uploadPanel">
-    <div class="capsule-upload-glow"></div>
-    <div class="capsule-upload-icon" aria-hidden="true">+</div>
-    <h2>{ui.uploadTitle}</h2>
-    <p>{ui.uploadHint}</p>
-    <label class="capsule-file-label" for="masterFile">{ui.chooseFile}</label>
-    <input class="capsule-file-input" id="masterFile" type="file" accept="image/png,image/jpeg,image/webp" />
-    <div class="capsule-upload-meta">
-      <span>{ui.minimumSize}: {MASTER_MIN_WIDTH} × {MASTER_MIN_HEIGHT}</span>
-      <span>{ui.supportedFormats}</span>
+<div class="steam-tool-container" id="steam-capsule-tool">
+  <div class="steam-unified-card">
+    <div class="steam-compact-bar">
+      <div class="steam-mode-tabs" role="tablist" aria-label="Steam Preview Modes">
+        <button type="button" class="steam-tab-btn active" id="tab-store" role="tab" aria-selected="true" data-tab="store">
+          {t.storePreviewTab}
+        </button>
+        <button type="button" class="steam-tab-btn" id="tab-library" role="tab" aria-selected="false" data-tab="library">
+          {t.libraryPreviewTab}
+        </button>
+        <button type="button" class="steam-tab-btn" id="tab-assets" role="tab" aria-selected="false" data-tab="assets">
+          {t.allAssetsTab}
+        </button>
+      </div>
+
+      <div class="steam-preset-chips">
+        <span class="preset-label">{t.minimumSize}</span>
+        <button type="button" class="preset-chip active" data-preset="gamebob">GameBob Crunch</button>
+        <button type="button" class="preset-chip" data-preset="retro">Pixel RPG</button>
+        <button type="button" class="preset-chip" data-preset="cyber">Cyberpunk AAA</button>
+      </div>
+
+      <div class="steam-inline-sliders">
+        <div class="slider-item">
+          <label for="focus-x-slider">{t.horizontalFocus}</label>
+          <input type="range" id="focus-x-slider" class="steam-range-input" min="0" max="100" value="50" aria-label={t.horizontalFocus} />
+        </div>
+        <div class="slider-item">
+          <label for="focus-y-slider">{t.verticalFocus}</label>
+          <input type="range" id="focus-y-slider" class="steam-range-input" min="0" max="100" value="50" aria-label={t.verticalFocus} />
+        </div>
+        <div class="slider-item">
+          <label for="zoom-slider">{t.zoomLevel}</label>
+          <input type="range" id="zoom-slider" class="steam-range-input" min="100" max="250" value="100" aria-label={t.zoomLevel} />
+        </div>
+      </div>
+
+      <div class="steam-quick-actions">
+        <button type="button" class="preset-chip" id="steam-reset-btn">{t.resetFocus}</button>
+        <label for="toggle-safe-zones" class="steam-toggle-label">
+          <input type="checkbox" id="toggle-safe-zones" class="steam-toggle-checkbox" checked />
+          {t.toggleSafeZones}
+        </label>
+        <button type="button" class="steam-btn-primary" id="steam-choose-btn">{t.chooseFile}</button>
+        <button type="button" class="steam-btn-primary download-zip-highlight" id="steam-zip-download-btn">{t.downloadZip}</button>
+      </div>
+
+      <input type="file" id="steam-image-input" class="steam-upload-input" accept="image/png,image/jpeg,image/webp" aria-label={t.uploadTitle} />
+      <span style="display: none;">{t.uploadHint} {t.toggleSteamOverlay}</span>
     </div>
-  </section>
 
-  <div class="capsule-status" id="capsuleStatus" aria-live="polite">{ui.localOnly}</div>
+    <div class="steam-preview-viewport">
+      <div id="panel-store" class="steam-preview-panel">
+        <SteamStoreMockup ui={t} />
+      </div>
 
-  <section class="capsule-workbench" id="workbench" hidden>
-    <div class="capsule-source-card">
-      <div class="capsule-section-heading">
-        <div>
-          <span class="capsule-kicker">01</span>
-          <h2>{ui.sourcePreview}</h2>
-        </div>
-        <span class="capsule-badge" id="sourceBadge">{ui.ready}</span>
-      </div>
-      <div class="capsule-source-stage" id="sourceStage">
-        <canvas id="masterPreviewCanvas" aria-label={ui.sourcePreview}></canvas>
-        <div class="capsule-focal-marker" id="focalMarker" aria-hidden="true"></div>
-        <div class="capsule-source-sheen" aria-hidden="true"></div>
-      </div>
-      <div class="capsule-focal-controls">
-        <div class="capsule-control-row">
-          <label for="focalX">{ui.horizontalFocus}</label>
-          <input id="focalX" type="range" min="0" max="1" step="0.01" value="0.5" />
-          <output id="focalXValue" for="focalX">50%</output>
-        </div>
-        <div class="capsule-control-row">
-          <label for="focalY">{ui.verticalFocus}</label>
-          <input id="focalY" type="range" min="0" max="1" step="0.01" value="0.5" />
-          <output id="focalYValue" for="focalY">50%</output>
+      <div id="panel-library" class="steam-preview-panel" style="display: none;">
+        <SteamLibraryMockup ui={t} />
+        <div style="margin-top: 1.25rem;">
+          <SteamLibraryGridMockup ui={t} />
         </div>
       </div>
-      <p class="capsule-focal-hint">{ui.focalHint}</p>
-      <button class="capsule-reset-button" id="resetFocus" type="button">{ui.resetFocus}</button>
-    </div>
 
-    <div class="capsule-output-card">
-      <div class="capsule-section-heading capsule-output-heading">
-        <div>
-          <span class="capsule-kicker">02</span>
-          <h2>{ui.outputPreview}</h2>
-        </div>
-        <button class="capsule-download-all" id="downloadZip" type="button">{ui.downloadZip}</button>
-      </div>
-      <div class="capsule-preview-grid">
-        {presetData.map((preset) => (
-          <article class="capsule-preview-card" data-preview-card={preset.id}>
-            <div class="capsule-preview-frame">
-              <canvas id={`preview-${preset.id}`} width={preset.width} height={preset.height} data-preset={preset.id} aria-label={`${preset.label} ${preset.width} × ${preset.height}`}></canvas>
-              <div
-                class="capsule-safe-zone"
-                style={`left:${preset.safeLeft * 100}%;top:${preset.safeTop * 100}%;right:${preset.safeRight * 100}%;bottom:${preset.safeBottom * 100}%`}
-              >
-                <span>{ui.safeZone}</span>
-              </div>
+      <div id="panel-assets" class="steam-preview-panel" style="display: none;">
+        <div class="steam-assets-grid">
+          <div class="steam-asset-item">
+            <div class="steam-asset-info">
+              <span class="steam-asset-title">{t.headerCapsule}</span>
+              <span class="steam-asset-badge">920x430</span>
             </div>
-            <div class="capsule-preview-info">
-              <div>
-                <strong>{preset.label}</strong>
-                <span>{ui.dimensions}</span>
-              </div>
-              <button class="capsule-download-single" data-download={preset.id} type="button" aria-label={`${ui.downloadPng} ${preset.label}`}>{ui.downloadPng}</button>
+            <div class="steam-asset-preview-box">
+              <canvas id="canvas-header-capsule-grid" width="920" height="430" aria-label={t.headerCapsule}></canvas>
             </div>
-          </article>
-        ))}
+          </div>
+
+          <div class="steam-asset-item">
+            <div class="steam-asset-info">
+              <span class="steam-asset-title">{t.smallCapsule}</span>
+              <span class="steam-asset-badge">462x174</span>
+            </div>
+            <div class="steam-asset-preview-box">
+              <canvas id="canvas-small-capsule-grid" width="462" height="174" aria-label={t.smallCapsule}></canvas>
+            </div>
+          </div>
+
+          <div class="steam-asset-item">
+            <div class="steam-asset-info">
+              <span class="steam-asset-title">{t.verticalCapsule}</span>
+              <span class="steam-asset-badge">600x900</span>
+            </div>
+            <div class="steam-asset-preview-box">
+              <canvas id="canvas-vertical-capsule-grid" width="600" height="900" aria-label={t.verticalCapsule}></canvas>
+            </div>
+          </div>
+
+          <div class="steam-asset-item">
+            <div class="steam-asset-info">
+              <span class="steam-asset-title">{t.communityIcon}</span>
+              <span class="steam-asset-badge">184x184</span>
+            </div>
+            <div class="steam-asset-preview-box">
+              <canvas id="canvas-community-icon" width="184" height="184" aria-label={t.communityIcon}></canvas>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <div class="capsule-success" id="capsuleSuccess" role="status" aria-live="polite" hidden>
-    <span class="capsule-success-mark" aria-hidden="true">OK</span>
-    <span id="capsuleSuccessText">{ui.zipReady}</span>
   </div>
 </div>
 
-<script is:inline type="application/json" id="capsuleConfig" set:html={JSON.stringify({ ui, presetData })}></script>
-
 <script>
   import JSZip from 'jszip';
-  import { calculateCrop } from './logic';
-  import type { CapsulePreset } from './logic';
+  import { calculateCropBounds, loadStateFromStorage } from './logic';
 
-  const config = JSON.parse(document.getElementById('capsuleConfig')?.textContent ?? '{}');
-  const { ui } = config;
-  const presetData = config.presetData as CapsulePreset[];
-  const root = document.querySelector<HTMLElement>('[data-capsule-tool]');
-  if (root) {
-    const fileInput = root.querySelector<HTMLInputElement>('#masterFile')!;
-    const uploadPanel = root.querySelector<HTMLElement>('#uploadPanel')!;
-    const workbench = root.querySelector<HTMLElement>('#workbench')!;
-    const status = root.querySelector<HTMLElement>('#capsuleStatus')!;
-    const sourceStage = root.querySelector<HTMLElement>('#sourceStage')!;
-    const sourceCanvas = root.querySelector<HTMLCanvasElement>('#masterPreviewCanvas')!;
-    const focalMarker = root.querySelector<HTMLElement>('#focalMarker')!;
-    const focalX = root.querySelector<HTMLInputElement>('#focalX')!;
-    const focalY = root.querySelector<HTMLInputElement>('#focalY')!;
-    const focalXValue = root.querySelector<HTMLOutputElement>('#focalXValue')!;
-    const focalYValue = root.querySelector<HTMLOutputElement>('#focalYValue')!;
-    const resetFocus = root.querySelector<HTMLButtonElement>('#resetFocus')!;
-    const downloadZip = root.querySelector<HTMLButtonElement>('#downloadZip')!;
-    const success = root.querySelector<HTMLElement>('#capsuleSuccess')!;
-    const successText = root.querySelector<HTMLElement>('#capsuleSuccessText')!;
-    const sourceBadge = root.querySelector<HTMLElement>('#sourceBadge')!;
-    const image = new Image();
-    let sourceFileName = 'steam-capsule';
-    let hasImage = false;
+  function createPlaceholder(): HTMLImageElement {
+    const cvs = document.createElement('canvas');
+    cvs.width = 1920;
+    cvs.height = 1080;
+    const ctx = cvs.getContext('2d')!;
+    ctx.fillStyle = '#101822';
+    ctx.fillRect(0, 0, 1920, 1080);
+    ctx.fillStyle = '#66c0f4';
+    ctx.font = 'bold 56px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('GAMEBOB STUDIOS KEY VISUAL', 960, 480);
+    const img = new Image();
+    img.src = cvs.toDataURL('image/png');
+    return img;
+  }
 
-    const getFocus = () => ({ x: Number(focalX.value), y: Number(focalY.value) });
-
-    const saveFocus = () => {
-      try {
-        localStorage.setItem('steam-capsule-focus', JSON.stringify(getFocus()));
-      } catch {
-        return;
-      }
-    };
-
-    const restoreFocus = () => {
-      try {
-        const saved = JSON.parse(localStorage.getItem('steam-capsule-focus') || '{}');
-        if (Number.isFinite(saved.x)) focalX.value = String(Math.min(1, Math.max(0, saved.x)));
-        if (Number.isFinite(saved.y)) focalY.value = String(Math.min(1, Math.max(0, saved.y)));
-      } catch {
-        return;
-      }
-    };
-
-    const showFeedback = (message: string) => {
-      successText.textContent = message;
-      success.hidden = false;
-      success.classList.remove('capsule-success-visible');
-      requestAnimationFrame(() => success.classList.add('capsule-success-visible'));
-      window.setTimeout(() => {
-        success.classList.remove('capsule-success-visible');
-        window.setTimeout(() => { success.hidden = true; }, 220);
-      }, 2800);
-    };
-
-    const spawnParticle = (text: string) => {
-      const particle = document.createElement('span');
-      particle.className = 'capsule-particle';
-      particle.textContent = text;
-      particle['style'].left = `${35 + Math.random() * 30}%`;
-      particle['style'].top = `${40 + Math.random() * 20}%`;
-      root.appendChild(particle);
-      window.setTimeout(() => particle.remove(), 900);
-    };
-
-    const drawSource = () => {
-      const context = sourceCanvas.getContext('2d');
-      if (!context || !hasImage) return;
-      const displayWidth = 1200;
-      sourceCanvas.width = displayWidth;
-      sourceCanvas.height = Math.round(displayWidth * image.height / image.width);
-      context.imageSmoothingEnabled = true;
-      context.imageSmoothingQuality = 'high';
-      context.drawImage(image, 0, 0, sourceCanvas.width, sourceCanvas.height);
-      focalMarker['style'].left = `${Number(focalX.value) * 100}%`;
-      focalMarker['style'].top = `${Number(focalY.value) * 100}%`;
-      focalXValue.textContent = `${Math.round(Number(focalX.value) * 100)}%`;
-      focalYValue.textContent = `${Math.round(Number(focalY.value) * 100)}%`;
-    };
-
-    const drawPreview = (preset: CapsulePreset) => {
-      const canvas = root.querySelector<HTMLCanvasElement>(`#preview-${preset.id}`)!;
-      const context = canvas.getContext('2d');
-      if (!context || !hasImage) return;
-      const crop = calculateCrop({ width: image.width, height: image.height }, { width: preset.width, height: preset.height }, Number(focalX.value), Number(focalY.value));
-      context.clearRect(0, 0, preset.width, preset.height);
-      context.imageSmoothingEnabled = true;
-      context.imageSmoothingQuality = 'high';
-      context.drawImage(image, crop.x, crop.y, crop.width, crop.height, 0, 0, preset.width, preset.height);
-    };
-
-    const renderAll = () => {
-      drawSource();
-      presetData.forEach(drawPreview);
-      saveFocus();
-    };
-
-    const loadFile = (file: File | undefined) => {
-      if (!file || !file.type.startsWith('image/')) {
-        status.textContent = ui.invalidImage;
-        return;
-      }
-      const objectUrl = URL.createObjectURL(file);
-      image.onload = () => {
-        URL.revokeObjectURL(objectUrl);
-        if (image.width < 1920 || image.height < 1080) {
-          status.textContent = ui.invalidImage;
-          return;
-        }
-        sourceFileName = file.name.replace(/\.[^.]+$/, '') || 'steam-capsule';
-        hasImage = true;
-        workbench.hidden = false;
-        uploadPanel.classList.add('capsule-upload-complete');
-        sourceBadge.textContent = ui.ready;
-        status.textContent = `${ui.ready}: ${image.width} × ${image.height}`;
-        renderAll();
-        spawnParticle('READY');
-      };
-      image.onerror = () => {
-        URL.revokeObjectURL(objectUrl);
-        status.textContent = ui.invalidImage;
-      };
-      image.src = objectUrl;
-    };
-
-    const downloadCanvas = async (preset: CapsulePreset) => {
-      if (!hasImage) return;
-      const canvas = root.querySelector<HTMLCanvasElement>(`#preview-${preset.id}`)!;
-      const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
-      if (!blob) return;
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = `${sourceFileName}-${preset.id}.png`;
-      link.click();
-      URL.revokeObjectURL(link.href);
-      showFeedback(ui.zipReady);
-    };
-
-    const downloadAll = async () => {
-      if (!hasImage) return;
-      downloadZip.disabled = true;
-      status.textContent = ui.buildingZip;
-      try {
-        const zip = new JSZip();
-        for (const preset of presetData) {
-          const canvas = root.querySelector<HTMLCanvasElement>(`#preview-${preset.id}`)!;
-          const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
-          if (blob) zip.file(`${sourceFileName}-${preset.id}.png`, blob);
-        }
-        const archive = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(archive);
-        link.download = `${sourceFileName}-steam-capsules.zip`;
-        link.click();
-        URL.revokeObjectURL(link.href);
-        status.textContent = ui.zipReady;
-        showFeedback(ui.zipReady);
-        spawnParticle('ZIP READY');
-      } catch {
-        status.textContent = ui.downloadError;
-      } finally {
-        downloadZip.disabled = false;
-      }
-    };
-
-    fileInput.addEventListener('change', () => loadFile(fileInput.files?.[0]));
-    focalX.addEventListener('input', renderAll);
-    focalY.addEventListener('input', renderAll);
-    resetFocus.addEventListener('click', () => {
-      focalX.value = '0.5';
-      focalY.value = '0.5';
-      renderAll();
-      spawnParticle('FOCUS RESET');
-    });
-    downloadZip.addEventListener('click', downloadAll);
-    root.querySelectorAll<HTMLButtonElement>('[data-download]').forEach((button) => {
-      button.addEventListener('click', () => {
-        const preset = presetData.find((item) => item.id === button.dataset.download);
-        if (preset) downloadCanvas(preset);
+  function setupTabs(root: HTMLElement) {
+    root.querySelectorAll('.steam-tab-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        root.querySelectorAll('.steam-tab-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.getAttribute('data-tab');
+        root.querySelectorAll('.steam-preview-panel').forEach((p) => {
+          (p as HTMLElement).style.display = p.id === `panel-${target}` ? 'block' : 'none';
+        });
       });
     });
-    sourceStage.addEventListener('click', (event) => {
-      focalX.value = String(Math.min(1, Math.max(0, event.offsetX / sourceCanvas.width)));
-      focalY.value = String(Math.min(1, Math.max(0, event.offsetY / sourceCanvas.height)));
-      renderAll();
-      spawnParticle('FOCUS SET');
-    });
-    ['dragenter', 'dragover'].forEach((eventName) => uploadPanel.addEventListener(eventName, (event) => {
-      event.preventDefault();
-      uploadPanel.classList.add('capsule-upload-dragging');
-    }));
-    ['dragleave', 'drop'].forEach((eventName) => uploadPanel.addEventListener(eventName, (event) => {
-      event.preventDefault();
-      uploadPanel.classList.remove('capsule-upload-dragging');
-    }));
-    uploadPanel.addEventListener('drop', (event) => loadFile((event as DragEvent).dataTransfer?.files?.[0]));
-    restoreFocus();
-    renderAll();
   }
+
+  function setupZipDownload(btn: HTMLElement | null) {
+    if (!btn) return;
+    btn.addEventListener('click', async () => {
+      const zip = new JSZip();
+      const list = [
+        { id: 'canvas-main-capsule', name: 'main_capsule_1232x706.png' },
+        { id: 'canvas-header-capsule', name: 'header_capsule_920x430.png' },
+        { id: 'canvas-vertical-capsule', name: 'vertical_library_capsule_600x900.png' },
+        { id: 'canvas-library-hero', name: 'library_hero_3840x1240.png' },
+        { id: 'canvas-community-icon', name: 'community_icon_184x184.png' }
+      ];
+      for (const item of list) {
+        const cvs = document.getElementById(item.id) as HTMLCanvasElement;
+        if (cvs) zip.file(item.name, cvs.toDataURL('image/png').replace(/^data:image\/png;base64,/, ''), { base64: true });
+      }
+      const blob = await zip.generateAsync({ type: 'blob' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'steam_capsules_package.zip';
+      a.click();
+    });
+  }
+
+  interface DrawConfig {
+    id: string;
+    w: number;
+    h: number;
+    img: HTMLImageElement;
+    fx: number;
+    fy: number;
+    zoom: number;
+  }
+
+  function drawCanvas(cfg: DrawConfig) {
+    const cvs = document.getElementById(cfg.id) as HTMLCanvasElement;
+    if (!cvs || !cfg.img) return;
+    const ctx = cvs.getContext('2d');
+    if (!ctx) return;
+    const b = calculateCropBounds({ srcWidth: cfg.img.width, srcHeight: cfg.img.height, targetWidth: cfg.w, targetHeight: cfg.h, focusX: cfg.fx, focusY: cfg.fy, zoom: cfg.zoom });
+    ctx.clearRect(0, 0, cfg.w, cfg.h);
+    ctx.drawImage(cfg.img, b.sx, b.sy, b.sWidth, b.sHeight, 0, 0, cfg.w, cfg.h);
+  }
+
+  function renderCanvasesBatch(img: HTMLImageElement, fx: number, fy: number, zoom: number) {
+    const draw = (id: string, w: number, h: number) => drawCanvas({ id, w, h, img, fx, fy, zoom });
+    draw('canvas-main-capsule', 1232, 706);
+    draw('canvas-library-hero', 3840, 1240);
+    draw('canvas-header-capsule', 920, 430);
+    draw('canvas-header-capsule-grid', 920, 430);
+    draw('canvas-small-capsule-grid', 462, 174);
+    draw('canvas-vertical-capsule', 600, 900);
+    draw('canvas-vertical-capsule-grid', 600, 900);
+    draw('canvas-community-icon', 184, 184);
+  }
+
+  function bindUploader(chooseBtn: HTMLElement | null, fileInput: HTMLInputElement | null, root: HTMLElement, onImage: (img: HTMLImageElement) => void) {
+    if (chooseBtn && fileInput) chooseBtn.addEventListener('click', () => fileInput.click());
+    root.querySelectorAll('.diegetic-upload-trigger').forEach((t) => t.addEventListener('click', () => fileInput?.click()));
+    if (fileInput) {
+      fileInput.addEventListener('change', (e) => {
+        const file = (e.target as HTMLInputElement).files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          if (!evt.target?.result) return;
+          const img = new Image();
+          img.onload = () => onImage(img);
+          img.src = evt.target.result as string;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  }
+
+  function setupControls(fx: HTMLInputElement | null, fy: HTMLInputElement | null, zoom: HTMLInputElement | null, renderFn: () => void) {
+    const resetBtn = document.getElementById('steam-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (fx) fx.value = '50';
+        if (fy) fy.value = '50';
+        if (zoom) zoom.value = '100';
+        renderFn();
+      });
+    }
+  }
+
+  function loadInitialSliders(fx: HTMLInputElement | null, fy: HTMLInputElement | null, zoom: HTMLInputElement | null) {
+    const state = loadStateFromStorage();
+    if (fx) fx.value = String(state.focalPoint.x * 100);
+    if (fy) fy.value = String(state.focalPoint.y * 100);
+    if (zoom) zoom.value = String(state.focalPoint.zoom * 100);
+  }
+
+  function initApp(root: HTMLElement) {
+    const fxSlider = document.getElementById('focus-x-slider') as HTMLInputElement;
+    const fySlider = document.getElementById('focus-y-slider') as HTMLInputElement;
+    const zoomSlider = document.getElementById('zoom-slider') as HTMLInputElement;
+    const safeZonesToggle = document.getElementById('toggle-safe-zones') as HTMLInputElement;
+
+    loadInitialSliders(fxSlider, fySlider, zoomSlider);
+    let sourceImg: HTMLImageElement = createPlaceholder();
+
+    const renderAll = () => {
+      if (!root) return;
+      const fx = fxSlider ? Number(fxSlider.value) / 100 : 0.5;
+      const fy = fySlider ? Number(fySlider.value) / 100 : 0.5;
+      const zoom = zoomSlider ? Number(zoomSlider.value) / 100 : 1;
+      renderCanvasesBatch(sourceImg, fx, fy, zoom);
+      const show = safeZonesToggle ? safeZonesToggle.checked : true;
+      root.querySelectorAll('.steam-safe-overlay').forEach((el) => {
+        (el as HTMLElement).style.display = show ? 'flex' : 'none';
+      });
+    };
+
+    sourceImg.onload = () => renderAll();
+    bindUploader(document.getElementById('steam-choose-btn'), document.getElementById('steam-image-input') as HTMLInputElement, root, (img) => {
+      sourceImg = img;
+      renderAll();
+    });
+
+    setupControls(fxSlider, fySlider, zoomSlider, renderAll);
+    [fxSlider, fySlider, zoomSlider, safeZonesToggle].forEach((c) => c?.addEventListener('input', renderAll));
+    setupTabs(root);
+    setupZipDownload(document.getElementById('steam-zip-download-btn'));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.getElementById('steam-capsule-tool');
+    if (root) initApp(root);
+  });
 </script>

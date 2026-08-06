@@ -1,29 +1,144 @@
-import { createSteamContent } from './shared';
+import type { ToolLocaleContent } from '../../../types';
+import type { SteamCapsuleGeneratorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
 
-export const content = createSteamContent({
-  slug: 'tworzenie-kapsul-steam',
-  title: 'Generator kapsuł Steam',
-  description: 'Utwórz cztery podglądy kapsuł Steam z jednego obrazu głównego, ustaw punkt skupienia, sprawdź strefy bezpieczne i pobierz PNG lub ZIP lokalnie.',
-  ui: { uploadTitle: 'Upuść grafikę główną', uploadHint: 'Jeden obraz w wysokiej rozdzielczości staje się pełnym zestawem podglądów bezpośrednio w przeglądarce.', chooseFile: 'Wybierz grafikę', minimumSize: 'Minimalny rozmiar', supportedFormats: 'PNG, JPEG lub WebP', invalidImage: 'Wybierz obraz o rozmiarze co najmniej 1920 na 1080 pikseli.', sourcePreview: 'Grafika główna', focalPoint: 'Punkt skupienia', focalHint: 'Kliknij grafikę lub użyj suwaków, aby ważny motyw pozostał widoczny w każdym kadrze.', horizontalFocus: 'Poziomo', verticalFocus: 'Pionowo', resetFocus: 'Wyśrodkuj punkt', outputPreview: 'Zestaw wyjściowy Steam', safeZone: 'Strefa bezpieczna', dimensions: 'piksele', downloadPng: 'PNG', downloadZip: 'Pobierz ZIP', buildingZip: 'Tworzenie lokalnego archiwum ZIP...', zipReady: 'Zestaw kapsuł gotowy', localOnly: 'Prywatność w standardzie. Grafika zostaje w tej przeglądarce.', headerCapsule: 'Kapsuła nagłówka', mainCapsule: 'Kapsuła główna', verticalCapsule: 'Kapsuła pionowa', communityIcon: 'Ikona społeczności', ready: 'Gotowe', downloadError: 'Nie udało się utworzyć archiwum. Użyj przycisków PNG.', },
+export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
+  slug: 'generator-kapsul-dla-steam',
+  title: 'Generator i Podgląd Kapsuł Steam',
+  description: 'Kadruj, przeglądaj i formatuj oficjalne kapsuły sklepowe oraz grafiki biblioteki Steam z weryfikacją stref bezpiecznych.',
+  ui: {
+    uploadTitle: 'Prześlij Grafikę Gry',
+    uploadHint: 'Prześlij grafikę w wysokiej rozdzielczości (zalecane 3840x1240 px lub więcej).',
+    chooseFile: 'Wybierz Plik',
+    minimumSize: 'Zalecana minimalna rozdzielczość: 1920x1080 px',
+    horizontalFocus: 'Osiowe Skupienie (X)',
+    verticalFocus: 'Pionowe Skupienie (Y)',
+    zoomLevel: 'Poziom Powiększenia',
+    resetFocus: 'Wyśrodkuj Skupienie',
+    safeZone: 'Strefa Bezpieczna',
+    downloadZip: 'Pobierz Wszystkie Pliki (ZIP)',
+    headerCapsule: 'Kapsuła Nagłówka (460x215 / HD 920x430)',
+    smallCapsule: 'Mała Kapsuła (231x87 / HD 462x174)',
+    mainCapsule: 'Główna Kapsuła (616x353 / HD 1232x706)',
+    verticalCapsule: 'Pionowa Kapsuła Biblioteki (300x450 / HD 600x900)',
+    libraryHero: 'Banner Biblioteki (1920x620 / HD 3840x1240)',
+    communityIcon: 'Ikona Aplikacji Społeczności (32x32 / HD 184x184)',
+    storePreviewTab: 'Sklep Steam',
+    libraryPreviewTab: 'Biblioteka Steam',
+    allAssetsTab: 'Wszystkie Rozmiary',
+    toggleSafeZones: 'Strefy Bezpieczne',
+    toggleSteamOverlay: 'Interfejs Steam'
+  },
   seo: [
-    { type: 'title', text: 'Spójny zestaw kapsuł Steam z jednej grafiki', level: 2 },
-    { type: 'paragraph', html: 'Ilustracja może dobrze działać w szerokim formacie, a w pionowym kadrze stracić bohatera. Narzędzie pokazuje cztery kadry z tego samego obrazu głównego: nagłówek 460 na 215, główna 616 na 353, pionowa 374 na 448 oraz kwadratowa ikona społeczności 184 na 184 piksele. Punkt skupienia wskazuje część kompozycji, która ma pozostać widoczna.' },
-    { type: 'paragraph', html: 'Obraz jest przetwarzany lokalnie przez canvas. Nie jest wysyłany na serwer i nie trzeba zakładać konta. Przesunięcie znacznika odświeża wszystkie podglądy, aby przed eksportem sprawdzić logo, twarz, postać i kontrast.' },
-    { type: 'title', text: 'Praktyczny sposób pracy z grafiką gry', level: 2 },
-    { type: 'list', items: ['Zacznij od obrazu głównego o rozmiarze co najmniej 1920 na 1080 pikseli.', 'Umieść znacznik na motywie, nie zawsze w geometrycznym środku.', 'Najpierw sprawdź podgląd pionowy i kwadratowy.', 'Traktuj strefy bezpieczne jako margines i porównaj pliki z aktualnymi szablonami Steamworks.'] },
-    { type: 'paragraph', html: 'Strefy bezpieczne są wskazówkami kompozycyjnymi, a nie gwarancją dla każdego widoku Steam. Odsuń logotypy i tytuły od zatłoczonych krawędzi oraz sprawdź zasady Valve dotyczące tekstu na kapsułach.' },
-    { type: 'tip', html: 'Zachowaj plik główny z wolną przestrzenią wokół motywu. Gdy kadr wymaga innego położenia logo, popraw źródło i wygeneruj zestaw ponownie.' },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Specyfikacja Graficzna Kapsuł Steam'
+    },
+    {
+      type: 'paragraph',
+      html: 'Strony sklepu Steam oraz widoki biblioteki używają standaryzowanych grafik kapsuł do prezentacji gier.'
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { label: 'Nagłówek Sklepu HD', value: '920 x 430 px' },
+        { label: 'Proporcja Kapsuły Biblioteki', value: '2:3 Pionowa' },
+        { label: 'Maksymalny Banner', value: '3840 x 1240 px' },
+        { label: 'Ikona Społeczności', value: '184 x 184 px' }
+      ]
+    },
+    {
+      type: 'table',
+      headers: ['Typ Grafiki', 'Rozmiar Standardowy (px)', 'Rozmiar HD (px)', 'Proporcje', 'Format'],
+      rows: [
+        ['Kapsuła Nagłówka', '460 x 215', '920 x 430', '2.14:1', 'JPG / PNG'],
+        ['Mała Kapsuła', '231 x 87', '462 x 174', '2.65:1', 'JPG / PNG'],
+        ['Główna Kapsuła', '616 x 353', '1232 x 706', '1.74:1', 'JPG / PNG'],
+        ['Pionowa Kapsuła', '300 x 450', '600 x 900', '2:3', 'JPG / PNG'],
+        ['Banner Biblioteki', '1920 x 620', '3840 x 1240', '3.1:1', 'JPG / PNG'],
+        ['Logo Biblioteki', '1280 x 720', '1280 x 720', '16:9', 'Przezroczysty PNG'],
+        ['Ikona Społeczności', '32 x 32', '184 x 184', '1:1', 'PNG']
+      ]
+    },
+    {
+      type: 'tip',
+      title: 'Optymalizacja Stref Bezpiecznych',
+      html: 'Umieszczaj główne logo w lewej górnej części obrazu.'
+    },
+    {
+      type: 'proscons',
+      title: 'Ocena Procesu',
+      items: [
+        {
+          pro: 'Natychmiastowe generowanie wszystkich rozmiarów Steamworks',
+          con: 'Złożone grafiki mogą wymagać osobnych warstw'
+        }
+      ]
+    },
+    {
+      type: 'glossary',
+      items: [
+        {
+          term: 'Kapsuła',
+          definition: 'Określenie firmy Valve dla promocyjnych kontenerów graficznych.'
+        }
+      ]
+    }
   ],
+  faqTitle: 'Często Zadawane Pytania o Grafiki Steam',
   faq: [
-    { question: 'Czy obraz opuszcza moje urządzenie?', answer: 'Nie. Jest odczytywany i rysowany w przeglądarce. Nie ma wysyłania ani konta.' },
-    { question: 'Jakiego obrazu głównego użyć?', answer: 'PNG, JPEG lub WebP o rozmiarze co najmniej 1920 na 1080 pikseli daje zapas do kadrowania.' },
-    { question: 'Co zmienia punkt skupienia?', answer: 'Przesuwa kadr źródłowy we wszystkich wynikach i chroni główny motyw.' },
-    { question: 'Czy strefy bezpieczne są oficjalne?', answer: 'To praktyczne wskazówki. Przed publikacją porównaj pliki z aktualnymi szablonami Steamworks.' },
+    {
+      question: 'Jaki format plików wybrać?',
+      answer: 'Steam akceptuje pliki JPG lub PNG dla głównych kapsuł.'
+    }
   ],
   howTo: [
-    { name: 'Wybierz obraz główny', text: 'Upuść PNG, JPEG lub WebP o rozmiarze co najmniej 1920 na 1080 pikseli.' },
-    { name: 'Ustaw punkt', text: 'Kliknij podgląd albo przesuń suwaki poziomy i pionowy.' },
-    { name: 'Sprawdź cztery kadry', text: 'Obejrzyj nagłówek, kapsułę główną, pionową i ikonę kwadratową.' },
-    { name: 'Pobierz zestaw', text: 'Pobierz osobne pliki PNG lub utwórz lokalne archiwum ZIP.' },
+    {
+      name: 'Prześlij Grafikę',
+      text: 'Wybierz obraz w wysokiej rozdzielczości.'
+    }
   ],
-});
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Generator i Podgląd Kapsuł Steam',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'PLN'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Jaki format plików wybrać?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Steam akceptuje pliki JPG lub PNG.'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Jak generować kapsuły Steam',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Prześlij Grafikę',
+          text: 'Wybierz obraz w wysokiej rozdzielczości.'
+        }
+      ]
+    }
+  ],
+  bibliography: bibliographyEntries
+};

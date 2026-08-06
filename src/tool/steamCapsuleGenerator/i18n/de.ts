@@ -1,31 +1,144 @@
-import { createSteamContent } from './shared';
+import type { ToolLocaleContent } from '../../../types';
+import type { SteamCapsuleGeneratorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
 
-export const content = createSteamContent({
+export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
   slug: 'steam-kapsel-generator',
-  title: 'Steam Kapsel Generator',
-  description: 'Erstelle vier Steam Vorschauen aus einem Masterbild, verschiebe den Fokuspunkt, prüfe Sicherheitszonen und lade lokale PNG Dateien oder ein ZIP Archiv herunter.',
+  title: 'Steam Kapsel und Grafik Vorschau Generator',
+  description: 'Erstellen, beschneiden und prüfen Sie offizielle Steam Shop Kapseln und Bibliothek Grafiken mit Live Vorschau und Sicherheitszonen.',
   ui: {
-    uploadTitle: 'Mastergrafik ablegen', uploadHint: 'Ein hochauflösendes Bild wird direkt im Browser zu einem vollständigen Steam Vorschau Set.', chooseFile: 'Grafik auswählen', minimumSize: 'Mindestgröße', supportedFormats: 'PNG, JPEG oder WebP', invalidImage: 'Wähle ein Bild mit mindestens 1920 mal 1080 Pixeln.', sourcePreview: 'Mastergrafik', focalPoint: 'Fokuspunkt', focalHint: 'Klicke auf die Grafik oder nutze die Regler, damit das wichtige Motiv in jedem Zuschnitt bleibt.', horizontalFocus: 'Horizontal', verticalFocus: 'Vertikal', resetFocus: 'Fokus zentrieren', outputPreview: 'Steam Ausgabe Set', safeZone: 'Sicherheitszone', dimensions: 'Pixel', downloadPng: 'PNG', downloadZip: 'ZIP herunterladen', buildingZip: 'Lokales ZIP Archiv wird erstellt...', zipReady: 'Steam Kapsel Set bereit', localOnly: 'Privatsphäre zuerst. Deine Grafik bleibt in diesem Browser.', headerCapsule: 'Header Kapsel', mainCapsule: 'Hauptkapsel', verticalCapsule: 'Vertikale Kapsel', communityIcon: 'Community Symbol', ready: 'Bereit', downloadError: 'Das Archiv konnte nicht erstellt werden. Nutze stattdessen die PNG Schaltflächen.',
+    uploadTitle: 'Spielgrafik Hochladen',
+    uploadHint: 'Laden Sie ein hochauflösendes Banner hoch (empfohlen 3840x1240 px oder größer).',
+    chooseFile: 'Datei Auswählen',
+    minimumSize: 'Empfohlene Mindestgröße: 1920x1080 px',
+    horizontalFocus: 'Horizontaler Fokus (X)',
+    verticalFocus: 'Vertikaler Fokus (Y)',
+    zoomLevel: 'Zoomstufe',
+    resetFocus: 'Fokus Zentrieren',
+    safeZone: 'Sicherheitszone',
+    downloadZip: 'Alle Assets Herunterladen (ZIP)',
+    headerCapsule: 'Header Kapsel (460x215 / HD 920x430)',
+    smallCapsule: 'Kleine Kapsel (231x87 / HD 462x174)',
+    mainCapsule: 'Haupt Kapsel (616x353 / HD 1232x706)',
+    verticalCapsule: 'Vertikale Bibliotheks Kapsel (300x450 / HD 600x900)',
+    libraryHero: 'Bibliotheks Banner (1920x620 / HD 3840x1240)',
+    communityIcon: 'Community App Icon (32x32 / HD 184x184)',
+    storePreviewTab: 'Steam Shop Vorschau',
+    libraryPreviewTab: 'Steam Bibliothek Vorschau',
+    allAssetsTab: 'Alle Asset Größen',
+    toggleSafeZones: 'Sicherheitszonen',
+    toggleSteamOverlay: 'Steam Oberfläche'
   },
   seo: [
-    { type: 'title', text: 'Ein stimmiges Steam Kapsel Set aus einer Grafik', level: 2 },
-    { type: 'paragraph', html: 'Eine Illustration kann im breiten Format funktionieren und im vertikalen Zuschnitt das wichtigste Motiv verlieren. Dieses Werkzeug zeigt vier Zuschnitte aus einer Mastergrafik: Header mit 460 mal 215, Hauptkapsel mit 616 mal 353, vertikale Kapsel mit 374 mal 448 und quadratisches Community Symbol mit 184 mal 184 Pixeln. Der Fokuspunkt bestimmt, welcher Teil der Komposition sichtbar bleibt.' },
-    { type: 'paragraph', html: 'Die Datei wird lokal mit Canvas verarbeitet. Sie wird nicht hochgeladen und benötigt kein Konto. Jede Bewegung des Markers aktualisiert alle Vorschauen, damit Logos, Gesichter und Spielfiguren vor dem Export geprüft werden können.' },
-    { type: 'title', text: 'Praktischer Ablauf für Spielgrafik', level: 2 },
-    { type: 'list', items: ['Beginne mit einer Mastergrafik von mindestens 1920 mal 1080 Pixeln.', 'Setze den Marker auf das Motiv, nicht zwingend auf die geometrische Mitte.', 'Prüfe zuerst die vertikale und quadratische Vorschau.', 'Nutze die Sicherheitszonen als visuellen Rand und vergleiche die aktuellen Steamworks Vorlagen.'] },
-    { type: 'paragraph', html: 'Sicherheitszonen sind Kompositionshilfen und keine Garantie für jede Steam Oberfläche. Halte Logos und Titel von überfüllten Rändern fern und beachte Valves Regeln für Text auf Kapselgrafiken.' },
-    { type: 'tip', html: 'Bewahre eine Masterdatei mit Rand um das Motiv auf. Wenn ein Zuschnitt eine andere Logoposition braucht, ändere die Quelle und erzeuge das Set erneut.' },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Steam Grafik Kapsel Spezifikationen und Richtlinien'
+    },
+    {
+      type: 'paragraph',
+      html: 'Steam Shopseiten und Bibliotheksansichten nutzen standardisierte Grafik Kapseln für die optimale Darstellung auf verschiedenen Bildschirmen.'
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { label: 'Shop Header HD Auflösung', value: '920 x 430 px' },
+        { label: 'Bibliothek Kapsel Verhältnis', value: '2:3 Vertikal' },
+        { label: 'Bibliothek Hero Maximale Res', value: '3840 x 1240 px' },
+        { label: 'Community Icon Größe', value: '184 x 184 px' }
+      ]
+    },
+    {
+      type: 'table',
+      headers: ['Asset Typ', 'Standardgröße (px)', 'HD Zielgröße (px)', 'Seitenverhältnis', 'Format'],
+      rows: [
+        ['Header Kapsel', '460 x 215', '920 x 430', '2.14:1', 'JPG / PNG'],
+        ['Kleine Kapsel', '231 x 87', '462 x 174', '2.65:1', 'JPG / PNG'],
+        ['Haupt Kapsel', '616 x 353', '1232 x 706', '1.74:1', 'JPG / PNG'],
+        ['Vertikale Kapsel', '300 x 450', '600 x 900', '2:3', 'JPG / PNG'],
+        ['Bibliotheks Banner', '1920 x 620', '3840 x 1240', '3.1:1', 'JPG / PNG'],
+        ['Bibliotheks Logo', '1280 x 720', '1280 x 720', '16:9', 'Transparentes PNG'],
+        ['Community Icon', '32 x 32', '184 x 184', '1:1', 'PNG']
+      ]
+    },
+    {
+      type: 'tip',
+      title: 'Strategie für Sicherheitszonen',
+      html: 'Halten Sie alle wichtigen Logos und Gesichter im oberen linken Drittel des Bildes.'
+    },
+    {
+      type: 'proscons',
+      title: 'Arbeitsablauf Bewertung',
+      items: [
+        {
+          pro: 'Sofortige Erstellung aller erforderlichen Steam Asset Größen',
+          con: 'Komplexe Motive benötigen eventuell getrennte Ebenen'
+        }
+      ]
+    },
+    {
+      type: 'glossary',
+      items: [
+        {
+          term: 'Kapsel',
+          definition: 'Standardbegriff von Valve für werbliche Bildcontainer.'
+        }
+      ]
+    }
   ],
+  faqTitle: 'Häufig gestellte Fragen zu Steam Assets',
   faq: [
-    { question: 'Verlässt mein Bild das Gerät?', answer: 'Nein. Es wird im Browser gelesen und gezeichnet. Es gibt keinen Upload und kein Konto.' },
-    { question: 'Welche Mastergrafik ist geeignet?', answer: 'PNG, JPEG oder WebP mit mindestens 1920 mal 1080 Pixeln bietet genügend Spielraum.' },
-    { question: 'Was ändert der Fokuspunkt?', answer: 'Er verschiebt den Quellzuschnitt für alle Ausgaben und schützt das wichtige Motiv.' },
-    { question: 'Sind die Sicherheitszonen offiziell?', answer: 'Sie sind praktische Hinweise. Vergleiche die Dateien vor der Veröffentlichung mit aktuellen Steamworks Vorlagen.' },
+    {
+      question: 'Welches Dateiformat sollte ich für Steam Kapseln nutzen?',
+      answer: 'Steam akzeptiert JPG oder PNG für Hauptkapseln.'
+    }
   ],
   howTo: [
-    { name: 'Mastergrafik wählen', text: 'Lege eine PNG, JPEG oder WebP Datei ab, die mindestens 1920 mal 1080 Pixel hat.' },
-    { name: 'Fokus setzen', text: 'Klicke in die Vorschau oder bewege die beiden Fokusregler.' },
-    { name: 'Vier Zuschnitte prüfen', text: 'Kontrolliere Header, Hauptkapsel, vertikale Kapsel und Community Symbol.' },
-    { name: 'Set herunterladen', text: 'Lade einzelne PNGs oder ein lokal erzeugtes ZIP Archiv herunter.' },
+    {
+      name: 'Hochauflösende Grafik Hochladen',
+      text: 'Wählen Sie eine hochauflösende Grafik mit dem Uploader aus.'
+    }
   ],
-});
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Steam Kapsel und Grafik Vorschau Generator',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'EUR'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Welches Dateiformat sollte ich für Steam Kapseln nutzen?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Steam akzeptiert JPG oder PNG für Hauptkapseln.'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'So erstellen Sie Steam Kapseln',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Hochauflösende Grafik Hochladen',
+          text: 'Wählen Sie eine hochauflösende Grafik aus.'
+        }
+      ]
+    }
+  ],
+  bibliography: bibliographyEntries
+};

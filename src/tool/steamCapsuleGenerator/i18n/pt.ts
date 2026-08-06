@@ -1,29 +1,144 @@
-import { createSteamContent } from './shared';
+import type { ToolLocaleContent } from '../../../types';
+import type { SteamCapsuleGeneratorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
 
-export const content = createSteamContent({
+export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
   slug: 'gerador-de-capsulas-steam',
-  title: 'Gerador de cápsulas Steam',
-  description: 'Crie quatro prévias para Steam a partir de uma imagem mestre, ajuste o ponto focal, confira as zonas seguras e baixe PNG ou ZIP localmente.',
-  ui: { uploadTitle: 'Solte sua arte mestre', uploadHint: 'Uma imagem em alta resolução vira um conjunto completo de prévias dentro do navegador.', chooseFile: 'Escolher arte', minimumSize: 'Tamanho mínimo', supportedFormats: 'PNG, JPEG ou WebP', invalidImage: 'Escolha uma imagem com pelo menos 1920 por 1080 pixels.', sourcePreview: 'Arte mestre', focalPoint: 'Ponto focal', focalHint: 'Clique na arte ou use os controles para manter o assunto principal em cada recorte.', horizontalFocus: 'Horizontal', verticalFocus: 'Vertical', resetFocus: 'Centralizar foco', outputPreview: 'Conjunto de saídas Steam', safeZone: 'Zona segura', dimensions: 'pixels', downloadPng: 'PNG', downloadZip: 'Baixar ZIP', buildingZip: 'Criando seu arquivo ZIP local...', zipReady: 'Conjunto de cápsulas pronto', localOnly: 'Privacidade por padrão. Sua arte fica neste navegador.', headerCapsule: 'Cápsula de cabeçalho', mainCapsule: 'Cápsula principal', verticalCapsule: 'Cápsula vertical', communityIcon: 'Ícone da comunidade', ready: 'Pronto', downloadError: 'Não foi possível criar o arquivo. Tente os botões PNG.', },
+  title: 'Gerador e Visualizador de Cápsulas Steam',
+  description: 'Corte, visualize e formate cápsulas oficiais da loja e biblioteca Steam com verificação de zonas de segurança.',
+  ui: {
+    uploadTitle: 'Enviar Arte do Jogo',
+    uploadHint: 'Envie uma imagem de alta resolução (recomendado 3840x1240 px ou superior).',
+    chooseFile: 'Selecionar Arquivo',
+    minimumSize: 'Tamanho mínimo recomendado: 1920x1080 px',
+    horizontalFocus: 'Foco Horizontal (X)',
+    verticalFocus: 'Foco Vertical (Y)',
+    zoomLevel: 'Nível de Zoom',
+    resetFocus: 'Centralizar Foco',
+    safeZone: 'Zona de Segurança',
+    downloadZip: 'Baixar Todos os Arquivos (ZIP)',
+    headerCapsule: 'Cápsula de Cabeçalho (460x215 / HD 920x430)',
+    smallCapsule: 'Cápsula Pequena (231x87 / HD 462x174)',
+    mainCapsule: 'Cápsula Principal (616x353 / HD 1232x706)',
+    verticalCapsule: 'Cápsula Vertical da Biblioteca (300x450 / HD 600x900)',
+    libraryHero: 'Banner da Biblioteca (1920x620 / HD 3840x1240)',
+    communityIcon: 'Ícone de Aplicativo (32x32 / HD 184x184)',
+    storePreviewTab: 'Loja Steam',
+    libraryPreviewTab: 'Biblioteca Steam',
+    allAssetsTab: 'Todos os Tamanhos',
+    toggleSafeZones: 'Guias de Segurança',
+    toggleSteamOverlay: 'Interface Steam'
+  },
   seo: [
-    { type: 'title', text: 'Crie um conjunto coerente de cápsulas Steam', level: 2 },
-    { type: 'paragraph', html: 'Uma ilustração pode funcionar no formato largo e cortar o personagem no formato vertical. Esta ferramenta mostra quatro recortes da mesma imagem mestre: cabeçalho 460 por 215, principal 616 por 353, vertical 374 por 448 e ícone quadrado 184 por 184 pixels. O ponto focal define qual parte da composição continua visível.' },
-    { type: 'paragraph', html: 'O arquivo é processado localmente com canvas. Ele não é enviado e não há conta. Ao mover o marcador, as quatro prévias mudam juntas para que você confira logo, rosto, personagem e contraste antes de exportar.' },
-    { type: 'title', text: 'Fluxo prático para arte de jogos', level: 2 },
-    { type: 'list', items: ['Comece com uma imagem mestre de pelo menos 1920 por 1080 pixels.', 'Coloque o marcador no assunto visual, não sempre no centro geométrico.', 'Confira primeiro as versões vertical e quadrada.', 'Use as zonas seguras como margem e compare os modelos atuais do Steamworks.'] },
-    { type: 'paragraph', html: 'As zonas seguras são guias de composição, não uma garantia para todas as telas do Steam. Mantenha logos e títulos longe das bordas carregadas e confira as regras da Valve para texto nas cápsulas.' },
-    { type: 'tip', html: 'Guarde uma master com espaço ao redor do assunto. Se um recorte precisar de outra posição para o logo, altere a fonte e gere o conjunto novamente.' },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Especificações das Cápsulas Gráficas da Steam'
+    },
+    {
+      type: 'paragraph',
+      html: 'As páginas da loja Steam e a biblioteca utilizam cápsulas padronizadas para exibir seu jogo.'
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { label: 'Resolução HD do Cabeçalho', value: '920 x 430 px' },
+        { label: 'Proporção Cápsula Vertical', value: '2:3 Vertical' },
+        { label: 'Resolução Máxima do Banner', value: '3840 x 1240 px' },
+        { label: 'Tamanho Ícone da Comunidade', value: '184 x 184 px' }
+      ]
+    },
+    {
+      type: 'table',
+      headers: ['Tipo de Recurso', 'Tamanho Padrão (px)', 'Tamanho HD Alvo (px)', 'Proporção', 'Formato'],
+      rows: [
+        ['Cápsula de Cabeçalho', '460 x 215', '920 x 430', '2.14:1', 'JPG / PNG'],
+        ['Cápsula Pequena', '231 x 87', '462 x 174', '2.65:1', 'JPG / PNG'],
+        ['Cápsula Principal', '616 x 353', '1232 x 706', '1.74:1', 'JPG / PNG'],
+        ['Cápsula Vertical', '300 x 450', '600 x 900', '2:3', 'JPG / PNG'],
+        ['Banner da Biblioteca', '1920 x 620', '3840 x 1240', '3.1:1', 'JPG / PNG'],
+        ['Logo da Biblioteca', '1280 x 720', '1280 x 720', '16:9', 'PNG Transparente'],
+        ['Ícone da Comunidade', '32 x 32', '184 x 184', '1:1', 'PNG']
+      ]
+    },
+    {
+      type: 'tip',
+      title: 'Otimização de Zonas de Segurança',
+      html: 'Mantenha os logotipos principais no terço superior esquerdo da imagem.'
+    },
+    {
+      type: 'proscons',
+      title: 'Avaliação do Fluxo de Trabalho',
+      items: [
+        {
+          pro: 'Geração instantânea de todos os tamanhos da Steamworks',
+          con: 'Imagens complexas podem requerer camadas separadas'
+        }
+      ]
+    },
+    {
+      type: 'glossary',
+      items: [
+        {
+          term: 'Cápsula',
+          definition: 'Termo padrão da Valve para contêineres de imagens promocionais.'
+        }
+      ]
+    }
   ],
+  faqTitle: 'Perguntas Frequentes sobre Recursos da Steam',
   faq: [
-    { question: 'A imagem sai do meu dispositivo?', answer: 'Não. Ela é lida e desenhada no navegador. Não existe upload nem conta.' },
-    { question: 'Que imagem mestre devo usar?', answer: 'PNG, JPEG ou WebP com pelo menos 1920 por 1080 pixels oferece mais espaço.' },
-    { question: 'O que muda com o ponto focal?', answer: 'Ele desloca o recorte da fonte para todas as saídas e protege o assunto principal.' },
-    { question: 'As zonas seguras são oficiais?', answer: 'São guias práticas. Compare os arquivos com os modelos atuais do Steamworks antes de publicar.' },
+    {
+      question: 'Qual formato de arquivo devo usar?',
+      answer: 'A Steam aceita arquivos JPG ou PNG para as cápsulas principais.'
+    }
   ],
   howTo: [
-    { name: 'Escolha uma master', text: 'Solte um PNG, JPEG ou WebP com pelo menos 1920 por 1080 pixels.' },
-    { name: 'Ajuste o foco', text: 'Clique na prévia ou mova os controles horizontal e vertical.' },
-    { name: 'Revise os quatro recortes', text: 'Confira cabeçalho, principal, vertical e ícone quadrado.' },
-    { name: 'Baixe o conjunto', text: 'Baixe PNGs individuais ou crie um ZIP local.' },
+    {
+      name: 'Enviar a Arte',
+      text: 'Selecione uma imagem em alta resolução.'
+    }
   ],
-});
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Gerador e Visualizador de Cápsulas Steam',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'BRL'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Qual formato de arquivo devo usar?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'A Steam aceita arquivos JPG ou PNG.'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Como gerar cápsulas Steam',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Enviar a Arte',
+          text: 'Selecione uma imagem em alta resolução.'
+        }
+      ]
+    }
+  ],
+  bibliography: bibliographyEntries
+};

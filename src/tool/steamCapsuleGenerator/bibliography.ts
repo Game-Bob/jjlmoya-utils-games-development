@@ -1,18 +1,6 @@
-import type { BibliographyEntry } from '../../types';
-
-export const bibliographyEntries: BibliographyEntry[] = [
+export const bibliographyEntries: { name: string; url: string }[] = [
   {
-    name: 'Steamworks Graphical Assets Overview',
-    url: 'https://partner.steamgames.com/doc/store/assets',
-  },
-  {
-    name: 'Steamworks Store Graphical Assets',
-    url: 'https://partner.steamgames.com/doc/store/assets/standard',
-  },
-  {
-    name: 'Steamworks Graphical Asset Rules',
-    url: 'https://partner.steamgames.com/doc/store/assets/rules',
-  },
+    name: 'Steamworks Store Graphical Assets Guidelines',
+    url: 'https://partner.steamgames.com/doc/store/assets'
+  }
 ];
-
-export const bibliography = bibliographyEntries;

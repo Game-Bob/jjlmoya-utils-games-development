@@ -1,94 +1,243 @@
-import type { SteamCapsuleGeneratorLocaleContent } from '../entry';
+import type { ToolLocaleContent } from '../../../types';
+import type { SteamCapsuleGeneratorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
 
-const title = 'Steam Capsule Generator';
-const description = 'Create four Steam capsule previews from one master image, adjust the focal point, inspect safe zones and download a local PNG set or ZIP archive.';
-const faq = [
-  { question: 'Does the image leave my device?', answer: 'No. The image is decoded and rendered in your browser with canvas. The tool does not upload the master file or require an account.' },
-  { question: 'What master image should I use?', answer: 'Use a PNG, JPEG or WebP image at least 1920 by 1080 pixels. A larger, clean master gives the crop more room around the focal subject.' },
-  { question: 'What does the focal point control change?', answer: 'It changes the position of the source crop for every output. Place the marker over the character, product or logo that must remain visible.' },
-  { question: 'Are the safe zones Steam guarantees?', answer: 'They are practical visual guides for leaving breathing room around platform overlays. Always compare the final files with the current Steamworks templates before publishing.' },
-];
-const howTo = [
-  { name: 'Choose a master image', text: 'Drop a PNG, JPEG or WebP file of at least 1920 by 1080 pixels into the upload panel.' },
-  { name: 'Set the focal point', text: 'Click the source preview or move the horizontal and vertical sliders until the important artwork sits in the marker.' },
-  { name: 'Review the four crops', text: 'Inspect the Header Capsule, Main Capsule, Vertical Capsule and Community Icon previews with their safe zone guides.' },
-  { name: 'Download the set', text: 'Download individual PNG files or create one ZIP archive. All processing happens locally in the browser.' },
-];
-
-const faqSchema = {
-  '@context': 'https://schema.org' as const,
-  '@type': 'FAQPage' as const,
-  mainEntity: faq.map((item) => ({ '@type': 'Question' as const, name: item.question, acceptedAnswer: { '@type': 'Answer' as const, text: item.answer } })),
-};
-
-const howToSchema = {
-  '@context': 'https://schema.org' as const,
-  '@type': 'HowTo' as const,
-  name: title,
-  description,
-  step: howTo.map((item) => ({ '@type': 'HowToStep' as const, name: item.name, text: item.text })),
-};
-
-const appSchema = {
-  '@context': 'https://schema.org' as const,
-  '@type': 'SoftwareApplication' as const,
-  name: title,
-  description,
-  applicationCategory: 'MultimediaApplication' as const,
-  operatingSystem: 'Web' as const,
-  offers: { '@type': 'Offer' as const, price: '0', priceCurrency: 'EUR' },
-};
-
-export const content: SteamCapsuleGeneratorLocaleContent = {
+export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
   slug: 'steam-capsule-generator',
-  title,
-  description,
+  title: 'Steam Capsule & Art Preview Generator',
+  description: 'Crop, preview, and format official Steam store capsules and library assets with live mockup inspection and safe zone verification.',
   ui: {
-    uploadTitle: 'Drop your master artwork',
-    uploadHint: 'One high resolution image becomes a complete Steam preview set in your browser.',
-    chooseFile: 'Choose artwork',
-    minimumSize: 'Minimum master size',
-    supportedFormats: 'PNG, JPEG or WebP',
-    invalidImage: 'Choose an image of at least 1920 by 1080 pixels.',
-    sourcePreview: 'Master artwork',
-    focalPoint: 'Focal point',
-    focalHint: 'Click the artwork or use the sliders to keep the important subject inside every crop.',
-    horizontalFocus: 'Horizontal',
-    verticalFocus: 'Vertical',
-    resetFocus: 'Center focal point',
-    outputPreview: 'Steam output set',
-    safeZone: 'Safe zone',
-    dimensions: 'pixels',
-    downloadPng: 'PNG',
-    downloadZip: 'Download ZIP',
-    buildingZip: 'Building your local ZIP archive...',
-    zipReady: 'Steam capsule set ready',
-    localOnly: 'Private by design. Your artwork stays in this browser.',
-    headerCapsule: 'Header Capsule',
-    mainCapsule: 'Main Capsule',
-    verticalCapsule: 'Vertical Capsule',
-    communityIcon: 'Community Icon',
-    ready: 'Ready',
-    downloadError: 'The archive could not be created. Try the PNG buttons instead.',
+    uploadTitle: 'Upload Game Artwork',
+    uploadHint: 'Upload high-resolution source banner or key visual (recommended 3840x1240 or larger).',
+    chooseFile: 'Select File',
+    minimumSize: 'Recommended minimum size: 1920x1080 px',
+    horizontalFocus: 'Horizontal Focus (X)',
+    verticalFocus: 'Vertical Focus (Y)',
+    zoomLevel: 'Zoom Magnification',
+    resetFocus: 'Center Focal Point',
+    safeZone: 'Safe Zone Overlay',
+    downloadZip: 'Download All Steam Assets (ZIP)',
+    headerCapsule: 'Header Capsule (460x215 / HD 920x430)',
+    smallCapsule: 'Small Capsule (231x87 / HD 462x174)',
+    mainCapsule: 'Main Capsule (616x353 / HD 1232x706)',
+    verticalCapsule: 'Vertical Library Capsule (300x450 / HD 600x900)',
+    libraryHero: 'Library Hero Banner (1920x620 / HD 3840x1240)',
+    communityIcon: 'Community App Icon (32x32 / HD 184x184)',
+    storePreviewTab: 'Steam Store Mockup',
+    libraryPreviewTab: 'Steam Library Mockup',
+    allAssetsTab: 'All Asset Sizes',
+    toggleSafeZones: 'Safe Zone Guides',
+    toggleSteamOverlay: 'Steam Interface Overlay'
   },
   seo: [
-    { type: 'title', text: 'Build a coherent Steam capsule set from one artwork', level: 2 },
-    { type: 'paragraph', html: 'A store page often fails visually when the same key art is exported several times without a consistent crop. This generator gives an indie developer one deliberate focal point and four immediate previews: a wide header at 460 by 215 pixels, a main capsule at 616 by 353 pixels, a vertical capsule at 374 by 448 pixels, and a square community icon at 184 by 184 pixels. The result is not a design replacement. It is a fast composition check that shows where the image loses the face, character, product silhouette or title mark as the aspect ratio changes.' },
-    { type: 'paragraph', html: 'The browser loads the master file locally, calculates a proportional crop for each target ratio and paints the result into a canvas. Moving the focal point changes every preview at once. That makes the decision visible before export: a centered scene may work for the main capsule but cut away the subject in the vertical version, while a slightly off center position can preserve the story in all four formats.' },
-    { type: 'title', text: 'A practical focal point workflow for game art', level: 2 },
-    { type: 'list', items: ['Start with a clean master at least 1920 by 1080 pixels so each crop has room to move.', 'Place the marker on the visual subject, not necessarily on the geometric center of the canvas.', 'Check the vertical and square previews first because they remove the most surrounding context.', 'Use the safe zone guides as breathing room for platform overlays and verify the final files against Steamworks templates.'] },
-    { type: 'paragraph', html: 'The focal point is a composition aid, not a promise that Steam will position every interface element identically in every surface. Keep essential logos, faces and short titles away from crowded edges. Steam also publishes rules about what text belongs on capsule artwork, so a beautiful crop can still need editorial changes before submission.' },
-    { type: 'title', text: 'Why local generation helps an indie workflow', level: 2 },
-    { type: 'paragraph', html: 'Large artwork should not need a round trip to a server for a simple resize and crop. This tool uses the browser canvas with high quality image smoothing, so the master remains on the creator\'s device while the four PNGs are prepared. The ZIP step is also local: each canvas is added to a small archive in memory and offered as a download. There is no account, queue or upload form hidden behind the preview.' },
-    { type: 'paragraph', html: 'Treat the previews as a final preflight pass. Confirm that the logo remains legible at the smallest view, that the strongest contrast survives the crop and that temporary sale messaging is not baked into a permanent base asset. When the composition is approved, the separate PNGs and ZIP give you a tidy handoff for a store page, a team review or an art folder.' },
-    { type: 'tip', html: 'Keep one master file with generous edge detail and a second version with the logo already positioned. If a crop needs a different logo treatment, adjust the artwork in a design tool and run the set again rather than stretching a finished capsule.' },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Steam Graphical Asset Specifications and Presentation Rules'
+    },
+    {
+      type: 'paragraph',
+      html: 'Steam store pages and player library views rely on standardized graphical capsule images to display your title across various device displays and storefront widgets. Key visuals must maintain visual clarity, readability, and brand coherence across vastly different aspect ratios ranging from wide horizontal store banners to tall vertical library grid tiles. When preparing assets for submission to Steamworks, developers must adhere to strict pixel dimensions, file format guidelines, and UI overlay safe zones to avoid text obstruction from system elements like price tags, wishlist buttons, and status labels.'
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { label: 'Store Header HD Resolution', value: '920 x 430 px' },
+        { label: 'Library Capsule Aspect Ratio', value: '2:3 Vertical' },
+        { label: 'Library Hero Maximum Res', value: '3840 x 1240 px' },
+        { label: 'Community Icon Size', value: '184 x 184 px' }
+      ]
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Comparing Steam Capsule Formats Across Storefront Placement'
+    },
+    {
+      type: 'paragraph',
+      html: 'Different sections of the Steam client highlight distinct asset dimensions. The Main Capsule serves as the primary visual anchor in featured recommendation carousels, whereas Small Capsules appear in fast-scrolling search result listings and promotional category feeds. Understanding how each asset functions ensures optimal conversion rates and player engagement.'
+    },
+    {
+      type: 'comparative',
+      columns: 2,
+      items: [
+        {
+          title: 'Store Capsules (Header & Main)',
+          description: 'Landscape aspect ratio focused on game title and main key visual.',
+          points: [
+            'Landscape aspect ratio focused on game title and main key visual',
+            'Bottom-right area reserved for discount badge overlays and price tags',
+            'High horizontal span suited for widescreen store carousel displays',
+            'Requires immediate logo legibility at scaled desktop resolutions'
+          ]
+        },
+        {
+          title: 'Library Assets (Hero & Vertical Capsule)',
+          description: 'Vertical capsule acts as game box art on player desktop grid.',
+          points: [
+            'Vertical capsule acts as game box art on player desktop grid',
+            'Library Hero features wide panoramic background visual without embedded text',
+            'Library Logo overlay floats independently with transparent PNG background',
+            'Top and bottom margins host achievement progress and play buttons'
+          ]
+        }
+      ]
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Steam Asset Dimensional Matrix Reference'
+    },
+    {
+      type: 'paragraph',
+      html: 'Below is the full technical matrix outlining standard and high-density resolution parameters required for a complete Steamworks storefront and library publication.'
+    },
+    {
+      type: 'table',
+      headers: ['Asset Type', 'Standard Size (px)', 'HD Target Size (px)', 'Aspect Ratio', 'Format'],
+      rows: [
+        ['Header Capsule', '460 x 215', '920 x 430', '2.14:1', 'JPG / PNG'],
+        ['Small Capsule', '231 x 87', '462 x 174', '2.65:1', 'JPG / PNG'],
+        ['Main Capsule', '616 x 353', '1232 x 706', '1.74:1', 'JPG / PNG'],
+        ['Vertical Library Capsule', '300 x 450', '600 x 900', '2:3', 'JPG / PNG'],
+        ['Library Hero', '1920 x 620', '3840 x 1240', '3.1:1', 'JPG / PNG'],
+        ['Library Logo', '1280 x 720', '1280 x 720', '16:9', 'Transparent PNG'],
+        ['Community Icon', '32 x 32', '184 x 184', '1:1', 'PNG']
+      ]
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Best Practices for Safe Area Management and Visual Formatting'
+    },
+    {
+      type: 'tip',
+      title: 'Safe Zone Optimization Strategy',
+      html: 'Keep all critical logotypes and character eyes within the upper-left two-thirds of the image canvas. Avoid placing fine print or secondary title text near the bottom right edge where discount badges display.'
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Pros and Cons of Automated Smart Focal Cropping'
+    },
+    {
+      type: 'proscons',
+      title: 'Workflow Evaluation',
+      items: [
+        {
+          pro: 'Instant generation of all seven required Steam asset dimensions',
+          con: 'Complex key visual compositions may require separate dedicated background layers'
+        },
+        {
+          pro: 'Live interactive preview of Steam store and library user interfaces',
+          con: 'Ultra-wide Library Hero banners may benefit from custom horizontal extension artwork'
+        },
+        {
+          pro: 'Eliminates scale distortion by maintaining exact aspect ratios',
+          con: 'Manual review recommended before official Steamworks upload'
+        }
+      ]
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Steam Graphics Glossary and Terminologies'
+    },
+    {
+      type: 'glossary',
+      items: [
+        {
+          term: 'Capsule',
+          definition: 'Standard term used by Valve to describe promotional box art graphic containers across the Steam storefront and client library.'
+        },
+        {
+          term: 'Library Hero',
+          definition: 'The expansive header banner image displayed at the top of a game detail page inside the player library view.'
+        },
+        {
+          term: 'Safe Zone',
+          definition: 'Designated bounds within a capsule layout that remain free from native Steam client UI overlays such as price tags, play buttons, and wishlist flags.'
+        },
+        {
+          term: 'High-Density (HD) Spec',
+          definition: 'Double-resolution asset target required by Steamworks to ensure crisp display on Retina and 4K displays.'
+        }
+      ]
+    }
   ],
-  faq,
-  bibliography: [
-    { name: 'Steamworks Graphical Assets Overview', url: 'https://partner.steamgames.com/doc/store/assets' },
-    { name: 'Steamworks Store Graphical Assets', url: 'https://partner.steamgames.com/doc/store/assets/standard' },
-    { name: 'Steamworks Graphical Asset Rules', url: 'https://partner.steamgames.com/doc/store/assets/rules' },
+  faqTitle: 'Frequently Asked Questions About Steam Assets',
+  faq: [
+    {
+      question: 'What file format should I use for Steam capsules?',
+      answer: 'Steam accepts JPG or PNG files for main capsules. High-quality JPG is recommended for complex artwork.'
+    },
+    {
+      question: 'Why are HD target sizes larger than display dimensions?',
+      answer: 'Steam automatically downscales high-density images (such as 920x430 for Header Capsule) to match modern high-DPI and 4K desktop screens without losing sharpness.'
+    },
+    {
+      question: 'Where is the price tag located on Steam store capsules?',
+      answer: 'Price tags and discount badges are positioned in the bottom-right corner of store capsules. Keep title text and important logos away from this region.'
+    }
   ],
-  howTo,
-  schemas: [faqSchema, howToSchema, appSchema],
+  howTo: [
+    {
+      name: 'Upload High-Resolution Artwork',
+      text: 'Select a high-density promotional visual using the uploader.'
+    },
+    {
+      name: 'Adjust Focal Point and Zoom',
+      text: 'Use the horizontal and vertical focal point sliders to align character faces or logo focal points inside the composition box.'
+    },
+    {
+      name: 'Verify Safe Zone Overlays',
+      text: 'Toggle Safe Zone Guides to verify that no title text or focal elements are covered by Steam price badges or UI buttons.'
+    },
+    {
+      name: 'Export Complete Steam Asset Package',
+      text: 'Click Download All Steam Assets to download a ZIP archive containing all formatted capsule images ready for Steamworks.'
+    }
+  ],
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Steam Capsule & Art Preview Generator',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD'
+      }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What file format should I use for Steam capsules?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Steam accepts JPG or PNG files for main capsules. High-quality JPG is recommended for complex artwork.'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'How to generate Steam Capsules and Artwork',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Upload High-Resolution Artwork',
+          text: 'Select a high-density promotional visual using the uploader.'
+        }
+      ]
+    }
+  ],
+  bibliography: bibliographyEntries
 };
