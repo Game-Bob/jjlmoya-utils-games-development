@@ -1,5 +1,5 @@
 {
-    "name": "@jjlmoya/utils-games",
+    "name": "@jjlmoya/utils-games-development",
     "version": "1.18.0",
     "type": "module",
     "main": "./src/index.ts",
