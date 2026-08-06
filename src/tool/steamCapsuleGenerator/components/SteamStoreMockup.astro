@@ -9,49 +9,48 @@ const { ui: t } = Astro.props;
 ---
 
 <div class="steam-store-mockup-frame">
-  <div class="steam-breadcrumbs">
-    All Games &gt; Indie Games &gt; GameBob Studios &gt; <span id="editable-breadcrumb-title" contenteditable="true">Super Crunch Bros: GameBob Edition</span>
+  <div class="steam-store-header-nav">
+    <div class="steam-logo-text">
+      <span class="steam-logo-icon">STEAM</span>
+      <span>STORE</span>
+    </div>
+    <div class="steam-nav-links">
+      <span class="active">Your Store</span>
+      <span>New & Noteworthy</span>
+      <span>Categories</span>
+      <span>Points Shop</span>
+      <span>News</span>
+      <span>Labs</span>
+    </div>
   </div>
 
-  <div class="steam-game-title-row">
-    <h2 class="steam-game-title-heading" id="editable-game-title" contenteditable="true" aria-label="Game Title">Super Crunch Bros: GameBob Edition</h2>
-    <button type="button" class="steam-community-hub-btn">Community Hub</button>
-  </div>
-
-  <div class="steam-store-main-layout">
-    <div class="steam-store-left-column">
-      <div class="steam-main-showcase-box diegetic-upload-trigger" id="main-showcase-trigger" tabindex="0" role="button" aria-label="Click to upload key artwork">
+  <div class="steam-store-hero-row">
+    <div class="steam-main-capsule-container diegetic-upload-trigger" id="main-capsule-trigger" tabindex="0" role="button" aria-label="Click to upload main capsule art">
+      <div class="steam-main-capsule-canvas-box">
         <canvas id="canvas-main-capsule" width="1232" height="706" aria-label={t.mainCapsule}></canvas>
-        <div class="diegetic-overlay-hint">Click or Drop Image Here</div>
-        <div class="steam-safe-overlay" id="safe-main-capsule" style="right: 0; bottom: 0; width: 40%; height: 25%;">
-          {t.safeZone}
+        <div class="diegetic-overlay-hint">Click to Upload Main Artwork</div>
+      </div>
+
+      <div class="steam-store-price-badge">
+        <div class="discount-tag">-50%</div>
+        <div class="price-box">
+          <span class="original-price">$29.99</span>
+          <span class="final-price">$14.99</span>
         </div>
       </div>
 
-      <div class="steam-thumbnails-scroll-row">
-        <button type="button" class="thumb-nav-arrow">&lt;</button>
-        <div class="thumb-box active"></div>
-        <div class="thumb-box"></div>
-        <div class="thumb-box"></div>
-        <div class="thumb-box"></div>
-        <div class="thumb-box"></div>
-        <div class="thumb-box"></div>
-        <button type="button" class="thumb-nav-arrow">&gt;</button>
-      </div>
-
-      <div class="steam-action-buttons-row">
-        <button type="button" class="steam-action-btn">Add to your wishlist</button>
-        <button type="button" class="steam-action-btn">Follow</button>
-        <button type="button" class="steam-action-btn">Ignore ▾</button>
-        <button type="button" class="steam-action-btn icon-only">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
-        </button>
-        <button type="button" class="steam-queue-btn">View Your Queue ⇒</button>
+      <div class="steam-safe-overlay" id="safe-main-capsule" style="right: 0; bottom: 0; width: 40%; height: 25%;">
+        {t.safeZone}
       </div>
     </div>
 
-    <div class="steam-store-right-column">
-      <div class="steam-header-capsule-box diegetic-upload-trigger" id="header-capsule-trigger" tabindex="0" role="button" aria-label="Click to upload header capsule image">
+    <div class="steam-store-sidebar-panel">
+      <div class="steam-game-title-input" id="editable-game-title" contenteditable="true" aria-label="Game Title">Super Crunch Bros: GameBob Edition</div>
+      <div class="steam-game-desc-input" id="editable-game-desc" contenteditable="true" aria-label="Game Description">
+        An epic high-octane indie platformer action adventure. Battle through procedural retro worlds and customize your capsules live for Steamworks publication.
+      </div>
+
+      <div class="steam-header-capsule-box diegetic-upload-trigger" id="header-capsule-trigger" tabindex="0" role="button" aria-label="Click to upload header capsule art">
         <canvas id="canvas-header-capsule" width="920" height="430" aria-label={t.headerCapsule}></canvas>
         <div class="diegetic-overlay-hint">Click to Upload Header Capsule</div>
 
@@ -59,7 +58,7 @@ const { ui: t } = Astro.props;
           <div class="steam-discount-pct" id="editable-discount-pct" contenteditable="true">-50%</div>
           <div class="steam-discount-prices">
             <span style="text-decoration: line-through; opacity: 0.6;" id="editable-orig-price" contenteditable="true">$29.99</span>
-            <span style="color: #beee11;" id="editable-final-price" contenteditable="true">$14.99</span>
+            <span class="final-price" id="editable-final-price" contenteditable="true">$14.99</span>
           </div>
         </div>
 
@@ -68,64 +67,24 @@ const { ui: t } = Astro.props;
         </div>
       </div>
 
-      <p class="steam-game-description-snippet" id="editable-description" contenteditable="true" aria-label="Game description">
-        Developed under extreme crunch with 99% espresso, 1% spaghetti code, and zero sleep. Features 40,000 wishlist promises, unpatched physics, and infinite passion.
-      </p>
-
-      <div class="steam-meta-info-table">
+      <div class="steam-store-meta-grid">
         <div class="meta-row">
-          <span class="meta-label">RECENT REVIEWS:</span>
-          <span class="meta-value highlight" id="editable-reviews-recent" contenteditable="true">Overwhelmingly Positive <span class="count">(9,999 Coffee Cups)</span></span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">ALL REVIEWS:</span>
-          <span class="meta-value highlight" id="editable-reviews-all" contenteditable="true">Very Positive <span class="count">(42,000 Wishlists)</span></span>
+          <span class="meta-label">REVIEWS:</span>
+          <span class="meta-value">Very Positive (1,337)</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">RELEASE DATE:</span>
-          <span class="meta-value" id="editable-release-date" contenteditable="true">When It Is Done (2027)</span>
+          <span class="meta-value">Available Now</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">DEVELOPER:</span>
-          <span class="meta-value highlight" id="editable-developer" contenteditable="true">GameBob Studios</span>
+          <span class="meta-value" id="editable-developer" contenteditable="true">GameBob Studios</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">PUBLISHER:</span>
-          <span class="meta-value highlight" id="editable-publisher" contenteditable="true">GameBob & Bank Loans Inc.</span>
+          <span class="meta-value" id="editable-publisher" contenteditable="true">GameBob Publishing</span>
         </div>
       </div>
-
-      <div class="steam-popular-tags-section">
-        <div class="tags-title">Popular user-defined tags for this product:</div>
-        <div class="tags-list" id="editable-tags-list">
-          <span class="tag-pill" contenteditable="true">Indie</span>
-          <span class="tag-pill" contenteditable="true">GameBob</span>
-          <span class="tag-pill" contenteditable="true">Crunch</span>
-          <span class="tag-pill" contenteditable="true">OverScoped</span>
-          <span class="tag-pill" contenteditable="true">Singleplayer</span>
-          <span class="tag-pill add-btn" id="add-tag-btn">+</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="steam-bottom-store-row">
-    <div class="steam-buy-box-container">
-      <div class="steam-buy-box-header" id="editable-buy-header" contenteditable="true">
-        Buy Super Crunch Bros: GameBob Edition
-      </div>
-      <div class="steam-buy-box-body">
-        <p id="editable-buy-subtext" contenteditable="true">SPECIAL PROMOTION! Offer ends when developer runs out of caffeine.</p>
-        <button type="button" class="steam-buy-green-btn">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="steam-relevance-box">
-      <div class="relevance-title">Is this game relevant to you?</div>
-      <p class="relevance-text" id="editable-relevance-text" contenteditable="true">
-        This game was crafted by GameBob Studios with pure passion. You will love the tight controls and hand-crafted level design.
-      </p>
-      <button type="button" class="relevance-btn">More Info</button>
     </div>
   </div>
 </div>
