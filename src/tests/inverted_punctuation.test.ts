@@ -60,7 +60,7 @@ describe('Inverted punctuation validation', () => {
 
           const rule = INVERTED_PUNCTUATION_LOCALES[typedLocale];
           const content = await loader();
-          const strings = translatableStrings(content as Record<string, unknown>);
+          const strings = translatableStrings(content as unknown as Record<string, unknown>);
           const missingQuestions = strings.flatMap((text) =>
             findMissingInvertedMarks(text, rule.questionStart, rule.questionEnd)
           );

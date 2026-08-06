@@ -1,0 +1,314 @@
+---
+import { CAPSULE_PRESETS, MASTER_MIN_HEIGHT, MASTER_MIN_WIDTH } from './logic';
+import type { SteamCapsuleGeneratorUI } from './entry';
+
+interface Props {
+  ui: SteamCapsuleGeneratorUI;
+}
+
+const { ui } = Astro.props;
+const presetLabels = {
+  'header-capsule': ui.headerCapsule,
+  'main-capsule': ui.mainCapsule,
+  'vertical-capsule': ui.verticalCapsule,
+  'community-icon': ui.communityIcon,
+};
+const presetData = CAPSULE_PRESETS.map((preset) => ({
+  ...preset,
+  label: presetLabels[preset.id as keyof typeof presetLabels],
+}));
+---
+
+<div class="capsule-tool" data-capsule-tool>
+  <section class="capsule-upload" id="uploadPanel">
+    <div class="capsule-upload-glow"></div>
+    <div class="capsule-upload-icon" aria-hidden="true">+</div>
+    <h2>{ui.uploadTitle}</h2>
+    <p>{ui.uploadHint}</p>
+    <label class="capsule-file-label" for="masterFile">{ui.chooseFile}</label>
+    <input class="capsule-file-input" id="masterFile" type="file" accept="image/png,image/jpeg,image/webp" />
+    <div class="capsule-upload-meta">
+      <span>{ui.minimumSize}: {MASTER_MIN_WIDTH} × {MASTER_MIN_HEIGHT}</span>
+      <span>{ui.supportedFormats}</span>
+    </div>
+  </section>
+
+  <div class="capsule-status" id="capsuleStatus" aria-live="polite">{ui.localOnly}</div>
+
+  <section class="capsule-workbench" id="workbench" hidden>
+    <div class="capsule-source-card">
+      <div class="capsule-section-heading">
+        <div>
+          <span class="capsule-kicker">01</span>
+          <h2>{ui.sourcePreview}</h2>
+        </div>
+        <span class="capsule-badge" id="sourceBadge">{ui.ready}</span>
+      </div>
+      <div class="capsule-source-stage" id="sourceStage">
+        <canvas id="masterPreviewCanvas" aria-label={ui.sourcePreview}></canvas>
+        <div class="capsule-focal-marker" id="focalMarker" aria-hidden="true"></div>
+        <div class="capsule-source-sheen" aria-hidden="true"></div>
+      </div>
+      <div class="capsule-focal-controls">
+        <div class="capsule-control-row">
+          <label for="focalX">{ui.horizontalFocus}</label>
+          <input id="focalX" type="range" min="0" max="1" step="0.01" value="0.5" />
+          <output id="focalXValue" for="focalX">50%</output>
+        </div>
+        <div class="capsule-control-row">
+          <label for="focalY">{ui.verticalFocus}</label>
+          <input id="focalY" type="range" min="0" max="1" step="0.01" value="0.5" />
+          <output id="focalYValue" for="focalY">50%</output>
+        </div>
+      </div>
+      <p class="capsule-focal-hint">{ui.focalHint}</p>
+      <button class="capsule-reset-button" id="resetFocus" type="button">{ui.resetFocus}</button>
+    </div>
+
+    <div class="capsule-output-card">
+      <div class="capsule-section-heading capsule-output-heading">
+        <div>
+          <span class="capsule-kicker">02</span>
+          <h2>{ui.outputPreview}</h2>
+        </div>
+        <button class="capsule-download-all" id="downloadZip" type="button">{ui.downloadZip}</button>
+      </div>
+      <div class="capsule-preview-grid">
+        {presetData.map((preset) => (
+          <article class="capsule-preview-card" data-preview-card={preset.id}>
+            <div class="capsule-preview-frame">
+              <canvas id={`preview-${preset.id}`} width={preset.width} height={preset.height} data-preset={preset.id} aria-label={`${preset.label} ${preset.width} × ${preset.height}`}></canvas>
+              <div
+                class="capsule-safe-zone"
+                style={`left:${preset.safeLeft * 100}%;top:${preset.safeTop * 100}%;right:${preset.safeRight * 100}%;bottom:${preset.safeBottom * 100}%`}
+              >
+                <span>{ui.safeZone}</span>
+              </div>
+            </div>
+            <div class="capsule-preview-info">
+              <div>
+                <strong>{preset.label}</strong>
+                <span>{ui.dimensions}</span>
+              </div>
+              <button class="capsule-download-single" data-download={preset.id} type="button" aria-label={`${ui.downloadPng} ${preset.label}`}>{ui.downloadPng}</button>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="capsule-success" id="capsuleSuccess" role="status" aria-live="polite" hidden>
+    <span class="capsule-success-mark" aria-hidden="true">OK</span>
+    <span id="capsuleSuccessText">{ui.zipReady}</span>
+  </div>
+</div>
+
+<script is:inline type="application/json" id="capsuleConfig" set:html={JSON.stringify({ ui, presetData })}></script>
+
+<script>
+  import JSZip from 'jszip';
+  import { calculateCrop } from './logic';
+  import type { CapsulePreset } from './logic';
+
+  const config = JSON.parse(document.getElementById('capsuleConfig')?.textContent ?? '{}');
+  const { ui } = config;
+  const presetData = config.presetData as CapsulePreset[];
+  const root = document.querySelector<HTMLElement>('[data-capsule-tool]');
+  if (root) {
+    const fileInput = root.querySelector<HTMLInputElement>('#masterFile')!;
+    const uploadPanel = root.querySelector<HTMLElement>('#uploadPanel')!;
+    const workbench = root.querySelector<HTMLElement>('#workbench')!;
+    const status = root.querySelector<HTMLElement>('#capsuleStatus')!;
+    const sourceStage = root.querySelector<HTMLElement>('#sourceStage')!;
+    const sourceCanvas = root.querySelector<HTMLCanvasElement>('#masterPreviewCanvas')!;
+    const focalMarker = root.querySelector<HTMLElement>('#focalMarker')!;
+    const focalX = root.querySelector<HTMLInputElement>('#focalX')!;
+    const focalY = root.querySelector<HTMLInputElement>('#focalY')!;
+    const focalXValue = root.querySelector<HTMLOutputElement>('#focalXValue')!;
+    const focalYValue = root.querySelector<HTMLOutputElement>('#focalYValue')!;
+    const resetFocus = root.querySelector<HTMLButtonElement>('#resetFocus')!;
+    const downloadZip = root.querySelector<HTMLButtonElement>('#downloadZip')!;
+    const success = root.querySelector<HTMLElement>('#capsuleSuccess')!;
+    const successText = root.querySelector<HTMLElement>('#capsuleSuccessText')!;
+    const sourceBadge = root.querySelector<HTMLElement>('#sourceBadge')!;
+    const image = new Image();
+    let sourceFileName = 'steam-capsule';
+    let hasImage = false;
+
+    const getFocus = () => ({ x: Number(focalX.value), y: Number(focalY.value) });
+
+    const saveFocus = () => {
+      try {
+        localStorage.setItem('steam-capsule-focus', JSON.stringify(getFocus()));
+      } catch {
+        return;
+      }
+    };
+
+    const restoreFocus = () => {
+      try {
+        const saved = JSON.parse(localStorage.getItem('steam-capsule-focus') || '{}');
+        if (Number.isFinite(saved.x)) focalX.value = String(Math.min(1, Math.max(0, saved.x)));
+        if (Number.isFinite(saved.y)) focalY.value = String(Math.min(1, Math.max(0, saved.y)));
+      } catch {
+        return;
+      }
+    };
+
+    const showFeedback = (message: string) => {
+      successText.textContent = message;
+      success.hidden = false;
+      success.classList.remove('capsule-success-visible');
+      requestAnimationFrame(() => success.classList.add('capsule-success-visible'));
+      window.setTimeout(() => {
+        success.classList.remove('capsule-success-visible');
+        window.setTimeout(() => { success.hidden = true; }, 220);
+      }, 2800);
+    };
+
+    const spawnParticle = (text: string) => {
+      const particle = document.createElement('span');
+      particle.className = 'capsule-particle';
+      particle.textContent = text;
+      particle['style'].left = `${35 + Math.random() * 30}%`;
+      particle['style'].top = `${40 + Math.random() * 20}%`;
+      root.appendChild(particle);
+      window.setTimeout(() => particle.remove(), 900);
+    };
+
+    const drawSource = () => {
+      const context = sourceCanvas.getContext('2d');
+      if (!context || !hasImage) return;
+      const displayWidth = 1200;
+      sourceCanvas.width = displayWidth;
+      sourceCanvas.height = Math.round(displayWidth * image.height / image.width);
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = 'high';
+      context.drawImage(image, 0, 0, sourceCanvas.width, sourceCanvas.height);
+      focalMarker['style'].left = `${Number(focalX.value) * 100}%`;
+      focalMarker['style'].top = `${Number(focalY.value) * 100}%`;
+      focalXValue.textContent = `${Math.round(Number(focalX.value) * 100)}%`;
+      focalYValue.textContent = `${Math.round(Number(focalY.value) * 100)}%`;
+    };
+
+    const drawPreview = (preset: CapsulePreset) => {
+      const canvas = root.querySelector<HTMLCanvasElement>(`#preview-${preset.id}`)!;
+      const context = canvas.getContext('2d');
+      if (!context || !hasImage) return;
+      const crop = calculateCrop({ width: image.width, height: image.height }, { width: preset.width, height: preset.height }, Number(focalX.value), Number(focalY.value));
+      context.clearRect(0, 0, preset.width, preset.height);
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = 'high';
+      context.drawImage(image, crop.x, crop.y, crop.width, crop.height, 0, 0, preset.width, preset.height);
+    };
+
+    const renderAll = () => {
+      drawSource();
+      presetData.forEach(drawPreview);
+      saveFocus();
+    };
+
+    const loadFile = (file: File | undefined) => {
+      if (!file || !file.type.startsWith('image/')) {
+        status.textContent = ui.invalidImage;
+        return;
+      }
+      const objectUrl = URL.createObjectURL(file);
+      image.onload = () => {
+        URL.revokeObjectURL(objectUrl);
+        if (image.width < 1920 || image.height < 1080) {
+          status.textContent = ui.invalidImage;
+          return;
+        }
+        sourceFileName = file.name.replace(/\.[^.]+$/, '') || 'steam-capsule';
+        hasImage = true;
+        workbench.hidden = false;
+        uploadPanel.classList.add('capsule-upload-complete');
+        sourceBadge.textContent = ui.ready;
+        status.textContent = `${ui.ready}: ${image.width} × ${image.height}`;
+        renderAll();
+        spawnParticle('READY');
+      };
+      image.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        status.textContent = ui.invalidImage;
+      };
+      image.src = objectUrl;
+    };
+
+    const downloadCanvas = async (preset: CapsulePreset) => {
+      if (!hasImage) return;
+      const canvas = root.querySelector<HTMLCanvasElement>(`#preview-${preset.id}`)!;
+      const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
+      if (!blob) return;
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `${sourceFileName}-${preset.id}.png`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+      showFeedback(ui.zipReady);
+    };
+
+    const downloadAll = async () => {
+      if (!hasImage) return;
+      downloadZip.disabled = true;
+      status.textContent = ui.buildingZip;
+      try {
+        const zip = new JSZip();
+        for (const preset of presetData) {
+          const canvas = root.querySelector<HTMLCanvasElement>(`#preview-${preset.id}`)!;
+          const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
+          if (blob) zip.file(`${sourceFileName}-${preset.id}.png`, blob);
+        }
+        const archive = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(archive);
+        link.download = `${sourceFileName}-steam-capsules.zip`;
+        link.click();
+        URL.revokeObjectURL(link.href);
+        status.textContent = ui.zipReady;
+        showFeedback(ui.zipReady);
+        spawnParticle('ZIP READY');
+      } catch {
+        status.textContent = ui.downloadError;
+      } finally {
+        downloadZip.disabled = false;
+      }
+    };
+
+    fileInput.addEventListener('change', () => loadFile(fileInput.files?.[0]));
+    focalX.addEventListener('input', renderAll);
+    focalY.addEventListener('input', renderAll);
+    resetFocus.addEventListener('click', () => {
+      focalX.value = '0.5';
+      focalY.value = '0.5';
+      renderAll();
+      spawnParticle('FOCUS RESET');
+    });
+    downloadZip.addEventListener('click', downloadAll);
+    root.querySelectorAll<HTMLButtonElement>('[data-download]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const preset = presetData.find((item) => item.id === button.dataset.download);
+        if (preset) downloadCanvas(preset);
+      });
+    });
+    sourceStage.addEventListener('click', (event) => {
+      focalX.value = String(Math.min(1, Math.max(0, event.offsetX / sourceCanvas.width)));
+      focalY.value = String(Math.min(1, Math.max(0, event.offsetY / sourceCanvas.height)));
+      renderAll();
+      spawnParticle('FOCUS SET');
+    });
+    ['dragenter', 'dragover'].forEach((eventName) => uploadPanel.addEventListener(eventName, (event) => {
+      event.preventDefault();
+      uploadPanel.classList.add('capsule-upload-dragging');
+    }));
+    ['dragleave', 'drop'].forEach((eventName) => uploadPanel.addEventListener(eventName, (event) => {
+      event.preventDefault();
+      uploadPanel.classList.remove('capsule-upload-dragging');
+    }));
+    uploadPanel.addEventListener('drop', (event) => loadFile((event as DragEvent).dataTransfer?.files?.[0]));
+    restoreFocus();
+    renderAll();
+  }
+</script>

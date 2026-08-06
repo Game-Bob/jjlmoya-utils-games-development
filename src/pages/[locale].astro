@@ -6,7 +6,7 @@ import { Icon } from 'astro-icon/components';
 import type { KnownLocale, ToolLocaleContent } from '../types';
 
 export async function getStaticPaths() {
-  const locales = ['en', 'es', 'fr'] as KnownLocale[];
+  const locales = ['de', 'en', 'es', 'fr', 'id', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'ru', 'sv', 'tr', 'zh'] as KnownLocale[];
   return locales.map(locale => ({ params: { locale } }));
 }
 
@@ -64,7 +64,7 @@ const toolsWithContent = tools.length > 0
   />
   <div class="dashboard">
     <header class="preview-header">
-      <span class="badge">preview · @jjlmoya/utils-template</span>
+      <span class="badge">preview · @jjlmoya/utils-games</span>
       <h1>{categoryContent.title}</h1>
       <p>{categoryContent.description}</p>
     </header>

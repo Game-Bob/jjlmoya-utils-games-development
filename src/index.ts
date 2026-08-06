@@ -16,7 +16,6 @@ export type {
 } from './types';
 
 export { ALL_ENTRIES, ALL_TOOLS } from './tools';
-export { TYPING_TEST_TOOL, typingTest } from './tool/typing-test';
+export { STEAM_CAPSULE_GENERATOR_TOOL, steamCapsuleGenerator } from './tool/steamCapsuleGenerator';
 
 export type { ToolLocaleContent as GamesToolLocaleContent } from './types';
-

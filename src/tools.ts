@@ -1,9 +1,8 @@
 export { ALL_ENTRIES } from './entries';
 import type { ToolDefinition } from './types';
-import { TYPING_TEST_TOOL } from './tool/typing-test';
+import { STEAM_CAPSULE_GENERATOR_TOOL } from './tool/steamCapsuleGenerator';
 
 export const ALL_TOOLS: ToolDefinition[] = [
-  TYPING_TEST_TOOL,
+  STEAM_CAPSULE_GENERATOR_TOOL,
 ];
-
 

@@ -1,22 +1,15 @@
 import type { CategoryLocaleContent } from '../../types';
 
-const slug = 'jeux';
-const title = 'Défis Viraux et Jeux: Test de Dactylographie et Défis de Vitesse';
-const description = 'Défis gamifiés et jeux viraux pour tester vos compétences. Tests de dactylographie, défis de vitesse et jeux addictifs 100% hors ligne.';
-
 export const content: CategoryLocaleContent = {
-  slug,
-  title,
-  description,
+  slug: 'developpement-de-jeux-video',
+  title: 'Outils pour le développement de jeux vidéo',
+  description: 'Des outils pratiques dans le navigateur pour les créateurs indépendants, de l\'image de boutique aux livrables de production.',
   seo: [
-    { type: 'title', text: 'Pourquoi les Défis Gamifiés Fonctionnent', level: 2 },
-    { type: 'paragraph', html: 'Les défis gamifiés améliorent les compétences cognitives par la compétition saine. Le cerveau libère de la dopamine, créant des expériences satisfaisantes.' },
-    { type: 'title', text: 'Dactylographie à l\'Ère Numérique', level: 2 },
-    { type: 'paragraph', html: 'La vitesse de dactylographie est fondamentale. Une amélioration de 10 PPM économise des heures. Les tests bien conçus mesurent vitesse et précision.' },
-    { type: 'title', text: 'Comment Fonctionnent les Défis', level: 2 },
-    { type: 'list', items: ['Retour immédiat sur les progrès', 'Règles claires et mesurables', 'Niveaux de difficulté évolutifs', 'Compétition avec vos propres records'] },
-    { type: 'title', text: 'Bénéfices Prouvés', level: 2 },
-    { type: 'paragraph', html: '<strong>Améliorez-vous de 20-30% en 4-6 semaines</strong> de pratique régulière du test de dactylographie.' },
-    { type: 'tip', html: 'Posture correcte: dos droit, coudes 90°, poignets neutres, doigts sur la rangée d\'accueil. Forme d\'abord, vitesse après.' },
+    { type: 'title', text: 'Des outils pour fabriquer ses jeux vidéo', level: 2 },
+    { type: 'paragraph', html: 'Le développement d\'un jeu repose sur de nombreuses petites décisions: une composition doit résister à plusieurs formats de boutique, une icône doit rester lisible immédiatement et une tâche de production doit pouvoir être répétée. Cette catégorie rassemble des outils ciblés pour concevoir, publier et présenter des jeux.' },
+    { type: 'title', text: 'Pensé pour les créateurs indépendants', level: 2 },
+    { type: 'paragraph', html: 'Les équipes indépendantes passent souvent d\'un logiciel graphique à un tableau de publication puis à un dossier de validation. Un bon outil raccourcit ce passage, rend les choix importants visibles et laisse les fichiers source sous le contrôle du créateur.' },
+    { type: 'list', items: ['Des parcours précis avec des résultats visibles', 'Un traitement local lorsque cela est pertinent', 'Des dimensions et états d\'export clairs', 'Des conseils complémentaires aux documents officiels'] },
+    { type: 'tip', html: 'Utilisez ces outils comme une étape de vérification. Conservez les sources et comparez chaque export aux exigences actuelles de la plateforme.' },
   ],
 };

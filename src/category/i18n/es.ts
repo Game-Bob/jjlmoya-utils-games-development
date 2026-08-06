@@ -1,22 +1,15 @@
 import type { CategoryLocaleContent } from '../../types';
 
-const slug = 'retos-y-juegos';
-const title = 'Retos y Juegos Virales: Test de Mecanografía y Desafíos Adictivos';
-const description = 'Desafíos gamificados y juegos virales. Test de mecanografía, retos de velocidad y juegos adictivos 100% offline.';
-
 export const content: CategoryLocaleContent = {
-  slug,
-  title,
-  description,
+  slug: 'desarrollo-de-videojuegos',
+  title: 'Utilidades para desarrollo de videojuegos',
+  description: 'Herramientas de navegador para creadores indie, desde preparar arte para tiendas hasta organizar entregas de producción.',
   seo: [
-    { type: 'title', text: '¿Por Qué los Retos Gamificados Funcionan?', level: 2 },
-    { type: 'paragraph', html: 'Los retos gamificados mejoran habilidades cognitivas mediante competencia sana. El cerebro secreta dopamina, generando experiencias satisfactorias y memorables.' },
-    { type: 'title', text: 'Mecanografía en la Era Digital', level: 2 },
-    { type: 'paragraph', html: 'La velocidad de escritura es fundamental. Una mejora de 10 WPM se traduce en horas ahorradas. Tests bien diseñados miden velocidad y precisión.' },
-    { type: 'title', text: 'Cómo Funcionan los Retos', level: 2 },
-    { type: 'list', items: ['Feedback inmediato de progreso', 'Reglas claras y cuantificables', 'Dificultad escalable', 'Comparación con tus propios récords'] },
-    { type: 'title', text: 'Beneficios Comprobados', level: 2 },
-    { type: 'paragraph', html: '<strong>Mejora 20-30% en 4-6 semanas</strong> de práctica regular con tests de mecanografía.' },
-    { type: 'tip', html: 'Postura correcta: espalda recta, codos 90°, muñecas neutras, dedos en filas de inicio. Forma primero, velocidad después.' },
+    { type: 'title', text: 'Herramientas para el oficio de crear videojuegos', level: 2 },
+    { type: 'paragraph', html: 'Crear un videojuego está formado por pequeñas decisiones: una composición debe resistir varios formatos de tienda, un icono debe leerse de un vistazo y una tarea de producción debe poder repetirse. Esta categoría reúne utilidades enfocadas para quienes diseñan, publican y presentan juegos. Cada herramienta convierte un flujo estrecho pero frustrante en una interacción clara dentro del navegador.' },
+    { type: 'title', text: 'Pensadas para creadores independientes', level: 2 },
+    { type: 'paragraph', html: 'Los equipos indie suelen alternar entre programas de arte, paneles de publicación y carpetas de revisión sin contar con un departamento de producción. Una buena utilidad acorta esa entrega, hace visibles las decisiones importantes y mantiene al creador al mando de sus archivos fuente.' },
+    { type: 'list', items: ['Flujos concretos con resultados visibles', 'Procesamiento local en el navegador cuando es posible', 'Dimensiones y estados de exportación claros', 'Guías que complementan la documentación oficial'] },
+    { type: 'tip', html: 'Usa estas herramientas como una capa de previsualización. Conserva los archivos fuente, compara la exportación con los requisitos actuales de cada plataforma y revisa la salida más pequeña.' },
   ],
 };

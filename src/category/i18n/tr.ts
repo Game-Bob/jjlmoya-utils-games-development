@@ -1,22 +1,10 @@
 import type { CategoryLocaleContent } from '../../types';
 
-const slug = 'oyunlar';
-const title = 'Viral Meydan Okumalar ve Oyunlar: Yazım Testi ve Bağımlılık Yapan Hız Yarışları';
-const description = 'Becerilerinizi test etmek için oyunlaştırılmış meydan okumalar ve viral oyunlar. %100 çevrimdışı yazım testleri, hız meydan okumaları ve sürükleyici oyunlar.';
-
-export const content: CategoryLocaleContent = {
-  slug,
-  title,
-  description,
-  seo: [
-    { type: 'title', text: 'Oyunlaştırılmış Meydan Okumalar Neden Bu Kadar Etkili', level: 2 },
-    { type: 'paragraph', html: 'Oyunlaştırılmış meydan okumalar, sağlıklı rekabet yoluyla bilişsel becerileri geliştirir. Beyin dopamin salgılayarak tatmin edici ve akılda kalıcı deneyimler yaratır.' },
-    { type: 'title', text: 'Dijital Çağda Klavye Kullanımı', level: 2 },
-    { type: 'paragraph', html: 'Yazım hızı temel bir yetkinliktir. 10 WPM\'lik bir artış saatlerce zaman kazandırır. İyi tasarlanmış testler hem hızı hem de doğruluğu ölçer.' },
-    { type: 'title', text: 'Meydan Okumalar Nasıl Çalışır', level: 2 },
-    { type: 'list', items: ['İlerleme hakkında anında geri bildirim', 'Net ve ölçülebilir kurallar', 'Ölçeklenebilir zorluk seviyeleri', 'Kendi rekorlarınıza karşı yarışma'] },
-    { type: 'title', text: 'Kanıtlanmış Faydalar', level: 2 },
-    { type: 'paragraph', html: 'Düzenli yazım testi pratiği ile <strong>4-6 haftada %20-30 iyileşme</strong> sağlayın.' },
-    { type: 'tip', html: 'Doğru duruş: Dik sırt, 90° dirsekler, nötr bilekler, parmaklar ana sırada. Önce teknik, sonra hız.' },
-  ],
-};
+export const content: CategoryLocaleContent = { slug: 'oyun-gelistirme', title: 'Oyun geliştirme araçları', description: 'Mağaza görsellerinden üretim teslimlerine kadar bağımsız oyun üreticileri için pratik tarayıcı araçları.', seo: [
+  { type: 'title', text: 'Kendi oyunlarınızı üretmek için araçlar', level: 2 },
+  { type: 'paragraph', html: 'Oyun geliştirme birçok küçük karardan oluşur: bir kompozisyon farklı mağaza biçimlerinde çalışmalı, bir simge ilk bakışta okunmalı ve üretim görevi tekrarlanabilmelidir. Bu kategori oyun tasarlayan, yayınlayan ve tanıtan kişiler için odaklanmış araçlar sunar.' },
+  { type: 'title', text: 'Bağımsız üreticiler için', level: 2 },
+  { type: 'paragraph', html: 'Bağımsız ekipler grafik yazılımı, yayın panosu ve inceleme klasörleri arasında sıkça geçiş yapar. İyi bir araç bu aktarımı kısaltır, önemli kararları görünür kılar ve kaynak dosyaların kontrolünü üreticide bırakır.' },
+  { type: 'list', items: ['Görünür sonuçlara sahip odaklı akışlar', 'Uygun olduğunda yerel işleme', 'Net boyutlar ve dışa aktarma durumları', 'Resmî platform belgelerini tamamlayan bilgiler'] },
+  { type: 'tip', html: 'Bu araçları ön kontrol katmanı olarak kullanın. Kaynakları saklayın ve dışa aktarımları platformun güncel şartlarıyla karşılaştırın.' },
+] };

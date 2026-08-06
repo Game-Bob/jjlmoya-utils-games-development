@@ -10,12 +10,13 @@ import {
 } from "@jjlmoya/utils-shared";
 import type { KnownLocale, ToolLocaleContent } from "../../types";
 import type { UtilitySEOContent } from "@jjlmoya/utils-shared";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 export async function getStaticPaths() {
   const paths = [];
 
   for (const { entry, Component: lazyComp } of ALL_TOOLS) {
-    const { default: Component } = await lazyComp();
+    const { default: Component } = await (lazyComp as () => Promise<{ default: AstroComponentFactory }>)();
     const localeEntries = Object.entries(entry.i18n) as [
       KnownLocale,
       () => Promise<ToolLocaleContent>,
@@ -63,15 +64,8 @@ export async function getStaticPaths() {
   return paths;
 }
 
-interface NavItem {
-  id: string;
-  title: string;
-  href: string;
-  isActive?: boolean;
-}
-
 interface Props {
-  Component: unknown;
+  Component: AstroComponentFactory;
   locale: KnownLocale;
   content: ToolLocaleContent;
   localeUrls: Partial<Record<KnownLocale, string>>;
@@ -79,11 +73,19 @@ interface Props {
   englishSlug: string;
 }
 
-const { Component, locale, content, localeUrls, allToolsNav, englishSlug } = Astro.props;
+interface NavItem {
+  id: string;
+  title: string;
+  href: string;
+  isActive?: boolean;
+}
+
+const { Component, locale, content, localeUrls, allToolsNav, englishSlug } = Astro.props as Props;
 
 const cssFiles = import.meta.glob("../../tool/**/*.css", { query: "?raw", import: "default" });
 const cssKey = Object.keys(cssFiles).find((k) => k.endsWith(`/${englishSlug}.css`));
-const toolCss = cssKey ? await cssFiles[cssKey]() as string : "";
+const toolCssLoader = cssKey ? cssFiles[cssKey] : undefined;
+const toolCss = toolCssLoader ? await toolCssLoader() as string : "";
 
 const seoContent: UtilitySEOContent = { locale, sections: content.seo ?? [] };
 
@@ -132,7 +134,7 @@ const titleBase = words.slice(1).join(" ") || "";
     </section>
 
     <section class="section-faq">
-      <FAQSection items={content.faq} inLanguage={locale} />
+      <FAQSection items={content.faq} />
     </section>
 
     <section class="section-bibliography">

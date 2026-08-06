@@ -73,7 +73,7 @@ describe('Native script density validation', () => {
 
           const content = await loader();
           const rule = SCRIPT_RULES[typedLocale];
-          const text = normalizeText(translatableContent(content as Record<string, unknown>));
+          const text = normalizeText(translatableContent(content as unknown as Record<string, unknown>));
           const letters = letterCount(text);
           const matches = scriptCount(text, typedLocale);
           const ratio = scriptRatio(text, typedLocale);

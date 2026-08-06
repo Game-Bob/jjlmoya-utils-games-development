@@ -1,22 +1,10 @@
 import type { CategoryLocaleContent } from '../../types';
 
-const slug = 'games';
-const title = 'Virale Uitdagingen en Games: Typtest en Verslavende Snelheidsuitdagingen';
-const description = 'Gegamificeerde uitdagingen en virale games om je vaardigheden te testen. Typtesten, snelheidsuitdagingen en verslavende games 100% offline.';
-
-export const content: CategoryLocaleContent = {
-  slug,
-  title,
-  description,
-  seo: [
-    { type: 'title', text: 'Waarom Gegamificeerde Uitdagingen Zo Goed Werken', level: 2 },
-    { type: 'paragraph', html: 'Gegamificeerde uitdagingen verbeteren cognitieve vaardigheden door gezonde competitie. De hersenen maken dopamine aan, wat zorgt voor bevredigende en gedenkwaardige ervaringen.' },
-    { type: 'title', text: 'Typen in het Digitale Tijdperk', level: 2 },
-    { type: 'paragraph', html: 'Schrijfsnelheid is fundamenteel. Een verbetering van 10 WPM bespaart uren. Goed ontworpen testen meten zowel snelheid als nauwkeurigheid.' },
-    { type: 'title', text: 'Hoe Uitdagingen Werken', level: 2 },
-    { type: 'list', items: ['Directe feedback op voortgang', 'Duidelijke, kwantificeerbare regels', 'Schaalbare moeilijkheidsgraden', 'Competitie tegen je eigen records'] },
-    { type: 'title', text: 'Bewezen Voordelen', level: 2 },
-    { type: 'paragraph', html: '<strong>Verbeter 20-30% in 4-6 weken</strong> bij regelmatige oefening met typtesten.' },
-    { type: 'tip', html: 'Correcte houding: rechte rug, ellebogen in 90°, neutrale polsen, vingers op de basisrij. Eerst de vorm, dan de snelheid.' },
-  ],
-};
+export const content: CategoryLocaleContent = { slug: 'gameontwikkeling', title: 'Hulpmiddelen voor gameontwikkeling', description: 'Praktische browsertools voor indiemakers, van winkelafbeeldingen tot productieleveringen.', seo: [
+  { type: 'title', text: 'Tools voor het maken van games', level: 2 },
+  { type: 'paragraph', html: 'Gameontwikkeling bestaat uit veel kleine beslissingen: een compositie moet meerdere formaten overleven, een pictogram moet direct leesbaar blijven en een productietaak moet herhaalbaar zijn. Deze categorie verzamelt gerichte hulpmiddelen voor makers die games bouwen, publiceren en presenteren.' },
+  { type: 'title', text: 'Voor onafhankelijke makers', level: 2 },
+  { type: 'paragraph', html: 'Indieteams schakelen vaak tussen beeldsoftware, publicatiedashboards en reviewmappen. Een goede tool verkort die overdracht, maakt keuzes zichtbaar en houdt de bronbestanden bij de maker.' },
+  { type: 'list', items: ['Gerichte workflows met zichtbare resultaten', 'Lokale verwerking waar dat kan', 'Duidelijke maten en exportstatussen', 'Aanvulling op officiule platformdocumentatie'] },
+  { type: 'tip', html: 'Gebruik deze tools als preflight. Bewaar de bronnen en vergelijk elke export met de actuele platformeisen.' },
+] };

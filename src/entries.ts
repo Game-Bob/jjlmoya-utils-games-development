@@ -1,5 +1,5 @@
-export { typingTest } from './tool/typing-test/entry';
-export type { TypingTestUI, TypingTestLocaleContent } from './tool/typing-test/entry';
+export { steamCapsuleGenerator } from './tool/steamCapsuleGenerator/entry';
+export type { SteamCapsuleGeneratorUI, SteamCapsuleGeneratorLocaleContent } from './tool/steamCapsuleGenerator/entry';
 export { gamesCategory } from './category';
-import { typingTest } from './tool/typing-test/entry';
-export const ALL_ENTRIES = [typingTest];
+import { steamCapsuleGenerator } from './tool/steamCapsuleGenerator/entry';
+export const ALL_ENTRIES = [steamCapsuleGenerator];

@@ -96,7 +96,7 @@ describe('Diacritics density validation', () => {
           if (!loader) return;
 
           const content = await loader();
-          const text = normalizeText(translatableContent(content as Record<string, unknown>));
+          const text = normalizeText(translatableContent(content as unknown as Record<string, unknown>));
           const rule = DIACRITIC_RULES[typedLocale];
           const letters = letterCount(text);
           const matches = diacriticCount(text, typedLocale);

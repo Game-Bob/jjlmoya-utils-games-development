@@ -1,9 +1,9 @@
 import type { GamesCategoryEntry } from '../types';
-import { typingTest } from '../tool/typing-test/entry';
+import { steamCapsuleGenerator } from '../tool/steamCapsuleGenerator/entry';
 
 export const gamesCategory: GamesCategoryEntry = {
   icon: 'mdi:gamepad-variant',
-  tools: [typingTest],
+  tools: [steamCapsuleGenerator],
   i18n: {
     es: () => import('./i18n/es').then((m) => m.content),
     en: () => import('./i18n/en').then((m) => m.content),

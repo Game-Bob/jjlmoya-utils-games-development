@@ -1,22 +1,15 @@
 import type { CategoryLocaleContent } from '../../types';
 
-const slug = 'games';
-const title = 'Viral Challenges & Games: Typing Test & Addictive Speed Challenges';
-const description = 'Gamified challenges and viral games to test your skills. Typing tests, speed challenges and addictive games 100% offline.';
-
 export const content: CategoryLocaleContent = {
-  slug,
-  title,
-  description,
+  slug: 'game-development',
+  title: 'Game Development Utilities',
+  description: 'Practical browser tools for indie game creators, from store artwork preparation to production handoffs.',
   seo: [
-    { type: 'title', text: 'Why Gamified Challenges Work So Well', level: 2 },
-    { type: 'paragraph', html: 'Gamified challenges improve cognitive skills through healthy competition. The brain releases dopamine, creating satisfying and memorable experiences.' },
-    { type: 'title', text: 'Typing in the Digital Age', level: 2 },
-    { type: 'paragraph', html: 'Writing speed is fundamental. A 10 WPM improvement saves hours. Well-designed tests measure both speed and accuracy.' },
-    { type: 'title', text: 'How Challenges Work', level: 2 },
-    { type: 'list', items: ['Immediate feedback on progress', 'Clear, quantifiable rules', 'Scalable difficulty levels', 'Competition against your own records'] },
-    { type: 'title', text: 'Proven Benefits', level: 2 },
-    { type: 'paragraph', html: '<strong>Improve 20-30% in 4-6 weeks</strong> of regular typing test practice.' },
-    { type: 'tip', html: 'Correct posture: straight back, 90° elbows, neutral wrists, fingers on home row. Form first, speed later.' },
+    { type: 'title', text: 'Tools for the craft of game development', level: 2 },
+    { type: 'paragraph', html: 'Game development is a chain of small decisions: a composition must survive several storefront formats, an icon must remain readable at a glance and a production task must be easy to repeat. This category collects focused utilities for people who build, publish and promote games. Each tool is designed to turn a narrow but frustrating workflow into a clear browser interaction.' },
+    { type: 'title', text: 'Made for independent creators', level: 2 },
+    { type: 'paragraph', html: 'Indie teams often move between art software, publishing dashboards and review folders without a dedicated production department. A useful utility should shorten that handoff, expose the important decisions and keep the creator in control of the source files.' },
+    { type: 'list', items: ['Focused workflows with visible outputs', 'Local browser processing where practical', 'Clear dimensions and export states', 'Guidance that complements official platform documentation'] },
+    { type: 'tip', html: 'Use these tools as a preflight layer. Keep your source project files, compare final exports with the platform owner\'s current requirements and ask a teammate to review the smallest output.' },
   ],
 };

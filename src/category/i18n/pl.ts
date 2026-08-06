@@ -1,22 +1,10 @@
 import type { CategoryLocaleContent } from '../../types';
 
-const slug = 'gry';
-const title = 'Wirusowe Wyzwania i Gry: Test Pisania i Wciągające Wyzwania Prędkości';
-const description = 'Grywalizacja i wirusowe gry do testowania Twoich umiejętności. Testy pisania, wyzwania prędkości i wciągające gry 100% offline.';
-
-export const content: CategoryLocaleContent = {
-  slug,
-  title,
-  description,
-  seo: [
-    { type: 'title', text: 'Dlaczego Grywalizacja Działa tak Dobrze', level: 2 },
-    { type: 'paragraph', html: 'Wyzwania oparte na grywalizacji poprawiają umiejętności poznawcze poprzez zdrową rywalizację. Mózg uwalnia dopaminę, tworząc satysfakcjonujące i niezapomniane doświadczenia.' },
-    { type: 'title', text: 'Pisanie w Erze Cyfrowej', level: 2 },
-    { type: 'paragraph', html: 'Szybkość pisania jest fundamentalna. Poprawa o 10 WPM oszczędza godziny. Dobrze zaprojektowane testy mierzą zarówno prędkość, jak i dokładność.' },
-    { type: 'title', text: 'Jak Działają Wyzwania', level: 2 },
-    { type: 'list', items: ['Natychmiastowa informacja zwrotna o postępach', 'Jasne, mierzalne zasady', 'Skalowalne poziomy trudności', 'Rywalizacja z własnymi rekordami'] },
-    { type: 'title', text: 'Udowodnione Korzyści', level: 2 },
-    { type: 'paragraph', html: '<strong>Popraw się o 20-30% w 4-6 tygodni</strong> regularnej praktyki testu pisania.' },
-    { type: 'tip', html: 'Prawidłowa postawa: proste plecy, łokcie pod kątem 90°, neutralne nadgarstki, palce na rzędzie podstawowym. Najpierw forma, potem szybkość.' },
-  ],
-};
+export const content: CategoryLocaleContent = { slug: 'tworzenie-gier', title: 'Narzędzia do tworzenia gier', description: 'Praktyczne narzędzia przeglądarkowe dla twórców indie, od grafiki sklepu po przekazanie produkcji.', seo: [
+  { type: 'title', text: 'Narzędzia do tworzenia własnych gier', level: 2 },
+  { type: 'paragraph', html: 'Tworzenie gry składa się z wielu drobnych decyzji: kompozycja musi działać w kilku formatach, ikona powinna być czytelna od razu, a zadanie produkcyjne łatwe do powtórzenia. Ta kategoria zbiera wyspecjalizowane narzędzia dla osób projektujących, publikujących i pokazujących gry.' },
+  { type: 'title', text: 'Dla niezależnych twórców', level: 2 },
+  { type: 'paragraph', html: 'Zespoły indie przechodzą między programem graficznym, panelem publikacji i folderem z recenzją. Dobre narzędzie skraca tę drogę, pokazuje ważne decyzje i zostawia pliki źródłowe pod kontrolą twórcy.' },
+  { type: 'list', items: ['Skupione przepływy z widocznym wynikiem', 'Przetwarzanie lokalne, gdy jest możliwe', 'Jasne wymiary i stany eksportu', 'Wskazówki uzupełniające oficjalną dokumentację'] },
+  { type: 'tip', html: 'Traktuj te narzędzia jako etap kontroli. Zachowaj źródła i porównaj eksport z aktualnymi wymaganiami platformy.' },
+] };
