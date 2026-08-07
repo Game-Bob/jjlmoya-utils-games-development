@@ -1,0 +1,229 @@
+---
+import type { SpriteSheetPackerUI } from './ui';
+import './sprite-sheet-packer.css';
+
+interface Props {
+  ui: SpriteSheetPackerUI;
+}
+
+const { ui } = Astro.props;
+---
+
+<div class="ssp-container">
+  <div class="ssp-main-card">
+    <div class="ssp-header-tabs" role="tablist">
+      <button id="ssp-tab-packer" class="ssp-tab-btn active" role="tab" aria-selected="true" aria-controls="ssp-packer-panel">
+        {ui.packerTab}
+      </button>
+      <button id="ssp-tab-extractor" class="ssp-tab-btn" role="tab" aria-selected="false" aria-controls="ssp-extractor-panel">
+        {ui.extractorTab}
+      </button>
+    </div>
+
+    <div id="ssp-packer-panel" class="ssp-body-grid" role="tabpanel" aria-labelledby="ssp-tab-packer">
+      <div class="ssp-sidebar-section">
+        <div id="ssp-dropzone" class="ssp-dropzone">
+          <div class="ssp-drop-title">{ui.dropZoneTitle}</div>
+          <div class="ssp-drop-sub">{ui.dropZoneSubtitle}</div>
+          <input type="file" id="ssp-file-input" class="ssp-file-input" multiple accept="image/png,image/jpeg,image/webp" aria-label={ui.selectFilesButton} />
+        </div>
+
+        <div class="ssp-btn-row">
+          <button id="ssp-btn-select" class="ssp-btn ssp-btn-primary" type="button">{ui.selectFilesButton}</button>
+          <button id="ssp-btn-clear" class="ssp-btn ssp-btn-danger" type="button">{ui.clearAllButton}</button>
+        </div>
+
+        <div class="ssp-presets-row">
+          <button id="ssp-preset-pixel" class="ssp-chip-btn" type="button">{ui.presetPixelArt}</button>
+          <button id="ssp-preset-hd" class="ssp-chip-btn" type="button">{ui.presetHdUi}</button>
+          <button id="ssp-preset-mobile" class="ssp-chip-btn" type="button">{ui.presetMobile}</button>
+        </div>
+
+        <div class="ssp-controls-list">
+          <div class="ssp-control-group">
+            <label for="ssp-export-format" class="ssp-label"><span>{ui.exportFormatLabel}</span></label>
+            <select id="ssp-export-format" class="ssp-select">
+              <option value="generic-json-hash">{ui.formatGenericHash}</option>
+              <option value="generic-json-array">{ui.formatGenericArray}</option>
+              <option value="unity">{ui.formatUnity}</option>
+              <option value="godot">{ui.formatGodot}</option>
+              <option value="phaser">{ui.formatPhaser}</option>
+              <option value="css">{ui.formatCss}</option>
+            </select>
+          </div>
+
+          <div class="ssp-control-group">
+            <label for="ssp-padding" class="ssp-label">
+              <span>{ui.paddingLabel}</span>
+              <span id="ssp-padding-val">2</span>
+            </label>
+            <div class="ssp-stepper-box">
+              <button id="ssp-pad-dec" class="ssp-step-btn" type="button" aria-label="Decrease Padding">-</button>
+              <input type="range" id="ssp-padding" class="ssp-slider" min="0" max="32" value="2" aria-label={ui.paddingLabel} />
+              <button id="ssp-pad-inc" class="ssp-step-btn" type="button" aria-label="Increase Padding">+</button>
+            </div>
+          </div>
+
+          <div class="ssp-control-group">
+            <label for="ssp-extrusion" class="ssp-label">
+              <span>{ui.borderExtrusionLabel}</span>
+              <span id="ssp-extrusion-val">0</span>
+            </label>
+            <div class="ssp-stepper-box">
+              <button id="ssp-ext-dec" class="ssp-step-btn" type="button" aria-label="Decrease Extrusion">-</button>
+              <input type="range" id="ssp-extrusion" class="ssp-slider" min="0" max="8" value="0" aria-label={ui.borderExtrusionLabel} />
+              <button id="ssp-ext-inc" class="ssp-step-btn" type="button" aria-label="Increase Extrusion">+</button>
+            </div>
+          </div>
+
+          <div class="ssp-control-group">
+            <label for="ssp-max-size" class="ssp-label"><span>{ui.maxTextureSizeLabel}</span></label>
+            <select id="ssp-max-size" class="ssp-select">
+              <option value="512">512 x 512 px</option>
+              <option value="1024">1024 x 1024 px</option>
+              <option value="2048" selected>2048 x 2048 px</option>
+              <option value="4096">4096 x 4096 px</option>
+            </select>
+          </div>
+
+          <div class="ssp-toggle-group">
+            <label for="ssp-power-two" class="ssp-label">{ui.powerOfTwoLabel}</label>
+            <input type="checkbox" id="ssp-power-two" class="ssp-toggle-input" checked aria-label={ui.powerOfTwoLabel} />
+          </div>
+        </div>
+      </div>
+
+      <div class="ssp-main-section">
+        <div class="ssp-stats-grid">
+          <div class="ssp-stat-badge">
+            <div id="ssp-stat-efficiency" class="ssp-stat-val">0%</div>
+            <div class="ssp-stat-lbl">{ui.efficiencyBadge}</div>
+          </div>
+          <div class="ssp-stat-badge">
+            <div id="ssp-stat-drawcalls" class="ssp-stat-val">0</div>
+            <div class="ssp-stat-lbl">{ui.drawCallsBadge}</div>
+          </div>
+          <div class="ssp-stat-badge">
+            <div id="ssp-stat-frames" class="ssp-stat-val">0</div>
+            <div class="ssp-stat-lbl">{ui.totalFramesBadge}</div>
+          </div>
+          <div class="ssp-stat-badge">
+            <div id="ssp-stat-size" class="ssp-stat-val">0x0</div>
+            <div class="ssp-stat-lbl">{ui.textureSizeBadge}</div>
+          </div>
+        </div>
+
+        <div class="ssp-canvas-wrapper">
+          <canvas id="ssp-atlas-canvas" class="ssp-canvas" width="512" height="512" aria-label={ui.previewTitle}></canvas>
+        </div>
+
+        <div class="ssp-btn-row">
+          <button id="ssp-btn-download-zip" class="ssp-btn ssp-btn-primary" type="button">{ui.downloadZipButton}</button>
+          <button id="ssp-btn-copy-json" class="ssp-btn ssp-btn-secondary" type="button">{ui.copyJsonButton}</button>
+          <button id="ssp-btn-download-png" class="ssp-btn ssp-btn-secondary" type="button">{ui.downloadSheetPngButton}</button>
+        </div>
+
+        <div class="ssp-flipbook-box">
+          <div class="ssp-flipbook-header">{ui.flipbookTitle}</div>
+          <div class="ssp-flipbook-body">
+            <canvas id="ssp-flipbook-canvas" class="ssp-flipbook-canvas" width="128" height="128" aria-label={ui.flipbookTitle}></canvas>
+            <div class="ssp-flipbook-controls">
+              <div class="ssp-control-group">
+                <label for="ssp-fps-slider" class="ssp-label">
+                  <span>{ui.flipbookFpsLabel}</span>
+                  <span id="ssp-fps-val">12 FPS</span>
+                </label>
+                <input type="range" id="ssp-fps-slider" class="ssp-slider" min="1" max="60" value="12" aria-label={ui.flipbookFpsLabel} />
+              </div>
+              <div class="ssp-btn-row">
+                <button id="ssp-btn-play" class="ssp-btn ssp-btn-secondary" type="button">{ui.playAnimation}</button>
+                <button id="ssp-btn-pause" class="ssp-btn ssp-btn-secondary" type="button">{ui.pauseAnimation}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ssp-code-container">
+          <div class="ssp-code-header">
+            <span class="ssp-code-title">{ui.codeSnippetTitle}</span>
+            <button id="ssp-btn-copy-code" class="ssp-copy-btn" type="button">{ui.copySnippetButton}</button>
+          </div>
+          <pre id="ssp-code-snippet" class="ssp-code-block"></pre>
+        </div>
+      </div>
+    </div>
+
+    <div id="ssp-extractor-panel" class="ssp-body-grid" role="tabpanel" aria-labelledby="ssp-tab-extractor" style="display: none;">
+      <div class="ssp-sidebar-section">
+        <div id="ssp-ext-dropzone" class="ssp-dropzone">
+          <div class="ssp-drop-title">{ui.dropZoneTitle}</div>
+          <div class="ssp-drop-sub">{ui.dropZoneSubtitle}</div>
+          <input type="file" id="ssp-ext-file-input" class="ssp-file-input" accept="image/png,image/jpeg,image/webp" aria-label={ui.selectFilesButton} />
+        </div>
+
+        <div class="ssp-controls-list">
+          <div class="ssp-control-group">
+            <label for="ssp-ext-width" class="ssp-label">{ui.frameWidthLabel}</label>
+            <div class="ssp-stepper-box">
+              <button id="ssp-fw-dec" class="ssp-step-btn" type="button" aria-label="Decrease Frame Width">-</button>
+              <input type="number" id="ssp-ext-width" class="ssp-input" value="32" min="1" aria-label={ui.frameWidthLabel} />
+              <button id="ssp-fw-inc" class="ssp-step-btn" type="button" aria-label="Increase Frame Width">+</button>
+            </div>
+          </div>
+
+          <div class="ssp-control-group">
+            <label for="ssp-ext-height" class="ssp-label">{ui.frameHeightLabel}</label>
+            <div class="ssp-stepper-box">
+              <button id="ssp-fh-dec" class="ssp-step-btn" type="button" aria-label="Decrease Frame Height">-</button>
+              <input type="number" id="ssp-ext-height" class="ssp-input" value="32" min="1" aria-label={ui.frameHeightLabel} />
+              <button id="ssp-fh-inc" class="ssp-step-btn" type="button" aria-label="Increase Frame Height">+</button>
+            </div>
+          </div>
+
+          <div class="ssp-control-group">
+            <label for="ssp-ext-margin" class="ssp-label">{ui.marginLabel}</label>
+            <div class="ssp-stepper-box">
+              <button id="ssp-mar-dec" class="ssp-step-btn" type="button" aria-label="Decrease Margin">-</button>
+              <input type="number" id="ssp-ext-margin" class="ssp-input" value="0" min="0" aria-label={ui.marginLabel} />
+              <button id="ssp-mar-inc" class="ssp-step-btn" type="button" aria-label="Increase Margin">+</button>
+            </div>
+          </div>
+
+          <div class="ssp-control-group">
+            <label for="ssp-ext-spacing" class="ssp-label">{ui.spacingLabel}</label>
+            <div class="ssp-stepper-box">
+              <button id="ssp-spc-dec" class="ssp-step-btn" type="button" aria-label="Decrease Spacing">-</button>
+              <input type="number" id="ssp-ext-spacing" class="ssp-input" value="0" min="0" aria-label={ui.spacingLabel} />
+              <button id="ssp-spc-inc" class="ssp-step-btn" type="button" aria-label="Increase Spacing">+</button>
+            </div>
+          </div>
+        </div>
+
+        <button id="ssp-btn-extract-zip" class="ssp-btn ssp-btn-primary" type="button">{ui.downloadZipButton}</button>
+      </div>
+
+      <div class="ssp-main-section">
+        <div class="ssp-stat-badge" style="align-self: flex-start;">
+          <div id="ssp-ext-count" class="ssp-stat-val">0</div>
+          <div class="ssp-stat-lbl">{ui.extractedCountLabel}</div>
+        </div>
+        <div class="ssp-canvas-wrapper">
+          <canvas id="ssp-ext-canvas" class="ssp-canvas" width="512" height="512" aria-label={ui.previewTitle}></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div id="ssp-toast" class="ssp-toast">{ui.copiedToast}</div>
+    <div id="ssp-particle-container" class="ssp-particle-container"></div>
+  </div>
+</div>
+
+<script>
+  import { initSpriteSheetPackerApp } from './app-client';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSpriteSheetPackerApp);
+  } else {
+    initSpriteSheetPackerApp();
+  }
+</script>

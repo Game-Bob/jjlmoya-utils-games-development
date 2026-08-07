@@ -1,10 +1,13 @@
-import type { GamesCategoryEntry } from '../types';
-import { steamCapsuleGenerator } from '../tool/steamCapsuleGenerator/entry';
-import { spriteSheetPacker } from '../tool/spriteSheetPacker/entry';
+import type { GamesToolEntry, ToolLocaleContent } from '../../types';
+import type { SpriteSheetPackerUI } from './ui';
 
-export const gamesCategory: GamesCategoryEntry = {
-  icon: 'mdi:gamepad-variant',
-  tools: [steamCapsuleGenerator, spriteSheetPacker],
+export type { SpriteSheetPackerUI };
+
+export type SpriteSheetPackerLocaleContent = ToolLocaleContent<SpriteSheetPackerUI>;
+
+export const spriteSheetPacker: GamesToolEntry<SpriteSheetPackerUI> = {
+  id: 'sprite-sheet-packer',
+  icons: { bg: 'mdi:gamepad-variant', fg: 'mdi:texture-box' },
   i18n: {
     de: () => import('./i18n/de').then((m) => m.content),
     en: () => import('./i18n/en').then((m) => m.content),

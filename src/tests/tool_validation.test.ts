@@ -4,8 +4,8 @@ import { gamesCategory } from '../data';
 
 describe('Tool Validation Suite', () => {
   describe('Library Registration', () => {
-    it('should have 2 tools in ALL_TOOLS', () => {
-      expect(ALL_TOOLS.length).toBe(2);
+    it('should have 3 tools in ALL_TOOLS', () => {
+      expect(ALL_TOOLS.length).toBe(3);
     });
 
     it('gamesCategory should be defined', () => {
@@ -14,4 +14,3 @@ describe('Tool Validation Suite', () => {
     });
   });
 });
-

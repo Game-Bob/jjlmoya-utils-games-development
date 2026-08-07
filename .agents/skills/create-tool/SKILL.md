@@ -28,7 +28,7 @@ Follow this skill workflow when scaffolding, building, or refactoring tools in `
   2. *Can the remaining inputs be made substantially more comfortable, tactile, and natural (sliders, visual chips, quick toggles)?*
   3. *Could this interface look significantly more beautiful, visual, and alive?* If the answer is yes, improve it immediately!
   4. *Can I make the user's life easier?* If YES -> do it immediately!
-- **Mandatory LocalStorage State Persistence**: If a tool provides recurring value (calculators, scorekeepers, trackers), its last interaction state (selected units, inputs, custom parameters, timer values) MUST be automatically persisted to `localStorage` and restored upon subsequent visits so returning users never lose their context.
+- **Single Unified Card Container**: The entire tool MUST be presented as a SINGLE unified card/container (`tool-card` / `ssp-main-card`). NEVER split the interface into disconnected, floating separate cards, detached tab bars, or fragmented outer boxes. All controls, tabs, previews, flipbook players, and action buttons MUST be integrated inside one cohesive, continuous card container with internal sub-sections.
 - **Vibrant & Tactile UI**: Never build simple or minimal MVPs. Interfaces must feature rich gradients, smooth drop shadows, clean borders, dynamic visual indicators, and high contrast.
 - **Full Light & Dark Theme Support**: CSS must use design tokens (`var(--bg-surface)`, `var(--text-base)`, `var(--border-base)`) and explicitly include `.theme-dark` container rules.
 - **Click & Interaction Feedback**:
@@ -126,17 +126,16 @@ src/tool/<toolId>/
 
 ## 4. Step-by-Step Execution Workflow
 
-### Step 1: Baseline Implementation (English-First)
+### Step 1: Baseline Implementation (English-First ONLY)
 1. Define pure state management and calculation logic in `logic.ts`.
 2. Write unit tests covering normal flow, edge cases, and completion states in `logic.test.ts`.
-3. Create `i18n/en.ts` exporting `content: ToolLocaleContent<ToolUI>` with full 300+ words SEO sections (including mandatory `stats`, `comparative`, `table`, `tip` components) and UI dictionary.
+3. Create ONLY `i18n/en.ts` exporting `content: ToolLocaleContent<ToolUI>` with full 300+ words SEO sections (including mandatory `stats`, `comparative`, `table`, `tip` components) and UI dictionary.
 4. Build `component.astro` taking `{ ui: t }` as Astro props and `<slug>.css` with dark mode support.
-5. Register the tool in `entry.ts`. The `SportsToolEntry` object MUST include a mandatory `icons` field: `icons: { bg: 'mdi:<icon>', fg: 'mdi:<icon>' }`. Omitting `icons` causes a runtime crash at build time when the home page iterates all tools. Export and register the tool entry in `src/entries.ts` and `src/tools.ts`.
-6. **MANDATORY Baseline Verification**: Run `npx vitest run src/tests/seo_length.test.ts` and `npm run lint` to verify that SEO word count (>300 words), rich components, accessibility labels, and typescript exports pass 100% BEFORE presenting to the user.
-7. Present the baseline tool to the user, and wait for review / **`OKQA`**.
+5. Register the tool in `entry.ts` containing ONLY the `en` loader in `i18n: { en: () => import('./i18n/en').then((m) => m.content) }`. NEVER add non-English locale files, dummy fallback objects, or temporary loaders. The `GamesToolEntry` object MUST include a mandatory `icons` field: `icons: { bg: 'mdi:<icon>', fg: 'mdi:<icon>' }`. Omitting `icons` causes a runtime crash at build time when the home page iterates all tools. Export and register the tool entry in `src/entries.ts` and `src/tools.ts`.
+6. STOP completely and present the English baseline tool to the user for review. Wait for the user to explicitly approve with **`OKQA`**.
 
-### Step 2: Production Localization & Verification (After OKQA)
-Once the user says **`OKQA`**:
+### Step 2: Production Localization & Verification (STRICTLY AFTER OKQA)
+ONLY AFTER the user explicitly writes **`OKQA`**:
 1. Translate `i18n/en.ts` language-by-language into all 14 remaining locales (`de`, `es`, `fr`, `id`, `it`, `ja`, `ko`, `nl`, `pl`, `pt`, `ru`, `sv`, `tr`, `zh`). NEVER copy untranslated English text.
 2. Register all 15 locale loaders in `entry.ts` and `category/index.ts`.
 3. Run the full verification suite in order:
