@@ -1,0 +1,147 @@
+---
+import type { AudioLoopPointFinderUI } from './ui';
+import './audio-loop-point-finder.css';
+
+interface Props {
+  ui: AudioLoopPointFinderUI;
+}
+
+const { ui } = Astro.props;
+---
+
+<div
+  class="alpf-main-card"
+  id="alpf-root"
+  data-status-loaded={ui.statusLoaded}
+  data-status-decode-error={ui.statusDecodeError}
+  data-status-snapped={ui.statusSnapped}
+  data-status-looping={ui.statusLooping}
+  data-status-stopped={ui.statusStopped}
+  data-status-exported={ui.statusExported}
+  data-status-paused={ui.statusPaused}
+>
+  <div class="alpf-dropzone" id="alpf-dropzone" tabindex="0" role="button" aria-label={ui.dropzoneTitle}>
+    <svg class="alpf-dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V5l12-2v13"></path>
+      <circle cx="6" cy="18" r="3"></circle>
+      <circle cx="18" cy="16" r="3"></circle>
+    </svg>
+    <div class="alpf-dropzone-title">{ui.dropzoneTitle}</div>
+    <div class="alpf-dropzone-subtitle">{ui.dropzoneSubtitle}</div>
+    <button type="button" class="alpf-btn alpf-btn-secondary" id="alpf-browse-btn" aria-label={ui.dropzoneButton}>
+      {ui.dropzoneButton}
+    </button>
+    <input type="file" id="alpf-file-input" class="alpf-file-input" accept="audio/*" aria-label={ui.dropzoneButton} />
+  </div>
+
+  <div class="alpf-workspace" id="alpf-workspace" style="display: none;">
+    <div style="display: none;">
+      <span>{ui.title}</span>
+      <span>{ui.subtitle}</span>
+      <span>{ui.audioInfoTitle}</span>
+      <span>{ui.loopControlsTitle}</span>
+      <span>{ui.zeroCrossingLabel}</span>
+      <span>{ui.pauseLoopButton}</span>
+      <span>{ui.secondUnitLabel}</span>
+      <span>{ui.zoomLabel}</span>
+      <span>{ui.zoomInButton}</span>
+      <span>{ui.zoomOutButton}</span>
+      <span>{ui.resetZoomButton}</span>
+      <span>{ui.noFileSelected}</span>
+      <span>{ui.invalidAudioFile}</span>
+    </div>
+
+    <div class="alpf-stats-grid">
+      <div class="alpf-stat-card">
+        <span class="alpf-stat-label">{ui.durationLabel}</span>
+        <span class="alpf-stat-value" id="alpf-stat-duration">00:00.000</span>
+      </div>
+      <div class="alpf-stat-card">
+        <span class="alpf-stat-label">{ui.sampleRateLabel}</span>
+        <span class="alpf-stat-value" id="alpf-stat-samplerate">44100 Hz</span>
+      </div>
+      <div class="alpf-stat-card">
+        <span class="alpf-stat-label">{ui.channelsLabel}</span>
+        <span class="alpf-stat-value" id="alpf-stat-channels">2</span>
+      </div>
+      <div class="alpf-stat-card">
+        <span class="alpf-stat-label">{ui.totalSamplesLabel}</span>
+        <span class="alpf-stat-value" id="alpf-stat-samples">0</span>
+      </div>
+    </div>
+
+    <div class="alpf-waveform-container" id="alpf-waveform-box">
+      <canvas class="alpf-waveform-canvas" id="alpf-canvas"></canvas>
+    </div>
+
+    <div class="alpf-preset-chips">
+      <span class="alpf-label">{ui.presetsTitle}:</span>
+      <button type="button" class="alpf-chip" id="alpf-preset-full" aria-label={ui.presetFullTrack}>
+        {ui.presetFullTrack}
+      </button>
+      <button type="button" class="alpf-chip" id="alpf-preset-intro" aria-label={ui.presetIntroCut}>
+        {ui.presetIntroCut}
+      </button>
+      <button type="button" class="alpf-chip" id="alpf-preset-middle" aria-label={ui.presetMiddleLoop}>
+        {ui.presetMiddleLoop}
+      </button>
+    </div>
+
+    <div class="alpf-marker-inputs">
+      <div class="alpf-input-field">
+        <label for="alpf-start-sample-input" class="alpf-label">{ui.loopStartLabel} ({ui.sampleUnitLabel})</label>
+        <div class="alpf-input-row">
+          <input type="number" id="alpf-start-sample-input" class="alpf-input" min="0" value="0" aria-label={ui.loopStartLabel} />
+        </div>
+      </div>
+      <div class="alpf-input-field">
+        <label for="alpf-end-sample-input" class="alpf-label">{ui.loopEndLabel} ({ui.sampleUnitLabel})</label>
+        <div class="alpf-input-row">
+          <input type="number" id="alpf-end-sample-input" class="alpf-input" min="0" value="0" aria-label={ui.loopEndLabel} />
+        </div>
+      </div>
+      <div class="alpf-input-field">
+        <label for="alpf-loop-duration-input" class="alpf-label">{ui.loopDurationLabel}</label>
+        <div class="alpf-input-row">
+          <input type="text" id="alpf-loop-duration-input" class="alpf-input" readonly value="00:00.000" aria-label={ui.loopDurationLabel} />
+        </div>
+      </div>
+    </div>
+
+    <div class="alpf-toolbar">
+      <div class="alpf-controls-group">
+        <button type="button" class="alpf-btn alpf-btn-secondary" id="alpf-snap-btn" aria-label={ui.snapZeroCrossingButton}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M2 12h20"></path>
+          </svg>
+          {ui.snapZeroCrossingButton}
+        </button>
+        <button type="button" class="alpf-btn alpf-btn-primary" id="alpf-play-btn" aria-label={ui.playLoopButton}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+          {ui.playLoopButton}
+        </button>
+        <button type="button" class="alpf-btn alpf-btn-secondary" id="alpf-stop-btn" aria-label={ui.stopLoopButton} style="display: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 6h12v12H6z"></path>
+          </svg>
+          {ui.stopLoopButton}
+        </button>
+      </div>
+
+      <button type="button" class="alpf-btn alpf-btn-success" id="alpf-export-btn" aria-label={ui.exportWavButton}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+        </svg>
+        {ui.exportWavButton}
+      </button>
+    </div>
+
+    <div class="alpf-status-bar">
+      <span id="alpf-status-text">{ui.statusReady}</span>
+    </div>
+  </div>
+</div>
+
+<script src="./client.ts"></script>
