@@ -6,11 +6,14 @@ export { spriteSheetPacker } from './tool/spriteSheetPacker/entry';
 export type { SpriteSheetPackerUI, SpriteSheetPackerLocaleContent } from './tool/spriteSheetPacker/entry';
 export { audioLoopPointFinder } from './tool/audioLoopPointFinder/entry';
 export type { AudioLoopPointFinderUI, AudioLoopPointFinderLocaleContent } from './tool/audioLoopPointFinder/entry';
+export { saveFileEditor } from './tool/saveFileEditor/entry';
+export type { SaveFileEditorUI, SaveFileEditorLocaleContent } from './tool/saveFileEditor/entry';
 export { gamesCategory } from './category';
 import { steamCapsuleGenerator } from './tool/steamCapsuleGenerator/entry';
 import { itchioGameTester } from './tool/itchioGameTester/entry';
 import { spriteSheetPacker } from './tool/spriteSheetPacker/entry';
 import { audioLoopPointFinder } from './tool/audioLoopPointFinder/entry';
+import { saveFileEditor } from './tool/saveFileEditor/entry';
 
-export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder];
+export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor];
 

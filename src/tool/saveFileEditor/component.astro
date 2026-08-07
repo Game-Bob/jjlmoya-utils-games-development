@@ -1,0 +1,351 @@
+---
+import type { SaveFileEditorUI } from './ui';
+import './game-save-file-editor.css';
+
+interface Props {
+  ui: SaveFileEditorUI;
+}
+
+const { ui: t } = Astro.props;
+---
+
+<div
+  class="save-editor-main-card"
+  id="save-editor-root"
+  data-decode-error={t.decodeError}
+  data-bytes-unit={t.bytesUnit}
+>
+  <div style="display: none;">
+    <span>{t.title}</span>
+    <span>{t.subtitle}</span>
+  </div>
+
+  <div class="form-group">
+    <label for="save-file-input" class="form-label">{t.dropSaveFile}</label>
+    <div class="dropzone" id="drop-zone">
+      <input type="file" id="save-file-input" style="display: none;" accept=".json,.sav,.txt,.dat" />
+      <p>{t.dropSaveFile}</p>
+      <button type="button" class="btn-secondary" id="browse-btn">{t.orSelectFile}</button>
+    </div>
+  </div>
+
+  <div class="editor-unified-layout">
+    <div class="control-panel">
+      <h3 class="panel-section-title">{t.decodePanelTitle}</h3>
+
+      <div class="options-row">
+        <div class="form-group">
+          <label class="form-label">{t.encryptionMethod}</label>
+          <div class="method-chip-group" id="enc-method-group">
+            <button type="button" class="chip-btn active" data-value="base64">{t.methodBase64}</button>
+            <button type="button" class="chip-btn" data-value="xor">{t.methodXor}</button>
+            <button type="button" class="chip-btn" data-value="raw">{t.methodRaw}</button>
+          </div>
+        </div>
+
+        <div class="form-group" id="xor-key-group">
+          <label for="xor-key-input" class="form-label">{t.xorKeyLabel}</label>
+          <input type="text" id="xor-key-input" class="input-text" placeholder={t.xorKeyPlaceholder} />
+        </div>
+      </div>
+
+      <div id="decode-error" class="error-banner" style="display: none;"></div>
+
+      <div class="form-group" style="flex: 1; display: flex; flex-direction: column;">
+        <label for="json-code-input" class="form-label">{t.jsonRawTitle}</label>
+        <textarea id="json-code-input" class="textarea-code" spellcheck="false" style="flex: 1; min-height: 340px;"></textarea>
+      </div>
+    </div>
+
+    <div class="control-panel">
+      <h3 class="panel-section-title">{t.exportPanelTitle}</h3>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-val" id="stat-format">BASE64</span>
+          <span class="stat-lbl">{t.detectedFormat}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val" id="stat-keys">0</span>
+          <span class="stat-lbl">{t.decodedKeysCount}</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val" id="stat-size">0 B</span>
+          <span class="stat-lbl">{t.dataSize}</span>
+        </div>
+      </div>
+
+      <div class="form-group" style="flex: 1; display: flex; flex-direction: column;">
+        <label for="export-preview" class="form-label">{t.exportPreviewLabel}</label>
+        <textarea id="export-preview" class="textarea-code" readonly style="flex: 1; min-height: 340px;"></textarea>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <button type="button" class="btn-primary" id="export-download-btn" style="flex: 1;">{t.encodeAndDownload}</button>
+        <button type="button" class="btn-secondary" id="export-copy-btn">{t.copyEncoded}</button>
+      </div>
+      <span id="copied-notice" class="copied-notice" style="display: none;">{t.copiedNotice}</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { decodeSaveData, encodeSaveData, detectFormat, bytesToBase64, applyXor, strToUtf8Bytes } from './logic';
+
+  const STORAGE_KEY_RAW = 'save_editor_last_raw';
+  const STORAGE_KEY_METHOD = 'save_editor_last_method';
+  const STORAGE_KEY_KEY = 'save_editor_last_key';
+
+  const DEFAULT_SAMPLE = {
+    player: { name: 'ShadowKnight', level: 45, gold: 12500, health: 100, mana: 80 },
+    inventory: ['Legendary Sword', 'Health Potion x5', 'Dragon Armor'],
+    unlockedLevels: [1, 2, 3, 4, 5],
+    settings: { difficulty: 'hard', sound: true }
+  };
+
+  let currentJsonData: unknown = DEFAULT_SAMPLE;
+  let rawSourceContent: string = '';
+  let selectedMethod: 'base64' | 'xor' | 'raw' = 'base64';
+
+  const rootCard = document.getElementById('save-editor-root');
+  const defaultDecodeErrorMsg = rootCard?.dataset.decodeError || '';
+  const bytesUnit = rootCard?.dataset.bytesUnit || 'B';
+
+  const encMethodGroup = document.getElementById('enc-method-group');
+  const xorKeyInput = document.getElementById('xor-key-input') as HTMLInputElement;
+  const decodeError = document.getElementById('decode-error');
+
+  const jsonCodeInput = document.getElementById('json-code-input') as HTMLTextAreaElement;
+  const exportPreview = document.getElementById('export-preview') as HTMLTextAreaElement;
+  const exportDownloadBtn = document.getElementById('export-download-btn');
+  const exportCopyBtn = document.getElementById('export-copy-btn');
+  const copiedNotice = document.getElementById('copied-notice');
+
+  const statFormat = document.getElementById('stat-format');
+  const statKeys = document.getElementById('stat-keys');
+  const statSize = document.getElementById('stat-size');
+
+  const dropZone = document.getElementById('drop-zone');
+  const fileInput = document.getElementById('save-file-input') as HTMLInputElement;
+  const browseBtn = document.getElementById('browse-btn');
+
+  function updateChipGroupActiveState(selectedValue: string) {
+    if (!encMethodGroup) return;
+    const chips = encMethodGroup.querySelectorAll<HTMLButtonElement>('.chip-btn');
+    chips.forEach((chip) => {
+      chip.classList.toggle('active', chip.dataset.value === selectedValue);
+    });
+  }
+
+  function setMethod(method: 'base64' | 'xor' | 'raw') {
+    selectedMethod = method;
+    updateChipGroupActiveState(method);
+    saveStateToLocalStorage();
+    performDecode();
+  }
+
+  encMethodGroup?.querySelectorAll<HTMLButtonElement>('.chip-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.value as 'base64' | 'xor' | 'raw';
+      setMethod(val);
+    });
+  });
+
+  function saveStateToLocalStorage() {
+    try {
+      localStorage.setItem(STORAGE_KEY_RAW, rawSourceContent);
+      localStorage.setItem(STORAGE_KEY_METHOD, selectedMethod);
+      if (xorKeyInput) localStorage.setItem(STORAGE_KEY_KEY, xorKeyInput.value);
+    } catch {
+      void 0;
+    }
+  }
+
+  function updateEditorWithData(data: unknown, format: string) {
+    currentJsonData = data;
+    const jsonStr = JSON.stringify(data, null, 2);
+    if (jsonCodeInput && document.activeElement !== jsonCodeInput) {
+      jsonCodeInput.value = jsonStr;
+    }
+
+    if (statFormat) statFormat.textContent = format.toUpperCase();
+    if (statKeys && typeof data === 'object' && data !== null) {
+      statKeys.textContent = String(Object.keys(data as object).length);
+    }
+    if (statSize) {
+      statSize.textContent = `${jsonStr.length} ${bytesUnit}`;
+    }
+
+    updateExportPreview();
+  }
+
+  function updateExportPreview() {
+    if (!exportPreview) return;
+    const key = xorKeyInput?.value || '';
+    const encoded = encodeSaveData(currentJsonData, { method: selectedMethod, xorKey: key });
+    exportPreview.value = encoded;
+  }
+
+  function renderDecodeError(errorMsg?: string) {
+    if (!decodeError) return;
+    if (errorMsg) {
+      decodeError.textContent = errorMsg;
+      decodeError.style.display = 'block';
+    } else {
+      decodeError.style.display = 'none';
+    }
+  }
+
+  function performDecode() {
+    if (!rawSourceContent) return;
+    const key = xorKeyInput?.value || '';
+    const res = decodeSaveData(rawSourceContent, { method: selectedMethod, xorKey: key });
+
+    if (res.success && res.data) {
+      renderDecodeError();
+      updateEditorWithData(res.data, selectedMethod);
+      saveStateToLocalStorage();
+      return;
+    }
+
+    renderDecodeError(res.error || defaultDecodeErrorMsg);
+  }
+
+  function encodeRawStringFallback(val: string): string {
+    const key = xorKeyInput?.value || '';
+    const utf8 = strToUtf8Bytes(val);
+
+    if (selectedMethod === 'base64') {
+      return bytesToBase64(utf8);
+    }
+    if (selectedMethod === 'xor' && key) {
+      return bytesToBase64(applyXor(utf8, key));
+    }
+    return val;
+  }
+
+  function updateUnparsedPreview() {
+    if (exportPreview && jsonCodeInput?.value.trim()) {
+      exportPreview.value = encodeRawStringFallback(jsonCodeInput.value);
+    }
+  }
+
+  function updateJsonStats(val: string, parsed: object) {
+    if (statKeys) {
+      statKeys.textContent = String(Object.keys(parsed).length);
+    }
+    if (statSize) {
+      statSize.textContent = `${val.length} ${bytesUnit}`;
+    }
+  }
+
+  function handleJsonInputChange() {
+    if (!jsonCodeInput) return;
+    try {
+      const parsed = JSON.parse(jsonCodeInput.value);
+      currentJsonData = parsed;
+      if (typeof parsed === 'object' && parsed !== null) {
+        updateJsonStats(jsonCodeInput.value, parsed as object);
+      }
+      updateExportPreview();
+    } catch {
+      updateUnparsedPreview();
+    }
+  }
+
+  jsonCodeInput?.addEventListener('input', handleJsonInputChange);
+  jsonCodeInput?.addEventListener('keyup', handleJsonInputChange);
+  jsonCodeInput?.addEventListener('change', handleJsonInputChange);
+
+  xorKeyInput?.addEventListener('input', () => {
+    saveStateToLocalStorage();
+    performDecode();
+  });
+
+  exportCopyBtn?.addEventListener('click', () => {
+    if (!exportPreview) return;
+    navigator.clipboard.writeText(exportPreview.value);
+    if (copiedNotice) {
+      copiedNotice.style.display = 'inline';
+      setTimeout(() => {
+        copiedNotice.style.display = 'none';
+      }, 2000);
+    }
+  });
+
+  exportDownloadBtn?.addEventListener('click', () => {
+    if (!exportPreview) return;
+    const blob = new Blob([exportPreview.value], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'save_data.sav';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  function processFileContent(content: string) {
+    rawSourceContent = content.trim();
+    const autoDetected = detectFormat(rawSourceContent, xorKeyInput?.value || '');
+    setMethod(autoDetected);
+  }
+
+  function readFileAndProcess(file: File) {
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      if (evt.target?.result) {
+        processFileContent(evt.target.result as string);
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  browseBtn?.addEventListener('click', () => fileInput?.click());
+  fileInput?.addEventListener('change', (e) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    if (file) readFileAndProcess(file);
+  });
+
+  if (dropZone) {
+    dropZone.addEventListener('dragover', (e) => e.preventDefault());
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const file = e.dataTransfer?.files?.[0];
+      if (file) readFileAndProcess(file);
+    });
+  }
+
+  function getLocalStorageValue(key: string): string {
+    try {
+      return localStorage.getItem(key) || '';
+    } catch {
+      return '';
+    }
+  }
+
+  function restoreSavedState(): boolean {
+    const savedRaw = getLocalStorageValue(STORAGE_KEY_RAW);
+    if (!savedRaw) return false;
+
+    rawSourceContent = savedRaw;
+    const savedMethod = getLocalStorageValue(STORAGE_KEY_METHOD);
+    if (savedMethod === 'base64' || savedMethod === 'xor' || savedMethod === 'raw') {
+      selectedMethod = savedMethod;
+      updateChipGroupActiveState(savedMethod);
+    }
+    const savedKey = getLocalStorageValue(STORAGE_KEY_KEY);
+    if (xorKeyInput && savedKey) xorKeyInput.value = savedKey;
+
+    performDecode();
+    return true;
+  }
+
+  function initTool() {
+    if (restoreSavedState()) return;
+
+    rawSourceContent = encodeSaveData(DEFAULT_SAMPLE, { method: 'base64', xorKey: '' });
+    setMethod('base64');
+  }
+
+  initTool();
+</script>
