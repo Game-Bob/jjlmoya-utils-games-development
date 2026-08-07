@@ -108,7 +108,7 @@
 }
 
 .ssp-dropzone {
-  border: 2px dashed #818cf8;
+  border: 2px dashed var(--color-primary-light, #818cf8);
   border-radius: 12px;
   padding: 1.5rem 1rem;
   text-align: center;
@@ -120,7 +120,7 @@
 .ssp-dropzone:hover,
 .ssp-dropzone.dragover {
   background: rgba(129, 140, 248, 0.12);
-  border-color: #6366f1;
+  border-color: var(--color-primary, #6366f1);
 }
 
 .ssp-drop-title {
@@ -161,13 +161,13 @@
 
 .ssp-chip-btn:hover {
   background: rgba(129, 140, 248, 0.2);
-  border-color: #6366f1;
+  border-color: var(--color-primary, #6366f1);
 }
 
 .ssp-chip-btn.active {
   background: linear-gradient(135deg, #6366f1, #4f46e5);
   color: var(--text-on-primary, #fff);
-  border-color: #6366f1;
+  border-color: var(--color-primary, #6366f1);
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
 }
 
@@ -220,7 +220,7 @@
 
 .ssp-step-btn:hover {
   background: rgba(99, 102, 241, 0.2);
-  border-color: #6366f1;
+  border-color: var(--color-primary, #6366f1);
 }
 
 .ssp-step-btn:active {
@@ -229,7 +229,7 @@
 
 .ssp-slider {
   flex: 1;
-  accent-color: #6366f1;
+  accent-color: var(--color-primary, #6366f1);
 }
 
 .ssp-select,
@@ -259,7 +259,7 @@
 .ssp-toggle-input {
   width: 1.25rem;
   height: 1.25rem;
-  accent-color: #6366f1;
+  accent-color: var(--color-primary, #6366f1);
   cursor: pointer;
 }
 
@@ -428,7 +428,12 @@
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #1e293b;
+  border: 1px solid var(--border-base, #e2e8f0);
+  background: var(--bg-surface-secondary, #f8fafc);
+}
+
+.theme-dark .ssp-code-container {
+  border-color: #1e293b;
   background: #090d16;
 }
 
@@ -436,21 +441,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #0f172a;
+  background: rgba(148, 163, 184, 0.12);
   padding: 0.6rem 0.85rem;
-  border-bottom: 1px solid #1e293b;
+  border-bottom: 1px solid var(--border-base, #e2e8f0);
+}
+
+.theme-dark .ssp-code-header {
+  background: #0f172a;
+  border-color: #1e293b;
 }
 
 .ssp-code-title {
   font-size: 0.82rem;
   font-weight: 600;
+  color: var(--text-base, #334155);
+}
+
+.theme-dark .ssp-code-title {
   color: var(--text-muted, #94a3b8);
 }
 
 .ssp-copy-btn {
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  color: var(--color-cyan, #38bdf8);
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: var(--color-primary, #4f46e5);
   padding: 0.35rem 0.75rem;
   border-radius: 6px;
   font-size: 0.78rem;
@@ -459,7 +473,17 @@
   transition: all 0.15s ease;
 }
 
+.theme-dark .ssp-copy-btn {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.3);
+  color: var(--color-cyan, #38bdf8);
+}
+
 .ssp-copy-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.theme-dark .ssp-copy-btn:hover {
   background: rgba(56, 189, 248, 0.25);
 }
 
@@ -470,13 +494,18 @@
 .ssp-code-block {
   width: 100%;
   margin: 0;
-  background: #070a12;
-  color: var(--color-cyan, #38bdf8);
+  background: #f1f5f9;
+  color: var(--text-base, #0f172a);
   font-size: 0.82rem;
   padding: 0.85rem 1rem;
   overflow-x: auto;
   white-space: pre-wrap;
   word-break: break-all;
+}
+
+.theme-dark .ssp-code-block {
+  background: #070a12;
+  color: var(--color-cyan, #38bdf8);
 }
 
 .ssp-toast {
@@ -515,13 +544,20 @@
   position: absolute;
   font-size: 0.75rem;
   font-weight: 800;
-  color: var(--color-cyan, #38bdf8);
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid #38bdf8;
+  color: var(--color-primary, #4f46e5);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--color-primary, #6366f1);
   border-radius: 4px;
   padding: 0.2rem 0.5rem;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
   animation: ssp-particle-float 1s forwards ease-out;
+}
+
+.theme-dark .ssp-particle {
+  color: var(--color-cyan, #38bdf8);
+  background: rgba(15, 23, 42, 0.9);
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
 @keyframes ssp-particle-float {
