@@ -9,6 +9,7 @@
   --pas-lime: #b9d83d;
   --pas-violet: #6557c8;
   --pas-shadow: 0 18px 40px rgba(40, 28, 35, 0.09);
+
   color: var(--pas-ink);
   font-size: 16px;
   background: var(--pas-paper);
@@ -58,8 +59,8 @@
   height: 30px;
   place-items: center;
   border-radius: 8px;
-  background: #23201d;
-  color: #ffffff;
+  background: var(--pas-ink);
+  color: var(--pas-paper);
   font-size: 22px;
   line-height: 1;
 }
@@ -116,7 +117,7 @@
 
 .pas-button-primary {
   background: var(--pas-accent);
-  color: #fff;
+  color: var(--pas-paper);
 }
 
 .pas-button-primary:hover {
@@ -124,8 +125,8 @@
 }
 
 .pas-button-dark {
-  background: #23201d;
-  color: #ffffff;
+  background: var(--pas-ink);
+  color: var(--pas-paper);
 }
 
 .pas-button:disabled {
@@ -146,7 +147,7 @@
 }
 
 .pas-status[data-tone='ready'] {
-  color: #4e8011;
+  color: var(--pas-accent-dark);
 }
 
 .pas-status[data-tone='working'] {
@@ -277,10 +278,10 @@
   resize: vertical;
   border: 1px solid var(--pas-border);
   border-radius: 10px;
-  background: #ffffff;
-  color: #23201d;
+  background: var(--pas-paper);
+  color: var(--pas-ink);
   padding: 9px;
-  font: 11px/1.5 'SFMono-Regular', Consolas, monospace;
+  font: 11px/1.5 SFMono-Regular, Consolas, monospace;
 }
 
 .pas-custom-block small {
@@ -468,7 +469,6 @@
   display: block;
   max-width: 100%;
   margin: 0 auto;
-  image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
 
@@ -503,7 +503,6 @@
 }
 
 .pas-shortcut {
-  font-family: 'SFMono-Regular', Consolas, monospace;
   font-size: 12px;
   font-weight: 700;
 }
@@ -558,14 +557,13 @@
 }
 
 .pas-stats-list strong {
-  font-family: 'SFMono-Regular', Consolas, monospace;
   font-size: 14px;
 }
 
 .pas-download-button {
   width: 100%;
   background: var(--pas-violet);
-  color: #fff;
+  color: var(--pas-paper);
 }
 
 .pas-download-button:hover:not(:disabled) {
@@ -585,7 +583,7 @@
   width: 1px;
   height: 1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   white-space: nowrap;
 }
 
