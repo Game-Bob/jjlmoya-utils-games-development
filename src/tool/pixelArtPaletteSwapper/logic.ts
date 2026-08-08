@@ -116,6 +116,29 @@ export function colorDistanceSquared(first: RGBColor, second: RGBColor): number 
   return red * red + green * green + blue * blue;
 }
 
+function processPixel(
+  data: Uint8ClampedArray,
+  index: number,
+  palette: PaletteColor[],
+  preserveTransparency: boolean,
+  sourceColors: Set<string>,
+  mappedColors: Set<string>,
+): void {
+  const alpha = data[index + 3];
+  if (alpha === 0 && preserveTransparency) return;
+
+  const sourceColor = { r: data[index], g: data[index + 1], b: data[index + 2] };
+  const mapped = findNearestColor(sourceColor, palette);
+  if (!mapped) return;
+
+  sourceColors.add(rgbToHex(sourceColor));
+  mappedColors.add(mapped.hex);
+  data[index] = mapped.r;
+  data[index + 1] = mapped.g;
+  data[index + 2] = mapped.b;
+  if (!preserveTransparency) data[index + 3] = 255;
+}
+
 export function quantizeImageData(
   source: Uint8ClampedArray,
   palette: PaletteColor[],
@@ -130,26 +153,7 @@ export function quantizeImageData(
   }
 
   for (let index = 0; index < data.length; index += 4) {
-    const alpha = data[index + 3];
-    if (alpha === 0 && preserveTransparency) {
-      continue;
-    }
-
-    const sourceColor = { r: data[index], g: data[index + 1], b: data[index + 2] };
-    const sourceHex = rgbToHex(sourceColor);
-    const mapped = findNearestColor(sourceColor, palette);
-    if (!mapped) {
-      continue;
-    }
-
-    sourceColors.add(sourceHex);
-    mappedColors.add(mapped.hex);
-    data[index] = mapped.r;
-    data[index + 1] = mapped.g;
-    data[index + 2] = mapped.b;
-    if (!preserveTransparency) {
-      data[index + 3] = 255;
-    }
+    processPixel(data, index, palette, preserveTransparency, sourceColors, mappedColors);
   }
 
   return { data, sourceColors: sourceColors.size, mappedColors: mappedColors.size };

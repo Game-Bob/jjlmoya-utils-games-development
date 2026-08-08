@@ -14,16 +14,47 @@ interface SourceImageState {
 
 let initialized = false;
 
+function renderSwatches(root: HTMLElement): void {
+  root.querySelectorAll<HTMLElement>('[data-swatch-palette]').forEach((strip) => {
+    const palette = PRESET_PALETTES[strip.dataset.swatchPalette ?? ''] ?? [];
+    strip.replaceChildren(...palette.map((color) => {
+      const swatch = document.createElement('span');
+      swatch.style.backgroundColor = color.hex;
+      return swatch;
+    }));
+  });
+}
+
+function bindDragAndDrop(
+  root: HTMLElement,
+  dropZone: HTMLElement,
+  strings: Record<string, string>,
+  loadFile: (file: File) => void,
+): void {
+  ['dragenter', 'dragover'].forEach((eventName) => dropZone.addEventListener(eventName, (event) => {
+    event.preventDefault();
+    dropZone.classList.add('is-dragging');
+    const dropTitle = root.querySelector<HTMLElement>('#pas-drop-title');
+    if (dropTitle) dropTitle.textContent = strings.dropActive;
+  }));
+  ['dragleave', 'drop'].forEach((eventName) => dropZone.addEventListener(eventName, (event) => {
+    event.preventDefault();
+    dropZone.classList.remove('is-dragging');
+    const dropTitle = root.querySelector<HTMLElement>('#pas-drop-title');
+    if (dropTitle) dropTitle.textContent = strings.uploadTitle;
+  }));
+  dropZone.addEventListener('drop', (event) => {
+    const file = (event as DragEvent).dataTransfer?.files[0];
+    if (file) loadFile(file);
+  });
+}
+
 export function initPixelArtPaletteSwapper(): void {
-  if (initialized) {
-    return;
-  }
+  if (initialized) return;
   initialized = true;
 
   const root = document.querySelector<HTMLElement>('[data-tool="pixel-art-palette-swapper"]');
-  if (!root) {
-    return;
-  }
+  if (!root) return;
 
   const fileInput = root.querySelector<HTMLInputElement>('#pas-file-input');
   const chooseButton = root.querySelector<HTMLButtonElement>('#pas-choose-image');
@@ -79,21 +110,9 @@ export function initPixelArtPaletteSwapper(): void {
     if (inspectorPaletteCount) inspectorPaletteCount.textContent = String(activePalette.length);
   };
 
-  const renderSwatches = (): void => {
-    root.querySelectorAll<HTMLElement>('[data-swatch-palette]').forEach((strip) => {
-      const palette = PRESET_PALETTES[strip.dataset.swatchPalette ?? ''] ?? [];
-      strip.replaceChildren(...palette.map((color) => {
-        const swatch = document.createElement('span');
-        swatch.style.backgroundColor = color.hex;
-        return swatch;
-      }));
-    });
-  };
-
   const fitCanvas = (canvas: HTMLCanvasElement, width: number, height: number): void => {
     const zoom = Number(zoomInput.value);
-    const maxWidth = 620;
-    const displayWidth = Math.min(maxWidth, Math.max(32, width * zoom));
+    const displayWidth = Math.min(620, Math.max(32, width * zoom));
     const displayHeight = Math.max(32, Math.round(displayWidth * height / width));
     canvas.style.width = `${displayWidth}px`;
     canvas.style.height = `${displayHeight}px`;
@@ -119,9 +138,7 @@ export function initPixelArtPaletteSwapper(): void {
     context.imageSmoothingEnabled = false;
     context.putImageData(new ImageData(new Uint8ClampedArray(resultData), sourceImage.width, sourceImage.height), 0, 0);
     fitCanvas(resultCanvas, sourceImage.width, sourceImage.height);
-    if (inspectorPreview) {
-      inspectorPreview.style.backgroundImage = `url(${resultCanvas.toDataURL('image/png')})`;
-    }
+    if (inspectorPreview) inspectorPreview.style.backgroundImage = `url(${resultCanvas.toDataURL('image/png')})`;
   };
 
   const renderResult = (): void => {
@@ -144,7 +161,6 @@ export function initPixelArtPaletteSwapper(): void {
       setStatus(strings.invalidImage, 'error');
       return;
     }
-
     const objectUrl = URL.createObjectURL(file);
     const image = new Image();
     image.onload = () => {
@@ -159,9 +175,8 @@ export function initPixelArtPaletteSwapper(): void {
       }
       context.imageSmoothingEnabled = false;
       context.drawImage(image, 0, 0);
-      const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
-      sourceImage = { name: file.name, width: canvas.width, height: canvas.height, data: pixels.data };
-      fileName.textContent = file.name;
+      sourceImage = { name: file.name, width: canvas.width, height: canvas.height, data: context.getImageData(0, 0, canvas.width, canvas.height).data };
+      if (fileName) fileName.textContent = file.name;
       root.querySelector<HTMLElement>('.pas-command-bar')?.classList.add('has-image');
       chooseButton.textContent = root.dataset.replaceImage ?? 'Replace image';
       emptyState.hidden = true;
@@ -203,22 +218,8 @@ export function initPixelArtPaletteSwapper(): void {
     const file = fileInput.files?.[0];
     if (file) loadFile(file);
   });
-  ['dragenter', 'dragover'].forEach((eventName) => dropZone.addEventListener(eventName, (event) => {
-    event.preventDefault();
-    dropZone.classList.add('is-dragging');
-    const dropTitle = root.querySelector<HTMLElement>('#pas-drop-title');
-    if (dropTitle) dropTitle.textContent = strings.dropActive;
-  }));
-  ['dragleave', 'drop'].forEach((eventName) => dropZone.addEventListener(eventName, (event) => {
-    event.preventDefault();
-    dropZone.classList.remove('is-dragging');
-    const dropTitle = root.querySelector<HTMLElement>('#pas-drop-title');
-    if (dropTitle) dropTitle.textContent = strings.uploadTitle;
-  }));
-  dropZone.addEventListener('drop', (event) => {
-    const file = (event as DragEvent).dataTransfer?.files[0];
-    if (file) loadFile(file);
-  });
+
+  bindDragAndDrop(root, dropZone, strings, loadFile);
 
   root.querySelectorAll<HTMLButtonElement>('[data-palette-id]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -228,8 +229,7 @@ export function initPixelArtPaletteSwapper(): void {
     });
   });
   root.querySelector<HTMLButtonElement>('#pas-apply-custom')?.addEventListener('click', () => {
-    const palette = parsePaletteInput(customPaletteInput.value);
-    applyPalette(palette, 'custom');
+    applyPalette(parsePaletteInput(customPaletteInput.value), 'custom');
   });
   root.querySelector<HTMLButtonElement>('#pas-reset-custom')?.addEventListener('click', () => {
     customPaletteInput.value = PRESET_PALETTES.gameBoy.map((color) => color.hex).join(', ');
@@ -262,6 +262,6 @@ export function initPixelArtPaletteSwapper(): void {
     }, 'image/png');
   });
 
-  renderSwatches();
+  renderSwatches(root);
   updatePaletteCounts();
 }
