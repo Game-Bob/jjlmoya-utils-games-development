@@ -8,13 +8,21 @@ export interface PaletteColor extends RGBColor {
   hex: string;
 }
 
+interface PresetPalettes {
+  gameBoy: PaletteColor[];
+  nes: PaletteColor[];
+  pico8: PaletteColor[];
+  commodore64: PaletteColor[];
+  dawnBringer16: PaletteColor[];
+}
+
 export interface QuantizationResult {
   data: Uint8ClampedArray;
   sourceColors: number;
   mappedColors: number;
 }
 
-export const PRESET_PALETTES: Record<string, PaletteColor[]> = {
+export const PRESET_PALETTES: PresetPalettes = {
   gameBoy: ['#0f380f', '#306230', '#8bac0f', '#9bbc0f'].map(createPresetPaletteColor),
   nes: [
     '#000000', '#fcfcfc', '#f8f8f8', '#b8b8b8', '#7c7c7c', '#a80000', '#e45c10', '#f8b800',
@@ -94,11 +102,17 @@ export function findNearestColor(source: RGBColor, palette: PaletteColor[]): Pal
     return null;
   }
 
-  let nearest = palette[0];
+  const nearestColor = palette[0];
+  if (!nearestColor) {
+    return null;
+  }
+
+  let nearest = nearestColor;
   let distance = colorDistanceSquared(source, nearest);
 
   for (let index = 1; index < palette.length; index += 1) {
     const candidate = palette[index];
+    if (!candidate) continue;
     const candidateDistance = colorDistanceSquared(source, candidate);
     if (candidateDistance < distance) {
       nearest = candidate;
@@ -125,16 +139,32 @@ interface QuantizePixelContext {
   mappedColors: Set<string>;
 }
 
+interface PixelData {
+  alpha: number;
+  color: RGBColor;
+}
+
+function readPixel(data: Uint8ClampedArray, index: number): PixelData | null {
+  const alpha = data[index + 3];
+  const red = data[index];
+  const green = data[index + 1];
+  const blue = data[index + 2];
+  if (alpha === undefined) return null;
+  if (red === undefined) return null;
+  if (green === undefined) return null;
+  if (blue === undefined) return null;
+  return { alpha, color: { r: red, g: green, b: blue } };
+}
+
 function processPixel(ctx: QuantizePixelContext): void {
   const { data, index, palette, preserveTransparency, sourceColors, mappedColors } = ctx;
-  const alpha = data[index + 3];
-  if (alpha === 0 && preserveTransparency) return;
+  const pixel = readPixel(data, index);
+  if (!pixel || (pixel.alpha === 0 && preserveTransparency)) return;
 
-  const sourceColor = { r: data[index], g: data[index + 1], b: data[index + 2] };
-  const mapped = findNearestColor(sourceColor, palette);
+  const mapped = findNearestColor(pixel.color, palette);
   if (!mapped) return;
 
-  sourceColors.add(rgbToHex(sourceColor));
+  sourceColors.add(rgbToHex(pixel.color));
   mappedColors.add(mapped.hex);
   data[index] = mapped.r;
   data[index + 1] = mapped.g;

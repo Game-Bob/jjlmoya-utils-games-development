@@ -61,7 +61,10 @@ function queryAppElements(root: HTMLElement): AppEls | null {
 
 function renderSwatches(root: HTMLElement): void {
   root.querySelectorAll<HTMLElement>('[data-swatch-palette]').forEach((strip) => {
-    const palette = PRESET_PALETTES[strip.dataset.swatchPalette ?? ''] ?? [];
+    const id = strip.dataset.swatchPalette;
+    const palette = id && id in PRESET_PALETTES
+      ? PRESET_PALETTES[id as keyof typeof PRESET_PALETTES]
+      : [];
     strip.replaceChildren(...palette.map((c) => {
       const s = document.createElement('span');
       s.style.backgroundColor = c.hex;
@@ -151,8 +154,10 @@ function setupFileHandler(els: AppEls, onLoaded: (src: SourceImageState) => void
 function setupPresetButtons(els: AppEls, onApply: (p: PaletteColor[], id: string) => void): void {
   els.root.querySelectorAll<HTMLButtonElement>('[data-palette-id]').forEach((b) => b.addEventListener('click', () => {
     const id = b.dataset.paletteId ?? 'gameBoy';
-    els.customPaletteInput.value = PRESET_PALETTES[id].map((c) => c.hex).join(', ');
-    onApply(PRESET_PALETTES[id], id);
+    const palette = PRESET_PALETTES[id as keyof typeof PRESET_PALETTES];
+    if (!palette) return;
+    els.customPaletteInput.value = palette.map((c) => c.hex).join(', ');
+    onApply(palette, id);
   }));
 }
 
