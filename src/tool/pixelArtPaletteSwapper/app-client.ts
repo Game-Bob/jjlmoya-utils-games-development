@@ -172,6 +172,19 @@ function triggerDownload(canvas: HTMLCanvasElement, name: string, id: string): v
   }, 'image/png');
 }
 
+function runQuantizeRender(els: AppEls, src: SourceImageState, pal: PaletteColor[]): Uint8ClampedArray {
+  setStatus(els.root, els.root.dataset.processing ?? 'Mapping pixels', 'working');
+  const alpha = getEl<HTMLInputElement>(els.root, '#pas-preserve-alpha')?.checked ?? true;
+  const q = quantizeImageData(src.data, pal, alpha);
+  drawCanvas({ canvas: els.resultCanvas, width: src.width, height: src.height, data: q.data, zoom: Number(els.zoomInput.value) });
+  const ip = getEl<HTMLElement>(els.root, '#pas-inspector-preview');
+  if (ip) ip.style.backgroundImage = `url(${els.resultCanvas.toDataURL('image/png')})`;
+  updateSummaryTexts(els.root, q, src.width, src.height);
+  setStatus(els.root, els.root.dataset.ready ?? 'Ready', 'ready');
+  els.downloadButton.disabled = false;
+  return q.data;
+}
+
 function setupCoreAppLogic(els: AppEls): void {
   let activePalette = PRESET_PALETTES.gameBoy;
   let sourceImage: SourceImageState | null = null;
@@ -179,17 +192,7 @@ function setupCoreAppLogic(els: AppEls): void {
   let activePaletteId = 'gameBoy';
 
   const renderResult = (): void => {
-    if (!sourceImage) return;
-    setStatus(els.root, els.root.dataset.processing ?? 'Mapping pixels', 'working');
-    const alpha = getEl<HTMLInputElement>(els.root, '#pas-preserve-alpha')?.checked ?? true;
-    const q = quantizeImageData(sourceImage.data, activePalette, alpha);
-    resultData = q.data;
-    drawCanvas({ canvas: els.resultCanvas, width: sourceImage.width, height: sourceImage.height, data: resultData, zoom: Number(els.zoomInput.value) });
-    const ip = getEl<HTMLElement>(els.root, '#pas-inspector-preview');
-    if (ip) ip.style.backgroundImage = `url(${els.resultCanvas.toDataURL('image/png')})`;
-    updateSummaryTexts(els.root, q, sourceImage.width, sourceImage.height);
-    setStatus(els.root, els.root.dataset.ready ?? 'Ready', 'ready');
-    els.downloadButton.disabled = false;
+    if (sourceImage) resultData = runQuantizeRender(els, sourceImage, activePalette);
   };
 
   const applyPalette = (palette: PaletteColor[], paletteId: string): void => {
@@ -197,7 +200,7 @@ function setupCoreAppLogic(els: AppEls): void {
     activePalette = palette;
     activePaletteId = paletteId;
     els.root.querySelectorAll<HTMLButtonElement>('[data-palette-id]').forEach((b) => b.classList.toggle('is-selected', b.dataset.paletteId === paletteId));
-    if (sourceImage) renderResult();
+    renderResult();
   };
 
   setupFileHandler(els, (src) => {
