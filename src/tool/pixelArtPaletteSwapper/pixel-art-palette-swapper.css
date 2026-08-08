@@ -8,6 +8,7 @@
   --pas-accent-dark: #9d2f29;
   --pas-lime: #b9d83d;
   --pas-violet: #6557c8;
+  --pas-white: #fff;
   --pas-shadow: 0 18px 40px rgba(40, 28, 35, 0.09);
 
   color: var(--pas-ink);
@@ -117,7 +118,7 @@
 
 .pas-button-primary {
   background: var(--pas-accent);
-  color: var(--pas-paper);
+  color: var(--pas-white);
 }
 
 .pas-button-primary:hover {
@@ -563,7 +564,7 @@
 .pas-download-button {
   width: 100%;
   background: var(--pas-violet);
-  color: var(--pas-paper);
+  color: var(--pas-white);
 }
 
 .pas-download-button:hover:not(:disabled) {
