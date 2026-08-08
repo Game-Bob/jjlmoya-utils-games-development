@@ -322,7 +322,7 @@
 
 .discount-tag {
   background: var(--bg-discount, #4c6b22);
-  color: var(--accent-discount, #ffffff);
+  color: var(--accent-discount, #fff);
   font-size: 1.1rem;
   font-weight: 800;
   padding: 0.35rem 0.6rem;
