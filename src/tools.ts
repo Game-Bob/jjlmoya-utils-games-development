@@ -6,6 +6,7 @@ import { SPRITE_SHEET_PACKER_TOOL } from './tool/spriteSheetPacker';
 import { AUDIO_LOOP_POINT_FINDER_TOOL } from './tool/audioLoopPointFinder';
 import { SAVE_FILE_EDITOR_TOOL } from './tool/saveFileEditor';
 import { LOCALIZATION_SANITIZER_TOOL } from './tool/localizationSanitizer';
+import { STEAM_BBCODE_TRANSLATOR_TOOL } from './tool/steamBbcodeTranslator';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   STEAM_CAPSULE_GENERATOR_TOOL,
@@ -14,4 +15,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   AUDIO_LOOP_POINT_FINDER_TOOL,
   SAVE_FILE_EDITOR_TOOL,
   LOCALIZATION_SANITIZER_TOOL,
+  STEAM_BBCODE_TRANSLATOR_TOOL,
 ];

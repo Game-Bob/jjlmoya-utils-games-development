@@ -1,0 +1,15 @@
+---
+import { SEORenderer } from '@jjlmoya/utils-shared';
+import { steamBbcodeTranslator } from './entry';
+import type { KnownLocale } from '../../types';
+
+interface Props {
+  locale?: KnownLocale;
+}
+
+const { locale = 'en' } = Astro.props;
+const loader = steamBbcodeTranslator.i18n[locale] ?? steamBbcodeTranslator.i18n.en;
+const content = loader ? await loader() : null;
+---
+
+{content && content.seo && content.seo.length > 0 && <SEORenderer content={{ locale, sections: content.seo }} />}

@@ -17,5 +17,6 @@ export type {
 
 export { ALL_ENTRIES, ALL_TOOLS } from './tools';
 export { STEAM_CAPSULE_GENERATOR_TOOL, steamCapsuleGenerator } from './tool/steamCapsuleGenerator';
+export { STEAM_BBCODE_TRANSLATOR_TOOL, steamBbcodeTranslator } from './tool/steamBbcodeTranslator';
 
 export type { ToolLocaleContent as GamesToolLocaleContent } from './types';

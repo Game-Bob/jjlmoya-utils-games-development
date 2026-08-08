@@ -10,6 +10,8 @@ export { saveFileEditor } from './tool/saveFileEditor/entry';
 export type { SaveFileEditorUI, SaveFileEditorLocaleContent } from './tool/saveFileEditor/entry';
 export { localizationSanitizer } from './tool/localizationSanitizer/entry';
 export type { LocalizationSanitizerUI, LocalizationSanitizerLocaleContent } from './tool/localizationSanitizer/entry';
+export { steamBbcodeTranslator } from './tool/steamBbcodeTranslator/entry';
+export type { SteamBbcodeTranslatorUI, SteamBbcodeTranslatorLocaleContent } from './tool/steamBbcodeTranslator/entry';
 export { gamesCategory } from './category';
 import { steamCapsuleGenerator } from './tool/steamCapsuleGenerator/entry';
 import { itchioGameTester } from './tool/itchioGameTester/entry';

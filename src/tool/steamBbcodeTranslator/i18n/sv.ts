@@ -1,0 +1,195 @@
+import type { ToolLocaleContent } from '../../../types';
+import type { SteamBbcodeTranslatorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
+
+export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
+  slug: 'steam-bbcode-omvandlare',
+  title: 'Steam BBCode, Markdown och HTML Omvandlare',
+  description: 'Konvertera mellan Steam BBCode, Markdown och HTML i båda riktningarna med automatisk syntaxdetektering och live-förhandsgranskning.',
+  ui: {
+    editorLabel: 'Klistra in din formaterade text',
+    editorHint: 'BBCode, Markdown eller HTML identifieras automatiskt medan du skriver.',
+    detectedLabel: 'Identifierad',
+    detectedEmpty: 'Väntar på text',
+    bbcode: 'Steam BBCode',
+    markdown: 'Markdown',
+    html: 'HTML',
+    clear: 'Rensa',
+    copy: 'Kopiera resultat',
+    copied: 'Kopierat till urklipp',
+    characters: 'Tecken',
+    blocks: 'Block',
+    privacyNote: 'Körs helt i din webbläsare. Inga uppladdningar.',
+    persistenceNote: 'Senaste utkastet sparat lokalt',
+    previewLabel: 'Förhandsgranskning',
+    previewEmpty: 'Din formaterade förhandsgranskning visas här.'
+  },
+  seo: [
+    {
+      type: 'title',
+      level: 2,
+      text: 'Varför butiksbeskrivningar behöver en omvandlare'
+    },
+    {
+      type: 'paragraph',
+      html: 'Steam-butikssidor använder BBCode. Presskit och dokumentation kräver ofta Markdown eller HTML. Detta verktyg konverterar automatiskt mellan de tre formaten.'
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Formateringsstöd'
+    },
+    {
+      type: 'paragraph',
+      html: 'Stödjer rubriker, fetstil, kursiv stil, länkar, listor, citat och spoilers.'
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { label: 'Indataformat', value: '3' },
+        { label: 'Utdata per klistra in', value: '2' },
+        { label: 'Listdjup', value: 'Nästlad' },
+        { label: 'Bearbetning', value: 'Endast webbläsare' }
+      ]
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Bevarade nästlade listor'
+    },
+    {
+      type: 'paragraph',
+      html: 'Ett trädträd upprätthåller underlistor i rätt strukturell position.'
+    },
+    {
+      type: 'table',
+      headers: ['Steam BBCode', 'Markdown', 'HTML'],
+      rows: [
+        ['[h1]Titel[/h1]', '# Titel', '&lt;h1&gt;Titel&lt;/h1&gt;'],
+        ['[b]Viktigt[/b]', '**Viktigt**', '&lt;strong&gt;Viktigt&lt;/strong&gt;'],
+        ['[i]Notering[/i]', '*Notering*', '&lt;em&gt;Notering&lt;/em&gt;'],
+        ['[url=https://example.com]Länk[/url]', '[Länk](https://example.com)', '&lt;a href="https://example.com"&gt;Länk&lt;/a&gt;'],
+        ['[list][*]Ett[*]Två[/list]', '- Ett\n- Två', '&lt;ul&gt;&lt;li&gt;Ett&lt;/li&gt;&lt;li&gt;Två&lt;/li&gt;&lt;/ul&gt;']
+      ]
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Skillnader mellan Markdown och HTML'
+    },
+    {
+      type: 'paragraph',
+      html: 'När Markdown saknar stöd för understrykning används inline HTML.'
+    },
+    {
+      type: 'tip',
+      title: 'Granskning före publicering',
+      html: 'Jämför förhandsgranskningen med ditt originaldokument innan du publicerar på Steam.'
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Integritet'
+    },
+    {
+      type: 'paragraph',
+      html: 'All bearbetning sker lokalt i din webbläsare utan att skicka data vidare.'
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Begränsningar'
+    },
+    {
+      type: 'proscons',
+      title: 'Att tänka på',
+      items: [
+        {
+          pro: 'Strukturerad listförädling.',
+          con: 'Anpassade taggar behöver manuell översyn.'
+        }
+      ]
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Ordlista'
+    },
+    {
+      type: 'glossary',
+      items: [
+        {
+          term: 'BBCode',
+          definition: 'Haki-baserad formatering som används på Steam.'
+        },
+        {
+          term: 'Markdown',
+          definition: 'Enkelt och läsbart textformat.'
+        },
+        {
+          term: 'HTML',
+          definition: 'Standardiserat märkspråk för webben.'
+        }
+      ]
+    }
+  ],
+  faqTitle: 'Vanliga frågor',
+  faq: [
+    {
+      question: 'Skickas min text till en server?',
+      answer: 'Nej. Konverteringen sker helt i din webbläsare.'
+    },
+    {
+      question: 'Stöds nästlade listor?',
+      answer: 'Ja. Liststrukturen analyseras innan konvertering.'
+    }
+  ],
+  howTo: [
+    {
+      name: 'Klistra in text',
+      text: 'Klistra in Steam BBCode, Markdown eller HTML.'
+    },
+    {
+      name: 'Automatisk detektering',
+      text: 'De övriga två formaten genereras direkt.'
+    }
+  ],
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Steam BBCode, Markdown och HTML Omvandlare',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'SEK' }
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Skickas min text till en server?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Nej. Konverteringen sker helt i din webbläsare.'
+          }
+        }
+      ]
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Hur man konverterar Steam BBCode, Markdown och HTML',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Klistra in text',
+          text: 'Klistra in Steam BBCode, Markdown eller HTML.'
+        }
+      ]
+    }
+  ],
+  bibliography: bibliographyEntries
+};

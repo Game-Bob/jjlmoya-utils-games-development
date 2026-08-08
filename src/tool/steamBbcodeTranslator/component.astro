@@ -1,0 +1,83 @@
+---
+import type { SteamBbcodeTranslatorUI } from './ui';
+import { sampleBbcode } from './logic';
+import './steam-bbcode-translator.css';
+
+interface Props {
+  ui: SteamBbcodeTranslatorUI;
+}
+
+const { ui: t } = Astro.props;
+---
+
+<div
+  class="bbcode-root"
+  id="steam-bbcode-translator"
+  data-detected-label={t.detectedLabel}
+  data-detected-empty={t.detectedEmpty}
+  data-bbcode={t.bbcode}
+  data-markdown={t.markdown}
+  data-html={t.html}
+  data-copy={t.copy}
+  data-copied={t.copied}
+  data-preview-empty={t.previewEmpty}
+  data-characters={t.characters}
+  data-blocks={t.blocks}
+>
+  <div class="bbcode-header">
+    <div class="bbcode-title-row">
+      <span class="bbcode-mark" aria-hidden="true">[ / ]</span>
+      <div>
+        <span class="bbcode-kicker">STEAM MARKUP TRANSLATOR</span>
+        <strong>{t.privacyNote}</strong>
+      </div>
+    </div>
+    <span class="bbcode-draft-note">{t.persistenceNote}</span>
+  </div>
+
+  <section class="bbcode-input-card">
+    <div class="bbcode-section-head">
+      <div>
+        <span class="bbcode-step">01</span>
+        <h2>{t.editorLabel}</h2>
+      </div>
+      <span class="bbcode-detected" id="bbcode-detected">{t.detectedEmpty}</span>
+    </div>
+    <label class="bbcode-sr-only" for="bbcode-source">{t.editorLabel}</label>
+    <textarea id="bbcode-source" spellcheck="false" aria-describedby="bbcode-editor-hint">{sampleBbcode}</textarea>
+    <div class="bbcode-input-footer">
+      <p id="bbcode-editor-hint">{t.editorHint}</p>
+      <div class="bbcode-input-meta">
+        <span><strong id="bbcode-character-count">0</strong> {t.characters}</span>
+        <span><strong id="bbcode-block-count">0</strong> {t.blocks}</span>
+        <button type="button" class="bbcode-clear-button" id="bbcode-clear">{t.clear}</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="bbcode-output-section" aria-live="polite">
+    <div class="bbcode-output-heading">
+      <span class="bbcode-step">02</span>
+      <h2>{t.detectedLabel}</h2>
+    </div>
+    <div class="bbcode-output-grid" id="bbcode-output-grid"></div>
+  </section>
+
+  <section class="bbcode-preview-card">
+    <div class="bbcode-output-heading">
+      <span class="bbcode-step">03</span>
+      <h2>{t.previewLabel}</h2>
+    </div>
+    <div id="bbcode-preview" class="bbcode-preview-surface"><p>{t.previewEmpty}</p></div>
+  </section>
+</div>
+
+<script>
+  import { initSteamBbcodeTranslatorApp } from './app-client';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSteamBbcodeTranslatorApp);
+  } else {
+    initSteamBbcodeTranslatorApp();
+  }
+</script>

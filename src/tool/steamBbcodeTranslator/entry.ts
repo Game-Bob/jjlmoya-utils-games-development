@@ -1,13 +1,13 @@
-import type { GamesCategoryEntry } from '../types';
-import { steamCapsuleGenerator } from '../tool/steamCapsuleGenerator/entry';
-import { spriteSheetPacker } from '../tool/spriteSheetPacker/entry';
-import { audioLoopPointFinder } from '../tool/audioLoopPointFinder/entry';
-import { saveFileEditor } from '../tool/saveFileEditor/entry';
-import { steamBbcodeTranslator } from '../tool/steamBbcodeTranslator/entry';
+import type { GamesToolEntry, ToolLocaleContent } from '../../types';
+import type { SteamBbcodeTranslatorUI } from './ui';
 
-export const gamesCategory: GamesCategoryEntry = {
-  icon: 'mdi:gamepad-variant',
-  tools: [steamCapsuleGenerator, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, steamBbcodeTranslator],
+export type { SteamBbcodeTranslatorUI };
+
+export type SteamBbcodeTranslatorLocaleContent = ToolLocaleContent<SteamBbcodeTranslatorUI>;
+
+export const steamBbcodeTranslator: GamesToolEntry<SteamBbcodeTranslatorUI> = {
+  id: 'steam-bbcode-translator',
+  icons: { bg: 'mdi:gamepad-variant', fg: 'mdi:code-brackets' },
   i18n: {
     de: () => import('./i18n/de').then((m) => m.content),
     en: () => import('./i18n/en').then((m) => m.content),
