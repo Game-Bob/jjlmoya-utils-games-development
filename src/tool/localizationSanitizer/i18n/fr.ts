@@ -1,0 +1,176 @@
+import type { ToolLocaleContent } from '../../../types';
+import type { LocalizationSanitizerUI } from '../ui';
+
+export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
+  slug: 'nettoyeur-csv-localisation-godot-unity',
+  title: 'Nettoyeur CSV et JSON de Localisation pour Godot et Unity',
+  description: 'Inspectez vos fichiers de traduction CSV ou JSON pour détecter les cellules vides, les clés en double et les lignes corrompues, puis exportez une copie propre.',
+  ui: {
+    csvTab: 'Fichier CSV',
+    jsonTab: 'Fichier JSON',
+    dropTitle: 'Déposez un fichier de traduction ici',
+    dropSubtitle: 'Inspectez la structure dans votre navigateur en gardant votre fichier local.',
+    browseButton: 'Parcourir les fichiers',
+    sampleButton: 'Charger un exemple',
+    clearButton: 'Effacer',
+    inputLabel: 'Fichier de traduction',
+    formatLabel: 'Format',
+    healthLabel: 'État du fichier',
+    readyStatus: 'Prêt pour l import',
+    reviewStatus: 'Exige une vérification',
+    emptyCellsLabel: 'Cellules vides',
+    duplicateKeysLabel: 'Clés en double',
+    malformedRowsLabel: 'Lignes corrompues',
+    cleanRowsLabel: 'Lignes valides',
+    issueListTitle: 'Résultats',
+    noIssues: 'Aucun problème détecté lors de cette analyse.',
+    previewTitle: 'Aperçu de la traduction',
+    previewSubtitle: 'Les premières lignes montrent la structure normalisée qui sera exportée.',
+    exportTitle: 'Exporter le fichier propre',
+    exportSubtitle: 'Les doublons sont supprimés, les colonnes manquantes complétées et le CSV échappé.',
+    downloadButton: 'Télécharger le fichier propre',
+    copyButton: 'Copier le résultat',
+    copiedMessage: 'Résultat nettoyé copié dans le presse papiers.',
+    emptyIssue: 'Cellule de traduction vide',
+    duplicateIssue: 'Clé en double supprimée',
+    malformedIssue: 'Erreur de colonne ou de guillemet',
+    parseIssue: 'Impossible d analyser le fichier.',
+    rowLabel: 'Ligne',
+    columnLabel: 'Colonne',
+    keyLabel: 'Clé',
+    sampleFileName: 'exemple-localisation.csv',
+    privacyNote: 'Traitement local dans le navigateur',
+    waitingTitle: 'En attente d un fichier',
+    waitingSubtitle: 'Déposez un fichier CSV ou JSON pour lancer l inspection.',
+    fileTypeNote: 'CSV UTF8 ou JSON structuré',
+  },
+  seo: [
+    { type: 'title', level: 2, text: 'Pourquoi les fichiers de localisation échouent lors de l import' },
+    {
+      type: 'paragraph',
+      html: 'Les tableaux de traduction sont faciles à éditer mais vulnérables aux erreurs de formatage. Une virgule non échappée ou une clé dupliquée peut décaler les colonnes de langue.',
+    },
+    {
+      type: 'paragraph',
+      html: 'L importateur CSV de Godot et la formule Unity Localization attendent une structure stricte. Cet outil valide vos fichiers avant de les importer.',
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { value: 'CSV', label: 'Vérification des virgules' },
+        { value: 'JSON', label: 'Support tableaux et objets' },
+        { value: '0 envoi', label: 'Traitement 100% local' },
+        { value: '1 clic', label: 'Export propre' },
+      ],
+    },
+    { type: 'title', level: 2, text: 'Ce que vérifie l outil' },
+    {
+      type: 'comparative',
+      columns: 2,
+      items: [
+        {
+          title: 'Détecté avant import',
+          description: 'Erreurs difficiles à repérer dans les grands fichiers',
+          points: ['Cellules vides', 'Clés dupliquées', 'Lignes avec colonnes manquantes ou en trop', 'Syntaxe de guillemets invalide'],
+        },
+        {
+          title: 'Normalisé pour l export',
+          description: 'Réparations automatiques sécurisées',
+          points: ['Colonnes manquantes complétées', 'Champs supplémentaires fusionnés', 'Première occurrence conservée', 'Fichier d origine reste intact'],
+        },
+      ],
+    },
+    { type: 'title', level: 2, text: 'Comment vérifier le fichier nettoyé' },
+    {
+      type: 'paragraph',
+      html: 'Le nettoyage structurel ne remplace pas la relecture linguistique. Utilisez le rapport pour compléter les traductions manquantes.',
+    },
+    {
+      type: 'table',
+      headers: ['Constat', 'Signification', 'Action requise'],
+      rows: [
+        ['Cellule vide', 'Une colonne de langue est vide', 'Traduisez ou confirmez l absence de texte'],
+        ['Clé en double', 'Clé utilisée plusieurs fois', 'Comparez les lignes et gardez la première'],
+        ['Ligne corrompue', 'Nombre de colonnes non conforme', 'Vérifiez la ligne fusionnée'],
+        ['Erreur d analyse', 'JSON invalide', 'Corrigez la syntaxe avant d importer'],
+      ],
+    },
+    { type: 'title', level: 2, text: 'Règles CSV essentielles' },
+    {
+      type: 'paragraph',
+      html: 'Les champs contenant des virgules ou guillemets doivent être entourés de guillemets doubles.',
+    },
+    {
+      type: 'tip',
+      title: 'Conservez l original',
+      html: 'Gardez toujours le fichier original du traducteur à titre de comparaison.',
+    },
+    {
+      type: 'glossary',
+      items: [
+        { term: 'Clé de traduction', definition: 'Identifiant unique utilisé par le moteur de jeu.' },
+        { term: 'Champ CSV', definition: 'Valeur individuelle entre deux séparateurs.' },
+        { term: 'Échappement', definition: 'Encadrement par des guillemets pour préserver la ponctuation.' },
+        { term: 'Locale', definition: 'Code langue et région comme fr, en ou ja.' },
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'Les fichiers sont-ils envoyés sur un serveur ?',
+      answer: 'Non, toutes les opérations sont effectuées localement dans le navigateur.',
+    },
+    {
+      question: 'Que se passe-t-il si une ligne CSV contient des virgules supplémentaires ?',
+      answer: 'La ligne est signalée et les champs superflus sont fusionnés dans la dernière colonne.',
+    },
+    {
+      question: 'Comment les doublons sont-ils traités ?',
+      answer: 'La première occurrence est conservée et les suivantes sont ignorées.',
+    },
+    {
+      question: 'L outil évalue-t-il la qualité linguistique ?',
+      answer: 'Non, il contrôle uniquement la conformité de la structure.',
+    },
+  ],
+  howTo: [
+    { name: 'Choisir le format', text: 'Sélectionnez CSV ou JSON.' },
+    { name: 'Analyser les anomalies', text: 'Chargez le fichier et consultez la liste des problèmes.' },
+    { name: 'Exporter et tester', text: 'Téléchargez la version propre et importez-la dans votre moteur.' },
+  ],
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Nettoyeur CSV et JSON de Localisation pour Godot et Unity',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [{
+        '@type': 'Question',
+        name: 'Les fichiers sont-ils envoyés sur un serveur ?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Non, toutes les opérations sont effectuées localement dans le navigateur.' },
+      }],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Comment nettoyer un fichier de localisation',
+      step: [
+        { '@type': 'HowToStep', name: 'Choisir le format', text: 'Sélectionnez CSV ou JSON.' },
+        { '@type': 'HowToStep', name: 'Analyser les anomalies', text: 'Chargez le fichier et consultez la liste des problèmes.' },
+        { '@type': 'HowToStep', name: 'Exporter et tester', text: 'Téléchargez la version propre et importez-la dans votre moteur.' },
+      ],
+    },
+  ],
+  bibliography: [
+    { name: 'Documentation ResourceImporterCSVTranslation Godot', url: 'https://docs.godotengine.org/en/stable/classes/class_resourceimportercsvtranslation.html' },
+    { name: 'Documentation Unity Localization Import CSV', url: 'https://docs.unity3d.com/Packages/com.unity.localization@1.5/manual/CSV.html' },
+    { name: 'Spécification RFC 4180 CSV', url: 'https://datatracker.ietf.org/doc/html/rfc4180' },
+  ],
+};

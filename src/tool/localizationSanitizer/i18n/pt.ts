@@ -1,0 +1,176 @@
+import type { ToolLocaleContent } from '../../../types';
+import type { LocalizationSanitizerUI } from '../ui';
+
+export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
+  slug: 'depurador-csv-localizacao-godot-unity',
+  title: 'Depurador de Arquivos CSV e JSON de Localização para Godot e Unity',
+  description: 'Inspecione arquivos CSV ou JSON de tradução em busca de células vazias, chaves duplicadas e linhas corrompidas, e exporte uma cópia limpa pronta para importação.',
+  ui: {
+    csvTab: 'Arquivo CSV',
+    jsonTab: 'Arquivo JSON',
+    dropTitle: 'Arraste um arquivo de tradução aqui',
+    dropSubtitle: 'Inspecione a estrutura no navegador mantendo o arquivo fonte no seu dispositivo.',
+    browseButton: 'Procurar arquivos',
+    sampleButton: 'Carregar exemplo',
+    clearButton: 'Limpar',
+    inputLabel: 'Entrada de arquivo de tradução',
+    formatLabel: 'Formato',
+    healthLabel: 'Estado do arquivo',
+    readyStatus: 'Pronto para importar',
+    reviewStatus: 'Requer revisão',
+    emptyCellsLabel: 'Células vazias',
+    duplicateKeysLabel: 'Chaves duplicadas',
+    malformedRowsLabel: 'Linhas corrompidas',
+    cleanRowsLabel: 'Linhas limpas',
+    issueListTitle: 'Resultados',
+    noIssues: 'Nenhum problema encontrado nesta análise.',
+    previewTitle: 'Pré-visualização da tradução',
+    previewSubtitle: 'As primeiras linhas mostram a estrutura normalizada que será exportada.',
+    exportTitle: 'Exportar arquivo limpo',
+    exportSubtitle: 'Duplicados são removidos, colunas ausentes são preenchidas e os valores CSV formatados.',
+    downloadButton: 'Baixar arquivo limpo',
+    copyButton: 'Copiar resultado',
+    copiedMessage: 'Resultado limpo copiado para a área de transferência.',
+    emptyIssue: 'Célula de tradução vazia',
+    duplicateIssue: 'Chave duplicada removida',
+    malformedIssue: 'Erro de colunas ou aspas',
+    parseIssue: 'Não foi possível ler o arquivo.',
+    rowLabel: 'Linha',
+    columnLabel: 'Coluna',
+    keyLabel: 'Chave',
+    sampleFileName: 'exemplo-localizacao.csv',
+    privacyNote: 'Processamento local no navegador',
+    waitingTitle: 'Aguardando arquivo',
+    waitingSubtitle: 'Arraste um arquivo CSV ou JSON para iniciar a inspeção.',
+    fileTypeNote: 'CSV UTF-8 ou JSON estruturado',
+  },
+  seo: [
+    { type: 'title', level: 2, text: 'Por que arquivos de localização falham na importação' },
+    {
+      type: 'paragraph',
+      html: 'Tabelas de tradução são simples de editar, mas vulneráveis a erros de formatação. Uma vírgula sem escape ou aspas ausentes podem deslocar colunas de idioma.',
+    },
+    {
+      type: 'paragraph',
+      html: 'O importador CSV do Godot e o pacote Unity Localization exigem uma estrutura rigorosa. Esta ferramenta verifica seus arquivos antes da importação.',
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { value: 'CSV', label: 'Verificação de vírgulas' },
+        { value: 'JSON', label: 'Suporte a arrays e mapas' },
+        { value: '0 uploads', label: 'Totalmente local' },
+        { value: '1 clique', label: 'Exportação limpa' },
+      ],
+    },
+    { type: 'title', level: 2, text: 'O que o depurador verifica' },
+    {
+      type: 'comparative',
+      columns: 2,
+      items: [
+        {
+          title: 'Detectado antes da importação',
+          description: 'Problemas difíceis de notar em arquivos grandes',
+          points: ['Células vazias de tradução', 'Chaves duplicadas', 'Linhas com colunas ausentes ou em excesso', 'Sintaxe de aspas inválida'],
+        },
+        {
+          title: 'Normalizado na exportação',
+          description: 'Correções automáticas seguras',
+          points: ['Preenchimento de colunas ausentes', 'Fusão de campos extras na última coluna', 'Manutenção da primeira ocorrência da chave', 'Arquivo original permanece intacto'],
+        },
+      ],
+    },
+    { type: 'title', level: 2, text: 'Como revisar o arquivo depurado' },
+    {
+      type: 'paragraph',
+      html: 'A limpeza estrutural não substitui a revisão linguística. Use a lista de resultados para preencher traduções faltantes.',
+    },
+    {
+      type: 'table',
+      headers: ['Resultado', 'Significado', 'Ação recomendada'],
+      rows: [
+        ['Célula vazia', 'Coluna de idioma sem texto', 'Traduzir ou confirmar ausência intencional'],
+        ['Chave duplicada', 'Várias linhas usam a mesma chave', 'Comparar linhas e manter a primeira'],
+        ['Linha corrompida', 'Contagem de colunas divergente', 'Verificar linha mesclada'],
+        ['Erro de leitura', 'JSON inválido', 'Corrigir sintaxe antes de importar'],
+      ],
+    },
+    { type: 'title', level: 2, text: 'Regras CSV para jogos' },
+    {
+      type: 'paragraph',
+      html: 'Campos com vírgulas ou quebras de linha devem estar entre aspas duplas.',
+    },
+    {
+      type: 'tip',
+      title: 'Guarde o original',
+      html: 'Mantenha sempre o arquivo original enviado pelo tradutor como backup.',
+    },
+    {
+      type: 'glossary',
+      items: [
+        { term: 'Chave de tradução', definition: 'Identificador único usado pelo código do jogo.' },
+        { term: 'Campo CSV', definition: 'Valor individual entre delimitadores.' },
+        { term: 'Escapamento', definition: 'Uso de aspas para preservar pontuação.' },
+        { term: 'Locale', definition: 'Código de idioma e região como pt, en ou ja.' },
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'Os arquivos são enviados para um servidor?',
+      answer: 'Não, todo o processamento é feito localmente no navegador.',
+    },
+    {
+      question: 'O que acontece se uma linha CSV tiver vírgulas extras?',
+      answer: 'A linha é marcada como corrompida e os campos extras são unidos na última coluna.',
+    },
+    {
+      question: 'Como as chaves duplicadas são limpas?',
+      answer: 'A primeira ocorrência é mantida e as seguintes são ignoradas.',
+    },
+    {
+      question: 'A ferramenta avalia a qualidade da tradução?',
+      answer: 'Não, ela verifica apenas a estrutura do arquivo e se há células vazias.',
+    },
+  ],
+  howTo: [
+    { name: 'Escolher o formato', text: 'Selecione CSV ou JSON.' },
+    { name: 'Inspecionar resultados', text: 'Arraste o arquivo e confira a lista de erros.' },
+    { name: 'Exportar e testar', text: 'Baixe o arquivo limpo e importe-o no seu motor.' },
+  ],
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Depurador de Arquivos CSV e JSON de Localização para Godot e Unity',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [{
+        '@type': 'Question',
+        name: 'Os arquivos são enviados para um servidor?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Não, todo o processamento é feito localmente no navegador.' },
+      }],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Como depurar um arquivo de localização',
+      step: [
+        { '@type': 'HowToStep', name: 'Escolher o formato', text: 'Selecione CSV ou JSON.' },
+        { '@type': 'HowToStep', name: 'Inspecionar resultados', text: 'Arraste o arquivo e confira a lista de erros.' },
+        { '@type': 'HowToStep', name: 'Exportar e testar', text: 'Baixe o arquivo limpo e importe-o no seu motor.' },
+      ],
+    },
+  ],
+  bibliography: [
+    { name: 'Documentação ResourceImporterCSVTranslation Godot', url: 'https://docs.godotengine.org/en/stable/classes/class_resourceimportercsvtranslation.html' },
+    { name: 'Documentação Unity Localization CSV Import', url: 'https://docs.unity3d.com/Packages/com.unity.localization@1.5/manual/CSV.html' },
+    { name: 'Especificação RFC 4180 CSV', url: 'https://datatracker.ietf.org/doc/html/rfc4180' },
+  ],
+};

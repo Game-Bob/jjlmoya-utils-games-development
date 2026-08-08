@@ -1,0 +1,176 @@
+import type { ToolLocaleContent } from '../../../types';
+import type { LocalizationSanitizerUI } from '../ui';
+
+export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
+  slug: 'sanering-lokaliseringsfiler-godot-unity',
+  title: 'Sanering av CSV och JSON lokaliseringsfiler för Godot och Unity',
+  description: 'Inspektera CSV och JSON översättningsfiler för tomma celler, duplicerade nycklar och felaktiga rader samt exportera en ren kopia för spelmotorn.',
+  ui: {
+    csvTab: 'CSV fil',
+    jsonTab: 'JSON fil',
+    dropTitle: 'Släpp en översättningsfil här',
+    dropSubtitle: 'Inspektera strukturen i webbläsaren och behåll källfilen på din enhet.',
+    browseButton: 'Bläddra filer',
+    sampleButton: 'Ladda exempel',
+    clearButton: 'Rensa',
+    inputLabel: 'Inmatningsfil för översättning',
+    formatLabel: 'Format',
+    healthLabel: 'Filstatus',
+    readyStatus: 'Redo för import',
+    reviewStatus: 'Kräver granskning',
+    emptyCellsLabel: 'Tomma celler',
+    duplicateKeysLabel: 'Duplicerade nycklar',
+    malformedRowsLabel: 'Felaktiga rader',
+    cleanRowsLabel: 'Rena rader',
+    issueListTitle: 'Resultat',
+    noIssues: 'Inga fel hittades i denna analys.',
+    previewTitle: 'Översättningsvisning',
+    previewSubtitle: 'De första raderna visar den normaliserade strukturen som exporteras.',
+    exportTitle: 'Exportera ren fil',
+    exportSubtitle: 'Duplikater tas bort saknade kolumner fylls i och CSV värden escapar korrekt.',
+    downloadButton: 'Ladda ner ren fil',
+    copyButton: 'Kopiera resultat',
+    copiedMessage: 'Rent resultat kopierat till urklipp.',
+    emptyIssue: 'Tom översättningscell',
+    duplicateIssue: 'Duplicerad nyckels rad borttagen',
+    malformedIssue: 'Kolumn eller citatteckenfel',
+    parseIssue: 'Kunde inte läsa filen.',
+    rowLabel: 'Rad',
+    columnLabel: 'Kolumn',
+    keyLabel: 'Nyckel',
+    sampleFileName: 'lokalisering-exempel.csv',
+    privacyNote: 'Lokal behandling i webbläsaren',
+    waitingTitle: 'Väntar på fil',
+    waitingSubtitle: 'Släpp en CSV eller JSON fil för att starta granskningen.',
+    fileTypeNote: 'UTF8 CSV eller strukturerad JSON',
+  },
+  seo: [
+    { type: 'title', level: 2, text: 'Varför lokaliseringsfiler misslyckas vid import' },
+    {
+      type: 'paragraph',
+      html: 'Översättningstabeller är enkla att redigera men lätta att förstöra. Ett kommatecken inuti en mening eller saknade citattecken kan förskjuta språkkolumnerna.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Godots CSV importör och Unity Localization kräver konsekvent struktur. Detta verktyg kontrollerar filen innan import.',
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { value: 'CSV', label: 'Kommakontroll' },
+        { value: 'JSON', label: 'Array & map support' },
+        { value: '0 uppladdningar', label: 'Helt lokalt' },
+        { value: '1 klick', label: 'Ren export' },
+      ],
+    },
+    { type: 'title', level: 2, text: 'Vad verktyget kontrollerar' },
+    {
+      type: 'comparative',
+      columns: 2,
+      items: [
+        {
+          title: 'Upptäckts före import',
+          description: 'Svårupptäckta fel i stora filer',
+          points: ['Tomma celler', 'Duplicerade nycklar', 'Rader med fel antal kolumner', 'Ogiltiga citattecken'],
+        },
+        {
+          title: 'Normaliserat vid export',
+          description: 'Säkra automatiska korrigeringar',
+          points: ['Saknade kolumner fylls i', 'Extra fält slås ihop i sista kolumnen', 'Första nyckeln behålls', 'Originalfilen påverkas inte'],
+        },
+      ],
+    },
+    { type: 'title', level: 2, text: 'Att granska den sanerade filen' },
+    {
+      type: 'paragraph',
+      html: 'Strukturell sanering ersätter inte språkgranskning. Använd resultatlistan för att komplettera saknade översättningar.',
+    },
+    {
+      type: 'table',
+      headers: ['Fynd', 'Betydelse', 'Rekommenderad åtgärd'],
+      rows: [
+        ['Tom cell', 'En språkkolumn saknar text', 'Översätt eller bekräfta avsiktlig tomhet'],
+        ['Duplicerad nyckel', 'Flera rader använder samma nyckel', 'Jämför rader och behåll den första'],
+        ['Felaktig rad', 'Kolumnantal avviker från rubriken', 'Kontrollera den sammanslagna kolumnen'],
+        ['Läsfel', 'JSON ogiltig', 'Korrigera syntaxen före import'],
+      ],
+    },
+    { type: 'title', level: 2, text: 'CSV konventioner för spel' },
+    {
+      type: 'paragraph',
+      html: 'Text som innehåller kommatecken eller radbrytningar måste omges av dubbla citattecken.',
+    },
+    {
+      type: 'tip',
+      title: 'Spara originalet',
+      html: 'Behåll alltid översättarens originalfil som reservkopia.',
+    },
+    {
+      type: 'glossary',
+      items: [
+        { term: 'Översättningsnyckel', definition: 'Unik identifierare som används i spelkoden.' },
+        { term: 'CSV fält', definition: 'Enskilt värde mellan avskiljare.' },
+        { term: 'Escaping', definition: 'Användning av citattecken för att behålla skiljetecken som text.' },
+        { term: 'Locale', definition: 'Språk och regionkod som sv, en eller ja.' },
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'Laddas filer upp till en server?',
+      answer: 'Nej, all bearbetning sker lokalt i webbläsaren.',
+    },
+    {
+      question: 'Vad händer om en CSV rad har extra kommatecken?',
+      answer: 'Raden markeras som felaktig och extra fält slås ihop i sista kolumnen.',
+    },
+    {
+      question: 'Hur rensas duplicerade nycklar?',
+      answer: 'Den första förekomsten behålls och följande ignoreras.',
+    },
+    {
+      question: 'Kontrollerar verktyget översättningskvalitet?',
+      answer: 'Nej, det kontrollerar endast filstruktur och tomma celler.',
+    },
+  ],
+  howTo: [
+    { name: 'Välj format', text: 'Välj CSV eller JSON.' },
+    { name: 'Granska resultat', text: 'Släpp filen och kontrollera fel listan.' },
+    { name: 'Exportera och testa', text: 'Ladda ner den rena filen och importera i motorn.' },
+  ],
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Sanering av CSV och JSON lokaliseringsfiler för Godot och Unity',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'SEK' },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [{
+        '@type': 'Question',
+        name: 'Laddas filer upp till en server?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Nej, all bearbetning sker lokalt i webbläsaren.' },
+      }],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Hur man sanerar en lokaliseringsfil',
+      step: [
+        { '@type': 'HowToStep', name: 'Välj format', text: 'Välj CSV eller JSON.' },
+        { '@type': 'HowToStep', name: 'Granska resultat', text: 'Släpp filen och kontrollera fel listan.' },
+        { '@type': 'HowToStep', name: 'Exporteera och testa', text: 'Ladda ner den rena filen och importera i motorn.' },
+      ],
+    },
+  ],
+  bibliography: [
+    { name: 'Godot ResourceImporterCSVTranslation Dokumentation', url: 'https://docs.godotengine.org/en/stable/classes/class_resourceimportercsvtranslation.html' },
+    { name: 'Unity Localization CSV Import Dokumentation', url: 'https://docs.unity3d.com/Packages/com.unity.localization@1.5/manual/CSV.html' },
+    { name: 'RFC 4180 CSV Specifikation', url: 'https://datatracker.ietf.org/doc/html/rfc4180' },
+  ],
+};

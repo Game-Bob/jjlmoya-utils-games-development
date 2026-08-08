@@ -5,6 +5,7 @@ import { ITCHIO_GAME_TESTER_TOOL } from './tool/itchioGameTester';
 import { SPRITE_SHEET_PACKER_TOOL } from './tool/spriteSheetPacker';
 import { AUDIO_LOOP_POINT_FINDER_TOOL } from './tool/audioLoopPointFinder';
 import { SAVE_FILE_EDITOR_TOOL } from './tool/saveFileEditor';
+import { LOCALIZATION_SANITIZER_TOOL } from './tool/localizationSanitizer';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   STEAM_CAPSULE_GENERATOR_TOOL,
@@ -12,5 +13,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   SPRITE_SHEET_PACKER_TOOL,
   AUDIO_LOOP_POINT_FINDER_TOOL,
   SAVE_FILE_EDITOR_TOOL,
+  LOCALIZATION_SANITIZER_TOOL,
 ];
-

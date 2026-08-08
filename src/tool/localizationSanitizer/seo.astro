@@ -1,0 +1,15 @@
+---
+import { SEORenderer } from '@jjlmoya/utils-shared';
+import { localizationSanitizer } from './entry';
+import type { KnownLocale } from '../../types';
+
+interface Props {
+  locale?: KnownLocale;
+}
+
+const { locale = 'en' } = Astro.props;
+const loader = localizationSanitizer.i18n[locale] ?? localizationSanitizer.i18n.en;
+const content = loader ? await loader() : null;
+---
+
+{content && content.seo.length > 0 && <SEORenderer content={{ locale, sections: content.seo }} />}

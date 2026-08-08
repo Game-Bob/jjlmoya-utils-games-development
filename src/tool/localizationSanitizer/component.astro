@@ -1,0 +1,116 @@
+---
+import type { LocalizationSanitizerUI } from './ui';
+import './localization-sanitizer.css';
+
+interface Props {
+  ui: LocalizationSanitizerUI;
+}
+
+const { ui } = Astro.props;
+---
+
+<div
+  class="ls-root"
+  id="localization-sanitizer-root"
+  data-csv-tab={ui.csvTab}
+  data-json-tab={ui.jsonTab}
+  data-ready-status={ui.readyStatus}
+  data-review-status={ui.reviewStatus}
+  data-empty-cells-label={ui.emptyCellsLabel}
+  data-duplicate-keys-label={ui.duplicateKeysLabel}
+  data-malformed-rows-label={ui.malformedRowsLabel}
+  data-clean-rows-label={ui.cleanRowsLabel}
+  data-no-issues={ui.noIssues}
+  data-empty-issue={ui.emptyIssue}
+  data-duplicate-issue={ui.duplicateIssue}
+  data-malformed-issue={ui.malformedIssue}
+  data-parse-issue={ui.parseIssue}
+  data-row-label={ui.rowLabel}
+  data-column-label={ui.columnLabel}
+  data-key-label={ui.keyLabel}
+  data-sample-file-name={ui.sampleFileName}
+  data-file-type-note={ui.fileTypeNote}
+  data-waiting-title={ui.waitingTitle}
+  data-waiting-subtitle={ui.waitingSubtitle}
+  data-copied-message={ui.copiedMessage}
+>
+  <div class="ls-topline">
+    <div>
+      <span class="ls-kicker">LOCALIZATION QA</span>
+      <strong id="ls-file-name">{ui.waitingTitle}</strong>
+    </div>
+    <span class="ls-privacy-note">{ui.privacyNote}</span>
+  </div>
+
+  <div class="ls-format-bar" aria-label={ui.formatLabel} role="group">
+    <span class="ls-format-label">{ui.formatLabel}</span>
+    <button type="button" class="ls-format-button is-active" data-format="csv" aria-pressed="true">{ui.csvTab}</button>
+    <button type="button" class="ls-format-button" data-format="json" aria-pressed="false">{ui.jsonTab}</button>
+    <button type="button" class="ls-format-button" id="ls-clear-button">{ui.clearButton}</button>
+  </div>
+
+  <section class="ls-drop-panel" id="ls-drop-zone" aria-label={ui.inputLabel} tabindex="0">
+    <input id="ls-file-input" type="file" accept=".csv,.json,text/csv,application/json" hidden aria-label={ui.browseButton} />
+    <div class="ls-drop-mark" aria-hidden="true"><span>CSV</span><span>JSON</span></div>
+    <div class="ls-drop-copy">
+      <strong>{ui.dropTitle}</strong>
+      <span>{ui.dropSubtitle}</span>
+      <span class="ls-file-type-note">{ui.fileTypeNote}</span>
+    </div>
+    <div class="ls-drop-actions">
+      <button type="button" class="ls-button ls-button-primary" id="ls-browse-button">{ui.browseButton}</button>
+      <button type="button" class="ls-button ls-button-quiet" id="ls-sample-button">{ui.sampleButton}</button>
+    </div>
+  </section>
+
+  <div class="ls-workbench">
+    <aside class="ls-inspector">
+      <div class="ls-section-heading">
+        <span class="ls-section-index">01</span>
+        <div><span class="ls-section-eyebrow">INSPECTION</span><h2>{ui.healthLabel}</h2></div>
+      </div>
+      <div class="ls-health-card">
+        <div class="ls-health-ring" id="ls-health-ring"><span id="ls-health-value">--</span></div>
+        <div><strong id="ls-health-status">{ui.waitingTitle}</strong><span id="ls-health-subtitle">{ui.waitingSubtitle}</span></div>
+      </div>
+      <div class="ls-stat-list" aria-live="polite">
+        <div class="ls-stat-row"><span class="ls-stat-dot ls-dot-empty"></span><span>{ui.emptyCellsLabel}</span><strong id="ls-empty-count">0</strong></div>
+        <div class="ls-stat-row"><span class="ls-stat-dot ls-dot-duplicate"></span><span>{ui.duplicateKeysLabel}</span><strong id="ls-duplicate-count">0</strong></div>
+        <div class="ls-stat-row"><span class="ls-stat-dot ls-dot-malformed"></span><span>{ui.malformedRowsLabel}</span><strong id="ls-malformed-count">0</strong></div>
+        <div class="ls-stat-row ls-stat-row-clean"><span class="ls-stat-dot ls-dot-clean"></span><span>{ui.cleanRowsLabel}</span><strong id="ls-clean-count">0</strong></div>
+      </div>
+      <div class="ls-issue-section">
+        <div class="ls-section-heading ls-section-heading-small"><span class="ls-section-index">02</span><h2>{ui.issueListTitle}</h2></div>
+        <div id="ls-issue-list" class="ls-issue-list" aria-live="polite"></div>
+      </div>
+    </aside>
+
+    <section class="ls-preview-panel">
+      <div class="ls-section-heading">
+        <span class="ls-section-index">03</span>
+        <div><span class="ls-section-eyebrow">DATA VIEW</span><h2>{ui.previewTitle}</h2><p>{ui.previewSubtitle}</p></div>
+      </div>
+      <div id="ls-preview" class="ls-preview-frame">
+        <div class="ls-empty-state"><span class="ls-empty-grid" aria-hidden="true"></span><strong>{ui.waitingTitle}</strong><span>{ui.waitingSubtitle}</span></div>
+      </div>
+      <div class="ls-export-card">
+        <div class="ls-export-copy"><span class="ls-section-eyebrow">CLEAN OUTPUT</span><h2>{ui.exportTitle}</h2><p>{ui.exportSubtitle}</p></div>
+        <div class="ls-export-actions">
+          <button type="button" class="ls-button ls-button-primary" id="ls-download-button" disabled>{ui.downloadButton}</button>
+          <button type="button" class="ls-button ls-button-outline" id="ls-copy-button" disabled>{ui.copyButton}</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <p id="ls-live-status" class="ls-live-status" aria-live="polite"></p>
+</div>
+
+<script>
+  import { initLocalizationSanitizerApp } from './app-client';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLocalizationSanitizerApp);
+  } else {
+    initLocalizationSanitizerApp();
+  }
+</script>

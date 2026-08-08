@@ -1,0 +1,176 @@
+import type { ToolLocaleContent } from '../../../types';
+import type { LocalizationSanitizerUI } from '../ui';
+
+export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
+  slug: 'pembersih-lokalisasi-csv-godot-unity',
+  title: 'Pembersih CSV dan JSON Lokalisasi Godot dan Unity',
+  description: 'Periksa file terjemahan CSV atau JSON untuk menemukan sel kosong, kunci duplikat, dan baris rusak, lalu ekspor salinan bersih yang siap diimpor ke engine.',
+  ui: {
+    csvTab: 'File CSV',
+    jsonTab: 'File JSON',
+    dropTitle: 'Tarik file terjemahan ke sini',
+    dropSubtitle: 'Periksa struktur di browser Anda dan simpan file sumber di perangkat Anda.',
+    browseButton: 'Pilih file',
+    sampleButton: 'Muat contoh',
+    clearButton: 'Bersihkan',
+    inputLabel: 'Input file terjemahan',
+    formatLabel: 'Format',
+    healthLabel: 'Kesehatan file',
+    readyStatus: 'Siap diimpor',
+    reviewStatus: 'Perlu peninjauan',
+    emptyCellsLabel: 'Sel kosong',
+    duplicateKeysLabel: 'Kunci duplikat',
+    malformedRowsLabel: 'Baris rusak',
+    cleanRowsLabel: 'Baris bersih',
+    issueListTitle: 'Temuan',
+    noIssues: 'Tidak ada masalah ditemukan.',
+    previewTitle: 'Pratinjau terjemahan',
+    previewSubtitle: 'Baris pertama menampilkan struktur ternormalisasi yang akan diekspor.',
+    exportTitle: 'Ekspor file bersih',
+    exportSubtitle: 'Duplikat dihapus kolom hilang dilengkapi dan nilai CSV di escape.',
+    downloadButton: 'Unduh file bersih',
+    copyButton: 'Salin hasil',
+    copiedMessage: 'Hasil bersih berhasil disalin ke papan klip.',
+    emptyIssue: 'Sel terjemahan kosong',
+    duplicateIssue: 'Kunci duplikat dihapus',
+    malformedIssue: 'Ketidakcocokan kolom atau tanda kutip',
+    parseIssue: 'File tidak dapat dibaca.',
+    rowLabel: 'Baris',
+    columnLabel: 'Kolom',
+    keyLabel: 'Kunci',
+    sampleFileName: 'sampel-lokalisasi.csv',
+    privacyNote: 'Pemrosesan browser lokal',
+    waitingTitle: 'Menunggu file',
+    waitingSubtitle: 'Tarik file CSV atau JSON untuk memulai pemeriksaan.',
+    fileTypeNote: 'CSV UTF8 atau JSON terstruktur',
+  },
+  seo: [
+    { type: 'title', level: 2, text: 'Mengapa file lokalisasi mengalami masalah saat impor engine' },
+    {
+      type: 'paragraph',
+      html: 'Tabel terjemahan mudah diedit namun sangat rentan terhadap kerusakan format. Tanda koma di dalam kalimat atau tanda kutip yang hilang dapat menggeser kolom bahasa.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Pengimpor CSV Godot dan paket Unity Localization membutuhkan struktur yang konsisten. Alat ini memeriksa dan merapikan file sebelum diimpor ke proyek Anda.',
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { value: 'CSV', label: 'Pemeriksaan koma' },
+        { value: 'JSON', label: 'Input array dan objek' },
+        { value: '0 unggahan', label: 'Lokal di browser' },
+        { value: '1 klik', label: 'Ekspor bersih' },
+      ],
+    },
+    { type: 'title', level: 2, text: 'Pemeriksaan yang dilakukan' },
+    {
+      type: 'comparative',
+      columns: 2,
+      items: [
+        {
+          title: 'Dideteksi sebelum impor',
+          description: 'Masalah yang sulit terlihat pada file besar',
+          points: ['Sel terjemahan kosong', 'Kunci terjemahan duplikat', 'Baris dengan kolom kurang atau berlebih', 'Sintaks tanda kutip tidak valid'],
+        },
+        {
+          title: 'Dinormalisasi saat ekspor',
+          description: 'Perbaikan otomatis yang aman',
+          points: ['Kolom yang kurang dilengkapi', 'Kolom berlebih digabungkan ke kolom terakhir', 'Kemunculan pertama kunci dipertahankan', 'File asli tetap utuh'],
+        },
+      ],
+    },
+    { type: 'title', level: 2, text: 'Cara meninjau file yang telah dibersihkan' },
+    {
+      type: 'paragraph',
+      html: 'Pembersihan struktur tidak menggantikan tinjauan bahasa. Gunakan daftar temuan untuk melengkapi terjemahan yang belum selesai.',
+    },
+    {
+      type: 'table',
+      headers: ['Temuan', 'Arti', 'Langkah lanjutan'],
+      rows: [
+        ['Sel kosong', 'Kolom bahasa tidak berisi teks', 'Terjemahkan atau konfirmasi jika disengaja'],
+        ['Kunci duplikat', 'Beberapa baris memakai kunci sama', 'Bandingkan baris sebelum memakai yang pertama'],
+        ['Baris rusak', 'Struktur baris tidak sesuai header', 'Periksa baris gabungan akhir'],
+        ['Gagal baca', 'Struktur JSON tidak valid', 'Perbaiki sintaks sebelum diimpor'],
+      ],
+    },
+    { type: 'title', level: 2, text: 'Konvensi CSV untuk game' },
+    {
+      type: 'paragraph',
+      html: 'Aturan umum CSV: nilai dipisahkan koma, dan teks yang memuat koma harus dibungkus tanda kutip ganda.',
+    },
+    {
+      type: 'tip',
+      title: 'Simpan file asli',
+      html: 'Gunakan file bersih sebagai alat bantu dan selalu simpan salinan asli penerjemah.',
+    },
+    {
+      type: 'glossary',
+      items: [
+        { term: 'Kunci terjemahan', definition: 'Pengenal unik yang digunakan oleh kode game.' },
+        { term: 'Field CSV', definition: 'Nilai individu di antara pemisah koma.' },
+        { term: 'Escaping', definition: 'Pembungkusan kutip agar tanda baca tidak dianggap pemisah.' },
+        { term: 'Locale', definition: 'Kode bahasa dan wilayah seperti id, en, atau ja.' },
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'Apakah file diunggah ke server?',
+      answer: 'Tidak, seluruh pemrosesan dilakukan secara lokal di dalam browser Anda.',
+    },
+    {
+      question: 'Apa yang terjadi jika baris CSV memiliki koma berlebih?',
+      answer: 'Baris ditandai rusak dan kolom tambahan digabungkan ke kolom terakhir.',
+    },
+    {
+      question: 'Bagaimana kunci duplikat dibersihkan?',
+      answer: 'Kemunculan pertama dipertahankan dan kemunculan berikutnya diabaikan.',
+    },
+    {
+      question: 'Apakah alat ini memeriksa kualitas terjemahan?',
+      answer: 'Tidak, alat ini hanya memeriksa struktur file dan kelengkapan sel.',
+    },
+  ],
+  howTo: [
+    { name: 'Pilih format file', text: 'Pilih CSV atau JSON.' },
+    { name: 'Periksa temuan', text: 'Tarik file dan lihat daftar kesalahan.' },
+    { name: 'Ekspor dan uji', text: 'Unduh file bersih lalu impor ke game engine Anda.' },
+  ],
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Pembersih CSV dan JSON Lokalisasi Godot dan Unity',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [{
+        '@type': 'Question',
+        name: 'Apakah file diunggah ke server?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Tidak, seluruh pemrosesan dilakukan secara lokal di dalam browser Anda.' },
+      }],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Cara membersihkan file lokalisasi game',
+      step: [
+        { '@type': 'HowToStep', name: 'Pilih format file', text: 'Pilih CSV atau JSON.' },
+        { '@type': 'HowToStep', name: 'Periksa temuan', text: 'Tarik file dan lihat daftar kesalahan.' },
+        { '@type': 'HowToStep', name: 'Ekspor dan uji', text: 'Unduh file bersih lalu impor ke game engine Anda.' },
+      ],
+    },
+  ],
+  bibliography: [
+    { name: 'Dokumentasi Godot ResourceImporterCSVTranslation', url: 'https://docs.godotengine.org/en/stable/classes/class_resourceimportercsvtranslation.html' },
+    { name: 'Dokumentasi Impor CSV Unity Localization', url: 'https://docs.unity3d.com/Packages/com.unity.localization@1.5/manual/CSV.html' },
+    { name: 'Spesifikasi RFC 4180 CSV', url: 'https://datatracker.ietf.org/doc/html/rfc4180' },
+  ],
+};

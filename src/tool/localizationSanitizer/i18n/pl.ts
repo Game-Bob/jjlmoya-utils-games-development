@@ -1,0 +1,176 @@
+import type { ToolLocaleContent } from '../../../types';
+import type { LocalizationSanitizerUI } from '../ui';
+
+export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
+  slug: 'czyszczenie-plikow-lokalizacji-godot-unity',
+  title: 'Narzędzie do Czyszczenia Plików CSV i JSON Lokalizacji w Godot i Unity',
+  description: 'Sprawdzaj pliki tłumaczeń CSV oraz JSON pod kątem pustych komórek, powielonych kluczy i uszkodzonych wierszy, a następnie eksportuj czystą kopię gotową do importu.',
+  ui: {
+    csvTab: 'Plik CSV',
+    jsonTab: 'Plik JSON',
+    dropTitle: 'Upuść plik tłumaczeń tutaj',
+    dropSubtitle: 'Sprawdź strukturę w przeglądarce, pozostawiając plik źródłowy na swoim urządzeniu.',
+    browseButton: 'Przeglądaj pliki',
+    sampleButton: 'Wczytaj przykład',
+    clearButton: 'Wyczyść',
+    inputLabel: 'Wejście pliku tłumaczeń',
+    formatLabel: 'Format',
+    healthLabel: 'Stan pliku',
+    readyStatus: 'Gotowy do importu',
+    reviewStatus: 'Wymaga przeglądu',
+    emptyCellsLabel: 'Puste komórki',
+    duplicateKeysLabel: 'Duplikaty kluczy',
+    malformedRowsLabel: 'Uszkodzone wiersze',
+    cleanRowsLabel: 'Prawidłowe wiersze',
+    issueListTitle: 'Wykryte problemy',
+    noIssues: 'Nie znaleziono problemów w tej analizie.',
+    previewTitle: 'Podgląd tłumaczenia',
+    previewSubtitle: 'Pierwsze wiersze przedstawiają znormalizowaną strukturę eksportu.',
+    exportTitle: 'Eksportuj czysty plik',
+    exportSubtitle: 'Usuwane są duplikaty, brakujące kolumny są uzupełniane, a wartości CSV odpowiednio eskapowane.',
+    downloadButton: 'Pobierz czysty plik',
+    copyButton: 'Kopiuj wynik',
+    copiedMessage: 'Sformatowany wynik skopiowany do schowka.',
+    emptyIssue: 'Pusta komórka tłumaczenia',
+    duplicateIssue: 'Usunięto duplikat klucza',
+    malformedIssue: 'Niezgodność kolumn lub cudzysłowów',
+    parseIssue: 'Nie można odczytać pliku.',
+    rowLabel: 'Wiersz',
+    columnLabel: 'Kolumna',
+    keyLabel: 'Klucz',
+    sampleFileName: 'przyklad-lokalizacji.csv',
+    privacyNote: 'Lokalne przetwarzanie w przeglądarce',
+    waitingTitle: 'Oczekiwanie na plik',
+    waitingSubtitle: 'Upuść plik CSV lub JSON, aby rozpocząć analizę.',
+    fileTypeNote: 'UTF-8 CSV lub strukturalny JSON',
+  },
+  seo: [
+    { type: 'title', level: 2, text: 'Dlaczego pliki lokalizacji psują się podczas importu do silnika' },
+    {
+      type: 'paragraph',
+      html: 'Tabele tłumaczeń są proste w edycji, ale łatwo je uszkodzić. Przecinek wewnątrz zdania lub brakujący cudzysłów mogą przesunąć wartości do niewłaściwej kolumny języka.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Importer CSV w Godot oraz pakiet Unity Localization wymagają spójnej struktury. Narzędzie sprawdza plik przed importem do projektu.',
+    },
+    {
+      type: 'stats',
+      columns: 4,
+      items: [
+        { value: 'CSV', label: 'Weryfikacja przecinków' },
+        { value: 'JSON', label: 'Obsługa tablic i obiektów' },
+        { value: '0 wysyłek', label: '100% lokalnie' },
+        { value: '1 kliknięcie', label: 'Czysty eksport' },
+      ],
+    },
+    { type: 'title', level: 2, text: 'Co weryfikuje narzędzie' },
+    {
+      type: 'comparative',
+      columns: 2,
+      items: [
+        {
+          title: 'Wykrywane przed importem',
+          description: 'Błędy trudne do zauważenia w dużych plikach',
+          points: ['Puste komórki tłumaczeń', 'Powielone klucze identyfikacyjne', 'Wiersze ze złą liczbą kolumn', 'Niepoprawna składnia cudzysłowów'],
+        },
+        {
+          title: 'Normalizowane przy eksporcie',
+          description: 'Bezpieczne automatyczne poprawki',
+          points: ['Uzupełnianie brakujących kolumn', 'Łączenie nadmiarowych pól w ostatniej kolumnie', 'Zachowanie pierwszego wystąpienia klucza', 'Naruszenie pliku źródłowego jest wykluczone'],
+        },
+      ],
+    },
+    { type: 'title', level: 2, text: 'Jak weryfikować oczyszczony plik' },
+    {
+      type: 'paragraph',
+      html: 'Czyszczenie strukturalne nie zastępuje korekty językowej. Użyj listy wykrytych problemów, aby uzupełnić brakujące tłumaczenia.',
+    },
+    {
+      type: 'table',
+      headers: ['Wykryty problem', 'Znaczenie', 'Zalecane działanie'],
+      rows: [
+        ['Pusta komórka', 'Brak tekstu w kolumnie języka', 'Uzupełnij tłumaczenie lub potwierdź celowy brak'],
+        ['Duplikat klucza', 'Wiele wierszy używa tego samego klucza', 'Porównaj wiersze i pozostaw pierwszy'],
+        ['Uszkodzony wiersz', 'Liczba kolumn odbiega od nagłówka', 'Sprawdź połączoną kolumnę końcową'],
+        ['Błąd odczytu', 'Niepoprawny JSON', 'Popraw składnię przed importem'],
+      ],
+    },
+    { type: 'title', level: 2, text: 'Zasady CSV dla gier' },
+    {
+      type: 'paragraph',
+      html: 'Pola zawierające przecinki lub znaki nowej linii muszą być ujęte w cudzysłowy.',
+    },
+    {
+      type: 'tip',
+      title: 'Zachowaj oryginał',
+      html: 'Zawsze zachowuj oryginalny plik od tłumacza w celu weryfikacji.',
+    },
+    {
+      type: 'glossary',
+      items: [
+        { term: 'Klucz tłumaczenia', definition: 'Unikalny identyfikator używany w kodzie gry.' },
+        { term: 'Pole CSV', definition: 'Pojedyncza wartość między separatorami.' },
+        { term: 'Eskapowanie', definition: 'Użycie cudzysłowów dla zachowania znaków interpunkcyjnych.' },
+        { term: 'Locale', definition: 'Kod języka i regionu, np. pl, en lub ja.' },
+      ],
+    },
+  ],
+  faq: [
+    {
+      question: 'Czy pliki są przesyłane na serwer?',
+      answer: 'Nie, całe przetwarzanie odbywa się lokalnie w przeglądarce.',
+    },
+    {
+      question: 'Co się dzieje w przypadku dodatkowych przecinków?',
+      answer: 'Wiersz jest oznaczany jako uszkodzony, a dodatkowe pola łączone w ostatnią kolumnę.',
+    },
+    {
+      question: 'Jak usuwane są duplikaty kluczy?',
+      answer: 'Zachowywane jest pierwsze wystąpienie, a kolejne są pomijane.',
+    },
+    {
+      question: 'Czy narzędzie sprawdza jakość tłumaczenia?',
+      answer: 'Nie, weryfikuje jedynie strukturę pliku i kompletność pól.',
+    },
+  ],
+  howTo: [
+    { name: 'Wybierz format', text: 'Wybierz CSV lub JSON.' },
+    { name: 'Sprawdź wykryte błędy', text: 'Wgraj plik i przeanalizuj listę problemów.' },
+    { name: 'Eksportuj i przetestuj', text: 'Pobierz czysty plik i zaimportuj go do silnika.' },
+  ],
+  schemas: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: 'Narzędzie do Czyszczenia Plików CSV i JSON Lokalizacji w Godot i Unity',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'PLN' },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [{
+        '@type': 'Question',
+        name: 'Czy pliki są przesyłane na serwer?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Nie, całe przetwarzanie odbywa się lokalnie w przeglądarce.' },
+      }],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: 'Jak oczyścić plik lokalizacji gry',
+      step: [
+        { '@type': 'HowToStep', name: 'Wybierz format', text: 'Wybierz CSV lub JSON.' },
+        { '@type': 'HowToStep', name: 'Sprawdź wykryte błędy', text: 'Wgraj plik i przeanalizuj listę problemów.' },
+        { '@type': 'HowToStep', name: 'Eksportuj i przetestuj', text: 'Pobierz czysty plik i zaimportuj go do silnika.' },
+      ],
+    },
+  ],
+  bibliography: [
+    { name: 'Dokumentacja Godot ResourceImporterCSVTranslation', url: 'https://docs.godotengine.org/en/stable/classes/class_resourceimportercsvtranslation.html' },
+    { name: 'Dokumentacja Unity Localization CSV Import', url: 'https://docs.unity3d.com/Packages/com.unity.localization@1.5/manual/CSV.html' },
+    { name: 'Specyfikacja RFC 4180 CSV', url: 'https://datatracker.ietf.org/doc/html/rfc4180' },
+  ],
+};
