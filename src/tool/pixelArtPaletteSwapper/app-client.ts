@@ -162,14 +162,17 @@ function setupCustomAndDownload(els: AppEls, onCustomApply: (hexList: string) =>
   els.downloadButton.addEventListener('click', onDownload);
 }
 
-export function initPixelArtPaletteSwapper(): void {
-  if (initialized) return;
-  initialized = true;
-  const root = getEl<HTMLElement>(document.body, '[data-tool="pixel-art-palette-swapper"]');
-  if (!root) return;
-  const els = queryAppElements(root);
-  if (!els) return;
+function triggerDownload(canvas: HTMLCanvasElement, name: string, id: string): void {
+  canvas.toBlob((blob) => {
+    if (!blob) return;
+    const a = document.createElement('a');
+    a.download = `${name.replace(/\.[^.]+$/, '') || 'pixel-art'}-${id}.png`;
+    a.href = URL.createObjectURL(blob);
+    a.click();
+  }, 'image/png');
+}
 
+function setupCoreAppLogic(els: AppEls): void {
   let activePalette = PRESET_PALETTES.gameBoy;
   let sourceImage: SourceImageState | null = null;
   let resultData: Uint8ClampedArray | null = null;
@@ -202,23 +205,22 @@ export function initPixelArtPaletteSwapper(): void {
     drawCanvas({ canvas: els.sourceCanvas, width: src.width, height: src.height, data: src.data, zoom: Number(els.zoomInput.value) });
     renderResult();
   });
-
   setupPresetButtons(els, applyPalette);
-
   setupCustomAndDownload(els,
     (val) => applyPalette(parsePaletteInput(val), 'custom'),
     () => { els.customPaletteInput.value = PRESET_PALETTES.gameBoy.map((c) => c.hex).join(', '); applyPalette(PRESET_PALETTES.gameBoy, 'gameBoy'); },
-    () => {
-      if (!sourceImage || !resultData) return;
-      els.resultCanvas.toBlob((blob) => {
-        if (!blob) return;
-        const a = document.createElement('a');
-        a.download = `${sourceImage?.name.replace(/\.[^.]+$/, '') || 'pixel-art'}-${activePaletteId}.png`;
-        a.href = URL.createObjectURL(blob);
-        a.click();
-      }, 'image/png');
-    }
+    () => { if (sourceImage && resultData) triggerDownload(els.resultCanvas, sourceImage.name, activePaletteId); }
   );
+}
 
+export function initPixelArtPaletteSwapper(): void {
+  if (initialized) return;
+  initialized = true;
+  const root = getEl<HTMLElement>(document.body, '[data-tool="pixel-art-palette-swapper"]');
+  if (!root) return;
+  const els = queryAppElements(root);
+  if (!els) return;
+
+  setupCoreAppLogic(els);
   renderSwatches(els.root);
 }
