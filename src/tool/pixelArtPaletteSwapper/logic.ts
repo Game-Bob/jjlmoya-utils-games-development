@@ -116,14 +116,17 @@ export function colorDistanceSquared(first: RGBColor, second: RGBColor): number 
   return red * red + green * green + blue * blue;
 }
 
-function processPixel(
-  data: Uint8ClampedArray,
-  index: number,
-  palette: PaletteColor[],
-  preserveTransparency: boolean,
-  sourceColors: Set<string>,
-  mappedColors: Set<string>,
-): void {
+interface QuantizePixelContext {
+  data: Uint8ClampedArray;
+  index: number;
+  palette: PaletteColor[];
+  preserveTransparency: boolean;
+  sourceColors: Set<string>;
+  mappedColors: Set<string>;
+}
+
+function processPixel(ctx: QuantizePixelContext): void {
+  const { data, index, palette, preserveTransparency, sourceColors, mappedColors } = ctx;
   const alpha = data[index + 3];
   if (alpha === 0 && preserveTransparency) return;
 
@@ -153,7 +156,7 @@ export function quantizeImageData(
   }
 
   for (let index = 0; index < data.length; index += 4) {
-    processPixel(data, index, palette, preserveTransparency, sourceColors, mappedColors);
+    processPixel({ data, index, palette, preserveTransparency, sourceColors, mappedColors });
   }
 
   return { data, sourceColors: sourceColors.size, mappedColors: mappedColors.size };
