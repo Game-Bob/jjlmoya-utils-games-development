@@ -73,7 +73,7 @@
 .ls-kicker,
 .ls-section-eyebrow {
   color: var(--ls-accent);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.14em;
 }
@@ -101,7 +101,7 @@
 
 .ls-format-label {
   color: var(--ls-muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   margin-right: auto;
   text-transform: uppercase;
@@ -162,7 +162,7 @@
 .ls-drop-mark span {
   border: 1px solid var(--ls-accent);
   color: var(--ls-accent-dark);
-  font-size: 0.58rem;
+  font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.08em;
   padding: 0.22rem 0.36rem;
@@ -189,7 +189,7 @@
 
 .ls-file-type-note {
   color: var(--ls-cyan);
-  font-size: 0.69rem;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
@@ -277,7 +277,7 @@
 
 .ls-section-index {
   color: var(--ls-accent);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 900;
   padding-top: 0.16rem;
 }
@@ -329,7 +329,7 @@
 
 .ls-health-card span:last-child {
   color: var(--ls-muted);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   margin-top: 0.22rem;
 }
 
@@ -435,14 +435,14 @@
 }
 
 .ls-issue-copy strong {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 .ls-issue-copy span,
 .ls-issue-more,
 .ls-no-issues {
   color: var(--ls-muted);
-  font-size: 0.66rem;
+  font-size: 0.75rem;
 }
 
 .ls-issue-more {
@@ -491,7 +491,7 @@
 }
 
 .ls-empty-state span:last-child {
-  font-size: 0.73rem;
+  font-size: 0.75rem;
 }
 
 .ls-empty-grid {
@@ -505,7 +505,7 @@
 
 .ls-table {
   border-collapse: collapse;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   min-width: 100%;
   table-layout: fixed;
 }
@@ -524,7 +524,7 @@
 .ls-table th {
   background: color-mix(in srgb, var(--ls-accent) 8%, var(--ls-panel));
   color: var(--ls-accent-dark);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
   position: sticky;
   text-transform: uppercase;
@@ -544,7 +544,7 @@
 .ls-preview-note {
   color: var(--ls-muted);
   display: block;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   padding: 0.6rem;
   text-align: center;
 }
@@ -568,7 +568,7 @@
 
 .ls-live-status {
   color: var(--ls-cyan);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   min-height: 1rem;
   padding: 0.35rem 0.2rem;
 }

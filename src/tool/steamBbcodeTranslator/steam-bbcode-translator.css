@@ -77,7 +77,7 @@
 .bbcode-kicker {
   color: var(--bb-accent);
   display: block;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.14em;
 }
@@ -86,7 +86,7 @@
 .bbcode-draft-note {
   color: var(--bb-muted);
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
@@ -122,7 +122,7 @@
 
 .bbcode-step {
   color: var(--bb-warm);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 900;
   margin-right: 0.45rem;
 }
@@ -131,7 +131,7 @@
   background: var(--bb-soft);
   border-radius: 999px;
   color: var(--bb-accent-deep);
-  font-size: 0.66rem;
+  font-size: 0.75rem;
   padding: 0.3rem 0.55rem;
 }
 
@@ -162,7 +162,7 @@
 
 .bbcode-input-footer p {
   color: var(--bb-muted);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   line-height: 1.4;
   margin: 0;
 }
@@ -172,7 +172,7 @@
   color: var(--bb-muted);
   display: flex;
   flex-wrap: wrap;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   gap: 0.8rem;
 }
 
@@ -187,7 +187,7 @@
   border-radius: 6px;
   color: var(--bb-ink);
   cursor: pointer;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 800;
   padding: 0.38rem 0.6rem;
 }
@@ -237,7 +237,7 @@
   border: 1px solid var(--bb-line);
   border-radius: 7px;
   color: var(--bb-ink);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   line-height: 1.6;
   margin: 0;
   min-height: 180px;
