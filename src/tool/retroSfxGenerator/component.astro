@@ -1,0 +1,146 @@
+---
+import type { RetroSfxGeneratorUI } from './ui';
+import './retro-sfx-generator.css';
+
+interface Props {
+  ui: RetroSfxGeneratorUI;
+}
+
+const { ui } = Astro.props;
+---
+
+<div
+  class="rsfx-app"
+  id="rsfx-root"
+  data-status-ready={ui.statusReady}
+  data-status-playing={ui.statusPlaying}
+  data-status-stopped={ui.statusStopped}
+  data-status-downloaded={ui.statusDownloaded}
+  data-status-audio-blocked={ui.statusAudioBlocked}
+  data-status-generating={ui.statusGenerating}
+  data-waveform-preview-label={ui.waveformPreviewLabel}
+  data-generated-label={ui.generatedLabel}
+  data-frequency-label={ui.frequencyLabel}
+  data-frequency-end-label={ui.frequencyEndLabel}
+  data-duration-label={ui.durationLabel}
+  data-mono-wav-hint={ui.monoWavHint}
+>
+  <section class="rsfx-scope-panel" aria-labelledby="rsfx-scope-heading">
+    <div class="rsfx-scope-topline">
+      <div>
+        <span class="rsfx-kicker" id="rsfx-scope-heading">{ui.waveformPreviewLabel}</span>
+        <span class="rsfx-scope-readout" id="rsfx-readout">{ui.generatedLabel}</span>
+      </div>
+      <span class="rsfx-scope-led" id="rsfx-led" aria-hidden="true"></span>
+    </div>
+    <div class="rsfx-scope-screen">
+      <canvas id="rsfx-waveform" class="rsfx-waveform" aria-label={ui.waveformPreviewLabel}></canvas>
+      <div class="rsfx-scope-grid" aria-hidden="true"></div>
+    </div>
+    <div class="rsfx-scope-footer">
+      <span id="rsfx-frequency-readout">{ui.frequencyLabel}</span>
+      <span id="rsfx-duration-readout">{ui.durationLabel}</span>
+      <span>{ui.monoWavHint}</span>
+    </div>
+  </section>
+
+  <section class="rsfx-preset-strip" aria-labelledby="rsfx-preset-heading">
+    <div class="rsfx-section-label" id="rsfx-preset-heading">{ui.presetLabel}</div>
+    <div class="rsfx-preset-grid">
+      <button type="button" class="rsfx-preset is-active" data-preset="explosion" aria-label={ui.presetExplosion}>
+        <span class="rsfx-preset-glyph">FX</span><span>{ui.presetExplosion}</span>
+      </button>
+      <button type="button" class="rsfx-preset" data-preset="laser" aria-label={ui.presetLaser}>
+        <span class="rsfx-preset-glyph">LZR</span><span>{ui.presetLaser}</span>
+      </button>
+      <button type="button" class="rsfx-preset" data-preset="jump" aria-label={ui.presetJump}>
+        <span class="rsfx-preset-glyph">JMP</span><span>{ui.presetJump}</span>
+      </button>
+      <button type="button" class="rsfx-preset" data-preset="coin" aria-label={ui.presetCoin}>
+        <span class="rsfx-preset-glyph">COIN</span><span>{ui.presetCoin}</span>
+      </button>
+      <button type="button" class="rsfx-preset" data-preset="powerUp" aria-label={ui.presetPowerUp}>
+        <span class="rsfx-preset-glyph">UP</span><span>{ui.presetPowerUp}</span>
+      </button>
+    </div>
+    <p class="rsfx-hint">{ui.presetHint}</p>
+  </section>
+
+  <section class="rsfx-control-board" aria-label={ui.toneSection}>
+    <div class="rsfx-control-section">
+      <div class="rsfx-section-label">{ui.toneSection}</div>
+      <div class="rsfx-waveform-picker">
+        <label class="rsfx-control-label" for="rsfx-waveform-select">{ui.waveformLabel}</label>
+        <select id="rsfx-waveform-select" class="rsfx-select" aria-label={ui.waveformLabel}>
+          <option value="square">{ui.waveformSquare}</option>
+          <option value="sawtooth">{ui.waveformSawtooth}</option>
+          <option value="sine">{ui.waveformSine}</option>
+          <option value="triangle">{ui.waveformTriangle}</option>
+          <option value="noise">{ui.waveformNoise}</option>
+        </select>
+      </div>
+      <div class="rsfx-slider-grid">
+        <label class="rsfx-slider-control" for="rsfx-frequency">
+          <span><span>{ui.frequencyLabel}</span><output id="rsfx-frequency-value">0 Hz</output></span>
+          <input id="rsfx-frequency" type="range" min="60" max="8000" step="10" value="1200" aria-label={ui.frequencyLabel} />
+        </label>
+        <label class="rsfx-slider-control" for="rsfx-sweep">
+          <span><span>{ui.sweepLabel}</span><output id="rsfx-sweep-value">0%</output></span>
+          <input id="rsfx-sweep" type="range" min="-100" max="100" step="1" value="-70" aria-label={ui.sweepLabel} />
+        </label>
+      </div>
+    </div>
+
+    <div class="rsfx-control-section">
+      <div class="rsfx-section-label">{ui.dynamicsSection}</div>
+      <div class="rsfx-slider-grid">
+        <label class="rsfx-slider-control" for="rsfx-duration">
+          <span><span>{ui.durationLabel}</span><output id="rsfx-duration-value">0.32 s</output></span>
+          <input id="rsfx-duration" type="range" min="0.08" max="2.5" step="0.01" value="0.32" aria-label={ui.durationLabel} />
+        </label>
+        <label class="rsfx-slider-control" for="rsfx-decay">
+          <span><span>{ui.decayLabel}</span><output id="rsfx-decay-value">0%</output></span>
+          <input id="rsfx-decay" type="range" min="0" max="100" step="1" value="56" aria-label={ui.decayLabel} />
+        </label>
+        <label class="rsfx-slider-control" for="rsfx-vibrato">
+          <span><span>{ui.vibratoLabel}</span><output id="rsfx-vibrato-value">0%</output></span>
+          <input id="rsfx-vibrato" type="range" min="0" max="100" step="1" value="3" aria-label={ui.vibratoLabel} />
+        </label>
+      </div>
+    </div>
+
+    <div class="rsfx-control-section">
+      <div class="rsfx-section-label">{ui.filterSection}</div>
+      <div class="rsfx-slider-grid">
+        <label class="rsfx-slider-control" for="rsfx-lowpass">
+          <span><span>{ui.lowpassLabel}</span><output id="rsfx-lowpass-value">0 kHz</output></span>
+          <input id="rsfx-lowpass" type="range" min="400" max="12000" step="100" value="9000" aria-label={ui.lowpassLabel} />
+        </label>
+        <label class="rsfx-slider-control" for="rsfx-highpass">
+          <span><span>{ui.highpassLabel}</span><output id="rsfx-highpass-value">0 Hz</output></span>
+          <input id="rsfx-highpass" type="range" min="20" max="1800" step="10" value="180" aria-label={ui.highpassLabel} />
+        </label>
+        <label class="rsfx-slider-control" for="rsfx-noise-mix">
+          <span><span>{ui.noiseMixLabel}</span><output id="rsfx-noise-mix-value">0%</output></span>
+          <input id="rsfx-noise-mix" type="range" min="0" max="100" step="1" value="4" aria-label={ui.noiseMixLabel} />
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <div class="rsfx-action-bar">
+    <div class="rsfx-primary-actions">
+      <button type="button" class="rsfx-action rsfx-action-play" id="rsfx-play" aria-label={ui.playButton}>{ui.playButton}</button>
+      <button type="button" class="rsfx-action rsfx-action-stop" id="rsfx-stop" aria-label={ui.stopButton}>{ui.stopButton}</button>
+      <button type="button" class="rsfx-action rsfx-action-download" id="rsfx-download" aria-label={ui.downloadButton}>{ui.downloadButton}</button>
+    </div>
+    <div class="rsfx-secondary-actions">
+      <button type="button" class="rsfx-text-action" id="rsfx-randomize" aria-label={ui.randomizeButton}>{ui.randomizeButton}</button>
+      <button type="button" class="rsfx-text-action" id="rsfx-reset" aria-label={ui.resetButton}>{ui.resetButton}</button>
+    </div>
+  </div>
+
+  <p class="rsfx-status" id="rsfx-status" role="status" aria-live="polite">{ui.statusReady}</p>
+</div>
+
+<script src="./client.ts"></script>

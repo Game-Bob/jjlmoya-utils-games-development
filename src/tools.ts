@@ -7,6 +7,7 @@ import { AUDIO_LOOP_POINT_FINDER_TOOL } from './tool/audioLoopPointFinder';
 import { SAVE_FILE_EDITOR_TOOL } from './tool/saveFileEditor';
 import { LOCALIZATION_SANITIZER_TOOL } from './tool/localizationSanitizer';
 import { STEAM_BBCODE_TRANSLATOR_TOOL } from './tool/steamBbcodeTranslator';
+import { RETRO_SFX_GENERATOR_TOOL } from './tool/retroSfxGenerator';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   STEAM_CAPSULE_GENERATOR_TOOL,
@@ -16,4 +17,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   SAVE_FILE_EDITOR_TOOL,
   LOCALIZATION_SANITIZER_TOOL,
   STEAM_BBCODE_TRANSLATOR_TOOL,
+  RETRO_SFX_GENERATOR_TOOL,
 ];
