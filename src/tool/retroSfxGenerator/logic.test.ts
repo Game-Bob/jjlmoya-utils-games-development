@@ -1,10 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import {
   calculateEndFrequency,
+  createDefaultParams,
   encodeWav,
   generateSfx,
   getPresetParams,
   updateSweep,
+  type SfxPreset,
+  type SfxWaveform,
 } from './logic';
 
 describe('retroSfxGenerator logic', () => {
@@ -13,6 +16,24 @@ describe('retroSfxGenerator logic', () => {
     const second = getPresetParams('coin', () => 0.5);
     expect(first).toEqual(second);
     expect(first.frequencyEnd).toBe(calculateEndFrequency(first.frequency, first.sweep));
+  });
+
+  it('keeps random variations inside the selected preset family', () => {
+    const families: Array<[SfxPreset, SfxWaveform]> = [
+      ['explosion', 'noise'],
+      ['laser', 'sawtooth'],
+      ['jump', 'square'],
+      ['coin', 'square'],
+      ['powerUp', 'triangle'],
+    ];
+
+    families.forEach(([preset, waveform]) => {
+      expect(getPresetParams(preset, () => 0.25).waveform).toBe(waveform);
+    });
+  });
+
+  it('uses the visible explosion preset as the default family', () => {
+    expect(createDefaultParams().waveform).toBe('noise');
   });
 
   it('maps sweep to a bounded end frequency', () => {

@@ -37,6 +37,8 @@ if (root) {
   const frequencyLabel = root.dataset.frequencyLabel ?? 'Frequency';
   const frequencyEndLabel = root.dataset.frequencyEndLabel ?? 'End frequency';
   const durationLabel = root.dataset.durationLabel ?? 'Duration';
+  const activePresetButton = presetButtons.find((button) => button.classList.contains('is-active'));
+  let currentPreset = (activePresetButton?.dataset.preset as SfxPreset | undefined) ?? 'explosion';
   let params = createDefaultParams();
   let generated = generateSfx(params);
   let audioContext: AudioContext | undefined;
@@ -234,6 +236,7 @@ if (root) {
     presetButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const preset = button.dataset.preset as SfxPreset;
+        currentPreset = preset;
         presetButtons.forEach((item) => item.classList.toggle('is-active', item === button));
         regenerate(getPresetParams(preset));
       });
@@ -241,9 +244,13 @@ if (root) {
     playButton?.addEventListener('click', () => void playAudio());
     stopButton?.addEventListener('click', stopAudio);
     downloadButton?.addEventListener('click', downloadWav);
-    randomizeButton?.addEventListener('click', () => regenerate(getPresetParams('laser')));
+    randomizeButton?.addEventListener('click', () => {
+      regenerate(getPresetParams(currentPreset));
+      void playAudio();
+    });
     resetButton?.addEventListener('click', () => {
-      presetButtons.forEach((item) => item.classList.toggle('is-active', item.dataset.preset === 'laser'));
+      currentPreset = 'explosion';
+      presetButtons.forEach((item) => item.classList.toggle('is-active', item.dataset.preset === 'explosion'));
       regenerate(createDefaultParams());
     });
     window.addEventListener('resize', drawWaveform);

@@ -87,7 +87,7 @@ export function clamp(value: number, min: number, max: number): number {
 }
 
 export function createDefaultParams(): SfxParams {
-  return getPresetParams('laser', () => 0.5);
+  return getPresetParams('explosion', () => 0.5);
 }
 
 export function getPresetParams(preset: SfxPreset, random: () => number = Math.random): SfxParams {

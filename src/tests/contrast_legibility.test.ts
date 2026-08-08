@@ -5,10 +5,13 @@ import { join, relative } from 'node:path';
 type Color = { r: number; g: number; b: number; a: number };
 type Declaration = { name: string; value: string };
 type CssRule = { selector: string; declarations: Declaration[]; line: number };
+type Theme = 'light' | 'dark';
+type Variables = Record<string, string>;
 
 const toolRoot = join(process.cwd(), 'src', 'tool');
 const minimumTextContrast = 4.5;
 const minimumReviewFontSizeRem = 0.75;
+const themes: Theme[] = ['light', 'dark'];
 
 function findFiles(directory: string, extensions: string[]): string[] {
   const files: string[] = [];
@@ -184,14 +187,48 @@ function simpleBackground(value: string): Color | null {
   return parseColor(value);
 }
 
-function contrastFinding(path: string, rule: CssRule): string | null {
+function isThemeSelector(selector: string, theme: Theme): boolean {
+  return selector.includes(`.theme-${theme}`);
+}
+
+function isActiveRule(selector: string, theme: Theme): boolean {
+  const otherTheme: Theme = theme === 'dark' ? 'light' : 'dark';
+  return !isThemeSelector(selector, otherTheme);
+}
+
+function addVariables(target: Variables, rule: CssRule): void {
+  rule.declarations
+    .filter((declaration) => declaration.name.startsWith('--'))
+    .forEach((declaration) => { target[declaration.name] = declaration.value; });
+}
+
+function collectVariables(rules: CssRule[], theme: Theme): Variables {
+  const variables: Variables = {};
+  rules.filter((rule) => !isThemeSelector(rule.selector, 'dark') && !isThemeSelector(rule.selector, 'light'))
+    .forEach((rule) => addVariables(variables, rule));
+  rules.filter((rule) => isThemeSelector(rule.selector, theme))
+    .forEach((rule) => addVariables(variables, rule));
+  return variables;
+}
+
+function resolveCssValue(value: string, variables: Variables): string {
+  let resolved = value;
+  for (let attempt = 0; attempt < 10; attempt += 1) {
+    const next = resolved.replace(/var\(\s*(--[\w-]+)(?:\s*,\s*([^()]+))?\s*\)/g, (_, name, fallback) => variables[name] ?? fallback ?? '');
+    if (next === resolved) return resolved;
+    resolved = next;
+  }
+  return resolved;
+}
+
+function contrastFinding(path: string, rule: CssRule, theme: Theme, variables: Variables): string | null {
   const foreground = lastDeclaration(rule.declarations, ['color']);
   const background = lastDeclaration(rule.declarations, ['background-color', 'background']);
-  const foregroundColor = foreground ? parseColor(foreground.value) : null;
-  const backgroundColor = background ? simpleBackground(background.value) : null;
+  const foregroundColor = foreground ? parseColor(resolveCssValue(foreground.value, variables)) : null;
+  const backgroundColor = background ? simpleBackground(resolveCssValue(background.value, variables)) : null;
   const ratio = foregroundColor && backgroundColor ? contrastRatio(foregroundColor, backgroundColor) : null;
   return ratio !== null && ratio < minimumTextContrast
-    ? `[A11Y-06] ${relativePath(path)}:${rule.line} ${rule.selector} — ${ratio.toFixed(2)}:1 `
+    ? `[A11Y-06][${theme}] ${relativePath(path)}:${rule.line} ${rule.selector} — ${ratio.toFixed(2)}:1 `
       + `(mínimo ${minimumTextContrast}:1)`
     : null;
 }
@@ -205,18 +242,27 @@ function fontSizeFinding(path: string, rule: CssRule): string | null {
     + `(revisar por debajo de ${minimumReviewFontSizeRem}rem)`;
 }
 
-function inspectRule(path: string, rule: CssRule): { contrastFailures: string[]; fontSizeCandidates: string[] } {
-  const contrast = contrastFinding(path, rule);
-  const fontSize = fontSizeFinding(path, rule);
+function inspectSource(path: string, source: string): { contrastFailures: string[]; fontSizeCandidates: string[] } {
+  const rules = parseRules(source);
+  const contrastFailures = themes.flatMap((theme) => {
+    const variables = collectVariables(rules, theme);
+    return rules
+      .filter((rule) => isActiveRule(rule.selector, theme))
+      .map((rule) => contrastFinding(path, rule, theme, variables))
+      .filter((finding): finding is string => finding !== null);
+  });
+  const fontSizeCandidates = rules
+    .map((rule) => fontSizeFinding(path, rule))
+    .filter((finding): finding is string => finding !== null);
   return {
-    contrastFailures: contrast ? [contrast] : [],
-    fontSizeCandidates: fontSize ? [fontSize] : [],
+    contrastFailures,
+    fontSizeCandidates,
   };
 }
 
 function inspectStyles(): { contrastFailures: string[]; fontSizeCandidates: string[] } {
   const findings = findFiles(toolRoot, ['.css', '.astro'])
-    .flatMap((path) => cssSources(path).flatMap((source) => parseRules(source).map((rule) => inspectRule(path, rule))));
+    .flatMap((path) => cssSources(path).map((source) => inspectSource(path, source)));
   return {
     contrastFailures: findings.flatMap((finding) => finding.contrastFailures),
     fontSizeCandidates: findings.flatMap((finding) => finding.fontSizeCandidates),

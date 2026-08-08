@@ -6,6 +6,7 @@
   --ls-panel-soft: #f4f7fa;
   --ls-accent: #e56a47;
   --ls-accent-dark: #bc4d30;
+  --ls-on-accent: #17202f;
   --ls-cyan: #19a6a0;
   --ls-yellow: #e7a633;
   --ls-red: #ce4f61;
@@ -24,6 +25,7 @@
   --ls-panel-soft: #172232;
   --ls-accent: #f1845d;
   --ls-accent-dark: #da6744;
+  --ls-on-accent: #111926;
   --ls-cyan: #42c3b8;
   --ls-yellow: #efbd57;
   --ls-red: #f07889;
@@ -170,7 +172,7 @@
 
 .ls-drop-mark span:last-child {
   background: var(--ls-accent);
-  color: var(--ls-panel);
+  color: var(--ls-on-accent);
   transform: translateX(0.4rem);
 }
 
@@ -219,7 +221,7 @@
 
 .ls-button-primary {
   background: var(--ls-accent);
-  color: var(--ls-panel);
+  color: var(--ls-on-accent);
 }
 
 .ls-button-primary:hover:not(:disabled) {

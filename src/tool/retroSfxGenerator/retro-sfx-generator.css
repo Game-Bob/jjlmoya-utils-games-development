@@ -12,6 +12,9 @@
   --rsfx-yellow: #f2c14e;
   --rsfx-pink: #b0306a;
   --rsfx-cream: #fff8df;
+  --rsfx-on-accent: #fff8df;
+  --rsfx-play-bg: #bc4d30;
+  --rsfx-download-ink: #211d3d;
   --rsfx-shadow: #33294d;
   --rsfx-scope-panel: #f2c14e;
   --rsfx-scope-screen: #fff3c4;
@@ -50,6 +53,9 @@
   --rsfx-yellow: #f2c14e;
   --rsfx-pink: #f477a8;
   --rsfx-cream: #fff8df;
+  --rsfx-on-accent: #101b32;
+  --rsfx-play-bg: #ff805c;
+  --rsfx-download-ink: #101b32;
   --rsfx-shadow: #080714;
   --rsfx-scope-panel: #302555;
   --rsfx-scope-screen: #101b32;
@@ -206,7 +212,7 @@
   background: var(--rsfx-cyan);
   border-color: var(--rsfx-ink-strong);
   box-shadow: 3px 3px 0 var(--rsfx-shadow);
-  color: var(--rsfx-cream);
+  color: var(--rsfx-on-accent);
 }
 
 .rsfx-preset-glyph {
@@ -356,10 +362,10 @@
 }
 
 .rsfx-action-play {
-  background: var(--rsfx-orange);
+  background: var(--rsfx-play-bg);
   border: 2px solid var(--rsfx-ink-strong);
   box-shadow: 3px 3px 0 var(--rsfx-shadow);
-  color: var(--rsfx-cream);
+  color: var(--rsfx-on-accent);
 }
 
 .rsfx-action-stop {
@@ -373,7 +379,7 @@
   background: var(--rsfx-yellow);
   border: 2px solid var(--rsfx-ink-strong);
   box-shadow: 3px 3px 0 var(--rsfx-shadow);
-  color: var(--rsfx-ink-strong);
+  color: var(--rsfx-download-ink);
 }
 
 .rsfx-text-action {
