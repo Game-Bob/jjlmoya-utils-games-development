@@ -1,0 +1,35 @@
+export interface PixelArtPaletteSwapperUI extends Record<string, string> {
+  uploadTitle: string;
+  uploadHint: string;
+  chooseImage: string;
+  replaceImage: string;
+  paletteTitle: string;
+  gameBoyPalette: string;
+  nesPalette: string;
+  pico8Palette: string;
+  commodore64Palette: string;
+  dawnBringerPalette: string;
+  customPalette: string;
+  customPaletteHint: string;
+  applyCustomPalette: string;
+  resetCustomPalette: string;
+  sourcePreview: string;
+  resultPreview: string;
+  waitingForImage: string;
+  uploadToPreview: string;
+  resultEmpty: string;
+  downloadPng: string;
+  downloadDisabled: string;
+  colorCount: string;
+  mappedCount: string;
+  imageSize: string;
+  paletteCount: string;
+  preserveAlpha: string;
+  zoomLabel: string;
+  processing: string;
+  invalidPalette: string;
+  invalidImage: string;
+  readyStatus: string;
+  dropActive: string;
+  mappedSummary: string;
+}

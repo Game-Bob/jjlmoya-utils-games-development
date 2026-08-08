@@ -14,6 +14,8 @@ export { steamBbcodeTranslator } from './tool/steamBbcodeTranslator/entry';
 export type { SteamBbcodeTranslatorUI, SteamBbcodeTranslatorLocaleContent } from './tool/steamBbcodeTranslator/entry';
 export { retroSfxGenerator } from './tool/retroSfxGenerator/entry';
 export type { RetroSfxGeneratorUI, RetroSfxGeneratorLocaleContent } from './tool/retroSfxGenerator/entry';
+export { pixelArtPaletteSwapper } from './tool/pixelArtPaletteSwapper/entry';
+export type { PixelArtPaletteSwapperUI, PixelArtPaletteSwapperLocaleContent } from './tool/pixelArtPaletteSwapper/entry';
 export { gamesCategory } from './category';
 import { steamCapsuleGenerator } from './tool/steamCapsuleGenerator/entry';
 import { itchioGameTester } from './tool/itchioGameTester/entry';
@@ -22,5 +24,6 @@ import { audioLoopPointFinder } from './tool/audioLoopPointFinder/entry';
 import { saveFileEditor } from './tool/saveFileEditor/entry';
 import { localizationSanitizer } from './tool/localizationSanitizer/entry';
 import { retroSfxGenerator } from './tool/retroSfxGenerator/entry';
+import { pixelArtPaletteSwapper } from './tool/pixelArtPaletteSwapper/entry';
 
-export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, retroSfxGenerator];
+export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, retroSfxGenerator, pixelArtPaletteSwapper];

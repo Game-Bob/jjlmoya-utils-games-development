@@ -8,6 +8,7 @@ import { SAVE_FILE_EDITOR_TOOL } from './tool/saveFileEditor';
 import { LOCALIZATION_SANITIZER_TOOL } from './tool/localizationSanitizer';
 import { STEAM_BBCODE_TRANSLATOR_TOOL } from './tool/steamBbcodeTranslator';
 import { RETRO_SFX_GENERATOR_TOOL } from './tool/retroSfxGenerator';
+import { PIXEL_ART_PALETTE_SWAPPER_TOOL } from './tool/pixelArtPaletteSwapper';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   STEAM_CAPSULE_GENERATOR_TOOL,
@@ -18,4 +19,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   LOCALIZATION_SANITIZER_TOOL,
   STEAM_BBCODE_TRANSLATOR_TOOL,
   RETRO_SFX_GENERATOR_TOOL,
+  PIXEL_ART_PALETTE_SWAPPER_TOOL,
 ];

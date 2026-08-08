@@ -1,0 +1,153 @@
+---
+import type { PixelArtPaletteSwapperUI } from './ui';
+import './pixel-art-palette-swapper.css';
+
+interface Props {
+  ui: PixelArtPaletteSwapperUI;
+}
+
+const { ui } = Astro.props;
+---
+
+<div
+  class="pas-shell"
+  data-tool="pixel-art-palette-swapper"
+  data-processing={ui.processing}
+  data-ready={ui.readyStatus}
+  data-invalid-palette={ui.invalidPalette}
+  data-invalid-image={ui.invalidImage}
+  data-mapped-summary={ui.mappedSummary}
+  data-replace-image={ui.replaceImage}
+  data-drop-active={ui.dropActive}
+  data-upload-title={ui.uploadTitle}
+>
+  <div class="pas-command-bar">
+    <div class="pas-drop-zone" id="pas-drop-zone" tabindex="0" role="button" aria-label={ui.uploadTitle}>
+      <span class="pas-drop-mark" aria-hidden="true">+</span>
+      <span class="pas-drop-copy">
+        <strong id="pas-drop-title">{ui.uploadTitle}</strong>
+        <small id="pas-drop-hint">{ui.uploadHint}</small>
+      </span>
+      <input id="pas-file-input" class="pas-visually-hidden" type="file" accept="image/png,image/jpeg,image/webp" aria-label={ui.chooseImage} />
+    </div>
+    <button id="pas-choose-image" class="pas-button pas-button-primary" type="button">{ui.chooseImage}</button>
+    <span id="pas-file-name" class="pas-file-name">{ui.waitingForImage}</span>
+    <span id="pas-status" class="pas-status" role="status" aria-live="polite">{ui.waitingForImage}</span>
+  </div>
+
+  <div class="pas-workbench">
+    <aside class="pas-panel pas-palette-panel">
+      <div class="pas-panel-heading">
+        <span class="pas-kicker">01</span>
+        <h2>{ui.paletteTitle}</h2>
+      </div>
+
+      <div class="pas-preset-grid" role="list" aria-label={ui.paletteTitle}>
+        <button class="pas-preset is-selected" type="button" data-palette-id="gameBoy" role="listitem">
+          <span class="pas-preset-name">{ui.gameBoyPalette}</span>
+          <span class="pas-swatch-strip" data-swatch-palette="gameBoy" aria-hidden="true"></span>
+        </button>
+        <button class="pas-preset" type="button" data-palette-id="nes" role="listitem">
+          <span class="pas-preset-name">{ui.nesPalette}</span>
+          <span class="pas-swatch-strip" data-swatch-palette="nes" aria-hidden="true"></span>
+        </button>
+        <button class="pas-preset" type="button" data-palette-id="pico8" role="listitem">
+          <span class="pas-preset-name">{ui.pico8Palette}</span>
+          <span class="pas-swatch-strip" data-swatch-palette="pico8" aria-hidden="true"></span>
+        </button>
+        <button class="pas-preset" type="button" data-palette-id="commodore64" role="listitem">
+          <span class="pas-preset-name">{ui.commodore64Palette}</span>
+          <span class="pas-swatch-strip" data-swatch-palette="commodore64" aria-hidden="true"></span>
+        </button>
+        <button class="pas-preset" type="button" data-palette-id="dawnBringer16" role="listitem">
+          <span class="pas-preset-name">{ui.dawnBringerPalette}</span>
+          <span class="pas-swatch-strip" data-swatch-palette="dawnBringer16" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class="pas-custom-block">
+        <div class="pas-field-heading">
+          <label for="pas-custom-palette">{ui.customPalette}</label>
+          <span id="pas-palette-count">4 {ui.paletteCount}</span>
+        </div>
+        <textarea id="pas-custom-palette" rows="3" spellcheck="false" aria-describedby="pas-custom-hint">#0f380f, #306230, #8bac0f, #9bbc0f</textarea>
+        <small id="pas-custom-hint">{ui.customPaletteHint}</small>
+        <div class="pas-inline-actions">
+          <button id="pas-apply-custom" class="pas-button pas-button-dark" type="button">{ui.applyCustomPalette}</button>
+          <button id="pas-reset-custom" class="pas-text-button" type="button">{ui.resetCustomPalette}</button>
+        </div>
+      </div>
+
+      <label class="pas-toggle-row" for="pas-preserve-alpha">
+        <span>{ui.preserveAlpha}</span>
+        <input id="pas-preserve-alpha" type="checkbox" checked />
+        <span class="pas-toggle" aria-hidden="true"></span>
+      </label>
+    </aside>
+
+    <main class="pas-preview-panel">
+      <div class="pas-panel-heading pas-preview-heading">
+        <div>
+          <span class="pas-kicker">02</span>
+          <h2>{ui.sourcePreview} <span aria-hidden="true">→</span> {ui.resultPreview}</h2>
+        </div>
+        <label class="pas-zoom-control" for="pas-zoom">
+          <span>{ui.zoomLabel}</span>
+          <input id="pas-zoom" type="range" min="1" max="8" value="3" />
+          <output id="pas-zoom-value" for="pas-zoom">3x</output>
+        </label>
+      </div>
+
+      <div class="pas-canvas-stage" id="pas-canvas-stage">
+        <div class="pas-empty-state" id="pas-empty-state">
+          <div class="pas-empty-pixel" aria-hidden="true"></div>
+          <strong>{ui.uploadToPreview}</strong>
+          <span>{ui.resultEmpty}</span>
+        </div>
+        <div class="pas-canvas-pair" id="pas-canvas-pair" hidden>
+          <figure class="pas-canvas-card">
+            <figcaption><span class="pas-dot pas-dot-source"></span>{ui.sourcePreview}</figcaption>
+            <canvas id="pas-source-canvas" width="1" height="1" aria-label={ui.sourcePreview}></canvas>
+          </figure>
+          <figure class="pas-canvas-card pas-result-card">
+            <figcaption><span class="pas-dot pas-dot-result"></span>{ui.resultPreview}</figcaption>
+            <canvas id="pas-result-canvas" width="1" height="1" aria-label={ui.resultPreview}></canvas>
+          </figure>
+        </div>
+      </div>
+
+      <div class="pas-preview-footer">
+        <span class="pas-shortcut">PNG <span aria-hidden="true">·</span> RGB nearest-color mapping</span>
+        <span id="pas-render-note">{ui.waitingForImage}</span>
+      </div>
+    </main>
+
+    <aside class="pas-panel pas-inspector-panel">
+      <div class="pas-panel-heading">
+        <span class="pas-kicker">03</span>
+        <h2>{ui.resultPreview}</h2>
+      </div>
+      <div class="pas-inspector-preview" id="pas-inspector-preview" aria-hidden="true">
+        <div class="pas-inspector-pixel-grid"></div>
+      </div>
+      <div class="pas-stats-list">
+        <div><span>{ui.imageSize}</span><strong id="pas-image-size">—</strong></div>
+        <div><span>{ui.colorCount}</span><strong id="pas-source-colors">—</strong></div>
+        <div><span>{ui.mappedCount}</span><strong id="pas-mapped-colors">—</strong></div>
+        <div><span>{ui.paletteCount}</span><strong id="pas-inspector-palette-count">4</strong></div>
+      </div>
+      <button id="pas-download" class="pas-button pas-download-button" type="button" disabled>{ui.downloadPng}</button>
+      <span id="pas-download-hint" class="pas-download-hint">{ui.downloadDisabled}</span>
+    </aside>
+  </div>
+</div>
+
+<script>
+  import { initPixelArtPaletteSwapper } from './app-client';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPixelArtPaletteSwapper, { once: true });
+  } else {
+    initPixelArtPaletteSwapper();
+  }
+</script>
