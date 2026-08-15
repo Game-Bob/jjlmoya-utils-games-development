@@ -12,20 +12,48 @@ Follow this end-to-end guide to build, test, and release interactive tools in `s
 ## 📋 NON-NEGOTIABLE ARCHITECTURE & RULES
 
 1. **SOLID Principles & Clean Separation**:
-   - `logic.ts`: Pure algorithmic/temporal functions (< 25 lines each).
-   - `storage.ts`: `localStorage` persistence with clean `try/catch` blocks.
+   - `logic.ts`: Pure algorithmic/temporal functions (< 25 lines each, object params for >4 arguments).
+   - `storage.ts`: `localStorage` persistence with clean `try/catch` blocks (< 20 lines).
    - `evaluator.ts`: State evaluation & scanning rules.
    - `dom-views.ts`: Dynamic HTML generation & DOM updates (< 25 lines each).
-   - `controller.ts`: Event orchestration & lifecycle class (< 25 lines per method).
+   - `controller.ts`: Event orchestration, custom select management & lifecycle class (< 25 lines per method).
    - `component.astro`: Ultra-compact Astro view (< 150 lines) importing controller.
    - `ui.ts`: `interface ToolUI` with ALL user-visible strings parameterized.
    - `bibliography.ts`: Curated authoritative sources.
-   - `<tool-id>.css`: CSS with theme tokens.
-2. **Zero Comments in Code**: Strictly forbidden in `.ts`, `.astro`, `.css`, `.json` (including empty catch blocks).
-3. **Zero Emojis**: Forbidden anywhere in code, content, or git commits.
-4. **No Redundant Headers**: Never render `<h1>`, `<h2>`, or topbars inside `component.astro`. The page layout already has `UtilityHeader`.
-5. **Windows PowerShell Command Syntax**: Use `;` instead of `&&` when chaining commands.
-6. **Git Commits & Push**: Always use `--no-verify`.
+   - `<tool-id>.css`: CSS with theme tokens for both light and dark mode.
+2. **Single Compact Integrated Card (Obligatory)**:
+   - All tools MUST be built within a single main card container (`.sc-main-card`), splitting into a sidebar for controls/inputs on the left and a results/visualization stage on the right. Never create fragmented islands or multiple detached cards.
+3. **Native `<select>` Elements Strictly Forbidden**:
+   - Never use native `<select>` and `<option>` elements. Always build custom selects (`.sc-custom-select`) with styled trigger button, custom SVG chevron, ARIA attributes, and an accessible options dropdown menu.
+4. **100% Light & Dark Mode Contrast & Readability**:
+   - Define `--n-*` variables for both standard (light) and `.theme-dark` contexts. Zero washed-out or low-contrast text.
+5. **Real-Proportion SVGs (No Flattened Diagrams)**:
+   - SVGs must have generous heights (220px-280px) and spacious viewBoxes (e.g. 600x260). Never use `preserveAspectRatio="none"` or squash diagram proportions.
+6. **Clean Unit Formatting**:
+   - Display compact unit symbols (`m`, `ft`, `kts`, `kg`) instead of full button labels like `Metric (m)`.
+- **ART Manifesto & Ergonomic Questions ("We Do Not Build Excels, We Build ART")**:
+  1. *Can this be done with fewer inputs?*
+  2. *Can the remaining inputs be made substantially more comfortable, tactile, and natural (sliders, visual chips, quick toggles)?*
+  3. *Could this interface look significantly more beautiful, visual, and alive?* If yes, improve it immediately!
+  4. *Can I make the user's life easier?* If YES -> do it immediately!
+
+- **Mandatory Self-Reflection Questions (Always explicitly present to user)**:
+  1. **¿Esto puede ser más bonito?** (Visual excellence, theme contrast, glassmorphic layout).
+  2. **¿Esto puede ser más útil para el usuario?** (Smart presets, tactile sliders, instant feedback).
+  3. **¿Esto podría simplificarse?** (Reduce input fatigue without losing precision).
+  4. **¿Podría hacer algo para que el usuario lo disfrute más?** (Micro-interactions, dynamic SVG animations).
+  5. **¿Son los resultados suficientemente visuales?** (Gauges, real-time elevation profile, status badges).
+  6. **¿Puedo aportar algo más al usuario?** (Extra domain insights, seabed guidance, safety margin advice).
+
+- **Mandatory SEO & Content Reflection Questions (Always explicitly present to user)**:
+  1. **¿Esto es útil para el usuario?** (Real practical value, accurate calculations, zero filler text).
+  2. **¿Esto responde a la intención de búsqueda?** (Directly satisfies search intent, answering the what, how, and why).
+  3. **¿Puedo aportar mayor utilidad al usuario final?** (Rich comparisons, actionable tips, structured tables, and authoritative sources).
+8. **Zero Comments in Code**: Strictly forbidden in `.ts`, `.astro`, `.css`, `.json` (including empty catch blocks).
+9. **Zero Emojis**: Forbidden anywhere in code, content, or git commits.
+10. **No Redundant Headers**: Never render `<h1>`, `<h2>`, or topbars inside `component.astro`. The page layout already has `UtilityHeader`.
+11. **Windows PowerShell Command Syntax**: Use `;` instead of `&&` when chaining commands.
+12. **Git Commits & Push**: Always use `--no-verify`.
 
 ---
 
@@ -33,7 +61,7 @@ Follow this end-to-end guide to build, test, and release interactive tools in `s
 
 ### Phase 1: Interactive Tool Architecture (English-First)
 1. Build `logic.ts`, `logic.test.ts`, `storage.ts`, `evaluator.ts`, `dom-views.ts`, `controller.ts`, `ui.ts`, `component.astro`, `bibliography.ts`, and `<tool-id>.css`.
-2. Register in `src/tools.ts` and `src/category/index.ts`.
+2. Register in `src/tools.ts`, `src/entries.ts` and `src/category/index.ts`.
 3. Create `i18n/en.ts` with >300 words SEO content, FAQs, and HowTo.
 4. Run `npm run test` on `logic.test.ts`.
 5. **STOP AND WAIT FOR USER okQA**: Do not proceed to translation or release without explicit `okQA`.
@@ -64,35 +92,28 @@ Run in the tool repository:
 
 ---
 
-## 🛠️ TROUBLESHOOTING & PREVENTION RULES (READ CAREFULLY)
+## 🛠️ TROUBLESHOOTING & PREVENTION RULES
 
-1. **ESLint Size & Complexity Violations**:
-   - `max-lines (>250)`, `max-lines-per-function (>30)`, `complexity (>8)`, `max-params (>4)`.
-   - Prevention: Never write inline client scripts > 20 lines in `component.astro`. Separate into `logic.ts`, `storage.ts`, `evaluator.ts`, `dom-views.ts`, and `controller.ts`.
+1. **ESLint Size, Complexity & Parameter Limits**:
+   - `max-params (<= 4)`, `max-lines-per-function (<= 30)`, `no-nested-ternary`. Use parameter objects when functions accept multiple coordinates or state values.
 
-2. **No Comments Allowed (`no-comments/disallowComments`)**:
-   - Prevention: Zero `//` or `/* */` comments. In empty catch blocks use `catch { return; }` without comments.
+2. **Custom Select Dropdown Implementation**:
+   - Implement custom dropdown triggers with `.sc-custom-select` and `.sc-select-dropdown`. Listen for outside clicks to close open menus.
 
-3. **Zero Hardcoded English Strings in Client JS**:
-   - Prevention: All strings must be declared in `ui.ts`. Pass `ui` via `data-i18n={JSON.stringify(ui)}` on root container. Parse with `JSON.parse(appEl.dataset.i18n)` in controller and replace placeholders with `.replace('{key}', ...)`.
+3. **Stylelint CSS Variable Enforcement (`scale-unlimited/declaration-strict-value`)**:
+   - Always declare color values in `--n-*` variables and use `var(--n-...)` for `color`, `background-color`, and `border-color`.
 
-4. **Mandatory Schema Trio (`schemas_fulfillment.test.ts`)**:
-   - Prevention: Every single `i18n/<locale>.ts` must export `schemas: [faqSchema, howToSchema, appSchema]` using `schema-dts`.
+4. **No Comments Allowed (`no-comments/disallowComments`)**:
+   - Zero comments anywhere. In empty catch blocks use `catch { return; }` or `catch {}`.
 
-5. **Typography Garbage Validation (`no_en_dash.test.ts`)**:
-   - Prevention: Never use curly apostrophes `’`, curly quotes `“”`, en-dash `–`, em-dash `—`, ellipses `…`, guillemets `«»`, or space before colons ` : `. Use only straight ASCII `'`, `"`, `-`, `...`.
+5. **Mandatory Schema Trio (`schemas_fulfillment.test.ts`)**:
+   - Every single `i18n/<locale>.ts` must export `schemas: [faqSchema, howToSchema, appSchema]` using `schema-dts`.
 
-6. **SEO Title Separator Validation (`title_quality.test.ts`)**:
-   - Prevention: Never use `-` or `|` in any title string inside the `seo` array. Use words or spaces instead.
+6. **Typography Garbage Validation (`no_en_dash.test.ts`)**:
+   - Use only straight ASCII `'`, `"`, `-`, `...`. Never use curly quotes, en-dash, em-dash, or space before colons.
 
-7. **Updating Tool Count in Test Suites**:
-   - Prevention: When adding a new tool to a category, update the expected tool count in `src/tests/tool_validation.test.ts` and `src/tests/locale_completeness.test.ts`.
+7. **SEO Title Separator Validation (`title_quality.test.ts`)**:
+   - Never use `-` or `|` in any title string inside the `seo` array.
 
-8. **Date Picker Visibility in Dark Mode**:
-   - Prevention: Wrap `<input type="date">` in `.sc-date-wrap`, position a custom SVG calendar icon with `color: var(--sc-brand)`, and hide the native indicator with `::-webkit-calendar-picker-indicator { opacity: 0; position: absolute; width: 100%; height: 100%; cursor: pointer; }`.
-
-9. **SVG `className` Read-Only Error**:
-   - Prevention: Never do `svgElement.className = ...`. Always use `svgElement.setAttribute('class', ...)` or `svgElement.classList.add/remove`.
-
-10. **Stylelint CSS Formatting**:
-    - Prevention: Always use 3-digit shorthand `#fff`, never declare `font-family` in utility CSS, maintain blank lines before declarations.
+8. **Updating Tool Count in Test Suites**:
+   - Update expected tool count in `src/tests/tool_validation.test.ts` and `src/tests/locale_completeness.test.ts`.
