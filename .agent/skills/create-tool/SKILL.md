@@ -22,9 +22,11 @@ Follow this end-to-end guide to build, test, and release interactive tools in `s
    - `bibliography.ts`: Curated authoritative sources.
    - `<tool-id>.css`: CSS with theme tokens for both light and dark mode.
 2. **Single Compact Integrated Card (Obligatory)**:
-   - All tools MUST be built within a single main card container (`.sc-main-card`), splitting into a sidebar for controls/inputs on the left and a results/visualization stage on the right. Never create fragmented islands or multiple detached cards.
-3. **Native `<select>` Elements Strictly Forbidden**:
-   - Never use native `<select>` and `<option>` elements. Always build custom selects (`.sc-custom-select`) with styled trigger button, custom SVG chevron, ARIA attributes, and an accessible options dropdown menu.
+   - All tools MUST be built within a single main card container namespaced with the tool slug (e.g. `.<tool-id>-card` or `.<tool-id>-main-card`), splitting into a sidebar for controls/inputs on the left and a results/visualization stage on the right. Never create fragmented islands or multiple detached cards.
+3. **CSS Namespacing by Tool Slug (Strictly Required)**:
+   - All CSS class names must be explicitly namespaced with the tool ID / slug (e.g. `.<tool-id>-*`). Generic class names or arbitrary prefixes like `.sc-*` are strictly forbidden to guarantee complete CSS isolation across tools.
+4. **Native `<select>` Elements Strictly Forbidden**:
+   - Never use native `<select>` and `<option>` elements. Always build custom selects (`.<tool-id>-custom-select`) with styled trigger button, custom SVG chevron, ARIA attributes, and an accessible options dropdown menu.
 4. **100% Light & Dark Mode Contrast & Readability**:
    - Define `--n-*` variables for both standard (light) and `.theme-dark` contexts. Zero washed-out or low-contrast text.
 5. **Real-Proportion SVGs (No Flattened Diagrams)**:
@@ -49,6 +51,9 @@ Follow this end-to-end guide to build, test, and release interactive tools in `s
   1. **¿Esto es útil para el usuario?** (Real practical value, accurate calculations, zero filler text).
   2. **¿Esto responde a la intención de búsqueda?** (Directly satisfies search intent, answering the what, how, and why).
   3. **¿Puedo aportar mayor utilidad al usuario final?** (Rich comparisons, actionable tips, structured tables, and authoritative sources).
+- **Mandatory Native Orthography & Diacritics (Zero Stripping of Accents)**:
+  - Translations in Spanish (`es`), French (`fr`), Portuguese (`pt`), German (`de`), Polish (`pl`), Turkish (`tr`), Swedish (`sv`), and Italian (`it`) MUST include all native diacritics and accents (`á, é, í, ó, ú, ü, ñ, à, è, ç, ą, ę, ł, ó, ś, ź, ż, etc.`). Stripping accents or writing Spanish in ASCII is strictly forbidden.
+  - `diacritics_density.test.ts` with strict thresholds (e.g. `es: 8.0`, `fr: 8.0`, `pl: 10.0`, `tr: 10.0`, `pt: 8.0`, `sv: 5.0`, `de: 3.0`, `it: 3.0`) MUST be passed on 100% of i18n files.
 8. **Zero Comments in Code**: Strictly forbidden in `.ts`, `.astro`, `.css`, `.json` (including empty catch blocks).
 9. **Zero Emojis**: Forbidden anywhere in code, content, or git commits.
 10. **No Redundant Headers**: Never render `<h1>`, `<h2>`, or topbars inside `component.astro`. The page layout already has `UtilityHeader`.
@@ -98,7 +103,7 @@ Run in the tool repository:
    - `max-params (<= 4)`, `max-lines-per-function (<= 30)`, `no-nested-ternary`. Use parameter objects when functions accept multiple coordinates or state values.
 
 2. **Custom Select Dropdown Implementation**:
-   - Implement custom dropdown triggers with `.sc-custom-select` and `.sc-select-dropdown`. Listen for outside clicks to close open menus.
+   - Implement custom dropdown triggers with `.<tool-id>-custom-select` and `.<tool-id>-select-dropdown`. Listen for outside clicks to close open menus.
 
 3. **Stylelint CSS Variable Enforcement (`scale-unlimited/declaration-strict-value`)**:
    - Always declare color values in `--n-*` variables and use `var(--n-...)` for `color`, `background-color`, and `border-color`.
