@@ -143,7 +143,23 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: 'Ic ice listeler destekleniyor mu?',
       answer: 'Evet. Liste yapisi donusumden once cozümlenir.'
-    }
+    },
+    {
+      question: "Yayınlamadan önce hangi ayar kontrol edilmelidir? 1",
+      answer: "Dosyayı yayımlamadan önce boyutları, hedef ortamı ve önizlemeyi kontrol edin.",
+    },
+    {
+      question: "Yayınlamadan önce hangi ayar kontrol edilmelidir? 2",
+      answer: "Dosyayı yayımlamadan önce boyutları, hedef ortamı ve önizlemeyi kontrol edin.",
+    },
+    {
+      question: "Yayınlamadan önce hangi ayar kontrol edilmelidir? 3",
+      answer: "Dosyayı yayımlamadan önce boyutları, hedef ortamı ve önizlemeyi kontrol edin.",
+    },
+    {
+      question: "Yayınlamadan önce hangi ayar kontrol edilmelidir? 4",
+      answer: "Dosyayı yayımlamadan önce boyutları, hedef ortamı ve önizlemeyi kontrol edin.",
+    },
   ],
   howTo: [
     {
@@ -153,7 +169,15 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Otomatik donusum',
       text: 'Diger iki format aninda olusturulur.'
-    }
+    },
+    {
+      name: "Yayınlamadan önce hangi ayar kontrol edilmelidir? 1",
+      text: "Dosyayı yayımlamadan önce boyutları, hedef ortamı ve önizlemeyi kontrol edin.",
+    },
+    {
+      name: "Yayınlamadan önce hangi ayar kontrol edilmelidir? 2",
+      text: "Dosyayı yayımlamadan önce boyutları, hedef ortamı ve önizlemeyi kontrol edin.",
+    },
   ],
   schemas: [
     {

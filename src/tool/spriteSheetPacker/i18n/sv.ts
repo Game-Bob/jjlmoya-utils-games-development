@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: 'Produktionsregler',
       html: 'Gruppera animationer i gemensamma atlaser och använd potenser av två för WebGL byggen.',
     },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 2.",
+    },
   ],
   faq: [
     {

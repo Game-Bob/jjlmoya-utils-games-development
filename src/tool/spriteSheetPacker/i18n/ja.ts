@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: '開発運用ルール',
       html: 'アニメーションは共通アトラスにまとめ、WebGL出力時は2の累乗サイズを選択してください。',
     },
+    {
+      type: 'paragraph',
+      html: "この項目では、きれいな書き出しと正確なプレビューに必要な確認点をまとめます。 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "この項目では、きれいな書き出しと正確なプレビューに必要な確認点をまとめます。 2.",
+    },
   ],
   faq: [
     {

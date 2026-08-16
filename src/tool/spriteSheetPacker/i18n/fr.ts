@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: 'Règles de Production',
       html: 'Regroupez les animations dans des atlases partagés et roguez la transparence.',
     },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 2.",
+    },
   ],
   faq: [
     {

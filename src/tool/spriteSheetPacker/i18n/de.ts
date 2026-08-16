@@ -185,6 +185,15 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: 'Regeln für die Spieleentwicklung',
       html: 'Fassen Sie Charakteranimationen in gemeinsamen Texturatlanten zusammen und schneiden Sie ungenutzte Transparenz zu.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Sprite Sheets für stabile Bildraten optimieren'
+    },
+    {
+      type: 'paragraph',
+      html: 'Ein gut gepacktes Sprite Sheet reduziert Texturwechsel und Draw Calls. Wählen Sie eine passende maximale Größe und lassen Sie zwischen Frames genügend Abstand.'
+    },
   ],
   faq: [
     {

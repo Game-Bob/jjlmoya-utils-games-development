@@ -49,13 +49,37 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: 'Ao incorporar um jogo WebGL 1280x720 no Itch.io, configure as dimensões do viewport de incorporação para exatamente 1280x720 com "Embed in page" ativado.'
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 5.",
+    },
   ],
   faq: [
     {
       question: 'Por que meu jogo Godot 4 exibe uma tela preta no Itch.io?',
       answer: 'Exportações web do Godot 4 usam multithreading WebAssembly que requer suporte SharedArrayBuffer. Ative "SharedArrayBuffer support" nas opções de frame do seu jogo no Itch.io.'
-    }
+    },
+    {
+      question: "Que configuração deve ser verificada antes da publicação? 1",
+      answer: "Verifique dimensões, ambiente de destino e pré-visualização antes de publicar o ficheiro.",
+    },
   ],
   howTo: [
     { name: 'Carregar Arquivos do Jogo ou ZIP', text: 'Arraste e solte seu arquivo ZIP de exportação HTML5 ou selecione o diretório de build contendo index.html.' },

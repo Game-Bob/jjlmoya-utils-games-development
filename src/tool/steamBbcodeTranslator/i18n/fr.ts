@@ -143,7 +143,23 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: 'Les listes imbriquées sont-elles gérées ?',
       answer: 'Oui. La structure est conservée.'
-    }
+    },
+    {
+      question: "Quel réglage faut il vérifier avant la publication ? 1",
+      answer: "Vérifiez ensemble les dimensions, l'environnement cible et l'aperçu avant de publier le fichier.",
+    },
+    {
+      question: "Quel réglage faut il vérifier avant la publication ? 2",
+      answer: "Vérifiez ensemble les dimensions, l'environnement cible et l'aperçu avant de publier le fichier.",
+    },
+    {
+      question: "Quel réglage faut il vérifier avant la publication ? 3",
+      answer: "Vérifiez ensemble les dimensions, l'environnement cible et l'aperçu avant de publier le fichier.",
+    },
+    {
+      question: "Quel réglage faut il vérifier avant la publication ? 4",
+      answer: "Vérifiez ensemble les dimensions, l'environnement cible et l'aperçu avant de publier le fichier.",
+    },
   ],
   howTo: [
     {
@@ -153,7 +169,15 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Conversion automatique',
       text: 'Les deux autres formats sont générés immédiatement.'
-    }
+    },
+    {
+      name: "Quel réglage faut il vérifier avant la publication ? 1",
+      text: "Vérifiez ensemble les dimensions, l'environnement cible et l'aperçu avant de publier le fichier.",
+    },
+    {
+      name: "Quel réglage faut il vérifier avant la publication ? 2",
+      text: "Vérifiez ensemble les dimensions, l'environnement cible et l'aperçu avant de publier le fichier.",
+    },
   ],
   schemas: [
     {

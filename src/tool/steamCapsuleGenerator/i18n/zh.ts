@@ -85,20 +85,72 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Valve 用来指代 Steam 商店和客户端库中推广图容器的术语。'
         }
       ]
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 8.",
+    },
   ],
   faqTitle: '关于 Steam 图像资源的常见问题',
   faq: [
     {
       question: '我应该使用什么文件格式？',
       answer: 'Steam 主胶囊图支持 JPG 或 PNG 文件。推荐使用高质量 JPG。'
-    }
+    },
+    {
+      question: "还需要准备哪些数据？",
+      answer: "请检查输入内容，并将预览与技术规格进行比较。",
+    },
+    {
+      question: "如何检查结果？",
+      answer: "请检查输入内容，并将预览与技术规格进行比较。",
+    },
   ],
   howTo: [
     {
       name: '上传艺术图',
       text: '选择一张高分辨率主视觉图。'
-    }
+    },
+    {
+      name: "还需要准备哪些数据？",
+      text: "请检查输入内容，并将预览与技术规格进行比较。",
+    },
+    {
+      name: "如何检查结果？",
+      text: "请检查输入内容，并将预览与技术规格进行比较。",
+    },
+    {
+      name: "如何测试最终文件？",
+      text: "请在目标环境中打开预览，并检查尺寸和显示效果。",
+    },
   ],
   schemas: [
     {

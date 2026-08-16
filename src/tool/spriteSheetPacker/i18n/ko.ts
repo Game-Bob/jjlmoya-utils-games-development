@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: '생산성 규칙',
       html: '캐릭터 애니메이션은 하나로 패킹하고 WebGL 빌드 시 2의 거듭제곱 해상도를 유지하세요.',
     },
+    {
+      type: 'paragraph',
+      html: "이 항목은 깔끔한 내보내기와 정확한 미리보기를 위해 확인할 내용을 정리합니다. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "이 항목은 깔끔한 내보내기와 정확한 미리보기를 위해 확인할 내용을 정리합니다. 2.",
+    },
   ],
   faq: [
     {

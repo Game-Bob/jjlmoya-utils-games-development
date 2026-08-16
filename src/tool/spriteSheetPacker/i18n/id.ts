@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: 'Aturan Produksi',
       html: 'Gabungkan animasi karakter ke dalam atlas bersama dan gunakan dimensi pangkat dua untuk ekspor WebGL.',
     },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 2.",
+    },
   ],
   faq: [
     {

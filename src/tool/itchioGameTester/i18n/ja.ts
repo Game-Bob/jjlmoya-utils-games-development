@@ -49,13 +49,37 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: '1280x720のWebGLゲームをItch.ioに埋め込む場合、埋め込みビューポートの寸法を正確に1280x720に設定し、"Embed in page"を有効にしてください。'
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "この項目では、きれいな書き出しと正確なプレビューに必要な確認点をまとめます。 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "この項目では、きれいな書き出しと正確なプレビューに必要な確認点をまとめます。 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "この項目では、きれいな書き出しと正確なプレビューに必要な確認点をまとめます。 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "この項目では、きれいな書き出しと正確なプレビューに必要な確認点をまとめます。 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "この項目では、きれいな書き出しと正確なプレビューに必要な確認点をまとめます。 5.",
+    },
   ],
   faq: [
     {
       question: 'Godot 4のゲームがItch.ioで黒い画面を表示するのはなぜですか？',
       answer: 'Godot 4のウェブエクスポートはSharedArrayBufferのサポートを必要とするWebAssemblyマルチスレッディングを使用します。Itch.ioのゲーム編集ページでフレームオプションの"SharedArrayBuffer support"を有効にしてください。'
-    }
+    },
+    {
+      question: "公開前にどの設定を確認すればよいですか？ 1",
+      answer: "公開前にサイズ、対象環境、プレビューをまとめて確認してください。",
+    },
   ],
   howTo: [
     { name: 'ゲームファイルまたはZIPをアップロード', text: 'HTML5エクスポートZIPアーカイブをドラッグ＆ドロップするか、index.htmlを含むビルドディレクトリを選択します。' },

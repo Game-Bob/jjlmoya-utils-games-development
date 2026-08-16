@@ -143,7 +143,23 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: 'Suporta listas aninhadas?',
       answer: 'Sim. A estrutura é analisada antes da conversão.'
-    }
+    },
+    {
+      question: "Que configuração deve ser verificada antes da publicação? 1",
+      answer: "Verifique dimensões, ambiente de destino e pré-visualização antes de publicar o ficheiro.",
+    },
+    {
+      question: "Que configuração deve ser verificada antes da publicação? 2",
+      answer: "Verifique dimensões, ambiente de destino e pré-visualização antes de publicar o ficheiro.",
+    },
+    {
+      question: "Que configuração deve ser verificada antes da publicação? 3",
+      answer: "Verifique dimensões, ambiente de destino e pré-visualização antes de publicar o ficheiro.",
+    },
+    {
+      question: "Que configuração deve ser verificada antes da publicação? 4",
+      answer: "Verifique dimensões, ambiente de destino e pré-visualização antes de publicar o ficheiro.",
+    },
   ],
   howTo: [
     {
@@ -153,7 +169,15 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Deteção automática',
       text: 'Os outros dois formatos serão gerados imediatamente.'
-    }
+    },
+    {
+      name: "Que configuração deve ser verificada antes da publicação? 1",
+      text: "Verifique dimensões, ambiente de destino e pré-visualização antes de publicar o ficheiro.",
+    },
+    {
+      name: "Que configuração deve ser verificada antes da publicação? 2",
+      text: "Verifique dimensões, ambiente de destino e pré-visualização antes de publicar o ficheiro.",
+    },
   ],
   schemas: [
     {

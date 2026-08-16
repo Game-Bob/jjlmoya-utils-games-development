@@ -49,13 +49,37 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: 'Stel bij het insluiten van een 1280x720 WebGL-game op Itch.io de embed-viewportafmetingen in op precies 1280x720 met "Embed in page" ingeschakeld.'
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 5.",
+    },
   ],
   faq: [
     {
       question: 'Waarom toont mijn Godot 4-game een zwart scherm op Itch.io?',
       answer: 'Godot 4 web-exports gebruiken WebAssembly multithreading dat SharedArrayBuffer-ondersteuning vereist. Schakel "SharedArrayBuffer support" in bij de frameopties van je Itch.io-game.'
-    }
+    },
+    {
+      question: "Welke instelling moet je voor publicatie controleren? 1",
+      answer: "Controleer afmetingen, doelomgeving en voorbeeldweergave voordat je het bestand publiceert.",
+    },
   ],
   howTo: [
     { name: 'Gamebestanden of ZIP uploaden', text: 'Sleep je HTML5 export ZIP-archief of selecteer je buildmap met index.html.' },

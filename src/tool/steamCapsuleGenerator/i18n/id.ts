@@ -85,20 +85,72 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Istilah standar Valve untuk gambar promosi game.'
         }
       ]
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 8.",
+    },
   ],
   faqTitle: 'Pertanyaan Umum tentang Aset Steam',
   faq: [
     {
       question: 'Format berkas apa yang harus digunakan?',
       answer: 'Steam menerima berkas JPG atau PNG untuk kapsul utama.'
-    }
+    },
+    {
+      question: "Data tambahan apa yang perlu disiapkan?",
+      answer: "Periksa masukan dan bandingkan pratinjau dengan spesifikasi teknis.",
+    },
+    {
+      question: "Bagaimana cara memeriksa hasilnya?",
+      answer: "Periksa masukan dan bandingkan pratinjau dengan spesifikasi teknis.",
+    },
   ],
   howTo: [
     {
       name: 'Unggah Gambar',
       text: 'Pilih gambar resolusi tinggi.'
-    }
+    },
+    {
+      name: "Data tambahan apa yang perlu disiapkan?",
+      text: "Periksa masukan dan bandingkan pratinjau dengan spesifikasi teknis.",
+    },
+    {
+      name: "Bagaimana cara memeriksa hasilnya?",
+      text: "Periksa masukan dan bandingkan pratinjau dengan spesifikasi teknis.",
+    },
+    {
+      name: "Bagaimana cara menguji berkas akhir?",
+      text: "Buka pratinjau di lingkungan tujuan lalu periksa ukuran dan tampilannya.",
+    },
   ],
   schemas: [
     {

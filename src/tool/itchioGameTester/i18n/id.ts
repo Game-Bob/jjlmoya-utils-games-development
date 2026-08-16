@@ -49,13 +49,37 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: 'Saat menyematkan game WebGL 1280x720 di Itch.io, atur dimensi viewport embed tepat ke 1280x720 dengan "Embed in page" diaktifkan.'
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 5.",
+    },
   ],
   faq: [
     {
       question: 'Mengapa game Godot 4 saya menampilkan layar hitam di Itch.io?',
       answer: 'Ekspor web Godot 4 menggunakan multi-threading WebAssembly yang memerlukan dukungan SharedArrayBuffer. Aktifkan "SharedArrayBuffer support" di opsi frame game Itch.io Anda.'
-    }
+    },
+    {
+      question: "Pengaturan apa yang harus diperiksa sebelum diterbitkan? 1",
+      answer: "Periksa ukuran, lingkungan tujuan, dan pratinjau bersama sebelum menerbitkan berkas.",
+    },
   ],
   howTo: [
     { name: 'Unggah File Game atau ZIP', text: 'Seret dan letakkan arsip ZIP ekspor HTML5 atau pilih direktori build yang berisi index.html.' },

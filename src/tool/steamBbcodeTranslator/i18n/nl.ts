@@ -143,7 +143,23 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: 'Worden geneste lijsten ondersteund?',
       answer: 'Ja. De lijststructuur wordt geanalyseerd voor de omzetting.'
-    }
+    },
+    {
+      question: "Welke instelling moet je voor publicatie controleren? 1",
+      answer: "Controleer afmetingen, doelomgeving en voorbeeldweergave voordat je het bestand publiceert.",
+    },
+    {
+      question: "Welke instelling moet je voor publicatie controleren? 2",
+      answer: "Controleer afmetingen, doelomgeving en voorbeeldweergave voordat je het bestand publiceert.",
+    },
+    {
+      question: "Welke instelling moet je voor publicatie controleren? 3",
+      answer: "Controleer afmetingen, doelomgeving en voorbeeldweergave voordat je het bestand publiceert.",
+    },
+    {
+      question: "Welke instelling moet je voor publicatie controleren? 4",
+      answer: "Controleer afmetingen, doelomgeving en voorbeeldweergave voordat je het bestand publiceert.",
+    },
   ],
   howTo: [
     {
@@ -153,7 +169,15 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Automatische omzetting',
       text: 'De andere twee formaten worden direct gegeneerd.'
-    }
+    },
+    {
+      name: "Welke instelling moet je voor publicatie controleren? 1",
+      text: "Controleer afmetingen, doelomgeving en voorbeeldweergave voordat je het bestand publiceert.",
+    },
+    {
+      name: "Welke instelling moet je voor publicatie controleren? 2",
+      text: "Controleer afmetingen, doelomgeving en voorbeeldweergave voordat je het bestand publiceert.",
+    },
   ],
   schemas: [
     {

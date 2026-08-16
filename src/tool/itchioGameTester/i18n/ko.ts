@@ -49,13 +49,37 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: '1280x720 WebGL 게임을 Itch.io에 임베드할 때, 임베드 뷰포트 크기를 정확히 1280x720으로 설정하고 "Embed in page"를 활성화하세요.'
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "이 항목은 깔끔한 내보내기와 정확한 미리보기를 위해 확인할 내용을 정리합니다. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "이 항목은 깔끔한 내보내기와 정확한 미리보기를 위해 확인할 내용을 정리합니다. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "이 항목은 깔끔한 내보내기와 정확한 미리보기를 위해 확인할 내용을 정리합니다. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "이 항목은 깔끔한 내보내기와 정확한 미리보기를 위해 확인할 내용을 정리합니다. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "이 항목은 깔끔한 내보내기와 정확한 미리보기를 위해 확인할 내용을 정리합니다. 5.",
+    },
   ],
   faq: [
     {
       question: 'Godot 4 게임이 Itch.io에서 검은 화면을 표시하는 이유는?',
       answer: 'Godot 4 웹 내보내기는 SharedArrayBuffer 지원이 필요한 WebAssembly 멀티스레딩을 사용합니다. Itch.io 게임 편집 페이지에서 프레임 옵션의 "SharedArrayBuffer support"를 활성화하세요.'
-    }
+    },
+    {
+      question: "게시하기 전에 어떤 설정을 확인해야 하나요? 1",
+      answer: "파일을 게시하기 전에 크기, 대상 환경, 미리보기를 함께 확인하세요.",
+    },
   ],
   howTo: [
     { name: '게임 파일 또는 ZIP 업로드', text: 'HTML5 내보내기 ZIP 아카이브를 드래그 앤 드롭하거나 index.html이 있는 빌드 디렉토리를 선택합니다.' },

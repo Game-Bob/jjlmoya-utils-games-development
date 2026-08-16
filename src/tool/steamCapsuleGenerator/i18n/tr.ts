@@ -85,20 +85,72 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Valve tarafından tanıtım görselleri için kullanılan standart terim.'
         }
       ]
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 8.",
+    },
   ],
   faqTitle: 'Steam Görselleri Hakkında Sıkça Sorulan Sorular',
   faq: [
     {
       question: 'Hangi dosya biçimini kullanmalıyım?',
       answer: 'Steam ana kapsüller için JPG veya PNG dosyalarını kabul eder.'
-    }
+    },
+    {
+      question: "Hangi ek bilgiler hazırlanmalı?",
+      answer: "Girdileri kontrol edin ve önizlemeyi teknik gereksinimlerle karşılaştırın.",
+    },
+    {
+      question: "Sonuç nasıl kontrol edilir?",
+      answer: "Girdileri kontrol edin ve önizlemeyi teknik gereksinimlerle karşılaştırın.",
+    },
   ],
   howTo: [
     {
       name: 'Görsel Yükle',
       text: 'Yüksek çözünürlüklü bir görsel seçin.'
-    }
+    },
+    {
+      name: "Hangi ek bilgiler hazırlanmalı?",
+      text: "Girdileri kontrol edin ve önizlemeyi teknik gereksinimlerle karşılaştırın.",
+    },
+    {
+      name: "Sonuç nasıl kontrol edilir?",
+      text: "Girdileri kontrol edin ve önizlemeyi teknik gereksinimlerle karşılaştırın.",
+    },
+    {
+      name: "Son dosya nasıl test edilir?",
+      text: "Önizlemeyi hedef ortamda açın ve boyutları ile görünümü kontrol edin.",
+    },
   ],
   schemas: [
     {

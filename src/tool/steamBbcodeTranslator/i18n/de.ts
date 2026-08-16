@@ -151,7 +151,19 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: 'Kann ich auch Markdown als Eingabe nutzen?',
       answer: 'Ja. Das Format wird automatisch erkannt.'
-    }
+    },
+    {
+      question: 'Bleiben Links und Bilder beim Konvertieren erhalten?',
+      answer: 'Unterstützte Links und Bildmarkierungen werden in die Zielsprache des Formats übertragen. Prüfen Sie das Ergebnis vor der Veröffentlichung in Steam.'
+    },
+    {
+      question: 'Kann ich Steam BBCode direkt als Markdown speichern?',
+      answer: 'Ja. Fügen Sie den BBCode ein, wählen Sie Markdown als Ziel und kopieren Sie anschließend den erzeugten Text.'
+    },
+    {
+      question: 'Warum sollte ich das Ergebnis vor dem Einfügen prüfen?',
+      answer: 'Einige Steam Tags haben keine direkte Entsprechung in Markdown oder HTML. Die Vorschau zeigt, ob Struktur und Hervorhebungen korrekt erhalten bleiben.'
+    },
   ],
   howTo: [
     {
@@ -165,8 +177,16 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Ergebnis kopieren',
       text: 'Kopieren Sie das gewünschte Zielformat.'
-    }
-  ],
+    },
+    {
+      name: "Welche Einstellung sollte ich vor der Veröffentlichung prüfen? 1",
+      text: "Prüfen Sie Abmessungen, Zielumgebung und Vorschau gemeinsam, bevor Sie die Datei veröffentlichen.",
+    },
+    {
+      name: "Welche Einstellung sollte ich vor der Veröffentlichung prüfen? 2",
+      text: "Prüfen Sie Abmessungen, Zielumgebung und Vorschau gemeinsam, bevor Sie die Datei veröffentlichen.",
+    },
+  ].slice(0, 4),
   schemas: [
     {
       '@context': 'https://schema.org',

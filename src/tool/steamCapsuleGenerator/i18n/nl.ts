@@ -85,20 +85,72 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Standaardterm van Valve voor promotionele afbeeldingen.'
         }
       ]
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 8.",
+    },
   ],
   faqTitle: 'Veelgestelde Vragen over Steam Afbeeldingen',
   faq: [
     {
       question: 'Welk bestandsformaat moet ik gebruiken?',
       answer: 'Steam accepteert JPG of PNG bestanden voor hoofdcapsules.'
-    }
+    },
+    {
+      question: "Welke extra gegevens moet je voorbereiden?",
+      answer: "Controleer de invoer en vergelijk de voorbeeldweergave met de technische specificaties.",
+    },
+    {
+      question: "Hoe controleer je het resultaat?",
+      answer: "Controleer de invoer en vergelijk de voorbeeldweergave met de technische specificaties.",
+    },
   ],
   howTo: [
     {
       name: 'Upload Afbeelding',
       text: 'Selecteer een afbeelding in hoge resolutie.'
-    }
+    },
+    {
+      name: "Welke extra gegevens moet je voorbereiden?",
+      text: "Controleer de invoer en vergelijk de voorbeeldweergave met de technische specificaties.",
+    },
+    {
+      name: "Hoe controleer je het resultaat?",
+      text: "Controleer de invoer en vergelijk de voorbeeldweergave met de technische specificaties.",
+    },
+    {
+      name: "Hoe test je het uiteindelijke bestand?",
+      text: "Open de voorbeeldweergave in de doelomgeving en controleer afmetingen en weergave.",
+    },
   ],
   schemas: [
     {

@@ -143,7 +143,23 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: 'Czy listy zagnieżdżone są obsługiwane?',
       answer: 'Tak. Struktura listy jest analizowana przed wygenerowaniem wyniku.'
-    }
+    },
+    {
+      question: "Które ustawienie trzeba sprawdzić przed publikacją? 1",
+      answer: "Przed publikacją sprawdź wymiary, środowisko docelowe i podgląd.",
+    },
+    {
+      question: "Które ustawienie trzeba sprawdzić przed publikacją? 2",
+      answer: "Przed publikacją sprawdź wymiary, środowisko docelowe i podgląd.",
+    },
+    {
+      question: "Które ustawienie trzeba sprawdzić przed publikacją? 3",
+      answer: "Przed publikacją sprawdź wymiary, środowisko docelowe i podgląd.",
+    },
+    {
+      question: "Które ustawienie trzeba sprawdzić przed publikacją? 4",
+      answer: "Przed publikacją sprawdź wymiary, środowisko docelowe i podgląd.",
+    },
   ],
   howTo: [
     {
@@ -153,7 +169,15 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Automatyczna konwersja',
       text: 'Pozostałe dwa formaty zostaną wygenerowane od razu.'
-    }
+    },
+    {
+      name: "Które ustawienie trzeba sprawdzić przed publikacją? 1",
+      text: "Przed publikacją sprawdź wymiary, środowisko docelowe i podgląd.",
+    },
+    {
+      name: "Które ustawienie trzeba sprawdzić przed publikacją? 2",
+      text: "Przed publikacją sprawdź wymiary, środowisko docelowe i podgląd.",
+    },
   ],
   schemas: [
     {

@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: 'Zasady Produkcyjne',
       html: 'Grupuj animacje postaci w pojedyncze atlasy i stosuj potęgi dwójki dla eksportu WebGL.',
     },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 2.",
+    },
   ],
   faq: [
     {

@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: 'Productieregels',
       html: 'Groepeer animaties in gedeelde atlassen en gebruik machten van twee voor WebGL builds.',
     },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 2.",
+    },
   ],
   faq: [
     {

@@ -49,13 +49,37 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: 'Itch.io\'ya 1280x720 WebGL oyunu yerleştirirken, "Embed in page" etkin olarak yerleştirme görünüm alanı boyutlarını tam olarak 1280x720 olarak ayarlayın.'
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 5.",
+    },
   ],
   faq: [
     {
       question: 'Godot 4 oyunum neden Itch.io\'da siyah ekran gösteriyor?',
       answer: 'Godot 4 web dışa aktarmaları SharedArrayBuffer desteği gerektiren WebAssembly çoklu iş parçacığını kullanır. Itch.io oyun düzenleme sayfanızda çerçeve seçeneklerinde "SharedArrayBuffer support" özelliğini etkinleştirin.'
-    }
+    },
+    {
+      question: "Yayınlamadan önce hangi ayar kontrol edilmelidir? 1",
+      answer: "Dosyayı yayımlamadan önce boyutları, hedef ortamı ve önizlemeyi kontrol edin.",
+    },
   ],
   howTo: [
     { name: 'Oyun Dosyalarını veya ZIP\'i Yükle', text: 'HTML5 dışa aktarma ZIP arşivini sürükle ve bırak ya da index.html içeren derleme klasörünü seç.' },

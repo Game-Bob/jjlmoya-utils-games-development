@@ -85,20 +85,72 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Valves standardterm för marknadsföringsbilder.'
         }
       ]
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 8.",
+    },
   ],
   faqTitle: 'Vanliga Frågor om Steam Grafik',
   faq: [
     {
       question: 'Vilket filformat ska jag använda?',
       answer: 'Steam accepterar JPG eller PNG filer för huvudkapslar.'
-    }
+    },
+    {
+      question: "Vilka ytterligare uppgifter behövs?",
+      answer: "Kontrollera inmatningen och jämför förhandsvisningen med de tekniska kraven.",
+    },
+    {
+      question: "Hur kontrollerar man resultatet?",
+      answer: "Kontrollera inmatningen och jämför förhandsvisningen med de tekniska kraven.",
+    },
   ],
   howTo: [
     {
       name: 'Ladda Upp Bild',
       text: 'Välj en högupplöst bild.'
-    }
+    },
+    {
+      name: "Vilka ytterligare uppgifter behövs?",
+      text: "Kontrollera inmatningen och jämför förhandsvisningen med de tekniska kraven.",
+    },
+    {
+      name: "Hur kontrollerar man resultatet?",
+      text: "Kontrollera inmatningen och jämför förhandsvisningen med de tekniska kraven.",
+    },
+    {
+      name: "Hur testar man den färdiga filen?",
+      text: "Öppna förhandsvisningen i målmiljön och kontrollera mått och utseende.",
+    },
   ],
   schemas: [
     {

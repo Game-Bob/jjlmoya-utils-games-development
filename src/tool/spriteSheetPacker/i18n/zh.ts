@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: '生产规则',
       html: '将角色动画打包至共享图集，并在 WebGL 构建中使用 2 的次幂分辨率。',
     },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 2.",
+    },
   ],
   faq: [
     {

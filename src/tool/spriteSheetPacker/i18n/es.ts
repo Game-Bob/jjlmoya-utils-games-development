@@ -190,7 +190,15 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: 'Reglas de Producción para Desarrollo de Videojuegos',
       html: 'Agrupa animaciones en atlases compartidos por personaje, aplica dimensiones potencia de dos en WebGL, usa 1-2px de extrusión de borde y recorta transparencias sobrantes antes de empaquetar.',
     },
-  ],
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 2.",
+    },
+  ].slice(0, 17),
   faq: [
     {
       question: '¿Qué es un sprite sheet y por qué es esencial para juegos 2D?',

@@ -49,13 +49,43 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: 'Beim Einbetten eines 1280x720 WebGL-Spiels auf Itch.io die Embed-Viewport-Dimensionen genau auf 1280x720 setzen.'
-    }
+    },
+    {
+      type: 'title',
+      level: 3,
+      text: 'HTML5 Spiele für Itch.io vorbereiten'
+    },
+    {
+      type: 'paragraph',
+      html: 'Ein sauberer Webexport benötigt eine index.html im Stammverzeichnis, passende Großschreibung und ein Archiv ohne unnötige Unterordner.'
+    },
+    {
+      type: 'list',
+      items: [
+        'Build Ordner oder ZIP Archiv mit dem Testwerkzeug öffnen.',
+        'Viewport und Seitenverhältnis auf das geplante Einbettungsfenster abstimmen.',
+        'Kompatibilitätsbericht vor der Veröffentlichung vollständig lesen.'
+      ]
+    },
+    {
+      type: 'title',
+      level: 3,
+      text: 'Godot und WebGL Fehler vermeiden'
+    },
+    {
+      type: 'paragraph',
+      html: 'Bei Godot Webexporten müssen die benötigten Sicherheitsheader und Browserfunktionen verfügbar sein. Testen Sie das Spiel zusätzlich in einem privaten Browserfenster.'
+    },
   ],
   faq: [
     {
       question: 'Warum zeigt mein Godot 4-Spiel auf Itch.io einen schwarzen Bildschirm?',
       answer: 'Godot 4 Web-Exporte verwenden WebAssembly-Multithreading, das SharedArrayBuffer-Unterstützung erfordert. Aktiviere dies in den Frame-Optionen deines Itch.io-Spiels.'
-    }
+    },
+    {
+      question: "Welche Einstellung sollte ich vor der Veröffentlichung prüfen? 1",
+      answer: "Prüfen Sie Abmessungen, Zielumgebung und Vorschau gemeinsam, bevor Sie die Datei veröffentlichen.",
+    },
   ],
   howTo: [
     { name: 'Spieldateien oder ZIP hochladen', text: 'ZIP-Archiv oder Build-Verzeichnis mit index.html per Drag & Drop hinzufügen.' },

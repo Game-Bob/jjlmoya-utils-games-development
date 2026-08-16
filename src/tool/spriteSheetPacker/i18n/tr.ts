@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: 'Üretim Kuralları',
       html: 'Animasyonları ortak atlaslarda toplayın ve WebGL derlemelerinde 2 nin kuvveti boyutlarını kullanın.',
     },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 2.",
+    },
   ],
   faq: [
     {

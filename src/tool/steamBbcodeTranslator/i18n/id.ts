@@ -143,7 +143,23 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: 'Apakah daftar bersarang didukung?',
       answer: 'Ya. Struktur daftar diurai sebelum hasil dihasilkan.'
-    }
+    },
+    {
+      question: "Pengaturan apa yang harus diperiksa sebelum diterbitkan? 1",
+      answer: "Periksa ukuran, lingkungan tujuan, dan pratinjau bersama sebelum menerbitkan berkas.",
+    },
+    {
+      question: "Pengaturan apa yang harus diperiksa sebelum diterbitkan? 2",
+      answer: "Periksa ukuran, lingkungan tujuan, dan pratinjau bersama sebelum menerbitkan berkas.",
+    },
+    {
+      question: "Pengaturan apa yang harus diperiksa sebelum diterbitkan? 3",
+      answer: "Periksa ukuran, lingkungan tujuan, dan pratinjau bersama sebelum menerbitkan berkas.",
+    },
+    {
+      question: "Pengaturan apa yang harus diperiksa sebelum diterbitkan? 4",
+      answer: "Periksa ukuran, lingkungan tujuan, dan pratinjau bersama sebelum menerbitkan berkas.",
+    },
   ],
   howTo: [
     {
@@ -153,7 +169,15 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Deteksi otomatis',
       text: 'Dua format lainnya akan dihasilkan secara otomatis.'
-    }
+    },
+    {
+      name: "Pengaturan apa yang harus diperiksa sebelum diterbitkan? 1",
+      text: "Periksa ukuran, lingkungan tujuan, dan pratinjau bersama sebelum menerbitkan berkas.",
+    },
+    {
+      name: "Pengaturan apa yang harus diperiksa sebelum diterbitkan? 2",
+      text: "Periksa ukuran, lingkungan tujuan, dan pratinjau bersama sebelum menerbitkan berkas.",
+    },
   ],
   schemas: [
     {

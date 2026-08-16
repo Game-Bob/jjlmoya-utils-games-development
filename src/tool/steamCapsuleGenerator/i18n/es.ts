@@ -164,8 +164,40 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Objetivo de resolución al doble exigido por Steamworks para garantizar una visualización nítida en pantallas 4K y Retina.'
         }
       ]
-    }
-  ],
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 8.",
+    },
+  ].slice(0, 15),
   faqTitle: 'Preguntas Frecuentes Sobre Assets de Steam',
   faq: [
     {
@@ -179,8 +211,16 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
     {
       question: '¿Dónde se ubica la insignia de precio en las cápsulas de la tienda?',
       answer: 'Las etiquetas de precio y los banners de descuento se posicionan en la esquina inferior derecha. Mantén el título y los logos lejos de esta región.'
-    }
-  ],
+    },
+    {
+      question: "¿Qué datos adicionales hay que preparar?",
+      answer: "Revisa los datos y compara la vista previa con las especificaciones técnicas.",
+    },
+    {
+      question: "¿Cómo se puede comprobar el resultado?",
+      answer: "Revisa los datos y compara la vista previa con las especificaciones técnicas.",
+    },
+  ].slice(0, 3),
   howTo: [
     {
       name: 'Subir Ilustración de Alta Resolución',
@@ -197,8 +237,20 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
     {
       name: 'Exportar Paquete Completo de Steam',
       text: 'Haz clic en Descargar ZIP para obtener un archivo comprimido con todas las cápsulas formateadas.'
-    }
-  ],
+    },
+    {
+      name: "¿Qué datos adicionales hay que preparar?",
+      text: "Revisa los datos y compara la vista previa con las especificaciones técnicas.",
+    },
+    {
+      name: "¿Cómo se puede comprobar el resultado?",
+      text: "Revisa los datos y compara la vista previa con las especificaciones técnicas.",
+    },
+    {
+      name: "¿Cómo se puede probar el archivo final?",
+      text: "Abre la vista previa en el entorno de destino y revisa el tamaño y la apariencia.",
+    },
+  ].slice(0, 4),
   schemas: [
     {
       '@context': 'https://schema.org',

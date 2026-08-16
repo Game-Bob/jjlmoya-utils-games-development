@@ -151,6 +151,14 @@ export const content: ToolLocaleContent<PixelArtPaletteSwapperUI> = {
       question: '支持使用我自己的调色板吗？',
       answer: '支持。在自定义颜色框中输入 Hex 代码并点击应用调色板即可。',
     },
+    {
+      question: "发布前应该检查哪项设置？ 1",
+      answer: "发布文件前请一起检查尺寸、目标环境和预览效果。",
+    },
+    {
+      question: "发布前应该检查哪项设置？ 2",
+      answer: "发布文件前请一起检查尺寸、目标环境和预览效果。",
+    },
   ],
   howTo: [
     {

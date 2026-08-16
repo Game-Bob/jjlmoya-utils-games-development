@@ -85,20 +85,72 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Termo padrão da Valve para contêineres de imagens promocionais.'
         }
       ]
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 8.",
+    },
   ],
   faqTitle: 'Perguntas Frequentes sobre Recursos da Steam',
   faq: [
     {
       question: 'Qual formato de arquivo devo usar?',
       answer: 'A Steam aceita arquivos JPG ou PNG para as cápsulas principais.'
-    }
+    },
+    {
+      question: "Que dados adicionais devem ser preparados?",
+      answer: "Verifique os dados e compare a pré-visualização com as especificações.",
+    },
+    {
+      question: "Como verificar o resultado?",
+      answer: "Verifique os dados e compare a pré-visualização com as especificações.",
+    },
   ],
   howTo: [
     {
       name: 'Enviar a Arte',
       text: 'Selecione uma imagem em alta resolução.'
-    }
+    },
+    {
+      name: "Que dados adicionais devem ser preparados?",
+      text: "Verifique os dados e compare a pré-visualização com as especificações.",
+    },
+    {
+      name: "Como verificar o resultado?",
+      text: "Verifique os dados e compare a pré-visualização com as especificações.",
+    },
+    {
+      name: "Como testar o ficheiro final?",
+      text: "Abra a pré-visualização no ambiente de destino e verifique dimensões e apresentação.",
+    },
   ],
   schemas: [
     {

@@ -49,13 +49,37 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: '在Itch.io上嵌入1280x720的WebGL游戏时，将嵌入视口尺寸精确设置为1280x720，并启用"Embed in page"。'
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "本节汇总了正确导出和可靠预览所需的关键检查。 5.",
+    },
   ],
   faq: [
     {
       question: '为什么我的Godot 4游戏在Itch.io上显示黑屏？',
       answer: 'Godot 4网页导出使用需要SharedArrayBuffer支持的WebAssembly多线程。在Itch.io游戏编辑页面的帧选项中启用"SharedArrayBuffer support"。'
-    }
+    },
+    {
+      question: "发布前应该检查哪项设置？ 1",
+      answer: "发布文件前请一起检查尺寸、目标环境和预览效果。",
+    },
   ],
   howTo: [
     { name: '上传游戏文件或ZIP', text: '拖放HTML5导出ZIP压缩包，或选择包含index.html的构建目录。' },

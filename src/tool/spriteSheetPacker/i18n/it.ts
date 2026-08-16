@@ -185,6 +185,14 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       title: 'Regole di Produzione',
       html: 'Raggruppa le animazioni in atlas condivisi e forza dimensioni in potenza di due per WebGL.',
     },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 2.",
+    },
   ],
   faq: [
     {

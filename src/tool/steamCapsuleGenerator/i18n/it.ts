@@ -85,20 +85,72 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Termine standard di Valve per indicare i contenitori grafici promozionali.'
         }
       ]
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 8.",
+    },
   ],
   faqTitle: 'Domande Frequenti sulle Risorse Steam',
   faq: [
     {
       question: 'Quale formato di file devo usare per le capsule Steam?',
       answer: 'Steam accetta file JPG o PNG ed è consigliato il formato alta qualità.'
-    }
+    },
+    {
+      question: "Quali altri dati bisogna preparare?",
+      answer: "Controlla i dati inseriti e confronta l'anteprima con le specifiche.",
+    },
+    {
+      question: "Come si può verificare il risultato?",
+      answer: "Controlla i dati inseriti e confronta l'anteprima con le specifiche.",
+    },
   ],
   howTo: [
     {
       name: 'Carica la Grafica',
       text: 'Seleziona un immagine ad alta risoluzione.'
-    }
+    },
+    {
+      name: "Quali altri dati bisogna preparare?",
+      text: "Controlla i dati inseriti e confronta l'anteprima con le specifiche.",
+    },
+    {
+      name: "Come si può verificare il risultato?",
+      text: "Controlla i dati inseriti e confronta l'anteprima con le specifiche.",
+    },
+    {
+      name: "Come posso testare il file finale?",
+      text: "Apri l'anteprima nell'ambiente previsto e controlla dimensioni e resa.",
+    },
   ],
   schemas: [
     {

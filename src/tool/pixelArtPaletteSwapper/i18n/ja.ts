@@ -151,6 +151,14 @@ export const content: ToolLocaleContent<PixelArtPaletteSwapperUI> = {
       question: '自作のパレットを使用できますか？',
       answer: 'はい。Hexコードを入力して「パレットを適用」をクリックしてください。',
     },
+    {
+      question: '色を置き換える前に元画像を保存できますか？',
+      answer: 'はい。処理はブラウザ内で行われるため、元画像を残したまま変換後の PNG を別名で保存できます。'
+    },
+    {
+      question: 'パレットの色数が違っても使えますか？',
+      answer: 'はい。入力した色に近いパレット色へ置き換えます。結果をプレビューで確認してから書き出してください。'
+    },
   ],
   howTo: [
     {

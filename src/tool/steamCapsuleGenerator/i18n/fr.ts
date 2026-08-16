@@ -106,20 +106,72 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Terme utilisé par Valve pour désigner les conteneurs d images.'
         }
       ]
-    }
-  ],
+    },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 8.",
+    },
+  ].slice(0, 15),
   faqTitle: 'Foire Aux Questions sur les Images Steam',
   faq: [
     {
       question: 'Quel format de fichier utiliser pour les capsules Steam ?',
       answer: 'Steam accepte les fichiers JPG ou PNG pour les capsules principales.'
-    }
+    },
+    {
+      question: "Quelles autres données faut il préparer ?",
+      answer: "Vérifiez les données saisies et comparez l'aperçu avec les spécifications.",
+    },
+    {
+      question: "Comment vérifier le résultat ?",
+      answer: "Vérifiez les données saisies et comparez l'aperçu avec les spécifications.",
+    },
   ],
   howTo: [
     {
       name: 'Téléverser l Illustration',
       text: 'Sélectionnez une image haute résolution.'
-    }
+    },
+    {
+      name: "Quelles autres données faut il préparer ?",
+      text: "Vérifiez les données saisies et comparez l'aperçu avec les spécifications.",
+    },
+    {
+      name: "Comment vérifier le résultat ?",
+      text: "Vérifiez les données saisies et comparez l'aperçu avec les spécifications.",
+    },
+    {
+      name: "Comment tester le fichier final ?",
+      text: "Ouvrez l'aperçu dans l'environnement prévu et vérifiez les dimensions et le rendu.",
+    },
   ],
   schemas: [
     {

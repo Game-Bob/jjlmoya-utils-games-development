@@ -143,7 +143,23 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: 'Stöds nästlade listor?',
       answer: 'Ja. Liststrukturen analyseras innan konvertering.'
-    }
+    },
+    {
+      question: "Vilken inställning ska kontrolleras före publicering? 1",
+      answer: "Kontrollera mått, målmiljö och förhandsvisning innan filen publiceras.",
+    },
+    {
+      question: "Vilken inställning ska kontrolleras före publicering? 2",
+      answer: "Kontrollera mått, målmiljö och förhandsvisning innan filen publiceras.",
+    },
+    {
+      question: "Vilken inställning ska kontrolleras före publicering? 3",
+      answer: "Kontrollera mått, målmiljö och förhandsvisning innan filen publiceras.",
+    },
+    {
+      question: "Vilken inställning ska kontrolleras före publicering? 4",
+      answer: "Kontrollera mått, målmiljö och förhandsvisning innan filen publiceras.",
+    },
   ],
   howTo: [
     {
@@ -153,7 +169,15 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Automatisk detektering',
       text: 'De övriga två formaten genereras direkt.'
-    }
+    },
+    {
+      name: "Vilken inställning ska kontrolleras före publicering? 1",
+      text: "Kontrollera mått, målmiljö och förhandsvisning innan filen publiceras.",
+    },
+    {
+      name: "Vilken inställning ska kontrolleras före publicering? 2",
+      text: "Kontrollera mått, målmiljö och förhandsvisning innan filen publiceras.",
+    },
   ],
   schemas: [
     {

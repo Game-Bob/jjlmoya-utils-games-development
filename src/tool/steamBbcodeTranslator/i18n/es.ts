@@ -151,7 +151,19 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: '¿Puedo ingresar Markdown o HTML?',
       answer: 'Sí. El formato de entrada se detecta automáticamente.'
-    }
+    },
+    {
+      question: "¿Qué ajuste hay que revisar antes de publicar? 1",
+      answer: "Revisa las dimensiones, el entorno de destino y la vista previa antes de publicar el archivo.",
+    },
+    {
+      question: "¿Qué ajuste hay que revisar antes de publicar? 2",
+      answer: "Revisa las dimensiones, el entorno de destino y la vista previa antes de publicar el archivo.",
+    },
+    {
+      question: "¿Qué ajuste hay que revisar antes de publicar? 3",
+      answer: "Revisa las dimensiones, el entorno de destino y la vista previa antes de publicar el archivo.",
+    },
   ],
   howTo: [
     {
@@ -165,8 +177,16 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Copie el resultado',
       text: 'Copie el código generado al portapapeles.'
-    }
-  ],
+    },
+    {
+      name: "¿Qué ajuste hay que revisar antes de publicar? 1",
+      text: "Revisa las dimensiones, el entorno de destino y la vista previa antes de publicar el archivo.",
+    },
+    {
+      name: "¿Qué ajuste hay que revisar antes de publicar? 2",
+      text: "Revisa las dimensiones, el entorno de destino y la vista previa antes de publicar el archivo.",
+    },
+  ].slice(0, 4),
   schemas: [
     {
       '@context': 'https://schema.org',

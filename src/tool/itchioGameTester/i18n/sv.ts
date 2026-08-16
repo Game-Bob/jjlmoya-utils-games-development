@@ -49,13 +49,37 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: 'När du bäddar in ett 1280x720 WebGL-spel på Itch.io, ange inbäddningsviewportens dimensioner till exakt 1280x720 med "Embed in page" aktiverat.'
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 5.",
+    },
   ],
   faq: [
     {
       question: 'Varför visar mitt Godot 4-spel en svart skärm på Itch.io?',
       answer: 'Godot 4-webbexporter använder WebAssembly-flertrådning som kräver SharedArrayBuffer-stöd. Aktivera "SharedArrayBuffer support" i ramens alternativ för ditt spel på Itch.io.'
-    }
+    },
+    {
+      question: "Vilken inställning ska kontrolleras före publicering? 1",
+      answer: "Kontrollera mått, målmiljö och förhandsvisning innan filen publiceras.",
+    },
   ],
   howTo: [
     { name: 'Ladda upp spelfiler eller ZIP', text: 'Dra och släpp ditt HTML5-export ZIP-arkiv eller välj din byggkatalog med index.html.' },

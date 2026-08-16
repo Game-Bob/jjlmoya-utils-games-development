@@ -151,6 +151,14 @@ export const content: ToolLocaleContent<PixelArtPaletteSwapperUI> = {
       question: '원하는 팔레트를 직접 입력할 수 있나요?',
       answer: '네. Hex 색상 코드를 입력하고 「팔레트 적용」을 클릭하세요.',
     },
+    {
+      question: "게시하기 전에 어떤 설정을 확인해야 하나요? 1",
+      answer: "파일을 게시하기 전에 크기, 대상 환경, 미리보기를 함께 확인하세요.",
+    },
+    {
+      question: "게시하기 전에 어떤 설정을 확인해야 하나요? 2",
+      answer: "파일을 게시하기 전에 크기, 대상 환경, 미리보기를 함께 확인하세요.",
+    },
   ],
   howTo: [
     {

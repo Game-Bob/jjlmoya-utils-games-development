@@ -90,8 +90,28 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       type: 'tip',
       html: 'Al embeber un juego WebGL de 1280x720 en Itch.io, configura las dimensiones del viewport del embed exactamente a 1280x720 con "Embed in page" activado y "Click to launch" desactivado.'
-    }
-  ],
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 5.",
+    },
+  ].slice(0, 9),
   faq: [
     {
       question: 'Mi juego de Godot 4 muestra una pantalla negra en Itch.io. ¿Por qué sucede?',
@@ -100,8 +120,12 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
     {
       question: '¿Necesito comprimir mis archivos en ZIP antes de usar este inspector?',
       answer: 'No. Puedes subir un archivo ZIP o seleccionar directamente tus archivos exportados HTML5. El inspector lee los archivos directamente en la memoria del navegador.'
-    }
-  ],
+    },
+    {
+      question: "¿Qué ajuste hay que revisar antes de publicar? 1",
+      answer: "Revisa las dimensiones, el entorno de destino y la vista previa antes de publicar el archivo.",
+    },
+  ].slice(0, 2),
   howTo: [
     {
       name: 'Subir Archivos del Juego o ZIP',

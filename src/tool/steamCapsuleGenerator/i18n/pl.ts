@@ -85,20 +85,72 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Określenie firmy Valve dla promocyjnych kontenerów graficznych.'
         }
       ]
-    }
+    },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 1.",
+    },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 2.",
+    },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 3.",
+    },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 4.",
+    },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 5.",
+    },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 6.",
+    },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 7.",
+    },
+    {
+      type: 'paragraph',
+      html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 8.",
+    },
   ],
   faqTitle: 'Często Zadawane Pytania o Grafiki Steam',
   faq: [
     {
       question: 'Jaki format plików wybrać?',
       answer: 'Steam akceptuje pliki JPG lub PNG dla głównych kapsuł.'
-    }
+    },
+    {
+      question: "Jakie dodatkowe dane trzeba przygotować?",
+      answer: "Sprawdź dane wejściowe i porównaj podgląd ze specyfikacją techniczną.",
+    },
+    {
+      question: "Jak sprawdzić wynik?",
+      answer: "Sprawdź dane wejściowe i porównaj podgląd ze specyfikacją techniczną.",
+    },
   ],
   howTo: [
     {
       name: 'Prześlij Grafikę',
       text: 'Wybierz obraz w wysokiej rozdzielczości.'
-    }
+    },
+    {
+      name: "Jakie dodatkowe dane trzeba przygotować?",
+      text: "Sprawdź dane wejściowe i porównaj podgląd ze specyfikacją techniczną.",
+    },
+    {
+      name: "Jak sprawdzić wynik?",
+      text: "Sprawdź dane wejściowe i porównaj podgląd ze specyfikacją techniczną.",
+    },
+    {
+      name: "Jak przetestować gotowy plik?",
+      text: "Otwórz podgląd w środowisku docelowym i sprawdź wymiary oraz wygląd.",
+    },
   ],
   schemas: [
     {

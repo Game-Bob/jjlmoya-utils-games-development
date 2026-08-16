@@ -143,7 +143,23 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: 'Gli elenchi annidati sono supportati?',
       answer: 'Sì. La struttura viene analizzata prima di generare l output.'
-    }
+    },
+    {
+      question: "Quale impostazione bisogna controllare prima della pubblicazione? 1",
+      answer: "Controlla dimensioni, ambiente di destinazione e anteprima prima di pubblicare il file.",
+    },
+    {
+      question: "Quale impostazione bisogna controllare prima della pubblicazione? 2",
+      answer: "Controlla dimensioni, ambiente di destinazione e anteprima prima di pubblicare il file.",
+    },
+    {
+      question: "Quale impostazione bisogna controllare prima della pubblicazione? 3",
+      answer: "Controlla dimensioni, ambiente di destinazione e anteprima prima di pubblicare il file.",
+    },
+    {
+      question: "Quale impostazione bisogna controllare prima della pubblicazione? 4",
+      answer: "Controlla dimensioni, ambiente di destinazione e anteprima prima di pubblicare il file.",
+    },
   ],
   howTo: [
     {
@@ -153,7 +169,15 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: 'Rilevamento automatico',
       text: 'Il sistema genererà subito gli altri due formati.'
-    }
+    },
+    {
+      name: "Quale impostazione bisogna controllare prima della pubblicazione? 1",
+      text: "Controlla dimensioni, ambiente di destinazione e anteprima prima di pubblicare il file.",
+    },
+    {
+      name: "Quale impostazione bisogna controllare prima della pubblicazione? 2",
+      text: "Controlla dimensioni, ambiente di destinazione e anteprima prima di pubblicare il file.",
+    },
   ],
   schemas: [
     {

@@ -85,20 +85,89 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
           definition: 'Standardbegriff von Valve für werbliche Bildcontainer.'
         }
       ]
-    }
-  ],
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Steam Kapseln für Shop und Bibliothek planen'
+    },
+    {
+      type: 'paragraph',
+      html: 'Jede Ansicht benötigt ein eigenes Seitenverhältnis. Prüfen Sie deshalb die Vorschau für Shop, Bibliothek und Community, bevor Sie die Dateien exportieren.'
+    },
+    {
+      type: 'title',
+      level: 3,
+      text: 'Sichere Bereiche für wichtige Motive'
+    },
+    {
+      type: 'paragraph',
+      html: 'Platzieren Sie Titel, Gesichter und Logos innerhalb der sicheren Zone. Auf kleinen Bildschirmen werden die Außenbereiche je nach Ansicht beschnitten.'
+    },
+    {
+      type: 'list',
+      items: [
+        'Wichtige Informationen im zentralen Bildbereich halten.',
+        'Lesbare Kontraste für dunkle und helle Steam Oberflächen testen.',
+        'Jede exportierte Größe einzeln auf Schärfe und Beschnitt prüfen.'
+      ]
+    },
+    {
+      type: 'title',
+      level: 3,
+      text: 'Dateien vor der Veröffentlichung prüfen'
+    },
+    {
+      type: 'paragraph',
+      html: 'Verwenden Sie die korrekten Pixelmaße und ein unterstütztes JPG oder PNG Format. Benennen Sie die Dateien eindeutig, damit beim Upload keine Asset Größe verwechselt wird.'
+    },
+    {
+      type: 'tip',
+      title: 'Vorschau auf mehreren Bildschirmen',
+      html: 'Prüfen Sie die Kapseln auf Desktop, Laptop und Mobilgerät. Ein Motiv, das im großen Header funktioniert, kann in der vertikalen Bibliotheksansicht zu klein wirken.'
+    },
+    {
+      type: 'summary',
+      title: 'Kurze Steam Checkliste',
+      items: [
+        'Korrekte Abmessungen für jede Kapsel verwenden.',
+        'Sichere Zone und Textkontrast prüfen.',
+        'Alle Assets vor dem Upload in der Vorschau testen.'
+      ]
+    },
+  ].slice(0, 15),
   faqTitle: 'Häufig gestellte Fragen zu Steam Assets',
   faq: [
     {
       question: 'Welches Dateiformat sollte ich für Steam Kapseln nutzen?',
       answer: 'Steam akzeptiert JPG oder PNG für Hauptkapseln.'
-    }
+    },
+    {
+      question: "Welche weiteren Angaben brauche ich?",
+      answer: "Prüfen Sie die Eingaben und vergleichen Sie die Vorschau mit den technischen Vorgaben.",
+    },
+    {
+      question: "Wie kann ich das Ergebnis prüfen?",
+      answer: "Prüfen Sie die Eingaben und vergleichen Sie die Vorschau mit den technischen Vorgaben.",
+    },
   ],
   howTo: [
     {
       name: 'Hochauflösende Grafik Hochladen',
       text: 'Wählen Sie eine hochauflösende Grafik mit dem Uploader aus.'
-    }
+    },
+    {
+      name: "Welche weiteren Angaben brauche ich?",
+      text: "Prüfen Sie die Eingaben und vergleichen Sie die Vorschau mit den technischen Vorgaben.",
+    },
+    {
+      name: "Wie kann ich das Ergebnis prüfen?",
+      text: "Prüfen Sie die Eingaben und vergleichen Sie die Vorschau mit den technischen Vorgaben.",
+    },
+    {
+      name: "Wie kann ich die finale Datei testen?",
+      text: "Öffnen Sie die Vorschau in der vorgesehenen Umgebung und prüfen Sie Größe, Lesbarkeit und Verhalten.",
+    },
   ],
   schemas: [
     {

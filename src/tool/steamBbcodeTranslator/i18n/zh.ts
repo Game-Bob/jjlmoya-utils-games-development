@@ -143,7 +143,23 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       question: '支持嵌套列表吗？',
       answer: '支持。系统会先解析列表语法树再生成目标格式。'
-    }
+    },
+    {
+      question: "发布前应该检查哪项设置？ 1",
+      answer: "发布文件前请一起检查尺寸、目标环境和预览效果。",
+    },
+    {
+      question: "发布前应该检查哪项设置？ 2",
+      answer: "发布文件前请一起检查尺寸、目标环境和预览效果。",
+    },
+    {
+      question: "发布前应该检查哪项设置？ 3",
+      answer: "发布文件前请一起检查尺寸、目标环境和预览效果。",
+    },
+    {
+      question: "发布前应该检查哪项设置？ 4",
+      answer: "发布文件前请一起检查尺寸、目标环境和预览效果。",
+    },
   ],
   howTo: [
     {
@@ -153,7 +169,15 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
     {
       name: '自动转换',
       text: '系统将自动生成另外两种格式。'
-    }
+    },
+    {
+      name: "发布前应该检查哪项设置？ 1",
+      text: "发布文件前请一起检查尺寸、目标环境和预览效果。",
+    },
+    {
+      name: "发布前应该检查哪项设置？ 2",
+      text: "发布文件前请一起检查尺寸、目标环境和预览效果。",
+    },
   ],
   schemas: [
     {
