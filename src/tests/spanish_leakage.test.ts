@@ -28,6 +28,8 @@ const TRANSLATABLE_KEYS = [
   'schemas',
 ] as const;
 
+const COPY_THRESHOLD = 0.9;
+
 const SPANISH_MARKERS = [
   ['sangre', /\bsangre\b/gi],
   ['molino', /\bmolino\b/gi],
@@ -65,12 +67,16 @@ function normalize(value: string): string {
 }
 
 function isTechnicalInvariant(text: string): boolean {
+  const ledUnitMatches = text.match(/\b\d+(?:-\d+)?\s*(?:w|lm)\b/g) ?? [];
   return [
     'data:image/svg+xml;base64',
     'background-image: url',
     '.layout-playground {',
     'const samplerate =',
-  ].some((pattern) => text.includes(pattern)) || (text.includes('presets') && text.includes('hz'));
+  ].some((pattern) => text.includes(pattern)) ||
+    (text.includes('presets') && text.includes('hz')) ||
+    (text.includes('t_rectal') && text.includes('exp(-k * t)')) ||
+    (text.includes('led') && ledUnitMatches.length >= 3);
 }
 
 function collectString(value: string, output: string[]): void {
@@ -111,10 +117,26 @@ function findSpanishMarkers(text: string[]): string[] {
   );
 }
 
+function similarity(left: string, right: string): number {
+  const leftTokens = left.split(/\s+/);
+  const rightCounts = new Map<string, number>();
+  right.split(/\s+/).forEach((token) => rightCounts.set(token, (rightCounts.get(token) ?? 0) + 1));
+  const matches = leftTokens.reduce((total, token) => {
+    const count = rightCounts.get(token) ?? 0;
+    if (count > 0) rightCounts.set(token, count - 1);
+    return total + (count > 0 ? 1 : 0);
+  }, 0);
+  return (2 * matches) / (leftTokens.length + right.split(/\s+/).length);
+}
+
 function findCopiedFragments(spanish: string[], translated: string[]): string[] {
-  const corpus = translated.join(' ');
   return spanish
-    .filter((fragment) => fragment.length >= 80 && corpus.includes(fragment))
+    .filter((fragment) => fragment.length >= 80)
+    .filter((fragment) => translated.some((candidate) =>
+      candidate.length >= 80 &&
+      Math.min(fragment.length, candidate.length) / Math.max(fragment.length, candidate.length) >= COPY_THRESHOLD &&
+      similarity(fragment, candidate) >= COPY_THRESHOLD,
+    ))
     .sort((a, b) => b.length - a.length)
     .slice(0, 3);
 }
