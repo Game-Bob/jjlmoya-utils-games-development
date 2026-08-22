@@ -21,5 +21,6 @@ export { STEAM_BBCODE_TRANSLATOR_TOOL, steamBbcodeTranslator } from './tool/stea
 export { RETRO_SFX_GENERATOR_TOOL, retroSfxGenerator } from './tool/retroSfxGenerator';
 export { PIXEL_ART_PALETTE_SWAPPER_TOOL, pixelArtPaletteSwapper } from './tool/pixelArtPaletteSwapper';
 export { GAME_UI_ACCESSIBILITY_TESTER_TOOL, gameUiAccessibilityTester } from './tool/gameUIAccessibilityTester';
+export { HITBOX_HURTBOX_ANIMATOR_TOOL, hitboxHurtboxAnimator } from './tool/hitboxHurtboxAnimator';
 
 export type { ToolLocaleContent as GamesToolLocaleContent } from './types';

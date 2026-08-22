@@ -5,10 +5,11 @@ import { audioLoopPointFinder } from '../tool/audioLoopPointFinder/entry';
 import { saveFileEditor } from '../tool/saveFileEditor/entry';
 import { steamBbcodeTranslator } from '../tool/steamBbcodeTranslator/entry';
 import { gameUiAccessibilityTester } from '../tool/gameUIAccessibilityTester/entry';
+import { hitboxHurtboxAnimator } from '../tool/hitboxHurtboxAnimator/entry';
 
 export const gamesCategory: GamesCategoryEntry = {
   icon: 'mdi:gamepad-variant',
-  tools: [steamCapsuleGenerator, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, steamBbcodeTranslator, gameUiAccessibilityTester],
+  tools: [steamCapsuleGenerator, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, steamBbcodeTranslator, gameUiAccessibilityTester, hitboxHurtboxAnimator],
   i18n: {
     de: () => import('./i18n/de').then((m) => m.content),
     en: () => import('./i18n/en').then((m) => m.content),

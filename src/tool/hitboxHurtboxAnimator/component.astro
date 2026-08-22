@@ -1,0 +1,148 @@
+---
+import type { HitboxHurtboxAnimatorUI } from './ui';
+
+interface Props {
+  ui: HitboxHurtboxAnimatorUI;
+}
+
+const { ui } = Astro.props;
+---
+
+<div class="hha" data-hitbox-root tabindex="0">
+  <script is:inline type="application/json" data-role="locale-data" set:html={JSON.stringify(ui)}></script>
+
+  <div class="hha-intro">
+    <p>{ui.onboarding}</p>
+    <span>{ui.privacyNote}</span>
+  </div>
+
+  <section class="hha-load" data-role="dropzone">
+    <div>
+      <strong>{ui.loadSprite}</strong>
+      <p>{ui.loadHint}</p>
+    </div>
+    <label class="hha-button hha-button-primary">
+      {ui.chooseImages}
+      <input data-role="sprite-input" type="file" accept="image/png,image/webp" multiple />
+    </label>
+  </section>
+
+  <div class="hha-control-deck">
+    <fieldset>
+      <legend>{ui.slicingTitle}</legend>
+      <label>{ui.rowsLabel}<input data-role="rows" type="number" min="1" max="64" value="1" /></label>
+      <label>{ui.columnsLabel}<input data-role="columns" type="number" min="1" max="64" value="1" /></label>
+      <button type="button" class="hha-button" data-action="slice">{ui.applySlicing}</button>
+    </fieldset>
+    <fieldset>
+      <legend>{ui.playbackTitle}</legend>
+      <div class="hha-transport">
+        <button type="button" class="hha-icon-button is-previous" data-action="previous" aria-label={ui.previousFrame}><span></span></button>
+        <button type="button" class="hha-button hha-play" data-action="play">{ui.play}</button>
+        <button type="button" class="hha-icon-button is-next" data-action="next" aria-label={ui.nextFrame}><span></span></button>
+      </div>
+      <label class="hha-range">{ui.fpsLabel}<input data-preference="fps" type="range" min="1" max="30" value="12" /></label>
+      <label class="hha-check"><input data-preference="onionPrevious" type="checkbox" />{ui.onionPrevious}</label>
+      <label class="hha-check"><input data-preference="onionNext" type="checkbox" />{ui.onionNext}</label>
+    </fieldset>
+    <div class="hha-history">
+      <button type="button" class="hha-button" data-action="undo">{ui.undo}</button>
+      <button type="button" class="hha-button" data-action="redo">{ui.redo}</button>
+    </div>
+  </div>
+
+  <div class="hha-workbench">
+    <aside class="hha-layers">
+      <h2>{ui.layerTitle}</h2>
+      <div class="hha-mode-switch">
+        <button type="button" data-mode="draw">{ui.drawShape}</button>
+        <button type="button" data-mode="select">{ui.selectShape}</button>
+      </div>
+      <div class="hha-type-rack">
+        <button type="button" data-type="hitbox"><i></i>{ui.typeHitbox}</button>
+        <button type="button" data-type="hurtbox"><i></i>{ui.typeHurtbox}</button>
+        <button type="button" data-type="pushbox"><i></i>{ui.typePushbox}</button>
+        <button type="button" data-type="grabbox"><i></i>{ui.typeGrabbox}</button>
+        <button type="button" data-type="sensor"><i></i>{ui.typeSensor}</button>
+        <button type="button" data-type="custom"><i></i>{ui.typeCustom}</button>
+      </div>
+      <div class="hha-geometry">
+        <button type="button" data-geometry="rectangle"><span></span>{ui.shapeRectangle}</button>
+        <button type="button" data-geometry="circle"><span></span>{ui.shapeCircle}</button>
+      </div>
+    </aside>
+
+    <main class="hha-stage-column">
+      <div class="hha-stage-header">
+        <span>{ui.stageLabel}</span>
+        <div class="hha-badges">
+          <b data-role="frames-badge"></b>
+          <b data-role="shapes-badge"></b>
+          <b data-role="coverage-badge"></b>
+        </div>
+      </div>
+      <div class="hha-light-table">
+        <canvas data-role="stage" aria-label={ui.stageLabel}></canvas>
+        <div class="hha-empty-stage">
+          <span></span>
+          <p>{ui.emptyStage}</p>
+        </div>
+      </div>
+      <div class="hha-timeline-wrap">
+        <strong>{ui.timelineTitle}</strong>
+        <div class="hha-timeline" data-role="timeline"></div>
+      </div>
+    </main>
+
+    <aside class="hha-inspector">
+      <h2>{ui.inspectorTitle}</h2>
+      <p class="hha-no-selection" data-role="no-selection">{ui.noSelection}</p>
+      <div class="hha-fields" data-role="shape-fields" hidden>
+        <label class="hha-wide">{ui.nameLabel}<input data-field="name" type="text" /></label>
+        <label>{ui.xLabel}<input data-field="x" type="number" step="0.5" /></label>
+        <label>{ui.yLabel}<input data-field="y" type="number" step="0.5" /></label>
+        <label>{ui.widthLabel}<input data-field="width" type="number" min="1" step="0.5" /></label>
+        <label>{ui.heightLabel}<input data-field="height" type="number" min="1" step="0.5" /></label>
+        <label class="hha-wide" data-radius-row>{ui.radiusLabel}<input data-field="radius" type="number" min="0.5" step="0.5" /></label>
+        <button type="button" data-action="duplicate">{ui.duplicateShape}</button>
+        <button type="button" data-action="mirror">{ui.mirrorShape}</button>
+        <button type="button" class="hha-danger hha-wide" data-action="delete">{ui.deleteShape}</button>
+      </div>
+      <div class="hha-copy-actions">
+        <button type="button" data-action="copyPrevious">{ui.copyPrevious}</button>
+        <button type="button" data-action="copyAll">{ui.copyAll}</button>
+      </div>
+      <fieldset class="hha-pivot">
+        <legend>{ui.pivotTitle}</legend>
+        <label>{ui.pivotXLabel}<input data-field="pivotX" type="number" min="0" step="0.5" /></label>
+        <label>{ui.pivotYLabel}<input data-field="pivotY" type="number" min="0" step="0.5" /></label>
+      </fieldset>
+      <p class="hha-coordinate-note">{ui.coordinatesNote}</p>
+    </aside>
+  </div>
+
+  <section class="hha-export">
+    <div>
+      <strong>{ui.exportTitle}</strong>
+      <p>{ui.localOnlyDisclosure}</p>
+    </div>
+    <div>
+      <button type="button" class="hha-button hha-button-primary" data-action="exportJson">{ui.exportJson}</button>
+      <button type="button" class="hha-button" data-action="importJson">{ui.importJson}</button>
+      <button type="button" class="hha-button" data-action="contactSheet">{ui.exportContactSheet}</button>
+      <button type="button" class="hha-button hha-danger" data-action="reset">{ui.resetProject}</button>
+      <input data-role="project-input" type="file" accept="application/json,.json" aria-label={ui.importJson} />
+    </div>
+  </section>
+
+  <div class="hha-footer-line">
+    <p data-role="status" aria-live="polite"></p>
+    <p>{ui.limitationDisclosure}</p>
+  </div>
+</div>
+
+<script>
+  import { mountHitboxHurtboxAnimator } from './controller';
+
+  document.querySelectorAll<HTMLElement>('[data-hitbox-root]').forEach(mountHitboxHurtboxAnimator);
+</script>
