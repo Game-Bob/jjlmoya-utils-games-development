@@ -9,6 +9,7 @@ import { LOCALIZATION_SANITIZER_TOOL } from './tool/localizationSanitizer';
 import { STEAM_BBCODE_TRANSLATOR_TOOL } from './tool/steamBbcodeTranslator';
 import { RETRO_SFX_GENERATOR_TOOL } from './tool/retroSfxGenerator';
 import { PIXEL_ART_PALETTE_SWAPPER_TOOL } from './tool/pixelArtPaletteSwapper';
+import { GAME_UI_ACCESSIBILITY_TESTER_TOOL } from './tool/gameUIAccessibilityTester';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   STEAM_CAPSULE_GENERATOR_TOOL,
@@ -20,4 +21,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   STEAM_BBCODE_TRANSLATOR_TOOL,
   RETRO_SFX_GENERATOR_TOOL,
   PIXEL_ART_PALETTE_SWAPPER_TOOL,
+  GAME_UI_ACCESSIBILITY_TESTER_TOOL,
 ];

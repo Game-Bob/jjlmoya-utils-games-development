@@ -26,5 +26,6 @@ import { localizationSanitizer } from './tool/localizationSanitizer/entry';
 import { steamBbcodeTranslator } from './tool/steamBbcodeTranslator/entry';
 import { retroSfxGenerator } from './tool/retroSfxGenerator/entry';
 import { pixelArtPaletteSwapper } from './tool/pixelArtPaletteSwapper/entry';
+import { gameUiAccessibilityTester } from './tool/gameUIAccessibilityTester/entry';
 
-export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper];
+export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester];

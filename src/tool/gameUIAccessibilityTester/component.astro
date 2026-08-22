@@ -1,0 +1,210 @@
+---
+import type { GameUiAccessibilityTesterUI } from './ui';
+
+interface Props {
+  ui: GameUiAccessibilityTesterUI;
+}
+
+const { ui } = Astro.props;
+const serializedUi = JSON.stringify(ui).replace(/</g, '\\u003c');
+---
+
+<article class="gax" data-game-ui-accessibility-tester data-ready="false" data-compare="side" data-zoom="1">
+  <script is:inline type="application/json" data-ui set:html={serializedUi}></script>
+
+  <div class="gax-intro">
+    <div class="gax-signal" aria-hidden="true"><span></span><span></span><span></span></div>
+    <p>{ui.onboarding}</p>
+    <p class="gax-privacy">{ui.privacyNote}</p>
+  </div>
+
+  <section class="gax-upload" data-dropzone aria-labelledby="game-ui-drop-title">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M12 17h40v30H12z M20 37l8-9 7 7 5-5 8 9 M32 10v13 M26 16l6 7 6-7" />
+    </svg>
+    <div>
+      <h2 id="game-ui-drop-title">{ui.dropTitle}</h2>
+      <p>{ui.dropHint}</p>
+      <small>{ui.supportedFiles}</small>
+    </div>
+    <input
+      class="gax-file-input"
+      id="game-ui-image-input"
+      data-file-input
+      type="file"
+      accept="image/png,image/jpeg,image/webp"
+    />
+    <label class="gax-upload-action" for="game-ui-image-input">
+      <span class="gax-upload-new">{ui.chooseImage}</span>
+      <span class="gax-upload-replace">{ui.replaceImage}</span>
+    </label>
+  </section>
+
+  <section class="gax-optics" aria-label={ui.lensLabel}>
+    <div class="gax-control-head">
+      <span>{ui.lensLabel}</span>
+      <span class="gax-control-rule" aria-hidden="true"></span>
+    </div>
+    <div class="gax-lens-rack">
+      <button type="button" data-mode value="original" aria-pressed="false">{ui.lensOriginal}</button>
+      <button type="button" data-mode value="protanopia" aria-pressed="false">{ui.lensProtanopia}</button>
+      <button type="button" data-mode value="deuteranopia" aria-pressed="true">{ui.lensDeuteranopia}</button>
+      <button type="button" data-mode value="tritanopia" aria-pressed="false">{ui.lensTritanopia}</button>
+      <button type="button" data-mode value="achromatopsia" aria-pressed="false">{ui.lensAchromatopsia}</button>
+      <button type="button" data-mode value="reduced-contrast" aria-pressed="false">{ui.lensReducedContrast}</button>
+      <button type="button" data-mode value="desaturation" aria-pressed="false">{ui.lensDesaturation}</button>
+    </div>
+  </section>
+
+  <section class="gax-stage" aria-label={ui.simulatedView}>
+    <div class="gax-stage-toolbar">
+      <div class="gax-segment" role="group" aria-label={ui.compareLabel}>
+        <button type="button" data-compare value="side" class="is-active" aria-pressed="true">{ui.compareSideBySide}</button>
+        <button type="button" data-compare value="split" aria-pressed="false">{ui.compareSplit}</button>
+        <button type="button" data-compare value="press" aria-pressed="false">{ui.comparePress}</button>
+      </div>
+      <div class="gax-segment" role="group" aria-label={ui.zoomLabel}>
+        <button type="button" data-zoom value="1" class="is-active" aria-pressed="true">1x</button>
+        <button type="button" data-zoom value="2" aria-pressed="false">2x</button>
+        <button type="button" data-zoom value="4" aria-pressed="false">4x</button>
+      </div>
+    </div>
+
+    <div class="gax-viewports">
+      <figure class="gax-viewport gax-original">
+        <figcaption><span></span>{ui.originalView}</figcaption>
+        <div class="gax-canvas-wrap">
+          <canvas data-original-canvas tabindex="0" aria-label={ui.originalView}></canvas>
+          <span class="gax-marker gax-marker-a" data-marker="0" hidden>A</span>
+          <span class="gax-marker gax-marker-b" data-marker="1" hidden>B</span>
+        </div>
+      </figure>
+      <figure class="gax-viewport gax-simulated">
+        <figcaption><span></span>{ui.simulatedView}</figcaption>
+        <div class="gax-canvas-wrap">
+          <canvas data-simulated-canvas aria-label={ui.simulatedView}></canvas>
+        </div>
+      </figure>
+      <p class="gax-empty">{ui.emptyCanvas}</p>
+    </div>
+
+    <div class="gax-compare-actions">
+      <label class="gax-split-control" for="game-ui-split">
+        {ui.splitPosition}
+        <input id="game-ui-split" data-split type="range" min="10" max="90" value="50" />
+      </label>
+      <button type="button" class="gax-hold" data-hold-original>{ui.holdOriginal}</button>
+    </div>
+  </section>
+
+  <section class="gax-stress" aria-labelledby="game-ui-stress-title">
+    <div class="gax-control-head">
+      <h2 id="game-ui-stress-title">{ui.stressLabel}</h2>
+      <span class="gax-control-rule" aria-hidden="true"></span>
+    </div>
+    <div class="gax-stress-line">
+      <label for="game-ui-blur">{ui.blurLabel}</label>
+      <input id="game-ui-blur" data-blur type="range" min="0" max="8" step="0.5" value="0" />
+      <div class="gax-segment" role="group" aria-label={ui.downscaleLabel}>
+        <button type="button" data-downscale value="1" class="is-active" aria-pressed="true">{ui.downscaleFull}</button>
+        <button type="button" data-downscale value="0.5" aria-pressed="false">{ui.downscaleHalf}</button>
+        <button type="button" data-downscale value="0.25" aria-pressed="false">{ui.downscaleQuarter}</button>
+        <button type="button" data-downscale value="0.125" aria-pressed="false">{ui.downscaleEighth}</button>
+      </div>
+      <label class="gax-toggle">
+        <input data-heatmap type="checkbox" />
+        <span aria-hidden="true"></span>
+        <span><strong>{ui.heatmapLabel}</strong><small>{ui.heatmapHint}</small></span>
+      </label>
+    </div>
+  </section>
+
+  <section class="gax-sampler" aria-labelledby="game-ui-sample-title">
+    <header>
+      <div>
+        <h2 id="game-ui-sample-title">{ui.sampleTitle}</h2>
+        <p>{ui.sampleInstructions}</p>
+      </div>
+      <span class="gax-classification">{ui.heuristicLabel}</span>
+    </header>
+    <div class="gax-sample-strip">
+      <div class="gax-sample-unit">
+        <button type="button" data-sample-button value="0" class="is-active" aria-pressed="true">
+          <span data-swatch="0" class="gax-swatch"></span>{ui.sampleA}
+        </button>
+        <div class="gax-sample-copy">
+          <label for="game-ui-sample-a">{ui.sampleAName}</label>
+          <input id="game-ui-sample-a" data-name="0" type="text" value={ui.sampleAInitial} maxlength="40" />
+          <code data-hex="0">{ui.noSample}</code>
+        </div>
+        <label class="gax-color-input" for="game-ui-color-a">{ui.manualColor}</label>
+        <input id="game-ui-color-a" data-color-input="0" type="color" value="#000000" />
+      </div>
+      <div class="gax-link-beam" aria-hidden="true"><span></span></div>
+      <div class="gax-sample-unit">
+        <button type="button" data-sample-button value="1" aria-pressed="false">
+          <span data-swatch="1" class="gax-swatch"></span>{ui.sampleB}
+        </button>
+        <div class="gax-sample-copy">
+          <label for="game-ui-sample-b">{ui.sampleBName}</label>
+          <input id="game-ui-sample-b" data-name="1" type="text" value={ui.sampleBInitial} maxlength="40" />
+          <code data-hex="1">{ui.noSample}</code>
+        </div>
+        <label class="gax-color-input" for="game-ui-color-b">{ui.manualColor}</label>
+        <input id="game-ui-color-b" data-color-input="1" type="color" value="#000000" />
+      </div>
+    </div>
+    <div class="gax-instruments" aria-live="polite">
+      <div><span>{ui.originalContrast}</span><strong data-original-contrast>--</strong><small>{ui.measurementLabel}</small></div>
+      <div><span>{ui.simulatedContrast}</span><strong data-simulated-contrast>--</strong><small>{ui.measurementLabel}</small></div>
+      <div><span>{ui.separationRetained}</span><strong data-retained>--</strong><small>{ui.heuristicLabel}</small></div>
+      <div class="gax-diagnostic"><span>{ui.manualReviewLabel}</span><strong data-diagnostic data-level="pending">{ui.statusPending}</strong></div>
+    </div>
+    <div class="gax-method-notes">
+      <p><strong>{ui.measurementLabel}</strong>{ui.measurementHint}</p>
+      <p><strong>{ui.heuristicLabel}</strong>{ui.heuristicHint}</p>
+    </div>
+  </section>
+
+  <section class="gax-review" aria-labelledby="game-ui-review-title">
+    <div class="gax-review-rail">
+      <h2 id="game-ui-review-title">{ui.promptTitle}</h2>
+      <ol>
+        <li>{ui.promptColorOnly}</li>
+        <li>{ui.promptChangingBackground}</li>
+        <li>{ui.promptMinimap}</li>
+        <li>{ui.promptStates}</li>
+        <li>{ui.promptShape}</li>
+      </ol>
+    </div>
+    <div class="gax-findings-panel">
+      <label for="game-ui-finding">{ui.findingLabel}</label>
+      <div class="gax-finding-entry">
+        <input id="game-ui-finding" data-finding-input type="text" placeholder={ui.findingPlaceholder} maxlength="180" />
+        <button type="button" data-add-finding>{ui.addFinding}</button>
+      </div>
+      <p data-findings-empty>{ui.findingsEmpty}</p>
+      <ul data-findings></ul>
+    </div>
+  </section>
+
+  <footer class="gax-actions">
+    <div>
+      <p>{ui.localOnlyDisclosure}</p>
+      <p>{ui.limitationDisclosure}</p>
+      <p data-status role="status">{ui.noSample}</p>
+    </div>
+    <div class="gax-action-buttons">
+      <button type="button" data-export-sheet disabled>{ui.exportSheet}</button>
+      <button type="button" data-export-report disabled>{ui.exportReport}</button>
+      <button type="button" data-reset>{ui.resetTool}</button>
+    </div>
+  </footer>
+</article>
+
+<script>
+  import { mountGameUiAccessibilityTester } from './controller';
+
+  document.querySelectorAll<HTMLElement>('[data-game-ui-accessibility-tester]')
+    .forEach((root) => mountGameUiAccessibilityTester(root));
+</script>
