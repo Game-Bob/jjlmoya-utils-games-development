@@ -1,0 +1,181 @@
+import type { FAQPage, HowTo, SoftwareApplication, WithContext } from 'schema-dts';
+import type { ToolLocaleContent } from '../../../types';
+import type { DamageFormulaLabUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
+
+const slug = 'kalkulyator-formul-yrona-igr-ttk';
+const title = 'Лаборатория Формул Урона и Графиков TTK';
+const description = 'Сравнивайте формулы урона в играх в реальном времени с помощью графиков, тепловых карт, правил округления и времени уничтожения цели (TTK).';
+
+const faq = [
+  {
+    question: 'Что сравнивает калькулятор формул урона?',
+    answer: 'Он вычисляет две безопасные математические формулы для одних и тех же боевых параметров. Вы можете сравнивать кривые урона, пороги количества ударов, время уничтожения (TTK) и порядок применения брони.',
+  },
+  {
+    question: 'Какие переменные и функции можно использовать?',
+    answer: 'Доступные переменные: attack, defense, level, power, resistance, flat, criticalChance и criticalMultiplier. Безопасные функции: min, max, clamp, abs, sqrt, pow, floor, round и ceil.',
+  },
+  {
+    question: 'Как рассчитывается время уничтожения цели (TTK)?',
+    answer: 'Количество ударов равно здоровью цели, деленному на округленный ожидаемый урон (с округлением вверх). TTK измеряет интервал между первым и последним ударом: (удары - 1) / атак в секунду.',
+  },
+  {
+    question: 'Почему порядок применения сопротивления имеет значение?',
+    answer: 'Применение плоского модификатора перед процентным сопротивлением также уменьшает этот плоский модификатор. Применение сопротивления первым оставляет плоский модификатор без изменений.',
+  },
+  {
+    question: 'Гарантирует ли гладкий график баланс в игре?',
+    answer: 'Нет. График показывает пороговые значения и зоны нулевого урона, но баланс зависит от контекста игры, ролей и плейтестов.',
+  },
+];
+
+const howTo = [
+  { name: 'Выберите две формулы', text: 'Начните с готового шаблона (линейный, соотношение, скалирование по уровню) или введите свои формулы A и B.' },
+  { name: 'Настройте боевые параметры', text: 'Укажите значения атаки, защиты, уровня, коэффициента силы, сопротивления, плоского модификатора, критических ударов и здоровья.' },
+  { name: 'Задайте правила движка', text: 'Выберите режим округления урона и порядок применения сопротивления.' },
+  { name: 'Проанализируйте графики и пороги', text: 'Сравните кривую урона, тепловую карту защиты, количество ударов и предупреждения.' },
+  { name: 'Сохраните эксперимент', text: 'Скопируйте ссылку для compartir или скачайте конфигурацию в JSON, таблицу CSV или PNG-график.' },
+];
+
+const softwareApplication: WithContext<SoftwareApplication> = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: title,
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Any',
+};
+
+const faqPage: WithContext<FAQPage> = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+
+const howToSchema: WithContext<HowTo> = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: title,
+  step: howTo.map((step) => ({ '@type': 'HowToStep', name: step.name, text: step.text })),
+};
+
+export const content: ToolLocaleContent<DamageFormulaLabUI> = {
+  slug,
+  title,
+  description,
+  ui: {
+    onboarding: 'Введите текущую формулу урона, укажите альтернативную рядом и настройте боевые параметры.',
+    localNote: 'Приватная модель. Формулы и файлы остаются в вашем браузере.',
+    formulaDeck: 'Панель формул',
+    formulaALabel: 'Формула A (Текущая модель)',
+    formulaBLabel: 'Формула B (Альтернатива)',
+    formulaHint: 'Переменные: attack, defense, level, power, resistance, flat, criticalChance, criticalMultiplier',
+    formulaFunctions: 'Функции: min, max, clamp, abs, sqrt, pow, floor, round, ceil',
+    presetLinear: 'Линейная защита',
+    presetRatio: 'Броня соотношения',
+    presetLevel: 'Скалирование уровня',
+    combatInputs: 'Боевые параметры',
+    attackLabel: 'Атака',
+    defenseLabel: 'Защита',
+    levelLabel: 'Уровень',
+    powerLabel: 'Коэффициент силы',
+    resistanceLabel: 'Сопротивление (%)',
+    flatLabel: 'Плоский модификатор',
+    criticalChanceLabel: 'Шанс крит. удара (%)',
+    criticalMultiplierLabel: 'Множитель крит. удара',
+    healthLabel: 'Здоровье цели',
+    cadenceLabel: 'Атак в секунду',
+    roundingLabel: 'Округление урона',
+    roundingNone: 'Сохранять десятичные',
+    roundingFloor: 'Округление вниз (Floor)',
+    roundingRound: 'Ближайшее целое',
+    roundingCeil: 'Округление вверх (Ceil)',
+    orderLabel: 'Порядок модификаторов',
+    resistanceFirst: 'Сопротивление, затем плоский',
+    flatFirst: 'Плоский, затем сопротивление',
+    runLabel: 'Сравнение в реальном времени',
+    resultDamage: 'Ожидаемый урон',
+    resultHits: 'Ударов до уничтожения',
+    resultTtk: 'Время уничтожения (TTK)',
+    resultDifference: 'Разница урона',
+    formulaAName: 'Текущая',
+    formulaBName: 'Альтернатива',
+    curveTitle: 'График зависимости от атаки',
+    curveCaption: 'Атака меняется от половины до двойного значения при фиксированной защите.',
+    heatmapTitle: 'Тепловая карта давления',
+    heatmapCaption: 'Показывает ожидаемый урон Формулы A для комбинаций атаки и защиты.',
+    attackAxis: 'Атака растет вправо',
+    defenseAxis: 'Защита растет вниз',
+    scenariosTitle: 'Боевые профили',
+    scenarioSkirmisher: 'Дуэлянт',
+    scenarioGuardian: 'Страж',
+    scenarioBoss: 'Босс',
+    scenarioCustom: 'Текущие настройки',
+    diagnosticsTitle: 'Проверка порогов',
+    statusBalanced: 'В данном диапазоне аномальных математических скачков не обнаружено.',
+    exportTitle: 'Экспорт эксперимента',
+    copyLink: 'Скопировать ссылку',
+    exportCsv: 'Скачать CSV',
+    exportJson: 'Скачать JSON',
+    importJson: 'Импортировать JSON',
+    exportPng: 'Скачать PNG-график',
+    reset: 'Сбросить модель',
+    privacyDisclosure: 'Ссылка сохраняет настройки в хэше URL и не отправляет данные на сервер.',
+    limitationDisclosure: 'Ожидаемый критический урон является средним значением, а не случайной симуляцией.',
+    importError: 'Файл не является корректной конфигурацией.',
+    copiedStatus: 'Ссылка скопирована в буфер обмена.',
+  },
+  seo: [
+    {
+      type: 'title',
+      level: 2,
+      text: 'Тестируйте формулы урона до интеграции в игровой движок',
+    },
+    {
+      type: 'paragraph',
+      html: 'Формула урона может выглядеть корректной при базовых значениях, но ломаться на высоких уровнях. Данная лаборатория позволяет выявить аномалии заранее.',
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Безопасный и ограниченный язык выражений',
+    },
+    {
+      type: 'paragraph',
+      html: 'Поле ввода принимает исключительно предустановленные переменные и математические функции без выполнения стороннего кода.',
+    },
+    {
+      type: 'table',
+      headers: ['Показатель', 'Расчет', 'Вопрос дизайна'],
+      rows: [
+        ['Ожидаемый урон', 'Базовая формула с учетом критических ударов и сопротивления', 'Адекватно ли работает правило для слабых и сильных персонажей?'],
+        ['Ударов до уничтожения', 'Здоровье цели, деленное на округленный урон', 'Убирает ли 1 дополнительное очко характеристик целый необходимый удар?'],
+        ['Время уничтожения (TTK)', 'Интервал между ударами, деленный на скорость атаки', 'Создает ли скорость атаки желаемый темп боя?'],
+        ['Тепловая карта', 'Выборка Формулы A по атаке и защите', 'Есть ли аномальные скачки или мертвые зоны?'],
+      ],
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Разделение математических расчетов и решений по балансу',
+    },
+    {
+      type: 'paragraph',
+      html: 'Гладкий график не гарантирует увлекательный геймплей. Используйте лабораторию для формулирования гипотез перед плейтестами.',
+    },
+    {
+      type: 'tip',
+      title: 'Анализируйте урон и количество ударов одновременно',
+      html: 'Небольшое изменение урона может пересечь пороговое значение здоровья и сократить число ударов. Всегда сравнивайте урон с TTK.',
+    },
+  ],
+  faq,
+  bibliographyTitle: 'Ссылки по расчету урона в играх',
+  bibliography: bibliographyEntries,
+  howTo,
+  schemas: [softwareApplication, faqPage, howToSchema],
+};

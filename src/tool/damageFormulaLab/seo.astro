@@ -1,0 +1,13 @@
+---
+import { SEORenderer } from '@jjlmoya/utils-shared';
+import type { SEOSection } from '../../types';
+
+interface Props {
+  locale?: string;
+  sections?: SEOSection[];
+}
+
+const { locale = 'en', sections = [] } = Astro.props;
+---
+
+<SEORenderer content={{ locale, sections }} />

@@ -1,0 +1,178 @@
+---
+import type { DamageFormulaLabUI } from './ui';
+import './damage-formula-lab.css';
+
+interface Props {
+  ui: DamageFormulaLabUI;
+}
+
+const { ui } = Astro.props;
+
+const coreInputs = [
+  ['attack', ui.attackLabel, 0, 100000, 1],
+  ['defense', ui.defenseLabel, 0, 100000, 1],
+  ['health', ui.healthLabel, 1, 10000000, 1],
+  ['attacksPerSecond', ui.cadenceLabel, 0.01, 100, 0.05],
+] as const;
+
+const advancedInputs = [
+  ['level', ui.levelLabel, 1, 999, 1],
+  ['power', ui.powerLabel, 0, 100, 0.05],
+  ['resistance', ui.resistanceLabel, 0, 100, 1],
+  ['flat', ui.flatLabel, -100000, 100000, 1],
+  ['criticalChance', ui.criticalChanceLabel, 0, 100, 1],
+  ['criticalMultiplier', ui.criticalMultiplierLabel, 1, 20, 0.05],
+] as const;
+---
+
+<section class="damage-lab" data-damage-lab>
+  <script is:inline type="application/json" data-damage-ui set:html={JSON.stringify(ui)} />
+
+  <header class="damage-lab-header">
+    <p>{ui.onboarding}</p>
+    <span>{ui.localNote}</span>
+  </header>
+
+  <section class="damage-lab-composer" aria-labelledby="damage-lab-formulas-title">
+    <div class="damage-lab-heading">
+      <h2 id="damage-lab-formulas-title">{ui.formulaDeck}</h2>
+      <div class="damage-lab-presets" aria-label="Formula presets">
+        <button type="button" data-preset="linear">{ui.presetLinear}</button>
+        <button type="button" data-preset="ratio">{ui.presetRatio}</button>
+        <button type="button" data-preset="level">{ui.presetLevel}</button>
+      </div>
+    </div>
+    <div class="damage-lab-formulas">
+      <label class="damage-lab-formula damage-lab-formula-a">
+        <span><i aria-hidden="true"></i>{ui.formulaALabel}</span>
+        <input name="formulaA" type="text" spellcheck="false" autocomplete="off" />
+      </label>
+      <label class="damage-lab-formula damage-lab-formula-b">
+        <span><i aria-hidden="true"></i>{ui.formulaBLabel}</span>
+        <input name="formulaB" type="text" spellcheck="false" autocomplete="off" />
+      </label>
+    </div>
+    <details class="damage-lab-language">
+      <summary>Formula language</summary>
+      <p>{ui.formulaHint}<br />{ui.formulaFunctions}</p>
+    </details>
+  </section>
+
+  <section class="damage-lab-tuning" aria-labelledby="damage-lab-tuning-title">
+    <div class="damage-lab-heading">
+      <h2 id="damage-lab-tuning-title">{ui.combatInputs}</h2>
+      <div class="damage-lab-scenarios" aria-label={ui.scenariosTitle}>
+        <button type="button" data-scenario="skirmisher">{ui.scenarioSkirmisher}</button>
+        <button type="button" data-scenario="guardian">{ui.scenarioGuardian}</button>
+        <button type="button" data-scenario="boss">{ui.scenarioBoss}</button>
+        <button type="button" data-scenario="custom">{ui.scenarioCustom}</button>
+      </div>
+    </div>
+    <div class="damage-lab-core-inputs">
+      {coreInputs.map(([name, label, min, max, step]) => (
+        <label>
+          <span>{label}</span>
+          <input name={name} type="number" min={min} max={max} step={step} inputmode="decimal" />
+        </label>
+      ))}
+    </div>
+    <details class="damage-lab-advanced">
+      <summary>Advanced combat and engine rules</summary>
+      <div class="damage-lab-advanced-grid">
+        {advancedInputs.map(([name, label, min, max, step]) => (
+          <label>
+            <span>{label}</span>
+            <input name={name} type="number" min={min} max={max} step={step} inputmode="decimal" />
+          </label>
+        ))}
+      </div>
+      <fieldset class="damage-lab-choice">
+        <legend>{ui.roundingLabel}</legend>
+        <button type="button" data-rounding="none">{ui.roundingNone}</button>
+        <button type="button" data-rounding="floor">{ui.roundingFloor}</button>
+        <button type="button" data-rounding="round">{ui.roundingRound}</button>
+        <button type="button" data-rounding="ceil">{ui.roundingCeil}</button>
+      </fieldset>
+      <fieldset class="damage-lab-choice">
+        <legend>{ui.orderLabel}</legend>
+        <button type="button" data-order="resistance-first">{ui.resistanceFirst}</button>
+        <button type="button" data-order="flat-first">{ui.flatFirst}</button>
+      </fieldset>
+    </details>
+  </section>
+
+  <section class="damage-lab-result" aria-labelledby="damage-lab-result-title">
+    <div class="damage-lab-result-heading">
+      <div><span>Live model</span><h2 id="damage-lab-result-title">{ui.runLabel}</h2></div>
+      <div class="damage-lab-gap"><small>{ui.resultDifference}</small><strong data-result="gap">0</strong></div>
+    </div>
+    <div class="damage-lab-totals">
+      <article>
+        <span>{ui.formulaAName}</span>
+        <strong data-result="a-damage">0</strong>
+        <small>{ui.resultDamage}</small>
+        <dl><div><dt>{ui.resultHits}</dt><dd data-result="a-hits">0</dd></div><div><dt>{ui.resultTtk}</dt><dd data-result="a-ttk">0 s</dd></div></dl>
+      </article>
+      <article>
+        <span>{ui.formulaBName}</span>
+        <strong data-result="b-damage">0</strong>
+        <small>{ui.resultDamage}</small>
+        <dl><div><dt>{ui.resultHits}</dt><dd data-result="b-hits">0</dd></div><div><dt>{ui.resultTtk}</dt><dd data-result="b-ttk">0 s</dd></div></dl>
+      </article>
+    </div>
+    <div class="damage-lab-curve-heading">
+      <div><h3>{ui.curveTitle}</h3><p>{ui.curveCaption}</p></div>
+      <span><b data-curve-max>0</b> max</span>
+    </div>
+    <svg class="damage-lab-chart" data-chart viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label={ui.curveTitle}>
+      <path class="damage-lab-guide" d="M0 25 H100 M0 50 H100 M0 75 H100" />
+      <path class="damage-lab-curve damage-lab-curve-a" data-curve="a" d="" />
+      <path class="damage-lab-curve damage-lab-curve-b" data-curve="b" d="" />
+    </svg>
+    <div class="damage-lab-legend"><span>{ui.formulaAName}</span><span>{ui.formulaBName}</span></div>
+  </section>
+
+  <details class="damage-lab-secondary">
+    <summary>{ui.heatmapTitle} + {ui.diagnosticsTitle}</summary>
+    <div class="damage-lab-notes">
+      <section class="damage-lab-pressure" aria-labelledby="damage-lab-heatmap-title">
+        <h2 id="damage-lab-heatmap-title">{ui.heatmapTitle}</h2>
+        <p>{ui.heatmapCaption}</p>
+        <div class="damage-lab-axis">{ui.attackAxis}</div>
+        <div class="damage-lab-heatmap" data-heatmap></div>
+        <small>{ui.defenseAxis}</small>
+      </section>
+      <section class="damage-lab-diagnostics" aria-labelledby="damage-lab-diagnostics-title">
+        <h2 id="damage-lab-diagnostics-title">{ui.diagnosticsTitle}</h2>
+        <ul data-diagnostics></ul>
+        <p>{ui.limitationDisclosure}</p>
+      </section>
+    </div>
+  </details>
+
+  <details class="damage-lab-export-panel">
+    <summary>{ui.exportTitle}</summary>
+    <footer class="damage-lab-exports">
+      <p>{ui.privacyDisclosure}</p>
+      <div class="damage-lab-actions">
+        <button type="button" data-share>{ui.copyLink}</button>
+        <button type="button" data-csv>{ui.exportCsv}</button>
+        <button type="button" data-json>{ui.exportJson}</button>
+        <label>{ui.importJson}<input type="file" accept="application/json,.json" data-import /></label>
+        <button type="button" data-png>{ui.exportPng}</button>
+        <button type="button" data-reset>{ui.reset}</button>
+      </div>
+      <p class="damage-lab-status" data-status aria-live="polite"></p>
+    </footer>
+  </details>
+</section>
+
+<script>
+  import { mountDamageFormulaLab } from './controller';
+  import type { DamageFormulaLabUI } from './ui';
+
+  document.querySelectorAll<HTMLElement>('[data-damage-lab]').forEach((root) => {
+    const source = root.querySelector<HTMLScriptElement>('[data-damage-ui]');
+    if (source?.textContent) mountDamageFormulaLab(root, JSON.parse(source.textContent) as DamageFormulaLabUI);
+  });
+</script>

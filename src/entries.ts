@@ -18,6 +18,8 @@ export { pixelArtPaletteSwapper } from './tool/pixelArtPaletteSwapper/entry';
 export type { PixelArtPaletteSwapperUI, PixelArtPaletteSwapperLocaleContent } from './tool/pixelArtPaletteSwapper/entry';
 export { hitboxHurtboxAnimator } from './tool/hitboxHurtboxAnimator/entry';
 export type { HitboxHurtboxAnimatorUI, HitboxHurtboxAnimatorLocaleContent } from './tool/hitboxHurtboxAnimator/entry';
+export { damageFormulaLab } from './tool/damageFormulaLab/entry';
+export type { DamageFormulaLabUI, DamageFormulaLabLocaleContent } from './tool/damageFormulaLab/entry';
 export { gamesCategory } from './category';
 import { steamCapsuleGenerator } from './tool/steamCapsuleGenerator/entry';
 import { itchioGameTester } from './tool/itchioGameTester/entry';
@@ -30,5 +32,6 @@ import { retroSfxGenerator } from './tool/retroSfxGenerator/entry';
 import { pixelArtPaletteSwapper } from './tool/pixelArtPaletteSwapper/entry';
 import { gameUiAccessibilityTester } from './tool/gameUIAccessibilityTester/entry';
 import { hitboxHurtboxAnimator } from './tool/hitboxHurtboxAnimator/entry';
+import { damageFormulaLab } from './tool/damageFormulaLab/entry';
 
-export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator];
+export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab];
