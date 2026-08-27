@@ -1,0 +1,51 @@
+---
+import type { GameDeltaTimeFixedTimestepLabUI } from './ui';
+
+interface Props {
+  ui: GameDeltaTimeFixedTimestepLabUI;
+}
+
+const { ui } = Astro.props as Props;
+---
+
+<div class="game-loop-lab" data-game-loop-lab>
+  <div class="gll-shell">
+    <form class="gll-controls" data-controls>
+      <div class="gll-control-heading"><p class="gll-kicker">{ui.controlsTitle}</p></div>
+      <label class="gll-range-field"><span>{ui.fpsLabel}</span><output data-output="fps">60</output><input data-field="fps" type="range" min="1" max="240" step="1" value="60" /></label>
+      <p class="gll-field-hint">{ui.fpsHint}</p>
+      <label class="gll-range-field"><span>{ui.spikeLabel} ({ui.unitMs})</span><output data-output="spikeMs">80</output><input data-field="spikeMs" type="range" min="0" max="250" step="1" value="80" /></label>
+      <p class="gll-field-hint">{ui.spikeHint}</p>
+      <label class="gll-number-field"><span>{ui.spikeEveryLabel}</span><input data-field="spikeEveryFrames" type="number" min="1" max="600" step="1" value="30" /></label>
+      <label class="gll-range-field"><span>{ui.fixedDtLabel} ({ui.unitMs})</span><output data-output="fixedDtMs">16.666</output><input data-field="fixedDtMs" type="range" min="1" max="50" step="0.001" value="16.666" /></label>
+      <p class="gll-field-hint">{ui.fixedDtHint}</p>
+      <label class="gll-range-field"><span>{ui.velocityLabel}</span><output data-output="velocity">20</output><input data-field="velocity" type="range" min="0" max="100" step="1" value="20" /></label>
+      <label class="gll-range-field"><span>{ui.durationLabel}</span><output data-output="durationSeconds">6</output><input data-field="durationSeconds" type="range" min="1" max="20" step="1" value="6" /></label>
+      <div class="gll-clamp" data-clamp-detail>
+        <label class="gll-check-field"><input data-field="clampEnabled" type="checkbox" /><span>{ui.clampToggle}</span></label>
+        <label class="gll-range-field"><span>{ui.clampLabel} ({ui.unitMs})</span><output data-output="clampMs">100</output><input data-field="clampMs" type="range" min="1" max="250" step="1" value="100" /></label>
+      </div>
+      <div class="gll-actions"><button type="button" class="gll-primary" data-run>{ui.runLabel}</button><button type="button" class="gll-secondary" data-reset>{ui.resetLabel}</button></div>
+    </form>
+    <section class="gll-stage" aria-labelledby="gll-stage-title">
+      <div class="gll-stage-heading"><div><p class="gll-kicker">{ui.stageKicker}</p><h2 id="gll-stage-title">{ui.stageTitle}</h2><p>{ui.stageCaption}</p></div><span class="gll-live-badge" data-live aria-live="polite">{ui.statusReady}</span></div>
+      <div class="gll-stage-visual" data-stage></div>
+      <div data-summary></div>
+      <div class="gll-timeline-heading"><h3>{ui.timelineTitle}</h3><p>{ui.timelineCaption}</p></div>
+      <div data-chart></div>
+      <div class="gll-legend"><span><i class="gll-legend-dot gll-variable-dot"></i>{ui.legendVariable}</span><span><i class="gll-legend-dot gll-fixed-dot"></i>{ui.legendFixed}</span><span><i class="gll-legend-dot gll-spike-dot"></i>{ui.legendSpike}</span></div>
+      <div class="gll-table" data-table></div>
+      <p class="gll-model-note">{ui.modelNote}</p>
+      <p class="gll-privacy">{ui.privacyDisclosure}</p>
+    </section>
+  </div>
+</div>
+
+<script is:inline type="application/json" data-game-loop-ui set:html={JSON.stringify(ui)}></script>
+
+<script>
+  import { mountGameDeltaTimeFixedTimestepLab } from './controller';
+  const root = document.querySelector<HTMLElement>('[data-game-loop-lab]');
+  const uiScript = document.querySelector<HTMLScriptElement>('[data-game-loop-ui]');
+  if (root && uiScript) mountGameDeltaTimeFixedTimestepLab(root, JSON.parse(uiScript.textContent ?? '{}'));
+</script>

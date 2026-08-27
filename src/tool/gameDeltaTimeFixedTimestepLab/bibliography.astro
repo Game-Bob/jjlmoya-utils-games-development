@@ -1,0 +1,22 @@
+---
+import type { BibliographyEntry } from '../../types';
+
+interface Props {
+  title?: string;
+  entries?: BibliographyEntry[];
+}
+
+const { title = 'References', entries = [] } = Astro.props;
+---
+
+{entries.length > 0 && <section class="gll-references" aria-labelledby="gll-reference-title"><h2 id="gll-reference-title">{title}</h2><ul>{entries.map((entry) => <li><a href={entry.url} rel="noopener noreferrer" target="_blank">{entry.name}</a></li>)}</ul></section>}
+
+<style>
+  .gll-references {
+    margin-block: 2rem;
+  }
+
+  .gll-references a {
+    color: var(--n-primary);
+  }
+</style>
