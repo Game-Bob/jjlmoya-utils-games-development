@@ -1,13 +1,15 @@
 ---
 import { SEORenderer } from '@jjlmoya/utils-shared';
-import type { SEOSection } from '../../types';
+import { damageFormulaLab } from './entry';
+import type { KnownLocale } from '../../types';
 
 interface Props {
-  locale?: string;
-  sections?: SEOSection[];
+  locale?: KnownLocale;
 }
 
-const { locale = 'en', sections = [] } = Astro.props;
+const { locale = 'es' } = Astro.props;
+const loader = damageFormulaLab.i18n[locale as KnownLocale] ?? damageFormulaLab.i18n.es ?? damageFormulaLab.i18n.en;
+const content = loader ? await loader() : null;
 ---
 
-<SEORenderer content={{ locale, sections }} />
+{content?.seo && content.seo.length > 0 && <SEORenderer content={{ locale, sections: content.seo }} />}

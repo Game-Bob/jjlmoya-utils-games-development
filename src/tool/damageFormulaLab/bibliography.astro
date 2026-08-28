@@ -1,24 +1,6 @@
 ---
-import type { BibliographyEntry } from '../../types';
-
-interface Props {
-  title?: string;
-  entries?: BibliographyEntry[];
-}
-
-const { title = 'References', entries = [] } = Astro.props;
+import { Bibliography as SharedBibliography } from '@jjlmoya/utils-shared';
+import { bibliographyEntries } from './bibliography';
 ---
 
-{entries.length > 0 && (
-  <section class="damage-lab-references" aria-labelledby="damage-lab-reference-title">
-    <h2 id="damage-lab-reference-title">{title}</h2>
-    <ul>
-      {entries.map((entry) => <li><a href={entry.url} rel="noopener noreferrer" target="_blank">{entry.name}</a></li>)}
-    </ul>
-  </section>
-)}
-
-<style>
-  .damage-lab-references { margin-block: 2rem; }
-  .damage-lab-references a { color: var(--n-primary); }
-</style>
+<SharedBibliography links={bibliographyEntries} />
