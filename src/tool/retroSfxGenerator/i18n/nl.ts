@@ -128,6 +128,7 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: 'Luister op het gewenste spelvolume',
       html: 'Test het gedownloade WAV-bestand direct in je game om te kijken of het past bij de achtergrondmuziek.',
     },
+    { type: 'paragraph', html: 'Luister het geluid ook in de echte gamemix: een helder effect kan afzonderlijk goed klinken maar dialoog of muziek maskeren. Controleer volume, clipping en duur voordat je het als definitief asset gebruikt.' },
   ],
   faqTitle: 'Veelgestelde Vragen',
   faq: [

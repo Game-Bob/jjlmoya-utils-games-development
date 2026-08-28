@@ -194,6 +194,19 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: 'Ein gut gepacktes Sprite Sheet reduziert Texturwechsel und Draw Calls. Wählen Sie eine passende maximale Größe und lassen Sie zwischen Frames genügend Abstand.'
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Padding, Extrusion und Exportdaten abstimmen',
+    },
+    {
+      type: 'paragraph',
+      html: 'Padding schafft Abstand zwischen benachbarten Frames, während Randextrusion die äußeren Pixel wiederholt. Diese Werte wirken zusammen mit Filterung, Mipmaps und Kamerabewegung: Zu wenig Abstand kann Nähte zeigen, zu viel Abstand verschwendet Texturfläche.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Prüfen Sie nach dem Packen die erzeugten JSON-Koordinaten in der Ziel-Engine. Ein Atlas ist nur dann brauchbar, wenn Framegröße, Ursprung, Drehung und Transparenz genauso interpretiert werden wie im Export.',
+    },
   ],
   faq: [
     {

@@ -136,7 +136,29 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Lenguaje de marcado estándar para la web.'
         }
       ]
-    }
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Revisar la conversión antes de pegarla en Steam',
+    },
+    {
+      type: 'paragraph',
+      html: 'Comprueba primero qué formato utiliza el texto de origen y compara después títulos, enlaces, listas e imágenes en la vista previa. Que aparezca una salida no significa que cada etiqueta específica de Steam tenga una equivalencia completa en el formato de destino.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Guarda una copia del texto original y prueba el resultado en la vista de tienda donde se publicará. Las listas anidadas, los enlaces externos y los widgets que no tienen equivalente pueden requerir una revisión manual antes de copiar el contenido.',
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Procesamiento local y límites del conversor',
+    },
+    {
+      type: 'paragraph',
+      html: 'La entrada se analiza en el navegador y las tres vistas se generan desde el mismo modelo estructural. El conversor no evalúa la calidad del texto ni la seguridad de las URL externas; esas comprobaciones siguen formando parte del flujo de publicación.',
+    },
   ],
   faqTitle: 'Preguntas frecuentes sobre la conversión',
   faq: [

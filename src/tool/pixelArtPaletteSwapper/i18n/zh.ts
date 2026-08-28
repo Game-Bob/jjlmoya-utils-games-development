@@ -60,6 +60,10 @@ export const content: ToolLocaleContent<PixelArtPaletteSwapperUI> = {
       html: '工具会计算每个像素 RGB 值的距离，并将其替换为目标调色板中最接近的颜色，同时完好保留透明通道。',
     },
     {
+      type: 'paragraph',
+      html: '导出前请在实际游戏尺寸下检查高光、阴影和透明边缘。距离最近的颜色不一定最符合美术意图，因此可以通过自定义调色板和多次预览来保护角色轮廓与关键动画细节。',
+    },
+    {
       type: 'comparative',
       columns: 2,
       items: [
@@ -141,6 +145,20 @@ export const content: ToolLocaleContent<PixelArtPaletteSwapperUI> = {
         },
       ],
     },
+    {
+      type: 'title',
+      level: 2,
+      text: '在游戏画面中检查调色板结果',
+    },
+    {
+      type: 'paragraph',
+      html: '调色板转换会把每个像素映射到最接近的颜色，因此原图中的细微色差可能会消失。请以原始尺寸查看结果，并在实际游戏背景中确认角色轮廓、阴影和界面文字仍然清晰可辨。',
+    },
+    {
+      type: 'paragraph',
+      html: '透明度会被保留，但透明边缘可能残留不需要的颜色。将导出的 PNG 导入目标引擎，在启用过滤和缩放的条件下检查图集接缝与颜色溢出，再决定是否发布。',
+    },
+    { type: 'paragraph', html: '还要在目标引擎中检查透明边缘、过滤模式和放大比例。调色板转换会减少颜色信息，游戏中的实际背景和缩放效果才是判断轮廓是否清晰的依据。' },
   ],
   faq: [
     {

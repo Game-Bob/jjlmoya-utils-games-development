@@ -172,6 +172,8 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: 'Granska skada och antal träffar tillsammans',
       html: 'En liten förändring i skada kan passera en hälsotröskel och minska antal träffar med en hel attack. Jämför alltid skada med TTK.',
     },
+    { type: 'paragraph', html: 'Samma formel kan ge ett annat stridsresultat beroende på avrundning och modifierarnas ordning. Kontrollera även låg skada, högt försvar och tröskeln för en extra träff; TTK modellerar inte undvikanden, cooldowns eller avbrott.' },
+    { type: 'paragraph', html: 'Spara flera kontrollscenarier efter varje ändring: svag attack mot högt försvar, kritisk träff och gränsen där antalet träffar ändras. Dessa exempel gör det lättare att jämföra balansversioner och upptäcka regressioner efter att koefficienter eller avrundningsregler har ändrats.' },
   ],
   faq,
   bibliographyTitle: 'Referenser för skadeberäkning i spel',

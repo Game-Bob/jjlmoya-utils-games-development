@@ -115,6 +115,12 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'Locale', definition: '语言与地区代码，如 zh, en, ja。' },
       ],
     },
+    { type: 'title', level: 2, text: '导入引擎前检查清理后的文件' },
+    { type: 'paragraph', html: '打开预览，将表头与项目要求的语言结构进行比较。自动修复可以处理分隔符和空单元格，但不能创建缺失的翻译，也不能确认文本含义正确。' },
+    { type: 'paragraph', html: '请保留原始文件并进行一次小规模测试导入，以确认哪些行被规范化，以及 Godot 或 Unity 是否能在没有新警告的情况下读取清理后的文件。' },
+    { type: 'paragraph', html: '请把清理视为结构处理步骤：修复后的单元格仍需由熟悉该语言的人复核，导出的文件也应在交付前导入测试场景进行验证。' },
+    { type: 'paragraph', html: '请把清理视为结构处理步骤：修复后的单元格仍需由熟悉该语言的人复核，导出的文件也应在交付前导入测试场景进行验证。' },
+    { type: 'paragraph', html: '导出前请逐项查看错误报告，特别关注列数变化、重复键和被合并的字段。建议先用一份小型副本验证导入结果，再处理完整的本地化表格。' },
   ],
   faq: [
     {

@@ -172,6 +172,19 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: 'Periksa damage dan jumlah pukulan secara bersamaan',
       html: 'Perubahan kecil pada damage bisa saja melewati ambang batas darah target dan mengurangi 1 pukulan penuh. Selalu bandingkan nilai damage dengan jumlah pukulan dan TTK.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Membuat pembulatan dan urutan resistance terlihat',
+    },
+    {
+      type: 'paragraph',
+      html: 'Formula yang sama dapat menghasilkan pertarungan berbeda bergantung pada pembulatan dan urutan modifier. Jangan hanya memeriksa bagian tengah kurva; lihat juga damage kecil, defense tinggi, dan batas yang menambah satu serangan lagi.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Nilai TTK adalah proyeksi matematika berdasarkan cadence yang dimasukkan. Nilai ini tidak memodelkan dodge, cooldown, urutan acak, atau interupsi, sehingga hasil kurva perlu diuji kembali dalam game.',
+    },
   ],
   faq,
   bibliographyTitle: 'Referensi kalkulasi damage game',

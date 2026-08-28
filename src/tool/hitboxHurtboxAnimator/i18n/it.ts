@@ -186,6 +186,7 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
       type: 'paragraph',
       html: 'La scheda di contatto PNG mostra tutti i fotogrammi e i loro livelli di colore su un unica immagine, ideale per la collaborazione tra artisti e programmatori.',
     },
+    { type: 'paragraph', html: 'Una forma di collisione deve seguire sia il profilo sia il momento dell azione. Controlla le fasi iniziale, attiva e di recupero e prova portata, priorità, rinculo e rete nel progetto realmente integrato.' },
   ],
   faq,
   bibliographyTitle: 'Riferimenti per lo sviluppo delle collisioni',

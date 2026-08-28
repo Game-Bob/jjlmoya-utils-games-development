@@ -172,6 +172,8 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: 'Hasar ve vuruş sayısını daima birlikte inceleyin',
       html: 'Hasardaki küçük bir değişim bir can eşiğini geçerek vuruş sayısını 1 azaltabilir. Hasarı daima TTK ile karşılaştırın.',
     },
+    { type: 'paragraph', html: 'Aynı formül yuvarlama ve modifier sırasına göre farklı bir savaş sonucu üretebilir. Küçük hasarı, yüksek savunmayı ve ek vuruş gerektiren eşiği de kontrol edin; TTK kaçınma, bekleme süresi veya kesintileri modellemez.' },
+    { type: 'paragraph', html: 'Her değişiklikten sonra birkaç kontrol senaryosu kaydedin: yüksek savunmaya karşı zayıf saldırı, kritik vuruş ve vuruş sayısının değiştiği eşik. Bu örnekler denge sürümlerini karşılaştırmayı ve katsayılar ya da yuvarlama kuralları değiştiğinde oluşan gerilemeleri fark etmeyi kolaylaştırır.' },
   ],
   faq,
   bibliographyTitle: 'Oyunlarda hasar matematiği referansları',

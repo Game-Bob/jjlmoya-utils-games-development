@@ -193,6 +193,10 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 2.",
     },
+    { type: 'title', level: 2, text: 'Dopasuj padding, ekstruzję i dane eksportu' },
+    { type: 'paragraph', html: 'Padding oddziela sąsiednie klatki, a ekstruzja powtarza piksele na ich krawędziach. Obie wartości trzeba ocenić razem z filtrowaniem, mipmapami i ruchem kamery: zbyt mały odstęp tworzy szwy, a zbyt duży marnuje miejsce tekstury.' },
+    { type: 'paragraph', html: 'Po spakowaniu sprawdź współrzędne JSON w docelowym silniku. Atlas jest bezpieczny tylko wtedy, gdy rozmiar klatki, początek, obrót i przezroczystość są interpretowane tak samo jak w wyeksportowanym pliku.' },
+    { type: 'paragraph', html: 'Sprawdź również, czy format tekstury i metadane odpowiadają docelowemu silnikowi. Maksymalny rozmiar, przycinanie przezroczystości i wymóg potęgi dwójki wpływają na pamięć oraz zgodność ze starszymi urządzeniami.' },
   ],
   faq: [
     {

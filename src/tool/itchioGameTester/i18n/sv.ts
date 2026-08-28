@@ -70,6 +70,9 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 5.",
     },
+    { type: 'title', level: 2, text: 'Kontrollera viewport, canvas och inbäddning' },
+    { type: 'paragraph', html: 'Jämför den faktiska canvasstorleken med den viewport som planeras för Itch.io. Ett 16:9-förhållande tar inte automatiskt bort rullningslister: CSS-marginaler, minsta bredder och en oskalad canvas kan fortfarande skapa overflow.' },
+    { type: 'paragraph', html: 'Läs rapporten efter varje build eftersom filnamn, startpunkt och motorns utdata kan ändras. Komplettera den strukturella kontrollen med tester i flera webbläsare och på olika enheter.' },
   ],
   faq: [
     {

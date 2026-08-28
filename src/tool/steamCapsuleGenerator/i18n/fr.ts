@@ -1,4 +1,4 @@
-import type { ToolLocaleContent } from '../../../types';
+import type { SEOSection, ToolLocaleContent } from '../../../types';
 import type { SteamCapsuleGeneratorUI } from '../ui';
 import { bibliographyEntries } from '../bibliography';
 
@@ -139,7 +139,7 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
       type: 'paragraph',
       html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 8.",
     },
-  ].slice(0, 15),
+  ].slice(0, 15) as SEOSection[],
   faqTitle: 'Foire Aux Questions sur les Images Steam',
   faq: [
     {

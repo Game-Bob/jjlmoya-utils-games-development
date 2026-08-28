@@ -132,6 +132,10 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: '从此工具导出音频轨道时，新的元数据结构将直接注入到输出WAV二进制文件的RIFF头中。',
     },
+    { type: 'title', level: 2, text: '评估循环长度与相位衔接' },
+    { type: 'paragraph', html: '过零点可以减少振幅跳变，但不能单独保证自然的音乐衔接。请连续聆听开头和结尾，并检查循环重复时的节奏、和声以及混响尾音。' },
+    { type: 'paragraph', html: '标记点以采样数保存，不依赖毫秒四舍五入。完成听感检查后再导出 WAV，并在游戏实际使用的引擎中测试播放结果。' },
+    { type: 'paragraph', html: '还要确认循环长度符合音乐乐句，不会截断音符或效果尾音。采样数标记在设备之间传递时仍能保持精度，但最终结果应在游戏的实际速度和音量下试听。' },
   ],
   faqTitle: '常见问题解答',
   faq: [

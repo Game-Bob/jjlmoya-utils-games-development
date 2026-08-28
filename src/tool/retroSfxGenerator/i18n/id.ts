@@ -128,6 +128,19 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: 'Dengarkan Pada Volume Game',
       html: 'Uji suara di dalam game untuk memastikan tidak mengganggu musik latar.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Menyetel frekuensi dan envelope secara bersamaan',
+    },
+    {
+      type: 'paragraph',
+      html: 'Sweep mengubah tinggi nada dari waktu ke waktu, sedangkan decay dan filter membentuk energi yang terdengar. Dengarkan semua parameter bersama-sama: kenaikan panjang dapat tetap lembut, sementara noise biasanya membutuhkan durasi lebih pendek agar dampaknya terasa jelas.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Ekspor WAV adalah titik awal untuk prototipe dan bukan pengganti mixing di dalam game. Periksa level, clipping, serta ruang suara terhadap musik dan dialog sebelum menjadikannya aset final.',
+    },
   ],
   faqTitle: 'Pertanyaan Umum',
   faq: [

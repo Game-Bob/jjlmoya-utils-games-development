@@ -70,6 +70,9 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 5.",
     },
+    { type: 'title', level: 2, text: 'Viewport, canvas ve gömmeyi birlikte kontrol edin' },
+    { type: 'paragraph', html: 'Gerçek canvas boyutunu Itch.io için planlanan viewport ile karşılaştırın. 16:9 oranı tek başına kaydırma çubuklarını kaldırmaz; CSS boşlukları, minimum genişlik ve ölçeklenmeyen canvas taşmaya yol açabilir.' },
+    { type: 'paragraph', html: 'Her derlemeden sonra raporu yeniden okuyun; dosya adları, giriş noktası ve motor çıktısı değişebilir. Yapısal kontrolleri farklı tarayıcı ve cihazlardaki gerçek testlerle tamamlayın.' },
   ],
   faq: [
     {

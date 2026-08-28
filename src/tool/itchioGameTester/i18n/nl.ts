@@ -70,6 +70,9 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 5.",
     },
+    { type: 'title', level: 2, text: 'Viewport, canvas en insluiting samen controleren' },
+    { type: 'paragraph', html: 'Vergelijk de echte canvasgrootte met de viewport die je op Itch.io plant. Een verhouding van 16:9 verwijdert scrollbalken niet automatisch: CSS-marges, minimale breedtes en een niet geschaalde canvas kunnen nog steeds overflow veroorzaken.' },
+    { type: 'paragraph', html: 'Lees het rapport na elke build opnieuw, want bestandsnamen, het startpunt en de engine-uitvoer kunnen veranderen. Gebruik deze controle naast tests in meerdere browsers en op verschillende apparaten.' },
   ],
   faq: [
     {

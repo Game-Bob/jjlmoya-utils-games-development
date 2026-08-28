@@ -132,6 +132,9 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: 'Ao exportar faixas de áudio desta ferramenta, novas estruturas de metadatos são injetadas diretamente no cabeçalho RIFF do arquivo WAV.',
     },
+    { type: 'title', level: 2, text: 'Avaliar a duração do loop e a transição de fase' },
+    { type: 'paragraph', html: 'Um cruzamento por zero reduz saltos de amplitude, mas não garante sozinho uma transição musical natural. Ouça o início e o fim em sequência e confira ritmo, harmonia e cauda de reverberação durante a repetição.' },
+    { type: 'paragraph', html: 'Os marcadores são armazenados em samples e não dependem do arredondamento em milissegundos. Depois da conferência auditiva, exporte o WAV e teste-o na engine que fará a reprodução no jogo.' },
   ],
   faqTitle: 'Perguntas Frequentes',
   faq: [

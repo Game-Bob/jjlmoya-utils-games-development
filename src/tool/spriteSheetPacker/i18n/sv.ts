@@ -193,6 +193,10 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 2.",
     },
+    { type: 'title', level: 2, text: 'Samordna padding, kantutdragning och exportdata' },
+    { type: 'paragraph', html: 'Padding separerar närliggande bildrutor medan kantutdragning upprepar pixlarna vid kanten. Bedöm värdena tillsammans med filtrering, mipmap och kamerarörelser: för lite avstånd skapar sömmar och för mycket avstånd slösar texturyta.' },
+    { type: 'paragraph', html: 'Kontrollera JSON-koordinaterna i målmotorn efter packningen. Ett atlasark är tillförlitligt först när bildrutans storlek, ursprung, rotation och transparens tolkas på samma sätt som i den exporterade filen.' },
+    { type: 'paragraph', html: 'Kontrollera också att texturformat och metadata passar målmotorn. Maximal storlek, beskärning av transparens och kravet på tvåpotens påverkar minnesanvändning och kompatibilitet med äldre enheter.' },
   ],
   faq: [
     {

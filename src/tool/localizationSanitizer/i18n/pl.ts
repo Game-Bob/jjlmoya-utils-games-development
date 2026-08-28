@@ -115,6 +115,11 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'Locale', definition: 'Kod języka i regionu, np. pl, en lub ja.' },
       ],
     },
+    { type: 'title', level: 2, text: 'Sprawdź oczyszczony plik przed importem' },
+    { type: 'paragraph', html: 'Otwórz podgląd i porównaj nagłówki ze strukturą językową oczekiwaną przez projekt. Automatyczne poprawki pomagają przy separatorach i pustych komórkach, ale nie utworzą brakującego tłumaczenia ani nie potwierdzą znaczenia tekstu.' },
+    { type: 'paragraph', html: 'Zachowaj oryginalny plik i wykonaj mały import testowy. Dzięki temu sprawdzisz, które wiersze zostały znormalizowane oraz czy Godot lub Unity odczytuje oczyszczony plik bez nowych ostrzeżeń.' },
+    { type: 'paragraph', html: 'Traktuj czyszczenie jako etap strukturalny: poprawione komórki powinien jeszcze przeczytać użytkownik danego języka, a wyeksportowany plik należy zaimportować do sceny testowej przed przekazaniem.' },
+    { type: 'paragraph', html: 'Traktuj czyszczenie jako etap strukturalny: poprawione komórki powinien jeszcze przeczytać użytkownik danego języka, a wyeksportowany plik należy zaimportować do sceny testowej przed przekazaniem.' },
   ],
   faq: [
     {

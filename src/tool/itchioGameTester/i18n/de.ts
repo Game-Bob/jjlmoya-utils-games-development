@@ -76,6 +76,19 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: 'Bei Godot Webexporten müssen die benötigten Sicherheitsheader und Browserfunktionen verfügbar sein. Testen Sie das Spiel zusätzlich in einem privaten Browserfenster.'
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Viewport, Canvas und Einbettung gemeinsam prüfen',
+    },
+    {
+      type: 'paragraph',
+      html: 'Vergleichen Sie die tatsächliche Canvasgröße mit dem geplanten Itch.io-Viewport. Ein Seitenverhältnis von 16:9 verhindert allein noch keine Scrollbars: CSS-Ränder, feste Mindestbreiten und ein nicht skaliertes Canvas können weiterhin Überlauf erzeugen.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Lesen Sie den Bericht nach jedem Build erneut, weil sich Dateinamen, Einstiegspunkt und Engine-Ausgabe ändern können. Der Tester zeigt strukturelle und geometrische Hinweise; er ersetzt keinen Test auf verschiedenen Browsern und Geräten.',
+    },
   ],
   faq: [
     {

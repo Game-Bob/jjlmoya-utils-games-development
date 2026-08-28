@@ -186,6 +186,19 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
       type: 'paragraph',
       html: 'La planche de contact PNG affiche toutes les images et leurs calques sur un seul visuel, idéal pour échanger entre graphistes et développeurs.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Tester les frames actives et les coordonnées ensemble',
+    },
+    {
+      type: 'paragraph',
+      html: 'Une bonne forme de collision suit la silhouette mais aussi le moment de l action. Vérifiez séparément le début, la phase active et la récupération, puis comparez les boîtes exportées afin qu un coup ne se déclenche pas avant le mouvement visible ni après sa fin.',
+    },
+    {
+      type: 'paragraph',
+      html: 'La prévisualisation documente la géométrie et les calques, pas toute la logique de collision du moteur. Testez ensuite la portée, la priorité, le recul et le comportement réseau dans le projet réellement intégré.',
+    },
   ],
   faq,
   bibliographyTitle: 'Références sur la gestion des collisions',

@@ -193,6 +193,32 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 2.",
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Accorder le padding, l extrusion et les données exportées',
+    },
+    {
+      type: 'paragraph',
+      html: 'Le padding sépare les frames voisines, tandis que l extrusion répète leurs pixels de bord. Ces valeurs interagissent avec le filtrage, les mipmaps et les mouvements de caméra: trop peu d espace crée des coutures, trop d espace gaspille la texture.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Après le packing, vérifiez les coordonnées JSON dans le moteur cible. Un atlas est fiable seulement si la taille, l origine, la rotation et la transparence sont interprétées comme dans le fichier exporté.',
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Accorder le padding, l extrusion et les données exportées',
+    },
+    {
+      type: 'paragraph',
+      html: 'Le padding sépare les frames voisines, tandis que l extrusion répète leurs pixels de bord. Ces valeurs interagissent avec le filtrage, les mipmaps et les mouvements de caméra: trop peu d espace crée des coutures, trop d espace gaspille la texture.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Après le packing, vérifiez les coordonnées JSON dans le moteur cible. Un atlas est fiable seulement si la taille, l origine, la rotation et la transparence sont interprétées comme dans le fichier exporté.',
+    },
   ],
   faq: [
     {

@@ -118,6 +118,7 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
       type: 'paragraph',
       html: "Det här avsnittet samlar de viktigaste kontrollerna för en ren export och en pålitlig förhandsvisning. 8.",
     },
+    { type: 'paragraph', html: 'Kontrollera varje exporterad storlek i verklig skala. En korrekt proportion räcker inte om titel, logotyp eller motiv tappar kontrast när Steam visar bilden som en liten sökbricka eller ett vertikalt bibliotekskort.' },
   ],
   faqTitle: 'Vanliga Frågor om Steam Grafik',
   faq: [

@@ -115,6 +115,10 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'Locale', definition: 'Code langue et région comme fr, en ou ja.' },
       ],
     },
+    { type: 'title', level: 2, text: 'Vérifier le fichier nettoyé avant l import' },
+    { type: 'paragraph', html: 'Ouvrez l aperçu et comparez les en-têtes avec la structure de langues attendue par votre projet. Les corrections automatiques aident pour les séparateurs et les cellules vides, mais elles ne peuvent pas créer une traduction manquante ni confirmer son sens.' },
+    { type: 'paragraph', html: 'Conservez le fichier original et réalisez un petit import de test. Vous pourrez ainsi vérifier quelles lignes ont été normalisées et si Godot ou Unity lit le fichier nettoyé sans nouveaux avertissements.' },
+    { type: 'paragraph', html: 'Traitez le nettoyage comme une étape structurelle: les cellules corrigées doivent encore être relues par un locuteur et les valeurs exportées doivent être importées dans une scène de test avant la livraison.' },
   ],
   faq: [
     {

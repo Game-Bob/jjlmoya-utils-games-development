@@ -182,6 +182,10 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       html: 'Skup się na parach kolorów kluczowych dla rozgrywki, takich jak wrok i sojusznik. Jeśli kontrast spada, rozważ dodanie ikony lub kształtu.',
     },
     {
+      type: 'paragraph',
+      html: 'Następnie obejrzyj ten sam interfejs w docelowej skali i podczas ruchu. Zapisz, które sygnały znikają po zmianie tła, a potem połącz kolor z kształtem, wzorem, tekstem lub dźwiękiem. Dzięki temu raport prowadzi do konkretnych poprawek projektu, a nie kończy się na pojedynczej wartości kontrastu.',
+    },
+    {
       type: 'tip',
       title: 'Testuj dynamiczne kadry z gry',
       html: 'Używaj zrzutów ekranu z intensywnych momentów rozgrywki, aby uzyskać wiarygodne wyniki.',
@@ -195,6 +199,7 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: 'Raport JSON oraz obraz PNG można dołączyć do zadań w systemie zarządzania projektem, aby ułatwić komunikację z zespołem.',
     },
+    { type: 'paragraph', html: 'Zapisz scenę, rozdzielczość i badaną parę kolorów. Symulacja pomaga wcześnie znaleźć problemy projektu, ale nie zastępuje testów z prawdziwymi scenami, różnymi ekranami i osobami o różnych warunkach widzenia.' },
   ],
   faq,
   howTo,

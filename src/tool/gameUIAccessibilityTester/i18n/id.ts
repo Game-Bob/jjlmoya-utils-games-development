@@ -195,6 +195,19 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: 'Ekspor laporan JSON dan gambar perbandingan PNG dapat dilampirkan langsung pada tiket pengembangan untuk mempermudah perbaikan antarmuka.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Mendokumentasikan temuan secara konsisten',
+    },
+    {
+      type: 'paragraph',
+      html: 'Catat adegan, resolusi, dan pasangan warna yang diperiksa. Temuan yang berguna menjelaskan sinyal yang terlihat, kondisi yang terdampak, serta perbaikan dengan bentuk, ikon, pola, atau suara.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Simulasi membantu menemukan masalah desain lebih awal, tetapi tidak mengukur seluruh aksesibilitas game. Ulangi pemeriksaan dengan adegan nyata, beberapa layar, dan pemain dengan kondisi penglihatan yang beragam.',
+    },
   ],
   faq,
   howTo,

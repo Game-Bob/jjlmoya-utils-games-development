@@ -132,7 +132,13 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Standaard opmaaktaal voor het web.'
         }
       ]
-    }
+    },
+    { type: 'title', level: 2, text: 'De conversie controleren voor publicatie' },
+    { type: 'paragraph', html: 'Bepaal eerst welk formaat de brontekst werkelijk gebruikt en vergelijk daarna koppen, links, lijsten en afbeeldingen in de preview. Een zichtbare uitvoer betekent niet dat elke Steam-specifieke tag een volledige equivalent heeft in het doel-formaat.' },
+    { type: 'paragraph', html: 'Bewaar een kopie van de oorspronkelijke tekst en test het resultaat in de winkelpagina waar het wordt gepubliceerd. Geneste lijsten, externe links en widgets zonder equivalent kunnen handmatige correctie nodig hebben. De converter analyseert de structuur in de browser, maar beoordeelt geen redactionele kwaliteit of URL-veiligheid.' },
+    { type: 'paragraph', html: 'Controleer vóór het kopiëren ook externe links, niet-standaard tags en afbeeldingen in de echte winkelpagina. Een correct geconverteerde structuur vervangt geen redactionele controle of veiligheidscontrole van adressen.' },
+    { type: 'paragraph', html: 'Vergelijk de conversie met de Steam-preview voordat je publiceert. Controleer regeleinden, geneste lijsten, links, afbeeldingen en onbekende tags, want een niet-ondersteund formaat kan als gewone tekst verschijnen. Bewaar de bronversie zodat handmatige wijzigingen traceerbaar blijven en test de definitieve tekst op de pagina die spelers werkelijk zullen zien.' },
+    { type: 'paragraph', html: 'Als de winkelweergave afwijkt van de editor, onderzoek dan elk blok met speciale opmaak afzonderlijk. Noteer welke elementen bewust zijn vervangen of verwijderd en laat daarna de auteur de koppen, afbeeldingen en call-to-action opnieuw controleren op desktop en mobiel.' },
   ],
   faqTitle: 'Veelgestelde vragen',
   faq: [

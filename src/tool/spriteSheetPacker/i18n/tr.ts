@@ -193,6 +193,10 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 2.",
     },
+    { type: 'title', level: 2, text: 'Padding, kenar genişletme ve dışa aktarma verilerini ayarlama' },
+    { type: 'paragraph', html: 'Padding komşu kareleri ayırır, kenar genişletme ise dış pikselleri tekrarlar. Bu değerleri filtreleme, mipmap ve kamera hareketiyle birlikte değerlendirin: az boşluk dikiş oluşturur, fazla boşluk dokunun alanını boşa harcar.' },
+    { type: 'paragraph', html: 'Paketlemeden sonra JSON koordinatlarını hedef motorda kontrol edin. Atlas ancak kare boyutu, başlangıç noktası, dönüş ve şeffaflık dışa aktarılan dosyayla aynı şekilde yorumlandığında güvenilir olur.' },
+    { type: 'paragraph', html: 'Doku biçimi ile metadatanın hedef motora uygun olduğunu da kontrol edin. Maksimum boyut, şeffaflık kırpma ve ikinin kuvveti ayarı bellek kullanımını ve eski cihazlardaki uyumluluğu etkiler.' },
   ],
   faq: [
     {

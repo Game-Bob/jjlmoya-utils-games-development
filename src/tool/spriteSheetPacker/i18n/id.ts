@@ -193,6 +193,10 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 2.",
     },
+    { type: 'title', level: 2, text: 'Menyeimbangkan padding dan ekstrusi tepi' },
+    { type: 'paragraph', html: 'Padding memisahkan frame yang berdekatan, sedangkan ekstrusi mengulang piksel pada tepinya. Keduanya harus dipertimbangkan bersama filtering, mipmap, dan gerakan kamera: jarak yang terlalu kecil menimbulkan garis sambungan, sementara jarak yang terlalu besar memboroskan ruang tekstur.' },
+    { type: 'paragraph', html: 'Setelah packing, periksa koordinat JSON di engine tujuan. Atlas hanya dapat digunakan dengan aman jika ukuran frame, titik asal, rotasi, dan transparansi ditafsirkan sama seperti pada berkas hasil ekspor.' },
+    { type: 'paragraph', html: 'Periksa juga bahwa format tekstur dan metadata sesuai dengan kebutuhan engine. Pilihan ukuran maksimum, potongan transparansi, dan batas power-of-two memengaruhi penggunaan memori serta kompatibilitas pada perangkat lama.' },
   ],
   faq: [
     {

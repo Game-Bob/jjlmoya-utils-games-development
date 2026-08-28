@@ -193,6 +193,10 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 2.",
     },
+    { type: 'title', level: 2, text: 'Ajustar padding, extrusão e dados exportados' },
+    { type: 'paragraph', html: 'O padding separa frames vizinhos, enquanto a extrusão repete os pixels das bordas. Avalie os dois valores junto com filtragem, mipmaps e movimento de câmera: pouco espaço cria emendas e espaço demais desperdiça área de textura.' },
+    { type: 'paragraph', html: 'Depois do empacotamento, confira as coordenadas JSON na engine de destino. Um atlas só é confiável quando tamanho, origem, rotação e transparência são interpretados como no arquivo exportado.' },
+    { type: 'paragraph', html: 'Confira também se o formato da textura e os metadados atendem à engine de destino. O tamanho máximo, o corte da transparência e a exigência de potência de dois afetam a memória e a compatibilidade com dispositivos antigos.' },
   ],
   faq: [
     {

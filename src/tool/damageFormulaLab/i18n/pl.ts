@@ -172,6 +172,7 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: 'Analizuj obrażenia i liczbę ciosów jednocześnie',
       html: 'Niewielka zmiana obrażeń może przekroczyć próg zdrowia i zmniejszyć liczbę ciosów o jeden. Zawsze porównuj obrażenia z czasem zabicia (TTK).',
     },
+    { type: 'paragraph', html: 'Ta sama formuła może dać inny przebieg walki zależnie od zaokrągleń i kolejności modyfikatorów. Sprawdź także małe obrażenia, wysoką obronę i próg dodatkowego trafienia; TTK nie obejmuje uników, cooldownów ani przerw.' },
   ],
   faq,
   bibliographyTitle: 'Referencje do projektowania matematyki w grach',

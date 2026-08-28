@@ -186,6 +186,8 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
       type: 'paragraph',
       html: 'A folha de contatos PNG exibe todos os quadros e suas camadas de cor em uma só imagem, facilitando a comunicação no time.',
     },
+    { type: 'paragraph', html: 'Uma forma de colisão deve acompanhar tanto a silhueta quanto o momento da ação. Verifique início, fase ativa e recuperação separadamente e teste alcance, prioridade, recuo e rede no projeto realmente integrado.' },
+    { type: 'paragraph', html: 'Depois de exportar, revise os frames em que a animação muda de direção ou termina o ataque. Um hurtbox grande demais causa acertos injustos, enquanto um hitbox pequeno demais reduz a clareza do golpe. Compare as camadas com o movimento do sprite antes de validar o comportamento em testes com jogadores.' },
   ],
   faq,
   bibliographyTitle: 'Referências para desenvolvimento de colisões',

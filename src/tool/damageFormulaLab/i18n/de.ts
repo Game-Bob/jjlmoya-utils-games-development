@@ -172,6 +172,19 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: 'Schaden und Trefferanzahl stets gemeinsam betrachten',
       html: 'Eine kleine Schadensänderung kann eine gesundheitsbezogene Schwelle überschreiten und einen Treffer einsparen. Vergleichen Sie Schadenswerte immer mit Treffern und TTK.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Rundung und Widerstandsreihenfolge sichtbar machen',
+    },
+    {
+      type: 'paragraph',
+      html: 'Die gleiche Formel kann je nach Rundung und Reihenfolge der Modifikatoren ein anderes Kampfergebnis liefern. Prüfen Sie deshalb nicht nur den mittleren Kurvenbereich, sondern auch kleine Trefferwerte, hohe Verteidigung und die Schwelle, an der ein weiterer Treffer nötig wird.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Die TTK-Anzeige ist eine mathematische Projektion auf Basis der eingegebenen Angriffskadenz. Sie berücksichtigt keine Ausweichbewegung, Cooldowns, Zufallsfolgen oder Unterbrechungen; verwenden Sie die Kurven als Designhilfe und validieren Sie die Regel anschließend im Spieltest.',
+    },
   ],
   faq,
   bibliographyTitle: 'Referenzen zur Schadensberechnung in Spielen',

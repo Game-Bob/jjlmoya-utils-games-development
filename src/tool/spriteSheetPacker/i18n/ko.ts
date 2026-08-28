@@ -193,6 +193,9 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "이 항목은 깔끔한 내보내기와 정확한 미리보기를 위해 확인할 내용을 정리합니다. 2.",
     },
+    { type: 'title', level: 2, text: 'padding과 가장자리 확장 함께 조정하기' },
+    { type: 'paragraph', html: 'padding은 인접한 프레임을 분리하고 가장자리 확장은 테두리 픽셀을 반복합니다. 두 값은 필터링, 밉맵, 카메라 이동과 함께 확인해야 합니다. 간격이 작으면 이음새가 생기고 너무 크면 텍스처 공간을 낭비합니다.' },
+    { type: 'paragraph', html: '패킹 후에는 대상 엔진에서 JSON 좌표를 확인하세요. 프레임 크기, 원점, 회전, 투명도가 내보낸 파일과 같은 방식으로 해석되어야 아틀라스를 안전하게 사용할 수 있습니다.' },
   ],
   faq: [
     {

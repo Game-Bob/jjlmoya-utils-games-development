@@ -115,6 +115,32 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'Locale', definition: 'Codigo de idioma y region como es, en o ja.' },
       ],
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Revisar el archivo limpio antes de importarlo en el motor',
+    },
+    {
+      type: 'paragraph',
+      html: 'Abre la vista previa y compara los encabezados con la estructura de idiomas que espera tu proyecto. Las correcciones automáticas ayudan con separadores y celdas vacías, pero no pueden detectar una traducción ausente ni confirmar que el significado sea correcto.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Conserva el archivo original y realiza una pequeña importación de prueba. Así podrás comprobar qué filas se normalizaron y si Godot o Unity leen el archivo limpio sin generar avisos nuevos.',
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Revisar el archivo limpio antes de importarlo en el motor',
+    },
+    {
+      type: 'paragraph',
+      html: 'Abre la vista previa y compara los encabezados con la estructura de idiomas que espera tu proyecto. Las correcciones automáticas ayudan con separadores y celdas vacías, pero no pueden detectar una traducción ausente ni confirmar que el significado sea correcto.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Conserva el archivo original y realiza una pequeña importación de prueba. Así podrás comprobar qué filas se normalizaron y si Godot o Unity leen el archivo limpio sin generar avisos nuevos.',
+    },
   ],
   faq: [
     {

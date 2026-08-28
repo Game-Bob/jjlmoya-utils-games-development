@@ -128,6 +128,8 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: 'Lyssna i rätt spelvolym',
       html: 'Ett ljud som låter bra ensamt kan bli tröttsamt om det upprepas ofta i spelet. Testa ljudet i spelsammanhang.',
     },
+    { type: 'paragraph', html: 'Lyssna också på ljudet i spelets riktiga mix: en ljus effekt kan fungera ensam men ändå maskera dialog eller musik. Kontrollera volym, klippning och längd innan ljudet används som slutgiltig tillgång.' },
+    { type: 'paragraph', html: 'Jämför flera varianter med samma spelvolym och välj den som har tydligast attack utan att bli vass. Kontrollera också att start och slut inte innehåller klick, och att filens längd passar den animation eller händelse som ska trigga effekten.' },
   ],
   faqTitle: 'Vanliga Frågor',
   faq: [

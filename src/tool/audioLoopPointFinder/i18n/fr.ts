@@ -132,6 +132,32 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: 'Lors de l export des pistes depuis cet outil, les structures de métadonnées sont injectées directement dans l en-tête RIFF du fichier WAV. L outil crée un bloc d échantillon standard et un bloc LIST INFO.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Évaluer la durée de boucle et la transition de phase',
+    },
+    {
+      type: 'paragraph',
+      html: 'Un passage par zéro réduit les sauts d amplitude, mais ne garantit pas une transition musicale cohérente. Écoutez le début et la fin ensemble et vérifiez que le rythme, l harmonie et la réverbération se poursuivent naturellement pendant la répétition.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Les marqueurs sont conservés en échantillons et ne dépendent donc pas d un arrondi en millisecondes. Exportez après le contrôle auditif, puis testez le fichier WAV dans le moteur qui le lira réellement pendant le jeu.',
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Évaluer la durée de boucle et la transition de phase',
+    },
+    {
+      type: 'paragraph',
+      html: 'Un passage par zéro réduit les sauts d amplitude, mais ne garantit pas une transition musicale cohérente. Écoutez le début et la fin ensemble et vérifiez que le rythme, l harmonie et la réverbération se poursuivent naturellement pendant la répétition.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Les marqueurs sont conservés en échantillons et ne dépendent donc pas d un arrondi en millisecondes. Exportez après le contrôle auditif, puis testez le fichier WAV dans le moteur qui le lira réellement pendant le jeu.',
+    },
   ],
   faqTitle: 'Foire Aux Questions',
   faq: [

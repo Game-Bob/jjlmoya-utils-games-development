@@ -172,6 +172,8 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: '同时观察伤害数值与击杀次数',
       html: '伤害数值的微小变化可能会跨越血量阈值，从而使所需攻击次数减少一次。请务必结合 TTK 进行综合评估。',
     },
+    { type: 'paragraph', html: '同一公式会因舍入方式和修正顺序不同而产生不同的战斗结果。还要检查低伤害、高防御以及需要额外攻击的临界点；TTK 不模拟闪避、冷却或中断。' },
+    { type: 'paragraph', html: '每次修改后请保存几组基准场景，包括低攻击对高防御、暴击命中，以及攻击次数发生变化的临界值。这些案例有助于比较不同平衡版本，也能在系数或舍入规则调整后及时发现回归问题。' },
   ],
   faq,
   bibliographyTitle: '游戏伤害数值设计参考资料',

@@ -132,6 +132,10 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: 'Bu araçtan ses parçalarını dışa aktarırken yeni üstveri yapıları doğrudan WAV dosyasının RIFF başlığına enjekte edilir.',
     },
+    { type: 'title', level: 2, text: 'Döngü süresini ve faz geçişini değerlendirme' },
+    { type: 'paragraph', html: 'Sıfır geçişi genlik sıçramalarını azaltır, ancak tek başına doğal bir müzik geçişini garanti etmez. Başlangıç ve bitişi art arda dinleyin; tekrar sırasında ritmi, armoniyi ve yankı kuyruğunu kontrol edin.' },
+    { type: 'paragraph', html: 'İşaretçiler sample cinsinden saklandığı için milisaniye yuvarlamasına bağlı değildir. Dinleme kontrolünden sonra WAV dosyasını dışa aktarın ve oyunda çalacak motorda test edin.' },
+    { type: 'paragraph', html: 'Döngü uzunluğunun müzik cümlesine uyduğunu ve bir notayı ya da efekt kuyruğunu kesmediğini de kontrol edin. Sample cinsindeki işaretçiler dosya cihazlar arasında taşınsa bile hassasiyeti korur; yine de sonucu oyunun gerçek temposunda ve ses düzeyinde dinleyin.' },
   ],
   faqTitle: 'Sıkça Sorulan Sorular',
   faq: [

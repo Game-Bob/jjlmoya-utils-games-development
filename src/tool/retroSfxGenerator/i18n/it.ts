@@ -128,6 +128,7 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: 'Testare al volume effettivo del gioco',
       html: 'Un suono gratificante da solo puo risultare stancante se ripetuto spesso nel gioco. Verificalo nel contesto di gioco reale.',
     },
+    { type: 'paragraph', html: 'Ascolta il suono anche nel mix reale del gioco: un effetto brillante da solo può coprire dialoghi o musica. Controlla volume, clipping e durata prima di usarlo come asset definitivo.' },
   ],
   faqTitle: 'Domande Frequenti',
   faq: [

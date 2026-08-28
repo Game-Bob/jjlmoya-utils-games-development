@@ -195,6 +195,19 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: 'Der herunterladbare JSON-Bericht sowie das Vergleichsbild lassen sich direkt in Issue-Tracker einbinden, um konkrete Verbesserungen an der Benutzeroberfläche zu dokumentieren.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Befunde reproduzierbar dokumentieren',
+    },
+    {
+      type: 'paragraph',
+      html: 'Halten Sie fest, welche Szene, Auflösung und Farbpaarung geprüft wurde. Ein klarer Befund beschreibt das sichtbare Signal, den betroffenen Zustand und eine mögliche Ergänzung durch Form, Symbol, Muster oder Ton.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Die Simulation unterstützt eine frühe Designprüfung, misst aber nicht die gesamte Barrierefreiheit eines Spiels. Wiederholen Sie die Prüfung mit echten Spielszenen, verschiedenen Displays und Menschen mit unterschiedlichen Sehbedingungen.',
+    },
   ],
   faq,
   howTo,

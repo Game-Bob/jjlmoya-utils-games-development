@@ -115,6 +115,10 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: '로케일', definition: 'ko, en, ja와 같은 언어 및 지역 코드.' },
       ],
     },
+    { type: 'title', level: 2, text: '엔진에 가져오기 전에 정리된 파일 확인하기' },
+    { type: 'paragraph', html: '미리보기를 열고 헤더가 프로젝트가 요구하는 언어 구조와 일치하는지 비교하세요. 자동 수정은 구분자와 빈 셀을 처리하는 데 도움이 되지만 누락된 번역을 만들거나 의미를 검증하지는 않습니다.' },
+    { type: 'paragraph', html: '원본 파일을 보관하고 작은 테스트 가져오기를 수행하세요. 어떤 행이 정규화되었는지, Godot이나 Unity가 새 경고 없이 정리된 파일을 읽는지 확인할 수 있습니다.' },
+    { type: 'paragraph', html: '정리는 구조를 고치는 단계입니다. 수정된 셀은 해당 언어 사용자가 다시 검토해야 하며, 내보낸 파일은 전달 전에 테스트 장면에서 가져와 확인하세요.' },
   ],
   faq: [
     {

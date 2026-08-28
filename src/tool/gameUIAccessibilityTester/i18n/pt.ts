@@ -195,6 +195,8 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: 'O relatório JSON e a folha comparativa PNG podem ser anexados às tarefas de desenvolvimento para facilitar a correção de problemas de UI.',
     },
+    { type: 'paragraph', html: 'Registre a cena, a resolução e o par de cores analisado. A simulação ajuda a encontrar problemas de design cedo, mas não substitui testes com cenas reais, telas diferentes e pessoas com condições visuais variadas.' },
+    { type: 'paragraph', html: 'Veja a mesma interface na escala final e durante o movimento. Anote quais sinais desaparecem quando o fundo muda e combine cor com forma, padrão, texto ou som. Assim, o relatório gera ações concretas de design em vez de ficar limitado a um único número de contraste.' },
   ],
   faq,
   howTo,

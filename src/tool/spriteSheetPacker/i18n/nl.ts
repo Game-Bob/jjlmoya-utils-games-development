@@ -193,6 +193,10 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "Deze sectie vat de belangrijkste controles samen voor een nette export en een betrouwbare voorbeeldweergave. 2.",
     },
+    { type: 'title', level: 2, text: 'Padding, randextrusie en exportgegevens afstemmen' },
+    { type: 'paragraph', html: 'Padding houdt naburige frames uit elkaar, terwijl randextrusie de buitenste pixels herhaalt. Beoordeel beide samen met filtering, mipmaps en camerabeweging: te weinig ruimte veroorzaakt naden, te veel ruimte verspilt textuuroppervlak.' },
+    { type: 'paragraph', html: 'Controleer na het packen de JSON-coördinaten in de doelengine. Een atlas is pas betrouwbaar wanneer framegrootte, oorsprong, rotatie en transparantie hetzelfde worden geïnterpreteerd als in het geëxporteerde bestand.' },
+    { type: 'paragraph', html: 'Controleer ook of textuurformaat en metadata bij de doelengine passen. De maximale afmeting, het bijsnijden van transparantie en de power-of-two-instelling beïnvloeden geheugengebruik en compatibiliteit met oudere apparaten.' },
   ],
   faq: [
     {

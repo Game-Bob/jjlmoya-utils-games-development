@@ -132,7 +132,13 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Bahasa markup standar untuk web.'
         }
       ]
-    }
+    },
+    { type: 'title', level: 2, text: 'Memeriksa konversi sebelum dipublikasikan' },
+    { type: 'paragraph', html: 'Tentukan format yang benar-benar digunakan teks sumber, lalu bandingkan judul, tautan, daftar, dan gambar di pratinjau. Keluaran yang terlihat tidak berarti setiap tag khusus Steam memiliki padanan yang lengkap dalam format tujuan.' },
+    { type: 'paragraph', html: 'Simpan salinan teks asli dan uji hasilnya pada halaman toko tempat teks akan diterbitkan. Daftar bertingkat, tautan eksternal, dan widget tanpa padanan mungkin memerlukan penyuntingan manual. Konverter menganalisis struktur di browser, tetapi tidak menilai kualitas tulisan atau keamanan URL.' },
+    { type: 'paragraph', html: 'Sebelum menyalin keluaran, periksa tautan eksternal, tag nonstandar, dan gambar pada konteks halaman toko yang sebenarnya. Struktur yang berhasil dikonversi tetap memerlukan pemeriksaan editorial dan keamanan alamat.' },
+    { type: 'paragraph', html: 'Bandingkan hasil konversi dengan pratinjau halaman Steam sebelum dipublikasikan. Periksa jeda baris, daftar bertingkat, tautan, gambar, dan tag yang tidak dikenal karena format yang tidak didukung dapat berubah menjadi teks biasa. Simpan salinan sumber agar perubahan manual dapat dilacak, lalu uji teks final di halaman yang benar-benar akan dilihat pemain.' },
+    { type: 'paragraph', html: 'Jika hasil terlihat berbeda di editor toko, telusuri bagian yang memakai tag khusus satu per satu. Catat elemen yang sengaja dihapus atau diganti, kemudian minta penulis memeriksa kembali hierarki judul dan ajakan bertindak pada tampilan desktop maupun layar kecil.' },
   ],
   faqTitle: 'Pertanyaan umum tentang konversi',
   faq: [

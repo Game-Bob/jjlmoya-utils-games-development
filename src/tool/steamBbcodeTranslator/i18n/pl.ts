@@ -132,7 +132,13 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Standardowy język znaczników stron internetowych.'
         }
       ]
-    }
+    },
+    { type: 'title', level: 2, text: 'Sprawdź konwersję przed publikacją' },
+    { type: 'paragraph', html: 'Najpierw ustal, jakiego formatu naprawdę używa tekst źródłowy, a potem porównaj nagłówki, linki, listy i obrazy w podglądzie. Widoczny wynik nie oznacza, że każdy tag właściwy dla Steam ma pełny odpowiednik w formacie docelowym.' },
+    { type: 'paragraph', html: 'Zachowaj kopię oryginalnego tekstu i przetestuj wynik na stronie sklepu, na której zostanie opublikowany. Listy zagnieżdżone, zewnętrzne linki i widżety bez odpowiednika mogą wymagać ręcznej korekty. Konwerter analizuje strukturę w przeglądarce, ale nie ocenia jakości tekstu ani bezpieczeństwa adresów URL.' },
+    { type: 'paragraph', html: 'Przed skopiowaniem wyniku sprawdź też zewnętrzne linki, niestandardowe tagi i obrazy w rzeczywistym widoku sklepu. Poprawna konwersja struktury nie zastępuje redakcji ani kontroli bezpieczeństwa adresów.' },
+    { type: 'paragraph', html: 'Porównaj konwersję z podglądem strony Steam przed publikacją. Sprawdź łamanie wierszy, listy zagnieżdżone, odnośniki, obrazy i nierozpoznane tagi, ponieważ nieobsługiwany format może zostać pokazany jako zwykły tekst. Zachowaj wersję źródłową, aby śledzić ręczne poprawki, i przetestuj finalną treść w widoku, który rzeczywiście zobaczą gracze.' },
+    { type: 'paragraph', html: 'Jeśli wynik różni się od edytora sklepu, przeanalizuj osobno każdy blok specjalnego formatowania. Zapisz elementy świadomie zastąpione lub usunięte, a następnie sprawdź ponownie hierarchię nagłówków, obrazy i wezwanie do działania na dużym oraz małym ekranie.' },
   ],
   faqTitle: 'Często zadawane pytania',
   faq: [

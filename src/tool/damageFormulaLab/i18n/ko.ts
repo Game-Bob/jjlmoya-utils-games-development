@@ -70,6 +70,7 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
   ui: {
     onboarding: '현재 사용 중인 데미지 공식과 대안 공식을 입력하고 전투 능력치를 조정하여 수치적 경계를 검증하세요.',
     privacyNote: '로컬 전용 모델. 공식과 설정은 브라우저 내부에서만 처리됩니다.',
+    localNote: '비공개 전투 모델입니다. 공식과 파일은 이 브라우저 안에만 보관됩니다.',
     formulaDeck: '공식 챔버',
     formulaALabel: '공식 A (현재 모델)',
     formulaBLabel: '공식 B (대안 모델)',

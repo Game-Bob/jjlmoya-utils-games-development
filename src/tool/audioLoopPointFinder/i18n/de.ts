@@ -132,6 +132,19 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: 'Beim Exportieren von Tonspuren aus diesem Tool werden neue Metadatenstrukturen direkt in den RIFF-Header der ausgegebenen WAV-Binärdatei eingebettet. Die Anwendung erstellt sowohl einen Standard-Sample-Chunk als auch einen LIST-INFO-Chunk mit Text-Tags.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Loop-Länge und Phasenübergang beurteilen',
+    },
+    {
+      type: 'paragraph',
+      html: 'Ein Nulldurchgang reduziert Sprünge der Amplitude, garantiert aber nicht automatisch einen musikalisch passenden Übergang. Hören Sie den Anfang und das Ende gemeinsam an und prüfen Sie zusätzlich, ob Rhythmus, Harmonie und Hallfahne beim Wiederholen logisch weiterlaufen.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Die Marker werden in Samples gespeichert und bleiben dadurch unabhängig von einer gerundeten Millisekundenanzeige. Exportieren Sie erst nach der akustischen Kontrolle und testen Sie die WAV-Datei anschließend in der Engine, die sie im Spiel abspielen soll.',
+    },
   ],
   faqTitle: 'Häufig gestellte Fragen',
   faq: [

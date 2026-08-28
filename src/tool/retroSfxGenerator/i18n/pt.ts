@@ -128,6 +128,7 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: 'Teste no volume real do jogo',
       html: 'Sons isolados podem soar ótimos, mas ser cansativos quando repetidos com frequência no jogo. Teste diretamente na engine.',
     },
+    { type: 'paragraph', html: 'Ouça o som também na mixagem real do jogo: um efeito brilhante pode funcionar sozinho e ainda mascarar diálogos ou música. Confira volume, clipping e duração antes de tratá-lo como asset final.' },
   ],
   faqTitle: 'Perguntas Frequentes',
   faq: [

@@ -70,6 +70,7 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
   ui: {
     onboarding: '現在のダメージ計算式と代替案を入力し、戦闘ステータスを調整して極端なステータス帯での挙動を検証します。',
     privacyNote: 'ローカル専用設計。計算式や設定はブラウザ内のみで処理されます。',
+    localNote: '戦闘モデルは非公開です。計算式とファイルはこのブラウザ内に留まります。',
     loadSprite: '計算式入力エリア',
     formulaDeck: '計算式デッキ',
     formulaALabel: '計算式A (現行モデル)',

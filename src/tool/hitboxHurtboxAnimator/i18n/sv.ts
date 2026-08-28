@@ -186,6 +186,7 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
       type: 'paragraph',
       html: 'PNG-kontaktkartan visar alla bildrutor och deras färglager på en och samma bild, vilket underlättar kommunikationen mellan grafiker och programmerare.',
     },
+    { type: 'paragraph', html: 'En kollisionsform måste följa både silhuetten och handlingens tidpunkt. Kontrollera start, aktiv fas och återhämtning separat och testa räckvidd, prioritet, knuff och nätverk i det verkligt integrerade projektet.' },
   ],
   faq,
   bibliographyTitle: 'Referenser för kollisionsdesign',

@@ -132,6 +132,10 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: 'Bij het exporteren van audiotracks vanuit deze tool worden nieuwe metadatastructuren direct in de RIFF-header van het WAV-bestand geplaatst.',
     },
+    { type: 'title', level: 2, text: 'Loopduur en faseovergang beoordelen' },
+    { type: 'paragraph', html: 'Een nuldoorgang beperkt sprongen in amplitude, maar garandeert niet automatisch een muzikale overgang. Luister naar begin en einde achter elkaar en controleer ritme, harmonie en de galmstaart tijdens het herhalen.' },
+    { type: 'paragraph', html: 'Markers worden in samples bewaard en zijn daardoor niet afhankelijk van afronding naar milliseconden. Exporteer pas na de luistercontrole en test het WAV-bestand in de engine die het in de game afspeelt.' },
+    { type: 'paragraph', html: 'Controleer ook of de looplengte bij de muzikale frase past en geen noot of effectstaart afsnijdt. Markers in samples behouden hun nauwkeurigheid wanneer het bestand tussen apparaten verhuist, maar luister altijd op het echte tempo en volume van de game.' },
   ],
   faqTitle: 'Veelgestelde Vragen',
   faq: [

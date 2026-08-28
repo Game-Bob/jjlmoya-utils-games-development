@@ -132,7 +132,11 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: '网页标准的超文本标记语言。'
         }
       ]
-    }
+    },
+    { type: 'title', level: 2, text: '发布前检查转换结果' },
+    { type: 'paragraph', html: '先确认原文实际使用的格式，再在预览中比较标题、链接、列表和图片。能够显示输出并不表示每个 Steam 专用标签在目标格式中都有完整的对应形式。' },
+    { type: 'paragraph', html: '请保留原文副本，并在即将发布的商店页面中测试结果。嵌套列表、外部链接和没有对应形式的组件可能需要手动调整。转换器只在浏览器中分析结构，不负责评价文字质量或外部 URL 的安全性。' },
+    { type: 'paragraph', html: '复制输出前，还应在实际商店页面中检查外部链接、非标准标签和图片。结构转换成功并不代表文字已经完成编辑审核，也不代表地址安全性已经得到确认。' },
   ],
   faqTitle: '常见问题解答',
   faq: [

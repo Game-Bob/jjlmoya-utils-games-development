@@ -1,4 +1,4 @@
-import type { ToolLocaleContent } from '../../../types';
+import type { SEOSection, ToolLocaleContent } from '../../../types';
 import type { SteamCapsuleGeneratorUI } from '../ui';
 import { bibliographyEntries } from '../bibliography';
 
@@ -197,7 +197,7 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
       type: 'paragraph',
       html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 8.",
     },
-  ].slice(0, 15),
+  ].slice(0, 15) as SEOSection[],
   faqTitle: 'Preguntas Frecuentes Sobre Assets de Steam',
   faq: [
     {

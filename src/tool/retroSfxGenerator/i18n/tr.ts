@@ -128,6 +128,7 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: 'Hedef Oyun Ses Seviyesinde Dinleyin',
       html: 'Tek basina harika duyulan bir ses oyunda surekli tekrarlandiginda yorucu olabilir. Oyunda fon muzigiyle birlikte test edin.',
     },
+    { type: 'paragraph', html: 'Sesi gerçek oyun miksinde de dinleyin: parlak bir efekt tek başına iyi duyulsa bile diyalog veya müziği maskeleyebilir. Son varlık olarak kullanmadan önce ses düzeyini, clipping durumunu ve süreyi kontrol edin.' },
   ],
   faqTitle: 'Sikca Sorulan Sorular',
   faq: [

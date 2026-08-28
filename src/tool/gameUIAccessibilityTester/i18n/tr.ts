@@ -195,6 +195,8 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: 'İndirilebilir JSON raporu ve PNG görseli, arayüz düzeltmelerini kolaylaştırmak için görev yönetimi sisteminize eklenebilir.',
     },
+    { type: 'paragraph', html: 'İncelenen sahneyi, çözünürlüğü ve renk çiftini kaydedin. Simülasyon tasarım sorunlarını erken bulmaya yardımcı olur, ancak gerçek sahneler, farklı ekranlar ve çeşitli görme koşullarına sahip kişilerle yapılan testlerin yerini tutmaz.' },
+    { type: 'paragraph', html: 'Aynı arayüzü son oyun ölçeğinde ve hareket hâlindeyken inceleyin. Arka plan değiştiğinde hangi sinyallerin kaybolduğunu not edin ve rengi şekil, desen, metin veya sesle destekleyin. Böylece rapor tek bir kontrast sayısında kalmaz, doğrudan uygulanabilir tasarım görevleri üretir.' },
   ],
   faq,
   howTo,

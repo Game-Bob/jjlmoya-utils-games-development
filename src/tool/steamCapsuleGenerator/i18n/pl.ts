@@ -118,6 +118,19 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
       type: 'paragraph',
       html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 8.",
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Strefa bezpieczna i czytelność kapsuły',
+    },
+    {
+      type: 'paragraph',
+      html: 'Najważniejszy znak, logo i sylwetka powinny pozostać czytelne po zmniejszeniu grafiki. Przesuń kluczowe elementy z dala od narożników, ponieważ interfejs sklepu może nakładać cenę, etykietę rabatu lub inne oznaczenia.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Przed eksportem sprawdź każdy rozmiar osobno: proporcje nie wystarczą, jeśli tekst traci kontrast albo główny motyw znika w widoku biblioteki. Podgląd pozwala porównać kadrowanie bez zmieniania oryginalnego pliku.',
+    },
   ],
   faqTitle: 'Często Zadawane Pytania o Grafiki Steam',
   faq: [

@@ -193,6 +193,10 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "Questa sezione raccoglie i controlli essenziali per un export ordinato e un'anteprima affidabile. 2.",
     },
+    { type: 'title', level: 2, text: 'Coordinare padding, estrusione e dati esportati' },
+    { type: 'paragraph', html: 'Il padding separa i frame vicini, mentre l estrusione ripete i pixel del bordo. I valori vanno valutati insieme a filtri, mipmap e movimento della telecamera: poco spazio crea cuciture, troppo spazio spreca superficie della texture.' },
+    { type: 'paragraph', html: 'Dopo il packing, controlla le coordinate JSON nel motore di destinazione. Un atlas è affidabile solo se dimensioni, origine, rotazione e trasparenza vengono interpretate come nel file esportato.' },
+    { type: 'paragraph', html: 'Controlla inoltre che formato della texture e metadati rispettino il motore di destinazione. Dimensione massima, ritaglio della trasparenza e vincolo power-of-two influenzano memoria e compatibilità sui dispositivi meno recenti.' },
   ],
   faq: [
     {

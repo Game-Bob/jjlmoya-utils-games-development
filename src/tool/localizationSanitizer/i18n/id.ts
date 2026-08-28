@@ -115,6 +115,10 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'Locale', definition: 'Kode bahasa dan wilayah seperti id, en, atau ja.' },
       ],
     },
+    { type: 'title', level: 2, text: 'Periksa berkas bersih sebelum diimpor ke engine' },
+    { type: 'paragraph', html: 'Buka pratinjau dan bandingkan header dengan struktur bahasa yang diharapkan proyek. Perbaikan otomatis membantu menangani pemisah dan sel kosong, tetapi tidak dapat membuat terjemahan yang hilang atau memastikan maknanya benar.' },
+    { type: 'paragraph', html: 'Simpan berkas asli dan lakukan impor uji kecil. Dengan begitu Anda dapat melihat baris yang dinormalisasi dan memastikan Godot atau Unity membaca berkas bersih tanpa peringatan baru.' },
+    { type: 'paragraph', html: 'Anggap pembersihan sebagai langkah struktur saja: sel yang diperbaiki tetap harus ditinjau oleh penutur bahasa, lalu hasil ekspor perlu diuji pada scene sebelum dikirim ke proyek.' },
   ],
   faq: [
     {

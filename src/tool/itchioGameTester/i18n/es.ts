@@ -1,4 +1,4 @@
-import type { ToolLocaleContent } from '../../../types';
+import type { SEOSection, ToolLocaleContent } from '../../../types';
 import type { ItchioGameTesterUI } from '../ui';
 import { bibliographyEntries } from '../bibliography';
 
@@ -111,7 +111,7 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 5.",
     },
-  ].slice(0, 9),
+  ].slice(0, 9) as SEOSection[],
   faq: [
     {
       question: 'Mi juego de Godot 4 muestra una pantalla negra en Itch.io. ¿Por qué sucede?',

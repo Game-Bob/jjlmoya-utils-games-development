@@ -128,6 +128,19 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: 'Tester au volume reel du jeu',
       html: 'Un son tres fort en solo peut devenir agressif s il est repete frequemment. Testez directement dans votre moteur de jeu.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Accorder la fréquence et l enveloppe sonore',
+    },
+    {
+      type: 'paragraph',
+      html: 'Le sweep fait évoluer la hauteur pendant que le decay et les filtres modifient l énergie perçue. Écoutez ces paramètres ensemble: une montée longue peut rester douce malgré une fréquence élevée, tandis qu un bruit demande souvent une durée plus courte pour garder un impact précis.',
+    },
+    {
+      type: 'paragraph',
+      html: 'L export WAV sert de point de départ pour un prototype et ne remplace pas le mixage dans le jeu. Vérifiez le niveau, la saturation et la place du son par rapport à la musique et aux dialogues avant de le conserver comme asset final.',
+    },
   ],
   faqTitle: 'Foire Aux Questions',
   faq: [

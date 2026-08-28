@@ -115,6 +115,11 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'Locale', definition: 'Språk och regionkod som sv, en eller ja.' },
       ],
     },
+    { type: 'title', level: 2, text: 'Kontrollera den rensade filen före import' },
+    { type: 'paragraph', html: 'Öppna förhandsvisningen och jämför rubrikerna med den språkstruktur som projektet förväntar sig. Automatiska korrigeringar hjälper med avgränsare och tomma celler, men kan inte skapa en saknad översättning eller bekräfta betydelsen.' },
+    { type: 'paragraph', html: 'Spara originalfilen och gör en liten testimport. Då kan du se vilka rader som normaliserades och om Godot eller Unity läser den rensade filen utan nya varningar.' },
+    { type: 'paragraph', html: 'Se rensningen som ett strukturellt steg: korrigerade celler måste fortfarande läsas av en språkgranskare och den exporterade filen ska importeras i en testscen före leverans.' },
+    { type: 'paragraph', html: 'Se rensningen som ett strukturellt steg: korrigerade celler måste fortfarande läsas av en språkgranskare och den exporterade filen ska importeras i en testscen före leverans.' },
   ],
   faq: [
     {

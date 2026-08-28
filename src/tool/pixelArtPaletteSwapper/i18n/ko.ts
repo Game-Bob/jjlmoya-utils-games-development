@@ -141,6 +141,19 @@ export const content: ToolLocaleContent<PixelArtPaletteSwapperUI> = {
         },
       ],
     },
+    {
+      type: 'title',
+      level: 2,
+      text: '게임 화면에서 팔레트 결과 확인하기',
+    },
+    {
+      type: 'paragraph',
+      html: '팔레트 변환은 각 픽셀을 가장 가까운 색으로 매핑하므로 원본의 미세한 색 차이가 사라질 수 있습니다. 변환 결과를 원본 크기로 표시하고 캐릭터 윤곽, 그림자, UI 글자가 게임 배경에서도 구분되는지 확인하세요.',
+    },
+    {
+      type: 'paragraph',
+      html: '투명도는 유지되지만 알파 경계에 불필요한 색이 남을 수 있습니다. 내보낸 PNG를 대상 엔진에서 열고 필터링과 확대 설정을 적용한 뒤 아틀라스의 이음새와 색 번짐을 점검하면 안전합니다.',
+    },
   ],
   faq: [
     {

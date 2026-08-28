@@ -1,4 +1,4 @@
-import type { ToolLocaleContent } from '../../../types';
+import type { SEOSection, ToolLocaleContent } from '../../../types';
 import type { SpriteSheetPackerUI } from '../ui';
 
 export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
@@ -198,7 +198,7 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "Esta sección resume las comprobaciones necesarias para una exportación limpia y una vista previa fiable. 2.",
     },
-  ].slice(0, 17),
+  ].slice(0, 17) as SEOSection[],
   faq: [
     {
       question: '¿Qué es un sprite sheet y por qué es esencial para juegos 2D?',

@@ -186,6 +186,7 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
       type: 'paragraph',
       html: 'Het PNG-contactblad toont alle frames en hun kleurlagen op één afbeelding, ideaal voor overleg tussen ontwikkelaars en vormgevers.',
     },
+    { type: 'paragraph', html: 'Een collisionvorm moet zowel de omtrek als het actiemoment volgen. Controleer start, actieve fase en herstel afzonderlijk en test bereik, prioriteit, terugslag en netwerkgedrag in het werkelijk geïntegreerde project.' },
   ],
   faq,
   bibliographyTitle: 'Referenties voor botsingsontwerp',

@@ -115,6 +115,11 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'Locale', definition: 'Taal en regio id zoals nl, en of ja.' },
       ],
     },
+    { type: 'title', level: 2, text: 'Het opgeschoonde bestand controleren voor import' },
+    { type: 'paragraph', html: 'Open de preview en vergelijk de koppen met de taalstructuur die je project verwacht. Automatische reparaties helpen bij scheidingstekens en lege cellen, maar kunnen geen ontbrekende vertaling maken of de betekenis bevestigen.' },
+    { type: 'paragraph', html: 'Bewaar het originele bestand en voer een kleine testimport uit. Zo zie je welke rijen zijn genormaliseerd en of Godot of Unity het schone bestand zonder nieuwe waarschuwingen leest.' },
+    { type: 'paragraph', html: 'Behandel opschonen als een structurele stap: gecorrigeerde cellen moeten nog door een taalspreker worden nagelezen en het geëxporteerde bestand hoort vóór oplevering in een testscène te worden geïmporteerd.' },
+    { type: 'paragraph', html: 'Behandel opschonen als een structurele stap: gecorrigeerde cellen moeten nog door een taalspreker worden nagelezen en het geëxporteerde bestand hoort vóór oplevering in een testscène te worden geïmporteerd.' },
   ],
   faq: [
     {

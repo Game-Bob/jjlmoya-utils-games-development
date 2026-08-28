@@ -70,6 +70,9 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "Bagian ini merangkum pemeriksaan penting untuk ekspor yang bersih dan pratinjau yang dapat diandalkan. 5.",
     },
+    { type: 'title', level: 2, text: 'Menguji viewport dan canvas sebelum publikasi' },
+    { type: 'paragraph', html: 'Bandingkan ukuran canvas sebenarnya dengan viewport yang direncanakan di Itch.io. Rasio 16:9 saja tidak menghilangkan scrollbar: margin CSS, lebar minimum, dan canvas yang tidak diskalakan masih dapat menyebabkan konten meluap.' },
+    { type: 'paragraph', html: 'Jalankan laporan setelah setiap build karena nama berkas, entry point, dan keluaran engine dapat berubah. Gunakan hasil ini sebagai pemeriksaan struktur dan geometri, lalu uji game di beberapa browser dan perangkat sebelum menerbitkan.' },
   ],
   faq: [
     {

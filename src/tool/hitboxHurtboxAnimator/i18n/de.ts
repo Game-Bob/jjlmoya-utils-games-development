@@ -121,6 +121,7 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
     importJson: 'JSON importieren',
     exportContactSheet: 'Übersichtsbild herunterladen',
     resetTool: 'Ebenen zurücksetzen',
+    resetProject: 'Kollisionsebenen löschen',
     undo: 'Rückgängig',
     redo: 'Wiederholen',
     statusReady: 'Arbeitsfläche bereit.',
@@ -185,6 +186,19 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
     {
       type: 'paragraph',
       html: 'Das Übersichts-PNG zeigt alle Frames mit ihren eingezeichneten Ebenen auf einer Fläche. Nutzen Sie es zusammen mit dem JSON-Export für die Abstimmung zwischen Grafik, Design und Programmierung.',
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Aktive Frames und Koordinaten gemeinsam testen',
+    },
+    {
+      type: 'paragraph',
+      html: 'Eine gute Kollisionsform folgt nicht nur der Silhouette, sondern auch dem Zeitpunkt der Aktion. Prüfen Sie Start, aktive Phase und Erholung getrennt und vergleichen Sie die Boxen mit dem Export, damit ein Treffer nicht vor der sichtbaren Bewegung oder nach ihrem Ende auslöst.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Die Vorschau dokumentiert Geometrie und Layer, nicht die vollständige Kollisionslogik Ihrer Engine. Testen Sie Reichweite, Priorität, Pushback und Netzwerkverhalten anschließend mit dem tatsächlich eingebundenen Projekt.',
     },
   ],
   faq,

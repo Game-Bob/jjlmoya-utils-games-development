@@ -1,4 +1,4 @@
-import type { ToolLocaleContent } from '../../../types';
+import type { SEOSection, ToolLocaleContent } from '../../../types';
 import type { SteamCapsuleGeneratorUI } from '../ui';
 import { bibliographyEntries } from '../bibliography';
 
@@ -135,7 +135,7 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
         'Alle Assets vor dem Upload in der Vorschau testen.'
       ]
     },
-  ].slice(0, 15),
+  ].slice(0, 15) as SEOSection[],
   faqTitle: 'Häufig gestellte Fragen zu Steam Assets',
   faq: [
     {

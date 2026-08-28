@@ -172,6 +172,19 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: 'Observer conjointement les dégâts et le nombre de coups',
       html: 'Une légère variation de dégâts peut franchir un seuil de santé et supprimer un coup complet. Comparez toujours les dégâts avec le nombre de coups et le TTK.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Rendre visibles l arrondi et l ordre des résistances',
+    },
+    {
+      type: 'paragraph',
+      html: 'Une même formule peut produire un combat différent selon l arrondi et l ordre des modificateurs. Examinez donc la zone centrale de la courbe, mais aussi les petits dégâts, la défense élevée et le seuil qui ajoute une attaque nécessaire.',
+    },
+    {
+      type: 'paragraph',
+      html: 'L affichage du TTK est une projection mathématique fondée sur la cadence saisie. Il ne modélise ni esquive, ni temps de recharge, ni suite aléatoire, ni interruption: utilisez les courbes pour guider le design puis vérifiez la règle en jeu.',
+    },
   ],
   faq,
   bibliographyTitle: 'Références sur la modélisation des dégâts',

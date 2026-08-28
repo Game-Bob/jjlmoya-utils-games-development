@@ -91,6 +91,26 @@ function copySimilarity(left: string, right: string): number {
   return (2 * shared) / (leftTotal + rightTotal);
 }
 
+function findCopyViolations(corpora: Map<string, string>): string[] {
+  const locales = [...corpora.keys()];
+  const violations: string[] = [];
+
+  for (let leftIndex = 0; leftIndex < locales.length; leftIndex += 1) {
+    for (let rightIndex = leftIndex + 1; rightIndex < locales.length; rightIndex += 1) {
+      const left = locales[leftIndex];
+      const right = locales[rightIndex];
+      if (!left || !right) continue;
+      const similarity = copySimilarity(corpora.get(left) ?? '', corpora.get(right) ?? '');
+
+      if (similarity >= COPY_THRESHOLD) {
+        violations.push(`${left} ↔ ${right}: ${(similarity * 100).toFixed(1)}%`);
+      }
+    }
+  }
+
+  return violations;
+}
+
 describe('Locales must not copy another locale wholesale', () => {
   ALL_ENTRIES.forEach((entry) => {
     it(`${entry.id} is not at least ${COPY_THRESHOLD * 100}% identical to another locale`, async () => {
@@ -101,24 +121,7 @@ describe('Locales must not copy another locale wholesale', () => {
         corpora.set(locale, localeCorpus(await loader()));
       }
 
-      const locales = [...corpora.keys()];
-      const violations: string[] = [];
-
-      for (let leftIndex = 0; leftIndex < locales.length; leftIndex += 1) {
-        for (let rightIndex = leftIndex + 1; rightIndex < locales.length; rightIndex += 1) {
-          const left = locales[leftIndex];
-          const right = locales[rightIndex];
-          const similarity = copySimilarity(corpora.get(left) ?? '', corpora.get(right) ?? '');
-
-          if (similarity >= COPY_THRESHOLD) {
-            violations.push(`${left} ↔ ${right}: ${(similarity * 100).toFixed(1)}%`);
-          }
-        }
-      }
-
-      expect(violations, `Locale copy threshold exceeded in ${entry.id}`).toEqual([]);
+      expect(findCopyViolations(corpora), `Locale copy threshold exceeded in ${entry.id}`).toEqual([]);
     });
   });
 });
-
-

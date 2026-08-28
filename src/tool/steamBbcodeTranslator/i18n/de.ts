@@ -136,6 +136,28 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Die Standard-Auszeichnungssprache für Webseiten.'
         }
       ]
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Konvertierung vor dem Einfügen in Steam prüfen',
+    },
+    {
+      type: 'paragraph',
+      html: 'Prüfen Sie zuerst, welches Format Ihre Quelle tatsächlich verwendet, und vergleichen Sie danach Überschriften, Links, Listen und Bilder in der Vorschau. Eine sichtbare Ausgabe bedeutet nicht, dass jeder Steam-spezifische Tag eine gleichwertige Entsprechung im Zielformat besitzt.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Speichern Sie eine Kopie des Originaltexts und testen Sie den erzeugten Code in der vorgesehenen Shopansicht. Besonders verschachtelte Listen, externe Links und nicht unterstützte Widgets können eine manuelle Nachbearbeitung benötigen.',
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Lokale Verarbeitung und klare Grenzen',
+    },
+    {
+      type: 'paragraph',
+      html: 'Die Eingabe wird im Browser analysiert und die drei Textansichten werden aus demselben Strukturmodell erzeugt. Der Konverter bewertet weder die Qualität des Shoptexts noch die Sicherheit externer URLs; diese Prüfung bleibt Teil Ihres Veröffentlichungsablaufs.',
     }
   ],
   faqTitle: 'Häufig gestellte Fragen zur Konvertierung',

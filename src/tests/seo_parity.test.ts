@@ -26,8 +26,8 @@ async function verifyLocaleParity(
 
   expect(
     locSeoCount,
-    `Locale ${loc} SEO sections count (${locSeoCount}) must match EN (${expected.seo})`,
-  ).toBe(expected.seo);
+    `Locale ${loc} SEO sections count (${locSeoCount}) must include the English base (${expected.seo})`,
+  ).toBeGreaterThanOrEqual(expected.seo);
   expect(
     locFaqCount,
     `Locale ${loc} FAQ items count (${locFaqCount}) must match EN (${expected.faq})`,

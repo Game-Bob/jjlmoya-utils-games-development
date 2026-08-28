@@ -132,7 +132,12 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Langage de balisage web standard.'
         }
       ]
-    }
+    },
+    { type: 'title', level: 2, text: 'Contrôler la conversion avant de la publier' },
+    { type: 'paragraph', html: 'Identifiez d abord le format réellement utilisé par le texte source, puis comparez les titres, liens, listes et images dans l aperçu. Une sortie visible ne signifie pas que chaque balise propre à Steam possède une équivalence complète dans le format cible.' },
+    { type: 'paragraph', html: 'Conservez une copie du texte original et testez le résultat dans la page de boutique où il sera publié. Les listes imbriquées, les liens externes et les widgets sans équivalent peuvent demander une correction manuelle. Le convertisseur analyse la structure dans le navigateur, mais ne juge ni la qualité éditoriale ni la sécurité des URL.' },
+    { type: 'paragraph', html: 'Avant de copier la sortie, vérifiez aussi les liens externes, les balises non standard et les images dans le contexte réel de la boutique. Une structure correctement convertie ne remplace pas une relecture éditoriale ni un contrôle de sécurité des adresses.' },
+    { type: 'paragraph', html: 'Comparez ensuite le texte converti avec l aperçu de la page Steam. Vérifiez les retours à la ligne, les listes imbriquées, les liens et les images, car une balise inconnue peut être conservée comme texte ou perdre sa mise en forme. Gardez toujours une version source afin de pouvoir corriger manuellement un passage sans repartir d une conversion déjà modifiée.' },
   ],
   faqTitle: 'Foire aux questions sur la conversion',
   faq: [

@@ -70,6 +70,9 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "이 항목은 깔끔한 내보내기와 정확한 미리보기를 위해 확인할 내용을 정리합니다. 5.",
     },
+    { type: 'title', level: 2, text: '게시 전에 viewport와 canvas 함께 확인하기' },
+    { type: 'paragraph', html: 'Itch.io에서 계획한 viewport와 실제 canvas 크기를 비교하세요. 16:9 비율만으로는 스크롤바가 사라지지 않습니다. CSS 여백, 최소 너비, 크기 조정이 되지 않는 canvas 때문에 화면이 넘칠 수 있습니다.' },
+    { type: 'paragraph', html: '빌드할 때마다 보고서를 다시 확인하세요. 파일 이름, 시작 HTML, 엔진 출력이 바뀔 수 있습니다. 구조와 기하학 검사를 마친 뒤 여러 브라우저와 기기에서 실제 표시도 테스트하세요.' },
   ],
   faq: [
     {

@@ -193,6 +193,9 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "この項目では、きれいな書き出しと正確なプレビューに必要な確認点をまとめます。 2.",
     },
+    { type: 'title', level: 2, text: 'padding と境界押し出しを調整する' },
+    { type: 'paragraph', html: 'paddingは隣り合うフレームを離し、境界押し出しは端のピクセルを繰り返します。フィルタリング、ミップマップ、カメラ移動と一緒に確認し、隙間が小さすぎる場合の継ぎ目や大きすぎる場合のテクスチャ面積の無駄を防ぎます。' },
+    { type: 'paragraph', html: 'パッキング後は対象エンジンでJSON座標を確認してください。フレームの大きさ、原点、回転、透明度が書き出しデータと同じ意味で解釈されて初めて、安全なアトラスになります。' },
   ],
   faq: [
     {

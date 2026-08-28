@@ -115,6 +115,19 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'Locale', definition: 'Sprach und Regionalkennung wie de oder en.' },
       ],
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Bereinigte Daten vor dem Engine-Import kontrollieren',
+    },
+    {
+      type: 'paragraph',
+      html: 'Öffnen Sie die Vorschau und vergleichen Sie die Spaltenüberschriften mit der erwarteten Sprachstruktur. Automatische Korrekturen helfen bei Trennzeichen und leeren Zellen, können aber keine fehlende Übersetzung oder eine falsche Bedeutung erkennen.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Bewahren Sie die Originaldatei und einen kleinen Testimport auf. So lässt sich nachvollziehen, welche Zeilen normalisiert wurden und ob Godot oder Unity die bereinigte Datei ohne neue Warnungen einliest.',
+    },
   ],
   faq: [
     {

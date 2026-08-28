@@ -115,6 +115,11 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'Locale', definition: 'tr, en veya ja gibi dil ve bölge kodu.' },
       ],
     },
+    { type: 'title', level: 2, text: 'İçe aktarmadan önce temiz dosyayı kontrol edin' },
+    { type: 'paragraph', html: 'Önizlemeyi açın ve başlıkları projenizin beklediği dil yapısıyla karşılaştırın. Otomatik düzeltmeler ayraçlar ve boş hücreler için yardımcı olur, ancak eksik çeviri oluşturamaz veya anlamını doğrulayamaz.' },
+    { type: 'paragraph', html: 'Orijinal dosyayı saklayın ve küçük bir test içe aktarması yapın. Böylece hangi satırların normalleştirildiğini ve Godot ya da Unity nin temiz dosyayı yeni uyarılar olmadan okuyup okumadığını kontrol edebilirsiniz.' },
+    { type: 'paragraph', html: 'Temizliği yalnızca yapısal bir adım olarak değerlendirin: düzeltilen hücreler dili bilen biri tarafından yeniden okunmalı ve dışa aktarılan dosya teslimden önce bir test sahnesine aktarılmalıdır.' },
+    { type: 'paragraph', html: 'Temizliği yalnızca yapısal bir adım olarak değerlendirin: düzeltilen hücreler dili bilen biri tarafından yeniden okunmalı ve dışa aktarılan dosya teslimden önce bir test sahnesine aktarılmalıdır.' },
   ],
   faq: [
     {

@@ -70,6 +70,32 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "Cette section rassemble les contrôles essentiels pour obtenir un export propre et une prévisualisation fiable. 5.",
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Comparer le viewport, le canvas et l intégration',
+    },
+    {
+      type: 'paragraph',
+      html: 'Comparez la taille réelle du canvas avec le viewport prévu sur Itch.io. Un ratio 16:9 ne suffit pas à supprimer les barres de défilement: marges CSS, largeurs minimales et canvas non redimensionné peuvent encore provoquer un débordement.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Relisez le rapport après chaque build, car le nom des fichiers, le point d entrée et la sortie du moteur peuvent changer. Le testeur fournit des indices structurels et géométriques ; il ne remplace pas un essai sur plusieurs navigateurs et appareils.',
+    },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Comparer le viewport, le canvas et l intégration',
+    },
+    {
+      type: 'paragraph',
+      html: 'Comparez la taille réelle du canvas avec le viewport prévu sur Itch.io. Un ratio 16:9 ne suffit pas à supprimer les barres de défilement: marges CSS, largeurs minimales et canvas non redimensionné peuvent encore provoquer un débordement.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Relisez le rapport après chaque build, car le nom des fichiers, le point d entrée et la sortie du moteur peuvent changer. Le testeur fournit des indices structurels et géométriques ; il ne remplace pas un essai sur plusieurs navigateurs et appareils.',
+    },
   ],
   faq: [
     {

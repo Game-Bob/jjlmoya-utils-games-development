@@ -118,6 +118,7 @@ export const content: ToolLocaleContent<SteamCapsuleGeneratorUI> = {
       type: 'paragraph',
       html: "Bu bölüm temiz bir dışa aktarma ve güvenilir bir önizleme için gerekli kontrolleri özetler. 8.",
     },
+    { type: 'paragraph', html: 'Dışa aktarılan her boyutu gerçek ölçekte kontrol edin. Oranın doğru olması yeterli değildir; Steam görseli küçük bir arama kartı veya dikey kütüphane kartı olarak gösterdiğinde başlık, logo ve ana motif hâlâ okunabilir olmalıdır.' },
   ],
   faqTitle: 'Steam Görselleri Hakkında Sıkça Sorulan Sorular',
   faq: [

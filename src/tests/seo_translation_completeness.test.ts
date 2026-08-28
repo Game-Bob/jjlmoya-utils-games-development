@@ -1,0 +1,69 @@
+import { describe, it, expect } from 'vitest';
+import { ALL_TOOLS } from '../tools';
+
+const ASIAN_LOCALES = ['ja', 'ko', 'zh'];
+
+function getSimpleSectionLength(section: any): number {
+  if (section.type === 'title') return section.text ? section.text.length : 0;
+  if (section.type === 'paragraph') return section.html ? section.html.replace(/<[^>]*>/g, '').length : 0;
+  if (section.type === 'list') return section.items ? section.items.join('').length : 0;
+  return 0;
+}
+
+function getComplexSectionLength(section: any): number {
+  if (section.type === 'diagnostic' || section.type === 'tip') {
+    return (section.title ? section.title.length : 0) + (section.html ? section.html.replace(/<[^>]*>/g, '').length : 0);
+  }
+  if (section.type === 'table') {
+    return ((section.headers || []).join('').length) + ((section.rows || []).flat().join('').length);
+  }
+  return 0;
+}
+
+function getSectionLength(section: any): number {
+  return getSimpleSectionLength(section) || getComplexSectionLength(section);
+}
+
+function calculateSeoTextLength(seoSections: any[]): number {
+  return seoSections.reduce((acc, section) => acc + getSectionLength(section), 0);
+}
+
+function checkLocaleSeoLength(toolId: string, locale: string, localeLen: number, enLen: number): void {
+  const isAsian = ASIAN_LOCALES.includes(locale);
+  const minLength = Math.floor(enLen * (isAsian ? 0.25 : 0.70));
+  const msgType = isAsian ? 'suspiciously short' : 'truncated/lazy';
+
+  expect(
+    localeLen,
+    `[LAZY SEO TRANSLATION] Tool "${toolId}" locale "${locale}" SEO text is ${msgType} (${localeLen} chars vs EN ${enLen} chars, expected min ${minLength})`,
+  ).toBeGreaterThanOrEqual(minLength);
+}
+
+async function auditSingleLocale(toolId: string, locale: string, loader: any, enSeoLength: number): Promise<void> {
+  if (locale === 'en' || !loader) return;
+  const content = await loader();
+  if (!content.seo || !Array.isArray(content.seo)) return;
+
+  checkLocaleSeoLength(toolId, locale, calculateSeoTextLength(content.seo), enSeoLength);
+}
+
+describe('SEO Translation Completeness & Laziness Audit', () => {
+  ALL_TOOLS.forEach(({ entry }) => {
+    describe(`Tool: ${entry.id}`, () => {
+      it('should not have lazy or truncated SEO content compared to English reference', async () => {
+        const enLoader = entry.i18n['en' as keyof typeof entry.i18n];
+        if (!enLoader) return;
+
+        const enContent = await enLoader();
+        if (!enContent.seo || !Array.isArray(enContent.seo)) return;
+
+        const enSeoLength = calculateSeoTextLength(enContent.seo);
+
+        for (const [locale, loader] of Object.entries(entry.i18n)) {
+          await auditSingleLocale(entry.id, locale, loader, enSeoLength);
+        }
+      });
+    });
+  });
+});
+

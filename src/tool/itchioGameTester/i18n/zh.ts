@@ -70,6 +70,9 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "本节汇总了正确导出和可靠预览所需的关键检查。 5.",
     },
+    { type: 'title', level: 2, text: '发布前同时检查 viewport 与 canvas' },
+    { type: 'paragraph', html: '将实际 canvas 尺寸与 Itch.io 计划使用的 viewport 进行比较。16:9 比例并不能自动消除滚动条，CSS 边距、最小宽度和未缩放的 canvas 仍可能造成内容溢出。' },
+    { type: 'paragraph', html: '每次构建后都重新查看报告，因为文件名、入口文件和引擎输出可能变化。完成结构检查后，还应在不同浏览器和设备上确认真实显示效果。' },
   ],
   faq: [
     {

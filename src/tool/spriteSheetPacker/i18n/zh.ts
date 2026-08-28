@@ -193,6 +193,10 @@ export const content: ToolLocaleContent<SpriteSheetPackerUI> = {
       type: 'paragraph',
       html: "本节汇总了正确导出和可靠预览所需的关键检查。 2.",
     },
+    { type: 'title', level: 2, text: '协调 padding、边缘扩展与导出数据' },
+    { type: 'paragraph', html: 'padding 用来分隔相邻帧，边缘扩展会重复边缘像素。应结合过滤、mipmap 和摄像机移动一起检查：间距太小会出现接缝，间距太大会浪费纹理空间。' },
+    { type: 'paragraph', html: '打包后请在目标引擎中核对 JSON 坐标。只有当帧尺寸、原点、旋转和透明度与导出文件保持相同解释时，图集才可靠。' },
+    { type: 'paragraph', html: '还要确认纹理格式和元数据符合目标引擎的要求。最大尺寸、透明区域裁剪以及二次幂设置都会影响内存占用和旧设备上的兼容性。' },
   ],
   faq: [
     {

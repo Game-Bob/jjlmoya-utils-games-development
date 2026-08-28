@@ -195,6 +195,7 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: '导出的 JSON 报告与 PNG 对比图可直接附在 Jira 或 GitHub Issue 等任务单中，帮助设计师与工程师针对具体场景展开讨论与修改。',
     },
+    { type: 'paragraph', html: '记录检查过的场景、分辨率和颜色组合。模拟可以帮助及早发现设计问题，但不能代替真实场景、不同屏幕以及不同视觉条件用户参与的测试。' },
   ],
   faq,
   howTo,

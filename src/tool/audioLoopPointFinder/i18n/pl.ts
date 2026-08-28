@@ -132,6 +132,10 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: 'Podczas eksportowania ścieżek z tego narzędzia nowe struktury metadanych są wstrzykiwane bezpośrednio do nagłówka RIFF pliku WAV.',
     },
+    { type: 'title', level: 2, text: 'Ocena długości pętli i przejścia fazowego' },
+    { type: 'paragraph', html: 'Przejście przez zero ogranicza skoki amplitudy, ale samo nie gwarantuje naturalnego przejścia muzycznego. Posłuchaj początku i końca jeden po drugim oraz sprawdź rytm, harmonię i wybrzmienie pogłosu podczas powtarzania.' },
+    { type: 'paragraph', html: 'Znaczniki są zapisywane w próbkach, więc nie zależą od zaokrąglenia do milisekund. Po kontroli odsłuchowej wyeksportuj WAV i przetestuj go w silniku, który odtworzy go w grze.' },
+    { type: 'paragraph', html: 'Sprawdź także, czy długość pętli pasuje do frazy muzycznej i nie ucina nuty ani wybrzmienia efektu. Znaczniki w próbkach zachowują precyzję między urządzeniami, ale wynik trzeba odsłuchać w rzeczywistym tempie i przy docelowej głośności gry.' },
   ],
   faqTitle: 'Często Zadawane Pytania',
   faq: [

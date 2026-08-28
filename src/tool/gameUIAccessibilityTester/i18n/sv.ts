@@ -195,6 +195,7 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: 'JSON-rapporten och PNG-jämförelsebilden kan bifogas i ert projekthanteringsverktyg för att underlätta kommunikationen kring gränssnittsändringar.',
     },
+    { type: 'paragraph', html: 'Anteckna scen, upplösning och färgparet som granskades. Simuleringen hjälper till att hitta designproblem tidigt, men ersätter inte tester med riktiga scener, olika skärmar och personer med varierande synförhållanden.' },
   ],
   faq,
   howTo,

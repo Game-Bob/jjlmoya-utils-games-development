@@ -172,6 +172,7 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: 'Bekijk schade en treffers altijd samen',
       html: 'Een kleine verandering in schade kan een gezondheidsdrempel overschrijden en een complete treffer schelen. Vergelijk schade altijd met TTK.',
     },
+    { type: 'paragraph', html: 'Dezelfde formule kan door afronding en de volgorde van modifiers een ander gevecht opleveren. Controleer ook kleine schade, hoge verdediging en de drempel voor een extra treffer; TTK modelleert geen ontwijken, cooldowns of onderbrekingen.' },
   ],
   faq,
   bibliographyTitle: 'Referenties voor schadeberekening in games',

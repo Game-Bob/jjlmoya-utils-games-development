@@ -186,6 +186,8 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
       type: 'paragraph',
       html: 'Arkusz styków PNG pokazuje wszystkie klatki i ich warstwy na jednym obrazie, co ułatwia komunikację z zespołem.',
     },
+    { type: 'paragraph', html: 'Kształt kolizji powinien podążać za sylwetką i chwilą akcji. Sprawdź początek, fazę aktywną i powrót osobno, a następnie przetestuj zasięg, priorytet, odrzut i sieć w rzeczywiście zintegrowanym projekcie.' },
+    { type: 'paragraph', html: 'Po eksporcie przejrzyj klatki graniczne, w których animacja zmienia kierunek albo kończy atak. Zbyt duży hurtbox powoduje niesprawiedliwe trafienia, a zbyt mały hitbox odbiera atakowi czytelność. Porównanie warstw z ruchem postaci ułatwia znalezienie takich rozbieżności przed testami z graczami.' },
   ],
   faq,
   bibliographyTitle: 'Referencje dotyczące projektowania kolizji',

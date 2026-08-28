@@ -128,6 +128,7 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: '在游戏实际音量下进行测试',
       html: '单独听起来出色的音效如果在游戏中高频触发可能会造成听觉疲劳。请务必在游戏实际场景中与背景音乐一起测试。',
     },
+    { type: 'paragraph', html: '还要在游戏的实际混音中试听：单独听起来明亮的音效可能会盖住对白或音乐。作为最终资源使用前，请检查音量、削波和持续时间。' },
   ],
   faqTitle: '常见问题',
   faq: [

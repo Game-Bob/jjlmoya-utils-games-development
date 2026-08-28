@@ -186,6 +186,19 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
       type: 'paragraph',
       html: 'Lembaran kontak PNG menampilkan semua bingkai dan lapisan tabrakan dalam satu gambar untuk mempermudah komunikasi tim.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Menguji frame aktif dan koordinat secara bersamaan',
+    },
+    {
+      type: 'paragraph',
+      html: 'Bentuk collision yang baik mengikuti siluet sekaligus waktu aksi. Periksa fase awal, aktif, dan pemulihan secara terpisah, lalu bandingkan box hasil ekspor agar hit tidak aktif sebelum gerakan terlihat atau setelah gerakan berakhir.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Pratinjau mendokumentasikan geometri dan layer, bukan seluruh logika collision pada engine. Uji jangkauan, prioritas, pushback, dan perilaku jaringan di proyek yang benar-benar terintegrasi.',
+    },
   ],
   faq,
   bibliographyTitle: 'Referensi desain area tabrakan',

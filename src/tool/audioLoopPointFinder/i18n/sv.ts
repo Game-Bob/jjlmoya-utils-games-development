@@ -132,6 +132,10 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: 'När du exporterar ljudspår från detta verktyg bäddas nya metadatastrukturer in direkt i RIFF-headern på den exporterade WAV-filen.',
     },
+    { type: 'title', level: 2, text: 'Bedöm loopens längd och fasövergång' },
+    { type: 'paragraph', html: 'En nollgenomgång minskar amplitudhopp, men garanterar inte automatiskt en naturlig musikalisk övergång. Lyssna på början och slutet efter varandra och kontrollera rytm, harmoni och efterklang när loopen upprepas.' },
+    { type: 'paragraph', html: 'Markörerna sparas i samplingar och påverkas därför inte av avrundning till millisekunder. Exportera efter lyssningskontrollen och testa WAV-filen i motorn som ska spela den i spelet.' },
+    { type: 'paragraph', html: 'Kontrollera också att loopens längd passar den musikaliska frasen och inte klipper en ton eller en effektklang. Markörer i samplingar behåller precision mellan enheter, men resultatet ska alltid lyssnas på i spelets verkliga tempo och volym.' },
   ],
   faqTitle: 'Vanliga Frågor',
   faq: [

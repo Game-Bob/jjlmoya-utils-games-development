@@ -128,6 +128,19 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: 'Bei gewuenschter Lautstaerke testen',
       html: 'Ein einzeln spektakulaerer Sound kann im Spiel anstrengend wirken. Testen Sie den Sound direkt im Spielkontext.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Frequenzverlauf und Hüllkurve gemeinsam abstimmen',
+    },
+    {
+      type: 'paragraph',
+      html: 'Ein Sweep verändert die Tonhöhe über die Zeit, während Decay und Filter die wahrgenommene Energie formen. Hören Sie beide Eigenschaften zusammen an: Ein langer Anstieg kann trotz hoher Startfrequenz weich wirken, und Rauschen benötigt oft einen kürzeren Verlauf, damit der Effekt präzise bleibt.',
+    },
+    {
+      type: 'paragraph',
+      html: 'Der WAV-Export ist ein Ausgangspunkt für Prototypen und ersetzt keinen Mix im Spiel. Prüfen Sie Lautheit, Übersteuerung und den Abstand zu Musik und Dialog, bevor Sie das Geräusch als endgültiges Asset übernehmen.',
+    },
   ],
   faqTitle: 'Haeufig gestellte Fragen',
   faq: [

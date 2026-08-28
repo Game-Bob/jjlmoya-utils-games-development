@@ -186,6 +186,8 @@ export const content: ToolLocaleContent<HitboxHurtboxAnimatorUI> = {
       type: 'paragraph',
       html: 'PNG temas levhası tüm kareleri ve katmanlarını tek bir görselde göstererek yazılımcılar ve çizerler arasındaki iletişimi kolaylaştırır.',
     },
+    { type: 'paragraph', html: 'Bir çarpışma şekli hem silüeti hem de eylemin zamanını izlemelidir. Başlangıç, etkin aşama ve toparlanmayı ayrı kontrol edin; menzil, öncelik, geri itme ve ağ davranışını gerçek projede test edin.' },
+    { type: 'paragraph', html: 'Dışa aktardıktan sonra karakterin yön değiştirdiği veya saldırıyı bitirdiği kareleri ayrı inceleyin. Fazla büyük bir hurtbox haksız isabetlere, fazla küçük bir hitbox ise okunaksız saldırılara yol açar. Gerçek oyun senaryolarında doğrulamadan önce katmanları sprite hareketiyle karşılaştırın.' },
   ],
   faq,
   bibliographyTitle: 'Çarpışma tasarımı referansları',

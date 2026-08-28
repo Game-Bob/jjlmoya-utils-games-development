@@ -70,6 +70,9 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "この項目では、きれいな書き出しと正確なプレビューに必要な確認点をまとめます。 5.",
     },
+    { type: 'title', level: 2, text: 'Viewport と canvas を公開前に確認する' },
+    { type: 'paragraph', html: 'Itch.ioで予定しているviewportと、実際のcanvasサイズを比較します。16:9の比率だけではスクロールバーを防げません。CSSの余白、最小幅、拡大されないcanvasによって表示がはみ出すことがあります。' },
+    { type: 'paragraph', html: 'ビルドごとにレポートを読み直してください。ファイル名、入口となるHTML、エンジンの出力は変わる可能性があります。この検査結果に加えて、複数のブラウザと端末で実際の表示を確認します。' },
   ],
   faq: [
     {

@@ -195,6 +195,19 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: 'Le rapport JSON et le visuel comparatif PNG peuvent être directement joints à vos tickets de développement pour faciliter les corrections de design UI.',
     },
+    {
+      type: 'title',
+      level: 2,
+      text: 'Documenter les constats de façon reproductible',
+    },
+    {
+      type: 'paragraph',
+      html: 'Notez la scène, la résolution et la paire de couleurs examinée. Un constat utile décrit le signal visible, l état concerné et une amélioration possible avec une forme, une icône, un motif ou un son.',
+    },
+    {
+      type: 'paragraph',
+      html: 'La simulation aide à repérer tôt les problèmes de conception, mais elle ne mesure pas toute l accessibilité d un jeu. Répétez l essai avec de vraies scènes, plusieurs écrans et des personnes aux conditions visuelles différentes.',
+    },
   ],
   faq,
   howTo,

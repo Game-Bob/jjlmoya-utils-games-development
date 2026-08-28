@@ -132,7 +132,13 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Linguagem de marcação padrão para a web.'
         }
       ]
-    }
+    },
+    { type: 'title', level: 2, text: 'Revisar a conversão antes de publicar' },
+    { type: 'paragraph', html: 'Identifique primeiro o formato usado pelo texto de origem e depois compare títulos, links, listas e imagens na prévia. Exibir um resultado não significa que cada tag específica do Steam tenha uma equivalência completa no formato de destino.' },
+    { type: 'paragraph', html: 'Guarde uma cópia do texto original e teste o resultado na página da loja onde ele será publicado. Listas aninhadas, links externos e widgets sem equivalente podem exigir revisão manual. O conversor analisa a estrutura no navegador, mas não avalia a qualidade editorial nem a segurança das URLs.' },
+    { type: 'paragraph', html: 'Antes de copiar a saída, confira também links externos, tags fora do padrão e imagens no contexto real da página da loja. Uma estrutura convertida corretamente ainda precisa de revisão editorial e verificação de segurança dos endereços.' },
+    { type: 'paragraph', html: 'Compare a conversão com a prévia da página Steam antes de publicar. Confira quebras de linha, listas aninhadas, links, imagens e tags desconhecidas, pois um formato não suportado pode aparecer como texto simples. Mantenha a fonte original para acompanhar ajustes manuais e teste o texto final na página que os jogadores realmente verão.' },
+    { type: 'paragraph', html: 'Se a aparência na loja for diferente do editor, examine cada bloco de formatação especial separadamente. Registre os elementos substituídos ou removidos e revise títulos, imagens e chamadas para ação em telas grandes e pequenas.' },
   ],
   faqTitle: 'Perguntas frequentes',
   faq: [

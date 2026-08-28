@@ -132,7 +132,13 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Web sayfalari icin standart isaretleme dili.'
         }
       ]
-    }
+    },
+    { type: 'title', level: 2, text: 'Yayınlamadan önce dönüşümü kontrol edin' },
+    { type: 'paragraph', html: 'Önce kaynak metnin gerçekten hangi biçimi kullandığını belirleyin; ardından önizlemede başlıkları, bağlantıları, listeleri ve görselleri karşılaştırın. Çıktının görünmesi, her Steam özel etiketinin hedef biçimde eksiksiz bir karşılığı olduğu anlamına gelmez.' },
+    { type: 'paragraph', html: 'Orijinal metnin bir kopyasını saklayın ve sonucu yayınlanacağı mağaza sayfasında test edin. İç içe listeler, harici bağlantılar ve karşılığı olmayan widgetlar elle düzenleme gerektirebilir. Dönüştürücü yapıyı tarayıcıda analiz eder, ancak metin kalitesini veya URL güvenliğini değerlendirmez.' },
+    { type: 'paragraph', html: 'Çıktıyı kopyalamadan önce gerçek mağaza görünümünde harici bağlantıları, standart dışı etiketleri ve görselleri de kontrol edin. Doğru dönüştürülmüş yapı, editoryal incelemenin ve adres güvenliği kontrolünün yerini tutmaz.' },
+    { type: 'paragraph', html: 'Yayınlamadan önce dönüşümü Steam sayfasının önizlemesiyle karşılaştırın. Satır sonlarını, iç içe listeleri, bağlantıları, görselleri ve bilinmeyen etiketleri kontrol edin; desteklenmeyen bir biçim düz metin olarak görünebilir. Kaynak sürümünü saklayarak elle yapılan değişiklikleri izleyin ve son metni oyuncuların gerçekten göreceği sayfada test edin.' },
+    { type: 'paragraph', html: 'Mağaza görünümü editörden farklıysa özel biçimlendirme kullanan her bloğu ayrı inceleyin. Değiştirilen veya kaldırılan öğeleri not edin, ardından başlık hiyerarşisini, görselleri ve eylem çağrılarını büyük ve küçük ekranlarda yeniden kontrol edin.' },
   ],
   faqTitle: 'Sikca sorulan sorular',
   faq: [

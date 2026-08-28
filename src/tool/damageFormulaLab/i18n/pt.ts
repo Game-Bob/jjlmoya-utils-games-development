@@ -172,6 +172,7 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: 'Examine o dano e o número de golpes juntos',
       html: 'Uma pequena alteração no dano pode cruzar um limiar de vida e eliminar um golpe completo. Compare sempre o dano com o TTK.',
     },
+    { type: 'paragraph', html: 'A mesma fórmula pode produzir um combate diferente conforme o arredondamento e a ordem dos modificadores. Confira também danos pequenos, defesa alta e o limite que exige um golpe extra; o TTK não modela esquivas, recargas ou interrupções.' },
   ],
   faq,
   bibliographyTitle: 'Referências de cálculo de dano em jogos',

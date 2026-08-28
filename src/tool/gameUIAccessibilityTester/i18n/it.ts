@@ -195,6 +195,7 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: 'Il report JSON e la scheda PNG scaricabili possono essere allegati ai task di sviluppo per facilitare la correzione dei problemi di interfaccia visiva.',
     },
+    { type: 'paragraph', html: 'Annota scena, risoluzione e coppia di colori esaminata. La simulazione aiuta a individuare problemi di design, ma non sostituisce prove con scene reali, display diversi e persone con condizioni visive differenti.' },
   ],
   faq,
   howTo,

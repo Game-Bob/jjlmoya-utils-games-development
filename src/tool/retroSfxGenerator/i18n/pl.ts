@@ -128,6 +128,7 @@ export const content: ToolLocaleContent<RetroSfxGeneratorUI> = {
       title: 'Testuj przy docelowej glosnosci gry',
       html: 'Dzwiek brzmiacy atrakcyjnie osobno moze byc meczacy, gdy powtarza sie wielokrotnie w grze. Przetestuj go w silniku gry razem z muzyka.',
     },
+    { type: 'paragraph', html: 'Posłuchaj dźwięku także w prawdziwym miksie gry: jasny efekt może solo brzmieć dobrze, ale zagłuszać dialogi lub muzykę. Przed użyciem jako finalnego zasobu sprawdź głośność, clipping i długość.' },
   ],
   faqTitle: 'Czesto zadawane pytania',
   faq: [

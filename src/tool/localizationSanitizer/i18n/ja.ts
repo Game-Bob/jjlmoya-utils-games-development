@@ -115,6 +115,10 @@ export const content: ToolLocaleContent<LocalizationSanitizerUI> = {
         { term: 'ロケール', definition: 'jaやenなどの言語/地域識別コード。' },
       ],
     },
+    { type: 'title', level: 2, text: 'エンジンへ読み込む前に整形結果を確認する' },
+    { type: 'paragraph', html: 'プレビューを開き、見出しがプロジェクトの言語構造と一致するか確認します。自動修正は区切り文字や空のセルには役立ちますが、欠けた翻訳を作成したり意味を保証したりするものではありません。' },
+    { type: 'paragraph', html: '元ファイルを保存し、小さなテスト読み込みを行ってください。どの行が正規化されたか、GodotやUnityが新しい警告なしで読み込めるかを確認できます。' },
+    { type: 'paragraph', html: '整形は構造を直す段階です。修正されたセルは必ず翻訳者が読み直し、書き出したファイルをテスト用のシーンへ読み込んでから納品してください。' },
   ],
   faq: [
     {

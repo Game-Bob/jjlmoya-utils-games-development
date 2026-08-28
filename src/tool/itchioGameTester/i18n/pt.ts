@@ -70,6 +70,9 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "Esta secção reúne as verificações essenciais para uma exportação correta e uma pré-visualização fiável. 5.",
     },
+    { type: 'title', level: 2, text: 'Verificar viewport, canvas e incorporação' },
+    { type: 'paragraph', html: 'Compare o tamanho real do canvas com o viewport planejado no Itch.io. A proporção 16:9 não elimina sozinha as barras de rolagem: margens CSS, larguras mínimas e um canvas sem escala ainda podem causar overflow.' },
+    { type: 'paragraph', html: 'Leia o relatório novamente após cada build, pois nomes de arquivos, ponto de entrada e saída da engine podem mudar. Use as indicações estruturais junto com testes em vários navegadores e dispositivos.' },
   ],
   faq: [
     {

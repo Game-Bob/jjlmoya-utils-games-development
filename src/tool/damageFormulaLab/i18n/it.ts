@@ -172,6 +172,7 @@ export const content: ToolLocaleContent<DamageFormulaLabUI> = {
       title: 'Esamina sempre sia il danno che i colpi necessari',
       html: 'Una piccola variazione di danno può superare una soglia di salute ed eliminare un intero colpo. Confronta sempre il danno con il TTK.',
     },
+    { type: 'paragraph', html: 'La stessa formula può produrre un combattimento diverso in base all arrotondamento e all ordine dei modificatori. Controlla anche danni piccoli, difesa alta e la soglia che richiede un colpo aggiuntivo; il TTK non include schivate, cooldown o interruzioni.' },
   ],
   faq,
   bibliographyTitle: 'Riferimenti per il calcolo del danno nei videogiochi',

@@ -132,6 +132,10 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: 'Saat mengekspor trek audio dari alat ini, struktur metadata baru disuntikkan langsung ke dalam header RIFF dari file WAV.',
     },
+    { type: 'title', level: 2, text: 'Menilai durasi loop dan transisi fase' },
+    { type: 'paragraph', html: 'Zero crossing mengurangi lonjakan amplitudo, tetapi tidak otomatis membuat transisi musik terdengar alami. Dengarkan bagian awal dan akhir secara berurutan, lalu periksa ritme, harmoni, serta ekor reverb saat loop diulang.' },
+    { type: 'paragraph', html: 'Marker disimpan dalam satuan sample sehingga tidak bergantung pada pembulatan milidetik. Setelah pemeriksaan audio, ekspor WAV dan uji berkas tersebut di engine yang akan memutarnya dalam game.' },
+    { type: 'paragraph', html: 'Periksa juga bahwa panjang loop sesuai dengan frasa musik dan tidak memotong nada atau ekor efek. Nilai marker dalam sample memberikan ketelitian yang tetap saat file berpindah antara perangkat, tetapi hasil akhirnya tetap harus didengarkan pada tempo dan volume permainan yang sebenarnya.' },
   ],
   faqTitle: 'Pertanyaan yang Sering Diajukan',
   faq: [

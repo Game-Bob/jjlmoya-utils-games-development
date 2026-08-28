@@ -179,6 +179,10 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
     },
     {
       type: 'paragraph',
+      html: 'Bekijk daarna dezelfde interface op ware spelgrootte en in beweging. Noteer welke signalen verdwijnen wanneer de achtergrond verandert en combineer kleur met vorm, patroon, tekst of geluid. Zo wordt het rapport een concreet ontwerpplan in plaats van alleen een contrastcijfer.',
+    },
+    {
+      type: 'paragraph',
       html: 'Richt uw metingen op kleurparen die belangrijk zijn voor de speler, zoals vijand en bondgenoot. Voeg vormen of pictogrammen toe als het contrast afneemt onder simulatie.',
     },
     {
@@ -195,6 +199,7 @@ export const content: ToolLocaleContent<GameUiAccessibilityTesterUI> = {
       type: 'paragraph',
       html: 'Het JSON-rapport en de PNG-afbeelding kunnen direct aan uw taken worden toegevoegd om designverbeteringen te bespreken.',
     },
+    { type: 'paragraph', html: 'Noteer scène, resolutie en het onderzochte kleurpaar. De simulatie helpt ontwerpproblemen vroeg te vinden, maar vervangt geen tests met echte scènes, verschillende schermen en mensen met uiteenlopende visuele omstandigheden.' },
   ],
   faq,
   howTo,

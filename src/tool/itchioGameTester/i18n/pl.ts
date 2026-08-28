@@ -70,6 +70,9 @@ export const content: ToolLocaleContent<ItchioGameTesterUI> = {
       type: 'paragraph',
       html: "Ta sekcja zbiera najważniejsze kontrole potrzebne do poprawnego eksportu i wiarygodnego podglądu. 5.",
     },
+    { type: 'title', level: 2, text: 'Sprawdź viewport, canvas i osadzanie przed publikacją' },
+    { type: 'paragraph', html: 'Porównaj rzeczywisty rozmiar canvasu z viewportem planowanym na Itch.io. Proporcje 16:9 nie usuwają automatycznie pasków przewijania: marginesy CSS, minimalna szerokość i nieskalowany canvas nadal mogą powodować przepełnienie.' },
+    { type: 'paragraph', html: 'Po każdym buildzie ponownie przeczytaj raport, ponieważ nazwy plików, punkt wejścia i wynik silnika mogą się zmienić. Wskazówki strukturalne uzupełnij testem w kilku przeglądarkach i na różnych urządzeniach.' },
   ],
   faq: [
     {

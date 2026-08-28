@@ -132,6 +132,9 @@ export const content: ToolLocaleContent<AudioLoopPointFinderUI> = {
       type: 'paragraph',
       html: 'Durante l esportazione delle tracce, le nuove strutture di metadati vengono iniettate direttamente nell intestazione RIFF del file binario WAV.',
     },
+    { type: 'title', level: 2, text: 'Valutare la durata del loop e la transizione di fase' },
+    { type: 'paragraph', html: 'Un passaggio per lo zero riduce i salti di ampiezza, ma non garantisce da solo una transizione musicale naturale. Ascolta in sequenza inizio e fine e controlla ritmo, armonia e coda del riverbero durante la ripetizione.' },
+    { type: 'paragraph', html: 'I marker sono conservati in campioni e non dipendono dall arrotondamento dei millisecondi. Dopo il controllo d ascolto, esporta il WAV e provalo nel motore che lo riprodurrà nel gioco.' },
   ],
   faqTitle: 'Domande Frequenti',
   faq: [

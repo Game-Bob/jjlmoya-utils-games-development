@@ -132,7 +132,13 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Standardiserat märkspråk för webben.'
         }
       ]
-    }
+    },
+    { type: 'title', level: 2, text: 'Kontrollera konverteringen före publicering' },
+    { type: 'paragraph', html: 'Identifiera först vilket format källtexten faktiskt använder och jämför sedan rubriker, länkar, listor och bilder i förhandsvisningen. En synlig utdata betyder inte att varje Steam-specifik tagg har en fullständig motsvarighet i målformatet.' },
+    { type: 'paragraph', html: 'Spara en kopia av originaltexten och testa resultatet på butikssidan där det ska publiceras. Kapslade listor, externa länkar och widgetar utan motsvarighet kan behöva manuell bearbetning. Konverteraren analyserar strukturen i webbläsaren men bedömer inte textkvalitet eller URL-säkerhet.' },
+    { type: 'paragraph', html: 'Kontrollera även externa länkar, icke-standardiserade taggar och bilder i den riktiga butiksvyn innan du kopierar resultatet. En korrekt konverterad struktur ersätter inte redaktionell granskning eller säkerhetskontroll av adresser.' },
+    { type: 'paragraph', html: 'Jämför konverteringen med Steam-sidans förhandsvisning innan publicering. Kontrollera radbrytningar, nästlade listor, länkar, bilder och okända taggar, eftersom ett format utan stöd kan visas som vanlig text. Spara originalversionen så att manuella ändringar går att följa och testa den slutliga texten på sidan som spelarna faktiskt kommer att se.' },
+    { type: 'paragraph', html: 'Om butiksvyn skiljer sig från redigeraren, undersök varje block med särskild formatering separat. Dokumentera element som ersatts eller tagits bort och kontrollera sedan rubrikhierarki, bilder och uppmaningar på både stora och små skärmar.' },
   ],
   faqTitle: 'Vanliga frågor',
   faq: [

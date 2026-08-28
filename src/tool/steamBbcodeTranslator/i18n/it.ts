@@ -132,7 +132,12 @@ export const content: ToolLocaleContent<SteamBbcodeTranslatorUI> = {
           definition: 'Linguaggio di markup standard per il web.'
         }
       ]
-    }
+    },
+    { type: 'title', level: 2, text: 'Controllare la conversione prima della pubblicazione' },
+    { type: 'paragraph', html: 'Identifica il formato usato davvero dal testo sorgente, poi confronta titoli, link, elenchi e immagini nell anteprima. La presenza di un risultato non significa che ogni tag specifico di Steam abbia un equivalente completo nel formato di destinazione.' },
+    { type: 'paragraph', html: 'Conserva una copia del testo originale e prova il risultato nella pagina del negozio dove verrà pubblicato. Elenchi annidati, link esterni e widget senza equivalente possono richiedere una revisione manuale. Il convertitore analizza la struttura nel browser, ma non valuta qualità editoriale o sicurezza degli URL.' },
+    { type: 'paragraph', html: 'Prima di copiare l output, controlla anche link esterni, tag non standard e immagini nel contesto reale della pagina del negozio. Una struttura convertita correttamente richiede comunque revisione editoriale e controllo della sicurezza degli indirizzi.' },
+    { type: 'paragraph', html: 'Confronta la conversione con l anteprima della pagina Steam prima della pubblicazione. Controlla interruzioni di riga, elenchi annidati, link, immagini e tag sconosciuti: un formato non supportato può diventare testo semplice. Mantieni la sorgente originale per tracciare le modifiche manuali e verifica il risultato finale nella pagina che vedranno davvero i giocatori.' },
   ],
   faqTitle: 'Domande frequenti sulla conversione',
   faq: [
