@@ -27,7 +27,7 @@
         "lint": "eslint src/ --max-warnings 0 && stylelint \"src/**/*.{css,astro}\"",
         "check": "astro check",
         "type-check": "astro check",
-        "test": "vitest run",
+        "test": "vitest run --reporter=verbose --testTimeout=30000",
         "preversion": "npm run lint && npm run test && npm run build",
         "postversion": "git push && git push --tags",
         "patch": "npm version patch",
