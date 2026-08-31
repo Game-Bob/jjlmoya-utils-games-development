@@ -8,10 +8,11 @@ import { gameUiAccessibilityTester } from '../tool/gameUIAccessibilityTester/ent
 import { hitboxHurtboxAnimator } from '../tool/hitboxHurtboxAnimator/entry';
 import { damageFormulaLab } from '../tool/damageFormulaLab/entry';
 import { gameDeltaTimeFixedTimestepLab } from '../tool/gameDeltaTimeFixedTimestepLab/entry';
+import { gamePixelPerUnitPlanner } from '../tool/gamePixelPerUnitPlanner/entry';
 
 export const gamesCategory: GamesCategoryEntry = {
   icon: 'mdi:gamepad-variant',
-  tools: [steamCapsuleGenerator, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, steamBbcodeTranslator, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab],
+  tools: [steamCapsuleGenerator, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, steamBbcodeTranslator, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab, gamePixelPerUnitPlanner],
   i18n: {
     de: () => import('./i18n/de').then((m) => m.content),
     en: () => import('./i18n/en').then((m) => m.content),

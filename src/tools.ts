@@ -13,6 +13,7 @@ import { GAME_UI_ACCESSIBILITY_TESTER_TOOL } from './tool/gameUIAccessibilityTes
 import { HITBOX_HURTBOX_ANIMATOR_TOOL } from './tool/hitboxHurtboxAnimator';
 import { DAMAGE_FORMULA_LAB_TOOL } from './tool/damageFormulaLab';
 import { GAME_DELTA_TIME_FIXED_TIMESTEP_LAB_TOOL } from './tool/gameDeltaTimeFixedTimestepLab';
+import { GAME_PIXEL_PER_UNIT_PLANNER_TOOL } from './tool/gamePixelPerUnitPlanner';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   STEAM_CAPSULE_GENERATOR_TOOL,
@@ -28,4 +29,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   HITBOX_HURTBOX_ANIMATOR_TOOL,
   DAMAGE_FORMULA_LAB_TOOL,
   GAME_DELTA_TIME_FIXED_TIMESTEP_LAB_TOOL,
+  GAME_PIXEL_PER_UNIT_PLANNER_TOOL,
 ];

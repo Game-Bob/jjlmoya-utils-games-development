@@ -1,0 +1,56 @@
+---
+import type { GamePixelPerUnitPlannerUI } from './ui';
+import './game-pixel-per-unit-planner.css';
+
+interface Props {
+  ui: GamePixelPerUnitPlannerUI;
+}
+
+const { ui } = Astro.props as Props;
+---
+
+<div class="gppu-tool" data-game-pixel-per-unit-planner>
+  <div class="gppu-layout">
+    <aside class="gppu-controls">
+      <div class="gppu-heading"><span class="gppu-kicker">01</span><h2>{ui.inputsTitle}</h2></div>
+      <div class="gppu-upload" data-upload-zone>
+        <div class="gppu-upload-heading"><strong>{ui.uploadTitle}</strong><span class="gppu-upload-icon" aria-hidden="true">+</span></div>
+        <p>{ui.uploadHint}</p>
+        <label class="gppu-upload-button"><span>{ui.chooseSpriteLabel}</span><input data-sprite-upload type="file" accept="image/png,image/gif,image/webp,image/jpeg" /></label>
+        <span class="gppu-file-name" data-file-name>{ui.defaultSpriteLabel}</span>
+        <button class="gppu-clear-sprite" type="button" data-clear-sprite>{ui.clearSpriteLabel}</button>
+      </div>
+      <div class="gppu-field-grid">
+        <label><span>{ui.displayWidthLabel}</span><input data-field="displayWidth" type="number" min="160" max="7680" step="1" value="320" /></label>
+        <label><span>{ui.displayHeightLabel}</span><input data-field="displayHeight" type="number" min="90" max="4320" step="1" value="180" /></label>
+        <label><span>{ui.spriteWidthLabel}</span><input data-field="spriteWidth" type="number" min="1" max="4096" step="1" value="16" readonly /></label>
+        <label><span>{ui.spriteHeightLabel}</span><input data-field="spriteHeight" type="number" min="1" max="4096" step="1" value="16" readonly /></label>
+        <label><span>{ui.worldWidthLabel}</span><input data-field="worldWidth" type="number" min="0.01" max="1000" step="0.01" value="1" /></label>
+        <label><span>{ui.worldHeightLabel}</span><input data-field="worldHeight" type="number" min="0.01" max="1000" step="0.01" value="1" /></label>
+      </div>
+      <label class="gppu-scale-field"><span>{ui.targetScaleLabel}</span><output data-output="targetScale">4</output><input data-field="targetScale" type="range" min="0.5" max="16" step="0.25" value="4" /></label>
+      <p class="gppu-hint">{ui.targetScaleHint}</p>
+      <div class="gppu-preset-group"><span class="gppu-preset-label">{ui.resolutionPresetsLabel}</span><div class="gppu-chip-row"><button type="button" data-resolution-preset="320x180">{ui.preset320}</button><button type="button" data-resolution-preset="384x216">{ui.preset384}</button><button type="button" data-resolution-preset="640x360">{ui.preset640}</button></div></div>
+      <div class="gppu-preset-group"><span class="gppu-preset-label">{ui.scalePresetsLabel}</span><div class="gppu-chip-row"><button type="button" data-scale-preset="1">{ui.scale1}</button><button type="button" data-scale-preset="2">{ui.scale2}</button><button type="button" data-scale-preset="3">{ui.scale3}</button><button type="button" data-scale-preset="4">{ui.scale4}</button><button type="button" data-scale-preset="6">{ui.scale6}</button></div></div>
+      <button class="gppu-reset" type="button" data-reset>{ui.resetLabel}</button>
+    </aside>
+    <main class="gppu-stage" aria-labelledby="gppu-field-title">
+      <div class="gppu-stage-heading"><div><span class="gppu-kicker">02</span><h2 id="gppu-field-title">{ui.fieldTitle}</h2><p>{ui.fieldCaption}</p></div><span class="gppu-live" data-live aria-live="polite">{ui.statusReady}</span></div>
+      <div class="gppu-field" data-pixel-field></div>
+      <div class="gppu-summary" data-summary></div>
+      <section class="gppu-crisp"><div class="gppu-section-heading"><div><span class="gppu-kicker">03</span><h3>{ui.crispTitle}</h3><p>{ui.crispCaption}</p></div></div><div class="gppu-step-grid" data-scale-steps></div></section>
+      <div class="gppu-table" data-table></div>
+      <p class="gppu-model-note">{ui.modelNote}</p>
+      <p class="gppu-privacy">{ui.privacyDisclosure}</p>
+    </main>
+  </div>
+</div>
+
+<script is:inline type="application/json" data-game-pixel-per-unit-ui set:html={JSON.stringify(ui)}></script>
+
+<script>
+  import { mountGamePixelPerUnitPlanner } from './controller';
+  const root = document.querySelector<HTMLElement>('[data-game-pixel-per-unit-planner]');
+  const uiScript = document.querySelector<HTMLScriptElement>('[data-game-pixel-per-unit-ui]');
+  if (root && uiScript) mountGamePixelPerUnitPlanner(root, JSON.parse(uiScript.textContent ?? '{}'));
+</script>

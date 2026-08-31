@@ -22,7 +22,10 @@ export { damageFormulaLab } from './tool/damageFormulaLab/entry';
 export type { DamageFormulaLabUI, DamageFormulaLabLocaleContent } from './tool/damageFormulaLab/entry';
 export { gameDeltaTimeFixedTimestepLab } from './tool/gameDeltaTimeFixedTimestepLab/entry';
 export type { GameDeltaTimeFixedTimestepLabUI, GameDeltaTimeFixedTimestepLabLocaleContent } from './tool/gameDeltaTimeFixedTimestepLab/entry';
+export { gamePixelPerUnitPlanner } from './tool/gamePixelPerUnitPlanner/entry';
+export type { GamePixelPerUnitPlannerUI, GamePixelPerUnitPlannerLocaleContent } from './tool/gamePixelPerUnitPlanner/entry';
 export { gamesCategory } from './category';
+
 import { steamCapsuleGenerator } from './tool/steamCapsuleGenerator/entry';
 import { itchioGameTester } from './tool/itchioGameTester/entry';
 import { spriteSheetPacker } from './tool/spriteSheetPacker/entry';
@@ -36,5 +39,6 @@ import { gameUiAccessibilityTester } from './tool/gameUIAccessibilityTester/entr
 import { hitboxHurtboxAnimator } from './tool/hitboxHurtboxAnimator/entry';
 import { damageFormulaLab } from './tool/damageFormulaLab/entry';
 import { gameDeltaTimeFixedTimestepLab } from './tool/gameDeltaTimeFixedTimestepLab/entry';
+import { gamePixelPerUnitPlanner } from './tool/gamePixelPerUnitPlanner/entry';
 
-export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab];
+export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab, gamePixelPerUnitPlanner];
