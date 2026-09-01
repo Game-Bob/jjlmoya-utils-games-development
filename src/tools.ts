@@ -15,6 +15,7 @@ import { HITBOX_HURTBOX_ANIMATOR_TOOL } from './tool/hitboxHurtboxAnimator';
 import { DAMAGE_FORMULA_LAB_TOOL } from './tool/damageFormulaLab';
 import { GAME_DELTA_TIME_FIXED_TIMESTEP_LAB_TOOL } from './tool/gameDeltaTimeFixedTimestepLab';
 import { GAME_PIXEL_PER_UNIT_PLANNER_TOOL } from './tool/gamePixelPerUnitPlanner';
+import { ISOMETRIC_TILE_MAP_EDITOR_TOOL } from './tool/isometricTileMapEditor';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   STEAM_CAPSULE_GENERATOR_TOOL,
@@ -32,4 +33,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   DAMAGE_FORMULA_LAB_TOOL,
   GAME_DELTA_TIME_FIXED_TIMESTEP_LAB_TOOL,
   GAME_PIXEL_PER_UNIT_PLANNER_TOOL,
+  ISOMETRIC_TILE_MAP_EDITOR_TOOL,
 ];

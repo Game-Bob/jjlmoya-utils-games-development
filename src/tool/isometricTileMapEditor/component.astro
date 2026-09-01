@@ -1,0 +1,75 @@
+---
+import type { IsometricTileMapEditorUI } from './ui';
+
+interface Props {
+  ui: IsometricTileMapEditorUI;
+}
+
+const { ui } = Astro.props as Props;
+---
+
+<div class="isometric-tool" data-isometric-tool>
+  <script is:inline type="application/json" data-runtime-data set:html={JSON.stringify({ ui })}></script>
+  <div class="iso-editor-shell">
+    <aside class="iso-controls" aria-labelledby="iso-controls-title">
+      <h2 id="iso-controls-title">{ui.controlsTitle}</h2>
+      <div class="iso-control-section">
+        <h3>{ui.geometryTitle}</h3>
+        <label>{ui.tileWidthLabel}<input type="number" min="32" max="160" step="1" value="72" data-config="tileWidth" /></label>
+        <label>{ui.tileHeightLabel}<input type="number" min="16" max="100" step="1" value="36" data-config="tileHeight" /></label>
+        <label>{ui.columnsLabel}<input type="number" min="2" max="16" step="1" value="8" data-config="columns" /></label>
+        <label>{ui.rowsLabel}<input type="number" min="2" max="16" step="1" value="8" data-config="rows" /></label>
+        <label>{ui.layersLabel}<input type="number" min="1" max="6" step="1" value="3" data-config="layers" /></label>
+        <label>{ui.layerDepthLabel}<input type="number" min="8" max="80" step="1" value="24" data-config="layerDepth" /></label>
+      </div>
+      <div class="iso-control-section">
+        <h3>{ui.toolsTitle}</h3>
+        <div class="iso-tool-buttons">
+          <button type="button" data-action="select-mode" data-mode="paint" class="iso-mode-button is-active">{ui.paintLabel}</button>
+          <button type="button" data-action="select-mode" data-mode="erase" class="iso-mode-button">{ui.eraseLabel}</button>
+        </div>
+      </div>
+      <div class="iso-control-section">
+        <h3>{ui.paletteTitle}</h3>
+        <div data-palette class="iso-palette"></div>
+      </div>
+      <div class="iso-control-section">
+        <h3>{ui.layersTitle}</h3>
+        <div data-layers class="iso-layers"></div>
+      </div>
+      <div class="iso-action-row">
+        <button type="button" data-action="clear">{ui.clearLabel}</button>
+        <button type="button" data-action="reset">{ui.resetLabel}</button>
+      </div>
+      <div class="iso-export-row">
+        <button type="button" data-action="export-json">{ui.exportJsonLabel}</button>
+        <button type="button" data-action="export-svg">{ui.exportSvgLabel}</button>
+      </div>
+    </aside>
+    <section class="iso-stage" aria-labelledby="iso-map-title">
+      <div class="iso-stage-header">
+        <div>
+          <h2 id="iso-map-title">{ui.mapTitle}</h2>
+          <p>{ui.mapHelp}</p>
+        </div>
+        <p class="iso-status" data-status>{ui.statusReady}</p>
+      </div>
+      <div class="iso-map-frame" data-map></div>
+      <div class="iso-summary-block">
+        <h3>{ui.summaryTitle}</h3>
+        <div data-summary class="iso-summary"></div>
+      </div>
+      <div class="iso-legend">
+        <h3>{ui.legendTitle}</h3>
+        <span><i class="iso-legend-swatch iso-legend-filled"></i>{ui.legendFilled}</span>
+        <span><i class="iso-legend-swatch iso-legend-empty"></i>{ui.legendEmpty}</span>
+      </div>
+      <p class="iso-note">{ui.modelNote}</p>
+      <p class="iso-privacy">{ui.privacyDisclosure}</p>
+    </section>
+  </div>
+</div>
+
+<script>
+  import './controller';
+</script>

@@ -26,7 +26,11 @@ export { gameDeltaTimeFixedTimestepLab } from './tool/gameDeltaTimeFixedTimestep
 export type { GameDeltaTimeFixedTimestepLabUI, GameDeltaTimeFixedTimestepLabLocaleContent } from './tool/gameDeltaTimeFixedTimestepLab/entry';
 export { gamePixelPerUnitPlanner } from './tool/gamePixelPerUnitPlanner/entry';
 export type { GamePixelPerUnitPlannerUI, GamePixelPerUnitPlannerLocaleContent } from './tool/gamePixelPerUnitPlanner/entry';
+export { isometricTileMapEditor } from './tool/isometricTileMapEditor/entry';
+export type { IsometricTileMapEditorUI, IsometricTileMapEditorLocaleContent } from './tool/isometricTileMapEditor/entry';
 export { gamesCategory } from './category';
+
+import { isometricTileMapEditor } from './tool/isometricTileMapEditor/entry';
 
 import { steamCapsuleGenerator } from './tool/steamCapsuleGenerator/entry';
 import { itchioGameTester } from './tool/itchioGameTester/entry';
@@ -44,4 +48,4 @@ import { gameDeltaTimeFixedTimestepLab } from './tool/gameDeltaTimeFixedTimestep
 import { gamePixelPerUnitPlanner } from './tool/gamePixelPerUnitPlanner/entry';
 import { fixerEditor } from './tool/fixerEditor/entry';
 
-export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab, gamePixelPerUnitPlanner, fixerEditor];
+export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab, gamePixelPerUnitPlanner, fixerEditor, isometricTileMapEditor];

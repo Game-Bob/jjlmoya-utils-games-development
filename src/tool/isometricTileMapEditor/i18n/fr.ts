@@ -1,0 +1,45 @@
+import type { FAQPage, HowTo, SoftwareApplication, WithContext } from 'schema-dts';
+import type { ToolLocaleContent } from '../../../types';
+import type { IsometricTileMapEditorUI } from '../ui';
+import { bibliographyEntries } from '../bibliography';
+
+const title = 'Éditeur de cartes de tuiles isométriques';
+const description = 'Dessinez des cartes en grille losange avec plusieurs couches, réglez la géométrie des tuiles et exportez votre esquisse de niveau en JSON ou SVG.';
+const faq = [
+  { question: 'Qu est-ce qu une carte de tuiles isometrique?', answer: 'Une carte de tuiles isometrique utilise une grille en losanges pour suggerer un espace tridimensionnel dans une scene en deux dimensions. Les colonnes et les lignes decrivent le sol tandis que les couches ajoutent un decalage de hauteur.' },
+  { question: 'Comment placer une tuile?', answer: 'Choisissez une tuile dans la palette, gardez Peindre actif, choisissez la couche active puis cliquez sur un losange. Un clic droit efface une cellule meme lorsque Peindre est selectionne.' },
+  { question: 'Que change la profondeur de couche?', answer: 'La profondeur de couche est le decalage vertical a l ecran entre les niveaux empiles. Augmentez-la pour representer une marche plus haute et reduisez-la lorsque les couches doivent rester proches.' },
+  { question: 'Puis-je utiliser le SVG exporte dans un moteur de jeu?', answer: 'Le SVG sert de reference visuelle avec les losanges et leurs couleurs. Le JSON est plus adapte pour reconstruire la grille logique, car il conserve lignes, colonnes, couches et valeurs des tuiles.' },
+  { question: 'Cet editeur cree-t-il un tileset de production?', answer: 'Non. Il planifie une grille en couches et exporte une description compacte de la carte. Il ne decoupe pas les textures, ne configure pas les collisions, ne choisit pas le tri du moteur et ne garantit pas le rendu final.' },
+];
+const howTo = [
+  { name: 'Regler la geometrie de la grille', text: 'Choisissez la largeur et la hauteur d une tuile, puis le nombre de colonnes, de lignes et de couches. La profondeur de couche decrit le saut vertical entre les niveaux.' },
+  { name: 'Choisir une couche de dessin', text: 'Selectionnez une couche avant de peindre. La couche active a un contour plus fort et les autres couches visibles restent moins opaques pour conserver le contexte spatial.' },
+  { name: 'Peindre le sol ou la structure', text: 'Choisissez Herbe, Pierre, Eau ou Chemin et cliquez sur les cellules. Changez de palette lorsqu une autre matiere doit occuper la cellule suivante.' },
+  { name: 'Corriger la carte localement', text: 'Utilisez Effacer ou le clic droit pour retirer une tuile. Une modification des dimensions conserve les cellules qui restent dans les limites.' },
+  { name: 'Exporter le resultat de conception', text: 'Utilisez JSON pour reconstruire la grille dans un autre outil et SVG comme reference visuelle rapide pour une revue ou une esquisse de niveau.' },
+];
+const softwareApplication: WithContext<SoftwareApplication> = { '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: title, applicationCategory: 'DeveloperApplication', operatingSystem: 'Any' };
+const faqPage: WithContext<FAQPage> = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) };
+const howToSchema: WithContext<HowTo> = { '@context': 'https://schema.org', '@type': 'HowTo', name: title, step: howTo.map((step) => ({ '@type': 'HowToStep', name: step.name, text: step.text })) };
+
+export const content: ToolLocaleContent<IsometricTileMapEditorUI> = {
+  slug: 'editeur-de-cartes-de-tuiles-isometriques', title, description,
+  ui: {
+    controlsTitle: 'Commandes de la carte', geometryTitle: 'Geometrie de la grille', tileWidthLabel: 'Largeur de tuile', tileHeightLabel: 'Hauteur de tuile', columnsLabel: 'Colonnes', rowsLabel: 'Lignes', layersLabel: 'Couches', layerDepthLabel: 'Profondeur de couche', toolsTitle: 'Mode de dessin', paintLabel: 'Peindre', eraseLabel: 'Effacer', paletteTitle: 'Palette de tuiles', grassLabel: 'Herbe', stoneLabel: 'Pierre', waterLabel: 'Eau', pathLabel: 'Chemin', layersTitle: 'Couche active', layerLabel: 'Couche', hideLayerLabel: 'Masquer', showLayerLabel: 'Afficher', mapTitle: 'Carte isometrique', mapHelp: 'Choisissez une tuile et une couche, puis cliquez sur les losanges. Le clic droit efface une cellule.', mapAriaLabel: 'Carte de tuiles isometrique modifiable', summaryTitle: 'Lecture de la carte', filledLabel: 'Cellules remplies', coverageLabel: 'Couverture', activeLayerLabel: 'Couche active', selectedLabel: 'Tuile selectionnee', emptyCellLabel: 'Vide', cellLabel: 'Cellule', clearLabel: 'Vider la carte', resetLabel: 'Reinitialiser la geometrie', exportJsonLabel: 'Exporter JSON', exportSvgLabel: 'Exporter SVG', statusReady: 'Pret a dessiner', statusSaved: 'Enregistre localement', statusCleared: 'Carte videe', statusReset: 'Geometrie reinitialisee', statusExported: 'Fichier exporte', statusPainted: 'Tuile placee', statusErased: 'Tuile effacee', statusLayerHidden: 'Couche masquee', statusLayerShown: 'Couche affichee', legendTitle: 'Legende de la carte', legendEmpty: 'Cellule vide', legendFilled: 'Cellule peinte', modelNote: 'Cet editeur decrit une grille logique en couches. Il n importe pas de tileset, ne calcule pas les collisions, ne configure pas le tri propre au moteur et ne garantit pas la position finale des pixels.', privacyDisclosure: 'Votre carte reste dans ce navigateur. Aucune donnee de carte ni telemetrie n est envoyee.',
+  },
+  seo: [
+    { type: 'title', level: 2, text: 'Utiliser une grille isométrique pour planifier l espace et la hauteur' },
+    { type: 'paragraph', html: 'Une carte isometrique est utile lorsqu un niveau doit montrer clairement les positions au sol et une sensation de hauteur sans devenir une scene 3D complete. La grille en losanges rend les lignes et les colonnes lisibles, tandis que les couches permettent d esquisser des ponts, plateformes, toits ou pieces superposees.' },
+    { type: 'paragraph', html: 'Cet editeur rend la geometrie explicite. La largeur et la hauteur de tuile controlent le losange, les colonnes et les lignes definissent l empreinte au sol, et la profondeur de couche regle le decalage vers le haut. Les cellules qui restent dans les limites sont conservees lors du redimensionnement.' },
+    { type: 'title', level: 2, text: 'Construire un blockout utile en cinq passes' },
+    { type: 'list', items: ['Adaptez les proportions de la tuile au langage visuel du projet.', 'Peignez d abord une matiere de sol pour garder les zones praticables lisibles.', 'Utilisez une couche pour les ponts, toits et plateformes elevees au lieu de coder la hauteur uniquement par la couleur.', 'Masquez les couches superieures ou passez en mode Effacer pour corriger les cellules inferieures.', 'Exportez JSON pour reconstruire la carte et SVG pour une revue visuelle.'] },
+    { type: 'title', level: 2, text: 'Lire les lignes, colonnes et couches separement' },
+    { type: 'paragraph', html: 'Les lignes et les colonnes indiquent la position d une cellule sur le plan logique et restent stables lorsque la taille du losange change. Les couches ajoutent une seconde coordonnee: deux cellules peuvent partager ligne et colonne tout en occupant des hauteurs differentes. Cette separation facilite la reconstruction dans un moteur.' },
+    { type: 'table', headers: ['Signal', 'Signification', 'Decision suivante'], rows: [['Couverture faible', 'La plupart des cellules sont encore vides.', 'Definissez la surface jouable avant d ajouter les details.'], ['Plusieurs couches dans une colonne', 'La carte contient un espace superpose.', 'Verifiez que le tri et les collisions distinguent ces hauteurs.'], ['Losange tres large', 'Le deplacement horizontal domine la grille.', 'Reduisez la largeur de tuile ou augmentez la zone de reference.'], ['Pas de couche tres profond', 'Les changements de hauteur sont tres visibles.', 'Utilisez moins de couches ou verifiez les assets.']] },
+    { type: 'title', level: 2, text: 'Choisir le bon export pour la prochaine tache' },
+    { type: 'paragraph', html: 'JSON est la remise structuree: il conserve la geometrie, le nombre de couches, l etat de dessin et chaque valeur de tuile. SVG est la remise de presentation: il montre les losanges colores pour une revue, une tache ou un document de level design. Aucun export ne contient le tileset source ni les metadonnees du moteur.' },
+    { type: 'tip', title: 'Ce que ce blockout ne peut pas prouver', html: 'Une carte en losanges convaincante ne prouve pas que les sprites seront tries correctement, que les personnages pourront franchir les hauteurs ou que le tileset se raccordera sans joint. Testez les assets, collisions, axe de tri et camera reels dans le moteur cible.' },
+  ],
+  faqTitle: 'Questions sur les cartes de tuiles isometriques', faq, bibliographyTitle: 'References sur les cartes de tuiles', bibliography: bibliographyEntries, howTo, schemas: [softwareApplication, faqPage, howToSchema],
+};
