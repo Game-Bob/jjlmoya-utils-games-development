@@ -4,6 +4,8 @@ export { itchioGameTester } from './tool/itchioGameTester/entry';
 export type { ItchioGameTesterUI, ItchioGameTesterLocaleContent } from './tool/itchioGameTester/entry';
 export { spriteSheetPacker } from './tool/spriteSheetPacker/entry';
 export type { SpriteSheetPackerUI, SpriteSheetPackerLocaleContent } from './tool/spriteSheetPacker/entry';
+export { fixerEditor } from './tool/fixerEditor/entry';
+export type { FixerEditorUI, FixerEditorLocaleContent } from './tool/fixerEditor/entry';
 export { audioLoopPointFinder } from './tool/audioLoopPointFinder/entry';
 export type { AudioLoopPointFinderUI, AudioLoopPointFinderLocaleContent } from './tool/audioLoopPointFinder/entry';
 export { saveFileEditor } from './tool/saveFileEditor/entry';
@@ -40,5 +42,6 @@ import { hitboxHurtboxAnimator } from './tool/hitboxHurtboxAnimator/entry';
 import { damageFormulaLab } from './tool/damageFormulaLab/entry';
 import { gameDeltaTimeFixedTimestepLab } from './tool/gameDeltaTimeFixedTimestepLab/entry';
 import { gamePixelPerUnitPlanner } from './tool/gamePixelPerUnitPlanner/entry';
+import { fixerEditor } from './tool/fixerEditor/entry';
 
-export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab, gamePixelPerUnitPlanner];
+export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab, gamePixelPerUnitPlanner, fixerEditor];

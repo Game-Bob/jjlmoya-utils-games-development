@@ -23,5 +23,6 @@ export { PIXEL_ART_PALETTE_SWAPPER_TOOL, pixelArtPaletteSwapper } from './tool/p
 export { GAME_UI_ACCESSIBILITY_TESTER_TOOL, gameUiAccessibilityTester } from './tool/gameUIAccessibilityTester';
 export { HITBOX_HURTBOX_ANIMATOR_TOOL, hitboxHurtboxAnimator } from './tool/hitboxHurtboxAnimator';
 export { DAMAGE_FORMULA_LAB_TOOL, damageFormulaLab } from './tool/damageFormulaLab';
+export { FIXER_EDITOR_TOOL, fixerEditor } from './tool/fixerEditor';
 
 export type { ToolLocaleContent as GamesToolLocaleContent } from './types';

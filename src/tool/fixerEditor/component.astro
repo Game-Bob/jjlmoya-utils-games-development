@@ -1,0 +1,114 @@
+---
+import type { FixerEditorUI } from './ui';
+import './fixer-editor.css';
+
+interface Props {
+  ui: FixerEditorUI;
+}
+
+const { ui } = Astro.props;
+---
+
+<div class="fe-shell" data-tool="fixer-editor" data-ui={JSON.stringify(ui)}>
+  <div class="fe-command-rail">
+    <div class="fe-upload-zone" id="fe-drop-zone" tabindex="0" role="button" aria-label={ui.uploadTitle}>
+      <span class="fe-upload-mark" aria-hidden="true">+</span>
+      <span class="fe-upload-copy"><strong>{ui.uploadTitle}</strong><small>{ui.uploadHint}</small></span>
+      <span class="fe-button fe-primary fe-upload-cta">{ui.chooseImage}</span>
+      <input id="fe-file-input" class="fe-hidden" type="file" accept="image/png,image/jpeg,image/webp" aria-label={ui.chooseImage} />
+    </div>
+    <div class="fe-source-meta">
+      <span class="fe-file-name"><span>{ui.sourceFile}</span> <strong id="fe-source-name">{ui.noImage}</strong></span>
+      <span id="fe-status" class="fe-status" role="status" aria-live="polite">{ui.statusEmpty}</span>
+    </div>
+  </div>
+
+  <div id="fe-workbench" class="fe-workbench" hidden>
+    <aside class="fe-panel fe-grid-panel">
+      <div class="fe-panel-label">01</div>
+      <h2>{ui.gridSettings}</h2>
+      <div class="fe-field-grid">
+        <label><span>{ui.columns}</span><input id="fe-columns" type="number" min="1" max="128" value="4" /></label>
+        <label><span>{ui.rows}</span><input id="fe-rows" type="number" min="1" max="128" value="2" /></label>
+        <label><span>{ui.cellWidth}</span><input id="fe-cell-width" type="number" min="1" max="4096" value="64" /></label>
+        <label><span>{ui.cellHeight}</span><input id="fe-cell-height" type="number" min="1" max="4096" value="64" /></label>
+        <label><span>{ui.marginX}</span><input id="fe-margin-x" type="number" min="0" max="4096" value="0" /></label>
+        <label><span>{ui.marginY}</span><input id="fe-margin-y" type="number" min="0" max="4096" value="0" /></label>
+        <label><span>{ui.gapX}</span><input id="fe-gap-x" type="number" min="0" max="4096" value="0" /></label>
+        <label><span>{ui.gapY}</span><input id="fe-gap-y" type="number" min="0" max="4096" value="0" /></label>
+      </div>
+      <div class="fe-panel-actions">
+        <button id="fe-auto-detect" class="fe-button fe-primary" type="button">{ui.autoDetectGrid}</button>
+        <button id="fe-reset-all" class="fe-button fe-quiet" type="button">{ui.resetAll}</button>
+        <button id="fe-undo" class="fe-button fe-quiet" type="button">{ui.undo}</button>
+        <button id="fe-redo" class="fe-button fe-quiet" type="button">{ui.redo}</button>
+      </div>
+    </aside>
+
+    <main class="fe-stage-panel">
+      <div class="fe-stage-heading">
+        <div><span class="fe-panel-label">02</span><h2>{ui.sheetView}</h2></div>
+        <label class="fe-zoom"><span>{ui.zoom}</span><input id="fe-zoom" type="range" min="1" max="8" value="3" /><output id="fe-zoom-value">3x</output></label>
+      </div>
+      <div class="fe-sheet-pair">
+        <figure class="fe-sheet-view"><figcaption><span class="fe-source-mark"></span>{ui.sourceLabel}</figcaption><div class="fe-canvas-wrap"><canvas id="fe-source-canvas" width="1" height="1" aria-label={ui.sourceLabel}></canvas></div></figure>
+        <figure class="fe-sheet-view fe-corrected-view"><figcaption><span class="fe-result-mark"></span>{ui.correctedView}</figcaption><div class="fe-canvas-wrap"><canvas id="fe-result-canvas" width="1" height="1" aria-label={ui.resultLabel}></canvas></div></figure>
+      </div>
+      <div class="fe-stage-footer"><span><strong>{ui.imageSize}</strong> <span id="fe-image-size">0 x 0 px</span></span><span>{ui.metadataNote}</span></div>
+      <div class="fe-strip-heading"><span class="fe-panel-label">03</span><h2>{ui.frameStrip}</h2><span class="fe-count"><span id="fe-frame-count">0</span> {ui.frameCount}</span></div>
+      <div id="fe-filmstrip" class="fe-filmstrip" role="list" aria-label={ui.frameStrip}></div>
+    </main>
+
+    <aside class="fe-panel fe-inspector-panel">
+      <div class="fe-panel-label">04</div>
+      <div class="fe-inspector-heading"><h2>{ui.activeFrame}</h2><strong id="fe-frame-number">0 / 0</strong></div>
+      <div class="fe-active-canvas-wrap"><canvas id="fe-frame-canvas" width="64" height="64" aria-label={ui.activeFrame}></canvas></div>
+      <div class="fe-frame-state" id="fe-frame-state">{ui.unchanged}</div>
+      <div class="fe-crop-grid">
+        <label><span>{ui.cropX}</span><input id="fe-crop-x" type="number" min="0" value="0" /></label>
+        <label><span>{ui.cropY}</span><input id="fe-crop-y" type="number" min="0" value="0" /></label>
+        <label><span>{ui.cropWidth}</span><input id="fe-crop-width" type="number" min="1" value="64" /></label>
+        <label><span>{ui.cropHeight}</span><input id="fe-crop-height" type="number" min="1" value="64" /></label>
+        <label><span>{ui.offsetX}</span><input id="fe-offset-x" type="number" value="0" /></label>
+        <label><span>{ui.offsetY}</span><input id="fe-offset-y" type="number" value="0" /></label>
+      </div>
+      <div class="fe-nudge-heading"><span>{ui.nudgeStep}</span><div class="fe-step-buttons"><button class="fe-step is-active" data-step="1" type="button">{ui.stepOne}</button><button class="fe-step" data-step="2" type="button">{ui.stepTwo}</button><button class="fe-step" data-step="4" type="button">{ui.stepFour}</button></div></div>
+      <div class="fe-nudge-pad" aria-label={ui.frameTools}>
+        <span></span><button class="fe-nudge" data-axis="y" data-direction="-1" type="button" aria-label={ui.moveUp}>↑</button><span></span>
+        <button class="fe-nudge" data-axis="x" data-direction="-1" type="button" aria-label={ui.moveLeft}>←</button><span class="fe-crosshair" aria-hidden="true"></span><button class="fe-nudge" data-axis="x" data-direction="1" type="button" aria-label={ui.moveRight}>→</button>
+        <span></span><button class="fe-nudge" data-axis="y" data-direction="1" type="button" aria-label={ui.moveDown}>↓</button><span></span>
+      </div>
+      <div class="fe-inspector-actions"><button id="fe-trim" class="fe-button fe-primary" type="button">{ui.trimTransparent}</button><button id="fe-trim-all" class="fe-button fe-quiet" type="button">{ui.trimAll}</button><button id="fe-reset-frame" class="fe-button fe-quiet" type="button">{ui.resetFrame}</button></div>
+    </aside>
+  </div>
+
+  <div id="fe-tools" class="fe-output-bar" hidden>
+    <div class="fe-output-copy">
+      <strong>{ui.history}</strong>
+      <div class="fe-output-stat"><span id="fe-correction-count">0</span><span>{ui.correctionCount}</span></div>
+    </div>
+    <div class="fe-playback">
+      <span class="fe-flipbook-label">{ui.flipbook}</span>
+      <button id="fe-play" class="fe-button fe-quiet" type="button">{ui.play}</button>
+      <button id="fe-pause" class="fe-button fe-quiet" type="button">{ui.pause}</button>
+      <label class="fe-fps"><span>{ui.fps}</span><input id="fe-fps" type="range" min="1" max="30" value="12" /><output id="fe-fps-value">12</output></label>
+    </div>
+    <div class="fe-output-actions">
+      <button id="fe-save-project" class="fe-button fe-quiet" type="button">{ui.saveProject}</button>
+      <button id="fe-load-project-button" class="fe-button fe-quiet" type="button">{ui.loadProject}</button>
+      <input id="fe-load-project" class="fe-hidden" type="file" accept="application/json,.json" aria-label={ui.loadProject} />
+      <button id="fe-export-json" class="fe-button fe-quiet" type="button">{ui.exportJson}</button>
+      <button id="fe-export-sheet" class="fe-button fe-primary" type="button">{ui.exportSheet}</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initFixerEditor } from './controller';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFixerEditor, { once: true });
+  } else {
+    initFixerEditor();
+  }
+</script>
