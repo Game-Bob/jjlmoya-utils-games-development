@@ -92,7 +92,7 @@ function makeScaleSteps(config: PixelPerUnitConfig): CrispScaleStep[] {
   });
 }
 
-function findRecommendedScale(config: PixelPerUnitConfig, steps: CrispScaleStep[]): number {
+function findRecommendedScale(steps: CrispScaleStep[]): number {
   const fitting = steps.filter((step) => step.fitsViewport);
   const candidates = fitting.length > 0 ? fitting : steps;
   return candidates.reduce((best, step) => step.deltaFromTarget < best.deltaFromTarget ? step : best).scale;
@@ -120,7 +120,7 @@ export function calculatePixelPlan(input: Partial<PixelPerUnitConfig> = {}): Pix
     renderedSpriteWidth: config.spriteWidth * config.targetScale,
     renderedSpriteHeight: config.spriteHeight * config.targetScale,
     fitScale,
-    recommendedScale: findRecommendedScale(config, steps),
+    recommendedScale: findRecommendedScale(steps),
     scaleIsInteger: Number.isInteger(config.targetScale),
     axisMismatch,
     bleedRisk: calculateRisk(config, axisMismatch, fitScale),

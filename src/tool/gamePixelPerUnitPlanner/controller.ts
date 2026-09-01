@@ -13,8 +13,15 @@ function field(root: HTMLElement, name: keyof PixelPerUnitConfig): HTMLInputElem
 }
 
 function readConfig(root: HTMLElement): PixelPerUnitConfig {
-  const values = Object.fromEntries(fieldNames.map((name) => [name, Number(field(root, name).value)]));
-  return normalizePixelConfig(values);
+  return normalizePixelConfig({
+    displayWidth: Number(field(root, 'displayWidth').value),
+    displayHeight: Number(field(root, 'displayHeight').value),
+    spriteWidth: Number(field(root, 'spriteWidth').value),
+    spriteHeight: Number(field(root, 'spriteHeight').value),
+    worldWidth: Number(field(root, 'worldWidth').value),
+    worldHeight: Number(field(root, 'worldHeight').value),
+    targetScale: Number(field(root, 'targetScale').value),
+  });
 }
 
 function syncOutputs(root: HTMLElement): void {
@@ -44,10 +51,10 @@ function setConfig(root: HTMLElement, config: PixelPerUnitConfig): void {
   syncOutputs(root);
 }
 
-function bindPresets(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl?: string }): void {
+function bindPresets(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl: string | undefined }): void {
   root.querySelectorAll<HTMLButtonElement>('[data-resolution-preset]').forEach((button) => button.addEventListener('click', () => {
-    const [displayWidth, displayHeight] = (button.dataset.resolutionPreset ?? '').split('x').map(Number);
-    const config = { ...readConfig(root), displayWidth, displayHeight };
+    const presetParts = (button.dataset.resolutionPreset ?? '').split('x');
+    const config = normalizePixelConfig({ ...readConfig(root), displayWidth: Number(presetParts[0]), displayHeight: Number(presetParts[1]) });
     setConfig(root, config);
     render(root, ui, config, state.spriteUrl);
   }));
@@ -58,7 +65,7 @@ function bindPresets(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { 
   }));
 }
 
-function bindReset(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl?: string }): void {
+function bindReset(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl: string | undefined }): void {
   root.querySelector<HTMLButtonElement>('[data-reset]')?.addEventListener('click', () => {
     if (state.spriteUrl && state.spriteUrl !== DEFAULT_SPRITE_URL) URL.revokeObjectURL(state.spriteUrl);
     state.spriteUrl = DEFAULT_SPRITE_URL;
@@ -73,7 +80,7 @@ function bindReset(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { sp
   });
 }
 
-function bindSpriteUpload(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl?: string }): void {
+function bindSpriteUpload(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl: string | undefined }): void {
   const upload = root.querySelector<HTMLInputElement>('[data-sprite-upload]');
   upload?.addEventListener('change', () => {
     const file = upload.files?.[0];
@@ -94,7 +101,7 @@ function bindSpriteUpload(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, stat
   });
 }
 
-function bindClearSprite(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl?: string }): void {
+function bindClearSprite(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl: string | undefined }): void {
   root.querySelector<HTMLButtonElement>('[data-clear-sprite]')?.addEventListener('click', () => {
     if (state.spriteUrl && state.spriteUrl !== DEFAULT_SPRITE_URL) URL.revokeObjectURL(state.spriteUrl);
     state.spriteUrl = undefined;
@@ -106,7 +113,7 @@ function bindClearSprite(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state
   });
 }
 
-function bindInputs(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl?: string }): void {
+function bindInputs(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { spriteUrl: string | undefined }): void {
   fieldNames.forEach((name) => field(root, name).addEventListener('input', () => {
     syncOutputs(root);
     render(root, ui, readConfig(root), state.spriteUrl);
@@ -118,7 +125,7 @@ function bindInputs(root: HTMLElement, ui: GamePixelPerUnitPlannerUI, state: { s
 }
 
 export function mountGamePixelPerUnitPlanner(root: HTMLElement, ui: GamePixelPerUnitPlannerUI): void {
-  const state: { spriteUrl?: string } = { spriteUrl: DEFAULT_SPRITE_URL };
+  const state: { spriteUrl: string | undefined } = { spriteUrl: DEFAULT_SPRITE_URL };
   root.querySelector<HTMLElement>('[data-file-name]')!.textContent = ui.defaultSpriteLabel;
   const config = normalizePixelConfig(loadPixelConfig());
   setConfig(root, config);
