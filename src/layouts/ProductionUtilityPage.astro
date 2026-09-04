@@ -45,6 +45,7 @@ const ui = getCategoryUi(locale);
 </ProductionPage>
 
 <script>
+  import { observeWidgetHeight } from "../mfe/widget-height";
   const isWidget = new URLSearchParams(window.location.search).get("widget") === "true";
   const page = document.querySelector<HTMLElement>(".utility-production");
   const container = document.querySelector<HTMLElement>(".utility-tool-production");
@@ -60,11 +61,10 @@ const ui = getCategoryUi(locale);
   document.querySelector('[data-zoom="reset"]')?.addEventListener("click", () => { zoom = 1; applyZoom(); localStorage.removeItem("gamebob-utility-zoom"); });
   if (isWidget) {
     document.body.classList.add("utility-widget-body");
-    if (page) {
-      page.classList.add("utility-widget-mode");
-    }
+    page?.classList.add("utility-widget-mode");
   }
   applyZoom();
+  if (isWidget && container) observeWidgetHeight(container);
 </script>
 
 <style>
@@ -88,7 +88,7 @@ const ui = getCategoryUi(locale);
     margin-top: 0;
   }
 
-  .utility-production.utility-widget-mode .utility-production-inner > :not(.utility-tool-production) {
+  :global(.utility-production.utility-widget-mode .utility-production-inner > :not(.utility-tool-production)) {
     display: none;
   }
 
