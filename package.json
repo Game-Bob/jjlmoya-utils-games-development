@@ -33,7 +33,16 @@
         "patch": "npm version patch",
         "minor": "npm version minor",
         "major": "npm version major",
-        "postinstall": "node scripts/postinstall.mjs"
+        "postinstall": "node scripts/postinstall.mjs",
+        "predev": "node scripts/postinstall.mjs",
+        "prestart": "node scripts/postinstall.mjs",
+        "prebuild": "node scripts/postinstall.mjs",
+        "qa": "npm run lint && npm run test && npm run build",
+        "cf:dry-run": "npm run build && wrangler deploy --dry-run",
+        "cf:preview": "npm run build && wrangler deploy --config wrangler.staging.jsonc",
+        "cf:deploy": "npm run build && wrangler deploy",
+        "cf:deployments": "wrangler deployments list",
+        "cf:rollback": "wrangler rollback"
     },
     "lint-staged": {
         "*.{ts,tsx,astro}": [
@@ -43,10 +52,12 @@
     "dependencies": {
         "@iconify-json/mdi": "^1.2.3",
         "@jjlmoya/prompagate": "^1.1.0",
-        "@jjlmoya/utils-shared": "1.2.0",
+        "@jjlmoya/utils-shared": "1.5.0",
         "astro": "^6.1.2",
         "astro-icon": "^1.1.0",
-        "jszip": "^3.10.1"
+        "jszip": "^3.10.1",
+        "@jjlmoya/identity": "0.4.0",
+        "@jjlmoya/tracking": "0.2.0"
     },
     "devDependencies": {
         "@astrojs/check": "^0.9.8",
@@ -62,6 +73,7 @@
         "stylelint-declaration-strict-value": "^1.11.1",
         "typescript": "^5.4.0",
         "typescript-eslint": "^8.58.0",
-        "vitest": "^4.1.2"
+        "vitest": "^4.1.2",
+        "wrangler": "4.113.0"
     }
 }

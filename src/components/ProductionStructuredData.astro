@@ -1,0 +1,46 @@
+---
+import type { KnownLocale, ToolLocaleContent } from "../types";
+import { TABLETOP_ASSET_VERSION } from "../mfe/assets";
+
+interface Props {
+    locale: KnownLocale;
+    content: ToolLocaleContent;
+    publicPath: string;
+    categoryTitle: string;
+    categoryHref: string;
+}
+
+const { locale, content, publicPath, categoryTitle, categoryHref } = Astro.props;
+const siteOrigin = locale === "es" ? "https://www.jjlmoya.es" : "https://www.gamebob.dev";
+const fullUrl = new URL(publicPath, siteOrigin).href;
+const categoryUrl = new URL(categoryHref, siteOrigin).href;
+const brandName = locale === "es" ? "jjlmoya" : "GameBob";
+const schemas = (content.schemas ?? []).filter((schema) => (schema as unknown as Record<string, unknown>)["@type"] !== "FAQPage");
+const schemaTypes = new Set(schemas.map((schema) => (schema as unknown as Record<string, unknown>)["@type"]));
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: brandName, item: `${siteOrigin}/${locale === "es" ? "" : `${locale}/`}` },
+        { "@type": "ListItem", position: 2, name: categoryTitle, item: categoryUrl },
+        { "@type": "ListItem", position: 3, name: content.title, item: fullUrl },
+    ],
+};
+const webApplicationSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: content.title,
+    description: content.description,
+    url: fullUrl,
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Any",
+    softwareVersion: TABLETOP_ASSET_VERSION,
+    author: { "@type": "Person", name: "jjlmoya", url: siteOrigin },
+    publisher: { "@type": "Organization", name: brandName, url: siteOrigin },
+    inLanguage: locale,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+};
+---
+<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+{!schemaTypes.has("WebApplication") && <script is:inline type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />}
+{schemas.map((schema) => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}

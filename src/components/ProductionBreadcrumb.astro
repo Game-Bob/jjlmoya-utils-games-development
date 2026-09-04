@@ -1,0 +1,134 @@
+---
+import { Icon } from "astro-icon/components";
+import type { KnownLocale } from "../types";
+import { getCategoryUi } from "../mfe/category-ui";
+import { getUtilitiesPath } from "@jjlmoya/utils-shared/routing";
+
+interface Props {
+    locale: KnownLocale;
+    categoryTitle?: string;
+    categoryHref?: string;
+    currentTitle?: string;
+}
+
+const LABELS: Record<KnownLocale, string> = {
+    es: "Todas las utilidades",
+    en: "All utilities",
+    fr: "Toutes les utilités",
+    de: "Alle Werkzeuge",
+    it: "Tutte le utilità",
+    pt: "Todas as utilidades",
+    nl: "Alle hulpmiddelen",
+    sv: "Alla verktyg",
+    pl: "Wszystkie narzędzia",
+    id: "Semua utilitas",
+    tr: "Tüm araçlar",
+    ru: "Все инструменты",
+    ja: "すべてのユーティリティ",
+    ko: "모든 유틸리티",
+    zh: "所有工具",
+};
+
+const { locale, categoryTitle, categoryHref, currentTitle } = Astro.props;
+const homeLabel = LABELS[locale];
+const breadcrumbLabel = getCategoryUi(locale).breadcrumb;
+---
+
+<nav class="production-breadcrumb" aria-label={breadcrumbLabel}>
+    <ol class="production-breadcrumb-list">
+        <li class="production-breadcrumb-item">
+            <a href={getUtilitiesPath(locale)}>{homeLabel}</a>
+        </li>
+        {categoryTitle && categoryHref && (
+            <>
+                <li class="production-breadcrumb-separator" aria-hidden="true">
+                    <Icon name="mdi:chevron-right" />
+                </li>
+                <li class="production-breadcrumb-item">
+                    <a href={categoryHref}>{categoryTitle}</a>
+                </li>
+            </>
+        )}
+        {currentTitle && (
+            <>
+                <li class="production-breadcrumb-separator" aria-hidden="true">
+                    <Icon name="mdi:chevron-right" />
+                </li>
+                <li class="production-breadcrumb-item production-breadcrumb-current" aria-current="page">
+                    <span>{currentTitle}</span>
+                </li>
+            </>
+        )}
+    </ol>
+</nav>
+
+<style>
+    .production-breadcrumb {
+        margin-bottom: var(--space-xl);
+    }
+
+    .production-breadcrumb-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .production-breadcrumb-item {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    .production-breadcrumb-item a {
+        overflow: hidden;
+        color: var(--text-main);
+        font-weight: 500;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .production-breadcrumb-item a:hover,
+    .production-breadcrumb-item a:focus-visible {
+        color: var(--games-development-accent);
+        text-decoration: underline;
+        text-underline-offset: 0.25rem;
+    }
+
+    .production-breadcrumb-separator {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        color: var(--text-dimmed, var(--text-muted));
+    }
+
+    .production-breadcrumb-separator svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .production-breadcrumb-current {
+        overflow: hidden;
+        max-width: min(28rem, 70vw);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    @media (width <= 640px) {
+        .production-breadcrumb {
+            margin-bottom: var(--space-lg);
+        }
+
+        .production-breadcrumb-item {
+            font-size: 0.8rem;
+        }
+    }
+</style>

@@ -1,0 +1,184 @@
+---
+import ProductionPage from "./ProductionPage.astro";
+import { Icon } from "astro-icon/components";
+import { SEORenderer } from "@jjlmoya/utils-shared";
+import ProductionBreadcrumb from "../components/ProductionBreadcrumb.astro";
+import type { KnownLocale, CategoryLocaleContent } from "../types";
+import { getCategoryPath } from "../mfe/routes";
+import { getCategoryUi } from "../mfe/category-ui";
+
+interface CategoryTool { id: string; icon: string; title: string; description: string; href: string; }
+interface Props { locale: KnownLocale; category: CategoryLocaleContent; tools: CategoryTool[]; alternates: { language: KnownLocale; url: string }[]; image?: string | undefined; }
+const { locale, category, tools, alternates, image } = Astro.props;
+const publicPath = getCategoryPath(locale, category.slug);
+const ui = getCategoryUi(locale);
+---
+
+<ProductionPage title={category.title} description={category.description} {locale} {publicPath} {alternates} {image}>
+  <div class="category-production">
+    <div class="category-production-inner">
+      <ProductionBreadcrumb locale={locale} currentTitle={category.title} />
+      <header class="category-header-production">
+        <h1>{category.title}</h1><p>{category.description}</p>
+      </header>
+      <div class="category-tools-grid">
+        {tools.map((tool, index) => (
+          <a href={tool.href} class="category-tool-card">
+            <span class="category-tool-index">{String(index + 1).padStart(2, "0")}</span>
+            <div class="category-tool-icon"><Icon name={tool.icon} /></div>
+            <h2>{tool.title}</h2><p>{tool.description}</p>
+            <span class="category-tool-cta">{ui.useTool} <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+      <section class="category-seo-production"><SEORenderer content={{ locale, sections: category.seo }} /></section>
+    </div>
+  </div>
+</ProductionPage>
+
+<style>
+  .category-production {
+    min-height: 100vh;
+    overflow-x: clip;
+    background: radial-gradient(ellipse at top, var(--primary-10), var(--bg-surface) 50%, var(--bg-main));
+  }
+
+  .category-production-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md) var(--space-4xl);
+  }
+
+  .category-header-production {
+    margin-bottom: var(--space-xl);
+    text-align: center;
+  }
+
+  .category-header-production h1 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    text-transform: lowercase;
+  }
+
+  .category-header-production p {
+    max-width: 48rem;
+    margin: 1rem auto 0;
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+
+  .category-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-4xl);
+  }
+
+  .category-tool-card {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    min-height: 230px;
+    flex-direction: column;
+    padding: var(--space-lg);
+    border: 1px solid color-mix(in srgb, var(--games-development-accent) 18%, var(--border-base));
+    border-radius: 1.25rem;
+    background: linear-gradient(145deg, var(--bg-surface), color-mix(in srgb, var(--games-development-accent) 4%, var(--bg-surface)));
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 1rem 2rem color-mix(in srgb, var(--shadow-base, #000) 35%, transparent);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .category-tool-card:hover,
+  .category-tool-card:focus-visible {
+    border-color: var(--games-development-accent);
+    box-shadow: 0 1.25rem 2.5rem color-mix(in srgb, var(--games-development-accent) 18%, transparent);
+    transform: translateY(-4px);
+  }
+
+  .category-tool-card:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--games-development-accent) 55%, transparent);
+    outline-offset: 4px;
+  }
+
+  .category-tool-card::after {
+    position: absolute;
+    right: -2rem;
+    bottom: -3rem;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--games-development-accent) 10%, transparent);
+    content: "";
+    pointer-events: none;
+  }
+
+  .category-tool-icon {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 3.25rem;
+    height: 3.25rem;
+    place-items: center;
+    margin-bottom: var(--space-md);
+    border: 1px solid color-mix(in srgb, var(--games-development-accent) 28%, transparent);
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--games-development-accent) 12%, var(--bg-surface));
+    color: var(--games-development-accent);
+    font-size: 1.6rem;
+  }
+
+  .category-tool-index {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-lg);
+    color: var(--text-dimmed, var(--text-muted));
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+
+  .category-tool-card h2,
+  .category-tool-card p,
+  .category-tool-cta {
+    position: relative;
+    z-index: 1;
+  }
+
+  .category-tool-card h2 {
+    margin: 0 0 0.5rem;
+    color: var(--text-main);
+    font-size: 1.25rem;
+  }
+
+  .category-tool-card p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .category-tool-cta {
+    margin-top: auto;
+    padding-top: var(--space-md);
+    color: var(--games-development-accent);
+    font-weight: 700;
+  }
+
+  .category-seo-production {
+    max-width: 56rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  @media (width <= 768px) {
+    .category-production-inner { padding: var(--space-lg) var(--space-sm) var(--space-3xl); }
+    .category-tools-grid { grid-template-columns: 1fr; }
+  }
+</style>

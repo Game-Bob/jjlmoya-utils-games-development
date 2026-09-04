@@ -6,11 +6,9 @@ const libDir = dirname(fileURLToPath(import.meta.url));
 const toolsDir = join(libDir, '../src/tool');
 
 const inNodeModules = libDir.includes('node_modules');
-if (!inNodeModules) process.exit(0);
-
-const projectRoot = join(libDir, '../../../..');
+const projectRoot = inNodeModules ? join(libDir, '../../../..') : join(libDir, '..');
 const categoryKey = JSON.parse(readFileSync(join(libDir, '../package.json'), 'utf8')).name.replace('@jjlmoya/utils-', '');
-const destDir = join(projectRoot, `public/styles/lib/${categoryKey}`);
+const destDir = join(projectRoot, `public/_utilities/${categoryKey}/styles`);
 
 mkdirSync(destDir, { recursive: true });
 

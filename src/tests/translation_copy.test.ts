@@ -97,8 +97,8 @@ function findCopyViolations(corpora: Map<string, string>): string[] {
 
   for (let leftIndex = 0; leftIndex < locales.length; leftIndex += 1) {
     for (let rightIndex = leftIndex + 1; rightIndex < locales.length; rightIndex += 1) {
-      const left = locales[leftIndex];
-      const right = locales[rightIndex];
+      const left = locales[leftIndex]!;
+      const right = locales[rightIndex]!;
       if (!left || !right) continue;
       const similarity = copySimilarity(corpora.get(left) ?? '', corpora.get(right) ?? '');
 

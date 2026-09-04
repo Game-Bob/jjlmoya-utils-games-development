@@ -1,0 +1,182 @@
+---
+import { Icon } from "astro-icon/components";
+import type { KnownLocale } from "../types";
+
+interface Props {
+  locale: KnownLocale;
+  slug: string;
+}
+
+const { locale, slug } = Astro.props;
+
+const copy: Record<KnownLocale, { badge: string; title: string; description: string; action: string }> = {
+  es: { badge: "Estudio de utilidades", title: "¿Quieres esta utilidad en tu web?", description: "Personaliza colores y modo oscuro para WordPress, Notion o tu propia web.", action: "Empezar" },
+  en: { badge: "Utilities Studio", title: "Want this utility on your website?", description: "Customize colors and dark mode for WordPress, Notion or your own site.", action: "Go Ahead" },
+  fr: { badge: "Studio d'utilitaires", title: "Voulez-vous cet outil sur votre site web ?", description: "Personnalisez les couleurs et le mode sombre pour WordPress, Notion ou votre propre site.", action: "Allons-y" },
+  de: { badge: "Tools-Studio", title: "Möchtest du dieses Werkzeug auf deiner Website?", description: "Passe Farben und den Dunkelmodus für WordPress, Notion oder deine eigene Website an.", action: "Los geht's" },
+  it: { badge: "Studio Strumenti", title: "Vuoi questo strumento sul tuo sito?", description: "Personalizza i colori e la modalità scura per WordPress, Notion o il tuo sito.", action: "Vai" },
+  pt: { badge: "Estúdio de Utilitários", title: "Quer este utilitário no seu site?", description: "Personalize cores e o modo escuro para WordPress, Notion ou o seu próprio site.", action: "Avançar" },
+  nl: { badge: "Hulpmiddelenstudio", title: "Wil je dit hulpmiddel op je website?", description: "Pas kleuren en de donkere modus aan voor WordPress, Notion of je eigen site.", action: "Ga verder" },
+  sv: { badge: "Verktygsstudio", title: "Vill du ha det här verktyget på din webbplats?", description: "Anpassa färger och mörkt läge för WordPress, Notion eller din egen sajt.", action: "Kör igång" },
+  pl: { badge: "Studio narzędzi", title: "Chcesz mieć to narzędzie na swojej stronie?", description: "Dostosuj kolory i tryb ciemny dla WordPress, Notion lub własnej witryny.", action: "Działaj" },
+  id: { badge: "Studio Utilitas", title: "Ingin utilitas ini di situs Anda?", description: "Sesuaikan warna dan mode gelap untuk WordPress, Notion, atau situs Anda sendiri.", action: "Mulai Sekarang" },
+  tr: { badge: "Araç Stüdyosu", title: "Bu aracı kendi sitenizde kullanmak ister misiniz?", description: "WordPress, Notion veya kendi siteniz için renkleri ve karanlık modu özelleştirin.", action: "Hemen Başla" },
+  ru: { badge: "Студия утилит", title: "Хотите эту утилиту на своём сайте?", description: "Настройте цвета и тёмную тему для WordPress, Notion или вашего сайта.", action: "Вперёд" },
+  ja: { badge: "ユーティリティスタジオ", title: "このユーティリティをあなたのサイトに追加しませんか？", description: "WordPress、Notion、またはご自身のサイト向けに、カラーとダークモードをカスタマイズできます。", action: "さっそく始める" },
+  ko: { badge: "유틸리티 스튜디오", title: "이 유틸리티를 내 웹사이트에 추가하고 싶으신가요?", description: "WordPress, Notion 또는 직접 운영하는 사이트에 맞게 색상과 다크 모드를 설정하세요.", action: "시작하기" },
+  zh: { badge: "工具工作室", title: "想把这个工具添加到你的网站吗？", description: "为 WordPress、Notion 或你自己的网站自定义配色和深色模式。", action: "立即开始" },
+};
+
+const text = copy[locale];
+const widgetPath = locale === "es" ? `/widgets/?utilidad=${encodeURIComponent(slug)}` : `/${locale}/widgets/?utilidad=${encodeURIComponent(slug)}`;
+const widgetHref = locale === "es" ? `https://www.jjlmoya.es${widgetPath}` : `https://www.gamebob.dev${widgetPath}`;
+---
+
+<section class="production-widget" aria-labelledby="production-widget-title">
+  <div class="production-widget-card">
+    <div class="production-widget-glow"></div>
+    <div class="production-widget-content">
+      <div class="production-widget-copy">
+        <span class="production-widget-badge"><Icon name="mdi:widgets-outline" />{text.badge}</span>
+        <div>
+          <h2 id="production-widget-title">{text.title}</h2>
+          <p>{text.description}</p>
+        </div>
+      </div>
+      <a class="production-widget-action" href={widgetHref}>
+        {text.action}<Icon name="mdi:arrow-right" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .production-widget {
+    margin-top: var(--space-2xl);
+  }
+
+  .production-widget-card {
+    position: relative;
+    max-width: 56rem;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--border-base);
+    border-radius: 1rem;
+    background: var(--bg-surface);
+    box-shadow: 0 0.75rem 2rem color-mix(in srgb, var(--shadow-base, #000) 25%, transparent);
+  }
+
+  .production-widget-glow {
+    position: absolute;
+    top: -3rem;
+    right: -3rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background: var(--games-development-accent);
+    opacity: 0.08;
+    filter: blur(2.5rem);
+  }
+
+  .production-widget-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+  }
+
+  .production-widget-copy {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .production-widget-badge {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--games-development-accent) 12%, transparent);
+    color: var(--games-development-accent);
+    font-size: 0.55rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .production-widget-badge svg,
+  .production-widget-action svg {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .production-widget-copy h2 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .production-widget-copy p {
+    margin: 0.25rem 0 0;
+    overflow: hidden;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .production-widget-action {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 0.7rem;
+    background: var(--games-development-accent);
+    color: var(--bg-main);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .production-widget-action:hover,
+  .production-widget-action:focus-visible {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+
+  @media (width <= 768px) {
+    .production-widget-card {
+      padding: var(--space-md);
+    }
+
+    .production-widget-content {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .production-widget-copy {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .production-widget-copy p {
+      white-space: normal;
+    }
+
+    .production-widget-action {
+      justify-content: center;
+    }
+  }
+</style>

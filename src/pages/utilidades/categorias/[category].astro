@@ -1,0 +1,38 @@
+---
+import ProductionCategoryPage from "../../../layouts/ProductionCategoryPage.astro";
+import { ALL_TOOLS, gamesCategory } from "../../../index";
+import { LANGUAGE_CODES, type Language } from "../../../i18n/languages";
+import { getCategoryPath, getUtilityPath } from "../../../mfe/routes";
+import { CATEGORY_OG_IMAGE } from "../../../mfe/assets";
+
+export async function getStaticPaths() {
+    const categories = Object.fromEntries(await Promise.all(
+        LANGUAGE_CODES.map(async (language) => [language, await gamesCategory.i18n[language]!()]),
+    ));
+    const category = categories.es!;
+    const alternates = LANGUAGE_CODES.map((language) => ({
+        language,
+        url: getCategoryPath(language, categories[language]!.slug),
+    }));
+    return [{ params: { category: category.slug }, props: { category, alternates } }];
+}
+
+const { category, alternates } = Astro.props as {
+    category: Awaited<ReturnType<NonNullable<(typeof gamesCategory.i18n)[Language]>>>;
+    alternates: { language: Language; url: string }[];
+};
+const tools = await Promise.all(ALL_TOOLS.map(async ({ entry }) => {
+    const loader = entry.i18n.es ?? entry.i18n.en;
+    if (!loader) throw new Error(`Missing Spanish locale for ${entry.id}`);
+    const content = await loader();
+    return {
+        id: entry.id,
+        icon: entry.icons.fg,
+        title: content.title,
+        description: content.description,
+        href: getUtilityPath("es", category.slug, content.slug),
+    };
+}));
+---
+
+<ProductionCategoryPage locale="es" {category} {tools} {alternates} image={CATEGORY_OG_IMAGE} />

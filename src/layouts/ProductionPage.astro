@@ -1,0 +1,218 @@
+---
+import Footer from "@jjlmoya/identity/footer";
+import Header from "@jjlmoya/identity/header";
+import LanguageSheet from "@jjlmoya/identity/language-sheet";
+import LanguageTrigger from "@jjlmoya/identity/language-trigger";
+import ThemeBoot from "@jjlmoya/identity/theme-boot";
+import { getSiteNavigation } from "@jjlmoya/identity/navigation";
+import "@jjlmoya/identity/styles.css";
+import "@jjlmoya/utils-shared/theme.css";
+import "@jjlmoya/utils-shared/styles/jjlmoya-shared.css";
+import { HEADER_UI } from "../i18n/header-ui";
+import { LANGUAGE_LOCALES, LANGUAGE_NAMES, type Language } from "../i18n/languages";
+import { LANGUAGE_UI } from "../i18n/language-ui";
+import { getBrand } from "../identity/brands";
+import { getBrandAssetPath } from "../mfe/assets";
+
+interface AlternateLink { language: Language; url: string; }
+interface Props {
+    title: string;
+    description: string;
+    locale: Language;
+    image?: string | undefined;
+    toolCss?: string | undefined;
+    publicPath: string;
+    manifestPath?: string | undefined;
+    alternates: readonly AlternateLink[];
+}
+
+const { title, description, locale, image, toolCss, publicPath, manifestPath, alternates } = Astro.props;
+const brand = getBrand(locale);
+const brandFavicon = getBrandAssetPath(brand, "favicon");
+const brandSizedFavicon = getBrandAssetPath(brand, "faviconSized");
+const brandAppleTouchIcon = getBrandAssetPath(brand, "appleTouchIcon");
+const origin = brand === "jjlmoya" ? "https://www.jjlmoya.es" : "https://www.gamebob.dev";
+const canonical = new URL(publicPath, origin).href;
+const socialImage = image ? new URL(image, canonical).href : undefined;
+const languageUi = LANGUAGE_UI[locale];
+const absoluteUrl = (language: Language, url: string): string => {
+    if (import.meta.env.DEV) return new URL(url, "http://localhost:4324").pathname;
+    return new URL(
+        url,
+        language === "es" ? "https://www.jjlmoya.es" : "https://www.gamebob.dev",
+    ).href;
+};
+const languageLinks = alternates.map(({ language, url }) => ({
+    code: language,
+    name: LANGUAGE_NAMES[language],
+    href: absoluteUrl(language, url),
+    current: language === locale,
+}));
+const homeUrl = brand === "jjlmoya" ? "https://www.jjlmoya.es/" : `https://www.gamebob.dev/${locale}/`;
+const openGraphLocale = LANGUAGE_LOCALES[locale].replace("-", "_");
+const xDefaultUrl = alternates.find(({ language }) => language === "en")?.url ?? canonical;
+---
+
+<!doctype html>
+<html lang={locale} data-brand={brand}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <ThemeBoot defaultTheme={brand === "gamebob" ? "theme-dark" : "theme-system"} />
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        <meta name="author" content="jjlmoya" />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <link rel="icon" type="image/x-icon" href={brandFavicon} />
+        <link rel="icon" type="image/webp" sizes={brand === "jjlmoya" ? "32x32" : "48x48"} href={brandSizedFavicon} />
+        <link rel="apple-touch-icon" href={brandAppleTouchIcon} />
+        {manifestPath && <link rel="manifest" href={manifestPath} />}
+        <link rel="canonical" href={canonical} />
+        {alternates.map(({ language, url }) => <link rel="alternate" hreflang={language} href={absoluteUrl(language, url)} />)}
+        <link rel="alternate" hreflang="x-default" href={absoluteUrl("en", xDefaultUrl)} />
+        {toolCss && <link rel="stylesheet" href={toolCss} />}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:site_name" content={brand === "jjlmoya" ? "jjlmoya" : "GameBob Studio"} />
+        <meta property="og:locale" content={openGraphLocale} />
+        {socialImage && <meta property="og:image" content={socialImage} />}
+        {socialImage && <meta property="og:image:secure_url" content={socialImage} />}
+        {socialImage && <meta property="og:image:type" content="image/webp" />}
+        {socialImage && <meta property="og:image:width" content="1200" />}
+        {socialImage && <meta property="og:image:height" content="630" />}
+        {socialImage && <meta property="og:image:alt" content={description} />}
+        <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+        <meta name="twitter:url" content={canonical} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        {socialImage && <meta name="twitter:image" content={socialImage} />}
+        <script is:inline type="application/ld+json" set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            url: canonical,
+            name: title,
+            description,
+            inLanguage: LANGUAGE_LOCALES[locale],
+        })} />
+        <script>
+            import { installEcosystemTracking } from "@jjlmoya/tracking";
+            installEcosystemTracking();
+        </script>
+        <slot name="head" />
+    </head>
+    <body class="production-page">
+        <Header
+            class="utilities-site-header"
+            identity={brand}
+            {homeUrl}
+            navigation={getSiteNavigation({ language: locale, activeSection: "utilities" })}
+            labels={HEADER_UI[locale]}
+        >
+            <LanguageTrigger slot="desktop-actions" label={languageUi.change} />
+            <LanguageTrigger slot="mobile-actions" label={languageUi.change} />
+        </Header>
+        <LanguageSheet links={languageLinks} title={languageUi.select} closeLabel={languageUi.close} />
+        <main><slot /></main>
+        <Footer class="utilities-site-footer" identity={brand} language={locale} />
+    </body>
+</html>
+
+<style is:global>
+    :root {
+        --games-development-accent: #10b981;
+        --games-development-accent-strong: #0d9488;
+        --color-brand-blue: #1ddabc;
+        --color-brand-dark: #000;
+        --color-brand-white: #fff;
+        --color-primary: var(--color-brand-blue);
+        --color-primary-rgb: 29, 218, 188;
+        --space-2xs: 0.125rem;
+        --space-xs: 0.25rem;
+        --space-sm: 0.5rem;
+        --space-base: 0.75rem;
+        --space-md: 1rem;
+        --space-md-lg: 1.25rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+        --space-1-5xl: 2.5rem;
+        --space-2xl: 3rem;
+        --space-3xl: 4rem;
+        --space-4xl: 6rem;
+        --space-3-5xl: 5rem;
+        --radius-base: 0.5rem;
+        --radius-lg: 1rem;
+        --radius-2xl: 2rem;
+        --radius-full: 9999px;
+        --font-family: inter, system-ui, sans-serif;
+        --font-weight-bold: 800;
+        --color-white: #fff;
+    }
+
+    :root,
+    .theme-light {
+        --bg-main: #f0f4f8;
+        --bg-page: #f0f4f8;
+        --bg-surface: #fff;
+        --bg-muted: #f1f5f9;
+        --text-main: #000;
+        --text-base: #000;
+        --text-muted: #4a5568;
+        --text-dimmed: #64748b;
+        --border-base: #e2e8f0;
+        --border-color: #e2e8f0;
+        --glass-bg: rgba(0, 0, 0, 0.05);
+        --glass-border: rgba(0, 0, 0, 0.1);
+        --shadow-base: rgba(0, 0, 0, 0.05);
+        --shadow-hover: rgba(0, 0, 0, 0.1);
+        --primary: var(--color-primary);
+        --primary-10: rgba(29, 218, 188, 0.1);
+    }
+
+    .theme-dark {
+        --bg-main: #000;
+        --bg-page: #000;
+        --bg-surface: #0f172a;
+        --bg-muted: #1e293b;
+        --text-main: #fff;
+        --text-base: #fff;
+        --text-muted: #94a3b8;
+        --text-dimmed: #64748b;
+        --border-base: #1e293b;
+        --border-color: #1e293b;
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --shadow-base: rgba(0, 0, 0, 0.3);
+        --shadow-hover: rgba(0, 0, 0, 0.4);
+        --primary: var(--color-primary);
+        --primary-10: rgba(29, 218, 188, 0.1);
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        background: var(--bg-main);
+        color: var(--text-main);
+        scroll-behavior: smooth;
+    }
+
+    body.production-page {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        padding-top: 4.5rem;
+        background: var(--bg-main);
+        color: var(--text-main);
+        font-family: var(--font-family, Inter, system-ui, sans-serif);
+    }
+
+    body.production-page main {
+        width: 100%;
+        min-height: 100vh;
+    }
+</style>

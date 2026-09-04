@@ -1,0 +1,44 @@
+---
+import ProductionCategoryPage from "../../../../layouts/ProductionCategoryPage.astro";
+import { ALL_TOOLS, gamesCategory } from "../../../../index";
+import { LANGUAGE_CODES, type Language } from "../../../../i18n/languages";
+import { getCategoryNamespace, getCategoryPath, getUtilityNamespace, getUtilityPath } from "../../../../mfe/routes";
+import { CATEGORY_OG_IMAGE } from "../../../../mfe/assets";
+
+export async function getStaticPaths() {
+    const categories = Object.fromEntries(await Promise.all(
+        LANGUAGE_CODES.map(async (language) => [language, await gamesCategory.i18n[language]!()]),
+    ));
+    return LANGUAGE_CODES.filter((language) => language !== "es").map((locale) => {
+        const category = categories[locale]!;
+        const alternates = LANGUAGE_CODES.map((language) => ({
+            language,
+            url: getCategoryPath(language, categories[language]!.slug),
+        }));
+        return {
+            params: { locale, utilities: getUtilityNamespace(locale), categories: getCategoryNamespace(locale), category: category.slug },
+            props: { locale, category, alternates },
+        };
+    });
+}
+
+const { locale, category, alternates } = Astro.props as {
+    locale: Exclude<Language, "es">;
+    category: Awaited<ReturnType<NonNullable<(typeof gamesCategory.i18n)[Language]>>>;
+    alternates: { language: Language; url: string }[];
+};
+const tools = await Promise.all(ALL_TOOLS.map(async ({ entry }) => {
+    const loader = entry.i18n[locale] ?? entry.i18n.en;
+    if (!loader) throw new Error(`Missing ${locale} locale for ${entry.id}`);
+    const content = await loader();
+    return {
+        id: entry.id,
+        icon: entry.icons.fg,
+        title: content.title,
+        description: content.description,
+        href: getUtilityPath(locale, category.slug, content.slug),
+    };
+}));
+---
+
+<ProductionCategoryPage locale={locale} {category} {tools} {alternates} image={CATEGORY_OG_IMAGE} />
