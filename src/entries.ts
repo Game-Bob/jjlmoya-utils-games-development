@@ -26,6 +26,8 @@ export { gameDeltaTimeFixedTimestepLab } from './tool/gameDeltaTimeFixedTimestep
 export type { GameDeltaTimeFixedTimestepLabUI, GameDeltaTimeFixedTimestepLabLocaleContent } from './tool/gameDeltaTimeFixedTimestepLab/entry';
 export { gamePixelPerUnitPlanner } from './tool/gamePixelPerUnitPlanner/entry';
 export type { GamePixelPerUnitPlannerUI, GamePixelPerUnitPlannerLocaleContent } from './tool/gamePixelPerUnitPlanner/entry';
+export { gameInputBufferWindowCalculator } from './tool/gameInputBufferWindowCalculator/entry';
+export type { GameInputBufferWindowCalculatorUI, GameInputBufferWindowCalculatorLocaleContent } from './tool/gameInputBufferWindowCalculator/entry';
 export { isometricTileMapEditor } from './tool/isometricTileMapEditor/entry';
 export type { IsometricTileMapEditorUI, IsometricTileMapEditorLocaleContent } from './tool/isometricTileMapEditor/entry';
 export { gamesCategory } from './category';
@@ -46,6 +48,7 @@ import { hitboxHurtboxAnimator } from './tool/hitboxHurtboxAnimator/entry';
 import { damageFormulaLab } from './tool/damageFormulaLab/entry';
 import { gameDeltaTimeFixedTimestepLab } from './tool/gameDeltaTimeFixedTimestepLab/entry';
 import { gamePixelPerUnitPlanner } from './tool/gamePixelPerUnitPlanner/entry';
+import { gameInputBufferWindowCalculator } from './tool/gameInputBufferWindowCalculator/entry';
 import { fixerEditor } from './tool/fixerEditor/entry';
 
-export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab, gamePixelPerUnitPlanner, fixerEditor, isometricTileMapEditor];
+export const ALL_ENTRIES = [steamCapsuleGenerator, itchioGameTester, spriteSheetPacker, audioLoopPointFinder, saveFileEditor, localizationSanitizer, steamBbcodeTranslator, retroSfxGenerator, pixelArtPaletteSwapper, gameUiAccessibilityTester, hitboxHurtboxAnimator, damageFormulaLab, gameDeltaTimeFixedTimestepLab, gamePixelPerUnitPlanner, fixerEditor, isometricTileMapEditor, gameInputBufferWindowCalculator];

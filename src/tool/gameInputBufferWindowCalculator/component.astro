@@ -1,0 +1,46 @@
+---
+import type { GameInputBufferWindowCalculatorUI } from './ui';
+import './game-input-buffer-window-calculator.css';
+
+interface Props {
+  ui: GameInputBufferWindowCalculatorUI;
+}
+
+const { ui } = Astro.props as Props;
+---
+
+<div class="gibw-tool" data-game-input-buffer-window-calculator>
+  <div class="gibw-card">
+    <form class="gibw-controls">
+      <div class="gibw-heading"><span class="gibw-kicker">01</span><h2>{ui.inputsTitle}</h2></div>
+      <label class="gibw-field"><span>{ui.fpsLabel}</span><output data-output="fps">60</output><input data-field="fps" type="range" min="1" max="240" step="1" value="60" /></label>
+      <p class="gibw-hint">{ui.fpsHint}</p>
+      <label class="gibw-field"><span>{ui.activeStartLabel}</span><input data-field="activeStartFrame" type="number" min="1" max="240" step="1" value="8" /></label>
+      <p class="gibw-hint">{ui.activeStartHint}</p>
+      <label class="gibw-field"><span>{ui.activeEndLabel}</span><input data-field="activeEndFrame" type="number" min="1" max="240" step="1" value="12" /></label>
+      <p class="gibw-hint">{ui.activeEndHint}</p>
+      <label class="gibw-field"><span>{ui.bufferLabel}</span><output data-output="bufferMs">100</output><input data-field="bufferMs" type="range" min="0" max="1000" step="1" value="100" /></label>
+      <p class="gibw-hint">{ui.bufferHint}</p>
+      <label class="gibw-field"><span>{ui.latencyLabel}</span><output data-output="latencyMs">50</output><input data-field="latencyMs" type="range" min="0" max="1000" step="1" value="50" /></label>
+      <p class="gibw-hint">{ui.latencyHint}</p>
+      <div class="gibw-actions"><button class="gibw-primary" type="button" data-calculate>{ui.calculateLabel}</button><button class="gibw-secondary" type="button" data-reset>{ui.resetLabel}</button></div>
+    </form>
+    <section class="gibw-stage" aria-labelledby="gibw-stage-title">
+      <div class="gibw-stage-heading"><div><span class="gibw-kicker">{ui.stageKicker}</span><h2 id="gibw-stage-title">{ui.stageTitle}</h2><p>{ui.stageCaption}</p></div><span class="gibw-live" data-live aria-live="polite">{ui.statusReady}</span></div>
+      <div class="gibw-timing" data-timing></div>
+      <p class="gibw-timing-caption">{ui.timingCaption}</p>
+      <div class="gibw-summary" data-summary></div>
+      <p class="gibw-model-note">{ui.modelNote}</p>
+      <p class="gibw-privacy">{ui.privacyDisclosure}</p>
+    </section>
+  </div>
+</div>
+
+<script is:inline type="application/json" data-game-input-buffer-window-ui set:html={JSON.stringify(ui)}></script>
+
+<script>
+  import { mountGameInputBufferWindowCalculator } from './controller';
+  const root = document.querySelector<HTMLElement>('[data-game-input-buffer-window-calculator]');
+  const uiScript = document.querySelector<HTMLScriptElement>('[data-game-input-buffer-window-ui]');
+  if (root && uiScript) mountGameInputBufferWindowCalculator(root, JSON.parse(uiScript.textContent ?? '{}'));
+</script>

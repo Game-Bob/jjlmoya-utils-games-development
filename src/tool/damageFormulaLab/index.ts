@@ -1,5 +1,4 @@
 import type { ToolDefinition } from '../../types';
-import type { ToolDefinition } from "../../types";
 import { damageFormulaLab } from "./entry";
 
 export * from "./entry";

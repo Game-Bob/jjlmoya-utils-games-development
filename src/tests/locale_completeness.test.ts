@@ -3,8 +3,8 @@ import { ALL_TOOLS } from '../tools';
 import { fixerEditor } from '../tool/fixerEditor/entry';
 
 describe('Locale Completeness Validation', () => {
-  it('sixteen tools are registered', () => {
-    expect(ALL_TOOLS.length).toBe(16);
+  it('seventeen tools are registered', () => {
+    expect(ALL_TOOLS.length).toBe(17);
   });
 
   it('sprite sheet fixer editor exposes every supported locale', () => {

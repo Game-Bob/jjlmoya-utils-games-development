@@ -16,6 +16,7 @@ import { DAMAGE_FORMULA_LAB_TOOL } from './tool/damageFormulaLab';
 import { GAME_DELTA_TIME_FIXED_TIMESTEP_LAB_TOOL } from './tool/gameDeltaTimeFixedTimestepLab';
 import { GAME_PIXEL_PER_UNIT_PLANNER_TOOL } from './tool/gamePixelPerUnitPlanner';
 import { ISOMETRIC_TILE_MAP_EDITOR_TOOL } from './tool/isometricTileMapEditor';
+import { GAME_INPUT_BUFFER_WINDOW_CALCULATOR_TOOL } from './tool/gameInputBufferWindowCalculator';
 
 export const ALL_TOOLS: ToolDefinition[] = [
   STEAM_CAPSULE_GENERATOR_TOOL,
@@ -34,4 +35,5 @@ export const ALL_TOOLS: ToolDefinition[] = [
   GAME_DELTA_TIME_FIXED_TIMESTEP_LAB_TOOL,
   GAME_PIXEL_PER_UNIT_PLANNER_TOOL,
   ISOMETRIC_TILE_MAP_EDITOR_TOOL,
+  GAME_INPUT_BUFFER_WINDOW_CALCULATOR_TOOL,
 ];
