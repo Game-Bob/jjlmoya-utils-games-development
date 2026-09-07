@@ -1,1085 +1,1085 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-06T20:56:12.025Z",
+  "generatedAt": "2026-09-07T06:32:19.095Z",
   "pages": {
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/bereinigung-lokalisierungsdateien-godot-unity/": {
-      "hash": "e188c6592343c3824c62f7183b5356579e1570b403abd2f48cd05c8a444d91b6",
+      "hash": "a13e05aa96dda05b6371845432a3bcea77e3e6e74bb9cab47cf354560564d04b",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/bereinigung-lokalisierungsdateien-godot-unity/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/delta-zeit-und-fester-timestep-spielelabor/": {
-      "hash": "f1578b32edc8f77133db0743e7fe865caf969d1f256f159aef898a4a957e18d8",
+      "hash": "59b93b5e03a0dda3a2984b296ab898db6d256d40a8828b143f6caa48a080ade1",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/delta-zeit-und-fester-timestep-spielelabor/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/game-ui-barrierefreiheit-stresstest/": {
-      "hash": "dbce444029d6a0e241f6a120817e58c26cd7ed8b1f272a7dafdb85f393f16450",
+      "hash": "df05da3a38427332bf8e0beb44f22523dafa7cd83b1267d3a217381c15c5ba88",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/game-ui-barrierefreiheit-stresstest/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/hitbox-und-hurtbox-animator-sprites/": {
-      "hash": "9824d749be8b173a984e3ba6fbd3a109d43697f000762456f38e94b040c31c4c",
+      "hash": "5d1ec37225eb74722a22c24b718bc52d40853763edcf144a773eebf9aeaa8ad3",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/hitbox-und-hurtbox-animator-sprites/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/": {
-      "hash": "f35edcf3f807435df53ffb48d7665b2ac33af9a17a5dbcdb98af3dab2e533416",
+      "hash": "5b5b7aceeebc4ac12de3bd5102f6d58a0b0ad3ebf7fcc1a75163c13fb023412f",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/isometrischer-kachelkarten-editor/": {
-      "hash": "1d8dffc358194fb0e22322184c5e54872b26aa2c0d6210f247ebee00dd1c8e4d",
+      "hash": "b3ae6afe812bfb151a75f12ed130256f0734e50e9e3182b7a477680d8792aa94",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/isometrischer-kachelkarten-editor/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/itch-io-spiel-tester/": {
-      "hash": "cc2dbab5254354cf50db96ddecc32fd12915de5f54a4f776d2ab73944a33555a",
+      "hash": "cb293d7ae2ebb69c2a504d1a6de6323e363c9eb6b0b7f1273967dcd1dab70900",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/itch-io-spiel-tester/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/pixel-art-palette-tauscher/": {
-      "hash": "0d72429b653800bf3ff663a6e92948d3c1ef887c1b851d0e512de7cd08af9dde",
+      "hash": "7d4831ad3d39447a18eb46f4d090d6a12ec2f1b2108efee0efec7860eb06d1b1",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/pixel-art-palette-tauscher/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/pixel-pro-einheit-sprite-planer-spiele/": {
-      "hash": "451f3f348fd200c232375104ff2dcc96f7a8e381d9693cd2bde37c07239aac49",
+      "hash": "969d8b1babca78018cccbab9fbf52683f4742cf7e9613bd401da55a9220d3863",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/pixel-pro-einheit-sprite-planer-spiele/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/retro-soundeffekt-generator/": {
-      "hash": "d59c89216acb2bcc236e1125b28f875b42016acafd70a7dd29f65603e54966a4",
+      "hash": "75389281ac827d34724c2693988d6a833d5b14a0baa4d8543ba8010b7f0ed720",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/retro-soundeffekt-generator/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/spiel-audio-loop-punkt-finder/": {
-      "hash": "b79f57b634c9c2bd6afa93d45193d147a9b3dffa8d7b51d836d84692a618b8af",
+      "hash": "f0f1234c6a4c0dc54dafb72aca985ee8583000b75580c2236cf64e5db9bd262f",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/spiel-audio-loop-punkt-finder/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/spiel-eingabepuffer-fenster-rechner/": {
-      "hash": "92dffc90fd96cc5dde45f2435b96cd398ba8c243a8f4c4db227ea5c7142bede6",
+      "hash": "88f92a9d6f430348a4170e1695f39fa3720e471f21da6b63f6d855e4aa7e4243",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/spiel-eingabepuffer-fenster-rechner/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/spiel-schadensformel-rechner-ttk/": {
-      "hash": "aaa43a7d621665556e717a0d9c4b5cf9e66bf1c017d3c443a4064aeb2cf7731e",
+      "hash": "0ffb11d3f8ec1ff782b990afcf39940372a312ff4f7dab37c230f27d576bd713",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/spiel-schadensformel-rechner-ttk/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/spiel-speicherstand-editor/": {
-      "hash": "5a8af0345d044c429dd87e32275a11327691f559b3c9c28947dac9b47b2c6d4f",
+      "hash": "4e38f22249992f2f482262ae2a4552cf710f2e5578ebb0dd712d8427aaaf5db9",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/spiel-speicherstand-editor/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/sprite-sheet-packer-und-extraktor/": {
-      "hash": "cc042bbf231a6fea256186f24bdd8bf0c6ef6b7d45bf9eab986be0224966101f",
+      "hash": "70be3d9f27c99c5bc17dcbc4a233b0e820a8b09e7d24e968f25d1d7218d73867",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/sprite-sheet-packer-und-extraktor/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/sprite-sheet-reparatur-editor/": {
-      "hash": "5f9430f7bea41ce5ac472ba217d042aabd9b6e5ceed04f9c2688c3ad36f28cf1",
+      "hash": "b00f64452a3735c50d4ace5c1f38b44c7dc55617ff638f935aac1f2daa0bcec6",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/sprite-sheet-reparatur-editor/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/steam-bbcode-konverter/": {
-      "hash": "0ec65dfc8ed36a7fe49558e4ca72ec9ffd6a87ef2bd2755f0a35a6e38a95363c",
+      "hash": "fb5c3287373d07f7817acc36c338b4455d46e9925fa494690de6c9cbb5556e9a",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/steam-bbcode-konverter/"
     },
     "https://www.gamebob.dev/de/werkzeuge/kategorien/spieleentwicklung/steam-kapsel-generator/": {
-      "hash": "e2eab293b3d1bfac5a4a8abf300ac264ede9e22b8959070aa670ab965be4c708",
+      "hash": "fd73864a654c6239c29f759081dbe4b15a6defbdcf6f57dbb1267644583e116b",
       "route": "/de/werkzeuge/kategorien/spieleentwicklung/steam-kapsel-generator/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/audio-loop-point-finder/": {
-      "hash": "97d2e90124c55f0531ce0aab0937af66e57bbaafcae75773050f6926ff824d4b",
+      "hash": "0a6e095acc00c5d12365ee3a1aa248e03738d9601ad3a0ba4922bf4bfee13ce5",
       "route": "/en/utilities/categories/game-development/audio-loop-point-finder/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/fixer-editor/": {
-      "hash": "ac213c575ac3c5d2887223a4dc926f369638dc87f350a48bae71885d4f4e724b",
+      "hash": "588171f8966edc8632d4dcfc17d6612b97b2d264bc3065fdc28dcc41ad0fccb8",
       "route": "/en/utilities/categories/game-development/fixer-editor/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/game-damage-formula-calculator-ttk/": {
-      "hash": "4c122a5068c059b5ca9dadaf6fc0f74d9a39301ba689ff14c6e5cb4ababd2d28",
+      "hash": "895d20d53890b30b7fb1e5537272c18711ce46e5ce4d01180cb00f62d4016d2a",
       "route": "/en/utilities/categories/game-development/game-damage-formula-calculator-ttk/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/game-delta-time-fixed-timestep-lab/": {
-      "hash": "ad327f421f73ad890c3ce17bf58de993a47b1f6d92b45ab102f9344ad9a5c68a",
+      "hash": "d86f98c4613519e00166a27b6f41f33c8878a36fed2ac3f6c693371991b863c3",
       "route": "/en/utilities/categories/game-development/game-delta-time-fixed-timestep-lab/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/game-input-buffer-window-calculator/": {
-      "hash": "81187a540e25ee586ee7a573777606f299173e39733cbd96bb5c5158b8937548",
+      "hash": "358f6fc9166293c9a1002afc049e5102fcbdbd5649d86f64a1220cc558b9f49c",
       "route": "/en/utilities/categories/game-development/game-input-buffer-window-calculator/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/game-pixel-per-unit-planner/": {
-      "hash": "ac1a958c00e7140f8188373e34ac570f178a71d910cae5a58542a8a0770381e0",
+      "hash": "ae123c419b96146a36bdec222d4d06ff9750769add3ea99ad32b6874598d3a33",
       "route": "/en/utilities/categories/game-development/game-pixel-per-unit-planner/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/game-save-file-editor/": {
-      "hash": "6e4281440870ef7d25caf295c7d788c224841ea09bf92600a20c4e5b22dde18d",
+      "hash": "fceb18fb0030630046788a6f1fe65b4be87aad28c90ea7d90c165e44d1406270",
       "route": "/en/utilities/categories/game-development/game-save-file-editor/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/game-ui-accessibility-stress-tester/": {
-      "hash": "ba12b96b2d9b38cfbd8d017954f69b1e76de117aadcc877bc494411c1e21065c",
+      "hash": "c96220ba6fae34a9cd2dc1ccd78e2f279d4670c4d07882fc0e7b71fb1b1915dd",
       "route": "/en/utilities/categories/game-development/game-ui-accessibility-stress-tester/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/hitbox-hurtbox-animator/": {
-      "hash": "4ad5b2a072ba2902424e41622710381918aafff503b4ddf6cfce24fabb0e91d9",
+      "hash": "dbaad06b1e778726b6a4ffcf5f2673c8088372c6091f9c04bce656edf2e2b15d",
       "route": "/en/utilities/categories/game-development/hitbox-hurtbox-animator/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/": {
-      "hash": "0be2aaabd6543ed9ea5e0b0f5a7a47c8fa9851b682a1306165d21f947748d7a1",
+      "hash": "84dba1f6e09b8e366b47e7962560a0a06eeef84dd40354331bdeb8f053b9a8d9",
       "route": "/en/utilities/categories/game-development/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/isometric-tile-map-editor/": {
-      "hash": "cd813fae79f021693bba568b0a15f7a071d66a07b1780fa0a52d56be9aa9841a",
+      "hash": "8a866c7c6e5e607c240e7bdb69d4f2c7f9cc5035cd2bd7dc2ae1e95c7dc6317e",
       "route": "/en/utilities/categories/game-development/isometric-tile-map-editor/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/itchio-game-tester/": {
-      "hash": "c9eb2d98bf2eb13618d124528a9c9d5fa49f79f4122e6de73cf036b23a49d7e5",
+      "hash": "a3e5a88104c0f0bd23e84ec994ce271b9d5623c91b5ccf1dd458ccd568d11b1e",
       "route": "/en/utilities/categories/game-development/itchio-game-tester/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/localization-sanitizer/": {
-      "hash": "8475c14e2e997a5c67fc500a857eaff9ffaf6016d5c7c322918525eda1b0aced",
+      "hash": "4d4f0ec9756b51344338fee9d5684676a8fc7ee1e9bd804874b031a5503ce485",
       "route": "/en/utilities/categories/game-development/localization-sanitizer/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/pixel-art-palette-swapper/": {
-      "hash": "4b481a9cb78fe6035ff414477311f6250b44256400aa86db682fa0451555ef95",
+      "hash": "47bc4b67525bdd50dcb28d89a695a1783b92a4a3a3af77ae95359d69d185f947",
       "route": "/en/utilities/categories/game-development/pixel-art-palette-swapper/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/retro-sfx-generator/": {
-      "hash": "5c3939ca00f257ae40a7541303076d1f5bc79fbada8a46414e3a86a2042f5fbe",
+      "hash": "5a88ff9ad4706176ddc88165582b4f6decc52c8ae57bd593162b4b20b1c75586",
       "route": "/en/utilities/categories/game-development/retro-sfx-generator/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/sprite-sheet-packer/": {
-      "hash": "551a5b974826a63fa712c5abfc192c02b7752df488bb36c6fa03b0ce7b1ae011",
+      "hash": "dde7af7dd33b922a290b1e5ddb9b85f34023d50b917638fe6e0b88856f1c9269",
       "route": "/en/utilities/categories/game-development/sprite-sheet-packer/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/steam-bbcode-translator/": {
-      "hash": "a23472b649386ac4aa20c43ce4898efd76fb07a93f4297bc5cf17f601974ea72",
+      "hash": "1c829d618bcb852b3c9424239db4c0beb749de300af9b9fe323a17bbd4b28db6",
       "route": "/en/utilities/categories/game-development/steam-bbcode-translator/"
     },
     "https://www.gamebob.dev/en/utilities/categories/game-development/steam-capsule-generator/": {
-      "hash": "b8a8880808dc19819fb166ba4941076892d0550da82e3ad4f17bdd67433ccb55",
+      "hash": "7a78c59a46f699b437f5ef7e29e215d4dfa5e6a4011e3a59811eb98baa67c15f",
       "route": "/en/utilities/categories/game-development/steam-capsule-generator/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/animateur-hitbox-hurtbox-sprites/": {
-      "hash": "a180119dd001b93b8d92547f746f4d5b0d0ffe9339181ea50dd12120e5f4fa65",
+      "hash": "0a23ae8bf65e39ec903028925ff517e581fd12dcb60e548dd546087082d11448",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/animateur-hitbox-hurtbox-sprites/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/calculateur-fenetre-buffer-entree-jeu/": {
-      "hash": "68eaaa0aee2eda9fa81bb3df1e1cbe246faf3322c5670c64efb7585b48a2b650",
+      "hash": "62e75f9a3b296c7a32066abd2b4261696589f055144e7952954044f69a9250b1",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/calculateur-fenetre-buffer-entree-jeu/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/calculateur-formules-degats-jeux-ttk/": {
-      "hash": "5305c54a557af4dcddfe9825c41c764b30152623f42e9ba4b3e0e10aba1bc4ab",
+      "hash": "0c43b4c3e391e75c4530e314583f26a6ca1979d7987bb61711b332a4b5fd0a8a",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/calculateur-formules-degats-jeux-ttk/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/changeur-palette-pixel-art/": {
-      "hash": "7cb5cb5883c40495e671130525d4b79cf12e3217a3de02d25e289d2477a482f4",
+      "hash": "5862d91ad63eec18723f89313da8e7854765e65981d9ff9bdedfea1e760f278b",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/changeur-palette-pixel-art/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/convertisseur-bbcode-steam/": {
-      "hash": "3484fd13d5eb9c8c5410230fcdb6e499353fd4a10507bd5e1054ec1f47683e4f",
+      "hash": "720ff95f30f8a3b2825e8fe0b9cd09070ac78a81ad7a942b8bca23cd295b5c66",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/convertisseur-bbcode-steam/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/detecteur-points-boucle-audio-jeux/": {
-      "hash": "8343801ab253a2b2ebc5c5b67f941500e1cf1702626ec284272b4fc90f059950",
+      "hash": "135e988211bf94674a24ad6bedebd18a29dbd68b2ba6ec42a30cd03d46ed2788",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/detecteur-points-boucle-audio-jeux/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/editeur-correcteur-sprite-sheet/": {
-      "hash": "db80e61548fbf98048bdc2675aa8c8e3ebf70148e4d514856879975d687624ec",
+      "hash": "47459f3c433f73f4e9592090a12f860ffabfd22b27f1dfa7b6197610f1ed6dd6",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/editeur-correcteur-sprite-sheet/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/editeur-de-cartes-de-tuiles-isometriques/": {
-      "hash": "b23688352aab74d6a71b084f55acb3286391e9695d830157bb3f3500ea55eaab",
+      "hash": "d100dbe19bb4d4f60a8e0371c55147ab5d1a979176a6c3c2e23acb179ef0e739",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/editeur-de-cartes-de-tuiles-isometriques/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/editeur-fichier-sauvegarde-jeu/": {
-      "hash": "d22f5ab13532be0933640160e89d88a0feca9cc2fa0a59fe9606f4494889c8ac",
+      "hash": "ce1aba5f0d9144cc8e953ec6f8126f842bb8757a9f798d918d5abb21850640eb",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/editeur-fichier-sauvegarde-jeu/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/empaqueteur-et-extracteur-de-sprite-sheets/": {
-      "hash": "630cc8da48c915a530180edd90b1d9b2823578d3e1130cc5625c2dfabf3f2a25",
+      "hash": "053e12b5fc9bd7cc53636cb1b81d1ef4139dcb5e44582dd863b6ce4aafe8c593",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/empaqueteur-et-extracteur-de-sprite-sheets/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/generateur-de-capsules-steam/": {
-      "hash": "269080e0e63a5106c63857c1ecd19863a2fff8dc031df5a52c9b460990c9441c",
+      "hash": "c34f1b12b59a96a01c3a8417bc4b4917f18a823046b7a25cb0e367f65bb13e51",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/generateur-de-capsules-steam/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/generateur-effets-sonores-retro/": {
-      "hash": "13c8547de7014a8866fe00018b9b1dfa4a1477870b9358f319c2fa717d25961f",
+      "hash": "d6f1703d89afebbb30c394554459cb5b465aa2700b7d13c0802ece9f1eece7c9",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/generateur-effets-sonores-retro/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/": {
-      "hash": "abcc1f481f82cc9735a616a8852bfaaa0dc91b7e4011f28107cc1e329c78908a",
+      "hash": "5eac3ed1eef04c5a64cc0bd5d1745b3dc955a79c9b01a60b914d306b00197fb5",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/laboratoire-delta-time-et-timestep-fixe-jeu/": {
-      "hash": "ef677fd53c36006209079dc9b50b8823daeadfbeb8e3214e8b38cd0ce0ea0e81",
+      "hash": "cba220917f2f33c685482be744eeb499a5ed3997088416a6ddbdd1184662ab36",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/laboratoire-delta-time-et-timestep-fixe-jeu/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/nettoyeur-csv-localisation-godot-unity/": {
-      "hash": "392adb64b112471f3d964f1eea78a95bb6acce3702da0fd4f4252483e47cceff",
+      "hash": "3ccd833dc321a7d7fc5ef71717b3cca8a666d5e69e0a2262cf276a818b9010d7",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/nettoyeur-csv-localisation-godot-unity/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/planificateur-pixels-par-unite-sprite-jeu/": {
-      "hash": "d373f559a5f7d07062da8ed4456a63e675ec3d53acd8ca285c5384d3ce2b4b76",
+      "hash": "fc90fa018e8f40068da0f04d4c65c88eec00eef2dfdc05245f7b78e88b5019ab",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/planificateur-pixels-par-unite-sprite-jeu/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/testeur-jeux-web-itchio/": {
-      "hash": "cfb9a989fb2dc10d9753e6db8bedd24320cefdabd198c907a2bfe1f0cc7986d2",
+      "hash": "e3306b1e3d81e44842bf33c8ccac8ccce24ceaccede826213cfa75edc91acbfb",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/testeur-jeux-web-itchio/"
     },
     "https://www.gamebob.dev/fr/utilitaires/categories/developpement-de-jeux-video/testeur-stress-accessibilite-ui-jeu/": {
-      "hash": "27e95df4a7290242850ed680124e7b596712dee4a2b73fad258cc2d485a61960",
+      "hash": "5ac1cf68512b527fd6ac07290e131374b8a13266971324c136a216f84070bacf",
       "route": "/fr/utilitaires/categories/developpement-de-jeux-video/testeur-stress-accessibilite-ui-jeu/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/animator-hitbox-hurtbox-sprite/": {
-      "hash": "44dbf2057c120eb71dba80bc87a2ee95185037001dbebc5afc2aebf188e60b08",
+      "hash": "13affa266243234cd60636d7b78343f403854ee00f6fc856a77c72085349da42",
       "route": "/id/utilitas/kategori/pengembangan-game/animator-hitbox-hurtbox-sprite/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/editor-file-simpan-game/": {
-      "hash": "f96b0ec83008ce4a94c4388dc6c290a21909698d9830131ab36ea194f87181c5",
+      "hash": "dad8cdad3680cae8cf3a865f7d9434f32ecf9d36dda2c6e75acc3d2dda4c3592",
       "route": "/id/utilitas/kategori/pengembangan-game/editor-file-simpan-game/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/editor-perbaikan-sprite-sheet/": {
-      "hash": "9727a05c336eba6c20051f1c34429b91a5cadf8f427089d33a4216bd26b01b3e",
+      "hash": "b9d9d8b14efe530dcdac9fe35811751c54bb663b68009a41b947f676cdb07ca2",
       "route": "/id/utilitas/kategori/pengembangan-game/editor-perbaikan-sprite-sheet/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/editor-peta-tile-isometrik/": {
-      "hash": "9b7e7e0c376207c6747176fa071e82858432bf833e12d549ddf25621ec93baa8",
+      "hash": "c2682749030f0f8a51bc561dc237c91988e846fe642c409d04472a0cfb567b3d",
       "route": "/id/utilitas/kategori/pengembangan-game/editor-peta-tile-isometrik/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/generator-kapsul-steam/": {
-      "hash": "bb914927a383d1b11c694e6986ce07d1e0defb9c1a5ebe8e9f957282d51b1eec",
+      "hash": "c080128b1ec538709304d39a12bc3f459e94a5d3dc3f756e3c697bf429e98b97",
       "route": "/id/utilitas/kategori/pengembangan-game/generator-kapsul-steam/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/": {
-      "hash": "8264e43f5025bb030c58427ea7c6363ce889b16f73ded287c73ea5a016760764",
+      "hash": "da073453d2833309890ec5e9b24e0cbd4bf1ffc2234c88e3cd818dddd1943b58",
       "route": "/id/utilitas/kategori/pengembangan-game/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/itchio-web-game-tester/": {
-      "hash": "bd6057fce316ce373e46592e82d0a48e2aa9df48f4a3a6f9cf7123640487aa7e",
+      "hash": "ab8555cb0ccce916fee1ea9e36fca5bc6960c96ef0f91e9d320c90ba652fcaf2",
       "route": "/id/utilitas/kategori/pengembangan-game/itchio-web-game-tester/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/kalkulator-formula-damage-game-ttk/": {
-      "hash": "2de90d349cb91ecc37a29fa142807600add8f9dd0417fd7dfaf062c562572e42",
+      "hash": "26a33e5ce454f00e4bd52e6d4c896c6098b266a12b40764fb8fe9b9fc51b719a",
       "route": "/id/utilitas/kategori/pengembangan-game/kalkulator-formula-damage-game-ttk/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/kalkulator-jendela-buffer-input-game/": {
-      "hash": "5e772ed2346b3337243a140934b517669f4a8213765cc766dc1e347d1f8d6a0d",
+      "hash": "f9a9a89fabd5344d8f556ba69b5590ad3f0031b85f6cfd7a41ab1c349813b337",
       "route": "/id/utilitas/kategori/pengembangan-game/kalkulator-jendela-buffer-input-game/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/konverter-bbcode-steam/": {
-      "hash": "ea17ea320bf11aec370815664e7366f127f0d66f4c7492ad3ae5f3c93b62037b",
+      "hash": "51a5f500e94b50206546ac2c6e346b0404e55fab25f7325ad15f399386369fd9",
       "route": "/id/utilitas/kategori/pengembangan-game/konverter-bbcode-steam/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/laboratorium-delta-time-dan-timestep-tetap-game/": {
-      "hash": "331c00be1af747de142d97b9a1a315dbc2d674f26fe91f4f61bc662014360885",
+      "hash": "e7a6351fa3d477627ba676a87cfedc1fe8dbdc69079ccb422b90ce53ffc3a0e0",
       "route": "/id/utilitas/kategori/pengembangan-game/laboratorium-delta-time-dan-timestep-tetap-game/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/pembersih-lokalisasi-csv-godot-unity/": {
-      "hash": "d75029cf7f474bfcf297c78531e1bd94c26b53cb328fcc7515526517c3d2a847",
+      "hash": "5d404b128facf7156a1744b7c779d5743281272409c949c80da877777b400ac9",
       "route": "/id/utilitas/kategori/pengembangan-game/pembersih-lokalisasi-csv-godot-unity/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/pembuat-dan-ekstraktor-sprite-sheet/": {
-      "hash": "b7d5512c8b74d48afb4ab1a2e0fecd9521de4134cf25f120bae9bb1d83872074",
+      "hash": "622b93bf0d01f587537b4c11b59b589bf6a6db3c8e9eb962aca02550cbbd16e7",
       "route": "/id/utilitas/kategori/pengembangan-game/pembuat-dan-ekstraktor-sprite-sheet/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/pembuat-efek-suara-retro-game/": {
-      "hash": "e35d48cda34a3be37a9360ab51b8d3162cb23aae4132d89e69e928cc49141ef8",
+      "hash": "3bf351e2ece872ea8f7055e2aa6e5d740b9e103042f93e77438a35d068fd4e39",
       "route": "/id/utilitas/kategori/pengembangan-game/pembuat-efek-suara-retro-game/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/pencari-titik-loop-audio-game/": {
-      "hash": "addcb2c58d25c5517f559d1920c634c854d4751858e05b34b882fb3c37decb7a",
+      "hash": "9ca72949153ed801d2a0db07f649de59e1b0f583761586167cbe4e8eb8269fe2",
       "route": "/id/utilitas/kategori/pengembangan-game/pencari-titik-loop-audio-game/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/penguji-stres-aksesibilitas-ui-game/": {
-      "hash": "ca73bd09021510bb8525b60cdabf4692988be3dec23c987d146b044ab03ac84f",
+      "hash": "aabf9f347c2364f927abb2dba98cc17e583936a95e6bcd6deefcc43858e6eb68",
       "route": "/id/utilitas/kategori/pengembangan-game/penguji-stres-aksesibilitas-ui-game/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/penukar-palet-piksel-art/": {
-      "hash": "c0bf99229ceee154683590a8d3dadf9c7d955219aea3a349acab4f60fef2f6fb",
+      "hash": "782f3476a42d1e1b963ac94ad4366ccc46814c65fcb527dc9fc4328f34ae2866",
       "route": "/id/utilitas/kategori/pengembangan-game/penukar-palet-piksel-art/"
     },
     "https://www.gamebob.dev/id/utilitas/kategori/pengembangan-game/planner-piksel-per-unit-sprite-game/": {
-      "hash": "b83bc6cd82fb126f836ee079170834c17103f7b80220ae1318ed4425c08f64f8",
+      "hash": "a635c9ac1ef10aa409cc610f57432d921a2415a2499dd3dcf31c5ceecb28d1be",
       "route": "/id/utilitas/kategori/pengembangan-game/planner-piksel-per-unit-sprite-game/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/animatore-hitbox-hurtbox-sprite/": {
-      "hash": "6cd4526d54d8cc1456174850f5316a49781cd6be6de62af17e8c285a26dc633f",
+      "hash": "5d50a6dad591206efc366fd24a71e78d5fec2ea8883533bb07c38a21402bd6c1",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/animatore-hitbox-hurtbox-sprite/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/calcolatore-finestra-buffer-input-giochi/": {
-      "hash": "b15c9f59b8c9f0ac548103c89c0a66db8d480aba6dd1adea25193e7e530b254e",
+      "hash": "10c5601181b2696e7fb7ccf70f236f5a072844e0557cc2c250896221a0bb5f7e",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/calcolatore-finestra-buffer-input-giochi/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/calcolatore-formule-danno-giochi-ttk/": {
-      "hash": "c6ca3c30c21d9a381e58d5cfc3b956c5eb855aa2cb515a9f0ac83a4abee9e836",
+      "hash": "aeb99eea48c6a22f08bf364892e052e0bcbe5c9dc331153948b764052a8cbc4a",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/calcolatore-formule-danno-giochi-ttk/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/cambia-tavolozza-pixel-art/": {
-      "hash": "a2e22538f456ff319913a4f0c2a1e17b8f074e0706f69ac48e2253e7db4d217f",
+      "hash": "e429a5a18170eff96c276cfbe07457bba045da20d8d1e3f85f0548c401936468",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/cambia-tavolozza-pixel-art/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/convertitore-bbcode-steam/": {
-      "hash": "53e2c88954fb871956bf245076e69f15d017922674b377a86426f97353ca231d",
+      "hash": "f9ce02e3b58622b60ac07817e21ea74da49ee827796712167655a3b8bd649dda",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/convertitore-bbcode-steam/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/editor-correzione-sprite-sheet/": {
-      "hash": "3a87381094ae06ff5180a7e96d2f4cadc4e9214cbf3c48a0e64cdb07e44b578b",
+      "hash": "0d392ec222d9b18f4e5cff4dd7fd00e8de0981309df69cfda1d66d3dc8dc2e82",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/editor-correzione-sprite-sheet/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/editor-mappa-tile-isometrica/": {
-      "hash": "849435299ce49d48ddde578f2d9e3f61b47c88abce0a2139c6f871b27cc7a48b",
+      "hash": "30cc44c6daf650c0188c23913b9e056041767e59f3540e21e39e739581a21734",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/editor-mappa-tile-isometrica/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/editor-salvataggio-gioco/": {
-      "hash": "650290619383cfe8dfd2c97b7c4ea2406266ab8345d59dcae790d9ea6e4eadb1",
+      "hash": "6d4ae19e8b865b7c687e3c9cf0aa6791f96203f49f32ecbf04e018f29a77e14c",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/editor-salvataggio-gioco/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/generatore-di-capsule-steam/": {
-      "hash": "14c791dd63a8e5e91f5ede8f63a4ad258825c29c0d38452a2f8940a1a6acd661",
+      "hash": "ad15ead7371d5ddb1361ace3a96bc3b82edef023821ec631555dd7c7fa7c32cd",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/generatore-di-capsule-steam/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/generatore-effetti-sonori-retro/": {
-      "hash": "1a305d26d4f066c7e230acc9e400603d14f00771013faa228417bb23f4a03e3b",
+      "hash": "b034634c25ebd5811e225b1c37da555898d615bd324464588f8534ddba6fc59e",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/generatore-effetti-sonori-retro/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/impacchettatore-ed-estruttore-di-sprite-sheet/": {
-      "hash": "6b2599c4590fca7e841770de18b1c1669913711dbeed044e54710b43e8bb4d5a",
+      "hash": "79152ff162529a50fbe3cf628b70adfc8ff52eaa0e7aeaa878270e9ebd000e43",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/impacchettatore-ed-estruttore-di-sprite-sheet/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/": {
-      "hash": "05a396b7eba0ae32c71f29432efeba9bbf3c1003f81e2ac1674784c4a76b52b2",
+      "hash": "a100446c1efc1c150c5cb381f6c45d7eabe78aa4b3febbaddb87c511b63769cd",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/laboratorio-delta-time-e-timestep-fisso-giochi/": {
-      "hash": "9e45c643a5f3b9b0c540924d3f0ac2f0e01d8923bd521203bdfec58a70cdda12",
+      "hash": "21a571cc0674f3587e028f493644a8bcd33092b778fe60b8a366b5a6dd646d69",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/laboratorio-delta-time-e-timestep-fisso-giochi/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/planner-pixel-per-unita-sprite-giochi/": {
-      "hash": "01e064d30b6c921647cde263546532e866af8116df5cf3f26aed86c04231d96b",
+      "hash": "b9a9877e16b8410a641fc29f870c8defd814f95841a99e15aa43d8a7a6f391fb",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/planner-pixel-per-unita-sprite-giochi/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/pulitore-csv-localizzazione-godot-unity/": {
-      "hash": "ab5ea20817d18ee8849e655002b2a6190742878c25f61f892884fb36914a00de",
+      "hash": "e765206ee1301ff8f9ea7f366f82f64a0a9e8d533226431d52e23f78283698ff",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/pulitore-csv-localizzazione-godot-unity/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/tester-giochi-web-itchio/": {
-      "hash": "6119cac0ac9021bc68b756e1201cd4873df9330b2addcd4dfff8e46e90bc415c",
+      "hash": "631fe14a91c47aaa72c872391f512b8912cd6b3b7a05c22e5140533d4970c8a9",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/tester-giochi-web-itchio/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/tester-stress-accessibilita-ui-giochi/": {
-      "hash": "af571e2cf5636cf8710126d05e788232350b4b4922c999fc9a453ad050277d58",
+      "hash": "554a27dbb04d63d34cac1910b523e281cfbaeee23a06d7743d228a476c304ec2",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/tester-stress-accessibilita-ui-giochi/"
     },
     "https://www.gamebob.dev/it/utilita/categorie/sviluppo-di-videogiochi/trova-punti-loop-audio-giochi/": {
-      "hash": "30ff992d9385ce1843a36dc986a697ffacd2503f0c6b1825451cb0932dbc8479",
+      "hash": "2be075359444cda241f6e95e344a60fd7f370a42a603c29c60fee8d9c522d7be",
       "route": "/it/utilita/categorie/sviluppo-di-videogiochi/trova-punti-loop-audio-giochi/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/audio-loop-point-finder/": {
-      "hash": "2a727c05bab864a8eddd7398587e34c00163dffedad4dcc937a5587ece6968b9",
+      "hash": "e3248989eb4eee05fa3d59659c49307be130f994da774c03247a80a9e803b794",
       "route": "/ja/utilities/categories/game-development/audio-loop-point-finder/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/fixer-editor/": {
-      "hash": "2db21720363ffc26f182a1127c676c0b7db00d7abd8e53936fcb7b66618503be",
+      "hash": "2fb304ce554e3ba4124f0d34835a80ee3cf4b1ce49f1813aeead69ea739822e8",
       "route": "/ja/utilities/categories/game-development/fixer-editor/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/game-damage-formula-calculator-ttk/": {
-      "hash": "748d095ae89641df29df25b76b3d950616bebd734bc8b23fdbc073d1b6f23c40",
+      "hash": "c842e6910c034a2157bedb507bbf3aa403a2740f0b3d47d74945128c04605047",
       "route": "/ja/utilities/categories/game-development/game-damage-formula-calculator-ttk/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/game-delta-time-fixed-timestep-lab/": {
-      "hash": "bcaf6890058aab3af236e16c7b087456e5a6d3c4802c8e736f570819c66d4703",
+      "hash": "45c3a207df50f578a94dc7a598db5646cdde6e39795233323c5358e5cb7bdbf9",
       "route": "/ja/utilities/categories/game-development/game-delta-time-fixed-timestep-lab/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/game-input-buffer-window-calculator/": {
-      "hash": "7712bd39c68f272bbdb2073580539c8587e7dc9e1cbcbe12c5ada31f52d1e32d",
+      "hash": "0466d4ec864d4b2a3c5e90c213fc7edbc557825a98fc85685caafc0dc97600df",
       "route": "/ja/utilities/categories/game-development/game-input-buffer-window-calculator/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/game-pixel-per-unit-planner/": {
-      "hash": "f3e1262f80e5c17fec07cb9a8cc85f26566470ea4c6cddc90a562dea7d0059fe",
+      "hash": "a9587b1dfe9b6cdbf11754f647cd058b4f0dd9567999e830adb310f268a1faff",
       "route": "/ja/utilities/categories/game-development/game-pixel-per-unit-planner/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/game-save-file-editor/": {
-      "hash": "a86470f178122c2d190d86c41813f3f4757fe5565437f24d2550924dc464cb19",
+      "hash": "7f6070762dfa2d989382e8436b23c67bb1da51908a24f1b2deba8816b24c4c74",
       "route": "/ja/utilities/categories/game-development/game-save-file-editor/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/game-ui-accessibility-stress-tester/": {
-      "hash": "51a051635916077d64d135dfd95a7adad7d1b5a8d7c461f0cc0348d2b7abc455",
+      "hash": "298c62fb6ab39a2ef82a9ec957a1681395a44618a2fbe58253bd0c0159a9f876",
       "route": "/ja/utilities/categories/game-development/game-ui-accessibility-stress-tester/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/hitbox-hurtbox-animator/": {
-      "hash": "f3c9f46a203376e67423360d797db886569ebdb9953b18c425f0fe22f9b8f667",
+      "hash": "78b0373ec253efdb6ad6fcfc08f5268ac39ba347195872aa3a01f27f78c02808",
       "route": "/ja/utilities/categories/game-development/hitbox-hurtbox-animator/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/": {
-      "hash": "51b5d039f9f6dc7f89c183d78bd9c6635656f8ce97e3edad8de39e21920dd8df",
+      "hash": "7b98425e59ba0e44d763342a29439b2e36c134ae92ad02d2c2fc983aeab2e9eb",
       "route": "/ja/utilities/categories/game-development/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/isometric-tile-map-editor/": {
-      "hash": "e7bb152701d16575cdc7e68615142614befd3dcf36d9c04f804c21e562db9df7",
+      "hash": "a8b435877b92024e2444903d403380d91740b75d0cb38a1b7e063f5fe4dbb7d0",
       "route": "/ja/utilities/categories/game-development/isometric-tile-map-editor/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/itchio-game-tester/": {
-      "hash": "21f208fc434d944d688de57c22c26eb535f67ff9652f7af41c2c903af5d67fce",
+      "hash": "b5efb154e89529d84292dca281b7c218803245a38d06b0c9e5ba9b4e34176a86",
       "route": "/ja/utilities/categories/game-development/itchio-game-tester/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/localization-sanitizer/": {
-      "hash": "6c9284150c0697cbc715fa7ff934fae02dc51ec6612f5574fffb5a723246fb1a",
+      "hash": "3127a5b2cf96f365d1c7788e78ec943ca9bd2551b31ac2ff2555f2e0bbb56420",
       "route": "/ja/utilities/categories/game-development/localization-sanitizer/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/pixel-art-palette-swapper/": {
-      "hash": "3dfb7970e806bc16b89d732aad74d76311dd80b407920fdc66749013901fb61f",
+      "hash": "55f2fea574c249c6d82ad4c4ca72b9042dcd240127e93f8fb0b5d0d1b4da1b49",
       "route": "/ja/utilities/categories/game-development/pixel-art-palette-swapper/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/retro-sfx-generator/": {
-      "hash": "8d8a2c8c1033857076dee7050e963101d38cefd874cd84b7695bf94b87c8aa83",
+      "hash": "be70eb734d6cceec89a135bd9d5dca66106537557f97fc9d50b4bfced4578316",
       "route": "/ja/utilities/categories/game-development/retro-sfx-generator/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/sprite-sheet-packer/": {
-      "hash": "adbfc4a9f0e9fc4846f0f2db86eef7f3bf7aab98947b4015730d429f2c7b1e13",
+      "hash": "f9189aef48df69ce2969dbcfe1770fa7cf07be240d1fc347fc8739563f868c24",
       "route": "/ja/utilities/categories/game-development/sprite-sheet-packer/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/steam-bbcode-translator/": {
-      "hash": "27a9183f251c84d9715a25c46b25a4bae342baa17b4d16fef9fff74ff663d108",
+      "hash": "744848a9261c81b5ec00a67ffe377132f5009a5686c516a64ee1b519fdada730",
       "route": "/ja/utilities/categories/game-development/steam-bbcode-translator/"
     },
     "https://www.gamebob.dev/ja/utilities/categories/game-development/steam-capsule-generator/": {
-      "hash": "c8a747f1f4778dc5f262340f3addc60cbf6cec24fc868dc4859bdfbed4c6d650",
+      "hash": "85a04bdc4146d5ad3f59eda8b9340c2df0608343c7ceadb41554d0f0f5ebc0b4",
       "route": "/ja/utilities/categories/game-development/steam-capsule-generator/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/audio-loop-point-finder/": {
-      "hash": "28d32b9adce9229d5df46c7ba0e1099809a4e1cea523a623b7061806e229dee7",
+      "hash": "004e886c50c3c8e553691de8daf58a97268f4e482e342c45fee171b4194be3b0",
       "route": "/ko/utilities/categories/game-development/audio-loop-point-finder/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/fixer-editor/": {
-      "hash": "2db9ce2b9af43f515e376c587b20da2ec3de867ffd36a7725b8931072a711d75",
+      "hash": "5d025597fdd85fd7857c8bc8dfcdea52a1514312ca8683377655c1e3a70ea25b",
       "route": "/ko/utilities/categories/game-development/fixer-editor/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/game-damage-formula-calculator-ttk/": {
-      "hash": "1c664e43e18d4044d912553396b8b87346e49c9fcba72ada5b76b80113120636",
+      "hash": "ef03db489e7bc223e6fbfd8579cf8abf9d496dc1356191ff09dcfb4826e94bea",
       "route": "/ko/utilities/categories/game-development/game-damage-formula-calculator-ttk/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/game-delta-time-fixed-timestep-lab/": {
-      "hash": "a38a05c23523450d696267d385ab6bc13e69e71059165addb16e8316e7635d47",
+      "hash": "7e32fabd9f9aca762e8adb6d91169597e117650d0cbeb30f1c6ec4e0ab4b6afa",
       "route": "/ko/utilities/categories/game-development/game-delta-time-fixed-timestep-lab/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/game-input-buffer-window-calculator/": {
-      "hash": "c75ebfe29e84acb4e6f91d8ebf3104734c8aa5ee97b84968557f626374dd1173",
+      "hash": "42fcf39e9384e9dbcb52fa9ca934a521e885405bf6f6f77c813a7693ba57e08a",
       "route": "/ko/utilities/categories/game-development/game-input-buffer-window-calculator/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/game-pixel-per-unit-planner/": {
-      "hash": "1f55e77a975f6c13d2c8167ac857b35917d38a884bdf3570073401ab0e62ebf9",
+      "hash": "d3b148021c3ae4970d0f4a2373812402c14bfd6936c5bec4c87a14e2ed4644be",
       "route": "/ko/utilities/categories/game-development/game-pixel-per-unit-planner/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/game-save-file-editor/": {
-      "hash": "d17cbc152b6b0f781f7378379f0bec211559630de661260c8417dd9c33bba96f",
+      "hash": "4132eae23616c10e95d37350e77889f4643c72083f3a1670d62a9fc3c3cf0ab3",
       "route": "/ko/utilities/categories/game-development/game-save-file-editor/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/game-ui-accessibility-stress-tester/": {
-      "hash": "1af98fe37302a773b87c1f8032ed54feb71fd9c272155fabefef314748af2a08",
+      "hash": "1c7b2b23e52dfebad05c4c959a0069207ff80f2eea414379a96141aa9581c6f3",
       "route": "/ko/utilities/categories/game-development/game-ui-accessibility-stress-tester/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/hitbox-hurtbox-animator/": {
-      "hash": "f025a7e78808e4d61b30a48e3e524bb4979f6d7414c1f2b039a9d96f0bcb26e5",
+      "hash": "3d37d9d5b04a5bb9e1fd75d7b6c6e56464745767829d667ad11f46d361ef697f",
       "route": "/ko/utilities/categories/game-development/hitbox-hurtbox-animator/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/": {
-      "hash": "3d9d390143daaed082d7acbb011396ca692d8ec4b67f309da1d9d6c2307b65f7",
+      "hash": "072241cf32830d13c6cca9b1598e46481a30c560064fcbafaf124ad4a2d8ae0e",
       "route": "/ko/utilities/categories/game-development/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/isometric-tile-map-editor/": {
-      "hash": "a466932da2ac4f0cd067d9bf055d3dbf4877713b9d968ae177b23e9bbcf4b4b7",
+      "hash": "52b3cd7f339b5c82a34bafcf6fc35624092e5907679cabdd6586c0f6017e58e1",
       "route": "/ko/utilities/categories/game-development/isometric-tile-map-editor/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/itchio-game-tester/": {
-      "hash": "2a4ba1a273b7a5243e541cf75649188dbf0ec8ae8f3ce725abf4c751a96405bf",
+      "hash": "568e1c8bb17c334d99943c49ccd040cb6362b3fe71358fb26f059db94ff16eae",
       "route": "/ko/utilities/categories/game-development/itchio-game-tester/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/localization-sanitizer/": {
-      "hash": "6a8f4668d87ef411ab52763f7f5ee3b706f338b80d8150b23efc4e0ee4be7289",
+      "hash": "2bd9655aae529d94365466a4adc4b001e0e0f918763095399ef5fb8161499550",
       "route": "/ko/utilities/categories/game-development/localization-sanitizer/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/pixel-art-palette-swapper/": {
-      "hash": "698c323de6d939148e67fa46790ad6d2304311f922294783a3ccef5beb9d521b",
+      "hash": "4b6d7651f1cac227c38e7d157dc2e44822b41dd2aad48bef5e991989500b1505",
       "route": "/ko/utilities/categories/game-development/pixel-art-palette-swapper/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/retro-sfx-generator/": {
-      "hash": "82fef6a58b9746492bff5d3174eecbcc97c78b8e8aa51f8d7fed60320a389951",
+      "hash": "f991f38e16260f7f6a6a30dd0b17ee38aa99444ef875b710586c204f422dd5ea",
       "route": "/ko/utilities/categories/game-development/retro-sfx-generator/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/sprite-sheet-packer/": {
-      "hash": "1c706acf95c2c7be5835aa116a434ec1452cf293cbcb53da11372261afaf4ca3",
+      "hash": "150d49d9e791180c7b9f8d90a58dced1e13c58f4a20bb2586e502929faef1e9b",
       "route": "/ko/utilities/categories/game-development/sprite-sheet-packer/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/steam-bbcode-translator/": {
-      "hash": "4dc2f641e92645c0c416b9ceb1891e3f59004ea31c231ba5c0164a6a0049d58f",
+      "hash": "96a9bbcde395da59016d755abc0080a901fdca8416b0a876e1a0fd9546e25524",
       "route": "/ko/utilities/categories/game-development/steam-bbcode-translator/"
     },
     "https://www.gamebob.dev/ko/utilities/categories/game-development/steam-capsule-generator/": {
-      "hash": "934c3f3a9c59c5f63881052bb07cada897175468ee3055417ddb8419917c8847",
+      "hash": "327f6e2a347c859bfd56836ac254442fa880d374b8aa89bad4b0eb4b105a5057",
       "route": "/ko/utilities/categories/game-development/steam-capsule-generator/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/game-audio-loop-punt-zoeker/": {
-      "hash": "c21b4529be87674639266f7d7b123d09a1dcf054d6d012e658d7d75056b4a1c1",
+      "hash": "3b9d7d55de7ef50c00f5aa09ee09b7cd623b8a767e941623687184c256714880",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/game-audio-loop-punt-zoeker/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/game-delta-time-en-vaste-timestep-laboratorium/": {
-      "hash": "364074f2c000cd3e9900506654564f39578bd7c4fe83592157ed9292a78d26bf",
+      "hash": "a27680249945f619e15190cac11f92c6b857cde954c62fbfd47528fb3178ca45",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/game-delta-time-en-vaste-timestep-laboratorium/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/game-inputbuffer-venster-rekenaar/": {
-      "hash": "2bd395cac541c86ad4993d1f6f3eb63f6351a31a3f4f8230cdbfe3b3e16a1ef1",
+      "hash": "9b753e400037c663d08b00e3d80900d8308a695452dc15025581cf4a910fc757",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/game-inputbuffer-venster-rekenaar/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/game-save-bestand-editor/": {
-      "hash": "e8f5aabef03c32289ba4bf1c06d41dea60b1487985ab3082c28d68fdbd72e8e1",
+      "hash": "73aa21378f26de4d24bbd4f89df5b5f12893cf46b09955b417d245484bc171af",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/game-save-bestand-editor/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/game-schadeformule-rekenmachine-ttk/": {
-      "hash": "7579240d69d3358a957aa314c5eab7fee34f1e3d60a588afbaeeae8036b425ce",
+      "hash": "00b46b20e860f8b7c48da10d3c1c0d694762b3ab263da1300a6b2c1654c99988",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/game-schadeformule-rekenmachine-ttk/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/game-ui-toegankelijkheid-stresstester/": {
-      "hash": "6a65b4ecda2b7eb2b05b906920ddc91f9c5f1a0bab29a399b3cb4e5568342c48",
+      "hash": "c75b4bda0f801fcad4bb66b26a410d5a073ac2017d12dce875f3f9019a411555",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/game-ui-toegankelijkheid-stresstester/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/hitbox-en-hurtbox-animator-sprites/": {
-      "hash": "3d8e2adc96ef48399485705f8f7bdb59c6ed1a35a1fcace9d0f6ececd6734634",
+      "hash": "be61a744f58dc75f3b4de2382ea5ac7c03d2dc7bb8d58945e3be1026d9501ad7",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/hitbox-en-hurtbox-animator-sprites/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/": {
-      "hash": "f5c95fbaa3725c9172b9ddc84622fc4c861279f2f1356cc47efbdecf42a3e7f0",
+      "hash": "6c5a7aa42629bc8451de7a93acd77f86fd5da7d3f9fade6c8d8d9fa304743742",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/isometrische-tegelkaart-editor/": {
-      "hash": "6910f9f6b65309c012e4ab03058415323c37c687a41ec24720cfe40900b05e3c",
+      "hash": "7190df8454ebb5604b863bebfef466cce351a2a019c5485d65fd45d5a41b26f8",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/isometrische-tegelkaart-editor/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/itchio-webgame-tester/": {
-      "hash": "51d9080023fe8e85fab9dcb7a33cdbc50f1261f47ea174e8ae7cd5f0e0cd8ea4",
+      "hash": "24fb61e307b3e7824179476e8b66524691db0c88f29dc84b5291c0546d4a2f12",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/itchio-webgame-tester/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/lokalisatie-csv-opschonen-godot-unity/": {
-      "hash": "523f3e8870856e2d4674145bbe80bb855757109e005a94ebacda25aa7aa31f31",
+      "hash": "d4ce9e56d2eab5ceb9894d52b5f456dec8ee980ab3007f9be9250b1844711ee1",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/lokalisatie-csv-opschonen-godot-unity/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/pixel-art-palet-wisselaar/": {
-      "hash": "889494c482c1c88785086e266d8caec9b4392c1e8b16b826eb2949fbb1939ecf",
+      "hash": "4666180e5aa86086a96b10c6a01ec3266968146a40793d4645acb80e94a0421c",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/pixel-art-palet-wisselaar/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/pixels-per-eenheid-sprite-planner-games/": {
-      "hash": "36e7c573cf3f8409899bb95c6c70093282772e5ec6c98e808446a5b23d87ad16",
+      "hash": "89a2c8034fdef56cda1d332ecc2f8c0f598a0cfea8a9d2825fc4640fc7dc9b7e",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/pixels-per-eenheid-sprite-planner-games/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/retro-geluidseffect-generator-games/": {
-      "hash": "3b632e02dfc053d7ee8838ea52bb12ce7f7c510f8a2f181b9897c8a112e6ada5",
+      "hash": "b72e899423fe2faa35ae13e36eda9452c244e85af00351aaee780b5059bf2125",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/retro-geluidseffect-generator-games/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/sprite-sheet-packer-en-extractor/": {
-      "hash": "e00cf01a348e93873a4e733d627fe2652cffa5520121e29b0df2a0f64553d64d",
+      "hash": "c446f65fd7bf5155a7f2544c952465b5888af34678357b8cc2654311d034222c",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/sprite-sheet-packer-en-extractor/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/sprite-sheet-reparatie-editor/": {
-      "hash": "4a412abbb86ef40291d0bba5f3e7a266e5250eaa44bbf75780af61948bff7a64",
+      "hash": "5d39e524c117e66b7d5849e219ef8a1db861045c52c8179d42fb48eea3121825",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/sprite-sheet-reparatie-editor/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/steam-bbcode-omzetter/": {
-      "hash": "331d2dfbb1dcdc8bd810ee24d6d6b7674ca71ca6de14bd283e6240a54b1253e6",
+      "hash": "ea1d44e34feb054f5b7d2af628f155f5c150eb4d297fa10cecf473d111fe52ce",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/steam-bbcode-omzetter/"
     },
     "https://www.gamebob.dev/nl/hulpmiddelen/categorieen/gameontwikkeling/stoom-capsule-generator/": {
-      "hash": "909497868caf741e3c1de1f6e96a857fb32c08bd2b2de82e0964fcda0f3090f4",
+      "hash": "877c26b8802d21664f767aadf895fa306442c83000ca885150b162a6c3415e19",
       "route": "/nl/hulpmiddelen/categorieen/gameontwikkeling/stoom-capsule-generator/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/animator-hitbox-hurtbox-sprites/": {
-      "hash": "06e7480bd799198b3c85d81fcf6bf7d5dc6426172eeac557833d27af073a9512",
+      "hash": "554678fc4003a23b3347a66daa4ba95099698b748b37c28ff7dbb794c95deb07",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/animator-hitbox-hurtbox-sprites/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/czyszczenie-plikow-lokalizacji-godot-unity/": {
-      "hash": "bfe6340825cad08d5d472a3c38daf9010e09e3257e15f7475c2230a831292515",
+      "hash": "55726ca9b89024e4ee2748f0b2928c537fd5cc0d46e86a020736985946cb1cd5",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/czyszczenie-plikow-lokalizacji-godot-unity/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/edytor-izometrycznej-mapy-kafelkowej/": {
-      "hash": "3e239c31d3efd185f3da83df31f4234a03b9cda43cf4c12b4bb4d1869a885bec",
+      "hash": "2086c5d5f0a772053d6becb3f5efecf797808a608d8c3212f7ccc0b8fde0022d",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/edytor-izometrycznej-mapy-kafelkowej/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/edytor-naprawy-sprite-sheet/": {
-      "hash": "45d548684d989c9051b6372b8b2f7ccd11635f0a48ca0926b23bcd39908b83e7",
+      "hash": "99b4294f373612c5752d589f42490f6131a7394cc3977d17f29bf97a7eb429cd",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/edytor-naprawy-sprite-sheet/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/edytor-plikow-zapisu-gier/": {
-      "hash": "38520e440f70e62628ae6f44899999271457a9da710a1e1616a9e24c731cb5f8",
+      "hash": "0fadf848e98e162c562e962d8496ec564f7d536047d0eb32ae56328fb2571e49",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/edytor-plikow-zapisu-gier/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/generator-efektow-dwoiekowych-retro-gry/": {
-      "hash": "bf81f1a404c95e5d6bb7d1792517681acae290a9411a2466d591ce0d4f5aea1a",
+      "hash": "31d6511996a9c9fe588bf40282057a4105cefe80d0f2440702efcc433f54248a",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/generator-efektow-dwoiekowych-retro-gry/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/generator-kapsul-dla-steam/": {
-      "hash": "224acaff0f9efb611b7ed69be2f404ace0d5dbb0b6da785848ad8470cc253461",
+      "hash": "9b24a4c3a8fa8d3571279cb7dc3f37bf76344422a8926c73b60f8808421fedcc",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/generator-kapsul-dla-steam/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/": {
-      "hash": "d1cd1a00822f4809fae43bba5cf2d51add8cac8543e8fa2165d4fa17ca31fb2a",
+      "hash": "d4df9e85b2a3dcc3bd84b33a7784b715300df700aff096006aa0009b0cf1139d",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/kalkulator-formul-obrazen-gier-ttk/": {
-      "hash": "a49fb20874f3956e5378622c06008cb49ab5a34282a5f9199404faa67cc8e82a",
+      "hash": "824d805d00f9bef95d7c2de25c164a33fdd178c3ce7205b81d30a49cda291ce1",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/kalkulator-formul-obrazen-gier-ttk/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/kalkulator-okna-bufora-wejscia/": {
-      "hash": "8a109ebef520f080c1ac2992c5cfcf201bef82a28c097d184db57933a1e69d3f",
+      "hash": "fbe648e4dd2d3f772269d7ccb2b203eae28737fda3faef523477ffc7c304caac",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/kalkulator-okna-bufora-wejscia/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/konwerter-bbcode-steam/": {
-      "hash": "531a2092f5ba99010a51771a1c41a62c48b71af8f64d79c9ba33fd7623102c10",
+      "hash": "9d0d8f1a1233ac7470e63e6b84eb1641ae003dfa1c5fede9e6bf196bdd26542c",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/konwerter-bbcode-steam/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/konwerter-palety-pixel-art/": {
-      "hash": "e6c58737cd0ca6c9c9df85268701185de8fab522d2029dbc63a50c0ce1ab5ad8",
+      "hash": "24083cf779110bb13e88f4395c11bb4db1e9815b59b37e77ea286a50f64af258",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/konwerter-palety-pixel-art/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/laboratorium-delta-time-i-stalego-timestepu-gier/": {
-      "hash": "17714e25fd4c32cadf6dc02ea292cf598c11db6a88fc91c3e47989f2bf5db2d2",
+      "hash": "03b27bf5805be5fc938b83ea5c7a42231a6f98f7460baf6b9464753dce0d29c4",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/laboratorium-delta-time-i-stalego-timestepu-gier/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/pakowarka-i-ekstraktor-sprite-sheet/": {
-      "hash": "639d873970a13da7f3d00fd40d54d4c99480bd2a9d14269e5a1c59bf1f894eb0",
+      "hash": "de2016504b2d462898cdadd56c5bb2a43b50178aae524e7e15c2675df2776da8",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/pakowarka-i-ekstraktor-sprite-sheet/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/planista-pikseli-na-jednostke-sprite-gra/": {
-      "hash": "0e6302112f05be6cb5ed209b06085cab04664e491d92d0f4ae66c91ceff5635a",
+      "hash": "1dd56ab33e61a5283af602e8ad1f76d35059ae976c3b3b47cae1680a9db2f22d",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/planista-pikseli-na-jednostke-sprite-gra/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/tester-dostepnosci-ui-gier/": {
-      "hash": "c10d6120cead4117dff2ff6e7c53dbc33e6559152c03ce26b96d6fc6da8c815e",
+      "hash": "c419ad06d1da78b330a1277f37a96555cbf2627d1a890b6bf8354cb60e9dd6ec",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/tester-dostepnosci-ui-gier/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/tester-gier-itchio/": {
-      "hash": "128452c7321e904fa0dd5fdcf9719f3dbbd205afa3372b21e93f09c6c50d0ba5",
+      "hash": "4b73eccb26d8de4a7b609f094e8bee2cb3aaa1f5bfb67bf4e571523ffc8ebeb0",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/tester-gier-itchio/"
     },
     "https://www.gamebob.dev/pl/narzedzia/kategorie/tworzenie-gier/wyszukiwarka-punktow-petli-audio-gier/": {
-      "hash": "3c74282497d4c6dd34ba00e88380601028bddc38fa1245a5105c416eeaeb9ed3",
+      "hash": "b926a08f7a64304959590690bdd7cb6270b7796437adc188c4f35ce11e4c1603",
       "route": "/pl/narzedzia/kategorie/tworzenie-gier/wyszukiwarka-punktow-petli-audio-gier/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/animador-hitboxes-hurtboxes-sprites/": {
-      "hash": "fcf26d0ad8a05b5086c572caf34a2b44af123b5544a17858222783147ec356ec",
+      "hash": "b5d718fbb36b1c68ac6c17e9c71d4453ca4183f1f1b230731287f6efc91a3f53",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/animador-hitboxes-hurtboxes-sprites/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/calculadora-formulas-dano-jogos-ttk/": {
-      "hash": "f692b7fde44b5c4c225e4cfe677b0a98845e77df32ece0f733f3a529526cece3",
+      "hash": "011ffed0169034d48a5ed0e53b26d4700e78aef6223cd397273bf04eacf60712",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/calculadora-formulas-dano-jogos-ttk/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/calculadora-janela-buffer-entrada-jogo/": {
-      "hash": "1211f216b844f1896bd4d1486efd821e365528d26922e530c3e58f1d80d275f6",
+      "hash": "c1eea10e437d7b8936a53cb58b11ebca53d658715181cb4f53cd9f198a2ece6c",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/calculadora-janela-buffer-entrada-jogo/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/conversor-bbcode-steam/": {
-      "hash": "c9ba92cf5ef05fcce9f357f16206e6e87e36a4eeb082894fcccd89a8e14c02ed",
+      "hash": "d302f7d8075a7a8c6418050d50e3fb8c6400d0b6db9b125c3a4913b8c0eb2f5d",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/conversor-bbcode-steam/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/depurador-csv-localizacao-godot-unity/": {
-      "hash": "9f68c9bcb509d5bfbe6e9f581733fb0e817340b74fc36399100ce7628b51ffe7",
+      "hash": "43b165b8a8f2d1e9e0c0f0293d302656ac2bc8c473c7a4404340068aaa11dee9",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/depurador-csv-localizacao-godot-unity/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/editor-corretor-sprite-sheet/": {
-      "hash": "7de2d52078b054fe5f4c3fe4c1617772d28d542b6a71ee429858368744339687",
+      "hash": "c085e80ba273f0232e948c669590462f8e11ea381206a198c85b16300be4c35e",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/editor-corretor-sprite-sheet/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/editor-de-mapa-de-tiles-isometrico/": {
-      "hash": "94d8bf859cc13941c0554556d012683810854c45c311d0fe023aec01ca7345ec",
+      "hash": "3d4c919ab1a3d8280dd171cd974fad4c57ed7b5cbe4dfd853c244c725fcf1e65",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/editor-de-mapa-de-tiles-isometrico/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/editor-salvamento-jogo/": {
-      "hash": "98c4f34b220f32697cb67c6ebb10390763d7c87e82fc58ed0dc3dc8454d70d87",
+      "hash": "6657436ad48061360184484c94be77ac4713468be5defa906a8f66e9ca0b8248",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/editor-salvamento-jogo/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/empacotador-e-extrator-de-sprite-sheet/": {
-      "hash": "1d0df384e12ee18fe42dfedc727538287c8322ce0d9c42fbb51e2810508c4c8f",
+      "hash": "54fb1207485f7398d797f8f715254e352fca9dcd1aefed4875ceb36f8662d551",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/empacotador-e-extrator-de-sprite-sheet/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/gerador-de-capsulas-steam/": {
-      "hash": "cc3e1bb4ad5454b24b24be036bd803f684ca8f23572e5523b9d85a11bdeb3afb",
+      "hash": "cf90420ae1f25eff642d4c8a68b07822e58750b5b8cfff74d3bcb18995794573",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/gerador-de-capsulas-steam/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/gerador-efeitos-sonoros-retro-jogos/": {
-      "hash": "6d682c0d3bf116c0cf077b2c98fa7a0cd4f8a557937ece183c5f4aeb112b5b76",
+      "hash": "447ad053600036f14dac357097ff913eae8fb5553d73b73177800f3cff7de2da",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/gerador-efeitos-sonoros-retro-jogos/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/": {
-      "hash": "8f3a80447aba069e365e6565185c46deb19bc6c416815497b013bfa4cd865716",
+      "hash": "97a59da2733e3f6738b04146d8a10aa5f79e1b34a46559ebe81545623cee38be",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/inspetor-jogos-web-itchio/": {
-      "hash": "99330fef500f5c50b21e5219739d7eb46abe556b03b2d35402d3b2c415d58696",
+      "hash": "81c67686932dc2c9a7d68aaea20d2bc7fe19aaa17b85f8f2e0dad4344cfe7e6d",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/inspetor-jogos-web-itchio/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/laboratorio-delta-time-e-timestep-fixo-jogos/": {
-      "hash": "06865e21c0b9ef38c983f824bdadbce5c27327040ed48239f8ceb77a8f347c72",
+      "hash": "b36dc4985f230614ba6038030df7b0a4e39191c4abe0a59dcc45f0b6aef302b6",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/laboratorio-delta-time-e-timestep-fixo-jogos/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/localizador-ponto-loop-audio-jogos/": {
-      "hash": "0b26bfe15e789bceab5472e96cd4bce7bb87117fc2ce749ab6bc9a303d2fe206",
+      "hash": "785193a5d019ee85ba6fb2d044fcd65f3fb236b701d3f0c95002060aee83f7c1",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/localizador-ponto-loop-audio-jogos/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/planejador-pixels-por-unidade-sprite-jogos/": {
-      "hash": "450bd16fe3254da188ea0870e07c0910bd5096482a754348422c56c91078d723",
+      "hash": "2ee43f7f9eab744c4ec7055f8a99a909faf24b678abd6ec5af117950395baeed",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/planejador-pixels-por-unidade-sprite-jogos/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/testador-estresse-acessibilidade-ui-jogos/": {
-      "hash": "b15b6bf832f2e3b32a1c128296490c6ab14a542a762187dc687d74a09326c2ab",
+      "hash": "ee6b804e3f95a18e5d1a33cfe7a4f0e89ea73e9a33145e7afb49e94ac5b46589",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/testador-estresse-acessibilidade-ui-jogos/"
     },
     "https://www.gamebob.dev/pt/utilidades/categorias/desenvolvimento-de-jogos/troca-paleta-pixel-art/": {
-      "hash": "aa89d632ea5c95292446268194059d85012fe59f7c97b58a0850bf5591a4ccdb",
+      "hash": "d28eca44a758857bb6c93c5703a3e8fba9e4ed1e925e0d347944797748c47636",
       "route": "/pt/utilidades/categorias/desenvolvimento-de-jogos/troca-paleta-pixel-art/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/animator-hitbox-i-hurtbox-dlya-spraitov/": {
-      "hash": "eccd400fd4e081d69c0b7e203d8fc331d803c19a78384aaf3dea5107e766644a",
+      "hash": "b77e25b4055dac0899bc696fefab5ff98563bd45ecc60965e118f312706b5054",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/animator-hitbox-i-hurtbox-dlya-spraitov/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/generator-kapsul-dlya-steam/": {
-      "hash": "a622c2661636ef36ca611732c304c7753b717ffad4cf1b30a88a32c0c33a3152",
+      "hash": "83fbbe1c4da359ca837642a3e1c8ef0d4b917deac38a895f07d5379a8df53411",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/generator-kapsul-dlya-steam/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/generator-retro-zvykovyh-effektov-dlya-igr/": {
-      "hash": "aa96d50e5a81aec60b80c8f6dfc194d9cab6c86e1b3b1342d53890146ea6f701",
+      "hash": "d61ffe4ef23a3ce3bf68c80280042656845a5e7ebf8059c0d40eebf345a2a880",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/generator-retro-zvykovyh-effektov-dlya-igr/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/": {
-      "hash": "56df54f7b4baa2535287ab2d2972ede77f366384bea12960e305dfbb68c7d973",
+      "hash": "1120a445b5804c995c21340dee60b8fe5885c6a47e92563178696844204efae8",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/itchio-igra-tester/": {
-      "hash": "ce49f281591fd1bb1233e2b648a5c2b4326fad5af1691b2e282aed860dd94578",
+      "hash": "e30ed9f2a2f17f6c6b19813729b033ad9faf024fd6fb1c02e6fb954b52f50749",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/itchio-igra-tester/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/kalkulyator-formul-yrona-igr-ttk/": {
-      "hash": "ddbcfd889971768abff127ede1046772f28cef2c520d8ee616595cb9cf354fb8",
+      "hash": "ac8ec0b0d3cba8f5e8f813d93a3aacf0ffd1322466e6086cd16ba173b80da637",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/kalkulyator-formul-yrona-igr-ttk/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/kalkulyator-okna-bufera-vvoda/": {
-      "hash": "b5a458957a264058dc2678b22133b55cb53e928dcb3bfd38fc4182d73ffded75",
+      "hash": "828c70f2d1ea1bb9149fab389579d45db1ad9bd06186bd35bf53d53ba16078e7",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/kalkulyator-okna-bufera-vvoda/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/konverter-palitry-pixel-art/": {
-      "hash": "85e86de08d3ae48d2f5b2cab06ed8922769218b5789765a776bc6c6a368766c5",
+      "hash": "191157f8831b080c76bf5dfb4ac8f1e3953dc3c368755f4882234f057434ad5e",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/konverter-palitry-pixel-art/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/laboratoriya-delta-time-i-fiksirovannogo-timestep-igr/": {
-      "hash": "bcbb4ed4ee7f4cf3263c6df57d21f2e818fea2d81046820ebf7198f4c1904130",
+      "hash": "4b2dcb09b956ae5e5dea5d6dbc082135cf1815e91dc2712ee46498e15b38d4ce",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/laboratoriya-delta-time-i-fiksirovannogo-timestep-igr/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/ochistka-failov-lokalizacii-godot-unity/": {
-      "hash": "8e050f46137ae2569e39d4075488ea7b850ebc7aa3b7e7f742a636683bd23f47",
+      "hash": "ecababc260bed53cf2ea892fc8065ca8d5225a9ebd6b4e83168f17e276fd93dc",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/ochistka-failov-lokalizacii-godot-unity/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/planirovshchik-pikseley-na-edinitsu-sprayt-igry/": {
-      "hash": "63d87dea58c40d956ccbef2f8450b402ffb27addc7ab6c54f266ba013df7b6e8",
+      "hash": "06cd00306ac6fd25acab074548937d0c18fdc2248d10188f3ddee4aa21674cbb",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/planirovshchik-pikseley-na-edinitsu-sprayt-igry/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/poisk-tochek-zatretlivaniya-audio-igri/": {
-      "hash": "10a9257aab7c8f23ed536b26ac9e439892d9312da58444e389ca1158fb4e7900",
+      "hash": "d447a6dba22f15321ae38abffc605a3af7c26828ae1c725e640fb26766108f8b",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/poisk-tochek-zatretlivaniya-audio-igri/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/preobrazovatel-bbcode-steam/": {
-      "hash": "eb4b5a29b40b19685825311631863f4e09da3aab9f749ce15b888d61111d9de6",
+      "hash": "5666cd43d217db04ad444920aa6cb35e15fdb26b2472585e2d4dad84dcbc2ecc",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/preobrazovatel-bbcode-steam/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/redaktor-ispravleniya-sprite-sheet/": {
-      "hash": "c78055c7b587f5d03a6782278534d49bce3981853e645037a0a602bd75c3f8f6",
+      "hash": "7eaea6b12a6ccca9dd9bad71223f662b456ebdd3f2fe4029bf655dc40e51117a",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/redaktor-ispravleniya-sprite-sheet/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/redaktor-izometricheskoy-tile-karty/": {
-      "hash": "ec90480e0e154156485642559e573fc3cd9238a8a8321d2fb3be2750ecda5f2b",
+      "hash": "8a4342a298870f5cfd61618410a71cd74d83034e838f4f16cb99fb96fb2fb1e9",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/redaktor-izometricheskoy-tile-karty/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/redaktor-sohraneniy-igr/": {
-      "hash": "ba7a5ca721009c3d03f7dbbf9784d0423c2f3aec5f93b24cba8a5e0f16ba128a",
+      "hash": "2c15f48fdc288f0ef3a9e0c16c5e98fb79680e8581b8ab8c813b9cebf2c9c9af",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/redaktor-sohraneniy-igr/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/tester-dostupnosti-ui-igr/": {
-      "hash": "21f4fdcb43f48fd8c2515e737e49b93b3d98391068b2b335f045ee76c9cff696",
+      "hash": "564796a04ef8fc3b61840ba5f1b09146950269fa09c102370ce6c6a9eb7a7dc9",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/tester-dostupnosti-ui-igr/"
     },
     "https://www.gamebob.dev/ru/instrumenty/kategorii/razrabotka-igr/upakovshchik-i-ekstraktor-sprajt-shitov/": {
-      "hash": "fd173dd369db78aeae0e8e062c63a660455d52d73d323e2a806f57063d440a06",
+      "hash": "881a91dc70182b17ab819500b6d7ea93544f95a66d598aa358e75f006cce936c",
       "route": "/ru/instrumenty/kategorii/razrabotka-igr/upakovshchik-i-ekstraktor-sprajt-shitov/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/animera-hitbox-och-hurtbox-sprites/": {
-      "hash": "952f93b2833ff0d6a4e4d980e0a0334875eb43cde79a4682a8ad2bd556d682fc",
+      "hash": "cf51f5d982af84b21a2e8561facb3bbb373fb0d0f6dd5746de22c9af00435ece",
       "route": "/sv/verktyg/kategorier/spelutveckling/animera-hitbox-och-hurtbox-sprites/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/game-ui-tillganglighet-stresstesta/": {
-      "hash": "18807e07d780dde7af3392f5e0ddff8629c97bd43a6cff814231e60b345cc0cf",
+      "hash": "c2203c6e589d1777b6a8aed7262de00a1e435432df2e79ab1536994328a748bc",
       "route": "/sv/verktyg/kategorier/spelutveckling/game-ui-tillganglighet-stresstesta/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/": {
-      "hash": "2df656dc7e7d57a47c30b1f91b20cddbf3962307050b227e9597e6220b295048",
+      "hash": "94912346feeddd4179ff42ba45aba2cb78d1b5553bfa3c0aab57cf47710186b3",
       "route": "/sv/verktyg/kategorier/spelutveckling/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/isometrisk-rutkarta-editor/": {
-      "hash": "8d7d3ac64e0e8991b4d1c15b098444d42a4f76606e55978bfd0dac4334a13dc3",
+      "hash": "b0181f6de00de47f35e873526af87a6fcf21f756d6a643b1d67765e42689b88a",
       "route": "/sv/verktyg/kategorier/spelutveckling/isometrisk-rutkarta-editor/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/itchio-spel-testare/": {
-      "hash": "d098cf3ea0cbae09e09802c307f0585ddb8d80508d6137ea6207210aa146ea43",
+      "hash": "108759164b1e0ce9216ab940bafceff8ffdcb705e96c6682928439c219738001",
       "route": "/sv/verktyg/kategorier/spelutveckling/itchio-spel-testare/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/kalkylator-inputbuffertfonster/": {
-      "hash": "d53870ac543b0ca864813f42595d40daaed2ef9ff4cab798ce251e0c4eeae6db",
+      "hash": "bba834840b20368246d802500eb27bc7aafe4e50bc4850a8b68352e68d4af92e",
       "route": "/sv/verktyg/kategorier/spelutveckling/kalkylator-inputbuffertfonster/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/laboratorium-game-delta-tid-och-fast-timestep/": {
-      "hash": "44f7ea1d63de92857b2aa81bac3f4dd7c1ffa59882973fe0e74b3bf0799e17e5",
+      "hash": "abfccd00a6e0b90f8105c9f3aef624f0ac47c5a61d65c11104535436ab3f9465",
       "route": "/sv/verktyg/kategorier/spelutveckling/laboratorium-game-delta-tid-och-fast-timestep/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/pixel-art-palett-bytare/": {
-      "hash": "75c29ad2dee3db79bb274ce92d50fc9dc2ce05d7483183b850343668c712c5c6",
+      "hash": "f99c8b50d07a03a6fc8eff0cd3028738dcc531cc389997ae70a77f2870c2d4ca",
       "route": "/sv/verktyg/kategorier/spelutveckling/pixel-art-palett-bytare/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/planerare-pixlar-per-enhet-sprite-spel/": {
-      "hash": "c48b240f42d01c52209d3a442775dd0586ae8be66589c31ac940c286b8385446",
+      "hash": "1222dd19d92940f19299cf09f55ffe24db5129af58d8eb4caacbcd763fd63144",
       "route": "/sv/verktyg/kategorier/spelutveckling/planerare-pixlar-per-enhet-sprite-spel/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/retro-ljudeffekt-generator-spel/": {
-      "hash": "02ac19b2adcd654299b7ff5bcbca7e8fa1ffba8a63c699f339bfc47fa01a27c7",
+      "hash": "26ee3619e4bcf5226eb211f38feabed1535a0edd3443218198d8d7b44fd97646",
       "route": "/sv/verktyg/kategorier/spelutveckling/retro-ljudeffekt-generator-spel/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/sanering-lokaliseringsfiler-godot-unity/": {
-      "hash": "1992ca51fabce27a36e13ab4f09c3ab32af8749b49f16e25ffbf2d70344ec513",
+      "hash": "ca3871ed193f0fa1fde888b84b8e087d269ec53a2826baff02e6cf509832c29a",
       "route": "/sv/verktyg/kategorier/spelutveckling/sanering-lokaliseringsfiler-godot-unity/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/spel-audio-loop-punkt-hittare/": {
-      "hash": "2db068f9affe9144fdb65e53e1d3be046a4d3fa9dbd22673938f2486ecd8b65d",
+      "hash": "8e08db963c7c00ca4b6fff61118dd92984836e9d70fc31ad1b24f74b941a363e",
       "route": "/sv/verktyg/kategorier/spelutveckling/spel-audio-loop-punkt-hittare/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/spel-skadeformel-raknare-ttk/": {
-      "hash": "4115fb080a220085ee5459ae1828f3de639397d76ffee10f72dd8db442cdabfc",
+      "hash": "688ab1a984ccab270926be447068936cb61837e6b88772287503d6abc0e387b0",
       "route": "/sv/verktyg/kategorier/spelutveckling/spel-skadeformel-raknare-ttk/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/spelsparfils-editor/": {
-      "hash": "a765ee06df8d094414427944396e1294ff490ae3410e766dd499bbef944b9331",
+      "hash": "97d3d4f6f6b387b5029593dde445938d0c01799cd577dba7c71f16c6db5df935",
       "route": "/sv/verktyg/kategorier/spelutveckling/spelsparfils-editor/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/sprite-sheet-korrigering-editor/": {
-      "hash": "a7010f705928a1b975f40e9f25ed68399ddcee9751a5c72c3833312ee341e8c8",
+      "hash": "6cadb67447207f4a09cbeceec9139412c3550924345a2c35eef6f921bc1bd6f8",
       "route": "/sv/verktyg/kategorier/spelutveckling/sprite-sheet-korrigering-editor/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/sprite-sheet-packer-och-extraktor/": {
-      "hash": "069a8bba4cd466d4854522abf7154a82f232b986c7949364ef7d88a1d8fd4fa3",
+      "hash": "4eef63ae9dd9c7758d67c84aa1a17830e35ea740fae71b07a4690e24acadcfe5",
       "route": "/sv/verktyg/kategorier/spelutveckling/sprite-sheet-packer-och-extraktor/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/steam-bbcode-omvandlare/": {
-      "hash": "90b1005ad5955f975d8c41762068ff7c308623bb819b02cd4245621244fe1f1a",
+      "hash": "f368409caa50e3d38e51f997b0e2c495baced7807e5ea33878b98179c1f7e2eb",
       "route": "/sv/verktyg/kategorier/spelutveckling/steam-bbcode-omvandlare/"
     },
     "https://www.gamebob.dev/sv/verktyg/kategorier/spelutveckling/steam-kapsel-skapare/": {
-      "hash": "c6b393b80663144d484b25244c467b76b5d93cee316708c60ca7cff1984c6ba3",
+      "hash": "069578b88a93047935d69d47bfa67ffe1169e224906a7074260d0665406eb5b0",
       "route": "/sv/verktyg/kategorier/spelutveckling/steam-kapsel-skapare/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/": {
-      "hash": "a5d19996729154ead31b2d4ba271a4166cdd153b34f95a03e80a8868b2ec2251",
+      "hash": "06c0e8edc6d027cd643369fd0040bcc8bcac9e0a99f36c8230bc0c8bd457882f",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/itchio-oyun-test-araci/": {
-      "hash": "3358ba54bfb15f96b78f13f0ad7b901519628de3bc63985f0ba8aa4a49b3c955",
+      "hash": "28b53b0021570b64200b5502347028682c9b506ea7ca0f450ea70a4d8574e3b6",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/itchio-oyun-test-araci/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/izometrik-karo-haritasi-editoru/": {
-      "hash": "9ad656c3abda6ef64bcda83d801edfff474a47fa8c0fba69ab37ef71c44b4126",
+      "hash": "45f698103b9692ab4ae0865834f716e238c81bdab409e488db279c828f1f9340",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/izometrik-karo-haritasi-editoru/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/oyun-delta-time-ve-sabit-timestep-laboratuvari/": {
-      "hash": "ef92aa35bc6230cdb7f9290323f80dd1f9a4317206e71c6b036ce974a6ee2897",
+      "hash": "60a23d141c9deab7549b1ba9587a1f57ebdf51710c7eb438fd06c3570bfe2012",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/oyun-delta-time-ve-sabit-timestep-laboratuvari/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/oyun-giris-tamponu-penceresi/": {
-      "hash": "ab30b93243b7dfb159e3cb854c2676144e02cf6bcb868d832103166598c632de",
+      "hash": "05c8597b1dc5d42c4272e1ab74f9c8a480cab6ed6ac541188ae01337e990faf1",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/oyun-giris-tamponu-penceresi/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/oyun-hasar-formulu-hesaplayici-ttk/": {
-      "hash": "65024d24f1e58db53bac9b4d55980a34f93e24d648111d65f50f03ed1e1efb82",
+      "hash": "9a12de5f046ada24f78b89b2a0901260131d770c23ef6e398c90e2a56fec6153",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/oyun-hasar-formulu-hesaplayici-ttk/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/oyun-kayit-dosyasi-duzenleyici/": {
-      "hash": "e514c53a3eb165d800d8013faf1cc03511c70818b8c9f5c3d7711985237599dc",
+      "hash": "0caf82c7a09db42f4db4f5a1b770dd9b4ec27b14c90fc5ffea01c7b7d98a7789",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/oyun-kayit-dosyasi-duzenleyici/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/oyun-ses-dongu-noktasi-bulucu/": {
-      "hash": "3abff7c93320632ee6937ba6a59440ab1981178f00c19e0ad3fbcb20742d000b",
+      "hash": "eb9d2197232055deda57aaba0374ffb57c8c11935e96c4a2617f27c8dc03c108",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/oyun-ses-dongu-noktasi-bulucu/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/oyun-sprite-birim-basina-piksel-planlayici/": {
-      "hash": "5c4e31a06c57346a62f99113d384824579461557164c33a5eeb71ea1ab1b2186",
+      "hash": "ee1a692023645f0f937010869e2ee22a2be3a180a2dd6bce86d63500e9ba4cfa",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/oyun-sprite-birim-basina-piksel-planlayici/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/oyun-sprite-hitbox-ve-hurtbox-animatoru/": {
-      "hash": "79bd971f62b03594c39223abb0509ae38d69e53444e8ea7a7698af9d24fd757e",
+      "hash": "ff17bd179e7f52c22fc6d9502f4db949bf867f3a7ad1eb18b91bd2b8db265eba",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/oyun-sprite-hitbox-ve-hurtbox-animatoru/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/oyun-ui-erisilebilirlik-stres-testi/": {
-      "hash": "f6d90951a8286932a2cfb5f971d01177f44d825f4f974c1b6f5f4a8178c0fd10",
+      "hash": "344dc1dfa0d139fd30dd88a209483d7e7ad577347fa07e1a28ded95edcb9daef",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/oyun-ui-erisilebilirlik-stres-testi/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/piksel-sanati-palet-degistirici/": {
-      "hash": "09ff93f0062ba537542e1d3ac81bb884c39997245a43e2768fb5e18d857ac15d",
+      "hash": "d9f83e5bfe9d75097f5c912173e44c1515713aec66e8ae5093fb3ce2effe6aaf",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/piksel-sanati-palet-degistirici/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/retro-oyun-ses-efekti-olusturucu/": {
-      "hash": "d4d60f8991e81124157e59a82d324ccbc18f3a687f69211ceead3f5b616a55e1",
+      "hash": "19f2f23ebea93d82382076f78f6bd8879a10f5135c37a42f91db8fbe97c04281",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/retro-oyun-ses-efekti-olusturucu/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/sprite-sheet-duzeltici-editor/": {
-      "hash": "534f477064b561674ca1b120cef5f1bf62e90f631e6d92fbecdfce639997c879",
+      "hash": "7f37370a92d4cbff75bdc8e2decfaeee0a1a93872ee6b5a0beeaa26329a57343",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/sprite-sheet-duzeltici-editor/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/sprite-sheet-paketleyici-ve-cikartici/": {
-      "hash": "e6befc2949ae7ff0531a94adfb0456857eec6e1457332f14773577980128fe24",
+      "hash": "bc383ccbdecbe557afb513a53ec3021ef0f51a5d944b9307559d99c35f40b55e",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/sprite-sheet-paketleyici-ve-cikartici/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/steam-bbcode-donusturucu/": {
-      "hash": "6f4717535c1529844f8bb68f8b2729ac7131c1cd94e8610eada660aeaa527fee",
+      "hash": "7b785ef43f9c0f81df038c27653433d60fffc65874ee4382a3c8a253a917138e",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/steam-bbcode-donusturucu/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/steam-kapsul-generatoru/": {
-      "hash": "ac9f1e3793bb78e61bf207fe5f82e238ca2d2bb57160261831e46d4b7b9321e6",
+      "hash": "afa7ab7336456920fc170bea294b33b9774a840094fc8575fd95cddcbd69a8bf",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/steam-kapsul-generatoru/"
     },
     "https://www.gamebob.dev/tr/araclar/kategoriler/oyun-gelistirme/yerellestirme-csv-temizleyici-godot-unity/": {
-      "hash": "f3fb3c11b7565a823d9d3e813430723c9fbd5bf825a93569fa08b798da3dae0b",
+      "hash": "df285be94c551080e25e830a4642f8e285e111331684036b93bb0c47ccc239ef",
       "route": "/tr/araclar/kategoriler/oyun-gelistirme/yerellestirme-csv-temizleyici-godot-unity/"
     },
     "https://www.jjlmoya.es/utilidades/animador-hitbox-hurtbox-sprites/": {
-      "hash": "8b624d29ab7d2dbf88e2a04c897110664d20c2a48ff05001fef632784a7e3d5f",
+      "hash": "fb8dd89be85cd007b05df042004c094f19e1186f3b6151644c30a7a563d19fc3",
       "route": "/utilidades/animador-hitbox-hurtbox-sprites/"
     },
     "https://www.jjlmoya.es/utilidades/buscador-puntos-bucle-audio-juegos/": {
-      "hash": "fa160966a6620bf50df2dcfa705d59c3359ef4220702e2fd40700466710fb964",
+      "hash": "5108ed73012f81ad57911a7ba82b7308b416b4573dfa9cf9a2b728ab82f269e4",
       "route": "/utilidades/buscador-puntos-bucle-audio-juegos/"
     },
     "https://www.jjlmoya.es/utilidades/calculadora-formulas-dano-juegos-ttk/": {
-      "hash": "7d7359bebd7047199289cb9abc8d175a2957c43d57073ec72fabc7e554a6b843",
+      "hash": "c8303040ecde0d0644f59363ec627aaad1a4070133231bb01af1a286e856656d",
       "route": "/utilidades/calculadora-formulas-dano-juegos-ttk/"
     },
     "https://www.jjlmoya.es/utilidades/calculadora-ventana-buffer-entrada-juegos/": {
-      "hash": "90a2915fa4b2d6762402de3faeb63e72a142d8e265a3801b509ed75e349bb7d7",
+      "hash": "53e62a31861e822d200b03a72d93bbe912563b497d3256e00bd3bb06303cdce0",
       "route": "/utilidades/calculadora-ventana-buffer-entrada-juegos/"
     },
     "https://www.jjlmoya.es/utilidades/cambiador-paleta-pixel-art/": {
-      "hash": "c7e0590b950911d1665dc897d3161b64d27df6f19226fb44888e0611ab1d3d2b",
+      "hash": "82335adca23ed5715139f48c659244ce17d5a5b6891356e97ef937700f5889cd",
       "route": "/utilidades/cambiador-paleta-pixel-art/"
     },
     "https://www.jjlmoya.es/utilidades/categorias/desarrollo-de-videojuegos/": {
-      "hash": "ea87a6a1a07d45fad99002882fa0edb2864057275d78590571c2ccba2dd0a067",
+      "hash": "36d33ff6964fe6cf2f5173b1f4bbcf212689040252e1cda7cc95f0821907f2d0",
       "route": "/utilidades/categorias/desarrollo-de-videojuegos/"
     },
     "https://www.jjlmoya.es/utilidades/depurador-csv-localizacion-godot-unity/": {
-      "hash": "dd3cf8eb8f9722ab3d7a1391bef1a1bd540940c188d1d01fb2479c0a95e37ca8",
+      "hash": "d17b7f9189e18abf15e1bb790070741f8ab22cc58260588f2c6f8c51c21b5aaf",
       "route": "/utilidades/depurador-csv-localizacion-godot-unity/"
     },
     "https://www.jjlmoya.es/utilidades/editor-archivos-guardado-juegos/": {
-      "hash": "e70ed3f12270025fc1419c04a0126c5c19aa214254b7212e928b6972fabec1e6",
+      "hash": "4f933a4fd368b44f4e3a1f84541daee47863b1bfb7ea68d8ad20ff659f47f9b1",
       "route": "/utilidades/editor-archivos-guardado-juegos/"
     },
     "https://www.jjlmoya.es/utilidades/editor-corrector-sprite-sheet/": {
-      "hash": "f6c362dd3c9ffbbee32c05c76054325395fabeb261bee139cf305513b02d9c4a",
+      "hash": "92d9f6d15c7dbe4fd898de9ac420b9385750f35a28c8c830e39e98e80fbf6302",
       "route": "/utilidades/editor-corrector-sprite-sheet/"
     },
     "https://www.jjlmoya.es/utilidades/editor-de-mapas-de-baldosas-isometricas/": {
-      "hash": "ad46276525b2c1e6b0d6272d8183fc90899fc21ec48a02b9eacb43d36871ffd5",
+      "hash": "590dea9079eb7ac7bcf4f4cbc5c697ff5fccc4300d7d5efe7ae0e6b439bedf7f",
       "route": "/utilidades/editor-de-mapas-de-baldosas-isometricas/"
     },
     "https://www.jjlmoya.es/utilidades/empaquetador-y-extractor-de-sprite-sheets/": {
-      "hash": "fdf1cc3aa33b109368179ecd06ef63ee1fddc68c7a3c2e0b95c186c133f70342",
+      "hash": "8c79cfe254818c7f4321d48dd51b6fdfa13828f1685ba5f408045bfcb68398cf",
       "route": "/utilidades/empaquetador-y-extractor-de-sprite-sheets/"
     },
     "https://www.jjlmoya.es/utilidades/evaluador-estres-accesibilidad-ui-juegos/": {
-      "hash": "9ba5c1558361fb91aa176f0cbdb94300dbc34235425f8ab28dc80aaf2bec2e2f",
+      "hash": "e23bd468f4e4ee05dbd35e180082ad2b7a78a48711f5897a22e536850322c2ad",
       "route": "/utilidades/evaluador-estres-accesibilidad-ui-juegos/"
     },
     "https://www.jjlmoya.es/utilidades/generador-de-capsulas-de-steam/": {
-      "hash": "0413824561025a475a7921313fea2eab9495b31041023dbc69e7fe3a524fbce5",
+      "hash": "45b24e74af868595b294f04f9670cec0f861d67c4c108a5300391da97c2cfd47",
       "route": "/utilidades/generador-de-capsulas-de-steam/"
     },
     "https://www.jjlmoya.es/utilidades/generador-efectos-sonido-retro/": {
-      "hash": "694acecd1a9ffee2871afd3e3d2f46d3db2e8c0a4ca76e963313966d1d51e47d",
+      "hash": "281ad300338de381b261686078b7636369d4cfc09b169c4ae6441d3af5ccf8d0",
       "route": "/utilidades/generador-efectos-sonido-retro/"
     },
     "https://www.jjlmoya.es/utilidades/laboratorio-delta-time-y-timestep-fijo-para-juegos/": {
-      "hash": "4407ca5a4f9eb374220249d66e36dba272647f9f17a3e7d3c526da10f2e90e9e",
+      "hash": "72f2fabd5d39af33e44931ec89fa7ffd360af622db158599a15ffd97916d7ad2",
       "route": "/utilidades/laboratorio-delta-time-y-timestep-fijo-para-juegos/"
     },
     "https://www.jjlmoya.es/utilidades/planificador-pixeles-por-unidad-sprite-juegos/": {
-      "hash": "28d981ae2a9ed69f5936e8f4d6c3430788bdfd4e96dd755947727d3d7bb74f04",
+      "hash": "af848b088d2d70fa422426f450a27963619f30298aa5e437bf66c73ed75e8ecc",
       "route": "/utilidades/planificador-pixeles-por-unidad-sprite-juegos/"
     },
     "https://www.jjlmoya.es/utilidades/probador-de-juegos-itchio/": {
-      "hash": "f630b74f1f5195b2acab4ba8295b3eb2182c06dab78423f432d16f684e39dfb5",
+      "hash": "2d3bfa9083699e227043849fd9aca098e562e679a6adacfe18809c56da942fc2",
       "route": "/utilidades/probador-de-juegos-itchio/"
     },
     "https://www.jjlmoya.es/utilidades/traductor-bbcode-steam/": {
-      "hash": "a61bf716704af5dbe4999345d0204d8945f06582de56d3a2ba5ecbc43f3cbc07",
+      "hash": "0221a7cb62fad819d8d828b08fe6ab715ee7841d909e1c1b3d97c436354c0dee",
       "route": "/utilidades/traductor-bbcode-steam/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/audio-loop-point-finder/": {
-      "hash": "f37c378771f57094ab14a66125c821929d24d9b32e88e6853b81b96d0e0c4240",
+      "hash": "57b42a52f58f9b3bbad7b3092391f38897f2d61a8f0bd2ba4bed236ce9bd0957",
       "route": "/zh/utilities/categories/game-development/audio-loop-point-finder/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/fixer-editor/": {
-      "hash": "c972822d8159d41631eb868b2e5810ffcff8408924974837a57ebdf54f73aa08",
+      "hash": "dc828597d01264edf0b8569fcfb5400e2783d03249a0371ecbbfd18ec3a0386c",
       "route": "/zh/utilities/categories/game-development/fixer-editor/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/game-damage-formula-calculator-ttk/": {
-      "hash": "229e61d3297458ce6349528d985d56e155ac81de6f55ed5b659c5ed151eb8684",
+      "hash": "81c337a93cd87caea58295968629796aeb6e0b511f49298415a332342f4ebfbf",
       "route": "/zh/utilities/categories/game-development/game-damage-formula-calculator-ttk/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/game-delta-time-fixed-timestep-lab/": {
-      "hash": "16265c43307254181955b05d2e5c4483b121a8afef956227373c35c3dec1cdd5",
+      "hash": "8e254eb6c4580ffe686a1149d018d6689c364f91f6839e40e7d26d5cefa0b440",
       "route": "/zh/utilities/categories/game-development/game-delta-time-fixed-timestep-lab/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/game-input-buffer-window-calculator/": {
-      "hash": "a2d27836a709e1d36e0c5d44c63858e80007322b8c2f37abd0c50cd0f167d36a",
+      "hash": "5b203941d5a06dfe8099e8c8c92f79a3f846bd06a1263ee784f17709d77698d5",
       "route": "/zh/utilities/categories/game-development/game-input-buffer-window-calculator/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/game-pixel-per-unit-planner/": {
-      "hash": "8ed2addcb80dbdf083fbad805ba8a34244acb044ff0c43294de3fe5d51e2bcb4",
+      "hash": "fe27f143b80ca00fc1e1ab2db59f1af213d11649e90500db5bee838f9bfdb6cc",
       "route": "/zh/utilities/categories/game-development/game-pixel-per-unit-planner/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/game-save-file-editor/": {
-      "hash": "a15aa7ae501361af5f7a833d83b180f32cf406e5ad10e546684afa140595089b",
+      "hash": "f174372dbbefffad634c95b24923f5d8b4f4f95eb59ecdbaf625cc9065435cd9",
       "route": "/zh/utilities/categories/game-development/game-save-file-editor/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/game-ui-accessibility-stress-tester/": {
-      "hash": "fc7ffefe8679499e7955c0011568b40d1296d9543a4b40daeb2e0591f1ee9de4",
+      "hash": "ef40c89d9423eddd0aff02130ed030f9110bfe921862282e41e4b21d51f07b4f",
       "route": "/zh/utilities/categories/game-development/game-ui-accessibility-stress-tester/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/hitbox-hurtbox-animator/": {
-      "hash": "9ad5ff9480d068820b35cb6ca79dfffc7f276eef97363027b39f6fed95954e09",
+      "hash": "fb3a9bcc9cb95ad6715140a050c02ce9d97f598fff13797325b5cf8365796b57",
       "route": "/zh/utilities/categories/game-development/hitbox-hurtbox-animator/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/": {
-      "hash": "f5472aefd45e8b1be7d95889680bf713b4b0c3a87ff63c1a3e23a01d86a8cf65",
+      "hash": "ac69e28e134b94435051f2c37212812e91912df71b291f054b2d4f9b74a0be7c",
       "route": "/zh/utilities/categories/game-development/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/isometric-tile-map-editor/": {
-      "hash": "8d32edd3c087078a9c4a1d25e016535ec3512d370b76eb4800205652b3521ec0",
+      "hash": "e0963dcb4d9bb6c02f0a5b205ba1ef0a630c132c5a3ec1f2f1c790157bc87c4e",
       "route": "/zh/utilities/categories/game-development/isometric-tile-map-editor/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/itchio-game-tester/": {
-      "hash": "deaee8a72d68b4821b253544ca6a4cf25f3b539d4227edf68c23877fffdc377b",
+      "hash": "8ec16afe25c99ad52e85f66b2b3fc4a8a13267bfbdf3a7b1f3626dc16ed0e416",
       "route": "/zh/utilities/categories/game-development/itchio-game-tester/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/localization-sanitizer/": {
-      "hash": "011f18aea6d3481bdd59787bb2bff575d1f78e7edcde68088f860380e13235d7",
+      "hash": "9c9ec6c6b9016af22c0192bf6c193ca5aa1702739ac72d7ed2cdb103054354e7",
       "route": "/zh/utilities/categories/game-development/localization-sanitizer/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/pixel-art-palette-swapper/": {
-      "hash": "39e42fecb5e1b1a341d9d61e82cc89352575d3a90244084effe5a2a7085e5d17",
+      "hash": "d699d300dec0d12d1e794febd49e0a23e7c5760926b10b844c15554a7b6ac1a3",
       "route": "/zh/utilities/categories/game-development/pixel-art-palette-swapper/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/retro-sfx-generator/": {
-      "hash": "ef4d84fc0446123660427eb8d6f103b9c25cc7ca512da74cc32e1343a22f07b6",
+      "hash": "da17b42cae95d0d807cecf27b9b60c226e1b4688ea3a55c258acece59d032670",
       "route": "/zh/utilities/categories/game-development/retro-sfx-generator/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/sprite-sheet-packer/": {
-      "hash": "97d686f19c3357e96ea68c9b43d1a015cc74e738c502b5210a7e8be81a36adee",
+      "hash": "85dae6d79554a9197e4f5d8c771bcf4aea43075fe9b1098c9b8d4cd4d6e0904b",
       "route": "/zh/utilities/categories/game-development/sprite-sheet-packer/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/steam-bbcode-translator/": {
-      "hash": "d6f9642174aa3cc960a386e5a38738f3ece0e17db8d643660d3b7162101bad6d",
+      "hash": "c5550207468a39004d545b960f098b8208b70ffecaaa28f0fe9cf90897190164",
       "route": "/zh/utilities/categories/game-development/steam-bbcode-translator/"
     },
     "https://www.gamebob.dev/zh/utilities/categories/game-development/steam-capsule-generator/": {
-      "hash": "64216fb80b9cc413a03b18e63c273995ea7ffd30328da15f8cd1bd20dba46713",
+      "hash": "46b18298c58fff0b3c2737c19da2c1fb43647a81de606b001f0c6b6368002f6d",
       "route": "/zh/utilities/categories/game-development/steam-capsule-generator/"
     }
   }
