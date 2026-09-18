@@ -43,6 +43,10 @@
             "zone_name": "jjlmoya.es"
         },
         {
+            "pattern": "www.jjlmoya.es/utilidades/calculadora-ventana-buffer-entrada-juegos*",
+            "zone_name": "jjlmoya.es"
+        },
+        {
             "pattern": "www.jjlmoya.es/utilidades/probador-de-juegos-itchio*",
             "zone_name": "jjlmoya.es"
         },
