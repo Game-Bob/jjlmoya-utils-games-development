@@ -58,6 +58,7 @@
         "@jjlmoya/prompagate": "^1.1.0",
         "@jjlmoya/tracking": "0.2.0",
         "@jjlmoya/utils-shared": "1.5.0",
+        "@tauri-apps/api": "^2.11.1",
         "astro": "^6.1.2",
         "astro-icon": "^1.1.0",
         "jszip": "^3.10.1"

@@ -1,6 +1,7 @@
 import type { IPlatformBridge } from './contracts/IPlatformBridge';
 import { isTauriEnvironment } from './detector';
 import { WebPlatformBridge } from './adapters/web/WebPlatformBridge';
+import { TauriPlatformBridge } from './adapters/desktop/TauriPlatformBridge';
 
 let customBridgeInstance: IPlatformBridge | null = null;
 
@@ -13,7 +14,7 @@ export function resolvePlatformBridge(): IPlatformBridge {
         return customBridgeInstance;
     }
     if (isTauriEnvironment()) {
-        return new WebPlatformBridge();
+        return new TauriPlatformBridge();
     }
     return new WebPlatformBridge();
 }
