@@ -1,0 +1,18 @@
+[package]
+name = "gamebob-2d-game-dev-toolkit"
+version = "1.77.0"
+description = "GameBob 2D Game Dev Toolkit Desktop"
+authors = ["GameBob"]
+edition = "2021"
+
+[lib]
+name = "gamebob_toolkit_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

@@ -24,6 +24,9 @@
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
+        "tauri": "tauri",
+        "tauri:dev": "tauri dev",
+        "tauri:build": "tauri build",
         "lint": "eslint src/ --max-warnings 0 && stylelint \"src/**/*.{css,astro}\"",
         "check": "astro check",
         "type-check": "astro check",
@@ -51,16 +54,17 @@
     },
     "dependencies": {
         "@iconify-json/mdi": "^1.2.3",
+        "@jjlmoya/identity": "0.4.0",
         "@jjlmoya/prompagate": "^1.1.0",
+        "@jjlmoya/tracking": "0.2.0",
         "@jjlmoya/utils-shared": "1.5.0",
         "astro": "^6.1.2",
         "astro-icon": "^1.1.0",
-        "jszip": "^3.10.1",
-        "@jjlmoya/identity": "0.4.0",
-        "@jjlmoya/tracking": "0.2.0"
+        "jszip": "^3.10.1"
     },
     "devDependencies": {
         "@astrojs/check": "^0.9.8",
+        "@tauri-apps/cli": "^2.11.5",
         "eslint": "^9.39.4",
         "eslint-plugin-astro": "^1.6.0",
         "eslint-plugin-no-comments": "^1.1.10",
