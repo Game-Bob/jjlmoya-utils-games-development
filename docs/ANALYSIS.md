@@ -1,8 +1,8 @@
-# Análisis Arquitectónico y Funcional: GameBob 2D Game Dev Toolkit
+# Análisis Arquitectónico y Funcional: GameBob Quest (gamebob-gamedevelopment)
 
 ## 1. Contexto y Justificación del MVP
 
-El catálogo de utilidades web GameBob cuenta con más de 30 repositorios verticales (`jjlmoya-utils-*`), desplegados como microfrontends (MFEs) independientes. El objetivo estratégico es lanzar una línea de aplicaciones de escritorio comerciales (**GameBob Toolkits**) mediante Tauri, que aporten valor real de producción manteniendo las herramientas individuales gratuitas en la web.
+El catálogo de utilidades web GameBob cuenta con más de 30 repositorios verticales (`jjlmoya-utils-*`), desplegados como microfrontends (MFEs) independientes. El objetivo estratégico es lanzar una línea de aplicaciones de escritorio comerciales (**GameBob Toolkits**, siendo **GameBob Quest** el primer producto) mediante Tauri, que aporten valor real de producción manteniendo las herramientas individuales gratuitas en la web.
 
 Tras evaluar el catálogo bajo criterios de:
 - Cohesión de flujo de trabajo entre herramientas

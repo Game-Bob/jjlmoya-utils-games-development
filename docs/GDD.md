@@ -1,8 +1,8 @@
-# GDD — GameBob 2D Game Dev Toolkit
+# GDD — GameBob Quest (Nombre Interno: gamebob-gamedevelopment)
 
 ## 1. Concepto y Visión del Producto
 
-GameBob 2D Game Dev Toolkit es una aplicación de escritorio nativa orientada a desarrolladores de videojuegos independientes, artistas de pixel art y diseñadores de mecánicas 2D. 
+**GameBob Quest** (nombre interno técnico `gamebob-gamedevelopment`) es la aplicación de escritorio nativa orientada a desarrolladores de videojuegos independientes, artistas de pixel art y diseñadores de mecánicas 2D. 
 
 A diferencia de la versión web de GameBob —que ofrece calculadoras y utilidades individuales para consultas rápidas sin persistencia— el Toolkit de escritorio funciona como un entorno integrado de producción local que se conecta directamente al sistema de archivos del motor de juego (Godot, Unity, Defold, Raylib, Love2D, Phaser).
 

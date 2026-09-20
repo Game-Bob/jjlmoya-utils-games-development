@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "GameBob 2D Game Dev Toolkit",
+  "productName": "GameBob Quest",
   "version": "1.77.0",
   "identifier": "dev.gamebob.gamedevelopment",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "GameBob 2D Game Dev Toolkit",
+        "title": "GameBob Quest",
         "width": 1280,
         "height": 800,
         "minWidth": 900,
