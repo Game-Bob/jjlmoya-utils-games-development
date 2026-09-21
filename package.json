@@ -4,6 +4,9 @@
     "type": "module",
     "main": "./src/index.ts",
     "types": "./src/index.ts",
+    "engines": {
+        "node": ">=22.19.0"
+    },
     "exports": {
         ".": "./src/index.ts",
         "./data": "./src/data.ts",
@@ -27,6 +30,8 @@
         "tauri": "tauri",
         "tauri:dev": "tauri dev",
         "tauri:build": "tauri build",
+        "test:desktop-contract": "vitest run src/platform/commands.test.ts src/platform/platform.test.ts src/workspace --reporter=verbose && cargo test --manifest-path src-tauri/Cargo.toml",
+        "desktop:verify": "npm run qa && npm run test:desktop-contract && cargo check --manifest-path src-tauri/Cargo.toml",
         "lint": "eslint src/ --max-warnings 0 && stylelint \"src/**/*.{css,astro}\"",
         "check": "astro check",
         "type-check": "astro check",
@@ -60,12 +65,12 @@
         "@jjlmoya/utils-shared": "1.5.0",
         "@tauri-apps/api": "^2.11.1",
         "@tauri-apps/plugin-dialog": "^2.7.3",
-        "astro": "^6.1.2",
-        "astro-icon": "^1.1.0",
+        "astro": "^7.3.3",
+        "astro-icon": "^1.2.0",
         "jszip": "^3.10.1"
     },
     "devDependencies": {
-        "@astrojs/check": "^0.9.8",
+        "@astrojs/check": "^0.9.10",
         "@tauri-apps/cli": "^2.11.5",
         "eslint": "^9.39.4",
         "eslint-plugin-astro": "^1.6.0",

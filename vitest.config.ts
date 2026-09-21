@@ -9,7 +9,7 @@ export default defineConfig({
     alias: [
       {
         find: /^(.*)\.astro$/,
-        replacement: path.resolve(__dirname, './src/tests/mocks/astro_mock.js')
+        replacement: path.resolve(import.meta.dirname, './src/tests/mocks/astro_mock.js')
       }
     ]
   },
