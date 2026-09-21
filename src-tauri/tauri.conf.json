@@ -5,7 +5,7 @@
   "identifier": "dev.gamebob.gamedevelopment",
   "build": {
     "beforeDevCommand": "npm run dev",
-    "devUrl": "http://localhost:4321",
+    "devUrl": "http://localhost:3037",
     "beforeBuildCommand": "npm run build",
     "frontendDist": "../dist"
   },
