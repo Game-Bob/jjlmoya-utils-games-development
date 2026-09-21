@@ -133,8 +133,8 @@ describe('Platform Abstraction Layer', () => {
 
             const recents = await storage.getRecentProjects();
             expect(recents.length).toBe(2);
-            expect(recents[0].id).toBe('2');
-            expect(recents[1].id).toBe('1');
+            expect(recents[0]?.id).toBe('2');
+            expect(recents[1]?.id).toBe('1');
 
             await storage.clearRecentProjects();
             const empty = await storage.getRecentProjects();
@@ -219,9 +219,9 @@ describe('Platform Abstraction Layer', () => {
             await writer.writeBinary('out.bin', new Uint8Array([1, 2]));
             await writer.createDirectory('folder');
 
-            expect(logged[0].cmd).toBe('write_file_text');
-            expect(logged[1].cmd).toBe('write_file_binary');
-            expect(logged[2].cmd).toBe('create_dir_all');
+            expect(logged[0]?.cmd).toBe('write_file_text');
+            expect(logged[1]?.cmd).toBe('write_file_binary');
+            expect(logged[2]?.cmd).toBe('create_dir_all');
         });
     });
 
@@ -311,7 +311,7 @@ describe('Platform Abstraction Layer', () => {
             await storage.saveRecentProject(proj);
             const recents = await storage.getRecentProjects();
             expect(recents.length).toBe(1);
-            expect(recents[0].name).toBe('My Game');
+            expect(recents[0]?.name).toBe('My Game');
 
             const config = { engine: 'godot4', targetPpu: 16 };
             await storage.saveProjectConfig('/games/rpg', config);

@@ -1,0 +1,63 @@
+---
+---
+
+<section id="output-dock" class="output-dock collapsed" aria-label="Output and Engine Logs">
+  <div class="dock-header">
+    <div class="dock-title-group">
+      <button
+        id="dock-toggle-btn"
+        class="dock-toggle-btn"
+        type="button"
+        aria-expanded="false"
+        aria-controls="dock-body"
+        title="Toggle Output Dock (Ctrl+J)"
+      >
+        <svg class="dock-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+        <span class="dock-title">Output</span>
+      </button>
+      <span id="dock-total-badge" class="dock-counter">0 events</span>
+    </div>
+
+    <div class="dock-filter-group" role="toolbar" aria-label="Log Filters">
+      <button type="button" class="dock-filter-chip active" data-filter="all">
+        <span>All</span>
+        <span id="filter-count-all" class="chip-count">0</span>
+      </button>
+      <button type="button" class="dock-filter-chip" data-filter="info">
+        <span>Info</span>
+        <span id="filter-count-info" class="chip-count">0</span>
+      </button>
+      <button type="button" class="dock-filter-chip" data-filter="warn">
+        <span>Warn</span>
+        <span id="filter-count-warn" class="chip-count">0</span>
+      </button>
+      <button type="button" class="dock-filter-chip" data-filter="error">
+        <span>Error</span>
+        <span id="filter-count-error" class="chip-count">0</span>
+      </button>
+      <button type="button" class="dock-filter-chip" data-filter="success">
+        <span>Success</span>
+        <span id="filter-count-success" class="chip-count">0</span>
+      </button>
+    </div>
+
+    <div class="dock-actions">
+      <button id="dock-clear-btn" class="dock-action-btn" type="button" title="Clear logs" aria-label="Clear logs">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+        </svg>
+        <span>Clear</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="dock-body" class="dock-body" role="log" aria-live="polite">
+    <div id="dock-empty-state" class="dock-empty-state">
+      <span>No events recorded. Actions and exports will appear here.</span>
+    </div>
+    <ul id="dock-log-list" class="dock-log-list"></ul>
+  </div>
+</section>

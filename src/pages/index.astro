@@ -1,3 +1,22 @@
 ---
 ---
-<meta http-equiv="refresh" content="0;url=/utilidades/categorias/desarrollo-de-videojuegos/" />
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GameBob</title>
+    <script>
+      import { isTauriEnvironment } from '../platform/detector';
+
+      if (isTauriEnvironment()) {
+        window.location.replace('/workspace/');
+      } else {
+        window.location.replace('/utilidades/categorias/desarrollo-de-videojuegos/');
+      }
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/utilidades/categorias/desarrollo-de-videojuegos/" />
+    </noscript>
+  </head>
+  <body></body>
+</html>

@@ -22,7 +22,7 @@ export class WebFileWriter implements IFileWriter {
     async writeBinary(path: string, data: Uint8Array): Promise<void> {
         this.inMemoryStorage.set(path, data);
         if (typeof document !== 'undefined' && typeof window !== 'undefined' && !path.startsWith('virtual:')) {
-            const blob = new Blob([data], { type: 'application/octet-stream' });
+            const blob = new Blob([data as unknown as BlobPart], { type: 'application/octet-stream' });
             this.triggerBrowserDownload(path, blob);
         }
     }

@@ -1,0 +1,57 @@
+---
+interface Props {
+  initialRoutePath?: string;
+  initialToolName?: string;
+  initialToolDescription?: string;
+  initialPhaseTitle?: string;
+}
+
+const {
+  initialRoutePath = '/utilidades/categorias/desarrollo-de-videojuegos/spritesheet-packer/',
+  initialToolName = 'SpriteSheet Packer',
+  initialToolDescription = 'Texture atlas packing with Godot and Unity JSON export',
+  initialPhaseTitle = 'Visual Assets',
+} = Astro.props;
+---
+
+<main id="tool-viewport" class="tool-viewport" role="region" aria-label="Tool Viewport">
+  <div class="viewport-header">
+    <div class="viewport-meta">
+      <span id="viewport-phase-badge" class="viewport-phase-badge">{initialPhaseTitle}</span>
+      <h2 id="viewport-tool-title" class="viewport-tool-title">{initialToolName}</h2>
+      <p id="viewport-tool-desc" class="viewport-tool-desc">{initialToolDescription}</p>
+    </div>
+    <div class="viewport-actions">
+      <a
+        id="viewport-external-link"
+        href={initialRoutePath}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="viewport-action-btn"
+        title="Open standalone tool page in new tab"
+        aria-label="Open in new window"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        <span>Popout</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="viewport-frame-container">
+    <div id="viewport-loader" class="viewport-loader" aria-hidden="true">
+      <div class="loader-spinner"></div>
+      <span class="loader-text">Loading tool module...</span>
+    </div>
+    <iframe
+      id="tool-viewport-iframe"
+      class="tool-viewport-iframe"
+      src={initialRoutePath}
+      title="Active Tool Frame"
+      loading="eager"
+    ></iframe>
+  </div>
+</main>

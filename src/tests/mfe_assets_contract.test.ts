@@ -13,8 +13,8 @@ if (!categoryImageMatch) {
 }
 
 const [, imageUrlRoot, categoryImage, assetVersion] = categoryImageMatch;
-const assetRoot = join(process.cwd(), 'public', imageUrlRoot.slice(1));
-const categorySlug = basename(categoryImage, '.webp');
+const assetRoot = join(process.cwd(), 'public', (imageUrlRoot ?? '').slice(1));
+const categorySlug = basename(categoryImage ?? '', '.webp');
 
 describe('MFE asset contract', () => {
   it('has one non-empty English-slug OG image per category and registered tool', async () => {

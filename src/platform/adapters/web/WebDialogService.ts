@@ -21,7 +21,7 @@ function extractFileUrls(selectedFiles: FileList | null): string[] {
 export class WebDialogService implements IDialogService {
     async openFile(options?: OpenDialogOptions): Promise<string | null> {
         const files = await this.openFiles({ ...options, multiple: false });
-        return files.length > 0 ? files[0] : null;
+        return files.length > 0 ? (files[0] ?? null) : null;
     }
 
     async openFiles(options?: OpenDialogOptions): Promise<string[]> {

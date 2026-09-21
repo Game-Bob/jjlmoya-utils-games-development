@@ -1,0 +1,26 @@
+---
+import type { WorkspaceToolItem } from '../types';
+
+interface Props {
+  tool: WorkspaceToolItem;
+}
+
+const { tool } = Astro.props;
+---
+
+<li role="presentation">
+  <button
+    type="button"
+    role="tab"
+    class="pipeline-tool-item"
+    id={`sidebar-tool-${tool.id}`}
+    data-tool-id={tool.id}
+    data-phase-id={tool.phaseId}
+    data-route-path={tool.routePath}
+    aria-selected="false"
+    tabindex="-1"
+  >
+    <span class="tool-bullet" aria-hidden="true"></span>
+    <span class="tool-name">{tool.name}</span>
+  </button>
+</li>

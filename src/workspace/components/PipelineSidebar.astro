@@ -1,0 +1,31 @@
+---
+import { PIPELINE_PHASES } from '../pipelinePhases';
+import PipelineToolItem from './PipelineToolItem.astro';
+---
+
+<aside id="pipeline-sidebar" class="pipeline-sidebar" aria-label="Pipeline Navigation">
+  <div class="sidebar-header">
+    <span class="sidebar-title">Pipeline</span>
+    <span class="sidebar-badge">{PIPELINE_PHASES.reduce((acc, p) => acc + p.tools.length, 0)} tools</span>
+  </div>
+
+  <nav class="pipeline-phases-list" role="tablist" aria-orientation="vertical">
+    {PIPELINE_PHASES.map((phase) => (
+      <section class="pipeline-phase-group" data-phase-group={phase.id}>
+        <div class="phase-header" role="presentation">
+          <div class="phase-meta">
+            <span class="phase-title">{phase.title}</span>
+            <span class="phase-subtitle">{phase.subtitle}</span>
+          </div>
+          <span class="phase-count">{phase.tools.length}</span>
+        </div>
+
+        <ul class="phase-tools-list" role="presentation">
+          {phase.tools.map((tool) => (
+            <PipelineToolItem tool={tool} />
+          ))}
+        </ul>
+      </section>
+    ))}
+  </nav>
+</aside>

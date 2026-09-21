@@ -1,0 +1,51 @@
+---
+interface Props {
+  productName?: string;
+}
+
+const { productName = 'GameBob Quest' } = Astro.props;
+---
+
+<header class="project-bar" role="banner">
+  <div class="project-bar-branding">
+    <span class="project-bar-logo" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+        <path d="M6 12h4"></path>
+        <path d="M8 10v4"></path>
+        <circle cx="17" cy="10" r="1"></circle>
+        <circle cx="15" cy="13" r="1"></circle>
+      </svg>
+    </span>
+    <span class="project-bar-title">{productName}</span>
+  </div>
+
+  <div class="project-bar-summary" aria-label="Current Project">
+    <div class="project-bar-name-row">
+      <span id="project-bar-name" class="project-bar-name">No Project Loaded</span>
+      <span id="project-bar-engine" class="project-bar-engine" data-engine="none">Standalone</span>
+    </div>
+    <span id="project-bar-path" class="project-bar-path" title="Project root directory">Working in browser / offline mode</span>
+  </div>
+
+  <div class="project-bar-actions">
+    <div id="project-bar-status-indicator" class="project-bar-status" data-status="ready">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span id="project-bar-status-text" class="status-text">Ready</span>
+    </div>
+
+    <button id="project-bar-open-btn" class="project-bar-btn" type="button" title="Open Project (Ctrl+O)" aria-label="Open Project">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span>Open</span>
+    </button>
+
+    <button id="project-bar-sync-btn" class="project-bar-btn project-bar-btn-primary" type="button" title="Synchronize Pipeline (Ctrl+S)" aria-label="Synchronize Pipeline">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"></path>
+      </svg>
+      <span>Sync</span>
+    </button>
+  </div>
+</header>
