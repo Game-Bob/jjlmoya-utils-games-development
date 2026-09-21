@@ -1,3 +1,5 @@
+#![allow(linker_messages)]
+
 mod directory_watcher;
 mod file_commands;
 mod platform_error;
