@@ -6,6 +6,10 @@ Este documento define cómo convertir GameBob Quest de un catálogo web alojado 
 
 No es una propuesta de rediseño cosmético. La prioridad es cambiar el modelo de producto, el contrato de integración y la jerarquía de la interfaz antes de pulir colores o animaciones.
 
+## Estado de ejecución
+
+La posición actual, lo ya completado y el siguiente ticket ejecutable se mantienen en [DESKTOP_EXECUTION_STATUS.md](./DESKTOP_EXECUTION_STATUS.md). Este documento define el destino; el checkpoint evita confundir la dirección aprobada con trabajo ya implementado.
+
 ## Diagnóstico ejecutivo
 
 La aplicación actual tiene una base nativa válida para archivos, proyectos, vigilancia de directorios y empaquetado. El problema está en la capa de producto:
