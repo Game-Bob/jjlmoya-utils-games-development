@@ -44,6 +44,35 @@ La promesa de producto es:
 
 > Abre tu proyecto, continúa exactamente donde estabas y lleva cada recurso desde su fuente hasta el motor sin volver a seleccionar archivos ni reconstruir contexto.
 
+## Frontera de producto y distribución
+
+GameBob Quest se construye como dos experiencias sobre un mismo núcleo, no como una edición gratuita recortada y otra completa.
+
+| Capa | Responsabilidad | Distribución |
+| --- | --- | --- |
+| Librería compartida | Kernels de dominio, contratos, formatos y componentes operativos reutilizables. | Paquete público y consumible fuera de Desktop. |
+| Web | Herramientas individuales completas para uso manual y puntual. | Gratuita, sin exigir proyecto, cuenta o licencia Desktop. |
+| Desktop | Orquestación nativa de las mismas capacidades dentro de proyectos persistentes. | Producto premium basado en continuidad y automatización. |
+
+Desktop aporta valor mediante:
+
+- Acceso controlado al filesystem del proyecto.
+- Vigilancia de fuentes y regeneración automática.
+- Artefactos compartidos y handoffs entre etapas.
+- Procesamiento por lotes y exportación directa al motor.
+- Sesiones restaurables, trabajos recientes e historial operativo.
+- Flujos completos que evitan descargas, reimportaciones y configuración repetida.
+
+La frontera premium no se crea retirando cálculos, formatos o herramientas de la web. Se crea eliminando trabajo manual cuando esas capacidades participan en un proyecto real.
+
+Reglas de dependencia:
+
+- La librería compartida no importa Tauri, IPC ni servicios nativos.
+- La web depende únicamente del núcleo y de adaptadores web.
+- Desktop depende del núcleo, del contrato de módulos y de adaptadores nativos.
+- Ninguna migración Desktop duplica lógica de dominio ya publicada.
+- CI valida por separado el paquete distribuible, un consumidor externo, la web y Desktop.
+
 ## Principios de experiencia
 
 ### 1. Proyecto primero
@@ -292,13 +321,14 @@ Reglas:
 ## Orden de dependencias
 
 ```text
-Loader fiable
-  Desktop Tool Contract
-    Tool Host sin iframe
-      Workbench Design System
-        Artifact Registry
-          Flujo de sprites
-            Audio, Labs y Lanzamiento
+Contrato Web gratuito / Desktop premium
+  Loader fiable
+    Desktop Tool Contract
+      Tool Host sin iframe
+        Workbench Design System
+          Artifact Registry
+            Flujo de sprites
+              Audio, Labs y Lanzamiento
 ```
 
 No se debe migrar visualmente cada herramienta antes de estabilizar el contrato y los primitives. Eso produciría diecisiete rediseños incompatibles y una segunda ronda de retrabajo.
@@ -309,6 +339,7 @@ El seguimiento global vive en el epic [#32](https://github.com/Game-Bob/jjlmoya-
 
 | Prioridad | Issue | Resultado |
 | --- | --- | --- |
+| P0 | [#33](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/33) | Contrato de distribución Web gratuita y Desktop premium. |
 | P0 | [#23](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/23) | Carga fiable, observable y recuperable. |
 | P0 | [#24](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/24) | Contrato común para módulos Desktop. |
 | P0 | [#25](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/25) | Tool Host integrado sin páginas completas embebidas. |
