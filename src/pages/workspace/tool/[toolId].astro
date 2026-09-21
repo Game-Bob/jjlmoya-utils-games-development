@@ -1,0 +1,88 @@
+---
+import { ALL_TOOLS } from '../../../tools';
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import type { ToolLocaleContent } from '../../../types';
+import '@jjlmoya/utils-shared/theme.css';
+import '@jjlmoya/utils-shared/styles/jjlmoya-shared.css';
+
+type ComponentLoader = () => Promise<{ default: AstroComponentFactory }>;
+
+export async function getStaticPaths() {
+  const paths = [];
+
+  for (const { entry, Component } of ALL_TOOLS) {
+    const loader = entry.i18n.en ?? entry.i18n.es;
+    if (!loader) {
+      continue;
+    }
+
+    const content = await loader();
+    const { default: ToolComponent } = await (Component as ComponentLoader)();
+
+    paths.push({
+      params: { toolId: entry.id },
+      props: {
+        ToolComponent,
+        content,
+      },
+    });
+  }
+
+  return paths;
+}
+
+const { ToolComponent, content } = Astro.props as {
+  ToolComponent: AstroComponentFactory;
+  content: ToolLocaleContent;
+};
+---
+
+<!doctype html>
+<html lang="en" class="theme-dark" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{content.title}</title>
+    <style is:global>
+      :root {
+        --font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
+        --font-mono: ui-monospace, "SFMono-Regular", "Segoe UI Mono", "Menlo", "Monaco", "Consolas", monospace;
+
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        background-color: var(--gb-bg-canvas, #0a0d14);
+        color: var(--gb-text-primary, #f8fafc);
+        font-family: var(--font-family);
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      .desktop-tool-viewport-container {
+        padding: 1rem;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .desktop-tool-viewport-container > div {
+        max-width: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="theme-dark desktop-native-host">
+    <div class="desktop-tool-viewport-container">
+      <ToolComponent ui={content.ui} locale="en" />
+    </div>
+  </body>
+</html>

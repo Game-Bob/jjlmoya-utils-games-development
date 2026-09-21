@@ -27,7 +27,10 @@
         },
         {
             "files": [
-                "src/layouts/**/*.astro"
+                "src/layouts/**/*.astro",
+                "src/workspace/**/*.css",
+                "src/workspace/**/*.astro",
+                "src/pages/workspace/**/*.astro"
             ],
             "rules": {
                 "property-disallowed-list": null

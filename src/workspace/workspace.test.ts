@@ -27,7 +27,7 @@ describe('Workspace Module Architecture', () => {
           expect(tool.phaseId).toBe(phase.id);
           expect(tool.name.length).toBeGreaterThan(0);
           expect(tool.description.length).toBeGreaterThan(0);
-          expect(tool.routePath).toMatch(/^\/en\/utilities\/categories\/game-development\//);
+          expect(tool.routePath).toMatch(/^\/workspace\/tool\//);
         }
       }
     });

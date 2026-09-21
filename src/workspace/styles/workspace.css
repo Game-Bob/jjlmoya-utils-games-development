@@ -29,6 +29,7 @@
   width: 100vw;
   background-color: var(--gb-bg-canvas);
   color: var(--gb-text-primary);
+  font-family: var(--font-family, 'Inter', system-ui, -apple-system, sans-serif);
   overflow: hidden;
 }
 
