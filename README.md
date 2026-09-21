@@ -26,6 +26,24 @@ Linux packaging additionally requires WebKitGTK 4.1, AppIndicator, librsvg and p
 
 The current @jjlmoya/utils-shared release declares Astro support through version 6. GameBob Quest uses Astro 7 to receive the upstream security fixes and keeps legacy peer resolution enabled until the shared package publishes matching metadata. The complete type, test and production-build gates verify this tested compatibility path.
 
+## Public package
+
+The public package exposes the complete tool catalog, reusable domain kernels and browser platform contracts without shipping the Tauri adapters or Desktop workspace implementation.
+
+```typescript
+import { ALL_TOOLS } from '@jjlmoya/utils-games-development';
+import { calculateBinPacking } from '@jjlmoya/utils-games-development/core/spriteSheetPacker';
+import { WebPlatformBridge } from '@jjlmoya/utils-games-development/platform/web';
+```
+
+Astro consumers that render catalog components must register the `astro-icon` integration. The distribution contract and an external consumer build are verified with:
+
+```bash
+npm run test:distribution
+```
+
+The technical and commercial boundary is documented in [docs/DESKTOP_PRODUCT_BOUNDARY.md](docs/DESKTOP_PRODUCT_BOUNDARY.md).
+
 ## Development
 
 Install dependencies and start the native application:

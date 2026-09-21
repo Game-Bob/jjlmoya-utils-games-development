@@ -50,6 +50,8 @@ La promesa de producto es:
 
 ## Frontera de producto y distribución
 
+El contrato verificable, la matriz de capacidades y el mecanismo de consumo están detallados en [DESKTOP_PRODUCT_BOUNDARY.md](./DESKTOP_PRODUCT_BOUNDARY.md). La checklist obligatoria para cada módulo vive en [DESKTOP_MODULE_MIGRATION_CHECKLIST.md](./DESKTOP_MODULE_MIGRATION_CHECKLIST.md).
+
 GameBob Quest se construye como dos experiencias sobre un mismo núcleo, no como una edición gratuita recortada y otra completa.
 
 | Capa | Responsabilidad | Distribución |
