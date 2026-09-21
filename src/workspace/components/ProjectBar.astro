@@ -34,11 +34,19 @@ const { productName = 'GameBob Quest' } = Astro.props;
       <span id="project-bar-status-text" class="status-text">Ready</span>
     </div>
 
+    <button id="project-bar-new-btn" class="project-bar-btn" type="button" title="New Project" aria-label="New Project">
+      <span>New</span>
+    </button>
+
     <button id="project-bar-open-btn" class="project-bar-btn" type="button" title="Open Project (Ctrl+O)" aria-label="Open Project">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
       </svg>
       <span>Open</span>
+    </button>
+
+    <button id="project-bar-save-as-btn" class="project-bar-btn" type="button" title="Save Project As" aria-label="Save Project As">
+      <span>Save As</span>
     </button>
 
     <button id="project-bar-sync-btn" class="project-bar-btn project-bar-btn-primary" type="button" title="Synchronize Pipeline (Ctrl+S)" aria-label="Synchronize Pipeline">

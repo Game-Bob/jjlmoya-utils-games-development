@@ -39,6 +39,7 @@ describe('Workspace Module Architecture', () => {
       const state = manager.getState();
 
       expect(state.currentProject).toBeNull();
+      expect(state.currentProjectConfig).toBeNull();
       expect(state.activePhaseId).toBe('assets');
       expect(state.activeToolId).toBe('spriteSheetPacker');
       expect(state.logs).toHaveLength(0);

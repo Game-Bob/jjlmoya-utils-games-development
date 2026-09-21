@@ -5,11 +5,13 @@ import type {
   WorkspaceStateListener,
   WorkspaceStateModel,
 } from '../types';
+import type { WorkspaceProjectConfig } from '../types/WorkspaceProjectConfig';
 
 export interface IWorkspaceState {
   getState(): Readonly<WorkspaceStateModel>;
   subscribe(listener: WorkspaceStateListener): () => void;
   setProject(project: ProjectSummary | null): void;
+  setProjectConfig(config: WorkspaceProjectConfig | null): void;
   selectPhase(phaseId: PipelinePhaseId): void;
   selectTool(toolId: string): void;
   addLog(severity: LogSeverity, message: string, sourceToolId?: string): void;
@@ -17,4 +19,5 @@ export interface IWorkspaceState {
   toggleDock(): void;
   setDockExpanded(expanded: boolean): void;
   setLogFilter(filter: 'all' | LogSeverity): void;
+  setRealtimeSyncEnabled(enabled: boolean): void;
 }

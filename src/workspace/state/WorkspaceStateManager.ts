@@ -1,5 +1,6 @@
 import type { IWorkspaceState } from '../contracts/IWorkspaceState';
 import { PIPELINE_PHASES } from '../pipelinePhases';
+import type { WorkspaceProjectConfig } from '../types/WorkspaceProjectConfig';
 import type {
   LogSeverity,
   PipelinePhaseId,
@@ -11,11 +12,13 @@ import type {
 
 const DEFAULT_STATE: WorkspaceStateModel = {
   currentProject: null,
+  currentProjectConfig: null,
   activePhaseId: PIPELINE_PHASES[0]!.id,
   activeToolId: PIPELINE_PHASES[0]!.tools[0]!.id,
   logs: [],
   isDockExpanded: false,
   activeLogFilter: 'all',
+  isRealtimeSyncEnabled: false,
 };
 
 export class WorkspaceStateManager implements IWorkspaceState {
@@ -43,6 +46,10 @@ export class WorkspaceStateManager implements IWorkspaceState {
 
   public setProject(project: ProjectSummary | null): void {
     this.updateState({ currentProject: project });
+  }
+
+  public setProjectConfig(config: WorkspaceProjectConfig | null): void {
+    this.updateState({ currentProjectConfig: config });
   }
 
   public selectPhase(phaseId: PipelinePhaseId): void {
@@ -122,6 +129,13 @@ export class WorkspaceStateManager implements IWorkspaceState {
       return;
     }
     this.updateState({ activeLogFilter: filter });
+  }
+
+  public setRealtimeSyncEnabled(enabled: boolean): void {
+    if (this.state.isRealtimeSyncEnabled === enabled) {
+      return;
+    }
+    this.updateState({ isRealtimeSyncEnabled: enabled });
   }
 
   private updateState(partial: Partial<WorkspaceStateModel>): void {

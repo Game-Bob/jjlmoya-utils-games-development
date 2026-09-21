@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.gamebob.dev/schemas/gbtoolkit.schema.json",
+  "title": "GameBob Toolkit Project",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "name", "targetEngine", "pipeline"],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetEngine": {
+      "enum": ["godot4", "unity", "defold", "generic"]
+    },
+    "pipeline": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/toolPipeline"
+      }
+    }
+  },
+  "$defs": {
+    "toolPipeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "inputDirectory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outputDirectory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "options": {
+          "type": "object",
+          "additionalProperties": {
+            "type": ["string", "number", "boolean"]
+          }
+        }
+      }
+    }
+  }
+}

@@ -8,6 +8,8 @@ import type {
 import { WorkspaceStateManager } from '../state/WorkspaceStateManager';
 import type { WorkspaceProjectConfig } from '../types/WorkspaceProjectConfig';
 import { WorkspaceProjectController } from './WorkspaceProjectController';
+import type { IWorkspaceToolChannel } from '../channel/IWorkspaceToolChannel';
+import type { WatchEvent } from '../../platform/contracts/IDirectoryWatcher';
 
 function createDialogService(projectPath: string | null): IDialogService {
   return {
@@ -38,11 +40,11 @@ describe('WorkspaceProjectController', () => {
     const platform = new WebPlatformBridge({
       dialogService: createDialogService('D:\\games\\starfall'),
       projectStorage: createProjectStorage(
-        { name: 'Starfall', targetEngine: 'godot4' },
+        { version: 1, name: 'Starfall', targetEngine: 'godot4', pipeline: {} },
         saveRecentProject,
       ),
     });
-    const controller = new WorkspaceProjectController(state, platform, () => 1234);
+    const controller = new WorkspaceProjectController(state, platform, { clock: () => 1234 });
 
     await controller.openProject();
 
@@ -68,7 +70,7 @@ describe('WorkspaceProjectController', () => {
       dialogService: createDialogService('/games/untitled-project/'),
       projectStorage: createProjectStorage(null, async () => undefined),
     });
-    const controller = new WorkspaceProjectController(state, platform, () => 2000);
+    const controller = new WorkspaceProjectController(state, platform, { clock: () => 2000 });
 
     await controller.openProject();
 
@@ -132,5 +134,78 @@ describe('WorkspaceProjectController', () => {
         message: 'Open a project before synchronizing the pipeline',
       }),
     );
+  });
+
+  it('starts and pauses real-time synchronization with typed tool events', async () => {
+    const state = new WorkspaceStateManager();
+    const stopWatching = vi.fn(async () => undefined);
+    const watch = vi.fn(async (_path: string, listener: (event: WatchEvent) => void) => {
+      listener({ type: 'modified', path: 'hero.png', timestamp: 1 });
+      return stopWatching;
+    });
+    const createDirectory = vi.fn(async () => undefined);
+    const channel: IWorkspaceToolChannel = {
+      sendContext: vi.fn(),
+      sendFileChange: vi.fn(),
+      sendSync: vi.fn(),
+    };
+    const config: WorkspaceProjectConfig = {
+      version: 1,
+      name: 'Realtime',
+      targetEngine: 'generic',
+      pipeline: {
+        spriteSheetPacker: {
+          inputDirectory: 'assets/sprites',
+          outputDirectory: 'build/sprites',
+        },
+      },
+    };
+    const platform = new WebPlatformBridge({
+      dialogService: createDialogService('D:\\games\\realtime'),
+      projectStorage: createProjectStorage(config, async () => undefined),
+      directoryWatcher: {
+        watch,
+        isWatching: () => true,
+        stopAll: async () => undefined,
+      },
+      fileWriter: {
+        writeText: async () => undefined,
+        writeBinary: async () => undefined,
+        createDirectory,
+      },
+    });
+    const controller = new WorkspaceProjectController(state, platform, {
+      clock: () => 5,
+      toolChannel: channel,
+    });
+
+    await controller.openProject();
+    await controller.syncProject();
+
+    expect(createDirectory).toHaveBeenCalledWith('D:\\games\\realtime\\assets/sprites');
+    expect(watch).toHaveBeenCalledOnce();
+    expect(channel.sendFileChange).toHaveBeenCalledWith(
+      'D:\\games\\realtime\\assets/sprites',
+      expect.objectContaining({ path: 'hero.png' }),
+    );
+    expect(channel.sendSync).toHaveBeenCalledOnce();
+    expect(state.getState().isRealtimeSyncEnabled).toBe(true);
+
+    const watchListener = watch.mock.calls[0]?.[1];
+    watchListener?.({
+      type: 'error',
+      path: '',
+      timestamp: 2,
+      message: 'Native watch handle stopped',
+    });
+    expect(state.getState().logs.at(-1)).toEqual(expect.objectContaining({
+      severity: 'error',
+      message: 'Directory watcher failed: Native watch handle stopped',
+    }));
+
+    await controller.syncProject();
+
+    expect(stopWatching).toHaveBeenCalledOnce();
+    expect(state.getState().isRealtimeSyncEnabled).toBe(false);
   });
 });

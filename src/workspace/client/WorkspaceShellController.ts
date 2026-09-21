@@ -7,6 +7,7 @@ import { WorkspaceProjectBarView } from './WorkspaceProjectBarView';
 import { WorkspaceProjectController } from './WorkspaceProjectController';
 import { WorkspaceSidebarView } from './WorkspaceSidebarView';
 import { WorkspaceViewportView } from './WorkspaceViewportView';
+import { WorkspaceToolChannel } from '../channel/WorkspaceToolChannel';
 
 export class WorkspaceShellController {
   private readonly projectBarView: WorkspaceProjectBarView;
@@ -14,6 +15,7 @@ export class WorkspaceShellController {
   private readonly viewportView: WorkspaceViewportView;
   private readonly dockView: WorkspaceDockView;
   private readonly keybindings: WorkspaceKeybindings;
+  private readonly toolChannel: WorkspaceToolChannel | undefined;
   private unsubscribe: (() => void) | undefined;
 
   constructor(
@@ -21,7 +23,16 @@ export class WorkspaceShellController {
     private readonly state: IWorkspaceState,
     platform: IPlatformBridge,
   ) {
-    const projectController = new WorkspaceProjectController(state, platform);
+    const iframe = root.querySelector<HTMLIFrameElement>('#tool-viewport-iframe');
+    this.toolChannel = iframe ? new WorkspaceToolChannel(iframe, state) : undefined;
+    const projectDependencies = this.toolChannel
+      ? { toolChannel: this.toolChannel }
+      : {};
+    const projectController = new WorkspaceProjectController(
+      state,
+      platform,
+      projectDependencies,
+    );
     this.projectBarView = new WorkspaceProjectBarView(root, projectController);
     this.sidebarView = new WorkspaceSidebarView(root, state);
     this.viewportView = new WorkspaceViewportView(root);
@@ -34,11 +45,13 @@ export class WorkspaceShellController {
   }
 
   public init(): void {
+    this.toolChannel?.attach();
     this.keybindings.attach();
     this.unsubscribe = this.state.subscribe((state) => this.render(state));
   }
 
   public destroy(): void {
+    this.toolChannel?.detach();
     this.keybindings.detach();
     if (this.unsubscribe) {
       this.unsubscribe();
@@ -51,5 +64,6 @@ export class WorkspaceShellController {
     this.sidebarView.render(state);
     this.viewportView.render(state);
     this.dockView.render(state);
+    this.toolChannel?.sendContext(state.currentProject, state.currentProjectConfig, state.activeToolId);
   }
 }

@@ -1,3 +1,5 @@
+import type { WorkspaceProjectConfig } from './types/WorkspaceProjectConfig';
+
 export type PipelinePhaseId = 'assets' | 'audio' | 'logic' | 'publishing';
 
 export type EngineType = 'godot' | 'unity' | 'defold' | 'raylib' | 'custom';
@@ -36,11 +38,13 @@ export interface WorkspaceLogEntry {
 
 export interface WorkspaceStateModel {
   currentProject: ProjectSummary | null;
+  currentProjectConfig: WorkspaceProjectConfig | null;
   activePhaseId: PipelinePhaseId;
   activeToolId: string;
   logs: WorkspaceLogEntry[];
   isDockExpanded: boolean;
   activeLogFilter: 'all' | LogSeverity;
+  isRealtimeSyncEnabled: boolean;
 }
 
 export type WorkspaceStateListener = (state: Readonly<WorkspaceStateModel>) => void;
