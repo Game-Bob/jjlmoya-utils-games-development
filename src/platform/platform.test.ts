@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import {
     isTauriEnvironment,
     resolvePlatformBridge,
@@ -20,6 +20,7 @@ import type {
     ITauriDialogGateway,
     TauriOpenDialogOptions
 } from './adapters/desktop/ITauriDialogGateway';
+import type { ITauriEventGateway } from './adapters/desktop/ITauriEventGateway';
 
 describe('Platform Abstraction Layer', () => {
     beforeEach(() => {
@@ -169,6 +170,7 @@ describe('Platform Abstraction Layer', () => {
             expect(bridge.dialogService).toBeDefined();
             expect(bridge.directoryWatcher).toBeDefined();
             expect(bridge.projectStorage).toBeDefined();
+            expect(bridge.projectAccess).toBeDefined();
         });
 
         it('allows setting custom bridge', () => {
@@ -207,6 +209,22 @@ describe('Platform Abstraction Layer', () => {
             expect(calls).toContain('read_file_text');
             expect(calls).toContain('read_file_binary');
             expect(calls).toContain('file_exists');
+        });
+
+        it('supports concurrent reads without serializing the adapter', async () => {
+            const completed: string[] = [];
+            const mockInvoker = async <T>(_cmd: string, args?: Record<string, unknown>): Promise<T> => {
+                await new Promise((resolve) => setTimeout(resolve, args?.path === 'slow.txt' ? 10 : 1));
+                completed.push(String(args?.path));
+                return String(args?.path) as T;
+            };
+            const reader = new TauriFileReader(mockInvoker);
+            const results = await Promise.all([
+                reader.readText('slow.txt'),
+                reader.readText('fast.txt')
+            ]);
+            expect(results).toEqual(['slow.txt', 'fast.txt']);
+            expect(completed).toEqual(['fast.txt', 'slow.txt']);
         });
     });
 
@@ -288,7 +306,10 @@ describe('Platform Abstraction Layer', () => {
                 return undefined as T;
             };
 
-            const watcher = new TauriDirectoryWatcherAdapter(mockInvoker);
+            const eventGateway: ITauriEventGateway = {
+                listen: async () => () => undefined
+            };
+            const watcher = new TauriDirectoryWatcherAdapter(mockInvoker, eventGateway, 0);
             let received = false;
 
             const unsubscribe = await watcher.watch('/project/sprites', (e) => {
@@ -307,8 +328,33 @@ describe('Platform Abstraction Layer', () => {
             });
             expect(received).toBe(true);
 
-            unsubscribe();
+            await unsubscribe();
             expect(watcher.isWatching('/project/sprites')).toBe(false);
+        });
+
+        it('debounces repeated native events for the same path', async () => {
+            vi.useFakeTimers();
+            type Payload = { rootPath: string; event: { type: 'modified'; path: string; timestamp: number } };
+            let emit: ((payload: Payload) => void) | undefined;
+            const eventGateway: ITauriEventGateway = {
+                listen: async <T>(_eventName: string, listener: (payload: T) => void) => {
+                    emit = listener as (payload: Payload) => void;
+                    return () => undefined;
+                }
+            };
+            const invoker = async <T>(): Promise<T> => undefined as T;
+            const watcher = new TauriDirectoryWatcherAdapter(invoker, eventGateway, 100);
+            const listener = vi.fn();
+            const stop = await watcher.watch('/project/sprites', listener);
+
+            emit?.({ rootPath: '/project/sprites', event: { type: 'modified', path: 'hero.png', timestamp: 1 } });
+            emit?.({ rootPath: '/project/sprites', event: { type: 'modified', path: 'hero.png', timestamp: 2 } });
+            await vi.advanceTimersByTimeAsync(101);
+
+            expect(listener).toHaveBeenCalledOnce();
+            expect(listener).toHaveBeenCalledWith(expect.objectContaining({ timestamp: 2 }));
+            await stop();
+            vi.useRealTimers();
         });
     });
 
@@ -317,7 +363,14 @@ describe('Platform Abstraction Layer', () => {
             const mockStorage = new Map<string, Uint8Array>();
             const reader = new WebFileReader(mockStorage);
             const writer = new WebFileWriter(mockStorage);
-            const storage = new TauriProjectStorageAdapter(reader, writer, 'recents_test.json');
+            let recentsJson = '[]';
+            const invoker = async <T>(command: string, args?: Record<string, unknown>): Promise<T> => {
+                if (command === 'read_recent_projects') return recentsJson as T;
+                if (command === 'write_recent_projects') recentsJson = String(args?.content ?? '[]');
+                if (command === 'clear_recent_projects') recentsJson = '[]';
+                return undefined as T;
+            };
+            const storage = new TauriProjectStorageAdapter(reader, writer, invoker);
 
             const proj = {
                 id: 'p1',
@@ -335,6 +388,12 @@ describe('Platform Abstraction Layer', () => {
             const loaded = await storage.loadProjectConfig<{ engine: string }>('/games/rpg');
             expect(loaded).toEqual(config);
 
+            recentsJson = '{invalid';
+            await expect(storage.getRecentProjects()).rejects.toMatchObject({
+                code: 'IO_ERROR'
+            });
+            recentsJson = '[]';
+
             await storage.clearRecentProjects();
             expect(await storage.getRecentProjects()).toEqual([]);
         });
@@ -350,6 +409,7 @@ describe('Platform Abstraction Layer', () => {
             expect(bridge.dialogService).toBeDefined();
             expect(bridge.directoryWatcher).toBeDefined();
             expect(bridge.projectStorage).toBeDefined();
+            expect(bridge.projectAccess).toBeDefined();
         });
     });
 });

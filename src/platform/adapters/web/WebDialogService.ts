@@ -3,6 +3,7 @@ import type {
     OpenDialogOptions,
     SaveDialogOptions
 } from '../../contracts/IDialogService';
+import { PlatformError } from '../../errors/PlatformError';
 
 function extractFileUrls(selectedFiles: FileList | null): string[] {
     if (!selectedFiles || selectedFiles.length === 0) {
@@ -77,8 +78,11 @@ export class WebDialogService implements IDialogService {
                     suggestedName: defaultName
                 });
                 return handle.name;
-            } catch {
-                return null;
+            } catch (error) {
+                if (error instanceof DOMException && error.name === 'AbortError') {
+                    return null;
+                }
+                throw PlatformError.fromUnknown(error);
             }
         }
         return defaultName;

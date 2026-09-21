@@ -2,6 +2,7 @@ import type {
     IProjectStorageService,
     ProjectMetadata
 } from '../../contracts/IProjectStorageService';
+import { PlatformError } from '../../errors/PlatformError';
 
 export class WebProjectStorageService implements IProjectStorageService {
     private readonly storageKeyPrefix: string;
@@ -16,7 +17,7 @@ export class WebProjectStorageService implements IProjectStorageService {
         const recents = await this.getRecentProjects();
         const filtered = recents.filter((p) => p.id !== metadata.id && p.path !== metadata.path);
         filtered.unshift(metadata);
-        const maxProjects = 10;
+        const maxProjects = 15;
         const trimmed = filtered.slice(0, maxProjects);
         this.setItem(`${this.storageKeyPrefix}recents`, JSON.stringify(trimmed));
     }
@@ -26,12 +27,8 @@ export class WebProjectStorageService implements IProjectStorageService {
         if (!raw) {
             return [];
         }
-        try {
-            const parsed = JSON.parse(raw);
-            return Array.isArray(parsed) ? parsed : [];
-        } catch {
-            return [];
-        }
+        const parsed = this.parseJson(raw, 'Recent project storage');
+        return Array.isArray(parsed) ? parsed as ProjectMetadata[] : [];
     }
 
     async clearRecentProjects(): Promise<void> {
@@ -44,11 +41,7 @@ export class WebProjectStorageService implements IProjectStorageService {
         if (!raw) {
             return null;
         }
-        try {
-            return JSON.parse(raw) as T;
-        } catch {
-            return null;
-        }
+        return this.parseJson(raw, 'Project configuration') as T;
     }
 
     async saveProjectConfig<T>(projectPath: string, config: T): Promise<void> {
@@ -91,5 +84,14 @@ export class WebProjectStorageService implements IProjectStorageService {
             }
         }
         this.inMemoryFallback.delete(key);
+    }
+
+    private parseJson(source: string, label: string): unknown {
+        try {
+            return JSON.parse(source) as unknown;
+        } catch (error) {
+            const detail = error instanceof Error ? error.message : String(error);
+            throw new PlatformError('IO_ERROR', `${label} contains invalid JSON: ${detail}`);
+        }
     }
 }

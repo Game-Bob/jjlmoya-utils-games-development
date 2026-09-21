@@ -7,11 +7,13 @@ import type { IFileWriter } from '../../contracts/IFileWriter';
 import type { IDialogService } from '../../contracts/IDialogService';
 import type { IDirectoryWatcher } from '../../contracts/IDirectoryWatcher';
 import type { IProjectStorageService } from '../../contracts/IProjectStorageService';
+import type { IProjectAccessService } from '../../contracts/IProjectAccessService';
 import { TauriFileReader } from './TauriFileReader';
 import { TauriFileWriter } from './TauriFileWriter';
 import { TauriDialogAdapter } from './TauriDialogAdapter';
 import { TauriDirectoryWatcherAdapter } from './TauriDirectoryWatcherAdapter';
 import { TauriProjectStorageAdapter } from './TauriProjectStorageAdapter';
+import { TauriProjectAccessService } from './TauriProjectAccessService';
 
 export interface DesktopPlatformServices {
     fileReader?: IFileReader;
@@ -19,6 +21,7 @@ export interface DesktopPlatformServices {
     dialogService?: IDialogService;
     directoryWatcher?: IDirectoryWatcher;
     projectStorage?: IProjectStorageService;
+    projectAccess?: IProjectAccessService;
 }
 
 interface ResolvedDesktopServices {
@@ -27,6 +30,7 @@ interface ResolvedDesktopServices {
     dialogService: IDialogService;
     directoryWatcher: IDirectoryWatcher;
     projectStorage: IProjectStorageService;
+    projectAccess: IProjectAccessService;
 }
 
 function createDefaultDesktopServices(): ResolvedDesktopServices {
@@ -37,7 +41,8 @@ function createDefaultDesktopServices(): ResolvedDesktopServices {
         fileWriter: writer,
         dialogService: new TauriDialogAdapter(),
         directoryWatcher: new TauriDirectoryWatcherAdapter(),
-        projectStorage: new TauriProjectStorageAdapter(reader, writer)
+        projectStorage: new TauriProjectStorageAdapter(reader, writer),
+        projectAccess: new TauriProjectAccessService()
     };
 }
 
@@ -56,6 +61,7 @@ export class TauriPlatformBridge implements IPlatformBridge {
     readonly dialogService: IDialogService;
     readonly directoryWatcher: IDirectoryWatcher;
     readonly projectStorage: IProjectStorageService;
+    readonly projectAccess: IProjectAccessService;
 
     constructor(services?: DesktopPlatformServices) {
         const resolved = resolveDesktopServices(services);
@@ -64,6 +70,7 @@ export class TauriPlatformBridge implements IPlatformBridge {
         this.dialogService = resolved.dialogService;
         this.directoryWatcher = resolved.directoryWatcher;
         this.projectStorage = resolved.projectStorage;
+        this.projectAccess = resolved.projectAccess;
     }
 
     isNativeDesktop(): boolean {

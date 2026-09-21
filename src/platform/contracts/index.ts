@@ -10,12 +10,14 @@ export type {
     WatchEventType,
     WatchEvent,
     WatchListener,
+    StopWatching,
     IDirectoryWatcher
 } from './IDirectoryWatcher';
 export type {
     ProjectMetadata,
     IProjectStorageService
 } from './IProjectStorageService';
+export type { IProjectAccessService } from './IProjectAccessService';
 export type {
     RuntimePlatform,
     IPlatformBridge

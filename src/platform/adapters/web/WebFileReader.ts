@@ -1,4 +1,5 @@
 import type { IFileReader } from '../../contracts/IFileReader';
+import { PlatformError } from '../../errors/PlatformError';
 
 export class WebFileReader implements IFileReader {
     private readonly inMemoryCache: Map<string, Uint8Array>;
@@ -16,11 +17,11 @@ export class WebFileReader implements IFileReader {
         if (typeof window !== 'undefined' && (path.startsWith('blob:') || path.startsWith('http:') || path.startsWith('https:'))) {
             const response = await fetch(path);
             if (!response.ok) {
-                throw new Error(`Failed to read path: ${path}`);
+                throw new PlatformError(response.status === 404 ? 'NOT_FOUND' : 'IO_ERROR', `Failed to read path: ${path}`);
             }
             return await response.text();
         }
-        throw new Error(`File not found in web storage: ${path}`);
+        throw new PlatformError('NOT_FOUND', `File not found in web storage: ${path}`);
     }
 
     async readBinary(path: string): Promise<Uint8Array> {
@@ -31,12 +32,12 @@ export class WebFileReader implements IFileReader {
         if (typeof window !== 'undefined' && (path.startsWith('blob:') || path.startsWith('http:') || path.startsWith('https:'))) {
             const response = await fetch(path);
             if (!response.ok) {
-                throw new Error(`Failed to read binary path: ${path}`);
+                throw new PlatformError(response.status === 404 ? 'NOT_FOUND' : 'IO_ERROR', `Failed to read binary path: ${path}`);
             }
             const buffer = await response.arrayBuffer();
             return new Uint8Array(buffer);
         }
-        throw new Error(`Binary file not found in web storage: ${path}`);
+        throw new PlatformError('NOT_FOUND', `Binary file not found in web storage: ${path}`);
     }
 
     async exists(path: string): Promise<boolean> {
@@ -47,8 +48,8 @@ export class WebFileReader implements IFileReader {
             try {
                 const response = await fetch(path, { method: 'HEAD' });
                 return response.ok;
-            } catch {
-                return false;
+            } catch (error) {
+                throw PlatformError.fromUnknown(error);
             }
         }
         return false;

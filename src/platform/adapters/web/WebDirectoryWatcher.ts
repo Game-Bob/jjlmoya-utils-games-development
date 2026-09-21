@@ -1,7 +1,8 @@
 import type {
     IDirectoryWatcher,
     WatchEvent,
-    WatchListener
+    WatchListener,
+    StopWatching
 } from '../../contracts/IDirectoryWatcher';
 
 export class WebDirectoryWatcher implements IDirectoryWatcher {
@@ -11,7 +12,7 @@ export class WebDirectoryWatcher implements IDirectoryWatcher {
         this.activeWatchers = new Map<string, Set<WatchListener>>();
     }
 
-    async watch(directoryPath: string, listener: WatchListener): Promise<() => void> {
+    async watch(directoryPath: string, listener: WatchListener): Promise<StopWatching> {
         let listeners = this.activeWatchers.get(directoryPath);
         if (!listeners) {
             listeners = new Set<WatchListener>();
@@ -19,7 +20,7 @@ export class WebDirectoryWatcher implements IDirectoryWatcher {
         }
         listeners.add(listener);
 
-        return () => {
+        return async () => {
             const current = this.activeWatchers.get(directoryPath);
             if (current) {
                 current.delete(listener);

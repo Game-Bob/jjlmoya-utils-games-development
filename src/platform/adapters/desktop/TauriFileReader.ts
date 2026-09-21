@@ -1,5 +1,6 @@
 import type { IFileReader } from '../../contracts/IFileReader';
 import { defaultInvoker, type CommandInvoker } from './invoker';
+import { PLATFORM_COMMANDS } from '../../commands';
 
 export class TauriFileReader implements IFileReader {
     private readonly invoker: CommandInvoker;
@@ -9,11 +10,11 @@ export class TauriFileReader implements IFileReader {
     }
 
     async readText(path: string): Promise<string> {
-        return await this.invoker<string>('read_file_text', { path });
+        return await this.invoker<string>(PLATFORM_COMMANDS.readFileText, { path });
     }
 
     async readBinary(path: string): Promise<Uint8Array> {
-        const raw = await this.invoker<number[] | Uint8Array>('read_file_binary', { path });
+        const raw = await this.invoker<number[] | Uint8Array>(PLATFORM_COMMANDS.readFileBinary, { path });
         if (raw instanceof Uint8Array) {
             return raw;
         }
@@ -21,6 +22,6 @@ export class TauriFileReader implements IFileReader {
     }
 
     async exists(path: string): Promise<boolean> {
-        return await this.invoker<boolean>('file_exists', { path });
+        return await this.invoker<boolean>(PLATFORM_COMMANDS.fileExists, { path });
     }
 }
