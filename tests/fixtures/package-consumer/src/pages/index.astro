@@ -1,0 +1,38 @@
+---
+import { ALL_TOOLS } from '@jjlmoya/utils-games-development';
+import { calculateBinPacking } from '@jjlmoya/utils-games-development/core/spriteSheetPacker';
+import { WebPlatformBridge } from '@jjlmoya/utils-games-development/platform/web';
+import type { IPlatformBridge } from '@jjlmoya/utils-games-development/platform/contracts';
+
+const atlas = calculateBinPacking(
+    [{ id: 'idle', name: 'hero_idle', width: 32, height: 32 }],
+    {
+        padding: 0,
+        borderExtrusion: 0,
+        forcePowerOfTwo: true,
+        maxTextureWidth: 1024,
+        maxTextureHeight: 1024,
+        allowRotation: false,
+        trimTransparency: false,
+        format: 'godot'
+    }
+);
+const platform: IPlatformBridge = new WebPlatformBridge();
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>GameBob package consumer</title>
+    </head>
+    <body>
+        <main
+            data-tool-count={ALL_TOOLS.length}
+            data-atlas-width={atlas.textureWidth}
+            data-platform={platform.platform}
+        >
+            Public package contract verified
+        </main>
+    </body>
+</html>

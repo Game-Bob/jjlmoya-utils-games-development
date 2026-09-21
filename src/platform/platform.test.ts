@@ -7,14 +7,17 @@ import {
     WebFileReader,
     WebFileWriter,
     WebDirectoryWatcher,
-    WebProjectStorageService,
+    WebProjectStorageService
+} from './index';
+import {
+    configureDesktopPlatformBridge,
     TauriPlatformBridge,
     TauriFileReader,
     TauriFileWriter,
     TauriDialogAdapter,
     TauriDirectoryWatcherAdapter,
     TauriProjectStorageAdapter
-} from './index';
+} from './desktop';
 import type { ProjectMetadata } from './contracts/IProjectStorageService';
 import type {
     ITauriDialogGateway,
@@ -400,6 +403,16 @@ describe('Platform Abstraction Layer', () => {
     });
 
     describe('TauriPlatformBridge', () => {
+        it('registers the desktop bridge only inside Tauri', () => {
+            expect(configureDesktopPlatformBridge()).toBe(false);
+            expect(resolvePlatformBridge().platform).toBe('web');
+
+            vi.stubGlobal('window', { __TAURI_INTERNALS__: {} });
+            expect(configureDesktopPlatformBridge()).toBe(true);
+            expect(resolvePlatformBridge().platform).toBe('desktop-tauri');
+            vi.unstubAllGlobals();
+        });
+
         it('initializes desktop bridge with native flag', () => {
             const bridge = new TauriPlatformBridge();
             expect(bridge.platform).toBe('desktop-tauri');

@@ -1,0 +1,54 @@
+{
+    "schemaVersion": 1,
+    "packageName": "@jjlmoya/utils-games-development",
+    "surfaces": {
+        "catalog": [
+            ".",
+            "./data",
+            "./entries",
+            "./runtime/*",
+            "./category-seo"
+        ],
+        "core": [
+            "./core/*",
+            "./platform/contracts"
+        ],
+        "web": [
+            "./platform/web"
+        ]
+    },
+    "publicSourceRoots": [
+        "scripts/postinstall.mjs",
+        "src/category",
+        "src/tool",
+        "src/workspace/channel",
+        "src/workspace/types",
+        "src/workspace/types.ts",
+        "src/platform/contracts",
+        "src/platform/adapters/web",
+        "src/platform/errors",
+        "src/platform/commands.ts",
+        "src/platform/detector.ts",
+        "src/platform/index.ts",
+        "src/platform/resolver.ts",
+        "src/data.ts",
+        "src/entries.ts",
+        "src/index.ts",
+        "src/tools.ts",
+        "src/types.ts"
+    ],
+    "forbiddenPublicDependencies": [
+        "@tauri-apps/",
+        "src-tauri",
+        "platform/adapters/desktop"
+    ],
+    "excludedPackagePaths": [
+        "package/src-tauri",
+        "package/src/platform/adapters/desktop",
+        "package/src/platform/desktop.ts",
+        "package/src/workspace/client",
+        "package/src/workspace/components",
+        "package/src/workspace/project",
+        "package/src/workspace/state"
+    ]
+}

@@ -81,6 +81,11 @@ const { ToolComponent, content } = Astro.props as {
     </style>
   </head>
   <body class="theme-dark desktop-native-host">
+    <script>
+      import { configureDesktopPlatformBridge } from '../../../platform/desktop';
+
+      configureDesktopPlatformBridge();
+    </script>
     <div class="desktop-tool-viewport-container">
       <ToolComponent ui={content.ui} locale="en" />
     </div>

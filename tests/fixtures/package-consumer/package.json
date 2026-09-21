@@ -1,0 +1,14 @@
+{
+    "name": "gamebob-package-consumer-contract",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "astro build"
+    },
+    "dependencies": {
+        "@jjlmoya/utils-games-development": "file:PACKAGE_TARBALL",
+        "astro": "^7.3.3",
+        "astro-icon": "^1.2.0"
+    }
+}

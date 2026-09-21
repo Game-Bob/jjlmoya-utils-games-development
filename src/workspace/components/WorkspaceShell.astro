@@ -28,6 +28,7 @@ const { productName = 'GameBob Quest' } = Astro.props;
 <script>
   import { WorkspaceStateManager } from '../state/WorkspaceStateManager';
   import { WorkspaceShellController } from '../client/WorkspaceShellController';
+  import { configureDesktopPlatformBridge } from '../../platform/desktop';
   import { resolvePlatformBridge } from '../../platform/resolver';
 
   function initWorkspace(): void {
@@ -36,6 +37,7 @@ const { productName = 'GameBob Quest' } = Astro.props;
       return;
     }
 
+    configureDesktopPlatformBridge();
     const state = new WorkspaceStateManager();
     const controller = new WorkspaceShellController(root, state, resolvePlatformBridge());
     controller.init();
