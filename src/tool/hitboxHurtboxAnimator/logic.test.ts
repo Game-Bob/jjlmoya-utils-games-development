@@ -13,6 +13,7 @@ import {
   parseProject,
   serializeProject,
   shapeAtPoint,
+  reloadProjectImages,
 } from './logic';
 
 const image = { name: 'fighter.png', width: 128, height: 64 };
@@ -43,6 +44,29 @@ describe('hitbox animator logic', () => {
     expect(sheet).toMatchObject({ rows: 2, columns: 4, fps: 12, coordinateSystem: 'top-left-pixels' });
     expect(sequence).toMatchObject({ rows: 1, columns: 1 });
     expect(empty.frames[0]).toMatchObject({ width: 1, height: 1 });
+  });
+
+  it('preserves collision shapes by image name while reloading frames', () => {
+    const project = createProject([
+      { name: 'idle.png', width: 32, height: 32 },
+      { name: 'attack.png', width: 64, height: 64 },
+    ]);
+    project.frames[1]!.shapes = [{
+      id: 'shape-2-1',
+      name: 'Sword',
+      type: 'hitbox',
+      geometry: 'rectangle',
+      x: 40,
+      y: 10,
+      width: 20,
+      height: 20,
+    }];
+    const reloaded = reloadProjectImages(project, [
+      { name: 'attack.png', width: 48, height: 48 },
+      { name: 'idle.png', width: 32, height: 32 },
+    ]);
+    expect(reloaded.frames[0]?.shapes[0]).toMatchObject({ name: 'Sword', x: 28, width: 20 });
+    expect(reloaded.frames[1]?.shapes).toEqual([]);
   });
 
   it('creates normalized rectangles and square circles inside a frame', () => {

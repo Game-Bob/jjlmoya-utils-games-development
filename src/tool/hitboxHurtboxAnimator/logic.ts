@@ -107,6 +107,32 @@ export function createProject(images: ImageReference[], rows = 1, columns = 1): 
   };
 }
 
+export function reloadProjectImages(project: CollisionProject, images: ImageReference[]): CollisionProject {
+  const next = createProject(images, project.rows, project.columns);
+  next.fps = project.fps;
+  next.frames = next.frames.map((frame, index) => {
+    const imageName = images[frame.imageIndex]?.name;
+    const previousIndex = imageName
+      ? project.images.findIndex((image) => image.name === imageName)
+      : -1;
+    const previous = previousIndex >= 0
+      ? project.frames.find((candidate) => candidate.imageIndex === previousIndex) ?? project.frames[index]
+      : project.frames[index];
+    if (!previous) {
+      return frame;
+    }
+    return {
+      ...frame,
+      pivot: {
+        x: clamp(previous.pivot.x, 0, frame.width),
+        y: clamp(previous.pivot.y, 0, frame.height),
+      },
+      shapes: previous.shapes.map((shape) => clampShape(shape, frame)),
+    };
+  });
+  return next;
+}
+
 function shapeId(frame: AnimationFrame): string {
   const numbers = frame.shapes.map(({ id }) => Number(id.match(/(\d+)$/)?.[1] ?? 0));
   return `shape-${frame.index + 1}-${Math.max(0, ...numbers) + 1}`;

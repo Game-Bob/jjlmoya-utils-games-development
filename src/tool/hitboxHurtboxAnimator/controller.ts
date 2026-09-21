@@ -18,6 +18,7 @@ import {
   undoProject,
   updateSelected,
 } from './project-actions';
+import { HitboxWorkspaceIntegration } from './HitboxWorkspaceIntegration';
 
 const input = (root: HTMLElement, selector: string): HTMLInputElement | null => root.querySelector<HTMLInputElement>(selector);
 
@@ -242,6 +243,7 @@ export function mountHitboxHurtboxAnimator(root: HTMLElement): void {
   bindCanvas(state);
   bindClicks(state, bindPlayback(state));
   bindKeyboard(state);
+  new HitboxWorkspaceIntegration(state).attach();
   setStatus(state, state.ui.statusReady);
   renderEditor(state);
 }
