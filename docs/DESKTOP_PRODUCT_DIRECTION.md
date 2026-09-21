@@ -303,6 +303,22 @@ Loader fiable
 
 No se debe migrar visualmente cada herramienta antes de estabilizar el contrato y los primitives. Eso produciría diecisiete rediseños incompatibles y una segunda ronda de retrabajo.
 
+## Backlog de ejecución
+
+El seguimiento global vive en el epic [#32](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/32).
+
+| Prioridad | Issue | Resultado |
+| --- | --- | --- |
+| P0 | [#23](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/23) | Carga fiable, observable y recuperable. |
+| P0 | [#24](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/24) | Contrato común para módulos Desktop. |
+| P0 | [#25](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/25) | Tool Host integrado sin páginas completas embebidas. |
+| P1 | [#26](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/26) | Launcher y restauración de sesión. |
+| P1 | [#27](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/27) | Workbench y lenguaje operativo comunes. |
+| P1 | [#28](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/28) | Registro de artefactos y handoffs. |
+| P1 | [#29](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/29) | Corte vertical del flujo de sprites. |
+| P2 | [#30](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/30) | Navegación por workflows, trabajos y Labs. |
+| P2 | [#31](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/31) | Gate de aceptación UX y rendimiento. |
+
 ## Criterios de éxito
 
 ### Percepción de producto
