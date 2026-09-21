@@ -1,8 +1,10 @@
+import type { IPlatformBridge } from '../../platform/contracts/IPlatformBridge';
 import type { IWorkspaceState } from '../contracts/IWorkspaceState';
 import type { WorkspaceStateModel } from '../types';
 import { WorkspaceDockView } from './WorkspaceDockView';
 import { WorkspaceKeybindings } from './WorkspaceKeybindings';
 import { WorkspaceProjectBarView } from './WorkspaceProjectBarView';
+import { WorkspaceProjectController } from './WorkspaceProjectController';
 import { WorkspaceSidebarView } from './WorkspaceSidebarView';
 import { WorkspaceViewportView } from './WorkspaceViewportView';
 
@@ -14,8 +16,13 @@ export class WorkspaceShellController {
   private readonly keybindings: WorkspaceKeybindings;
   private unsubscribe: (() => void) | undefined;
 
-  constructor(root: HTMLElement, private readonly state: IWorkspaceState) {
-    this.projectBarView = new WorkspaceProjectBarView(root, state);
+  constructor(
+    root: HTMLElement,
+    private readonly state: IWorkspaceState,
+    platform: IPlatformBridge,
+  ) {
+    const projectController = new WorkspaceProjectController(state, platform);
+    this.projectBarView = new WorkspaceProjectBarView(root, projectController);
     this.sidebarView = new WorkspaceSidebarView(root, state);
     this.viewportView = new WorkspaceViewportView(root);
     this.dockView = new WorkspaceDockView(root, state);
