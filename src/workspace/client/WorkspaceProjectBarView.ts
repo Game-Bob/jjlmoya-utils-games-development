@@ -1,4 +1,4 @@
-import type { IWorkspaceState } from '../contracts/IWorkspaceState';
+import type { IWorkspaceProjectActions } from '../contracts/IWorkspaceProjectActions';
 import type { WorkspaceStateModel } from '../types';
 
 export class WorkspaceProjectBarView {
@@ -8,7 +8,7 @@ export class WorkspaceProjectBarView {
   private readonly syncBtn: HTMLButtonElement | null;
   private readonly openBtn: HTMLButtonElement | null;
 
-  constructor(root: HTMLElement, private readonly state: IWorkspaceState) {
+  constructor(root: HTMLElement, private readonly actions: IWorkspaceProjectActions) {
     this.nameEl = root.querySelector('#project-bar-name');
     this.engineEl = root.querySelector('#project-bar-engine');
     this.pathEl = root.querySelector('#project-bar-path');
@@ -32,19 +32,11 @@ export class WorkspaceProjectBarView {
   }
 
   public triggerSync(): void {
-    const currentState = this.state.getState();
-    this.state.addLog(
-      'info',
-      `Synchronizing pipeline assets for tool: ${currentState.activeToolId}`,
-      currentState.activeToolId,
-    );
+    this.actions.syncProject();
   }
 
   public triggerOpenProject(): void {
-    this.state.addLog(
-      'info',
-      'Select project directory from native file dialog (Tauri integration)',
-    );
+    void this.actions.openProject();
   }
 
   private attachEvents(): void {

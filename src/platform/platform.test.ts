@@ -16,6 +16,10 @@ import {
     TauriProjectStorageAdapter
 } from './index';
 import type { ProjectMetadata } from './contracts/IProjectStorageService';
+import type {
+    ITauriDialogGateway,
+    TauriOpenDialogOptions
+} from './adapters/desktop/ITauriDialogGateway';
 
 describe('Platform Abstraction Layer', () => {
     beforeEach(() => {
@@ -227,39 +231,52 @@ describe('Platform Abstraction Layer', () => {
 
     describe('TauriDialogAdapter', () => {
         it('handles file and directory opening dialogs', async () => {
-            const mockInvoker = async <T>(cmd: string): Promise<T> => {
-                if (cmd === 'open_file_dialog') {
-                    return '/path/to/sprite.png' as T;
-                }
-                if (cmd === 'open_files_dialog') {
-                    return ['/path/1.png', '/path/2.png'] as T;
-                }
-                if (cmd === 'open_directory_dialog') {
-                    return '/project/assets' as T;
-                }
-                if (cmd === 'save_file_dialog') {
-                    return '/export/atlas.json' as T;
-                }
-                throw new Error(cmd);
+            const mockGateway: ITauriDialogGateway = {
+                open: async (options: TauriOpenDialogOptions) => {
+                    if (options.directory) {
+                        return '/project/assets';
+                    }
+                    if (options.multiple) {
+                        return ['/path/1.png', '/path/2.png'];
+                    }
+                    return '/path/to/sprite.png';
+                },
+                save: async () => '/export/atlas.json'
             };
 
-            const dialog = new TauriDialogAdapter(mockInvoker);
+            const dialog = new TauriDialogAdapter(mockGateway);
             expect(await dialog.openFile()).toBe('/path/to/sprite.png');
             expect(await dialog.openFiles()).toEqual(['/path/1.png', '/path/2.png']);
             expect(await dialog.openDirectory()).toBe('/project/assets');
             expect(await dialog.saveFile()).toBe('/export/atlas.json');
         });
 
-        it('recovers gracefully from dialog errors', async () => {
-            const failingInvoker = async <T>(): Promise<T> => {
-                throw new Error('User canceled or dialog error');
+        it('preserves cancellation results from the native plugin', async () => {
+            const cancelingGateway: ITauriDialogGateway = {
+                open: async () => null,
+                save: async () => null
             };
 
-            const dialog = new TauriDialogAdapter(failingInvoker);
+            const dialog = new TauriDialogAdapter(cancelingGateway);
             expect(await dialog.openFile()).toBeNull();
             expect(await dialog.openFiles()).toEqual([]);
             expect(await dialog.openDirectory()).toBeNull();
             expect(await dialog.saveFile()).toBeNull();
+        });
+
+        it('propagates plugin failures instead of treating them as cancellation', async () => {
+            const failingGateway: ITauriDialogGateway = {
+                open: async () => {
+                    throw new Error('Native dialog unavailable');
+                },
+                save: async () => {
+                    throw new Error('Native dialog unavailable');
+                }
+            };
+
+            const dialog = new TauriDialogAdapter(failingGateway);
+            await expect(dialog.openDirectory()).rejects.toThrow('Native dialog unavailable');
+            await expect(dialog.saveFile()).rejects.toThrow('Native dialog unavailable');
         });
     });
 
@@ -336,4 +353,3 @@ describe('Platform Abstraction Layer', () => {
         });
     });
 });
-
