@@ -12,6 +12,7 @@ import type {
   JsonObject,
   JsonValue,
 } from './DesktopToolModule';
+import { SpriteSheetPackerDesktopView } from './SpriteSheetPackerDesktopView';
 
 type LifecycleState = 'created' | 'mounted' | 'active' | 'inactive' | 'disposed';
 
@@ -75,10 +76,10 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
     }
     this.runtimeContext = context;
     this.surface = context.surface;
-    await context.surface.show({
-      mount: () => undefined,
-      dispose: () => undefined,
-    });
+    await context.surface.show(new SpriteSheetPackerDesktopView({
+      initialGrid: readInitialGrid(this.session),
+      preview: (grid) => this.previewGrid(grid),
+    }));
     this.state = 'mounted';
   }
 
@@ -159,6 +160,10 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
       },
     };
   }
+
+  private previewGrid(grid: ExtractionGridConfig): Promise<JsonValue | undefined> {
+    return this.executeCommand('preview-grid', { ...grid });
+  }
 }
 
 function createGridPreviewResult(
@@ -197,4 +202,22 @@ function readNumber(payload: JsonObject, key: string): number {
     throw new TypeError(`preview-grid requires a finite ${key}`);
   }
   return value;
+}
+
+function readInitialGrid(session: JsonObject): ExtractionGridConfig {
+  const fallback: ExtractionGridConfig = {
+    imageWidth: 256,
+    imageHeight: 256,
+    frameWidth: 32,
+    frameHeight: 32,
+    margin: 0,
+    spacing: 0,
+  };
+  const preview = session.lastGridPreview;
+  if (!preview || Array.isArray(preview) || typeof preview !== 'object') return fallback;
+  try {
+    return parseGridConfig(preview);
+  } catch {
+    return fallback;
+  }
 }
