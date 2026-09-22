@@ -24,6 +24,11 @@ export type ToolToWorkspaceMessage =
       toolId: string;
     }
   | {
+      type: 'tool:error';
+      toolId: string;
+      message: string;
+    }
+  | {
       type: 'tool:log';
       toolId: string;
       severity: 'info' | 'warn' | 'error' | 'success';
@@ -38,11 +43,20 @@ export type ToolToWorkspaceMessage =
 export function isToolToWorkspaceMessage(value: unknown): value is ToolToWorkspaceMessage {
   if (!value || typeof value !== 'object') return false;
   const candidate = value as Partial<ToolToWorkspaceMessage>;
-  return isReadyMessage(candidate) || isLogMessage(candidate) || isExportMessage(candidate);
+  return isReadyMessage(candidate)
+    || isErrorMessage(candidate)
+    || isLogMessage(candidate)
+    || isExportMessage(candidate);
 }
 
 function isReadyMessage(candidate: Partial<ToolToWorkspaceMessage>): boolean {
   return candidate.type === 'tool:ready' && typeof candidate.toolId === 'string';
+}
+
+function isErrorMessage(candidate: Partial<ToolToWorkspaceMessage>): boolean {
+  return candidate.type === 'tool:error'
+    && typeof candidate.toolId === 'string'
+    && typeof candidate.message === 'string';
 }
 
 function isLogMessage(candidate: Partial<ToolToWorkspaceMessage>): boolean {

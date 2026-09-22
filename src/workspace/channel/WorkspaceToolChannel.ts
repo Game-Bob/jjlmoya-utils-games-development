@@ -9,6 +9,11 @@ import {
   type WorkspaceToToolMessage,
 } from './WorkspaceToolMessages';
 
+export interface WorkspaceToolLifecycleListener {
+  ready(toolId: string): void;
+  error(toolId: string, message: string): void;
+}
+
 export class WorkspaceToolChannel implements IWorkspaceToolChannel {
   private readonly messageListener: (event: MessageEvent) => void;
 
@@ -16,6 +21,7 @@ export class WorkspaceToolChannel implements IWorkspaceToolChannel {
     private readonly iframe: HTMLIFrameElement,
     private readonly state: IWorkspaceState,
     private readonly hostWindow: Window = window,
+    private readonly lifecycle?: WorkspaceToolLifecycleListener,
   ) {
     this.messageListener = (event) => this.receive(event);
   }
@@ -60,8 +66,14 @@ export class WorkspaceToolChannel implements IWorkspaceToolChannel {
 
   private handle(message: ToolToWorkspaceMessage): void {
     if (message.type === 'tool:ready') {
+      this.lifecycle?.ready(message.toolId);
       const current = this.state.getState();
       this.sendContext(current.currentProject, current.currentProjectConfig, current.activeToolId);
+      return;
+    }
+    if (message.type === 'tool:error') {
+      this.lifecycle?.error(message.toolId, message.message);
+      this.state.addLog('error', message.message, message.toolId);
       return;
     }
     if (message.type === 'tool:log') {

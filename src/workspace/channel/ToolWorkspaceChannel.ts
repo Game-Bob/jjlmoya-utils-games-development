@@ -40,6 +40,10 @@ export class ToolWorkspaceChannel {
     this.send({ type: 'tool:log', toolId: this.toolId, severity, message });
   }
 
+  public error(message: string): void {
+    this.send({ type: 'tool:error', toolId: this.toolId, message });
+  }
+
   public exportComplete(outputPaths: string[]): void {
     this.send({ type: 'tool:export-complete', toolId: this.toolId, outputPaths });
   }

@@ -24,6 +24,7 @@ export async function getStaticPaths() {
       props: {
         ToolComponent,
         content,
+        toolId: entry.id,
       },
     });
   }
@@ -31,9 +32,10 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { ToolComponent, content } = Astro.props as {
+const { ToolComponent, content, toolId } = Astro.props as {
   ToolComponent: AstroComponentFactory;
   content: ToolLocaleContent;
+  toolId: string;
 };
 ---
 
@@ -80,11 +82,32 @@ const { ToolComponent, content } = Astro.props as {
       }
     </style>
   </head>
-  <body class="theme-dark desktop-native-host">
+  <body class="theme-dark desktop-native-host" data-workspace-tool-id={toolId}>
     <script>
       import { configureDesktopPlatformBridge } from '../../../platform/desktop';
+      import { ToolWorkspaceChannel } from '../../../workspace/channel/ToolWorkspaceChannel';
 
       configureDesktopPlatformBridge();
+
+      const toolId = document.body.dataset.workspaceToolId;
+      if (toolId) {
+        const channel = new ToolWorkspaceChannel(toolId);
+        const reportError = (value: unknown) => {
+          const message = value instanceof Error ? value.message : String(value);
+          channel.error(message || 'Tool initialization failed.');
+        };
+        const attach = () => window.requestAnimationFrame(() => channel.attach());
+
+        window.addEventListener('error', (event) => reportError(event.error ?? event.message));
+        window.addEventListener('unhandledrejection', (event) => reportError(event.reason));
+        window.addEventListener('beforeunload', () => channel.detach(), { once: true });
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', attach, { once: true });
+        } else {
+          attach();
+        }
+      }
     </script>
     <div class="desktop-tool-viewport-container">
       <ToolComponent ui={content.ui} locale="en" />
