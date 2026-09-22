@@ -94,7 +94,7 @@ describe('ToolModuleLoadController', () => {
 
     expect(controller.retry()).toEqual(PACKER);
     expect(controller.getSnapshot()).toEqual(expect.objectContaining({
-      status: 'mounting',
+      status: 'retrying',
       target: PACKER,
       error: null,
       startedAt: 4000,

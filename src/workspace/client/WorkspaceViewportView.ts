@@ -169,8 +169,10 @@ export class WorkspaceViewportView {
       this.loaderEl.setAttribute('aria-hidden', String(!showLoader));
     }
 
-    if (this.loaderTextEl && snapshot.status === 'mounting') {
-      this.loaderTextEl.textContent = 'Opening tool module...';
+    if (this.loaderTextEl && (snapshot.status === 'mounting' || snapshot.status === 'retrying')) {
+      this.loaderTextEl.textContent = snapshot.status === 'retrying'
+        ? 'Retrying tool module...'
+        : 'Opening tool module...';
     }
   }
 

@@ -1,4 +1,4 @@
-export type ToolModuleLoadStatus = 'idle' | 'mounting' | 'ready' | 'error';
+export type ToolModuleLoadStatus = 'idle' | 'mounting' | 'retrying' | 'ready' | 'error';
 
 export type ToolModuleLoadErrorReason = 'route-error' | 'script-error' | 'ready-timeout';
 
@@ -82,26 +82,12 @@ export class ToolModuleLoadController {
       return false;
     }
 
-    this.clearTimers();
-    this.snapshot = {
-      ...this.snapshot,
-      status: 'mounting',
-      target: { ...target },
-      indicatorVisible: false,
-      error: null,
-      startedAt: this.clock(),
-      completedAt: null,
-    };
-    this.emit();
-    this.indicatorTimer = this.scheduler.set(() => this.showIndicator(target), this.indicatorDelayMs);
-    this.timeoutTimer = this.scheduler.set(() => {
-      this.fail(target.toolId, 'ready-timeout', 'The module did not confirm readiness within 2 seconds.');
-    }, this.readyTimeoutMs);
+    this.begin(target, 'mounting');
     return true;
   }
 
   public ready(toolId: string): boolean {
-    if (this.snapshot.status !== 'mounting' || this.snapshot.target?.toolId !== toolId) {
+    if (!this.isLoading() || this.snapshot.target?.toolId !== toolId) {
       return false;
     }
 
@@ -124,7 +110,7 @@ export class ToolModuleLoadController {
     reason: ToolModuleLoadErrorReason,
     message: string,
   ): boolean {
-    if (this.snapshot.status !== 'mounting' || this.snapshot.target?.toolId !== toolId) {
+    if (!this.isLoading() || this.snapshot.target?.toolId !== toolId) {
       return false;
     }
 
@@ -145,7 +131,7 @@ export class ToolModuleLoadController {
       return null;
     }
     const target = { ...this.snapshot.target };
-    this.mount(target, true);
+    this.begin(target, 'retrying');
     return target;
   }
 
@@ -168,7 +154,7 @@ export class ToolModuleLoadController {
   }
 
   private showIndicator(target: ToolModuleTarget): void {
-    if (this.snapshot.status !== 'mounting' || !this.isCurrentTarget(target)) {
+    if (!this.isLoading() || !this.isCurrentTarget(target)) {
       return;
     }
     this.snapshot = {
@@ -191,5 +177,27 @@ export class ToolModuleLoadController {
 
   private emit(): void {
     this.listener(this.snapshot);
+  }
+
+  private begin(target: ToolModuleTarget, status: 'mounting' | 'retrying'): void {
+    this.clearTimers();
+    this.snapshot = {
+      ...this.snapshot,
+      status,
+      target: { ...target },
+      indicatorVisible: false,
+      error: null,
+      startedAt: this.clock(),
+      completedAt: null,
+    };
+    this.emit();
+    this.indicatorTimer = this.scheduler.set(() => this.showIndicator(target), this.indicatorDelayMs);
+    this.timeoutTimer = this.scheduler.set(() => {
+      this.fail(target.toolId, 'ready-timeout', 'The module did not confirm readiness within 2 seconds.');
+    }, this.readyTimeoutMs);
+  }
+
+  private isLoading(): boolean {
+    return this.snapshot.status === 'mounting' || this.snapshot.status === 'retrying';
   }
 }

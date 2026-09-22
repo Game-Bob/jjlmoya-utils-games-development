@@ -116,6 +116,10 @@ describe('WorkspaceViewportView', () => {
       '/workspace/tool/sprite-sheet-packer/?workspaceAttempt=1',
     );
     expect(element(harness, '#viewport-loader').hidden).toBe(true);
+    vi.advanceTimersByTime(150);
+    expect(element(harness, '#viewport-loader-text').textContent).toBe(
+      'Retrying tool module...',
+    );
   });
 
   it('returns to the last ready module after the next one fails', () => {
