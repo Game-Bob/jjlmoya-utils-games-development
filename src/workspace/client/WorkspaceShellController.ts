@@ -24,7 +24,11 @@ export class WorkspaceShellController {
     platform: IPlatformBridge,
   ) {
     const iframe = root.querySelector<HTMLIFrameElement>('#tool-viewport-iframe');
-    this.toolChannel = iframe ? new WorkspaceToolChannel(iframe, state) : undefined;
+    this.viewportView = new WorkspaceViewportView(root, {
+      log: (severity, message, sourceToolId) => state.addLog(severity, message, sourceToolId),
+      selectTool: (toolId) => state.selectTool(toolId),
+    });
+    this.toolChannel = this.createToolChannel(iframe, state);
     const projectDependencies = this.toolChannel
       ? { toolChannel: this.toolChannel }
       : {};
@@ -35,7 +39,6 @@ export class WorkspaceShellController {
     );
     this.projectBarView = new WorkspaceProjectBarView(root, projectController);
     this.sidebarView = new WorkspaceSidebarView(root, state);
-    this.viewportView = new WorkspaceViewportView(root);
     this.dockView = new WorkspaceDockView(root, state);
     this.keybindings = new WorkspaceKeybindings(
       state,
@@ -52,6 +55,7 @@ export class WorkspaceShellController {
 
   public destroy(): void {
     this.toolChannel?.detach();
+    this.viewportView.destroy();
     this.keybindings.detach();
     if (this.unsubscribe) {
       this.unsubscribe();
@@ -65,5 +69,16 @@ export class WorkspaceShellController {
     this.viewportView.render(state);
     this.dockView.render(state);
     this.toolChannel?.sendContext(state.currentProject, state.currentProjectConfig, state.activeToolId);
+  }
+
+  private createToolChannel(
+    iframe: HTMLIFrameElement | null,
+    state: IWorkspaceState,
+  ): WorkspaceToolChannel | undefined {
+    if (!iframe) return undefined;
+    return new WorkspaceToolChannel(iframe, state, window, {
+      ready: (toolId) => this.viewportView.ready(toolId),
+      error: (toolId, message) => this.viewportView.scriptError(toolId, message),
+    });
   }
 }

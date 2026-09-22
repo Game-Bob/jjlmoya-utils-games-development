@@ -11,7 +11,7 @@ import {
 
 export interface WorkspaceToolLifecycleListener {
   ready(toolId: string): void;
-  error(toolId: string, message: string): void;
+  error(toolId: string, message: string): boolean;
 }
 
 export class WorkspaceToolChannel implements IWorkspaceToolChannel {
@@ -72,8 +72,10 @@ export class WorkspaceToolChannel implements IWorkspaceToolChannel {
       return;
     }
     if (message.type === 'tool:error') {
-      this.lifecycle?.error(message.toolId, message.message);
-      this.state.addLog('error', message.message, message.toolId);
+      const handled = this.lifecycle?.error(message.toolId, message.message) ?? false;
+      if (!handled) {
+        this.state.addLog('error', message.message, message.toolId);
+      }
       return;
     }
     if (message.type === 'tool:log') {

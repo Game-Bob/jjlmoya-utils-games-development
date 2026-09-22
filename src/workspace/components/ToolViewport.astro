@@ -42,14 +42,28 @@ const {
   </div>
 
   <div class="viewport-frame-container">
-    <div id="viewport-loader" class="viewport-loader" aria-hidden="true">
-      <div class="loader-spinner"></div>
-      <span class="loader-text">Loading tool module...</span>
+    <div id="viewport-loader" class="viewport-loader" aria-hidden="true" hidden>
+      <div id="viewport-loader-progress" class="viewport-loader-progress" role="status">
+        <div class="loader-spinner"></div>
+        <span id="viewport-loader-text" class="loader-text">Opening tool module...</span>
+      </div>
+      <div id="viewport-loader-error" class="viewport-loader-error" role="alert" hidden>
+        <span class="viewport-loader-error-kicker">Module unavailable</span>
+        <h3 id="viewport-loader-error-title" class="viewport-loader-error-title">The tool could not be opened</h3>
+        <p id="viewport-loader-error-message" class="viewport-loader-error-message"></p>
+        <div class="viewport-loader-error-actions">
+          <button id="viewport-loader-retry" class="viewport-recovery-btn viewport-recovery-btn-primary" type="button">
+            Retry
+          </button>
+          <button id="viewport-loader-back" class="viewport-recovery-btn" type="button">
+            Back to last working tool
+          </button>
+        </div>
+      </div>
     </div>
     <iframe
       id="tool-viewport-iframe"
       class="tool-viewport-iframe"
-      src={initialRoutePath}
       title="Active Tool Frame"
       loading="eager"
       sandbox="allow-scripts allow-forms allow-downloads"

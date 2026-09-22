@@ -68,15 +68,19 @@ describe('ToolModuleLoadController', () => {
     }));
   });
 
-  it('reports route and script failures only for the active module', () => {
+  it('reports a route failure only for the active module', () => {
     const controller = createController();
 
     controller.mount(PACKER);
     expect(controller.fail(HITBOX.toolId, 'route-error', 'Wrong route')).toBe(false);
     expect(controller.fail(PACKER.toolId, 'route-error', 'Route could not be loaded.')).toBe(true);
     expect(controller.getSnapshot().error?.reason).toBe('route-error');
+  });
 
-    controller.mount(PACKER, true);
+  it('reports a script failure separately from route failures', () => {
+    const controller = createController();
+
+    controller.mount(PACKER);
     expect(controller.fail(PACKER.toolId, 'script-error', 'Tool initialization failed.')).toBe(true);
     expect(controller.getSnapshot().error?.reason).toBe('script-error');
   });
