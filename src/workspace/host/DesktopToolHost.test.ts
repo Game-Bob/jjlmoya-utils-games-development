@@ -73,6 +73,25 @@ describe('DesktopToolHost', () => {
     });
   });
 
+  it('restores the last valid module without recreating it', async () => {
+    const fixture = createHostFixture([
+      createModule('alpha'),
+      createModule('beta', { mountError: new Error('Broken module') }),
+    ]);
+    await fixture.host.open('alpha');
+    await fixture.host.open('beta');
+
+    expect(fixture.host.restoreActive()).toBe(true);
+
+    expect(fixture.instances.alpha?.mount).toHaveBeenCalledOnce();
+    expect(fixture.host.getSnapshot()).toEqual({
+      status: 'ready',
+      requestedModuleId: 'alpha',
+      activeModuleId: 'alpha',
+      error: null,
+    });
+  });
+
   it('exposes retrying and commits a successful retry', async () => {
     let attempt = 0;
     const module = createModule('alpha', {

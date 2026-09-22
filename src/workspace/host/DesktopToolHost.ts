@@ -28,7 +28,10 @@ export interface DesktopToolHostSnapshot {
 export interface DesktopToolHostDependencies {
   readonly registry: DesktopToolRegistry;
   readonly surfaces: DesktopToolSurfaceManager;
-  readonly createContext: (signal: AbortSignal) => DesktopToolRuntimeContext;
+  readonly createContext: (
+    signal: AbortSignal,
+    moduleId: string,
+  ) => DesktopToolRuntimeContext;
   readonly onStateChange?: (snapshot: Readonly<DesktopToolHostSnapshot>) => void;
   readonly mountTimeoutMs?: number;
 }
@@ -88,13 +91,23 @@ export class DesktopToolHost {
     return this.performOpen(this.lastRequest, 'retrying');
   }
 
+  public restoreActive(): boolean {
+    if (!this.active) return false;
+    this.requestCounter += 1;
+    this.pendingAbortController?.abort();
+    this.pendingAbortController = undefined;
+    this.lastRequest = { moduleId: this.active.moduleId };
+    this.transition('ready', this.active.moduleId, null);
+    return true;
+  }
+
   public async updateContext(): Promise<void> {
     if (!this.active) return;
     this.active.abortController.abort();
     const abortController = new AbortController();
     this.active.abortController = abortController;
     await this.active.instance.updateContext(
-      this.dependencies.createContext(abortController.signal),
+      this.dependencies.createContext(abortController.signal, this.active.moduleId),
     );
   }
 
@@ -167,7 +180,10 @@ export class DesktopToolHost {
     pending: PendingModule,
     restoredSession?: Readonly<JsonObject>,
   ): Promise<void> {
-    const runtime = this.dependencies.createContext(pending.abortController.signal);
+    const runtime = this.dependencies.createContext(
+      pending.abortController.signal,
+      pending.module.manifest.id,
+    );
     const context: DesktopToolMountContext = { ...runtime, surface: pending.surface };
     await withTimeout(
       pending.instance.mount(context, restoredSession),

@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { DesktopToolHostSnapshot } from '../host/DesktopToolHost';
 import { WorkspaceStateManager } from '../state/WorkspaceStateManager';
 import { WorkspaceViewportView } from './WorkspaceViewportView';
 
@@ -23,120 +24,123 @@ interface ViewHarness {
   state: WorkspaceStateManager;
   elements: Map<string, FakeElement>;
   log: ReturnType<typeof vi.fn>;
+  retry: ReturnType<typeof vi.fn>;
   selectTool: ReturnType<typeof vi.fn>;
 }
 
 describe('WorkspaceViewportView', () => {
   beforeEach(() => {
     vi.useFakeTimers();
-    vi.setSystemTime(1000);
   });
 
   afterEach(() => {
     vi.useRealTimers();
   });
 
-  it('attaches its lifecycle before the initial navigation can report ready', () => {
+  it('renders the selected tool metadata and standalone route', () => {
     const harness = createHarness();
 
     harness.view.render(harness.state.getState());
-    expect(element(harness, '#tool-viewport-iframe').getAttribute('src')).toBe(
+
+    expect(element(harness, '#viewport-tool-title').textContent).toBe('SpriteSheet Packer');
+    expect(element(harness, '#viewport-phase-badge').textContent).toBe('Visual Assets');
+    expect(element(harness, '#viewport-external-link').href).toBe(
       '/workspace/tool/sprite-sheet-packer/',
-    );
-
-    harness.view.ready('spriteSheetPacker');
-    vi.advanceTimersByTime(2000);
-
-    expect(element(harness, '#viewport-loader').hidden).toBe(true);
-    expect(harness.log).toHaveBeenCalledWith(
-      'success',
-      'Module ready in 0ms at /workspace/tool/sprite-sheet-packer/',
-      'spriteSheetPacker',
     );
   });
 
-  it('shows a recoverable error when the module never reports ready', () => {
+  it('delays the first loading indicator to avoid startup flicker', () => {
     const harness = createHarness();
 
-    harness.view.render(harness.state.getState());
-    vi.advanceTimersByTime(150);
+    harness.view.renderHost(snapshot({ status: 'mounting', requestedModuleId: 'spriteSheetPacker' }));
+    vi.advanceTimersByTime(149);
+    expect(element(harness, '#viewport-loader').hidden).toBe(true);
+
+    vi.advanceTimersByTime(1);
     expect(element(harness, '#viewport-loader').hidden).toBe(false);
+  });
 
-    vi.advanceTimersByTime(1850);
+  it('keeps the last valid surface visible while the next module prepares', () => {
+    const harness = createHarness();
 
+    harness.view.renderHost(snapshot({
+      status: 'mounting',
+      requestedModuleId: 'hitboxHurtboxAnimator',
+      activeModuleId: 'spriteSheetPacker',
+    }));
+    vi.advanceTimersByTime(500);
+
+    expect(element(harness, '#viewport-loader').hidden).toBe(true);
+  });
+
+  it('shows and reports a recoverable timeout error', () => {
+    const harness = createHarness();
+    const error = 'Module spriteSheetPacker did not mount within 2000ms';
+
+    harness.view.renderHost(snapshot({
+      status: 'error',
+      requestedModuleId: 'spriteSheetPacker',
+      error,
+    }));
+
+    expect(element(harness, '#viewport-loader').hidden).toBe(false);
     expect(element(harness, '#viewport-loader-error').hidden).toBe(false);
     expect(element(harness, '#viewport-loader-error-title').textContent).toBe(
       'The module is taking too long',
     );
-    expect(harness.log).toHaveBeenCalledWith(
-      'error',
-      expect.stringContaining('ready-timeout'),
-      'spriteSheetPacker',
-    );
+    expect(harness.log).toHaveBeenCalledWith('error', error, 'spriteSheetPacker');
   });
 
-  it('reports an iframe route error independently', () => {
+  it('retries through the host and displays the retrying state', () => {
     const harness = createHarness();
 
-    harness.view.render(harness.state.getState());
-    element(harness, '#tool-viewport-iframe').dispatchEvent(new Event('error'));
-
-    expect(element(harness, '#viewport-loader-error-title').textContent).toBe(
-      'The module route could not be opened',
-    );
-    expect(harness.log).toHaveBeenCalledWith(
-      'error',
-      expect.stringContaining('route-error'),
-      'spriteSheetPacker',
-    );
-  });
-
-  it('reports a tool script error independently', () => {
-    const harness = createHarness();
-
-    harness.view.render(harness.state.getState());
-    expect(harness.view.scriptError('spriteSheetPacker', 'Canvas bootstrap failed')).toBe(true);
-
-    expect(element(harness, '#viewport-loader-error-title').textContent).toBe(
-      'The module stopped during startup',
-    );
-    expect(element(harness, '#viewport-loader-error-message').textContent).toBe(
-      'Canvas bootstrap failed',
-    );
-  });
-
-  it('retries the current route with a fresh navigation attempt', () => {
-    const harness = createHarness();
-
-    harness.view.render(harness.state.getState());
-    harness.view.scriptError('spriteSheetPacker', 'Canvas bootstrap failed');
+    harness.view.renderHost(snapshot({
+      status: 'error',
+      requestedModuleId: 'spriteSheetPacker',
+      error: 'Startup failed',
+    }));
     element(harness, '#viewport-loader-retry').dispatchEvent(new Event('click'));
+    harness.view.renderHost(snapshot({
+      status: 'retrying',
+      requestedModuleId: 'spriteSheetPacker',
+    }));
 
-    expect(element(harness, '#tool-viewport-iframe').getAttribute('src')).toBe(
-      '/workspace/tool/sprite-sheet-packer/?workspaceAttempt=1',
-    );
-    expect(element(harness, '#viewport-loader').hidden).toBe(true);
-    vi.advanceTimersByTime(150);
+    expect(harness.retry).toHaveBeenCalledOnce();
     expect(element(harness, '#viewport-loader-text').textContent).toBe(
       'Retrying tool module...',
     );
   });
 
-  it('returns to the last ready module after the next one fails', () => {
+  it('returns to the still-active module after a failed switch', () => {
     const harness = createHarness();
 
-    harness.view.render(harness.state.getState());
-    harness.view.ready('spriteSheetPacker');
-    harness.state.selectTool('hitboxHurtboxAnimator');
-    harness.view.render(harness.state.getState());
-    harness.view.scriptError('hitboxHurtboxAnimator', 'Animation bootstrap failed');
-
+    harness.view.renderHost(snapshot({
+      status: 'error',
+      requestedModuleId: 'hitboxHurtboxAnimator',
+      activeModuleId: 'spriteSheetPacker',
+      error: 'Animation bootstrap failed',
+    }));
     expect(element(harness, '#viewport-loader-back').hidden).toBe(false);
+
     element(harness, '#viewport-loader-back').dispatchEvent(new Event('click'));
 
     expect(harness.selectTool).toHaveBeenCalledWith('spriteSheetPacker');
-    expect(element(harness, '#tool-viewport-iframe').getAttribute('src')).toBe(
-      '/workspace/tool/sprite-sheet-packer/',
+  });
+
+  it('reports ready only after the host commits the integrated surface', () => {
+    const harness = createHarness();
+
+    harness.view.renderHost(snapshot({
+      status: 'ready',
+      requestedModuleId: 'spriteSheetPacker',
+      activeModuleId: 'spriteSheetPacker',
+    }));
+
+    expect(element(harness, '#viewport-loader').hidden).toBe(true);
+    expect(harness.log).toHaveBeenCalledWith(
+      'success',
+      'Module ready in the integrated tool host',
+      'spriteSheetPacker',
     );
   });
 });
@@ -147,7 +151,6 @@ function createHarness(): ViewHarness {
     '#viewport-tool-desc',
     '#viewport-phase-badge',
     '#viewport-external-link',
-    '#tool-viewport-iframe',
     '#viewport-loader',
     '#viewport-loader-progress',
     '#viewport-loader-text',
@@ -166,14 +169,28 @@ function createHarness(): ViewHarness {
     querySelector: (selector: string) => elements.get(selector) ?? null,
   } as unknown as HTMLElement;
   const log = vi.fn();
+  const retry = vi.fn();
   const selectTool = vi.fn();
 
   return {
-    view: new WorkspaceViewportView(root, { log, selectTool }),
+    view: new WorkspaceViewportView(root, { log, retry, selectTool }),
     state: new WorkspaceStateManager(),
     elements,
     log,
+    retry,
     selectTool,
+  };
+}
+
+function snapshot(
+  partial: Partial<DesktopToolHostSnapshot>,
+): Readonly<DesktopToolHostSnapshot> {
+  return {
+    status: 'idle',
+    requestedModuleId: null,
+    activeModuleId: null,
+    error: null,
+    ...partial,
   };
 }
 
