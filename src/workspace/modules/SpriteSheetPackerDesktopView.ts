@@ -32,10 +32,10 @@ export class SpriteSheetPackerDesktopView {
   constructor(private readonly dependencies: SpriteSheetPackerDesktopViewDependencies) {}
 
   public mount(target: Element): void {
-    const document = target.ownerDocument;
-    const layout = document.createElement('div');
+    const ownerDocument = target.ownerDocument;
+    const layout = ownerDocument.createElement('div');
     layout.className = 'sprite-packer-workbench';
-    layout.append(this.createEditor(document), this.createPreview(document));
+    layout.append(this.createEditor(ownerDocument), this.createPreview(ownerDocument));
     target.replaceChildren(layout);
   }
 
@@ -48,32 +48,32 @@ export class SpriteSheetPackerDesktopView {
     this.inputs.clear();
   }
 
-  private createEditor(document: Document): HTMLElement {
-    const editor = document.createElement('section');
+  private createEditor(ownerDocument: Document): HTMLElement {
+    const editor = ownerDocument.createElement('section');
     editor.className = 'sprite-packer-editor';
     editor.setAttribute('aria-labelledby', 'sprite-packer-editor-title');
 
-    const eyebrow = document.createElement('span');
+    const eyebrow = ownerDocument.createElement('span');
     eyebrow.className = 'desktop-tool-eyebrow';
     eyebrow.textContent = 'Integrated module';
 
-    const title = document.createElement('h3');
+    const title = ownerDocument.createElement('h3');
     title.id = 'sprite-packer-editor-title';
     title.textContent = 'Grid slicing';
 
-    const description = document.createElement('p');
+    const description = ownerDocument.createElement('p');
     description.textContent = 'Describe the source sheet and inspect its frame boundaries instantly.';
 
-    const form = document.createElement('form');
+    const form = ownerDocument.createElement('form');
     form.className = 'sprite-packer-form';
     form.addEventListener('submit', this.submitListener);
     this.form = form;
 
-    const fields = document.createElement('div');
+    const fields = ownerDocument.createElement('div');
     fields.className = 'sprite-packer-fields';
-    for (const field of GRID_FIELDS) fields.append(this.createField(document, field));
+    for (const field of GRID_FIELDS) fields.append(this.createField(ownerDocument, field));
 
-    const submit = document.createElement('button');
+    const submit = ownerDocument.createElement('button');
     submit.type = 'submit';
     submit.className = 'sprite-packer-preview-button';
     submit.textContent = 'Preview slices';
@@ -84,14 +84,14 @@ export class SpriteSheetPackerDesktopView {
   }
 
   private createField(
-    document: Document,
+    ownerDocument: Document,
     field: (typeof GRID_FIELDS)[number],
   ): HTMLLabelElement {
-    const label = document.createElement('label');
+    const label = ownerDocument.createElement('label');
     label.className = 'sprite-packer-field';
-    const text = document.createElement('span');
+    const text = ownerDocument.createElement('span');
     text.textContent = field.label;
-    const input = document.createElement('input');
+    const input = ownerDocument.createElement('input');
     input.type = 'number';
     input.name = field.key;
     input.min = String(field.min);
@@ -103,23 +103,23 @@ export class SpriteSheetPackerDesktopView {
     return label;
   }
 
-  private createPreview(document: Document): HTMLElement {
-    const preview = document.createElement('section');
+  private createPreview(ownerDocument: Document): HTMLElement {
+    const preview = ownerDocument.createElement('section');
     preview.className = 'sprite-packer-preview';
     preview.setAttribute('aria-labelledby', 'sprite-packer-preview-title');
 
-    const header = document.createElement('div');
+    const header = ownerDocument.createElement('div');
     header.className = 'sprite-packer-preview-header';
-    const title = document.createElement('h3');
+    const title = ownerDocument.createElement('h3');
     title.id = 'sprite-packer-preview-title';
     title.textContent = 'Frame map';
-    const result = document.createElement('output');
+    const result = ownerDocument.createElement('output');
     result.className = 'sprite-packer-result';
     result.textContent = 'Ready to preview';
     this.result = result;
     header.append(title, result);
 
-    const grid = document.createElement('div');
+    const grid = ownerDocument.createElement('div');
     grid.className = 'sprite-packer-grid';
     grid.setAttribute('aria-label', 'Sprite frame preview');
     this.previewGrid = grid;
