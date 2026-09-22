@@ -7,3 +7,4 @@ export * from './project';
 export * from './channel';
 export * from './state/WorkspaceStateManager';
 export * from './client/index';
+export * from './modules';
