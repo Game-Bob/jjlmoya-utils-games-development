@@ -153,6 +153,8 @@ Cada herramienta de escritorio debe exponer un contrato común con:
 
 El módulo no crea otro documento HTML, no añade una segunda cabecera y no decide la navegación global.
 
+El contrato ejecutable, su ciclo de vida y la guía para añadir módulos se mantienen en [DESKTOP_TOOL_MODULE_CONTRACT.md](./DESKTOP_TOOL_MODULE_CONTRACT.md).
+
 ### Artifact Registry
 
 Un artefacto es una referencia estable a un resultado del proyecto. Debe incluir:

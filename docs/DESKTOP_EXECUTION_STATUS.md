@@ -16,12 +16,12 @@ Debe actualizarse cuando se cierre un ticket de la iniciativa, cambie el orden d
 | --- | --- |
 | Fecha de verificación | 22 de septiembre de 2026 |
 | Rama de trabajo | `main` |
-| Último incremento verificado antes de este checkpoint | `10e4922` |
+| Último incremento verificado antes de este checkpoint | `b8f840b` |
 | Epic activo | [#32 GameBob Quest Desktop Cohesion](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/32) |
-| Fase actual | Frontera y estabilidad de carga completadas; contrato de módulos en curso |
-| Último ticket completado | [#23 Hacer fiable y recuperable la carga de módulos](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/23) |
-| Siguiente ticket | [#24 Definir el contrato DesktopToolModule](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/24) |
-| Siguiente después de #24 | [#25 Crear un Tool Host integrado y retirar el iframe](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/25) |
+| Fase actual | Contrato de módulos completado; Tool Host integrado en curso |
+| Último ticket completado | [#24 Definir el contrato DesktopToolModule](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/24) |
+| Siguiente ticket | [#25 Crear un Tool Host integrado y retirar el iframe](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/25) |
+| Siguiente después de #25 | [#26 Entregar launcher de proyectos y restauración de sesión](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/26) |
 
 ## Qué está terminado
 
@@ -74,30 +74,41 @@ La issue #23 está completada:
 - Ruta, duración y causa quedan registradas en la actividad local.
 - Las regresiones de carrera, timeout, ruta, script, reintento y vuelta atrás tienen pruebas separadas.
 
+### Contrato DesktopToolModule
+
+La issue #24 está completada:
+
+- Manifest, capacidades, comandos y tipos de artefacto se consultan sin montar una instancia.
+- El ciclo de vida cubre montaje, actualización de contexto, activación, desactivación, serialización y liberación.
+- El registro valida módulos y duplicados al arrancar sin conocer IDs concretos.
+- El estado de sesión admite solo JSON y rechaza DOM, handles, clases, ciclos y valores no portables.
+- Un gate impide imports de Astro, Tauri y acceso a navegación global dentro de los módulos.
+- Sprite Sheet Packer demuestra montaje y reactivación reutilizando el kernel público de grid.
+- El contrato y la guía de extensión están documentados en `DESKTOP_TOOL_MODULE_CONTRACT.md`.
+
 ## Qué no está terminado
 
 La frontera técnica y la carga observable ya están protegidas, pero la migración del alojamiento y la continuidad de trabajo todavía no ha empezado. En el estado actual:
 
 - Las herramientas siguen alojándose como páginas Astro completas dentro de un `iframe`.
-- No existe todavía un contrato `DesktopToolModule` ni su ciclo de vida.
-- No existe un Tool Host integrado sin documentos HTML embebidos.
+- El shell todavía no monta `DesktopToolModule`; sigue usando el alojamiento transitorio por `iframe`.
+- No existe un Tool Host integrado que gestione superficie, cancelación y cache de instancias.
 - No existe un launcher de proyectos que convierta la continuidad en la entrada principal.
 - No existe un Artifact Registry ni handoffs persistentes entre etapas.
 - Quince de las diecisiete herramientas siguen aisladas del contexto del workspace.
 - Navegación, inspector, comandos y lenguaje visual aún no forman un workbench único.
 
-Por tanto, no debe comunicarse que la aplicación está terminada. La formulación precisa es: base técnica saneada, frontera Web/Desktop protegida, carga recuperable y migración de experiencia pendiente.
+Por tanto, no debe comunicarse que la aplicación está terminada. La formulación precisa es: base técnica saneada, frontera Web/Desktop protegida, carga recuperable, contrato de módulos listo y migración del host pendiente.
 
 ## Orden de ejecución vigente
 
-1. [#24](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/24): definir el contrato `DesktopToolModule` y su ciclo de vida.
-2. [#25](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/25): sustituir el alojamiento por `iframe` mediante el Tool Host integrado.
-3. [#26](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/26): entregar launcher de proyectos y restauración de sesión.
-4. [#27](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/27): consolidar primitives de workbench y lenguaje operativo.
-5. [#28](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/28): introducir Artifact Registry y handoffs.
-6. [#29](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/29): completar el corte vertical de sprites.
-7. [#30](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/30): reorganizar navegación en workflows, trabajos y Labs.
-8. [#31](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/31): aplicar el gate final de aceptación UX y rendimiento.
+1. [#25](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/25): sustituir el alojamiento por `iframe` mediante el Tool Host integrado.
+2. [#26](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/26): entregar launcher de proyectos y restauración de sesión.
+3. [#27](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/27): consolidar primitives de workbench y lenguaje operativo.
+4. [#28](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/28): introducir Artifact Registry y handoffs.
+5. [#29](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/29): completar el corte vertical de sprites.
+6. [#30](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/30): reorganizar navegación en workflows, trabajos y Labs.
+7. [#31](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/31): aplicar el gate final de aceptación UX y rendimiento.
 
 No comenzar la migración masiva de herramientas antes de completar #24 y #25. No cerrar #29 con una demostración aislada: debe existir continuidad real de artefactos y restauración de sesión.
 
@@ -125,12 +136,12 @@ No repetir la auditoría general ni reabrir #14 a #21 salvo que exista una regre
 
 ## Próxima definición de éxito
 
-El siguiente checkpoint se alcanza cuando #24 quede cerrado con evidencia de que:
+El siguiente checkpoint se alcanza cuando #25 quede cerrado con evidencia de que:
 
-- Existe un contrato `DesktopToolModule` pequeño, versionado y ajeno al DOM global.
-- El ciclo de vida cubre montaje, actualización de contexto, activación, desactivación y liberación.
-- Un módulo puede declarar capacidades, comandos y tipos de artefacto sin importar Tauri.
-- El host puede cancelar trabajos y liberar recursos al cambiar de herramienta.
-- El corte de sprites implementa el contrato sin duplicar su kernel compartido.
+- El workspace monta al menos el módulo de sprites en una superficie integrada, sin otro documento HTML.
+- El Tool Host crea, activa, desactiva, restaura y libera instancias mediante el registro.
+- Cambiar de herramienta cancela trabajo pendiente y no deja listeners ni recursos activos.
+- La cabecera, scroll y navegación pertenecen únicamente al shell.
+- El alojamiento por `iframe` queda retirado de la experiencia principal y existe una transición segura para módulos aún no migrados.
 
-Después de eso, el foco pasa inmediatamente a #25.
+Después de eso, el foco pasa inmediatamente a #26.
