@@ -37,6 +37,7 @@ export interface WorkspaceLogEntry {
 }
 
 export interface WorkspaceStateModel {
+  workspaceMode: 'launcher' | 'project' | 'labs';
   currentProject: ProjectSummary | null;
   currentProjectConfig: WorkspaceProjectConfig | null;
   activePhaseId: PipelinePhaseId;

@@ -173,6 +173,141 @@
   overflow: hidden;
 }
 
+.workspace-workbench {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+.workspace-workbench[hidden],
+.project-launcher[hidden] {
+  display: none;
+}
+
+.workspace-shell[data-workspace-mode="launcher"] .project-bar-summary,
+.workspace-shell[data-workspace-mode="launcher"] .project-bar-actions {
+  display: none;
+}
+
+.project-launcher {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  background: radial-gradient(circle at 70% 20%, #152638 0, var(--gb-bg-canvas) 55%);
+}
+
+.launcher-content {
+  max-width: 860px;
+  margin: auto;
+  padding: clamp(3rem, 9vh, 6rem) clamp(1.5rem, 6vw, 5rem);
+}
+
+.launcher-eyebrow,
+.launcher-labs-label {
+  color: var(--gb-accent-emerald);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.launcher-content h2 {
+  max-width: 640px;
+  margin: 1.25rem 0 0.75rem;
+  color: var(--gb-text-primary);
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.launcher-intro {
+  max-width: 550px;
+  margin: 0;
+  color: var(--gb-text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.launcher-primary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.launcher-action,
+.launcher-labs-button {
+  min-height: 44px;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid var(--gb-border-subtle);
+  border-radius: 8px;
+  background: var(--gb-bg-surface-elevated);
+  color: var(--gb-text-primary);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.launcher-action:hover,
+.launcher-labs-button:hover {
+  border-color: var(--gb-accent-emerald);
+}
+
+.launcher-action-primary {
+  border-color: var(--gb-accent-emerald);
+  background: var(--gb-accent-emerald);
+  color: var(--gb-bg-canvas);
+}
+
+.launcher-action-primary:hover {
+  background: var(--gb-accent-hover);
+}
+
+.launcher-error {
+  max-width: 640px;
+  margin: 1.25rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--gb-severity-error);
+  border-radius: 8px;
+  background: var(--gb-severity-bg-error);
+  color: var(--gb-text-primary);
+  font-size: 0.875rem;
+}
+
+.launcher-labs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 720px;
+  margin-top: clamp(3rem, 9vh, 6rem);
+  padding: 1.5rem;
+  border: 1px solid var(--gb-border-subtle);
+  border-radius: 12px;
+  background: var(--gb-bg-surface);
+}
+
+.launcher-labs p {
+  max-width: 460px;
+  margin: 0.4rem 0 0;
+  color: var(--gb-text-secondary);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.launcher-labs-button {
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .launcher-labs {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
 .pipeline-sidebar {
   width: 280px;
   min-width: 280px;

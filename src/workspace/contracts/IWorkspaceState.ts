@@ -10,6 +10,8 @@ import type { WorkspaceProjectConfig } from '../types/WorkspaceProjectConfig';
 export interface IWorkspaceState {
   getState(): Readonly<WorkspaceStateModel>;
   subscribe(listener: WorkspaceStateListener): () => void;
+  activateProject(project: ProjectSummary, config: WorkspaceProjectConfig): void;
+  enterLabs(): void;
   setProject(project: ProjectSummary | null): void;
   setProjectConfig(config: WorkspaceProjectConfig | null): void;
   selectPhase(phaseId: PipelinePhaseId): void;

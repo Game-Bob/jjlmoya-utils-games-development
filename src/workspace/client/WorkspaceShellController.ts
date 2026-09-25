@@ -6,6 +6,7 @@ import type { ProjectSummary, WorkspaceStateModel } from '../types';
 import type { WorkspaceProjectConfig } from '../types/WorkspaceProjectConfig';
 import { WorkspaceDockView } from './WorkspaceDockView';
 import { WorkspaceKeybindings } from './WorkspaceKeybindings';
+import { WorkspaceLauncherView } from './WorkspaceLauncherView';
 import { WorkspaceProjectBarView } from './WorkspaceProjectBarView';
 import { WorkspaceProjectController } from './WorkspaceProjectController';
 import { WorkspaceSidebarView } from './WorkspaceSidebarView';
@@ -13,6 +14,7 @@ import { WorkspaceViewportView } from './WorkspaceViewportView';
 
 export class WorkspaceShellController {
   private readonly projectBarView: WorkspaceProjectBarView;
+  private readonly launcherView: WorkspaceLauncherView;
   private readonly sidebarView: WorkspaceSidebarView;
   private readonly viewportView: WorkspaceViewportView;
   private readonly dockView: WorkspaceDockView;
@@ -32,6 +34,7 @@ export class WorkspaceShellController {
     this.toolHost = this.createToolHost(root, state, platform);
     const projectController = new WorkspaceProjectController(state, platform);
     this.projectBarView = new WorkspaceProjectBarView(root, projectController);
+    this.launcherView = new WorkspaceLauncherView(root, state, projectController);
     this.sidebarView = new WorkspaceSidebarView(root, state);
     this.dockView = new WorkspaceDockView(root, state);
     this.keybindings = new WorkspaceKeybindings(
@@ -86,6 +89,7 @@ export class WorkspaceShellController {
   public destroy(): void {
     void this.toolHost.dispose();
     this.viewportView.destroy();
+    this.launcherView.destroy();
     this.keybindings.detach();
     if (this.unsubscribe) {
       this.unsubscribe();
@@ -94,6 +98,7 @@ export class WorkspaceShellController {
   }
 
   private render(state: Readonly<WorkspaceStateModel>): void {
+    this.launcherView.render(state);
     this.projectBarView.render(state);
     this.sidebarView.render(state);
     this.viewportView.render(state);
@@ -102,6 +107,7 @@ export class WorkspaceShellController {
   }
 
   private syncToolHost(state: Readonly<WorkspaceStateModel>): void {
+    if (state.workspaceMode === 'launcher') return;
     const toolChanged = state.activeToolId !== this.renderedToolId;
     const contextChanged = state.currentProject !== this.renderedProject
       || state.currentProjectConfig !== this.renderedProjectConfig;

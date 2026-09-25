@@ -1,5 +1,6 @@
 ---
 import ProjectBar from './ProjectBar.astro';
+import ProjectLauncher from './ProjectLauncher.astro';
 import PipelineSidebar from './PipelineSidebar.astro';
 import ToolViewport from './ToolViewport.astro';
 import OutputStatusDock from './OutputStatusDock.astro';
@@ -12,15 +13,18 @@ interface Props {
 const { productName = 'GameBob Quest' } = Astro.props;
 ---
 
-<div id="workspace-root" class="workspace-shell" data-testid="workspace-shell">
+<div id="workspace-root" class="workspace-shell" data-testid="workspace-shell" data-workspace-mode="launcher">
   <ProjectBar productName={productName} />
 
   <div class="workspace-body">
-    <PipelineSidebar />
+    <ProjectLauncher />
+    <div id="workspace-workbench" class="workspace-workbench" hidden>
+      <PipelineSidebar />
 
-    <div class="workspace-viewport-area">
-      <ToolViewport />
-      <OutputStatusDock />
+      <div class="workspace-viewport-area">
+        <ToolViewport />
+        <OutputStatusDock />
+      </div>
     </div>
   </div>
 </div>

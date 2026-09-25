@@ -38,6 +38,7 @@ describe('Workspace Module Architecture', () => {
       const manager = new WorkspaceStateManager();
       const state = manager.getState();
 
+      expect(state.workspaceMode).toBe('launcher');
       expect(state.currentProject).toBeNull();
       expect(state.currentProjectConfig).toBeNull();
       expect(state.activePhaseId).toBe('assets');
@@ -100,9 +101,47 @@ describe('Workspace Module Architecture', () => {
 
       manager.setProject(project);
       expect(manager.getState().currentProject).toEqual(project);
+      expect(manager.getState().workspaceMode).toBe('project');
 
       manager.setProject(null);
       expect(manager.getState().currentProject).toBeNull();
+      expect(manager.getState().workspaceMode).toBe('launcher');
+    });
+
+    it('enters Labs deliberately without creating a project', () => {
+      const manager = new WorkspaceStateManager();
+
+      manager.enterLabs();
+
+      expect(manager.getState().workspaceMode).toBe('labs');
+      expect(manager.getState().currentProject).toBeNull();
+    });
+
+    it('activates project and config in one state transition', () => {
+      const manager = new WorkspaceStateManager();
+      const project: ProjectSummary = {
+        name: 'Starfall',
+        path: '/games/starfall',
+        engine: 'godot',
+        lastSyncedAt: 1,
+      };
+      const config = {
+        version: 1 as const,
+        name: 'Starfall',
+        targetEngine: 'godot4' as const,
+        pipeline: {},
+      };
+      const listener = vi.fn();
+      manager.subscribe(listener);
+
+      manager.activateProject(project, config);
+
+      expect(listener).toHaveBeenCalledTimes(2);
+      expect(manager.getState()).toEqual(expect.objectContaining({
+        workspaceMode: 'project',
+        currentProject: project,
+        currentProjectConfig: config,
+      }));
     });
 
     it('selects phase and defaults to first tool of that phase', () => {

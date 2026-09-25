@@ -5,3 +5,4 @@ export * from './WorkspaceViewportView';
 export * from './WorkspaceDockView';
 export * from './WorkspaceKeybindings';
 export * from './WorkspaceShellController';
+export * from './WorkspaceLauncherView';

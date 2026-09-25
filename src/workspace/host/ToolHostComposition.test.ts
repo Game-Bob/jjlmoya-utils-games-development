@@ -21,4 +21,12 @@ describe('Tool Host composition', () => {
     expect(styles).toMatch(/\.desktop-tool-host-root\s*{[^}]*overflow:\s*hidden/s);
     expect(styles).toMatch(/\.desktop-tool-module-surface\s*{[^}]*overflow:\s*auto/s);
   });
+
+  it('does not open a tool before the user chooses a project or Labs', async () => {
+    const shell = await readFile(new URL('client/WorkspaceShellController.ts', WORKSPACE_ROOT), 'utf8');
+    const state = await readFile(new URL('state/WorkspaceStateManager.ts', WORKSPACE_ROOT), 'utf8');
+
+    expect(state).toContain("workspaceMode: 'launcher'");
+    expect(shell).toContain("if (state.workspaceMode === 'launcher') return;");
+  });
 });

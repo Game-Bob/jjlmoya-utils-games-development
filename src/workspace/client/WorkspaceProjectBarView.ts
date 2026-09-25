@@ -28,6 +28,8 @@ export class WorkspaceProjectBarView {
   public render(state: Readonly<WorkspaceStateModel>): void {
     this.renderProject(state);
     this.renderSyncStatus(state.isRealtimeSyncEnabled);
+    if (this.syncBtn) this.syncBtn.disabled = state.workspaceMode !== 'project';
+    if (this.saveAsBtn) this.saveAsBtn.disabled = state.workspaceMode !== 'project';
   }
 
   public triggerSync(): void {
@@ -41,14 +43,14 @@ export class WorkspaceProjectBarView {
   private renderProject(state: Readonly<WorkspaceStateModel>): void {
     const project = state.currentProject;
     if (this.nameEl) {
-      this.nameEl.textContent = project ? project.name : 'No Project Loaded';
+      this.nameEl.textContent = project ? project.name : 'Labs';
     }
     if (this.engineEl) {
       this.engineEl.textContent = project ? project.engine.toUpperCase() : 'Standalone';
       this.engineEl.dataset.engine = project ? project.engine : 'none';
     }
     if (this.pathEl) {
-      this.pathEl.textContent = project ? project.path : 'Working in browser / offline mode';
+      this.pathEl.textContent = project ? project.path : 'Project-free tools';
     }
   }
 

@@ -193,8 +193,7 @@ export class WorkspaceProjectController implements IWorkspaceProjectActions {
     const project = this.createProjectSummary(projectPath, config);
     const recentProject = this.createProjectMetadata(project, config.targetEngine);
     await this.recentProjects.record(recentProject);
-    this.state.setProject(project);
-    this.state.setProjectConfig(config);
+    this.state.activateProject(project, config);
     this.state.addLog('success', `${successMessage}: ${project.name}`);
   }
 

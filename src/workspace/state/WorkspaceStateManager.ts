@@ -11,6 +11,7 @@ import type {
 } from '../types';
 
 const DEFAULT_STATE: WorkspaceStateModel = {
+  workspaceMode: 'launcher',
   currentProject: null,
   currentProjectConfig: null,
   activePhaseId: PIPELINE_PHASES[0]!.id,
@@ -45,7 +46,23 @@ export class WorkspaceStateManager implements IWorkspaceState {
   }
 
   public setProject(project: ProjectSummary | null): void {
-    this.updateState({ currentProject: project });
+    this.updateState({
+      currentProject: project,
+      workspaceMode: project ? 'project' : 'launcher',
+    });
+  }
+
+  public activateProject(project: ProjectSummary, config: WorkspaceProjectConfig): void {
+    this.updateState({
+      currentProject: project,
+      currentProjectConfig: config,
+      workspaceMode: 'project',
+    });
+  }
+
+  public enterLabs(): void {
+    if (this.state.currentProject || this.state.workspaceMode === 'labs') return;
+    this.updateState({ workspaceMode: 'labs' });
   }
 
   public setProjectConfig(config: WorkspaceProjectConfig | null): void {
