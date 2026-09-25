@@ -48,12 +48,12 @@ Esta checklist se completa para cada `DesktopToolModule` antes de considerar int
 
 ## Aplicación al corte vertical de sprites
 
-Estado verificado el 22 de septiembre de 2026. `Cumple` describe evidencia actual; `Parcial` indica una integración transitoria; `Pendiente` no debe interpretarse como defecto del kernel web.
+Estado verificado el 25 de septiembre de 2026. `Cumple` describe evidencia actual; `Parcial` indica una integración transitoria; `Pendiente` no debe interpretarse como defecto del kernel web.
 
 | Herramienta | Web completa | Kernel público compartido | Sin dependencia Tauri pública | Bridge Desktop | `DesktopToolModule` | Handoff de artefactos | Restauración |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Sprite Sheet Fixer | Cumple | Cumple | Cumple | Pendiente | Pendiente #24 y #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
-| SpriteSheet Packer | Cumple | Cumple | Cumple | Parcial | Pendiente #24 y #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
+| SpriteSheet Packer | Cumple | Cumple | Cumple | Parcial: recibe el bridge; falta flujo de archivos | Cumple #24 y #25; flujo completo pendiente #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
 | Hitbox/Hurtbox Animator | Cumple | Cumple | Cumple | Parcial | Pendiente #24 y #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
 | Pixel Art Palette Swapper | Cumple | Cumple | Cumple | Pendiente | Pendiente #24 y #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
 
@@ -66,8 +66,7 @@ Estado verificado el 22 de septiembre de 2026. `Cumple` describe evidencia actua
 
 ### Bloqueos explícitos
 
-- #24 debe definir el contrato antes de declarar un módulo conforme.
-- #25 debe eliminar la página embebida como unidad de integración.
+- #24 y #25 ya aportan contrato y alojamiento integrado para el módulo de referencia.
 - #26 debe aportar restauración de proyecto y sesión.
 - #28 debe definir artefactos y handoffs persistentes.
 - #29 debe completar y verificar las cuatro filas.

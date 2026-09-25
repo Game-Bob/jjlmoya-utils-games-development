@@ -45,7 +45,7 @@ El manifest es inmutable y consultable sin crear una instancia:
 | `serializeSession` | Montado, activo o inactivo | Devuelve únicamente un objeto JSON válido |
 | `dispose` | Cualquier estado no liberado | Cancela trabajo, limpia superficie y libera referencias |
 
-La reactivación reutiliza la misma instancia. Cambiar de herramienta no debe recrear el módulo salvo que el host decida descartarlo por memoria, error irrecuperable o cierre de sesión.
+La reactivación de una instancia aún activa reutiliza esa misma instancia. El Tool Host actual libera la instancia anterior tras un cambio confirmado para mantener un presupuesto de memoria acotado. Una futura cache requerirá una política explícita de expulsión y pruebas de sesiones largas.
 
 ## Contexto y cancelación
 
@@ -73,14 +73,14 @@ El estado persistible admite solo objetos JSON: cadenas, booleanos, números fin
 
 ## Módulo de referencia
 
-`SpriteSheetPackerDesktopModule` demuestra el contrato sin adelantar la interfaz del Tool Host:
+`SpriteSheetPackerDesktopModule` demuestra el contrato dentro del Tool Host:
 
 - Publica capacidades, comando y tipos de artefacto antes del montaje.
-- Monta, desactiva, reactiva, serializa y libera una instancia.
+- Monta una superficie operativa local, desactiva, reactiva, serializa y libera una instancia.
 - Ejecuta `preview-grid` reutilizando `calculateGridSlices` del kernel público.
 - No copia lógica de sprites ni importa adaptadores Tauri.
 
-La migración visual y operativa completa de Sprite Sheet Packer pertenece al corte vertical #29. El módulo actual es la referencia mínima de integración para construir #25.
+La continuidad de archivos, artefactos y exportación completa de Sprite Sheet Packer pertenece al corte vertical #29. El módulo actual es la referencia integrada del alojamiento resuelto en #25.
 
 ## Añadir un módulo
 
@@ -89,7 +89,7 @@ La migración visual y operativa completa de Sprite Sheet Packer pertenece al co
 3. Declarar manifest, comandos y artefactos sin montar la instancia.
 4. Implementar todas las transiciones y hacer `dispose` idempotente.
 5. Validar cada estado restaurado con `assertSerializableSession`.
-6. Registrar el módulo en el punto de composición que introducirá #25.
+6. Registrar el módulo mediante `createWorkspaceToolRegistry` y retirar su entrada legacy.
 7. Reutilizar la suite de contrato para montaje, reactivación, liberación y límites arquitectónicos.
 
 No se modifica el Tool Host para reconocer IDs concretos. Si una integración exige una rama por herramienta en el host, la responsabilidad está en el contrato equivocado.

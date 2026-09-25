@@ -10,7 +10,7 @@ No es una propuesta de rediseño cosmético. La prioridad es cambiar el modelo d
 
 La posición actual, lo ya completado y el siguiente ticket ejecutable se mantienen en [DESKTOP_EXECUTION_STATUS.md](./DESKTOP_EXECUTION_STATUS.md). Este documento define el destino; el checkpoint evita confundir la dirección aprobada con trabajo ya implementado.
 
-## Diagnóstico ejecutivo
+## Diagnóstico de partida
 
 La aplicación actual tiene una base nativa válida para archivos, proyectos, vigilancia de directorios y empaquetado. El problema está en la capa de producto:
 
@@ -23,9 +23,9 @@ La aplicación actual tiene una base nativa válida para archivos, proyectos, vi
 - El loader inicial depende de un evento `load` conectado después de hidratar el shell. Si el `iframe` termina antes, la máscara puede permanecer indefinidamente.
 - El host no tiene estados explícitos de montaje, listo, error, reintento o recuperación.
 
-El resultado se percibe correctamente como una web encapsulada: existe un marco común, pero no una aplicación común.
+El resultado se percibía correctamente como una web encapsulada: existía un marco común, pero no una aplicación común. La issue #25 elimina esa unidad de integración para el primer módulo y deja el alojamiento anterior confinado al adaptador legacy descrito en [DESKTOP_TOOL_HOST.md](./DESKTOP_TOOL_HOST.md).
 
-## Evidencia en la implementación actual
+## Evidencia del diagnóstico inicial
 
 | Hallazgo | Evidencia |
 | --- | --- |
@@ -153,7 +153,7 @@ Cada herramienta de escritorio debe exponer un contrato común con:
 
 El módulo no crea otro documento HTML, no añade una segunda cabecera y no decide la navegación global.
 
-El contrato ejecutable, su ciclo de vida y la guía para añadir módulos se mantienen en [DESKTOP_TOOL_MODULE_CONTRACT.md](./DESKTOP_TOOL_MODULE_CONTRACT.md).
+El contrato ejecutable, su ciclo de vida y la guía para añadir módulos se mantienen en [DESKTOP_TOOL_MODULE_CONTRACT.md](./DESKTOP_TOOL_MODULE_CONTRACT.md). El alojamiento, los límites de recursos y la retirada del adaptador legacy se documentan en [DESKTOP_TOOL_HOST.md](./DESKTOP_TOOL_HOST.md).
 
 ### Artifact Registry
 
