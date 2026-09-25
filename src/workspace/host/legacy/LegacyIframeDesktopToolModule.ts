@@ -169,7 +169,7 @@ class LegacyIframeDesktopToolView implements DesktopToolView {
   }
 
   private matchesEvent(event: MessageEvent): event is MessageEvent<ToolToWorkspaceMessage> {
-    return event.origin === 'null'
+    return event.origin === this.hostWindow?.location.origin
       && event.source === this.iframe?.contentWindow
       && isToolToWorkspaceMessage(event.data)
       && event.data.toolId === this.tool.id;
@@ -194,12 +194,13 @@ class LegacyIframeDesktopToolView implements DesktopToolView {
   }
 
   private sendContext(): void {
+    if (!this.hostWindow) return;
     this.iframe?.contentWindow?.postMessage({
       type: 'workspace:context',
       project: this.context.project,
       config: this.context.projectConfig,
       activeToolId: this.tool.id,
-    }, '*');
+    }, this.hostWindow.location.origin);
   }
 
   private forwardActivity(message: ReturnTypeMessage): void {
@@ -224,5 +225,5 @@ function configureIframe(iframe: HTMLIFrameElement, tool: WorkspaceToolItem): vo
   iframe.className = 'legacy-tool-iframe';
   iframe.title = `${tool.name} legacy workspace`;
   iframe.loading = 'eager';
-  iframe.setAttribute('sandbox', 'allow-scripts allow-forms allow-downloads');
+  iframe.setAttribute('sandbox', 'allow-scripts allow-forms allow-downloads allow-same-origin');
 }

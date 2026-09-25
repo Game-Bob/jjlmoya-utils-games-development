@@ -11,13 +11,16 @@ export class DomDesktopToolSurfaceManager implements DesktopToolSurfaceManager {
     const container = this.root.ownerDocument.createElement('section');
     container.className = 'desktop-tool-module-surface';
     container.dataset.toolModuleId = moduleId;
+    container.dataset.staging = 'true';
+    container.inert = true;
+    container.setAttribute('aria-hidden', 'true');
+    this.root.append(container);
     return new DomDesktopToolSurfaceTransaction(this.root, container);
   }
 }
 
 class DomDesktopToolSurfaceTransaction implements DesktopToolSurfaceTransaction {
   private view: DesktopToolView | undefined;
-  private committed = false;
   private rolledBack = false;
 
   constructor(
@@ -37,15 +40,15 @@ class DomDesktopToolSurfaceTransaction implements DesktopToolSurfaceTransaction 
     await this.view?.dispose();
     this.view = undefined;
     this.container.replaceChildren();
-    if (this.committed && this.container.parentElement === this.root) {
-      this.root.replaceChildren();
-    }
+    if (this.container.parentElement === this.root) this.container.remove();
   }
 
   public async commit(): Promise<void> {
     this.requireAvailable('commit');
     this.root.replaceChildren(this.container);
-    this.committed = true;
+    delete this.container.dataset.staging;
+    this.container.inert = false;
+    this.container.removeAttribute('aria-hidden');
   }
 
   public async rollback(): Promise<void> {

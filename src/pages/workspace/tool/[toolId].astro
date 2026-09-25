@@ -2,6 +2,7 @@
 import { ALL_TOOLS } from '../../../tools';
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { ToolLocaleContent } from '../../../types';
+import { PIPELINE_PHASES } from '../../../workspace/pipelinePhases';
 import '@jjlmoya/utils-shared/theme.css';
 import '@jjlmoya/utils-shared/styles/jjlmoya-shared.css';
 
@@ -11,6 +12,10 @@ export async function getStaticPaths() {
   const paths = [];
 
   for (const { entry, Component } of ALL_TOOLS) {
+    const workspaceTool = PIPELINE_PHASES
+      .flatMap((phase) => phase.tools)
+      .find((tool) => tool.routePath === `/workspace/tool/${entry.id}/`);
+    if (!workspaceTool) throw new Error(`Missing workspace tool for route ${entry.id}`);
     const loader = entry.i18n.en ?? entry.i18n.es;
     if (!loader) {
       continue;
@@ -24,7 +29,7 @@ export async function getStaticPaths() {
       props: {
         ToolComponent,
         content,
-        toolId: entry.id,
+        toolId: workspaceTool.id,
       },
     });
   }
@@ -96,7 +101,7 @@ const { ToolComponent, content, toolId } = Astro.props as {
           const message = value instanceof Error ? value.message : String(value);
           channel.error(message || 'Tool initialization failed.');
         };
-        const attach = () => window.requestAnimationFrame(() => channel.attach());
+        const attach = () => channel.attach();
 
         window.addEventListener('error', (event) => reportError(event.error ?? event.message));
         window.addEventListener('unhandledrejection', (event) => reportError(event.reason));

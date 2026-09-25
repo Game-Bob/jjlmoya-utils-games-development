@@ -394,6 +394,7 @@
 }
 
 .desktop-tool-host-root {
+  position: relative;
   width: 100%;
   height: 100%;
   background-color: var(--gb-bg-canvas);
@@ -404,6 +405,13 @@
   width: 100%;
   height: 100%;
   overflow: auto;
+}
+
+.desktop-tool-module-surface[data-staging] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .legacy-tool-iframe {

@@ -45,8 +45,9 @@ describe('LegacyIframeDesktopToolModule', () => {
         type: 'workspace:context',
         activeToolId: TOOL.id,
       }),
-      '*',
+      'http://localhost',
     );
+    expect(dom.iframe.getAttribute('sandbox')).toContain('allow-same-origin');
 
     await instance.dispose();
     expect(surface.clear).toHaveBeenCalledOnce();
@@ -88,6 +89,18 @@ describe('LegacyIframeDesktopToolModule', () => {
     await expect(mounting).rejects.toThrow('Legacy boot failed');
   });
 
+  it('ignores a ready signal from a different origin', async () => {
+    const dom = new FakeDom();
+    const instance = createLegacyIframeDesktopToolModule(TOOL).create();
+    const mounting = instance.mount(createContext(createSurface(dom)));
+
+    dom.send({ type: 'tool:ready', toolId: TOOL.id }, 'https://untrusted.example');
+    expect(dom.iframe.contentWindow.postMessage).not.toHaveBeenCalled();
+
+    dom.send({ type: 'tool:ready', toolId: TOOL.id });
+    await expect(mounting).resolves.toBeUndefined();
+  });
+
   it('cancels a pending legacy mount through AbortSignal', async () => {
     const dom = new FakeDom();
     const surface = createSurface(dom);
@@ -102,7 +115,9 @@ describe('LegacyIframeDesktopToolModule', () => {
 });
 
 class FakeDom {
-  public readonly window = new EventTarget();
+  public readonly window = Object.assign(new EventTarget(), {
+    location: { origin: 'http://localhost' },
+  });
   public readonly iframe = new FakeIframe();
   public readonly target = {
     ownerDocument: {
@@ -115,11 +130,11 @@ class FakeDom {
     },
   };
 
-  public send(data: unknown): void {
+  public send(data: unknown, origin = 'http://localhost'): void {
     const event = new Event('message');
     Object.defineProperties(event, {
       data: { value: data },
-      origin: { value: 'null' },
+      origin: { value: origin },
       source: { value: this.iframe.contentWindow },
     });
     this.window.dispatchEvent(event);

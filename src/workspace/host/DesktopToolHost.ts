@@ -226,10 +226,8 @@ export class DesktopToolHost {
 
   private async discardPending(pending: PendingModule): Promise<false> {
     pending.abortController.abort();
-    await Promise.allSettled([
-      pending.surface.rollback(),
-      pending.instance.dispose(),
-    ]);
+    await Promise.allSettled([pending.instance.dispose()]);
+    await Promise.allSettled([pending.surface.rollback()]);
     return false;
   }
 
