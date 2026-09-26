@@ -65,6 +65,14 @@ export class SpriteSheetPackerDesktopView {
     this.inputs.clear();
   }
 
+  public async loadSource(source: LocalImageSelection): Promise<boolean> {
+    return await this.sourceView.load(source);
+  }
+
+  public showSourceError(message: string): void {
+    if (this.result) this.result.textContent = message;
+  }
+
   private createEditor(ownerDocument: Document): HTMLElement {
     const editor = ownerDocument.createElement('section');
     editor.className = 'sprite-packer-editor';
@@ -86,7 +94,7 @@ export class SpriteSheetPackerDesktopView {
     title.id = 'sprite-packer-editor-title';
     title.textContent = 'Grid slicing';
     const description = ownerDocument.createElement('p');
-    description.textContent = 'Choose a sprite sheet from this computer, then inspect its frame boundaries.';
+    description.textContent = 'Select a PNG or WebP in Project files to work with it directly. You can also choose another image from this computer.';
     intro.append(eyebrow, title, description);
     return intro;
   }
@@ -144,7 +152,7 @@ export class SpriteSheetPackerDesktopView {
     title.textContent = 'Frame map';
     const result = ownerDocument.createElement('output');
     result.className = 'sprite-packer-result';
-    result.textContent = 'Choose a local image to begin';
+    result.textContent = 'Select a project image to begin';
     this.result = result;
     header.append(title, result);
 

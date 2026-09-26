@@ -19,6 +19,7 @@ export class SpriteSheetSourceView {
   private image: HTMLImageElement | undefined;
   private imageUrl: string | undefined;
   private disposed = false;
+  private loadRequest = 0;
   private readonly chooseListener = (): void => {
     void this.choose();
   };
@@ -31,7 +32,7 @@ export class SpriteSheetSourceView {
     const button = ownerDocument.createElement('button');
     button.type = 'button';
     button.className = 'sprite-packer-source-button';
-    button.textContent = 'Choose local sprite image';
+    button.textContent = 'Choose another image';
     button.addEventListener('click', this.chooseListener);
     this.button = button;
     const name = ownerDocument.createElement('strong');
@@ -39,7 +40,7 @@ export class SpriteSheetSourceView {
     this.name = name;
     const path = ownerDocument.createElement('span');
     path.className = 'sprite-packer-source-path';
-    path.textContent = 'PNG or WebP · read directly from your device';
+    path.textContent = 'PNG or WebP from your project or computer';
     this.path = path;
     source.append(button, name, path);
     return source;
@@ -56,12 +57,31 @@ export class SpriteSheetSourceView {
 
   public dispose(): void {
     this.disposed = true;
+    this.loadRequest += 1;
     this.button?.removeEventListener('click', this.chooseListener);
     this.releaseImageUrl();
     this.button = undefined;
     this.name = undefined;
     this.path = undefined;
     this.image = undefined;
+  }
+
+  public async load(source: LocalImageSelection): Promise<boolean> {
+    if (this.disposed) return false;
+    const request = ++this.loadRequest;
+    if (this.button) this.button.disabled = true;
+    try {
+      const decoded = await decodeImage(source);
+      if (this.disposed || request !== this.loadRequest) return false;
+      this.showSelection(source, decoded);
+      this.dependencies.onReady(source, decoded.width, decoded.height);
+      return true;
+    } catch (error) {
+      if (request === this.loadRequest) this.reportError(error);
+      return false;
+    } finally {
+      if (request === this.loadRequest) this.restoreButton();
+    }
   }
 
   private async choose(): Promise<void> {
@@ -79,10 +99,7 @@ export class SpriteSheetSourceView {
   private async pickAndShow(): Promise<void> {
     const selection = await this.dependencies.chooseSource();
     if (!selection || this.disposed) return;
-    const decoded = await decodeImage(selection);
-    if (this.disposed) return;
-    this.showSelection(selection, decoded);
-    this.dependencies.onReady(selection, decoded.width, decoded.height);
+    await this.load(selection);
   }
 
   private reportError(error: unknown): void {

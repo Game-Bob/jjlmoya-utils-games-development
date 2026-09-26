@@ -10,8 +10,41 @@ import {
   DesktopToolLifecycleError,
   SpriteSheetPackerDesktopModule,
 } from './SpriteSheetPackerDesktopModule';
+import { SpriteSheetPackerDesktopView } from './SpriteSheetPackerDesktopView';
 
 describe('SpriteSheetPackerDesktopModule', () => {
+  it('reads a selected project sprite through the scoped platform reader', async () => {
+    const path = 'D:\\game\\sprites\\hero.png';
+    const readBinary = vi.fn(async () => new Uint8Array([137, 80, 78, 71]));
+    const loadSource = vi.spyOn(SpriteSheetPackerDesktopView.prototype, 'loadSource')
+      .mockResolvedValue(true);
+    const instance = new SpriteSheetPackerDesktopModule().create();
+    const baseContext = createContext(createSurface());
+    const context: DesktopToolMountContext = {
+      ...baseContext,
+      project: { name: 'Game', path: 'D:\\game', engine: 'custom', lastSyncedAt: 1 },
+      selectedProjectFile: { name: 'hero.png', path, isDirectory: false },
+      platform: new WebPlatformBridge({
+        fileReader: {
+          exists: async () => true,
+          readText: async () => '',
+          readBinary,
+        },
+      }),
+    };
+
+    await instance.mount(context);
+    await instance.activate();
+    await vi.waitFor(() => expect(loadSource).toHaveBeenCalledWith({
+      path,
+      name: 'hero.png',
+      bytes: new Uint8Array([137, 80, 78, 71]),
+    }));
+    expect(readBinary).toHaveBeenCalledWith(path);
+    await instance.dispose();
+    vi.restoreAllMocks();
+  });
+
   it('publishes commands, capabilities and artifact types before mounting', () => {
     const module = new SpriteSheetPackerDesktopModule();
 

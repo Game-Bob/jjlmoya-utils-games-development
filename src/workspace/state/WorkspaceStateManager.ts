@@ -1,6 +1,7 @@
 import type { IWorkspaceState } from '../contracts/IWorkspaceState';
 import { PIPELINE_PHASES } from '../pipelinePhases';
 import type { WorkspaceProjectConfig } from '../types/WorkspaceProjectConfig';
+import type { ProjectFileEntry } from '../../platform/contracts/IProjectFileBrowser';
 import type {
   LogSeverity,
   PipelinePhaseId,
@@ -14,6 +15,7 @@ const DEFAULT_STATE: WorkspaceStateModel = {
   workspaceMode: 'launcher',
   currentProject: null,
   currentProjectConfig: null,
+  selectedProjectFile: null,
   activePhaseId: PIPELINE_PHASES[0]!.id,
   activeToolId: PIPELINE_PHASES[0]!.tools[0]!.id,
   logs: [],
@@ -48,6 +50,7 @@ export class WorkspaceStateManager implements IWorkspaceState {
   public setProject(project: ProjectSummary | null): void {
     this.updateState({
       currentProject: project,
+      selectedProjectFile: null,
       workspaceMode: project ? 'project' : 'launcher',
     });
   }
@@ -56,6 +59,7 @@ export class WorkspaceStateManager implements IWorkspaceState {
     this.updateState({
       currentProject: project,
       currentProjectConfig: config,
+      selectedProjectFile: null,
       workspaceMode: 'project',
     });
   }
@@ -67,6 +71,10 @@ export class WorkspaceStateManager implements IWorkspaceState {
 
   public setProjectConfig(config: WorkspaceProjectConfig | null): void {
     this.updateState({ currentProjectConfig: config });
+  }
+
+  public selectProjectFile(file: ProjectFileEntry): void {
+    this.updateState({ selectedProjectFile: file });
   }
 
   public selectPhase(phaseId: PipelinePhaseId): void {

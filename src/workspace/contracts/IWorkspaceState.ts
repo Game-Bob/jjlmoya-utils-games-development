@@ -6,6 +6,7 @@ import type {
   WorkspaceStateModel,
 } from '../types';
 import type { WorkspaceProjectConfig } from '../types/WorkspaceProjectConfig';
+import type { ProjectFileEntry } from '../../platform/contracts/IProjectFileBrowser';
 
 export interface IWorkspaceState {
   getState(): Readonly<WorkspaceStateModel>;
@@ -14,6 +15,7 @@ export interface IWorkspaceState {
   enterLabs(): void;
   setProject(project: ProjectSummary | null): void;
   setProjectConfig(config: WorkspaceProjectConfig | null): void;
+  selectProjectFile(file: ProjectFileEntry): void;
   selectPhase(phaseId: PipelinePhaseId): void;
   selectTool(toolId: string): void;
   addLog(severity: LogSeverity, message: string, sourceToolId?: string): void;

@@ -9,6 +9,7 @@ import { WorkspaceKeybindings } from './WorkspaceKeybindings';
 import { WorkspaceLauncherView } from './WorkspaceLauncherView';
 import { WorkspaceProjectBarView } from './WorkspaceProjectBarView';
 import { WorkspaceProjectController } from './WorkspaceProjectController';
+import { WorkspaceProjectExplorerView } from './WorkspaceProjectExplorerView';
 import { WorkspaceSidebarView } from './WorkspaceSidebarView';
 import { WorkspaceViewportView } from './WorkspaceViewportView';
 
@@ -16,6 +17,7 @@ export class WorkspaceShellController {
   private readonly projectBarView: WorkspaceProjectBarView;
   private readonly launcherView: WorkspaceLauncherView;
   private readonly sidebarView: WorkspaceSidebarView;
+  private readonly projectExplorerView: WorkspaceProjectExplorerView;
   private readonly viewportView: WorkspaceViewportView;
   private readonly dockView: WorkspaceDockView;
   private readonly keybindings: WorkspaceKeybindings;
@@ -24,6 +26,7 @@ export class WorkspaceShellController {
   private renderedToolId: string | undefined;
   private renderedProject: ProjectSummary | null | undefined;
   private renderedProjectConfig: WorkspaceProjectConfig | null | undefined;
+  private renderedSelectedProjectFilePath: string | null | undefined;
 
   constructor(
     root: HTMLElement,
@@ -36,6 +39,7 @@ export class WorkspaceShellController {
     this.projectBarView = new WorkspaceProjectBarView(root, projectController);
     this.launcherView = new WorkspaceLauncherView(root, state, projectController);
     this.sidebarView = new WorkspaceSidebarView(root, state);
+    this.projectExplorerView = new WorkspaceProjectExplorerView(root, state, platform);
     this.dockView = new WorkspaceDockView(root, state);
     this.keybindings = new WorkspaceKeybindings(
       state,
@@ -72,6 +76,7 @@ export class WorkspaceShellController {
         return {
           project: current.currentProject,
           projectConfig: current.currentProjectConfig,
+          selectedProjectFile: current.selectedProjectFile,
           platform,
           signal,
           reportActivity: (event) => state.addLog(event.severity, event.message, moduleId),
@@ -90,6 +95,7 @@ export class WorkspaceShellController {
     void this.toolHost.dispose();
     this.viewportView.destroy();
     this.launcherView.destroy();
+    this.projectExplorerView.destroy();
     this.keybindings.detach();
     if (this.unsubscribe) {
       this.unsubscribe();
@@ -101,6 +107,7 @@ export class WorkspaceShellController {
     this.launcherView.render(state);
     this.projectBarView.render(state);
     this.sidebarView.render(state);
+    this.projectExplorerView.render(state);
     this.viewportView.render(state);
     this.dockView.render(state);
     this.syncToolHost(state);
@@ -109,11 +116,11 @@ export class WorkspaceShellController {
   private syncToolHost(state: Readonly<WorkspaceStateModel>): void {
     if (state.workspaceMode === 'launcher') return;
     const toolChanged = state.activeToolId !== this.renderedToolId;
-    const contextChanged = state.currentProject !== this.renderedProject
-      || state.currentProjectConfig !== this.renderedProjectConfig;
+    const contextChanged = this.hasContextChanged(state);
     this.renderedToolId = state.activeToolId;
     this.renderedProject = state.currentProject;
     this.renderedProjectConfig = state.currentProjectConfig;
+    this.renderedSelectedProjectFilePath = state.selectedProjectFile?.path ?? null;
 
     if (toolChanged) {
       if (this.toolHost.getSnapshot().activeModuleId === state.activeToolId) {
@@ -124,5 +131,11 @@ export class WorkspaceShellController {
       return;
     }
     if (contextChanged) void this.toolHost.updateContext();
+  }
+
+  private hasContextChanged(state: Readonly<WorkspaceStateModel>): boolean {
+    return state.currentProject !== this.renderedProject
+      || state.currentProjectConfig !== this.renderedProjectConfig
+      || (state.selectedProjectFile?.path ?? null) !== this.renderedSelectedProjectFilePath;
   }
 }

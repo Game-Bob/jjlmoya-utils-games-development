@@ -14,6 +14,7 @@ import type {
   JsonValue,
 } from './DesktopToolModule';
 import { SpriteSheetPackerDesktopView } from './SpriteSheetPackerDesktopView';
+import { SpriteSheetProjectSourceLoader } from './SpriteSheetProjectSourceLoader';
 
 type LifecycleState = 'created' | 'mounted' | 'active' | 'inactive' | 'disposed';
 
@@ -62,6 +63,12 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
   private state: LifecycleState = 'created';
   private runtimeContext: DesktopToolRuntimeContext | undefined;
   private surface: DesktopToolSurface | undefined;
+  private view: SpriteSheetPackerDesktopView | undefined;
+  private readonly projectSourceLoader = new SpriteSheetProjectSourceLoader(
+    () => this.runtimeContext,
+    () => this.view,
+    () => this.state === 'active',
+  );
   private session: JsonObject = { lastGridPreview: null };
 
   constructor(private readonly moduleId: string) {}
@@ -77,18 +84,20 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
     }
     this.runtimeContext = context;
     this.surface = context.surface;
-    await context.surface.show(new SpriteSheetPackerDesktopView({
+    this.view = new SpriteSheetPackerDesktopView({
       initialGrid: readInitialGrid(this.session),
       preview: (grid) => this.previewGrid(grid),
       chooseSource: () => this.chooseSource(),
       sourceReady: (source, width, height) => this.rememberSource(source, width, height),
-    }));
+    });
+    await context.surface.show(this.view);
     this.state = 'mounted';
   }
 
   public async updateContext(context: DesktopToolRuntimeContext): Promise<void> {
     this.requireUsable('update context');
     this.runtimeContext = context;
+    if (this.state === 'active') void this.projectSourceLoader.loadSelected();
   }
 
   public async activate(): Promise<void> {
@@ -97,6 +106,7 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
       throw new DesktopToolLifecycleError(this.moduleId, 'activate', this.state);
     }
     this.state = 'active';
+    void this.projectSourceLoader.loadSelected();
   }
 
   public async deactivate(_reason: DesktopToolDeactivationReason): Promise<void> {
@@ -138,6 +148,7 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
     if (this.state === 'active') await this.deactivate('dispose');
     await this.surface?.clear();
     this.surface = undefined;
+    this.view = undefined;
     this.runtimeContext = undefined;
     this.state = 'disposed';
   }
@@ -177,7 +188,7 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
   }
 
   private rememberSource(source: LocalImageSelection, width: number, height: number): void {
-    this.requireState('load source', 'active');
+    if (this.state !== 'active') return;
     this.session = {
       ...this.session,
       source: { path: source.path, name: source.name, width, height },
@@ -187,6 +198,7 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
       message: `Opened local sprite ${source.name}`,
     });
   }
+
 }
 
 function createGridPreviewResult(

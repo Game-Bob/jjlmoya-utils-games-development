@@ -1,6 +1,7 @@
 import type { IPlatformBridge } from '../../platform/contracts/IPlatformBridge';
 import type { ProjectSummary } from '../types';
 import type { WorkspaceProjectConfig } from '../types/WorkspaceProjectConfig';
+import type { ProjectFileEntry } from '../../platform/contracts/IProjectFileBrowser';
 
 export type JsonPrimitive = string | number | boolean | null;
 
@@ -49,6 +50,7 @@ export interface DesktopToolActivityEvent {
 export interface DesktopToolRuntimeContext {
   readonly project: ProjectSummary | null;
   readonly projectConfig: WorkspaceProjectConfig | null;
+  readonly selectedProjectFile?: ProjectFileEntry | null;
   readonly platform: IPlatformBridge;
   readonly signal: AbortSignal;
   readonly reportActivity: (event: DesktopToolActivityEvent) => void;

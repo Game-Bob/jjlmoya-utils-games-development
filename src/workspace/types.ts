@@ -1,4 +1,5 @@
 import type { WorkspaceProjectConfig } from './types/WorkspaceProjectConfig';
+import type { ProjectFileEntry } from '../platform/contracts/IProjectFileBrowser';
 
 export type PipelinePhaseId = 'assets' | 'audio' | 'logic' | 'publishing';
 
@@ -40,6 +41,7 @@ export interface WorkspaceStateModel {
   workspaceMode: 'launcher' | 'project' | 'labs';
   currentProject: ProjectSummary | null;
   currentProjectConfig: WorkspaceProjectConfig | null;
+  selectedProjectFile: ProjectFileEntry | null;
   activePhaseId: PipelinePhaseId;
   activeToolId: string;
   logs: WorkspaceLogEntry[];

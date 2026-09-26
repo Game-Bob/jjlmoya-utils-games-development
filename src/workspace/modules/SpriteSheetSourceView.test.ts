@@ -39,6 +39,25 @@ afterEach(() => {
 });
 
 describe('SpriteSheetSourceView', () => {
+  it('loads an image supplied by the project explorer without opening a picker', async () => {
+    vi.stubGlobal('createImageBitmap', vi.fn(async () => ({ width: 32, height: 16, close: vi.fn() })));
+    vi.spyOn(URL, 'createObjectURL').mockReturnValue('blob:project-image');
+    vi.spyOn(URL, 'revokeObjectURL').mockImplementation(() => undefined);
+    const chooseSource = vi.fn(async () => null);
+    const onReady = vi.fn();
+    const view = new SpriteSheetSourceView({ chooseSource, onReady, onError: vi.fn() });
+    const picker = view.createPicker(document) as unknown as FakeElement;
+    const image = view.createImage(document) as unknown as FakeElement;
+
+    await expect(view.load(createSelection())).resolves.toBe(true);
+
+    expect(chooseSource).not.toHaveBeenCalled();
+    expect(onReady).toHaveBeenCalledWith(createSelection(), 32, 16);
+    expect(picker.children[1]!.textContent).toBe('hero.png · 32 × 16');
+    expect(image.src).toBe('blob:project-image');
+    view.dispose();
+  });
+
   it('decodes a selected local image and revokes its preview on disposal', async () => {
     const close = vi.fn();
     vi.stubGlobal('createImageBitmap', vi.fn(async () => ({ width: 128, height: 64, close })));
