@@ -9,4 +9,5 @@ export { TauriDirectoryWatcherAdapter } from './TauriDirectoryWatcherAdapter';
 export { TauriProjectStorageAdapter } from './TauriProjectStorageAdapter';
 export { TauriProjectAccessService } from './TauriProjectAccessService';
 export { TauriPlatformBridge } from './TauriPlatformBridge';
+export { TauriLocalImagePicker } from './TauriLocalImagePicker';
 export { defaultInvoker, type CommandInvoker } from './invoker';

@@ -2,6 +2,7 @@
 
 mod directory_watcher;
 mod file_commands;
+mod local_image_picker;
 mod platform_error;
 mod project_path_scope;
 mod recent_projects;
@@ -11,6 +12,7 @@ use file_commands::{
     create_dir_all, file_exists, read_file_binary, read_file_text, write_file_binary,
     write_file_text,
 };
+use local_image_picker::pick_local_image;
 use project_path_scope::{select_project_root, ProjectPathScope};
 use recent_projects::{clear_recent_projects, read_recent_projects, write_recent_projects};
 
@@ -21,6 +23,7 @@ fn configure<R: tauri::Runtime>(builder: tauri::Builder<R>) -> tauri::Builder<R>
         .manage(DirectoryWatcherManager::default())
         .invoke_handler(tauri::generate_handler![
             select_project_root,
+            pick_local_image,
             read_file_text,
             read_file_binary,
             write_file_text,

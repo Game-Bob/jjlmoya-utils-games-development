@@ -1,5 +1,6 @@
 export const PLATFORM_COMMANDS = {
     selectProjectRoot: 'select_project_root',
+    pickLocalImage: 'pick_local_image',
     readFileText: 'read_file_text',
     readFileBinary: 'read_file_binary',
     writeFileText: 'write_file_text',

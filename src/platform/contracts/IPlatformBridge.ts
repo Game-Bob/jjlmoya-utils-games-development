@@ -4,6 +4,7 @@ import type { IDialogService } from './IDialogService';
 import type { IDirectoryWatcher } from './IDirectoryWatcher';
 import type { IProjectStorageService } from './IProjectStorageService';
 import type { IProjectAccessService } from './IProjectAccessService';
+import type { ILocalImagePicker } from './ILocalImagePicker';
 
 export type RuntimePlatform = 'web' | 'desktop-tauri';
 
@@ -15,5 +16,6 @@ export interface IPlatformBridge {
     readonly directoryWatcher: IDirectoryWatcher;
     readonly projectStorage: IProjectStorageService;
     readonly projectAccess: IProjectAccessService;
+    readonly localImagePicker: ILocalImagePicker;
     isNativeDesktop(): boolean;
 }

@@ -8,12 +8,14 @@ import type { IDialogService } from '../../contracts/IDialogService';
 import type { IDirectoryWatcher } from '../../contracts/IDirectoryWatcher';
 import type { IProjectStorageService } from '../../contracts/IProjectStorageService';
 import type { IProjectAccessService } from '../../contracts/IProjectAccessService';
+import type { ILocalImagePicker } from '../../contracts/ILocalImagePicker';
 import { WebFileReader } from './WebFileReader';
 import { WebFileWriter } from './WebFileWriter';
 import { WebDialogService } from './WebDialogService';
 import { WebDirectoryWatcher } from './WebDirectoryWatcher';
 import { WebProjectStorageService } from './WebProjectStorageService';
 import { WebProjectAccessService } from './WebProjectAccessService';
+import { WebLocalImagePicker } from './WebLocalImagePicker';
 
 export interface WebPlatformServices {
     fileReader?: IFileReader;
@@ -22,6 +24,7 @@ export interface WebPlatformServices {
     directoryWatcher?: IDirectoryWatcher;
     projectStorage?: IProjectStorageService;
     projectAccess?: IProjectAccessService;
+    localImagePicker?: ILocalImagePicker;
 }
 
 interface ResolvedWebServices {
@@ -31,6 +34,7 @@ interface ResolvedWebServices {
     directoryWatcher: IDirectoryWatcher;
     projectStorage: IProjectStorageService;
     projectAccess: IProjectAccessService;
+    localImagePicker: ILocalImagePicker;
 }
 
 function createDefaultServices(): ResolvedWebServices {
@@ -41,7 +45,8 @@ function createDefaultServices(): ResolvedWebServices {
         dialogService,
         directoryWatcher: new WebDirectoryWatcher(),
         projectStorage: new WebProjectStorageService(),
-        projectAccess: new WebProjectAccessService(dialogService)
+        projectAccess: new WebProjectAccessService(dialogService),
+        localImagePicker: new WebLocalImagePicker()
     };
 }
 
@@ -65,6 +70,7 @@ export class WebPlatformBridge implements IPlatformBridge {
     readonly directoryWatcher: IDirectoryWatcher;
     readonly projectStorage: IProjectStorageService;
     readonly projectAccess: IProjectAccessService;
+    readonly localImagePicker: ILocalImagePicker;
 
     constructor(services?: WebPlatformServices) {
         const resolved = resolveServices(services);
@@ -74,6 +80,7 @@ export class WebPlatformBridge implements IPlatformBridge {
         this.directoryWatcher = resolved.directoryWatcher;
         this.projectStorage = resolved.projectStorage;
         this.projectAccess = resolved.projectAccess;
+        this.localImagePicker = resolved.localImagePicker;
     }
 
     isNativeDesktop(): boolean {
