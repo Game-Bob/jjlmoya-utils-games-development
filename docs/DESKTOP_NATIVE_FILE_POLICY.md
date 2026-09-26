@@ -16,7 +16,7 @@ La biblioteca web mantiene sus selectores y descargas de navegador. Ese comporta
 
 ## Estado comprobado
 
-Los commits `073704d` y `96da021` entregan la primera entrada de archivo local para Sprite Sheet Packer. Se comprobaron selección/cancelación en el adaptador, formato y límite en Rust, liberación de previsualización, 3017 tests, build Web de 289 páginas y consumo del paquete desde Astro externo. El diálogo dentro de una ventana Tauri real aún requiere una prueba manual; los tests y la inspección del navegador no sustituyen esa comprobación.
+Los commits `073704d` y `96da021` entregan la primera entrada de archivo local para Sprite Sheet Packer. Se comprobaron selección/cancelación en el adaptador, formato y límite en Rust, liberación de previsualización, 3017 tests, build Web de 289 páginas y consumo del paquete desde Astro externo. `tauri build --debug --no-bundle --ci` también genera el ejecutable nativo. El diálogo dentro de una ventana Tauri real aún requiere una prueba manual; compilar no sustituye esa comprobación.
 
 ## Pendiente
 

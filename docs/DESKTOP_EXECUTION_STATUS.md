@@ -113,6 +113,7 @@ La issue #26 sigue abierta y #29 ha recibido un primer incremento:
 - La imagen elegida se muestra con sus dimensiones reales y la previsualización temporal se libera al cambiar de módulo.
 - La frontera Web/Desktop y la deuda de dieciséis adaptadores legacy están precisadas en [DESKTOP_NATIVE_FILE_POLICY.md](./DESKTOP_NATIVE_FILE_POLICY.md) y #34.
 - Pasan 75 suites y 3017 tests, `astro check` en 697 archivos, lint, build Web de 289 páginas, `cargo check`, nueve pruebas Rust y el consumidor Astro externo.
+- `tauri build --debug --no-bundle --ci` compila el ejecutable Windows sin generar instalador.
 - Falta una prueba manual del diálogo en una ventana Tauri real; no debe declararse validada por el test del navegador.
 
 ## Qué no está terminado
