@@ -48,12 +48,12 @@ Esta checklist se completa para cada `DesktopToolModule` antes de considerar int
 
 ## Aplicación al corte vertical de sprites
 
-Estado verificado el 25 de septiembre de 2026. `Cumple` describe evidencia actual; `Parcial` indica una integración transitoria; `Pendiente` no debe interpretarse como defecto del kernel web.
+Estado verificado el 26 de septiembre de 2026. `Cumple` describe evidencia actual; `Parcial` indica una integración transitoria; `Pendiente` no debe interpretarse como defecto del kernel web.
 
 | Herramienta | Web completa | Kernel público compartido | Sin dependencia Tauri pública | Bridge Desktop | `DesktopToolModule` | Handoff de artefactos | Restauración |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Sprite Sheet Fixer | Cumple | Cumple | Cumple | Pendiente | Pendiente #24 y #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
-| SpriteSheet Packer | Cumple | Cumple | Cumple | Parcial: recibe el bridge; falta flujo de archivos | Cumple #24 y #25; flujo completo pendiente #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
+| SpriteSheet Packer | Cumple | Cumple | Cumple | Parcial: entrada de imagen local nativa; faltan salidas y handoffs | Cumple #24 y #25; flujo completo pendiente #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
 | Hitbox/Hurtbox Animator | Cumple | Cumple | Cumple | Parcial | Pendiente #24 y #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
 | Pixel Art Palette Swapper | Cumple | Cumple | Cumple | Pendiente | Pendiente #24 y #29 | Pendiente #28 y #29 | Pendiente #26 y #29 |
 

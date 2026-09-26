@@ -14,11 +14,11 @@ Debe actualizarse cuando se cierre un ticket de la iniciativa, cambie el orden d
 
 | Campo | Estado |
 | --- | --- |
-| Fecha de verificación | 25 de septiembre de 2026 |
+| Fecha de verificación | 26 de septiembre de 2026 |
 | Rama de trabajo | `main` |
-| Último incremento verificado antes de este checkpoint | `d8803cf` |
+| Último incremento verificado antes de este checkpoint | `96da021` |
 | Epic activo | [#32 GameBob Quest Desktop Cohesion](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/32) |
-| Fase actual | Tool Host integrado completado; continuidad de proyecto en curso |
+| Fase actual | Launcher inicial entregado; continuidad de proyecto y archivos nativos en curso |
 | Último ticket completado | [#25 Crear un Tool Host integrado y retirar el iframe](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/25) |
 | Siguiente ticket | [#26 Entregar launcher de proyectos y restauración de sesión](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/26) |
 | Siguiente después de #26 | [#27 Consolidar workbench y lenguaje operativo](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/27) |
@@ -103,13 +103,26 @@ La issue #25 está completada:
 - `npm run lint` y la build Web completa de 289 páginas pasan. El gate de distribución valida ocho exports públicos y el paquete en un consumidor Astro externo.
 - El contrato Desktop pasa 108 pruebas TypeScript y siete pruebas Rust; `cargo check` finaliza sin errores.
 
+### Entrada a proyecto y primer archivo nativo
+
+La issue #26 sigue abierta y #29 ha recibido un primer incremento:
+
+- El workspace arranca en un launcher; no monta ninguna herramienta hasta abrir un proyecto o entrar deliberadamente a Labs.
+- La activación de proyecto y configuración ocurre en una sola transición de estado.
+- Sprite Sheet Packer permite elegir un PNG o WebP local. En Tauri, el diálogo y la lectura pertenecen al proceso nativo; el módulo no utiliza un selector HTML.
+- La imagen elegida se muestra con sus dimensiones reales y la previsualización temporal se libera al cambiar de módulo.
+- La frontera Web/Desktop y la deuda de dieciséis adaptadores legacy están precisadas en [DESKTOP_NATIVE_FILE_POLICY.md](./DESKTOP_NATIVE_FILE_POLICY.md) y #34.
+- Pasan 75 suites y 3017 tests, `astro check` en 697 archivos, lint, build Web de 289 páginas, `cargo check`, nueve pruebas Rust y el consumidor Astro externo.
+- Falta una prueba manual del diálogo en una ventana Tauri real; no debe declararse validada por el test del navegador.
+
 ## Qué no está terminado
 
 La frontera técnica, la carga observable y el alojamiento integrado ya están protegidos, pero la continuidad de proyecto todavía no está terminada. En el estado actual:
 
 - Dieciséis herramientas siguen usando páginas Astro dentro del adaptador legacy, aunque el viewport principal ya no es un documento embebido.
 - Solo Sprite Sheet Packer dispone de una superficie `DesktopToolModule` integrada.
-- No existe un launcher de proyectos que convierta la continuidad en la entrada principal.
+- El launcher aún no muestra recientes ni restaura automáticamente la última sesión.
+- La fuente local de sprites todavía no se comparte ni se restaura como artefacto entre herramientas.
 - No existe un Artifact Registry ni handoffs persistentes entre etapas.
 - Quince de las diecisiete herramientas siguen aisladas del contexto del workspace.
 - Navegación, inspector, comandos y lenguaje visual aún no forman un workbench único.
@@ -122,8 +135,9 @@ Por tanto, no debe comunicarse que la aplicación está terminada. La formulaci�
 2. [#27](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/27): consolidar primitives de workbench y lenguaje operativo.
 3. [#28](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/28): introducir Artifact Registry y handoffs.
 4. [#29](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/29): completar el corte vertical de sprites.
-5. [#30](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/30): reorganizar navegación en workflows, trabajos y Labs.
-6. [#31](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/31): aplicar el gate final de aceptación UX y rendimiento.
+5. [#34](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/34): retirar las entradas de archivo web del resto de herramientas Desktop.
+6. [#30](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/30): reorganizar navegación en workflows, trabajos y Labs.
+7. [#31](https://github.com/Game-Bob/jjlmoya-utils-games-development/issues/31): aplicar el gate final de aceptación UX y rendimiento.
 
 No cerrar #29 con una demostración aislada: debe existir continuidad real de artefactos y restauración de sesión.
 
@@ -132,6 +146,7 @@ No cerrar #29 con una demostración aislada: debe existir continuidad real de ar
 - Trabajar directamente sobre `main`, según la decisión del propietario del repositorio.
 - Hacer commits pequeños por capacidad verificable, sin acumular toda una issue en un único commit si contiene unidades independientes.
 - Preservar la web gratuita y el paquete público; Desktop no puede apropiarse de kernels, formatos ni cálculos compartidos.
+- En Desktop, abrir recursos locales mediante el bridge y diálogos nativos; no convertir los selectores HTML del legado en el patrón de los módulos nuevos.
 - No duplicar lógica de dominio para evitar diseñar el contrato común.
 - No añadir nuevas herramientas al catálogo mientras siga pendiente la integración de las existentes.
 - Cerrar un ticket únicamente cuando todos sus criterios de aceptación tengan evidencia verificable.
