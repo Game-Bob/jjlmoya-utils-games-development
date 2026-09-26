@@ -56,8 +56,9 @@ export class TauriProjectStorageAdapter implements IProjectStorageService {
     }
 
     private resolveConfigPath(projectPath: string): string {
-        const clean = projectPath.replace(/[/\\]+$/, '');
-        return `${clean}/.gbtoolkit.json`;
+        const separator = projectPath.includes('\\') ? '\\' : '/';
+        const normalized = separator === '\\' ? projectPath.replace(/\//g, '\\') : projectPath;
+        return `${normalized}${normalized.endsWith(separator) ? '' : separator}.gbtoolkit.json`;
     }
 
     private parseJson(source: string, label: string): unknown {

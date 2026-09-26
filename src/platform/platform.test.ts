@@ -362,6 +362,33 @@ describe('Platform Abstraction Layer', () => {
     });
 
     describe('TauriProjectStorageAdapter', () => {
+        it('uses Windows separators for canonical native project paths', async () => {
+            const readPath = vi.fn(async () => false);
+            const writePath = vi.fn(async () => undefined);
+            const storage = new TauriProjectStorageAdapter(
+                {
+                    exists: readPath,
+                    readText: async () => '',
+                    readBinary: async () => new Uint8Array()
+                },
+                {
+                    writeText: writePath,
+                    writeBinary: async () => undefined,
+                    createDirectory: async () => undefined
+                }
+            );
+            const root = '\\\\?\\D:\\games\\quest';
+            const configPath = '\\\\?\\D:\\games\\quest\\.gbtoolkit.json';
+
+            await storage.loadProjectConfig(root);
+            await storage.saveProjectConfig(root, { version: 1 });
+            await storage.loadProjectConfig('\\\\?\\D:\\');
+
+            expect(readPath).toHaveBeenCalledWith(configPath);
+            expect(readPath).toHaveBeenCalledWith('\\\\?\\D:\\.gbtoolkit.json');
+            expect(writePath).toHaveBeenCalledWith(configPath, '{\n  "version": 1\n}');
+        });
+
         it('saves and loads configuration at .gbtoolkit.json path', async () => {
             const mockStorage = new Map<string, Uint8Array>();
             const reader = new WebFileReader(mockStorage);
