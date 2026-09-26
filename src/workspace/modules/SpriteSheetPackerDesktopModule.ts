@@ -1,4 +1,5 @@
 import { calculateGridSlices } from '../../tool/spriteSheetPacker/logic';
+import type { LocalImageSelection } from '../../platform/contracts/ILocalImagePicker';
 import type { ExtractionGridConfig } from '../../tool/spriteSheetPacker/types';
 import { assertSerializableSession } from './DesktopToolSession';
 import type {
@@ -79,6 +80,8 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
     await context.surface.show(new SpriteSheetPackerDesktopView({
       initialGrid: readInitialGrid(this.session),
       preview: (grid) => this.previewGrid(grid),
+      chooseSource: () => this.chooseSource(),
+      sourceReady: (source, width, height) => this.rememberSource(source, width, height),
     }));
     this.state = 'mounted';
   }
@@ -163,6 +166,26 @@ class SpriteSheetPackerDesktopInstance implements DesktopToolInstance {
 
   private previewGrid(grid: ExtractionGridConfig): Promise<JsonValue | undefined> {
     return this.executeCommand('preview-grid', { ...grid });
+  }
+
+  private async chooseSource(): Promise<LocalImageSelection | null> {
+    this.requireState('choose source', 'active');
+    const context = this.runtimeContext;
+    if (!context || context.signal.aborted) return null;
+    const selection = await context.platform.localImagePicker.pickImage();
+    return context.signal.aborted ? null : selection;
+  }
+
+  private rememberSource(source: LocalImageSelection, width: number, height: number): void {
+    this.requireState('load source', 'active');
+    this.session = {
+      ...this.session,
+      source: { path: source.path, name: source.name, width, height },
+    };
+    this.runtimeContext?.reportActivity({
+      severity: 'success',
+      message: `Opened local sprite ${source.name}`,
+    });
   }
 }
 

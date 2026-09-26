@@ -1,9 +1,13 @@
 import type { ExtractionGridConfig } from '../../tool/spriteSheetPacker/types';
+import type { LocalImageSelection } from '../../platform/contracts/ILocalImagePicker';
 import type { JsonValue } from './DesktopToolModule';
+import { SpriteSheetSourceView } from './SpriteSheetSourceView';
 
 interface SpriteSheetPackerDesktopViewDependencies {
   readonly initialGrid: ExtractionGridConfig;
   readonly preview: (grid: ExtractionGridConfig) => Promise<JsonValue | undefined>;
+  readonly chooseSource: () => Promise<LocalImageSelection | null>;
+  readonly sourceReady: (source: LocalImageSelection, width: number, height: number) => void;
 }
 
 const GRID_FIELDS: readonly {
@@ -23,13 +27,23 @@ export class SpriteSheetPackerDesktopView {
   private form: HTMLFormElement | undefined;
   private result: HTMLElement | undefined;
   private previewGrid: HTMLElement | undefined;
+  private previewButton: HTMLButtonElement | undefined;
+  private hasSource = false;
+  private readonly sourceView: SpriteSheetSourceView;
   private inputs = new Map<keyof ExtractionGridConfig, HTMLInputElement>();
   private readonly submitListener = (event: SubmitEvent): void => {
     event.preventDefault();
     void this.preview();
   };
-
-  constructor(private readonly dependencies: SpriteSheetPackerDesktopViewDependencies) {}
+  constructor(private readonly dependencies: SpriteSheetPackerDesktopViewDependencies) {
+    this.sourceView = new SpriteSheetSourceView({
+      chooseSource: dependencies.chooseSource,
+      onReady: (source, width, height) => this.handleSourceReady(source, width, height),
+      onError: (message) => {
+        if (this.result) this.result.textContent = message;
+      },
+    });
+  }
 
   public mount(target: Element): void {
     const ownerDocument = target.ownerDocument;
@@ -40,11 +54,14 @@ export class SpriteSheetPackerDesktopView {
   }
 
   public dispose(): void {
+    this.sourceView.dispose();
     this.form?.removeEventListener('submit', this.submitListener);
     this.form?.remove();
     this.form = undefined;
     this.result = undefined;
     this.previewGrid = undefined;
+    this.previewButton = undefined;
+    this.hasSource = false;
     this.inputs.clear();
   }
 
@@ -52,18 +69,29 @@ export class SpriteSheetPackerDesktopView {
     const editor = ownerDocument.createElement('section');
     editor.className = 'sprite-packer-editor';
     editor.setAttribute('aria-labelledby', 'sprite-packer-editor-title');
+    editor.append(
+      this.createIntro(ownerDocument),
+      this.sourceView.createPicker(ownerDocument),
+      this.createForm(ownerDocument),
+    );
+    return editor;
+  }
 
+  private createIntro(ownerDocument: Document): DocumentFragment {
+    const intro = ownerDocument.createDocumentFragment();
     const eyebrow = ownerDocument.createElement('span');
     eyebrow.className = 'desktop-tool-eyebrow';
     eyebrow.textContent = 'Integrated module';
-
     const title = ownerDocument.createElement('h3');
     title.id = 'sprite-packer-editor-title';
     title.textContent = 'Grid slicing';
-
     const description = ownerDocument.createElement('p');
-    description.textContent = 'Describe the source sheet and inspect its frame boundaries instantly.';
+    description.textContent = 'Choose a sprite sheet from this computer, then inspect its frame boundaries.';
+    intro.append(eyebrow, title, description);
+    return intro;
+  }
 
+  private createForm(ownerDocument: Document): HTMLFormElement {
     const form = ownerDocument.createElement('form');
     form.className = 'sprite-packer-form';
     form.addEventListener('submit', this.submitListener);
@@ -77,10 +105,11 @@ export class SpriteSheetPackerDesktopView {
     submit.type = 'submit';
     submit.className = 'sprite-packer-preview-button';
     submit.textContent = 'Preview slices';
+    submit.disabled = true;
+    this.previewButton = submit;
 
     form.append(fields, submit);
-    editor.append(eyebrow, title, description, form);
-    return editor;
+    return form;
   }
 
   private createField(
@@ -115,7 +144,7 @@ export class SpriteSheetPackerDesktopView {
     title.textContent = 'Frame map';
     const result = ownerDocument.createElement('output');
     result.className = 'sprite-packer-result';
-    result.textContent = 'Ready to preview';
+    result.textContent = 'Choose a local image to begin';
     this.result = result;
     header.append(title, result);
 
@@ -125,14 +154,32 @@ export class SpriteSheetPackerDesktopView {
     this.previewGrid = grid;
     this.renderEmptyPreview();
 
-    preview.append(header, grid);
+    preview.append(header, this.sourceView.createImage(ownerDocument), grid);
     return preview;
   }
 
+  private handleSourceReady(source: LocalImageSelection, width: number, height: number): void {
+    this.setImageDimension('imageWidth', width);
+    this.setImageDimension('imageHeight', height);
+    this.hasSource = true;
+    if (this.previewButton) this.previewButton.disabled = false;
+    if (this.result) this.result.textContent = 'Ready to preview';
+    this.renderEmptyPreview();
+    this.dependencies.sourceReady(source, width, height);
+  }
+
+  private setImageDimension(key: 'imageWidth' | 'imageHeight', value: number): void {
+    const input = this.inputs.get(key);
+    if (!input) return;
+    input.value = String(value);
+    input.readOnly = true;
+  }
+
   private async preview(): Promise<void> {
-    const grid = this.readGrid();
+    if (!this.hasSource) return;
     this.setBusy(true);
     try {
+      const grid = this.readGrid();
       const result = await this.dependencies.preview(grid);
       const sliceCount = readSliceCount(result);
       this.renderGrid(grid, sliceCount);
@@ -187,11 +234,12 @@ export class SpriteSheetPackerDesktopView {
   }
 
   private setBusy(busy: boolean): void {
-    const button = this.form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const button = this.previewButton;
     if (!button) return;
-    button.disabled = busy;
+    button.disabled = busy || !this.hasSource;
     button.textContent = busy ? 'Calculating...' : 'Preview slices';
   }
+
 }
 
 function countAxis(total: number, frame: number, margin: number, spacing: number): number {
