@@ -9,6 +9,7 @@ import type { IDirectoryWatcher } from '../../contracts/IDirectoryWatcher';
 import type { IProjectStorageService } from '../../contracts/IProjectStorageService';
 import type { IProjectAccessService } from '../../contracts/IProjectAccessService';
 import type { ILocalImagePicker } from '../../contracts/ILocalImagePicker';
+import type { IProjectFileBrowser } from '../../contracts/IProjectFileBrowser';
 import { TauriFileReader } from './TauriFileReader';
 import { TauriFileWriter } from './TauriFileWriter';
 import { TauriDialogAdapter } from './TauriDialogAdapter';
@@ -16,6 +17,7 @@ import { TauriDirectoryWatcherAdapter } from './TauriDirectoryWatcherAdapter';
 import { TauriProjectStorageAdapter } from './TauriProjectStorageAdapter';
 import { TauriProjectAccessService } from './TauriProjectAccessService';
 import { TauriLocalImagePicker } from './TauriLocalImagePicker';
+import { TauriProjectFileBrowser } from './TauriProjectFileBrowser';
 
 export interface DesktopPlatformServices {
     fileReader?: IFileReader;
@@ -25,6 +27,7 @@ export interface DesktopPlatformServices {
     projectStorage?: IProjectStorageService;
     projectAccess?: IProjectAccessService;
     localImagePicker?: ILocalImagePicker;
+    projectFileBrowser?: IProjectFileBrowser;
 }
 
 interface ResolvedDesktopServices {
@@ -35,6 +38,7 @@ interface ResolvedDesktopServices {
     projectStorage: IProjectStorageService;
     projectAccess: IProjectAccessService;
     localImagePicker: ILocalImagePicker;
+    projectFileBrowser: IProjectFileBrowser;
 }
 
 function createDefaultDesktopServices(): ResolvedDesktopServices {
@@ -47,7 +51,8 @@ function createDefaultDesktopServices(): ResolvedDesktopServices {
         directoryWatcher: new TauriDirectoryWatcherAdapter(),
         projectStorage: new TauriProjectStorageAdapter(reader, writer),
         projectAccess: new TauriProjectAccessService(),
-        localImagePicker: new TauriLocalImagePicker()
+        localImagePicker: new TauriLocalImagePicker(),
+        projectFileBrowser: new TauriProjectFileBrowser()
     };
 }
 
@@ -68,6 +73,7 @@ export class TauriPlatformBridge implements IPlatformBridge {
     readonly projectStorage: IProjectStorageService;
     readonly projectAccess: IProjectAccessService;
     readonly localImagePicker: ILocalImagePicker;
+    readonly projectFileBrowser: IProjectFileBrowser;
 
     constructor(services?: DesktopPlatformServices) {
         const resolved = resolveDesktopServices(services);
@@ -78,6 +84,7 @@ export class TauriPlatformBridge implements IPlatformBridge {
         this.projectStorage = resolved.projectStorage;
         this.projectAccess = resolved.projectAccess;
         this.localImagePicker = resolved.localImagePicker;
+        this.projectFileBrowser = resolved.projectFileBrowser;
     }
 
     isNativeDesktop(): boolean {

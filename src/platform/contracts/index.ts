@@ -18,6 +18,7 @@ export type {
     IProjectStorageService
 } from './IProjectStorageService';
 export type { IProjectAccessService } from './IProjectAccessService';
+export type { IProjectFileBrowser, ProjectDirectoryListing, ProjectFileEntry } from './IProjectFileBrowser';
 export type { ILocalImagePicker, LocalImageSelection } from './ILocalImagePicker';
 export type {
     RuntimePlatform,

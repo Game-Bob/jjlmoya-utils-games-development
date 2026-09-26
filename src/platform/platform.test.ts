@@ -16,7 +16,8 @@ import {
     TauriFileWriter,
     TauriDialogAdapter,
     TauriDirectoryWatcherAdapter,
-    TauriProjectStorageAdapter
+    TauriProjectStorageAdapter,
+    TauriProjectFileBrowser
 } from './desktop';
 import type { ProjectMetadata } from './contracts/IProjectStorageService';
 import type {
@@ -426,6 +427,26 @@ describe('Platform Abstraction Layer', () => {
 
             await storage.clearRecentProjects();
             expect(await storage.getRecentProjects()).toEqual([]);
+        });
+    });
+
+    describe('ProjectFileBrowser', () => {
+        it('lists project entries through native IPC and keeps web storage local', async () => {
+            const invoker = vi.fn(async <T>(_command: string, _args?: Record<string, unknown>): Promise<T> => ({
+                entries: [{ name: 'hero.png', path: 'D:\\game\\hero.png', isDirectory: false }],
+                truncated: false
+            }) as T);
+            const nativeBrowser = new TauriProjectFileBrowser(invoker);
+
+            await expect(nativeBrowser.listDirectory('D:\\game')).resolves.toEqual({
+                entries: [{ name: 'hero.png', path: 'D:\\game\\hero.png', isDirectory: false }],
+                truncated: false
+            });
+            expect(invoker).toHaveBeenCalledWith('list_project_directory', { path: 'D:\\game' });
+            await expect(new WebPlatformBridge().projectFileBrowser.listDirectory('/game')).resolves.toEqual({
+                entries: [],
+                truncated: false
+            });
         });
     });
 

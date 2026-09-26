@@ -4,5 +4,6 @@ export { WebDialogService } from './WebDialogService';
 export { WebDirectoryWatcher } from './WebDirectoryWatcher';
 export { WebProjectStorageService } from './WebProjectStorageService';
 export { WebProjectAccessService } from './WebProjectAccessService';
+export { WebProjectFileBrowser } from './WebProjectFileBrowser';
 export { WebPlatformBridge } from './WebPlatformBridge';
 export { WebLocalImagePicker } from './WebLocalImagePicker';
