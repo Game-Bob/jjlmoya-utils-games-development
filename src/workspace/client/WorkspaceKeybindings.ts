@@ -28,10 +28,7 @@ export class WorkspaceKeybindings {
     if (!modifier) return;
 
     const key = e.key.toLowerCase();
-    if (key === 's') {
-      e.preventDefault();
-      this.projectBarView.triggerSync();
-    } else if (key === 'o') {
+    if (key === 'o') {
       e.preventDefault();
       this.projectBarView.triggerOpenProject();
     } else if (key === 'j') {

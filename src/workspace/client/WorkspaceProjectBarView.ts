@@ -3,26 +3,26 @@ import type { WorkspaceStateModel } from '../types';
 import { displayProjectPath } from '../project/displayProjectPath';
 
 export class WorkspaceProjectBarView {
+  private readonly summaryEl: HTMLElement | null;
   private readonly nameEl: HTMLElement | null;
-  private readonly engineEl: HTMLElement | null;
   private readonly pathEl: HTMLElement | null;
   private readonly syncBtn: HTMLButtonElement | null;
   private readonly openBtn: HTMLButtonElement | null;
+  private readonly menuOpenBtn: HTMLButtonElement | null;
   private readonly newBtn: HTMLButtonElement | null;
   private readonly saveAsBtn: HTMLButtonElement | null;
-  private readonly statusEl: HTMLElement | null;
-  private readonly statusTextEl: HTMLElement | null;
+  private readonly fileMenu: HTMLDetailsElement | null;
 
   constructor(root: HTMLElement, private readonly actions: IWorkspaceProjectActions) {
+    this.summaryEl = root.querySelector('#project-bar-summary');
     this.nameEl = root.querySelector('#project-bar-name');
-    this.engineEl = root.querySelector('#project-bar-engine');
     this.pathEl = root.querySelector('#project-bar-path');
     this.syncBtn = root.querySelector('#project-bar-sync-btn');
     this.openBtn = root.querySelector('#project-bar-open-btn');
+    this.menuOpenBtn = root.querySelector('#project-bar-menu-open-btn');
     this.newBtn = root.querySelector('#project-bar-new-btn');
     this.saveAsBtn = root.querySelector('#project-bar-save-as-btn');
-    this.statusEl = root.querySelector('#project-bar-status-indicator');
-    this.statusTextEl = root.querySelector('#project-bar-status-text');
+    this.fileMenu = root.querySelector('#project-bar-file-menu');
     this.attachEvents();
   }
 
@@ -43,36 +43,40 @@ export class WorkspaceProjectBarView {
 
   private renderProject(state: Readonly<WorkspaceStateModel>): void {
     const project = state.currentProject;
-    if (this.nameEl) {
-      this.nameEl.textContent = project ? project.name : 'Labs';
+    if (this.summaryEl) this.summaryEl.hidden = !project;
+    if (this.nameEl) this.nameEl.textContent = project?.name ?? '';
+    this.renderProjectPath(state);
+  }
+
+  private renderProjectPath(state: Readonly<WorkspaceStateModel>): void {
+    if (!this.pathEl) return;
+    const project = state.currentProject;
+    if (!project) {
+      this.pathEl.textContent = '';
+      this.pathEl.title = '';
+      return;
     }
-    if (this.engineEl) {
-      this.engineEl.textContent = project ? project.engine.toUpperCase() : 'Standalone';
-      this.engineEl.dataset.engine = project ? project.engine : 'none';
-    }
-    if (this.pathEl) {
-      this.pathEl.textContent = project ? displayProjectPath(project.path) : 'No project connected';
-    }
+    const selectedFile = state.selectedProjectFile;
+    this.pathEl.textContent = selectedFile ? selectedFile.name : displayProjectPath(project.path);
+    this.pathEl.title = selectedFile ? selectedFile.path : project.path;
   }
 
   private renderSyncStatus(enabled: boolean): void {
-    if (this.statusEl) {
-      this.statusEl.dataset.status = enabled ? 'syncing' : 'ready';
-    }
-    if (this.statusTextEl) {
-      this.statusTextEl.textContent = enabled ? 'Watching' : 'Ready';
-    }
     if (this.syncBtn) {
       this.syncBtn.setAttribute('aria-pressed', String(enabled));
-      const label = this.syncBtn.querySelector('span:last-child');
-      if (label) label.textContent = enabled ? 'Pause' : 'Sync';
+      this.syncBtn.textContent = enabled ? 'Stop watching changes' : 'Watch project changes';
     }
   }
 
   private attachEvents(): void {
-    this.syncBtn?.addEventListener('click', () => this.triggerSync());
+    this.syncBtn?.addEventListener('click', () => { this.triggerSync(); this.closeMenu(); });
     this.openBtn?.addEventListener('click', () => this.triggerOpenProject());
-    this.newBtn?.addEventListener('click', () => void this.actions.newProject());
-    this.saveAsBtn?.addEventListener('click', () => void this.actions.saveProjectAs());
+    this.menuOpenBtn?.addEventListener('click', () => { this.triggerOpenProject(); this.closeMenu(); });
+    this.newBtn?.addEventListener('click', () => { void this.actions.newProject(); this.closeMenu(); });
+    this.saveAsBtn?.addEventListener('click', () => { void this.actions.saveProjectAs(); this.closeMenu(); });
+  }
+
+  private closeMenu(): void {
+    if (this.fileMenu) this.fileMenu.open = false;
   }
 }

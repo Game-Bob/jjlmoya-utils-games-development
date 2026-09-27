@@ -15,6 +15,10 @@ export class WorkspaceSidebarView {
       btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
       btn.tabIndex = isSelected ? 0 : -1;
       btn.classList.toggle('active', isSelected);
+      if (isSelected) {
+        const group = btn.closest<HTMLDetailsElement>('.pipeline-phase-group');
+        if (group) group.open = true;
+      }
     });
   }
 
