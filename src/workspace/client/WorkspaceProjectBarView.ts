@@ -1,5 +1,6 @@
 import type { IWorkspaceProjectActions } from '../contracts/IWorkspaceProjectActions';
 import type { WorkspaceStateModel } from '../types';
+import { displayProjectPath } from '../project/displayProjectPath';
 
 export class WorkspaceProjectBarView {
   private readonly nameEl: HTMLElement | null;
@@ -50,7 +51,7 @@ export class WorkspaceProjectBarView {
       this.engineEl.dataset.engine = project ? project.engine : 'none';
     }
     if (this.pathEl) {
-      this.pathEl.textContent = project ? project.path : 'Project-free tools';
+      this.pathEl.textContent = project ? displayProjectPath(project.path) : 'No project connected';
     }
   }
 
