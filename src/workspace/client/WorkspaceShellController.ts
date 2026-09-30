@@ -69,7 +69,7 @@ export class WorkspaceShellController {
     const hostRoot = root.querySelector<HTMLElement>('#desktop-tool-host-root');
     if (!hostRoot) throw new Error('Desktop tool host root is missing');
     return new DesktopToolHost({
-      registry: createWorkspaceToolRegistry(),
+      registry: createWorkspaceToolRegistry(platform.platform),
       surfaces: new DomDesktopToolSurfaceManager(hostRoot),
       createContext: (signal, moduleId) => {
         const current = state.getState();
@@ -80,6 +80,7 @@ export class WorkspaceShellController {
           platform,
           signal,
           reportActivity: (event) => state.addLog(event.severity, event.message, moduleId),
+          projectFilesChanged: () => this.projectExplorerView.refresh(),
         };
       },
       onStateChange: (snapshot) => this.viewportView.renderHost(snapshot),

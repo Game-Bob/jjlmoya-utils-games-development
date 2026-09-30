@@ -65,6 +65,10 @@ export class WorkspaceProjectExplorerView {
     this.list.replaceChildren();
   }
 
+  public refresh(): void {
+    void this.loadCurrentDirectory();
+  }
+
   private async loadCurrentDirectory(): Promise<void> {
     const location = this.locations.at(-1);
     if (!location) return;
@@ -134,8 +138,10 @@ export class WorkspaceProjectExplorerView {
     }
     this.state.selectProjectFile(entry);
     if (/\.(png|webp)$/i.test(entry.name)) {
-      this.state.selectTool('spriteSheetPacker');
-      this.status.textContent = `Opening ${entry.name} in Sprite Sheet Packer`;
+      const activeTool = this.state.getState().activeToolId;
+      const destination = activeTool === 'fixerEditor' ? activeTool : 'spriteSheetPacker';
+      this.state.selectTool(destination);
+      this.status.textContent = `Opening ${entry.name} in ${destination === 'fixerEditor' ? 'Sprite Sheet Fixer' : 'Sprite Sheet Packer'}`;
       return;
     }
     this.status.textContent = `${entry.name} selected; no integrated editor for this file type yet`;

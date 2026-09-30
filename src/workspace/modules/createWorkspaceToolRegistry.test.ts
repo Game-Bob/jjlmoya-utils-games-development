@@ -22,4 +22,17 @@ describe('createWorkspaceToolRegistry', () => {
       )),
     ).toHaveLength(16);
   });
+
+  it('integrates Sprite Sheet Fixer only in the native desktop runtime', () => {
+    const web = createWorkspaceToolRegistry('web');
+    const desktop = createWorkspaceToolRegistry('desktop-tauri');
+
+    expect(web.require('fixerEditor').manifest.capabilities).toContainEqual(
+      expect.objectContaining({ id: 'legacy.iframe' }),
+    );
+    expect(desktop.require('fixerEditor').manifest.capabilities).toContainEqual(
+      expect.objectContaining({ id: 'sprite.correct-sheet' }),
+    );
+    expect(desktop.list()).toHaveLength(web.list().length);
+  });
 });

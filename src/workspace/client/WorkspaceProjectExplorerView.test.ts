@@ -101,6 +101,9 @@ describe('WorkspaceProjectExplorerView', () => {
 
     expect(state.getState().selectedProjectFile?.path).toBe(spritePath);
     expect(state.getState().activeToolId).toBe('spriteSheetPacker');
+    state.selectTool('fixerEditor');
+    list.children[0]!.dispatchEvent(new Event('click'));
+    expect(state.getState().activeToolId).toBe('fixerEditor');
     expect(listDirectory).toHaveBeenCalledWith(rootPath);
     expect(listDirectory).toHaveBeenCalledWith('D:\\game\\sprites');
     elements.get('#project-explorer-back')!.dispatchEvent(new Event('click'));

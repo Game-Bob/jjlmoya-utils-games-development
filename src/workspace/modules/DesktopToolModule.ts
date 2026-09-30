@@ -54,6 +54,7 @@ export interface DesktopToolRuntimeContext {
   readonly platform: IPlatformBridge;
   readonly signal: AbortSignal;
   readonly reportActivity: (event: DesktopToolActivityEvent) => void;
+  readonly projectFilesChanged?: () => void;
 }
 
 export interface DesktopToolView {
